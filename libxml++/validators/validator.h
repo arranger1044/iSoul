@@ -22,7 +22,7 @@
 
 extern "C" {
   struct _xmlValidCtxt;
-};
+}
 
 namespace xmlpp {
 
