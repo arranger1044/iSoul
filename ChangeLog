@@ -1,3 +1,5 @@
+2.8.0:
+
 2004-09-12  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/libxml++.h: Add include for xmlreader.h.
