@@ -37,7 +37,7 @@ AM_PROG_LIBTOOL
 
 AC_CHECK_HEADERS(string list map, , exit)
 
-PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= 2.5.8 glibmm-2.4 >= 2.3.0)
+PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= 2.6.1 glibmm-2.4 >= 2.3.0)
 
 # Dummy conditional just to make automake-1.4 happy.
 # We need an always-false condition in docs/Makefile.am.
@@ -67,6 +67,7 @@ AC_OUTPUT(
     examples/sax_parser_build_dom/Makefile
     examples/sax_exception/Makefile
     examples/import_node/Makefile
+    examples/textreader/Makefile
 
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile
