@@ -1,0 +1,11 @@
+Makefile.in
+Makefile
+aclocal.m4
+autom4te.cache
+config.log
+config.status
+configure
+libtool
+libxml++-2.6.pc
+libxml++.spec
+
