@@ -1,3 +1,5 @@
+2.9.2:
+
 2005-02-11  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/: Added manual.
@@ -35,6 +37,8 @@
 	(DLL) on win32.
 	* examples/Makefile.am_fragment: Removed trailing slash in INCLUDES.
 	* MSVC_Net2003/*: Initial release.
+
+2.9.1:
 
 2004-12-25  Murray Cumming  <murrayc@murrayc.com>
 
