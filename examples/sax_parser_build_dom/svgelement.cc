@@ -33,12 +33,12 @@ Element::~Element()
 {}
 
 // example custom methods
-void Element::set_style(const std::string& style)
+void Element::set_style(const Glib::ustring& style)
 {
   set_attribute("style", style);
 }
     
-const std::string Element::get_style() const
+const Glib::ustring Element::get_style() const
 {
   return get_attribute("style")->get_value();
 }

@@ -1,5 +1,12 @@
 2003-12-19  Murray Cumming  <murrayc@usa.net>
 
+	* configure.in: Added glibmm-2.4 to the pkg-config check.
+	* Used regexxer to do a complete std::string/Glib::ustring rename.
+	Everything seems to still work. I think the parse_chunk(stream)
+	stuff might need some attention/thought.
+
+2003-12-19  Murray Cumming  <murrayc@usa.net>
+
 	* removed acinclude.m4 because we do not need it anymore because
 	we do not need AM_LIBXML now that we use pkg-config.
 	* libxml++/Makefile.am: Generate a library with 2.5 in the name, 

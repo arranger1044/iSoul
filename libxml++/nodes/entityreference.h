@@ -23,11 +23,11 @@ public:
   /** Get the text to which this entity reference would have resolved if the XML document had been parsed with Parser::set_substitute_entities(true).
    * @returns The unescaped text.
    */
-  std::string get_resolved_text() const;
+  Glib::ustring get_resolved_text() const;
 
   //TODO: I'm not sure what this is. So far it seems to be the same as get_resolved_text().
   //      Maybe it's for nested entity declarations, though I don't know if that is even possile. murrayc.
-  std::string get_original_text() const;
+  Glib::ustring get_original_text() const;
 
 };
 

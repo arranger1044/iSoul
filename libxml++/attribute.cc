@@ -20,20 +20,20 @@ Attribute::~Attribute()
 {
 }
 
-std::string Attribute::get_name() const
+Glib::ustring Attribute::get_name() const
 {
   return cobj()->name ? (char*)cobj()->name : "";
 }
 
-std::string Attribute::get_value() const
+Glib::ustring Attribute::get_value() const
 {
   xmlChar *value = xmlGetProp(cobj()->parent, cobj()->name);
-  std::string retn = value ? (char *)value : "";
+  Glib::ustring retn = value ? (char *)value : "";
   xmlFree(value);
   return retn;
 }
 
-void Attribute::set_value(const std::string& value)
+void Attribute::set_value(const Glib::ustring& value)
 {
   xmlSetProp(cobj()->parent, cobj()->name, (xmlChar*)value.c_str());
 }

@@ -23,7 +23,7 @@ Node::Node(xmlNode* node)
 Node::~Node()
 {}
 
-Node::NodeList Node::get_children(const std::string& name)
+Node::NodeList Node::get_children(const Glib::ustring& name)
 {
    xmlNode* child = impl_->children;
    if(!child)
@@ -53,13 +53,13 @@ Node::NodeList Node::get_children(const std::string& name)
    return children;
 }
 
-const Node::NodeList Node::get_children(const std::string& name) const
+const Node::NodeList Node::get_children(const Glib::ustring& name) const
 {
   return const_cast<Node*>(this)->get_children(name);
 }
 
-Element* Node::add_child(const std::string& name,
-                         const std::string& ns_prefix)
+Element* Node::add_child(const Glib::ustring& name,
+                         const Glib::ustring& ns_prefix)
 {
    xmlNode* node = 0;
    xmlNs* ns = 0;
@@ -110,12 +110,12 @@ Node* Node::import_node(const Node* node, bool recursive)
   return static_cast<Node*>(imported_node->_private);
 }
 
-std::string Node::get_name() const
+Glib::ustring Node::get_name() const
 {
   return impl_->name ? (const char*)impl_->name : "";
 }
 
-void Node::set_name(const std::string& name)
+void Node::set_name(const Glib::ustring& name)
 {
   xmlNodeSetName( impl_, (const xmlChar *)name.c_str() );
 }
@@ -136,15 +136,15 @@ const xmlNode* Node::cobj() const
   return impl_;
 }
 
-std::string Node::get_path() const
+Glib::ustring Node::get_path() const
 {
   xmlChar* path = xmlGetNodePath(impl_);
-  std::string retn = path ? (char*)path : "";
+  Glib::ustring retn = path ? (char*)path : "";
   xmlFree(path);
   return retn;
 }
 
-NodeSet Node::find(const std::string& xpath) const
+NodeSet Node::find(const Glib::ustring& xpath) const
 {
   xmlXPathContext* ctxt = xmlXPathNewContext(impl_->doc);
   ctxt->node = impl_;
@@ -172,23 +172,23 @@ NodeSet Node::find(const std::string& xpath) const
   return nodes;
 }
 
-std::string Node::get_namespace_prefix() const
+Glib::ustring Node::get_namespace_prefix() const
 {
   if(impl_ && impl_->ns && impl_->ns->prefix)
     return (char*)impl_->ns->prefix;
   else
-    return std::string();
+    return Glib::ustring();
 }
 
-std::string Node::get_namespace_uri() const
+Glib::ustring Node::get_namespace_uri() const
 {
    if(impl_ && impl_->ns && impl_->ns->href)
     return (char*)impl_->ns->href;
   else
-    return std::string();
+    return Glib::ustring();
 }
 
-void Node::set_namespace(const std::string& ns_prefix)
+void Node::set_namespace(const Glib::ustring& ns_prefix)
 {
   //Look for the existing namespace to use:
   xmlNs* ns = xmlSearchNs( cobj()->doc, cobj(), (xmlChar*)ns_prefix.c_str() );

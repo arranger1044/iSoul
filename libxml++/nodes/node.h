@@ -9,7 +9,7 @@
 
 #include <libxml++/noncopyable.h>
 #include <libxml++/exceptions/exception.h>
-#include <string>
+#include <glibmm/ustring.h>
 #include <list>
 #include <map>
 #include <vector>
@@ -43,21 +43,21 @@ public:
   /** Get the name of this node.
    * @returns The node's name.
    */
-  std::string get_name() const;
+  Glib::ustring get_name() const;
 
   /** Set the name of this node.
    * @param name The new name for the node.
    */
-  void set_name(const std::string& name);
+  void set_name(const Glib::ustring& name);
 
   /** Set the namespace prefix used by the node
    * If no such namespace prefix has been declared then this method will throw an exception.
    * @param ns_prefix The namespace prefix.
    */
-  void set_namespace(const std::string& ns_prefix);
+  void set_namespace(const Glib::ustring& ns_prefix);
 
-  std::string get_namespace_prefix() const;
-  std::string get_namespace_uri() const;
+  Glib::ustring get_namespace_prefix() const;
+  Glib::ustring get_namespace_uri() const;
 
   /** Discover at what line number this node occurs in the XML file.
    * @returns The line number.
@@ -68,21 +68,21 @@ public:
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.
    * @returns The list of child nodes.
    */
-  NodeList get_children(const std::string& name = std::string());
+  NodeList get_children(const Glib::ustring& name = Glib::ustring());
 
   /** Obtain the list of child nodes. You may optionally obtain a list of only the child nodes which have a certain name.
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.
    * @returns The list of child nodes.
    */
-  const NodeList get_children(const std::string& name = std::string()) const;
+  const NodeList get_children(const Glib::ustring& name = Glib::ustring()) const;
 
   /** Add a child element to this node
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
    */
-  Element* add_child(const std::string& name,
-                     const std::string& ns_prefix = std::string());
+  Element* add_child(const Glib::ustring& name,
+                     const Glib::ustring& ns_prefix = Glib::ustring());
 
   /** Remove the child node.
    * @param node The child node to remove. This Node will be deleted and therefore unusable after calling this method.
@@ -97,10 +97,10 @@ public:
   Node* import_node(const Node* node, bool recursive = true);
 
   /** Return the XPath of this node */
-  std::string get_path() const;
+  Glib::ustring get_path() const;
 
   /** Find nodes from a XPath expression */
-  NodeSet find(const std::string& xpath) const;
+  NodeSet find(const Glib::ustring& xpath) const;
 
   ///Access the underlying libxml implementation.
   _xmlNode* cobj();

@@ -31,7 +31,7 @@ namespace xmlpp
 
 
   OutputBuffer::OutputBuffer(
-      const std::string& encoding)
+      const Glib::ustring& encoding)
   {
     // we got to initialise the char encoding handler
     // The code is almost cut/paste from xmlSaveFormatFileEnc

@@ -31,7 +31,7 @@
 int
 main(int argc, char* argv[])
 {
-  std::string filepath;
+  Glib::ustring filepath;
   if(argc > 1 )
     filepath = argv[1]; //Allow the user to specify a different XML file to parse.
   else
@@ -60,7 +60,7 @@ main(int argc, char* argv[])
     MySaxParser parser;
     do {
       is.read(buffer, 63);
-      std::string input(buffer, is.gcount());
+      Glib::ustring input(buffer, is.gcount());
 
       parser.parse_chunk(input);
     }

@@ -54,7 +54,7 @@ main(int argc, char* argv[])
     nodeChild = nodeRoot->add_child("examplechild", "foobar"); //foobar is the namespace prefix
     nodeChild->set_attribute("id", "2", "foobar"); //foobar is the namespace prefix.
 
-    std::string whole = document.write_to_string();
+    Glib::ustring whole = document.write_to_string();
     std::cout << "XML built at runtime: " << std::endl << whole << std::endl;
     std::cout << "default namespace: " << nodeRoot->get_namespace_uri() << std::endl;
   }

@@ -21,17 +21,17 @@ Dtd::~Dtd()
 { 
 }
 
-std::string Dtd::get_name() const
+Glib::ustring Dtd::get_name() const
 {
   return (char*)impl_->name;
 }
 
-std::string Dtd::get_external_id() const
+Glib::ustring Dtd::get_external_id() const
 {
   return (char*)impl_->ExternalID;
 }
 
-std::string Dtd::get_system_id() const
+Glib::ustring Dtd::get_system_id() const
 {
   return (char*)impl_->SystemID;
 }

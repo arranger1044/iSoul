@@ -25,7 +25,7 @@
 #define __LIBXMLPP_SVGPARSER_H
 
 #include <stack>
-#include <string>
+#include <glibmm/ustring.h>
 #include <libxml++/libxml++.h>
 
 namespace SVG {
@@ -40,14 +40,14 @@ protected:
   // SAX parser callbacks
   void on_start_document() {};
   void on_end_document() {};
-  void on_start_element(const std::string& name,
+  void on_start_element(const Glib::ustring& name,
                                 const AttributeList& properties);
-  void on_end_element(const std::string& name);
-  void on_characters(const std::string& characters);
-  void on_comment(const std::string& text);
-  void on_warning(const std::string& text);
-  void on_error(const std::string& text);
-  void on_fatal_error(const std::string& text);
+  void on_end_element(const Glib::ustring& name);
+  void on_characters(const Glib::ustring& characters);
+  void on_comment(const Glib::ustring& text);
+  void on_warning(const Glib::ustring& text);
+  void on_error(const Glib::ustring& text);
+  void on_fatal_error(const Glib::ustring& text);
 
 private:
   // context is a stack to keep track of parent node while the SAX parser

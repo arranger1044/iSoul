@@ -79,12 +79,12 @@ SaxParser::~SaxParser()
   release_underlying();
 }
 
-xmlEntityPtr SaxParser::on_get_entity(const std::string& name)
+xmlEntityPtr SaxParser::on_get_entity(const Glib::ustring& name)
 {
   return entity_resolver_doc_.get_entity(name);
 }
 
-void SaxParser::on_entity_declaration(const std::string& name, XmlEntityType type, const std::string& publicId, const std::string& systemId, const std::string& content)
+void SaxParser::on_entity_declaration(const Glib::ustring& name, XmlEntityType type, const Glib::ustring& publicId, const Glib::ustring& systemId, const Glib::ustring& content)
 {
   entity_resolver_doc_.set_entity_declaration(name, type, publicId, systemId, content);
 }  
@@ -97,42 +97,42 @@ void SaxParser::on_end_document()
 {
 }
 
-void SaxParser::on_start_element(const std::string& name, const AttributeList& attributes)
+void SaxParser::on_start_element(const Glib::ustring& name, const AttributeList& attributes)
 {
 }
 
-void SaxParser::on_end_element(const std::string& name)
+void SaxParser::on_end_element(const Glib::ustring& name)
 {
 }
 
-void SaxParser::on_characters(const std::string& text)
+void SaxParser::on_characters(const Glib::ustring& text)
 {
 }
 
-void SaxParser::on_comment(const std::string& text)
+void SaxParser::on_comment(const Glib::ustring& text)
 {
 }
 
-void SaxParser::on_warning(const std::string& text)
+void SaxParser::on_warning(const Glib::ustring& text)
 {
 }
 
-void SaxParser::on_error(const std::string& text)
+void SaxParser::on_error(const Glib::ustring& text)
 {
 }
 
-void SaxParser::on_fatal_error(const std::string& text)
+void SaxParser::on_fatal_error(const Glib::ustring& text)
 {
   throw parse_error("Fatal error: " + text);
 }
 
-void SaxParser::on_cdata_block(const std::string& text)
+void SaxParser::on_cdata_block(const Glib::ustring& text)
 {
 }
 
-void SaxParser::on_internal_subset(const std::string& name,
-                         const std::string& publicId,
-                         const std::string& systemId)
+void SaxParser::on_internal_subset(const Glib::ustring& name,
+                         const Glib::ustring& publicId,
+                         const Glib::ustring& systemId)
 {
   entity_resolver_doc_.set_internal_subset(name, publicId, systemId);
 }
@@ -162,7 +162,7 @@ void SaxParser::parse()
   check_for_exception();
 }
 
-void SaxParser::parse_file(const std::string& filename)
+void SaxParser::parse_file(const Glib::ustring& filename)
 {
   if(context_)
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
@@ -173,7 +173,7 @@ void SaxParser::parse_file(const std::string& filename)
   parse();
 }
 
-void SaxParser::parse_memory(const std::string& contents)
+void SaxParser::parse_memory(const Glib::ustring& contents)
 {
   if(context_)
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
@@ -200,6 +200,7 @@ void SaxParser::parse_stream(std::istream& in)
 
   initialize_context();
 
+  //TODO: Shouldn't we use a Glib::ustring here, and some alternative to std::getline()?
   std::string line;
   while( ( ! exception_ )
       && std::getline(in, line))
@@ -219,7 +220,7 @@ void SaxParser::parse_stream(std::istream& in)
   check_for_exception();
 }
 
-void SaxParser::parse_chunk(const std::string& chunk)
+void SaxParser::parse_chunk(const Glib::ustring& chunk)
 {
   KeepBlanks k(KeepBlanks::Default);
 
@@ -294,11 +295,11 @@ void SaxParserCallback::entity_decl(void* context, const xmlChar* name, int type
   try
   {
     parser->on_entity_declaration(
-      ( name ? std::string((const char*)name) : ""),
+      ( name ? Glib::ustring((const char*)name) : ""),
       static_cast<XmlEntityType>(type),
-      ( publicId ? std::string((const char*)publicId) : ""),
-      ( systemId ? std::string((const char*)systemId) : ""),
-      ( content ? std::string((const char*)content) : "") );
+      ( publicId ? Glib::ustring((const char*)publicId) : ""),
+      ( systemId ? Glib::ustring((const char*)systemId) : ""),
+      ( content ? Glib::ustring((const char*)content) : "") );
   }
   catch(const exception& e)
   {
@@ -356,7 +357,7 @@ void SaxParserCallback::start_element(void* context,
 
   try
   {
-    parser->on_start_element(std::string((const char*) name), attributes);
+    parser->on_start_element(Glib::ustring((const char*) name), attributes);
   }
   catch(const exception& e)
   {
@@ -371,7 +372,7 @@ void SaxParserCallback::end_element(void* context, const xmlChar* name)
 
   try
   {
-    parser->on_end_element(std::string((const char*) name));
+    parser->on_end_element(Glib::ustring((const char*) name));
   }
   catch(const exception& e)
   {
@@ -386,7 +387,7 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
 
   try
   {
-    parser->on_characters(std::string((const char*) ch, len));
+    parser->on_characters(Glib::ustring((const char*) ch, len));
   }
   catch(const exception& e)
   {
@@ -401,7 +402,7 @@ void SaxParserCallback::comment(void* context, const xmlChar* value)
 
   try
   {
-    parser->on_comment(std::string((const char*) value));
+    parser->on_comment(Glib::ustring((const char*) value));
   }
   catch(const exception& e)
   {
@@ -423,7 +424,7 @@ void SaxParserCallback::warning(void* context, const char* fmt, ...)
 
   try
   {
-    parser->on_warning(std::string(buff));
+    parser->on_warning(Glib::ustring(buff));
   }
   catch(const exception& e)
   {
@@ -448,7 +449,7 @@ void SaxParserCallback::error(void* context, const char* fmt, ...)
 
   try
   {
-    parser->on_error(std::string(buff));
+    parser->on_error(Glib::ustring(buff));
   }
   catch(const exception& e)
   {
@@ -470,7 +471,7 @@ void SaxParserCallback::fatal_error(void* context, const char* fmt, ...)
 
   try
   {
-    parser->on_fatal_error(std::string(buff));
+    parser->on_fatal_error(Glib::ustring(buff));
   }
   catch(const exception& e)
   {
@@ -485,7 +486,7 @@ void SaxParserCallback::cdata_block(void* context, const xmlChar* value, int len
 
   try
   {
-    parser->on_cdata_block(std::string((const char*)value, len));
+    parser->on_cdata_block(Glib::ustring((const char*)value, len));
   }
   catch(const exception& e)
   {
@@ -501,10 +502,10 @@ void SaxParserCallback::internal_subset(void* context, const xmlChar* name,
   
   try
   {
-    std::string pid = publicId ? std::string((const char*) publicId) : "";
-    std::string sid = systemId ? std::string((const char*) systemId) : "";
+    Glib::ustring pid = publicId ? Glib::ustring((const char*) publicId) : "";
+    Glib::ustring sid = systemId ? Glib::ustring((const char*) systemId) : "";
 
-    parser->on_internal_subset( std::string((const char*) name), pid, sid);
+    parser->on_internal_subset( Glib::ustring((const char*) name), pid, sid);
   }
   catch(const exception& e)
   {

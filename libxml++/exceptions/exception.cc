@@ -2,7 +2,7 @@
 
 namespace xmlpp {
   
-exception::exception(const std::string& message)
+exception::exception(const Glib::ustring& message)
 : message_(message)
 {
 }

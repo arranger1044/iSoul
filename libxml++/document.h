@@ -55,18 +55,18 @@ class Document : NonCopyable
   friend class SaxParser;
   
 public:
-  explicit Document(const std::string& version = "1.0");
+  explicit Document(const Glib::ustring& version = "1.0");
   virtual ~Document();
   
   /** @return The encoding used in the source from which the document has been loaded.
     */
-  std::string get_encoding() const;
+  Glib::ustring get_encoding() const;
   
   Dtd* get_internal_subset() const;
   
-  void set_internal_subset(const std::string& name,
-                           const std::string& external_id,
-                           const std::string& system_id);
+  void set_internal_subset(const Glib::ustring& name,
+                           const Glib::ustring& external_id,
+                           const Glib::ustring& system_id);
 
   /** Return the root node.
    * This function does _not_ create a default root node if it doesn't exist.
@@ -81,21 +81,21 @@ public:
    * @param ns_prefix The namespace prefix to associate with the namespace. If no namespace prefix is specified then
      the namespace URI will be the default namespace.
    */
-  Element* create_root_node(const std::string& name,
-                            const std::string& ns_uri = std::string(),
-                            const std::string& ns_prefix = std::string() );
+  Element* create_root_node(const Glib::ustring& name,
+                            const Glib::ustring& ns_uri = Glib::ustring(),
+                            const Glib::ustring& ns_prefix = Glib::ustring() );
 
   /** Append a new comment node.
    * @param content The text. This should be unescaped - see ContentNode::set_content().
    * @returns The new comment node.
    */
-  CommentNode* add_comment(const std::string& content);
+  CommentNode* add_comment(const Glib::ustring& content);
 
   /** Write the document to a file.
    * @param filename
    * @param encoding If not provided, UTF-8 is used
    */
-  void write_to_file(const std::string& filename, const std::string& encoding = std::string());
+  void write_to_file(const Glib::ustring& filename, const Glib::ustring& encoding = Glib::ustring());
 
   /** Write the document to a file.
    * The output is formatted by inserting whitespaces, which is easier to read for a human,
@@ -103,12 +103,12 @@ public:
    * @param filename
    * @param encoding If not provided, UTF-8 is used
    */
-  void write_to_file_formatted(const std::string& filename, const std::string& encoding = std::string());
+  void write_to_file_formatted(const Glib::ustring& filename, const Glib::ustring& encoding = Glib::ustring());
 
   /** Write the document to the memory.
    * @param encoding If not provided, UTF-8 is used
    */
-  std::string write_to_string(const std::string& encoding = std::string());
+  Glib::ustring write_to_string(const Glib::ustring& encoding = Glib::ustring());
 
   /** Write the document to the memory.
    * The output is formatted by inserting whitespaces, which is easier to read for a human,
@@ -116,7 +116,7 @@ public:
    * @param encoding If not provided, UTF-8 is used
    * @return The written document.
    */
-  std::string write_to_string_formatted(const std::string& encoding = std::string());
+  Glib::ustring write_to_string_formatted(const Glib::ustring& encoding = Glib::ustring());
 
   /** Write the document to a std::ostream.
    * @param output A reference to the stream in which the document will be written
@@ -124,7 +124,7 @@ public:
    * @warning This method is much less efficient than write_to_string if you want to dump the
    * document to a buffer or the standard output. Writing to a fstream is almost as fast as write_to_file
    */
-  void write_to_stream(std::ostream& output, const std::string& encoding = std::string());
+  void write_to_stream(std::ostream& output, const Glib::ustring& encoding = Glib::ustring());
 
   /** Write the document to a std::ostream.
    * The output is formatted by inserting whitespaces, which is easier to read for a human,
@@ -133,7 +133,7 @@ public:
    * @param encoding If not provided, UTF-8 is used
    * @warning See write_to_stream
    */
-  void write_to_stream_formatted(std::ostream & output, const std::string& encoding = std::string());
+  void write_to_stream_formatted(std::ostream & output, const Glib::ustring& encoding = Glib::ustring());
 
   /** Add an Entity declaration to the document.
    * @param name The name of the entity that will be used in an entity reference.
@@ -143,9 +143,9 @@ public:
    * @param content The value of the Entity. In entity reference substitutions, this
    * is the replacement value.
    */
-  virtual void set_entity_declaration(const std::string& name, XmlEntityType type,
-                                      const std::string& publicId, const std::string& systemId,
-                                      const std::string& content);
+  virtual void set_entity_declaration(const Glib::ustring& name, XmlEntityType type,
+                                      const Glib::ustring& publicId, const Glib::ustring& systemId,
+                                      const Glib::ustring& content);
 
 protected:
   /** Retrieve an Entity.
@@ -153,12 +153,12 @@ protected:
    * @param name Then name of the entity to get.
    * @returns A pointer to the libxml2 entity structure.
    */
-  _xmlEntity* get_entity(const std::string& name);
+  _xmlEntity* get_entity(const Glib::ustring& name);
 
 private:
-  virtual void do_write_to_file(const std::string& filename, const std::string& encoding, bool format);
-  virtual std::string do_write_to_string(const std::string& encoding, bool format);
-  virtual void do_write_to_stream(std::ostream& output, const std::string& encoding, bool format);
+  virtual void do_write_to_file(const Glib::ustring& filename, const Glib::ustring& encoding, bool format);
+  virtual Glib::ustring do_write_to_string(const Glib::ustring& encoding, bool format);
+  virtual void do_write_to_stream(std::ostream& output, const Glib::ustring& encoding, bool format);
 
   static Init init_;
 

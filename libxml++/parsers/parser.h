@@ -62,13 +62,13 @@ public:
    * @throw exception
    * @param filename The path to the file.
    */
-  virtual void parse_file(const std::string& filename) = 0;
+  virtual void parse_file(const Glib::ustring& filename) = 0;
 
   /** Parse an XML document from a string.
    * @throw exception
    * @param contents The XML document as a string.
    */
-  virtual void parse_memory(const std::string& contents) = 0;
+  virtual void parse_memory(const Glib::ustring& contents) = 0;
 
   /** Parse an XML document from a stream.
    * @throw exception
@@ -80,8 +80,8 @@ protected:
   virtual void initialize_context();
   virtual void release_underlying();
 
-  virtual void on_validity_error(const std::string& message);
-  virtual void on_validity_warning(const std::string& message);
+  virtual void on_validity_error(const Glib::ustring& message);
+  virtual void on_validity_warning(const Glib::ustring& message);
 
   virtual void handleException(const exception& e);
   virtual void check_for_exception();
@@ -92,8 +92,8 @@ protected:
   
   _xmlParserCtxt* context_;
   exception* exception_;
-  std::string validate_error_;
-  std::string validate_warning_; //Built gradually - used in an exception at the end of parsing.
+  Glib::ustring validate_error_;
+  Glib::ustring validate_warning_; //Built gradually - used in an exception at the end of parsing.
 
   bool validate_;
   bool substitute_entities_;

@@ -19,7 +19,7 @@ ContentNode::ContentNode(xmlNode* node)
 ContentNode::~ContentNode()
 {}
 
-std::string ContentNode::get_content() const
+Glib::ustring ContentNode::get_content() const
 {
   if(cobj()->type == XML_ELEMENT_NODE)
     throw internal_error("this node type doesn't have content");
@@ -27,7 +27,7 @@ std::string ContentNode::get_content() const
   return cobj()->content ? (char*)cobj()->content : "";
 }
 
-void ContentNode::set_content(const std::string& content)
+void ContentNode::set_content(const Glib::ustring& content)
 {
    if(cobj()->type == XML_ELEMENT_NODE)
       throw internal_error("can't set content for this node type");

@@ -41,7 +41,7 @@ Parser::~Parser()
 {
 }
 
-void Parser::on_start_element(const std::string& name,
+void Parser::on_start_element(const Glib::ustring& name,
                                    const AttributeList& attributes)
 {
   //This method replaces the normal libxml++ node
@@ -50,10 +50,10 @@ void Parser::on_start_element(const std::string& name,
   //work with future versions of libxml++.
   
   // Parse namespace prefix and save for later:
-  std::string elementPrefix;
-  std::string elementName = name;
-  std::string::size_type idx = name.find(':'); 
-  if (idx != std::string::npos) //If the separator was found
+  Glib::ustring elementPrefix;
+  Glib::ustring elementName = name;
+  Glib::ustring::size_type idx = name.find(':'); 
+  if (idx != Glib::ustring::npos) //If the separator was found
   {
     elementPrefix = name.substr(0, idx);
     elementName = name.substr(idx + 1);
@@ -108,10 +108,10 @@ void Parser::on_start_element(const std::string& name,
     // In theory, you could change the attributes here.
     for(xmlpp::SaxParser::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); ++iter)
     {
-      std::string name = (*iter).name;
-      std::string value = (*iter).value;
-      std::string::size_type idx = name.find(':');
-      if (idx == std::string::npos) // If the separator was not found.
+      Glib::ustring name = (*iter).name;
+      Glib::ustring value = (*iter).value;
+      Glib::ustring::size_type idx = name.find(':');
+      if (idx == Glib::ustring::npos) // If the separator was not found.
       {
         if (name == "xmlns") // This is a namespace declaration.
         {
@@ -127,8 +127,8 @@ void Parser::on_start_element(const std::string& name,
       else
       {
         //The separator was found:
-        std::string prefix = name.substr(0, idx);
-        std::string suffix = name.substr(idx + 1);
+        Glib::ustring prefix = name.substr(0, idx);
+        Glib::ustring suffix = name.substr(idx + 1);
         if (prefix == "xmlns") // This is a namespace declaration.
           element_derived->set_namespace_declaration(value, suffix);
         else
@@ -148,19 +148,19 @@ void Parser::on_start_element(const std::string& name,
   }
 }
 
-void Parser::on_end_element(const std::string& name)
+void Parser::on_end_element(const Glib::ustring& name)
 {
   // This causes the next child elements to be added to the sibling, not this node.
   m_context.pop();
 }
 
-void Parser::on_characters(const std::string& text)
+void Parser::on_characters(const Glib::ustring& text)
 {
   if (m_context.size())
     m_context.top()->add_child_text(text);
 }
 
-void Parser::on_comment(const std::string& text)
+void Parser::on_comment(const Glib::ustring& text)
 {
   if (m_context.size())
     m_context.top()->add_child_comment(text);
@@ -168,17 +168,17 @@ void Parser::on_comment(const std::string& text)
     m_doc.add_comment(text);
 }
 
-void Parser::on_warning(const std::string& text)
+void Parser::on_warning(const Glib::ustring& text)
 {
   std::cout << "on_warning(): " << text << std::endl;
 }
 
-void Parser::on_error(const std::string& text)
+void Parser::on_error(const Glib::ustring& text)
 {
   std::cout << "on_error(): " << text << std::endl;
 }
 
-void Parser::on_fatal_error(const std::string& text)
+void Parser::on_fatal_error(const Glib::ustring& text)
 {
   std::cout << "on_fatal_error(): " << text << std::endl;
 }

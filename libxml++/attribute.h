@@ -8,7 +8,7 @@
 #define __LIBXMLPP_ATTRIBUTE_H
 
 
-#include <string>
+#include <glibmm/ustring.h>
 
 #include <libxml++/nodes/node.h>
 
@@ -30,9 +30,9 @@ public:
   explicit Attribute(_xmlNode* node);
   virtual ~Attribute();
   
-  std::string get_name() const;
-  std::string get_value() const;
-  void set_value(const std::string& value);
+  Glib::ustring get_name() const;
+  Glib::ustring get_value() const;
+  void set_value(const Glib::ustring& value);
 
   ///Access the underlying libxml implementation.
   _xmlAttr* cobj();

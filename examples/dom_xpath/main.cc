@@ -28,7 +28,7 @@
 #include <iostream>
 
 
-void xpath_test(const xmlpp::Node* node, const std::string& xpath)
+void xpath_test(const xmlpp::Node* node, const Glib::ustring& xpath)
 {
   std::cout << std::endl; //Separate tests by an empty line.
   std::cout << "searching with xpath '" << xpath << "' in root node: " << std::endl;
@@ -46,7 +46,7 @@ void xpath_test(const xmlpp::Node* node, const std::string& xpath)
 
 int main(int argc, char* argv[])
 {
-  std::string filepath;
+  Glib::ustring filepath;
   if(argc > 1 )
     filepath = argv[1]; //Allow the user to specify a different XML file to parse.
   else

@@ -25,14 +25,14 @@
 #include <libxml++/exceptions/exception.h>
 
 #include <exception>
-#include <string>
+#include <glibmm/ustring.h>
 
 namespace xmlpp {
   
 class internal_error: public exception
 {
 public:
-  explicit internal_error(const std::string& message);
+  explicit internal_error(const Glib::ustring& message);
   virtual ~internal_error() throw();
 
   virtual void Raise() const;

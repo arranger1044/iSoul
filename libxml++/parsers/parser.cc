@@ -81,13 +81,13 @@ void Parser::release_underlying()
   }
 }
 
-void Parser::on_validity_error(const std::string& message)
+void Parser::on_validity_error(const Glib::ustring& message)
 {
   //Throw an exception later when the whole message has been received:
   validate_error_ += message;
 }
 
-void Parser::on_validity_warning(const std::string& message)
+void Parser::on_validity_warning(const Glib::ustring& message)
 {
   //Throw an exception later when the whole message has been received:
   validate_warning_ += message;
@@ -132,7 +132,7 @@ void Parser::callback_validity_error(void* context_, const char* msg, ...)
 
       try
       {
-        parser->on_validity_error(std::string(buff));
+        parser->on_validity_error(Glib::ustring(buff));
       }
       catch(const exception& e)
       {
@@ -163,7 +163,7 @@ void Parser::callback_validity_warning(void* context_, const char* msg, ...)
 
       try
       {
-        parser->on_validity_warning(std::string(buff));
+        parser->on_validity_warning(Glib::ustring(buff));
       }
       catch(const exception& e)
       {

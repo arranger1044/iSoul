@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include <string>
+#include <glibmm/ustring.h>
 #include <cstdlib>
 #include <libxml++/libxml++.h>
 

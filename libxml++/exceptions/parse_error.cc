@@ -2,7 +2,7 @@
 
 namespace xmlpp {
 
-parse_error::parse_error(const std::string& message)
+parse_error::parse_error(const Glib::ustring& message)
 : exception(message)
 {
 }

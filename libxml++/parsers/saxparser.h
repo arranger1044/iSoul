@@ -35,10 +35,10 @@ public:
    */
   struct Attribute
   {
-    std::string name;
-    std::string value;
+    Glib::ustring name;
+    Glib::ustring value;
 
-    Attribute(std::string const & name, std::string const & value)
+    Attribute(Glib::ustring const & name, Glib::ustring const & value)
       : name(name), value(value)
       {
       }
@@ -51,15 +51,15 @@ public:
    * 
    * Example:@n
    * <code>
-   *   std::string name = "foo";@n
+   *   Glib::ustring name = "foo";@n
    *   AttributeList::const_iterator attribute = std::find_if(attributes.begin(), attributes.end(), AttributeHasName(name));
    * </code>
    */
   struct AttributeHasName
   {
-    std::string const & name;
+    Glib::ustring const & name;
 
-    AttributeHasName(std::string const & name)
+    AttributeHasName(Glib::ustring const & name)
       : name(name)
       {
       }
@@ -84,13 +84,13 @@ public:
    * @throw exception
    * @param filename The path to the file.
    */
-  virtual void parse_file(const std::string& filename);
+  virtual void parse_file(const Glib::ustring& filename);
 
   /** Parse an XML document from a string.
    * @throw exception
    * @param contents The XML document as a string.
    */
-  virtual void parse_memory(const std::string& contents);
+  virtual void parse_memory(const Glib::ustring& contents);
 
   /** Parse an XML document from a stream.
    * @throw exception
@@ -110,7 +110,7 @@ public:
    * @throw exception
    * @param chunk The next piece of the XML document.
    */
-  virtual void parse_chunk(const std::string& chunk);
+  virtual void parse_chunk(const Glib::ustring& chunk);
 
   /** Finish a chunk-wise parse.
    *
@@ -123,18 +123,18 @@ protected:
         
   virtual void on_start_document();
   virtual void on_end_document();
-  virtual void on_start_element(const std::string& name, const AttributeList& attributes);
-  virtual void on_end_element(const std::string& name);
-  virtual void on_characters(const std::string& characters);
-  virtual void on_comment(const std::string& text);
-  virtual void on_warning(const std::string& text);
-  virtual void on_error(const std::string& text);
-  virtual void on_fatal_error(const std::string& text);
-  virtual void on_cdata_block(const std::string& text);
+  virtual void on_start_element(const Glib::ustring& name, const AttributeList& attributes);
+  virtual void on_end_element(const Glib::ustring& name);
+  virtual void on_characters(const Glib::ustring& characters);
+  virtual void on_comment(const Glib::ustring& text);
+  virtual void on_warning(const Glib::ustring& text);
+  virtual void on_error(const Glib::ustring& text);
+  virtual void on_fatal_error(const Glib::ustring& text);
+  virtual void on_cdata_block(const Glib::ustring& text);
 
   /** Override this to receive information about the document's DTD and any entity declarations.
    */
-  virtual void on_internal_subset(const std::string& name, const std::string& publicId, const std::string& systemId);
+  virtual void on_internal_subset(const Glib::ustring& name, const Glib::ustring& publicId, const Glib::ustring& systemId);
 
   /** Override this method to resolve entities references in your derived parser, instead of using the default entity resolution,
    * or to be informed when entity references are encountered.
@@ -155,14 +155,14 @@ protected:
    * @returns The resolved xmlEntity for the entity reference. You must include libxml/parser.h in order to use this C struct.
    * This instance will not be freed by the caller.
    */
-  virtual _xmlEntity* on_get_entity(const std::string& name);
+  virtual _xmlEntity* on_get_entity(const Glib::ustring& name);
 
   /** Override this to receive information about every entity declaration.
    * If you override this function, and you want normal entity substitution to work, then you must call the base class in your override.
    *
    * This would be useful when overriding on_get_entity().
    */
-  virtual void on_entity_declaration(const std::string& name, XmlEntityType type, const std::string& publicId, const std::string& systemId, const std::string& content);
+  virtual void on_entity_declaration(const Glib::ustring& name, XmlEntityType type, const Glib::ustring& publicId, const Glib::ustring& systemId, const Glib::ustring& content);
 
   virtual void release_underlying();
   

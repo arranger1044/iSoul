@@ -24,7 +24,7 @@
 #ifndef __LIBXMLPP_SVGELEMENT_H
 #define __LIBXMLPP_SVGELEMENT_H
 
-#include <string>
+#include <glibmm/ustring.h>
 #include <libxml++/libxml++.h>
 #include <libxml/tree.h>
 
@@ -38,8 +38,8 @@ public:
   virtual ~Element();
 
   // example custom methods
-  void set_style(const std::string& style);
-  const std::string get_style() const;
+  void set_style(const Glib::ustring& style);
+  const Glib::ustring get_style() const;
     
   // TODO: add custom methods 
 

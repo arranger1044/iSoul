@@ -68,7 +68,7 @@ void MySaxParser::on_end_document()
   std::cout << "on_end_document()" << std::endl;
 }
 
-void MySaxParser::on_start_element(const std::string& name,
+void MySaxParser::on_start_element(const Glib::ustring& name,
                                    const AttributeList& attributes)
 {
   std::cout << "node name=" << name << std::endl;
@@ -85,32 +85,32 @@ void MySaxParser::on_start_element(const std::string& name,
   
 }
 
-void MySaxParser::on_end_element(const std::string& name)
+void MySaxParser::on_end_element(const Glib::ustring& name)
 {
   std::cout << "on_end_element()" << std::endl;
 }
 
-void MySaxParser::on_characters(const std::string& text)
+void MySaxParser::on_characters(const Glib::ustring& text)
 {
   std::cout << "on_characters(): " << text << std::endl;
 }
 
-void MySaxParser::on_comment(const std::string& text)
+void MySaxParser::on_comment(const Glib::ustring& text)
 {
   std::cout << "on_comment(): " << text << std::endl;
 }
 
-void MySaxParser::on_warning(const std::string& text)
+void MySaxParser::on_warning(const Glib::ustring& text)
 {
   std::cout << "on_warning(): " << text << std::endl;
 }
 
-void MySaxParser::on_error(const std::string& text)
+void MySaxParser::on_error(const Glib::ustring& text)
 {
   std::cout << "on_error(): " << text << std::endl;
 }
 
-void MySaxParser::on_fatal_error(const std::string& text)
+void MySaxParser::on_fatal_error(const Glib::ustring& text)
 {
   std::cout << "on_fatal_error(): " << text << std::endl;
 }

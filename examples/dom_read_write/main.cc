@@ -32,7 +32,7 @@ int
 main(int argc, char* argv[])
 {
   //Parse command-line arguments:
-  std::string filepath_in, filepath_out;
+  Glib::ustring filepath_in, filepath_out;
   if(argc > 1 )
     filepath_in = argv[1]; //Allow the user to specify a different XML file to parse.
   else

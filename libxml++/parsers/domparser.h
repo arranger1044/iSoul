@@ -28,20 +28,20 @@ public:
    * @param filename The path to the file.
    * @param validate Whether the parser should validate the XML.             
    */  
-  explicit DomParser(const std::string& filename, bool validate = false);
+  explicit DomParser(const Glib::ustring& filename, bool validate = false);
   virtual ~DomParser();
 
   /** Parse an XML document from a file.
    * @throw exception
    * @param filename The path to the file.
    */                                                                                                                                                                                               
-  virtual void parse_file(const std::string& filename);
+  virtual void parse_file(const Glib::ustring& filename);
 
   /** Parse an XML document from a string.
    * @throw exception  
    * @param contents The XML document as a string.
    */ 
-  virtual void parse_memory(const std::string& contents);
+  virtual void parse_memory(const Glib::ustring& contents);
 
   /** Parse an XML document from a stream.
    * @throw exception

@@ -29,9 +29,9 @@ public:
   Dtd(_xmlDtd* dtd);
   ~Dtd();
 
-  std::string get_name() const;
-  std::string get_external_id() const;
-  std::string get_system_id() const;
+  Glib::ustring get_name() const;
+  Glib::ustring get_external_id() const;
+  Glib::ustring get_system_id() const;
   
 private:
   _xmlDtd* impl_;

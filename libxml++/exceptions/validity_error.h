@@ -32,7 +32,7 @@ namespace xmlpp
 class validity_error: public parse_error
 {
 public:
-  explicit validity_error(const std::string& message);
+  explicit validity_error(const Glib::ustring& message);
   virtual ~validity_error() throw();
 
   virtual void Raise() const;

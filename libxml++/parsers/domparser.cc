@@ -26,7 +26,7 @@ DomParser::DomParser()
   doc_ = new Document();
 }
 
-DomParser::DomParser(const std::string& filename, bool validate)
+DomParser::DomParser(const Glib::ustring& filename, bool validate)
 : doc_(0)
 {
   set_validate(validate);
@@ -38,7 +38,7 @@ DomParser::~DomParser()
   release_underlying();
 }
 
-void DomParser::parse_file(const std::string& filename)
+void DomParser::parse_file(const Glib::ustring& filename)
 {
   release_underlying(); //Free any existing document.
 
@@ -61,7 +61,7 @@ void DomParser::parse_file(const std::string& filename)
   parse_context();
 }
 
-void DomParser::parse_memory(const std::string& contents)
+void DomParser::parse_memory(const Glib::ustring& contents)
 {
   release_underlying(); //Free any existing document.
 
@@ -134,6 +134,7 @@ void DomParser::parse_stream(std::istream& in)
 
   initialize_context();
 
+  //TODO: Shouldn't we use a Glib::ustring here, and some alternative to std::getline()?
   std::string line;
   while(std::getline(in, line))
   {
