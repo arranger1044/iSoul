@@ -1,5 +1,9 @@
 2.9.2:
 
+2005-02-13  Christophe de Vienne  <cdevienne@netcourrier.com>
+
+	* docs/manual/Makefile.am: Removed README from EXTRA_DIST.
+
 2005-02-12  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++/nodes/node.cc: Fixed a little inefficency in find (#161925)

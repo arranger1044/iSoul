@@ -2,7 +2,7 @@
 
 * Added MSVC .Net 2003 support (Cedric Gustin)
 * Improved documentation + Added a manual (Murray Cumming)
-* Fixed a bug in Document::do_write_to_string (Murray Cumming)
+* Fixed a bug in utf8 handling in Document::do_write_to_string (Murray Cumming)
 
 2.9.1:
 

@@ -1,4 +1,4 @@
-EXTRA_DIST = README $(docbook_docs) html libxml++.xml libxml++_without_code.xml
+EXTRA_DIST = $(docbook_docs) html libxml++.xml libxml++_without_code.xml
 
 # Create a DocBook source file with the code inline, instead of the special comments.
 libxml++.xml: libxml++_without_code.xml insert_example_code.pl
