@@ -1,6 +1,10 @@
 2005-01-26  Cedric Gustin <cedric.gustin@swing.be>
 
-	* configure.in : parse micro version tags at configure time (for
+	* MSVC_Net2003/README: Updated for 2.8.0
+
+2005-01-26  Cedric Gustin <cedric.gustin@swing.be>
+
+	* configure.in: parse micro version tags at configure time (for
 	libxml++.rc). Added support for shared libraries (DLL) on
 	win32. Added MSVC_Net2003 Makefiles.
 	* Makefile.am: Added MSVC_Net2003 subdir.

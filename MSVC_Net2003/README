@@ -1,13 +1,16 @@
-Building libglademm-2.4 with Visual Studio .NET 2003
+Building libxml++-2.8 with Visual Studio .NET 2003
 
-* You will need Visual Studio .NET 2003 (MSVC 7.1).  Earlier versions of the compiler, including 6.0 and 7.0 will not work.
-* Install the latest Win32 GTK+ Development Environment from the Glade for Windows project, http://gladewin32.sourceforge.net.
-* Build libsigc++ 2.0.6 or later + glibmm 2.4.7 or later, and gtkmm-2.4.8 or later from source.
-* Add GTK+, libsigc++, glibmm and gtkmm to the include and lib paths in Visual Studio.
-* Load the libglademm/MSVC_Net2003/libglademm.sln solution.
-* Build the entire solution.
-* Run the tests.
+* You will need Visual Studio .NET 2003 (MSVC 7.1).  Earlier versions
+of the compiler, including 6.0 and 7.0 will not work.  
+* Install the latest Win32 GTK+ Development Environment from the Glade
+for Windows project, http://gladewin32.sourceforge.net.  
+* Build libsigc++ 2.0.6 or later, and glibmm 2.4.7 or later from
+source.   
+* Add GTK+, libsigc++ and glibmm to the include and lib paths in
+Visual Studio. 
+* Load the MSVC_Net2003/libxml++.sln solution. 
+* Build the entire solution.  Run the tests.
 
-Timothy M. Shead & Cedric Gustin
-12/08/2004
+Cedric Gustin
+01/26/2005
 
