@@ -1,3 +1,7 @@
+2.7.1:
+
+* Fixed bug #150082 (Christophe de Vienne)
+
 2.7.0:
 
 * Added Validator and DtdValidator (Guillaume Arreckx)
