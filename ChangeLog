@@ -1,10 +1,17 @@
-2004-05-03  Christophe de Vienne  <cdevienne@netcourrier.com>
+2004-05-05  Christophe de Vienne  <cdevienne@netcourrier.com>
+
+	* libxml++/parsers/saxparser.cc: One more (last one I hope) change
+	about Glib::ustring instanciation from a buffer + lenght. We now
+	use Glib::ustring::ustring(In begin, In end) constructor. Thanks to
+	Jonathan Wakely.
+
+2004-05-04  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++/parsers/saxparser.cc: Replaced again the use of
 	Glib::ustring(const char*) constructor by Glib::ustring(std::string).
 	Fixes #141824.
 
-2004-05-03  Christophe de Vienne  <cdevienne@netcourrier.com>
+2004-05-04  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++/parsers/saxparser.cc: Replace the use of
 	Glib::ustring(const char*, unsigned) constructor by Glib::ustring(const char*).
