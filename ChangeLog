@@ -1,3 +1,11 @@
+2004-12-25  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/parsers/domparser.[h|cc], saxparser.[h|cc]: Added 
+	parse_memory_raw() for libxml documents that are not utf8-encoded or 
+	are encoded in an unknown encoding.
+	* examples/: Added dom_parser_raw() to test parsing of UCS2-encoded 
+	text.
+
 2004-12-20  Murray Cumming  <murrayc@murrayc.com>
 
 	* This is the HEAD branch, for gnome 2.9/2.10.

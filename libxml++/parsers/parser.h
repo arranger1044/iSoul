@@ -38,6 +38,8 @@ public:
   Parser();
   virtual ~Parser();
 
+  typedef unsigned int size_type;
+
   /** By default, the parser will not validate the XML file.
    * @param val Whether the document should be validated.
    */
@@ -66,6 +68,8 @@ public:
    */
   virtual void parse_file(const Glib::ustring& filename) = 0;
 
+  //TODO: In a future ABI-break, add a virtual void parse_memory_raw(const unsigned char* contents, size_type bytes_count);
+  
   /** Parse an XML document from a string.
    * @throw exception
    * @param contents The XML document as a string.

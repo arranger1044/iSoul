@@ -92,6 +92,13 @@ public:
    */
   virtual void parse_memory(const Glib::ustring& contents);
 
+  /** Parse an XML document from raw memory.
+   * @throw exception
+   * @param contents The XML document as an array of bytes.
+   * @param bytes_count The number of bytes in the @a contents array.
+   */
+  void parse_memory_raw(const unsigned char* contents, size_type bytes_count);
+
   /** Parse an XML document from a stream.
    * @throw exception
    * @param in The stream.

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE example PUBLIC "" "example.dtd">
+
+<example>
+  <examplechild id="1">
+    <child_of_child/>
+  </examplechild>
+  <examplechild id="2">
+    <child_of_child/>
+  </examplechild>
+</example>
+

@@ -173,15 +173,20 @@ void SaxParser::parse_file(const Glib::ustring& filename)
   parse();
 }
 
-void SaxParser::parse_memory(const Glib::ustring& contents)
+void SaxParser::parse_memory_raw(const unsigned char* contents, size_type bytes_count)
 {
   if(context_)
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
 
   KeepBlanks k(KeepBlanks::Default);
 
-  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.bytes());
+  context_ = xmlCreateMemoryParserCtxt((const char*)contents, bytes_count);
   parse();
+}
+  
+void SaxParser::parse_memory(const Glib::ustring& contents)
+{
+  parse_memory_raw((const unsigned char*)contents.c_str(), contents.bytes());
 }
 
 void SaxParser::parse_stream(std::istream& in)

@@ -96,10 +96,15 @@ public:
    */
   Node* import_node(const Node* node, bool recursive = true);
 
-  /** Return the XPath of this node */
+  
+  /** Return the XPath of this node
+   * @result The XPath of the node.
+   */
   Glib::ustring get_path() const;
 
-  /** Find nodes from a XPath expression */
+  /** Find nodes from a XPath expression
+   * @param xpath The XPath of the nodes.
+   */
   NodeSet find(const Glib::ustring& xpath) const;
 
   ///Access the underlying libxml implementation.

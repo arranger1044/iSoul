@@ -61,14 +61,14 @@ void DomParser::parse_file(const Glib::ustring& filename)
   parse_context();
 }
 
-void DomParser::parse_memory(const Glib::ustring& contents)
+void DomParser::parse_memory_raw(const unsigned char* contents, size_type bytes_count)
 {
   release_underlying(); //Free any existing document.
 
   KeepBlanks k(KeepBlanks::Default);
 
   //The following is based on the implementation of xmlParseFile(), in xmlSAXParseFileWithData():
-  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.bytes());
+  context_ = xmlCreateMemoryParserCtxt((const char*)contents, bytes_count);
 
   if(!context_)
   {
@@ -76,6 +76,11 @@ void DomParser::parse_memory(const Glib::ustring& contents)
   }
 
   parse_context();
+}
+
+void DomParser::parse_memory(const Glib::ustring& contents)
+{
+  parse_memory_raw((const unsigned char*)contents.c_str(), contents.bytes());
 }
 
 void DomParser::parse_context()

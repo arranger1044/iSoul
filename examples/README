@@ -19,3 +19,5 @@ XPath:
 
 Others:
   sax_exception: Shows how to implement a libxml++ exception that can be thrown by your SAX parser.
+  dom_parser_raw: Test parse_memory_raw() by converting a UTF-8-encoded XML document to UCS-2 and passing the raw memory to the parser.
+
