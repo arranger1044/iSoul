@@ -306,7 +306,12 @@ Glib::ustring Document::do_write_to_string(
     throw exception("do_write_to_string() failed.");
 
   // Create a Glib::ustring copy of the buffer
-  Glib::ustring result((char*)buffer, length);
+
+  // Here we force the use of Glib::ustring::ustring( InputIterator begin, InputIterator end )
+  // instead of Glib::ustring::ustring( const char*, size_type ) because it
+  // expects the length of the string in characters, not in bytes.
+  Glib::ustring result( reinterpret_cast<const char *>(buffer), reinterpret_cast<const char *>(buffer + length) );
+
   // Deletes the original buffer
   xmlFree(buffer);
   // Return a copy of the string

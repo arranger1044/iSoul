@@ -394,7 +394,7 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
   {
     // Here we force the use of Glib::ustring::ustring( InputIterator begin, InputIterator end )
     // instead of Glib::ustring::ustring( const char*, size_type ) because it
-    // waits for the length of the string in characters, not in bytes.
+    // expects the length of the string in characters, not in bytes.
     parser->on_cdata_block(
         Glib::ustring(
           reinterpret_cast<const char *>(ch),

@@ -1,3 +1,17 @@
+2005-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/document.cc: do_write_to_string(): libml returns the 
+	number of bytes instead of the number of characters, so use the 
+	appropriate ustring constructor, to avoid an exception later. 
+	Bug found by Cyril Picard.
+	* docs/reference/Makefile.am: Install the reference documentation.
+	Distribute the built reference documentatoin, and Do not rebuild it 
+	every time.
+	* docs/reference/Doxyfile.in: Generate doxygen tags so that other 
+	documentation can link to the libxml++ documentation. Use the 
+	libstdc++ and glibmm doxygen tags to link to their documentation, 
+	for instance for Glib::ustring.
+	
 2005-01-26  Cedric Gustin <cedric.gustin@swing.be>
 
 	* MSVC_Net2003/README: Updated for 2.8.0
@@ -24,6 +38,14 @@
 2004-12-20  Murray Cumming  <murrayc@murrayc.com>
 
 	* This is the HEAD branch, for gnome 2.9/2.10.
+
+2004-12-18  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/docs/index.html: Bugs: Minor english corrections, and 
+	more useful bugzilla links.
+	* libxml++/docs/Makefile.am: Build the reference documentation as 
+	part of the main cvs build, but distribute it so that it does not need 
+	to be rebuilt when building a tarball.
 
 2004-12-18  Murray Cumming  <murrayc@murrayc.com>
 
