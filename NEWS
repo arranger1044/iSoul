@@ -1,3 +1,10 @@
+2.9.1:
+
+* First unstable 2.9.x release, to become stable 2.10.x.
+* DomParser, SaxParser: Added 
+  parse_memory_raw(const unsigned char* contents, size_type bytes)
+  for parsing non-utf8 text or text of unknown encoding.
+
 2.8.0:
 
 * Code Cleaning.

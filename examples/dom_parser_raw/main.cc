@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
       std::cerr << "Glib::convert failed: " << ex.what() << std::endl;
     }
 
-    parser.parse_memory_raw(contents_ucs2.c_str(), contents_ucs2.size());
+    parser.parse_memory_raw((const unsigned char*)contents_ucs2.c_str(), contents_ucs2.size());
 
     //Look at the first few bytes, to see whether it really looks like UCS2.
     //Because UCS2 uses 2 bytes, we would expect every second byte to be zero for our simple example:
