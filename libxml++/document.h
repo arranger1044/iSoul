@@ -80,10 +80,19 @@ public:
      been declared before.
    * @param ns_prefix The namespace prefix to associate with the namespace. If no namespace prefix is specified then
      the namespace URI will be the default namespace.
+   * @return A pointer to the new root node
    */
   Element* create_root_node(const Glib::ustring& name,
                             const Glib::ustring& ns_uri = Glib::ustring(),
                             const Glib::ustring& ns_prefix = Glib::ustring() );
+
+  /** Creates a root node by importing the node from another document, without affecting the source node.
+   * @param node The node to copy and insert as the root node of the document
+   * @param recursive Whether to import the child nodes also. Defaults to true.
+   * @return A pointer to the new root node
+   */
+  Element* create_root_node_by_import(const Node* node,
+				      bool recursive = true);
 
   /** Append a new comment node.
    * @param content The text. This should be unescaped - see ContentNode::set_content().

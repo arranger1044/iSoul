@@ -224,6 +224,19 @@ Element* Document::create_root_node(const Glib::ustring& name,
   return element;
 }
 
+Element* Document::create_root_node_by_import(const Node* node,
+					      bool recursive)
+{
+  //Create the node, by copying:
+  xmlNode* imported_node = xmlDocCopyNode(const_cast<xmlNode*>(node->cobj()), impl_, recursive);
+  if (!imported_node)
+    throw exception("Unable to import node");
+
+  xmlDocSetRootElement(impl_, imported_node);
+
+  return get_root_node();
+}
+
 CommentNode* Document::add_comment(const Glib::ustring& content)
 {
   xmlNode* node = xmlNewComment((const xmlChar*)content.c_str());

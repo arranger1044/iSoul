@@ -1,3 +1,6 @@
+2004-02-05  Jim Garrison  <garrison@case.edu>
+	* libxml++/document.[h|cc]: added create_root_node_by_import()
+
 2004-01-13  Christophe de Vienne  <cdevienne@alphacent.com>
 
 	* libxml++/io/document.cc: Gives NULL strings instead of empty ones to
