@@ -1,3 +1,10 @@
+2004-06-24  Murray Cumming  <murrayc@.com>
+
+	* configure.in, Makefile.am, libxml++-2.*.pc.in: Reverted the changes
+	that made it install a 2.8 pc.in file, and which decreased the .so
+	name. 2.8 is not parallel-installable with 2.6, and this would only 
+	have been a half-done transition if it was.
+
 2004-06-22  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/io/outputbuffer.cc, inputbuffer.cc: 
