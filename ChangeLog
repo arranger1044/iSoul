@@ -1,3 +1,5 @@
+2.5.2:
+
 2004-02-16  Christophe de VIENNE  <cdevienne@netcourrier.com>
 
 	* libxml++/nodes/element.cc: Check return value of xmlHasNsProp to
@@ -24,6 +26,8 @@
 	  libxml++/parsers/saxparser.h, libxml++/parsers/textreader.[h|cc]:
 	Removed unnecessary semicolons
 
+2.5.1:
+	
 2004-02-08  Jim Garrison  <garrison@case.edu>
 
 	* libxml++/document.[h|cc]: added Document::cobj() function
