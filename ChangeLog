@@ -1,5 +1,10 @@
 2005-03-08  Christophe de Vienne  <cdevienne@netcourrier.com>
 
+	* docs/reference/Makefile.am: Added one more rule so the "make distcheck"
+	works from a clean cvs working copy.
+
+2005-03-08  Christophe de Vienne  <cdevienne@netcourrier.com>
+
 	* docs/manual/Makefile.am, docs/reference/Makefile.am: Added a few rules
 	so that "make dist" generated the documentation if it's absent.
 

@@ -17,6 +17,8 @@ $(index_html): $(doxygen_configfile_source)
 
 @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html: $(index_html)
 
+libxml++_doxygen_tags: $(index_html)
+
 
 libxml++-reference-html.tar.gz: $(index_html)
 	tar cf - @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html | gzip -c --best >$@
