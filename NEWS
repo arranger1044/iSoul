@@ -1,6 +1,7 @@
-2.6.1:
+2004-05-04 2.6.1:
 
 * Fixed an issue (#141824) with Glib::ustring.
+* Fixed ContentNode::SetContent behavior.
 
 2004-04-13 2.6.0:
 
