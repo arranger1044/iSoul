@@ -92,6 +92,8 @@ AC_CHECK_HEADERS(string list map, , exit)
 
 PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= 2.6.1 glibmm-2.4 >= 2.4.0)
 
+GLIBMM_CHECK_PERL([5.6.0])
+
 # Dummy conditional just to make automake-1.4 happy.
 # We need an always-false condition in docs/Makefile.am.
 AM_CONDITIONAL(LIBXMLCPP_FALSE,[false])
@@ -109,6 +111,7 @@ AC_OUTPUT(
   docs/Makefile
     docs/reference/Makefile
     docs/reference/Doxyfile
+    docs/manual/Makefile
 
   examples/Makefile
     examples/dom_build/Makefile

@@ -1,5 +1,14 @@
 2005-02-11  Murray Cumming  <murrayc@murrayc.com>
 
+	* docs/: Added manual.
+	* configure.in: Use GLIBMM_CHECK_PERL to get the perl path, needed 
+	to insert the example code in the manual.
+	* docs/Makefile.am: Move the reference and manual into a docs folder
+	so that the docs and the examples have the same relative path.
+	* docs/index.html: Mention the manual and update the links.
+
+2005-02-11  Murray Cumming  <murrayc@murrayc.com>
+
 	* libxml++/document.cc: do_write_to_string(): libml returns the 
 	number of bytes instead of the number of characters, so use the 
 	appropriate ustring constructor, to avoid an exception later. 

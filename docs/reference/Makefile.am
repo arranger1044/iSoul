@@ -33,8 +33,6 @@ doc-clean:
 	-rm -f $libxml++-reference-html.tar.gz
 
 
-docdir = $(datadir)/doc/libxml++-2.6/docs
-
 referencedir = $(docdir)/reference/@GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html
 
 install-reference: $(index_html)
