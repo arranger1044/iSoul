@@ -15,6 +15,8 @@ index_html = @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html/index.html
 $(index_html): $(doxygen_configfile_source)
 	doxygen $(doxygen_configfile)
 
+@GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html: $(index_html)
+
 
 libxml++-reference-html.tar.gz: $(index_html)
 	tar cf - @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html | gzip -c --best >$@

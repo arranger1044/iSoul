@@ -17,6 +17,8 @@ html/index.html: $(srcdir)/libxml++.xml
 	$(mkinstalldirs) html
 	xsltproc -o html/ --catalogs $(DOCBOOK_STYLESHEET) $<
 
+html: html/index.html
+
 libxml++-html.tar.gz: $(srcdir)/html
 	tar -cf - $< | gzip > $@
 
