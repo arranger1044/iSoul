@@ -18,7 +18,7 @@
 extern "C" {
   struct _xmlSAXHandler;
   struct _xmlEntity;
-};
+}
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
 namespace xmlpp {

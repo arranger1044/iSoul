@@ -347,4 +347,4 @@ void TextReader::check_for_exceptions() const
 {
 }
 
-}; // namespace xmlpp
+} // namespace xmlpp

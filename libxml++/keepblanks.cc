@@ -28,5 +28,5 @@ namespace xmlpp
     xmlKeepBlanksDefault(oldKeepBlanksDefault_);
     xmlIndentTreeOutput = oldIndentTreeOutput_;
   }
-};
+}
 

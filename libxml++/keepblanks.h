@@ -34,6 +34,6 @@ namespace xmlpp
       int oldIndentTreeOutput_;
   };
 
-};
+}
 
 #endif // __LIBXMLPP_KEEPBLANKS_H

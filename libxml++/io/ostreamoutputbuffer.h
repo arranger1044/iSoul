@@ -35,6 +35,6 @@ namespace xmlpp
 
       std::ostream& output_;
   };
-};
+}
 
 #endif

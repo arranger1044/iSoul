@@ -38,4 +38,4 @@ namespace xmlpp
         output_.flush();
     return output_;
   }
-};
+}

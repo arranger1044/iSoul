@@ -101,4 +101,4 @@ namespace xmlpp
     return impl_;
   }
 
-};
+}

@@ -1,3 +1,12 @@
+2004-02-13  Jim Garrison  <garrison@case.edu>
+
+	* libxml++/attribute.h, libxml++/document.h, libxml++/dtd.h,
+	  libxml++/io/ostreamoutputbuffer.[h|cc],
+	  libxml++/io/outputbuffer.[h|cc], libxml++/keepblanks.[h|cc],
+	  libxml++/nodes/node.h, libxml++/parsers/parser.h, 
+	  libxml++/parsers/saxparser.h, libxml++/parsers/textreader.[h|cc]:
+	Removed unnecessary semicolons
+
 2004-02-08  Jim Garrison  <garrison@case.edu>
 
 	* libxml++/document.[h|cc]: added Document::cobj() function
@@ -17,6 +26,7 @@
 	of TextReader interface.
 
 2004-02-05  Jim Garrison  <garrison@case.edu>
+
 	* libxml++/document.[h|cc]: added create_root_node_by_import()
 
 2004-01-13  Christophe de Vienne  <cdevienne@alphacent.com>

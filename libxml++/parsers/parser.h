@@ -22,7 +22,7 @@
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 extern "C" {
   struct _xmlParserCtxt;
-};
+}
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
 namespace xmlpp {

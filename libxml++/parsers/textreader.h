@@ -15,7 +15,7 @@
 extern "C"
 {
   struct _xmlTextReader;
-};
+}
 
 namespace xmlpp
 {
@@ -180,6 +180,6 @@ class TextReader: NonCopyable
     _xmlTextReader* impl_;
 };
 
-};
+}
 
 #endif
