@@ -18,5 +18,7 @@
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/attribute.h>
 #include <libxml++/document.h>
+#include <libxml++/validators/validator.h>
+#include <libxml++/validators/dtdvalidator.h>
 
 #endif //__LIBXMLCPP_H

@@ -1,3 +1,7 @@
+2.7.0:
+
+* Added Validator and DtdValidator (Guillaume Arreckx)
+
 2004-05-05 2.6.1:
 
 * Fixed an issue (#141824) with Glib::ustring.

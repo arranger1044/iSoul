@@ -1,3 +1,22 @@
+2004-05-28  Christophe de Vienne <cdevienne@netcourrier>
+
+	* configure.in, examples/Makefile.am, examples/dtdvalidation/Makefile.am,
+	examples/dtdvalidation/example.dtd, examples/dtdvalidation/main.cc,
+	libxml++/Makefile.am, libxml++/dtd.[h|cc], libxml++/io/Makefile.am,
+	libxml++/io/istreamparserinputbuffer.[h|cc],
+	libxml++/io/parserinputbuffer.[h|cc],
+	libxml++/libxml++.h, libxml++/validators/Makefile.am,
+	libxml++/validators/dtdvalidator.[h|cc]
+	libxml++/validators/validator.[h|cc]:
+	Integrated dtdvalidator patch proposed by Guillaume Arreckx.
+	Modified a bit the patch:
+	- renamed *.cpp -> *.cc
+	- fixed a few comments which where copy/paste from other files
+	- replaced std::string with Glib::ustring
+	- Added Dtd::cobj, since the patch rely on it.
+	- added a validaty_error as suggested by jon
+
+
 2004-04-26  Christophe de VIENNE  <cdevienne@netcourrier.com>
 
 	* libxml++/nodes/contentnode.cc: Fixed set_content which used xmlNodeAddContent

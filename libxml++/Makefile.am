@@ -1,4 +1,4 @@
-SUBDIRS = parsers exceptions nodes io
+SUBDIRS = parsers exceptions nodes io validators
 
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
 
@@ -11,6 +11,7 @@ lib_LTLIBRARIES = libxml++-2.6.la
 libxml___2_6_la_LDFLAGS = -version-info $(GENERIC_LIBRARY_VERSION)
 libxml___2_6_la_LIBADD = @LIBXML_LIBS@ \
                          parsers/libparsers.la \
+                         validators/libvalidators.la \
                          exceptions/libexceptions.la \
                          nodes/libnodes.la \
 			 io/libio.la

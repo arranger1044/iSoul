@@ -53,6 +53,7 @@ AC_OUTPUT(
     libxml++/exceptions/Makefile
     libxml++/nodes/Makefile
     libxml++/io/Makefile
+    libxml++/validators/Makefile
     
   docs/Makefile
     docs/reference/Makefile
@@ -70,6 +71,7 @@ AC_OUTPUT(
     examples/sax_exception/Makefile
     examples/import_node/Makefile
     examples/textreader/Makefile
+    examples/dtdvalidation/Makefile
 
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile

@@ -33,6 +33,11 @@ public:
   Glib::ustring get_external_id() const;
   Glib::ustring get_system_id() const;
   
+  /** Access the underlying libxml implementation. */
+  _xmlDtd* cobj();
+
+  /** Access the underlying libxml implementation. */
+  const _xmlDtd* cobj() const;
 private:
   _xmlDtd* impl_;
 };

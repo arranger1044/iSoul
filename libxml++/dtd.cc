@@ -36,4 +36,14 @@ Glib::ustring Dtd::get_system_id() const
   return (char*)impl_->SystemID;
 }
 
+_xmlDtd* Dtd::cobj()
+{
+  return impl_;
+}
+
+const _xmlDtd* Dtd::cobj() const
+{
+  return impl_;
+}
+
 } //namespace xmlpp

@@ -1,8 +1,16 @@
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
 
-h_sources_public = outputbuffer.h ostreamoutputbuffer.h
+h_sources_public = \
+  istreamparserinputbuffer.h \
+  outputbuffer.h \
+  ostreamoutputbuffer.h \
+  parserinputbuffer.h
 h_sources_private = 
-cc_sources = outputbuffer.cc ostreamoutputbuffer.cc
+cc_sources = \
+  istreamparserinputbuffer.cc \
+  outputbuffer.cc \
+  ostreamoutputbuffer.cc \
+  parserinputbuffer.cc
 cc_sources_private =
 
 noinst_LTLIBRARIES = libio.la
