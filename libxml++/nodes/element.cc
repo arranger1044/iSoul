@@ -41,10 +41,10 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
 {
   if (ns_prefix.empty())
   {
-    for(xmlAttr* attr = cobj()->properties; attr; attr = attr->next)
+    xmlAttr* attr = xmlHasProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str());
+    if( attr )
     {
-      if(xmlStrEqual(attr->name, (const xmlChar*)name.c_str()))
-        return reinterpret_cast<Attribute*>(attr->_private);
+      return reinterpret_cast<Attribute*>(attr->_private);
     }
   }
   else
@@ -52,7 +52,10 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
     Glib::ustring ns_uri = get_namespace_uri_for_prefix(ns_prefix);  
     xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
                                  (const xmlChar*)ns_uri.c_str());
-    return reinterpret_cast<Attribute*>(attr->_private);
+	if( attr )
+	{
+      return reinterpret_cast<Attribute*>(attr->_private);
+	}
   }
 
   return 0;
