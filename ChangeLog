@@ -1,3 +1,10 @@
+2004-06-22  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/io/outputbuffer.cc, inputbuffer.cc: 
+	Added include of libxml/globals.h before include of libxml/xmlIO.h, 
+	because xmlIO.h needs the definition of 
+	xmlParserInputBufferCreateFilenameFunc.
+
 2004-05-28  Christophe de Vienne <cdevienne@netcourrier>
 
 	* configure.in, examples/Makefile.am, examples/dtdvalidation/Makefile.am,

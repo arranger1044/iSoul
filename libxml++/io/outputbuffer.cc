@@ -10,6 +10,7 @@
 #include <libxml++/io/outputbuffer.h>
 #include <libxml++/exceptions/internal_error.h>
 
+#include <libxml/globals.h> //Needed by libxml/xmlIO.h
 #include <libxml/xmlIO.h>
 
 namespace xmlpp
