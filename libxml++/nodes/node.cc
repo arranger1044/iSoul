@@ -151,22 +151,31 @@ NodeSet Node::find(const Glib::ustring& xpath) const
   ctxt->node = impl_;
   xmlXPathObject* result = xmlXPathEval((const xmlChar*)xpath.c_str(), ctxt);
 
-  if (result->type != XPATH_NODESET)
+  if(!result)
+  {
+    xmlXPathFreeContext(ctxt);
+    throw exception("Invalid XPath: " + xpath);
+  }
+
+  if(result->type != XPATH_NODESET)
   {
     xmlXPathFreeObject(result);
     xmlXPathFreeContext(ctxt);
-    throw internal_error("sorry, only nodeset result types supported for now.");
+    throw internal_error("Only nodeset result types are supported.");
   }
 
   xmlNodeSet* nodeset = result->nodesetval;
   NodeSet nodes;
-  if( nodeset ) {
+  if( nodeset )
+  {
     for (int i = 0; i != nodeset->nodeNr; ++i)
       nodes.push_back(static_cast<Node*>(nodeset->nodeTab[i]->_private));
   }
-  else {
+  else
+  {
     // return empty set
   }
+
   xmlXPathFreeObject(result);
   xmlXPathFreeContext(ctxt);
 

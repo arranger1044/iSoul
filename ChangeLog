@@ -1,5 +1,11 @@
 2004-12-18  Murray Cumming  <murrayc@murrayc.com>
 
+	* libxml++/nodes/node.cc: Node::find(): Check the result of 
+	xmlXPathEval and throw an exception about invalid xpaths, instead of 
+	crashing. Bug #161549 from Caleb Epstein.
+
+2004-12-18  Murray Cumming  <murrayc@murrayc.com>
+
 	* libxml++/parsers/saxparser.cc: parse_memory(), parse_chunk(), 
 	domparser.cc: parse_memory, parse_chunk(): Use Glib::ustring::bytes() 
 	to get the size of the array, not size() or length(), which gets 
