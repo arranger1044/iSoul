@@ -1,3 +1,9 @@
+2004-09-12  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/libxml++.h: Add include for xmlreader.h.
+	* examples/saxparser/myparser.cc, saxparser_entities/myparser.cc:
+	Correct (and uncomment) the code to read the attribute values.
+
 2.7.1:
 
 2004-09-06  Christophe de Vienne <cdevienne@netcourrier.com>

@@ -11,6 +11,7 @@
 #include <libxml++/exceptions/parse_error.h>
 #include <libxml++/parsers/domparser.h>
 #include <libxml++/parsers/saxparser.h>
+#include <libxml++/parsers/textreader.h>
 #include <libxml++/nodes/node.h>
 #include <libxml++/nodes/commentnode.h>
 #include <libxml++/nodes/element.h>
