@@ -1,0 +1,6 @@
+Makefile
+Makefile.in
+Debug
+Release
+libxml++.rc
+libxml++.aps

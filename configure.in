@@ -7,6 +7,7 @@ GENERIC_MICRO_VERSION=1
 GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
 AC_SUBST(GENERIC_MAJOR_VERSION)
 AC_SUBST(GENERIC_MINOR_VERSION)
+AC_SUBST(GENERIC_MICRO_VERSION)
 AC_SUBST(GENERIC_VERSION)
 
 #shared library versioning
@@ -35,7 +36,57 @@ AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_LANG_CPLUSPLUS
 AC_PROG_INSTALL
+AC_LIBTOOL_WIN32_DLL
 AM_PROG_LIBTOOL
+
+dnl Used for enabling the "-no-undefined" and "-export-all-symbols" flags
+dnl while generating DLLs. Borrowed from the official gtk+-2 configure.in
+AC_MSG_CHECKING([for some Win32 platform])
+case "$host" in
+  *-*-mingw*|*-*-cygwin*)
+    platform_win32=yes
+    ;;
+  *)
+    platform_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$platform_win32])
+AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
+
+# Ensure MSVC-compatible struct packing convention is used when
+# compiling for Win32 with gcc.
+# What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
+# gcc2 uses "-fnative-struct".
+if test x"$platform_win32" = xyes; then
+  if test x"$GCC" = xyes; then
+    msnative_struct=''
+    AC_MSG_CHECKING([how to get MSVC-compatible struct packing])
+    if test -z "$ac_cv_prog_CC"; then
+      our_gcc="$CC"
+    else
+      our_gcc="$ac_cv_prog_CC"
+    fi
+    case `$our_gcc --version | sed -e 's,\..*,.,' -e q` in
+      2.)
+        if $our_gcc -v --help 2>/dev/null | grep fnative-struct >/dev/null; then
+          msnative_struct='-fnative-struct'
+        fi
+        ;;
+      *)
+        if $our_gcc -v --help 2>/dev/null | grep ms-bitfields >/dev/null; then
+          msnative_struct='-mms-bitfields'
+        fi
+        ;;
+    esac
+    if test x"$msnative_struct" = x ; then
+      AC_MSG_RESULT([no way])
+      AC_MSG_WARN([produced libraries might be incompatible with MSVC-compiled code])
+    else
+      CXXFLAGS="$CXXFLAGS $msnative_struct"
+      AC_MSG_RESULT([${msnative_struct}])
+    fi
+  fi
+fi
 
 AC_CHECK_HEADERS(string list map, , exit)
 
@@ -76,6 +127,24 @@ AC_OUTPUT(
 
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile
+
+  MSVC_Net2003/Makefile
+    MSVC_Net2003/libxml++/Makefile
+    MSVC_Net2003/libxml++/libxml++.rc
+    MSVC_Net2003/gendef/Makefile
+    MSVC_Net2003/examples/Makefile
+      MSVC_Net2003/examples/dom_build/Makefile
+      MSVC_Net2003/examples/dom_parse_entities/Makefile
+      MSVC_Net2003/examples/dom_parser/Makefile
+      MSVC_Net2003/examples/dom_read_write/Makefile
+      MSVC_Net2003/examples/dom_xpath/Makefile
+      MSVC_Net2003/examples/dtdvalidation/Makefile
+      MSVC_Net2003/examples/import_node/Makefile
+      MSVC_Net2003/examples/sax_exception/Makefile
+      MSVC_Net2003/examples/sax_parser/Makefile
+      MSVC_Net2003/examples/sax_parser_build_dom/Makefile
+      MSVC_Net2003/examples/sax_parser_entities/Makefile
+      MSVC_Net2003/examples/textreader/Makefile
 
   libxml++-2.6.pc
   libxml++.spec

@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = libxml++ docs examples
+SUBDIRS = libxml++ docs examples MSVC_Net2003
 
 EXTRA_DIST = libxml++-2.6.pc.in libxml++.spec.in
 
