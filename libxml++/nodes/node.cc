@@ -168,6 +168,7 @@ NodeSet Node::find(const Glib::ustring& xpath) const
   NodeSet nodes;
   if( nodeset )
   {
+    nodes.reserve( nodeset->nodeNr );
     for (int i = 0; i != nodeset->nodeNr; ++i)
       nodes.push_back(static_cast<Node*>(nodeset->nodeTab[i]->_private));
   }

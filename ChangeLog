@@ -1,5 +1,9 @@
 2.9.2:
 
+2005-02-12  Christophe de Vienne  <cdevienne@netcourrier.com>
+
+	* libxml++/nodes/node.cc: Fixed a little inefficency in find (#161925)
+
 2005-02-11  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/: Added manual.
