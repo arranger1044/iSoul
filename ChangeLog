@@ -1,3 +1,8 @@
+2004-08-13  Christophe de Vienne <cdevienne@netcourrier.com>
+
+	* libxml++/parsers/domparser.cc, libxml++/parsers/parser.cc: Fixed
+	bug #150082.
+
 2.7.0:
 
 2004-06-24  Murray Cumming  <murrayc@.com>
