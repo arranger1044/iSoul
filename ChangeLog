@@ -1,3 +1,9 @@
+2005-02-15  Murray Cumming  <murrayc@murrayc.com>
+
+	* docs/manual/Makefule.am: Added insert_example_code to EXTRA_DIST, 
+	though it should not be needed when building from a DIST anyway, 
+	because we distribute the html.
+
 2.9.2:
 
 2005-02-13  Christophe de Vienne  <cdevienne@netcourrier.com>
