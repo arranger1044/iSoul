@@ -1,3 +1,7 @@
+2004-12-20  Murray Cumming  <murrayc@murrayc.com>
+
+	* This is the HEAD branch, for gnome 2.9/2.10.
+
 2004-12-18  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/nodes/node.cc: Node::find(): Check the result of 
