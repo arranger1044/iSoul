@@ -156,13 +156,13 @@ void Parser::on_end_element(const Glib::ustring& name)
 
 void Parser::on_characters(const Glib::ustring& text)
 {
-  if (m_context.size())
+  if(!m_context.empty())
     m_context.top()->add_child_text(text);
 }
 
 void Parser::on_comment(const Glib::ustring& text)
 {
-  if (m_context.size())
+  if(!m_context.empty())
     m_context.top()->add_child_comment(text);
   else
     m_doc.add_comment(text);

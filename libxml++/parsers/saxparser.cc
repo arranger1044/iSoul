@@ -180,7 +180,7 @@ void SaxParser::parse_memory(const Glib::ustring& contents)
 
   KeepBlanks k(KeepBlanks::Default);
 
-  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.length());
+  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.bytes());
   parse();
 }
 
@@ -209,7 +209,7 @@ void SaxParser::parse_stream(std::istream& in)
     // about layout in certain cases.
     line += '\n';
 
-    xmlParseChunk(context_, line.c_str(), line.length(), 0 /* don't terminate */);
+    xmlParseChunk(context_, line.c_str(), line.size() /* This is a std::string, not a ustring, so this is the number of bytes. */, 0 /* don't terminate */);
   }
 
   if( ! exception_ )
@@ -237,7 +237,7 @@ void SaxParser::parse_chunk(const Glib::ustring& chunk)
   }
   
   if(!exception_)
-    xmlParseChunk(context_, chunk.c_str(), chunk.size(), 0 /* don't terminate */);
+    xmlParseChunk(context_, chunk.c_str(), chunk.bytes(), 0 /* don't terminate */);
 
   check_for_exception();
 }

@@ -1,3 +1,12 @@
+2004-12-18  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/parsers/saxparser.cc: parse_memory(), parse_chunk(), 
+	domparser.cc: parse_memory, parse_chunk(): Use Glib::ustring::bytes() 
+	to get the size of the array, not size() or length(), which gets 
+	the number of utf8 characters. It might not even be utf8.
+	* examples/sax_parser_build_dom/svgparser.cc: Use !empty() instead of 
+	size() > 0. It is more efficient.
+	
 2004-11-30  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/validator.h: Removed an extra ; that g++ 3.4 complains 

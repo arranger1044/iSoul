@@ -58,7 +58,7 @@ main(int argc, char* argv[])
     SVG::Element* element = doc.get_root();
     std::cout << "root's name is \"" << element->get_name() << "\"" << std::endl;
     xmlpp::NodeSet nl = element->find("//path[@style != '']");
-    if (nl.size() > 0)
+    if(!nl.empty())
     {
       SVG::Path* path = dynamic_cast<SVG::Path*>(nl[0]);
       std::cout << "style of first path node with a style = \"" << path->get_style() << "\"" << std::endl;

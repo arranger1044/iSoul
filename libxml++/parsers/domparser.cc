@@ -68,7 +68,7 @@ void DomParser::parse_memory(const Glib::ustring& contents)
   KeepBlanks k(KeepBlanks::Default);
 
   //The following is based on the implementation of xmlParseFile(), in xmlSAXParseFileWithData():
-  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.size());
+  context_ = xmlCreateMemoryParserCtxt(contents.c_str(), contents.bytes());
 
   if(!context_)
   {
@@ -145,7 +145,7 @@ void DomParser::parse_stream(std::istream& in)
     // about layout in certain cases.
     line += '\n';
 
-    xmlParseChunk(context_, line.c_str(), line.length(), 0);
+    xmlParseChunk(context_, line.c_str(), line.size() /* This is a std::string, not a ustring, so this is the number of bytes. */, 0);
   }
 
   xmlParseChunk(context_, 0, 0, 1);
