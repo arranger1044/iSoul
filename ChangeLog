@@ -1,4 +1,9 @@
 2.6.0:
+	
+2004-04-13  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/Makefile.am: Change library name to 2.6 instead of 2.5.
+	* libxml++-2.6.pc.in: Report the changed library name.
 
 2004-03-27  Murray Cumming  <murrayc@murrayc.com>
 
