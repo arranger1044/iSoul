@@ -1,0 +1,153 @@
+2003-12-18 1.0.0:
+
+* Updated msvc files (Ephraim Vider)
+* Fixed an issue in SaxParser (Murray Cumming)
+
+2003-12-08 0.28:
+
+* Added entity handling to the SAX parser + examples (Dan Dennedy and Murray Cumming)
+* Replaced SaxParser::AttributeMap with an ordered container (Christophe de Vienne)
+* Fixed an issue with threading (Christophe de Vienne)
+* Complete switched to pkg-config (Christophe de Vienne)
+
+2003-11-05 0.27:
+
+* Completed documentation
+* Added Element::add_comment (Dan Dennedy)
+* Wrapped xmlIO output buffers and added Document::write_to_stream (Christophe de Vienne)
+* Cleaned and made more consistent Element API (Murray Cumming)
+* Added entities support in DomParser (Murray Cumming)
+
+2003-09-23 0.26:
+
+* Added import_node example into MSVC6 project files (Ephraim Vider)
+* Node::import_node now takes a const Node (suggested by Rafael Vuijk)
+* Fixed threading issue due to incorrect libxml2 initialisation (Fredrik Arnerup)
+* Updated Doxyfile (Christophe de Vienne)
+* Added Namespaces support (Dan Dennedy, Murray Cumming)
+
+2003-07-18 0.25:
+
+* Fixed MSVC6 project files (Ephraim Vider)
+* Added Node::import_node (Eric Bourque)
+* Removed throw specification (Christophe de Vienne).
+* Removed old-style autoconf macro for libxml++ detection (Christophe de Vienne).
+* Removed unused examples (Murray Cumming)
+
+2003-06-11 0.24:
+
+* Added Document::write_to_file_formatted() and
+  Document::write_to_string_formatted() - they add white space indenting.
+  (Christophe de Vienne)
+* Added ContentNode::is_white_space() to make it easier for applications to 
+   ignore white space such as indenting. (Murray Cumming)
+* Node: Added set_name(). (Christophe de Vienne)
+* Compiles with gcc's pedantic warnings as errors.
+  (Christophe de Vienne)
+* libxml++ header files no longer include any libxml header files.
+  (Christophe de Vienne)
+* Removed superfluous standalone parse_* methods in document.[h|cc]
+  (Murray Cumming)
+* Minor reference documentation corrections.
+  (Jonathan Wakely)
+* Replaced some <istream> with <iostream> to support older compilers.
+  (Jonathan Wakely)
+* Added classes to wrap the missing node types. (Ephraim Vider).
+* Fixed a memory leak in write_to_string[_formatted] functions. (Morten Hanssen)
+* Fixed compile error in keepblanks.h with MSVC 6.0. (Christophe de Vienne).
+* Fixed segfault in DomParser::parse_stream on parsing failure.
+  (Christophe de Vienne).
+
+2003-05-20: 0.23:
+
+* Fixed incorrect use of xmlKeepBlanksDefault. Handling of white spaces
+  is now conforming to xml specification. (Christophe de Vienne)
+* Classes inherit from NonCopyable to avoid mistakes and clarify the
+  memory mangement.
+  (Murray Cumming)
+* Node::find() returns empty NodeSet if it does not find the path.
+  (Andy Glew)
+* DomParser: Fixed memory leak. (Christophe de Vienne, Thierry Blanchard)
+* Fixed NetBSD compilation (Chistophe de Vienne, Jaka Jejcic)
+* Improved .spec.in file. (Eric Bourque)
+* Some MSVC++ support and minor corrections. (Ephraim Vider)
+
+0.22:
+
+* DOM Parser:
+  - Reduced API duplication - you must now use get_document().
+  (Ephraim Vider)
+  - Now throws exception if document not found.
+  (Christophe de Vienne)
+  - Added const get_document() overload. (Murray Cumming)
+  
+0.21:
+
+* Parsers:
+  - Validation now supported: Use Parser::set_validate() to turn on validation. 
+    Parsers will then throw validation_error exceptions if validation fails.
+    (Murray Cumming)
+  - SaxParser: Added parse_chunk() for gradual parsing of XML fragments.
+    (Ole Laursen)
+* Node:
+  - Moved add_child_content(), get_child_content(), set_child_content(), 
+    and has_content() to Element class.
+  - Fixed set_child_content() to add content instead of creating a node.
+    (Murray Cumming)
+* Added spec file for RPMs. (Eric Bourque)
+ 
+
+2003-02-15: 0.20:
+
+* Node::remove_child() now works.
+  (Murray Cumming)
+* Added examples/dom_xpath.
+  (Stefan Seefeld, Murray Cumming)
+ 
+2003-02-08: 0.19:
+
+* The imlementation now uses libxml's API more instead of reimplementing data structures.
+  (Stefan Seefeld, Murray Cumming)
+* Attribute::get_value() use libxml's API properly, so it now respects the DTD.
+  (Stefan Seefeld)
+* Node: Added get_path() and find() for xpath lookup. (Stefan Seefeld)
+* Attribute now inherits from Node, as required by the find() method. (Stefan Seefeld)
+* Added Document class. (Stefan Seefeld)
+* Added cobj() accessors, in case you need to use unwrapped libxml API. (Murray Cumming)
+* SaxParser:
+    Added CDATA section handler.
+    fixed a potential buffer overflow problem
+  (Valentin Rusu)
+
+2003-01-09: 0.18:
+
+* big API change for nodes handling : the different types of node now herit
+from a base Node class. This, among other advantages, avoids previous ambiguity
+on content() acessors meaning.
+* little bugfixes and improvements in SaxParser.
+
+2002-12-10: 0.17:
+
+* properties are now called attributes.
+* it is now possible to throw exceptions from callback
+methods in SaxParser.
+* parsers can parse from a stream.
+* memory leak fixed in SaxParser.
+* configure check for libxml2 2.4.1 at least.
+* bug fixes.
+
+
+2002-11-20: 0.16:
+
+* Examples added.
+* Xml type name prefix removed.
+* Tree replaced with DomParser.
+* Parser renamed to SaxParser.
+* Property renamed to Attribute
+* Errors thrown as exceptions.
+* Both parsers can parse from either file or memory.
+
+* Simplified memory management -
+  no more returning of static temporaries.
+* set_*() methods return void. 
+

@@ -1,0 +1,74 @@
+***************************************************************************
+*
+* README.win32
+*
+***************************************************************************
+
+This file describes building libxml++ with Microsoft Visual C++ 6.0
+Note that this project builds a static library. It does not build a DLL.
+
+
+.cc extension support
+---------------------
+Before opening the libxml++ workspace, support for .cc files must be added
+to Visual C++.
+double click the file cc-ext.reg to incorporate the changes into the registry.
+
+Note: These changes are for VC++ 6.0 only.
+See http://support.microsoft.com/default.aspx?scid=kb%3Ben-us%3B181506
+for information on other versions of VC++.
+
+These projects also use the /TP compiler option to request C++ compilation:
+http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wcechp40/htm/ccrefTp-SpecifyCSourceFile.asp
+
+
+libxml2
+-------
+libxml2 is needed to compile and run libxml++.
+Download the binary versions of libxml2 and iconv from
+http://www.zlatkovic.com/projects/libxml/binaries.html
+and extract them at the same level as libxml++.
+
+libxml2.dll and iconv.dll must be copied to a directory on your path in order to run the examples,
+the WINNT/system32 directory is a good place to put them.
+
+The projects expect the following diretory structure:
+
+-+- libxml2 --+- include
+ |            |
+ |            +- lib
+ |
+ +- iconv ----+- include
+ |            |
+ |            +- lib
+ |
+ +- libxml++ -+- win32_msvc6
+              |
+              +- ...
+
+
+libxml++ workspace
+------------------
+The win32 directory contains a Microsoft VC++ (6.0) workspace and
+project files to build a static version of the libxml++ library and examples.
+
+To build the library and examples, open the workspace file
+"win32_msvc6\libxml++.dsw" from VC++.
+
+The static library is created in libxml++/lib,
+it is called libxml++.lib (release) and libxml++d.lib (debug)
+
+Example binaries are created in win32_msvc6/examples/Release (release versions)
+and win32_msvc6/examples/Debug (debug versions)
+
+
+Using the library
+-----------------
+Verify these settings in your projects that use the library:
+
+- C/C++ / C++ Language / Enable Run-Time Type Information (RTTI) - checked
+- Release configurations:
+	C/C++ / Code Generation / Use run-time library: Multithreaded DLL
+- Debug configuration:
+	C/C++ / Code Generation / Use run-time library: Debug Multithreaded DLL
+

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE example PUBLIC "" "example.dtd" [
+<!ENTITY wwwmurrayc "http://www.murrayc.com">
+<!ENTITY wwwlibxmlplusplus "http://libxmlplusplus.sourceforge.net">
+]>
+
+<example>
+  <examplechild id="1">
+    Some content. &wwwmurrayc;
+    Some other content &wwwlibxmlplusplus;
+    <child_of_child/>
+  </examplechild>
+</example>
+

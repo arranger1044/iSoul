@@ -1,0 +1,76 @@
+AC_INIT(libxml++/libxml++.h)
+
+#release versioning
+GENERIC_MAJOR_VERSION=1
+GENERIC_MINOR_VERSION=0
+GENERIC_MICRO_VERSION=0
+GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
+AC_SUBST(GENERIC_VERSION)
+
+#shared library versioning
+GENERIC_LIBRARY_VERSION=1:0:0
+#                       | | |
+#                +------+ | +---+
+#                |        |     |
+#             current:revision:age
+#                |        |     |
+#                |        |     +- increment if interfaces have been added
+#                |        |        set to zero if interfaces have been removed
+#                                  or changed
+#                |        +- increment if source code has changed
+#                |           set to zero if current is incremented
+#                +- increment if interfaces have been added, removed or changed
+AC_SUBST(GENERIC_LIBRARY_VERSION)
+
+
+
+VERSION=$GENERIC_VERSION
+
+
+AM_INIT_AUTOMAKE(libxml++, $GENERIC_VERSION)
+
+AC_PROG_CXX
+AC_PROG_CXXCPP
+AC_LANG_CPLUSPLUS
+AC_PROG_INSTALL
+AM_PROG_LIBTOOL
+
+AC_CHECK_HEADERS(string list map, , exit)
+
+PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= 2.5.8)
+
+# Dummy conditional just to make automake-1.4 happy.
+# We need an always-false condition in docs/Makefile.am.
+AM_CONDITIONAL(LIBXMLCPP_FALSE,[false])
+
+
+AC_OUTPUT(
+  Makefile
+  libxml++/Makefile
+    libxml++/parsers/Makefile
+    libxml++/exceptions/Makefile
+    libxml++/nodes/Makefile
+    libxml++/io/Makefile
+    
+  docs/Makefile
+    docs/reference/Makefile
+    docs/reference/Doxyfile
+
+  examples/Makefile
+    examples/dom_build/Makefile
+    examples/dom_parser/Makefile
+    examples/dom_parse_entities/Makefile
+    examples/dom_read_write/Makefile
+    examples/dom_xpath/Makefile
+    examples/sax_parser/Makefile
+    examples/sax_parser_entities/Makefile
+    examples/sax_parser_build_dom/Makefile
+    examples/sax_exception/Makefile
+    examples/import_node/Makefile
+
+  win32_msvc6/Makefile
+    win32_msvc6/examples/Makefile
+
+  libxml++-1.0.pc
+  libxml++.spec
+)

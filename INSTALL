@@ -1,0 +1,9 @@
+Simple install procedure
+ ========================
+
+  % gzip -dc libxml++-<version>.tar.gz | tar xvf - # unpack the sources
+  % cd libxml++-<version>		# change to toplevel directory
+  % ./configure				# run the `configure' script
+  % make				# build libxml++
+  % make install			# install libxml++
+

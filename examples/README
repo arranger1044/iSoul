@@ -1,0 +1,21 @@
+Examples:
+
+Simple parsing examples:
+  dom_parser - Shows how to parse an XML Document with the DOM parser.
+  sax_parser - Shows how to parse an XML Document with the SAX parser.
+
+Building XML doxuments:
+  dom_build - Shows how to build an XML document using the DOM Parser API.
+  sax_parser_build_dom - Shows how to parse an XML document with the SAX parser, building a separate custom DOM as you parse.
+  dom_read_write: Reads an XML document with the DOM parser and writes it again. The output should be the same as the input.
+  import_node: Adds a part of an XML document to another, using the DOM parser.
+  
+Entity parsing:
+  dom_parser_entities: Shows how to detect entity references when using the DOM parser.
+  sax_parser_entities: Shows how to detect (and maybe resolve) entity references when using the SAX Parser.
+
+XPath:
+  dom_xpath: Shows how to get XML nodes by specifying them with an XPath, when using the DOM parser.
+
+Others:
+  sax_exception: Shows how to implement a libxml++ exception that can be thrown by your SAX parser.

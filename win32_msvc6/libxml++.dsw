@@ -1,0 +1,179 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "dom_build"=".\examples\dom_build.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dom_parse_entities"=".\EXAMPLES\dom_parse_entities.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dom_parser"=".\examples\dom_parser.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dom_read_write"=".\EXAMPLES\dom_read_write.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dom_xpath"=".\examples\dom_xpath.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "import_node"=".\EXAMPLES\import_node.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "libxml++"=".\libxml++.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "sax_exception"=".\examples\sax_exception.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sax_parser"=".\examples\sax_parser.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sax_parser_build_dom"=".\EXAMPLES\sax_parser_build_dom.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sax_parser_entities"=".\EXAMPLES\sax_parser_entities.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libxml++
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,51 @@
+Summary: A C++ interface to the libxml2 library
+Name: libxml++
+Version: @VERSION@ 
+Release: 2
+URL: http://libxmlplusplus.sourceforge.net
+Source0: %{name}-%{version}.tar.gz
+License: LGPL
+Group: Libraries
+BuildRoot: %{_tmppath}/%{name}-root
+
+%description
+libxml++ is a C++ wrapper for the GNOME libxml2 library.
+
+%package devel
+Group: Development/Libraries
+Summary: Files necessary for building libxml++ apps.
+
+%description devel
+This package contains the files necessary for building libxml++ apps.
+
+%prep
+%setup -q
+
+%build
+./configure --prefix=/usr
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR=${RPM_BUILD_ROOT} install
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+/usr/lib/*.so*
+
+%files devel
+%defattr(-,root,root)
+/usr/include/libxml++-1.0
+/usr/lib/*.a
+/usr/lib/*.la
+/usr/lib/pkgconfig/libxml++-1.0.pc
+
+%changelog
+* Wed Apr  9 2003 Eric Bourque <ericb@computer.org>
+- updated file section to be version agnostic
+* Mon Feb 17 2003 Eric Bourque <ericb@computer.org>
+- Initial build.
+
