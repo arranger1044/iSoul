@@ -1,10 +1,16 @@
 2004-05-03  Christophe de Vienne  <cdevienne@netcourrier.com>
 
+	* libxml++/parsers/saxparser.cc: Replaced again the use of
+	Glib::ustring(const char*) constructor by Glib::ustring(std::string).
+	Fixes #141824.
+
+2004-05-03  Christophe de Vienne  <cdevienne@netcourrier.com>
+
 	* libxml++/parsers/saxparser.cc: Replace the use of
 	Glib::ustring(const char*, unsigned) constructor by Glib::ustring(const char*).
 	Fixes #141824.
 
-2004-04-05  Murray Cumming  <murrayc@murrayc@com>
+2004-05-04  Murray Cumming  <murrayc@murrayc@com>
 
 	* libxml++-2.6.pc.in: Made it require glibmm-2.4, so that apps do not
 	have to check for this themselves.

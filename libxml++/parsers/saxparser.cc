@@ -387,7 +387,10 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
 
   try
   {
-    parser->on_characters(Glib::ustring((const char*) ch));
+    // Here we force the use of Glib::ustring::ustring( std::string const & )
+    // instead of Glib::ustring::ustring( const char*, size_type ) because it
+    // waits for the length of the string in characters, not in bytes.
+    parser->on_characters(Glib::ustring( std::string((const char*) ch, len) ));
   }
   catch(const exception& e)
   {
@@ -486,7 +489,9 @@ void SaxParserCallback::cdata_block(void* context, const xmlChar* value, int len
 
   try
   {
-    parser->on_cdata_block(Glib::ustring((const char*)value));
+    // here we force the use of Glib::ustring::ustring( std::string const & ).
+    // see comments in SaxParserCallback::characters
+    parser->on_cdata_block(Glib::ustring( std::string((const char*)value, len) ));
   }
   catch(const exception& e)
   {
