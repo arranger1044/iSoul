@@ -25,5 +25,5 @@ noinst_LTLIBRARIES = libnodes.la
 libnodes_la_SOURCES = $(h_sources_public) $(cc_sources)
 
 # Install the headers:
-library_includedir=$(includedir)/libxml++-1.0/libxml++/nodes
+library_includedir=$(includedir)/libxml++-2.6/libxml++/nodes
 library_include_HEADERS = $(h_sources_public)

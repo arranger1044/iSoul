@@ -1,3 +1,18 @@
+2003-12-19  Murray Cumming  <murrayc@usa.net>
+
+	* removed acinclude.m4 because we do not need it anymore because
+	we do not need AM_LIBXML now that we use pkg-config.
+	* libxml++/Makefile.am: Generate a library with 2.5 in the name, 
+	instead of 1.0
+	* configure.in: Change version to 2.5.0.
+	* examples/Makefile.am_fragment: Link to the new library name.
+	* Renamed libxml++-1.0.pc.in to libxml++-2.6.pc.in: and changed the 
+	library name that pkg-config reports for --libs.
+	* So, this is now the libxml++ 2.6 API, with a library name of 2.5 
+	while it is unstable. It is parallel-installable with libxml++ 1.0.
+
+This is the HEAD branch, for libxml++ 2.5/2.6.
+
 1.0.0:
 
 2003-12-18  Ephraim Vider <eff@eplication.com>

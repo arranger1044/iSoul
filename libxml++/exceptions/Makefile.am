@@ -8,5 +8,5 @@ noinst_LTLIBRARIES = libexceptions.la
 libexceptions_la_SOURCES = $(h_sources_public) $(cc_sources)
 
 # Install the headers:
-library_includedir=$(includedir)/libxml++-1.0/libxml++/exceptions
+library_includedir=$(includedir)/libxml++-2.6/libxml++/exceptions
 library_include_HEADERS = $(h_sources_public)
