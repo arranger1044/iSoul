@@ -38,10 +38,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(-,root,root)
-/usr/include/libxml++-1.0
+/usr/include/libxml++-2.6
 /usr/lib/*.a
 /usr/lib/*.la
-/usr/lib/pkgconfig/libxml++-1.0.pc
+/usr/lib/pkgconfig/libxml++-2.6.pc
 
 %changelog
 * Wed Apr  9 2003 Eric Bourque <ericb@computer.org>
