@@ -1,9 +1,20 @@
+2005-03-15  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/document.cc: set_entity_declaration(): Pass 0 instead 
+	of empty strings for the public ID and system ID, if an empty 
+	string is provided. This stops libxml from using a useless empty 
+	string.
+
 2005-03-09  Cedric Gustin <cedric.gustin@swing.be>
 
 	* MSVC_Net2003/Makefile.am: Add blank.cpp to EXTRA_DIST.
 	* MSVC_Net2003/examples/*/*.vcproj: Change name of PDB file to
 	$(OutDir)/$(TargetName).pdb.
 
+This is the HEAD branch.
+	
+2.10.0:
+	
 2005-03-08  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* docs/reference/Makefile.am: Added one more rule so the "make

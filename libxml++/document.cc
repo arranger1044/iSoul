@@ -330,7 +330,8 @@ void Document::set_entity_declaration(const Glib::ustring& name, XmlEntityType t
                               const Glib::ustring& content)
 {
   xmlAddDocEntity( impl_, (const xmlChar*) name.c_str(), type, 
-    (const xmlChar*) publicId.c_str(), (const xmlChar*) systemId.c_str(),
+    publicId.empty() ? (const xmlChar*)0 : (const xmlChar*)publicId.c_str(),
+    systemId.empty() ? (const xmlChar*)0 : (const xmlChar*)systemId.c_str(),
     (const xmlChar*) content.c_str() );
 }
 
