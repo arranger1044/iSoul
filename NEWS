@@ -1,3 +1,7 @@
+2.10.0:
+
+* Fixed documentation packaging problems (Murray Cumming, Christophe de Vienne)
+
 2.9.2:
 
 * Added MSVC .Net 2003 support (Cedric Gustin)
