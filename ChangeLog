@@ -1,5 +1,9 @@
 2004-02-06  Christophe de Vienne  <cdevienne@netcourrier.com>
 
+	* libxml++/parsers/sax_parser.cc: Fixed issue #132014.
+
+2004-02-06  Christophe de Vienne  <cdevienne@netcourrier.com>
+
 	* libxml++/parsers/[Makefile.am|textreader.h|textreader.cc]: Added
 	TextReader interface. It is almost the patch which is here :
 	http://sourceforge.net/tracker/index.php?func=detail&aid=842730&group_id=12999&atid=312999
