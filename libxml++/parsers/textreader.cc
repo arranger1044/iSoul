@@ -5,9 +5,13 @@
 
 namespace xmlpp
 {
-  struct TextReader::PropertyReader {
+  
+  struct TextReader::PropertyReader
+  {
     TextReader & owner_;
-    PropertyReader(TextReader & owner): owner_(owner) {};
+    PropertyReader(TextReader & owner)
+    : owner_(owner)
+    {}
 
     int Int(int value);
     bool Bool(int value);
@@ -21,7 +25,7 @@ TextReader::TextReader(
   : propertyreader(new PropertyReader(*this)), impl_( xmlNewTextReaderFilename(URI.c_str()) )
 {
   if( ! impl_ )
-    throw internal_error("Cannot instanciate underlying libxml2 structure");
+    throw internal_error("Cannot instantiate underlying libxml2 structure");
 }
 
 TextReader::~TextReader()
@@ -165,11 +169,10 @@ void TextReader::close()
     check_for_exceptions();
 }
 
-Glib::ustring TextReader::get_attribute(
-    int no) const
+Glib::ustring TextReader::get_attribute(int number) const
 {
   return propertyreader->String(
-      xmlTextReaderGetAttributeNo(impl_, no), true);
+      xmlTextReaderGetAttributeNo(impl_, number), true);
 }
 
 Glib::ustring TextReader::get_attribute(
@@ -194,11 +197,10 @@ Glib::ustring TextReader::lookup_namespace(
       xmlTextReaderLookupNamespace(impl_, (const xmlChar *)prefix.c_str()), true);
 }
 
-bool TextReader::move_to_attribute(
-    int no)
+bool TextReader::move_to_attribute(int number)
 {
   return propertyreader->Bool(
-      xmlTextReaderMoveToAttributeNo(impl_, no));
+      xmlTextReaderMoveToAttributeNo(impl_, number));
 }
 
 bool TextReader::move_to_attribute(
@@ -255,11 +257,22 @@ void TextReader::set_parser_property(
     check_for_exceptions();
 }
 
-Node* TextReader::get_current_node() const
+Node* TextReader::get_current_node()
 {
   xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
   if(node)
     return static_cast<Node*>(node->_private);
+    
+  check_for_exceptions();
+  return 0;
+}
+
+const Node* TextReader::get_current_node() const
+{
+  xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
+  if(node)
+    return static_cast<Node*>(node->_private);
+
   check_for_exceptions();
   return 0;
 }
@@ -279,6 +292,7 @@ Node* TextReader::expand()
   xmlNodePtr node = xmlTextReaderExpand(impl_);
   if(node)
     return static_cast<Node*>(node->_private);
+    
   check_for_exceptions();
   return 0;
 }
@@ -311,6 +325,7 @@ bool TextReader::PropertyReader::Bool(
 {
   if(value == -1)
     owner_.check_for_exceptions();
+    
   return value;
 }
 
@@ -326,11 +341,15 @@ Glib::ustring TextReader::PropertyReader::String(
     bool free)
 {
   owner_.check_for_exceptions();
-  if(value == (xmlChar *)NULL)
+  
+  if(value == (xmlChar *)0)
     return Glib::ustring();
+    
   Glib::ustring result = (char *)value;
+
   if(free)
     xmlFree(value);
+
   return result;
 }
 
@@ -338,13 +357,16 @@ Glib::ustring TextReader::PropertyReader::String(
     xmlChar const * value)
 {
   owner_.check_for_exceptions();
-  if(value == (xmlChar *)NULL)
+
+  if(value == (xmlChar *)0)
     return Glib::ustring();
+
   return (const char *)value;
 }
 
 void TextReader::check_for_exceptions() const
 {
+  //TODO: Shouldn't we do something here? murrayc.
 }
 
 } // namespace xmlpp

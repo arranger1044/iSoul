@@ -74,12 +74,12 @@ class TextReader: NonCopyable
     /** Reads the contents of the current node, including child nodes and markup.
      * @return A Glib::ustring containing the XML content, or and empty Glib::ustring if the current node is neither an element nor attribute, or has no child nodes.
      */
-	Glib::ustring read_inner_xml();
+    Glib::ustring read_inner_xml();
     
     /** Reads the current node and its contents, including child nodes and markup.
      * @return A Glib::ustring containing the XML content, or an empty Glib::ustring if the current node is neither an element nor attribute.
      */
-	Glib::ustring read_outer_xml();
+    Glib::ustring read_outer_xml();
 
     /** Reads the contents of an element or a text node as a string.
      * @return A Glib::ustring containing the contents of the Element or Text node, or an empty Glib::ustring if the reader is positioned on any other type of node.
@@ -142,7 +142,7 @@ class TextReader: NonCopyable
 
     void close();
 
-    Glib::ustring get_attribute(int no) const;
+    Glib::ustring get_attribute(int number) const;
     Glib::ustring get_attribute(const Glib::ustring& name) const;
     Glib::ustring get_attribute(const Glib::ustring& local_name, const Glib::ustring& ns_uri) const;
 
@@ -150,7 +150,7 @@ class TextReader: NonCopyable
 
     Glib::ustring lookup_namespace(const Glib::ustring& prefix) const;
 
-    bool move_to_attribute(int no);
+    bool move_to_attribute(int number);
     bool move_to_attribute(const Glib::ustring& name);
     bool move_to_attribute(const Glib::ustring& local_name, const Glib::ustring& ns_uri);
     bool move_to_first_attribute();
@@ -158,12 +158,13 @@ class TextReader: NonCopyable
     bool move_to_element();
 
     bool get_normalization() const;
-	void set_normalization(bool value);
+    void set_normalization(bool value);
 
     bool get_parser_property(ParserProperties property) const;
     void set_parser_property(ParserProperties property, bool value);
 
-    Node* get_current_node() const;
+    Node* get_current_node();
+    const Node* get_current_node() const;
 //    Document* CurrentDocument();
     Node* expand();
 
