@@ -156,6 +156,12 @@ public:
                                       const Glib::ustring& publicId, const Glib::ustring& systemId,
                                       const Glib::ustring& content);
 
+  ///Access the underlying libxml implementation.
+  _xmlDoc* cobj();
+
+  ///Access the underlying libxml implementation.
+  const _xmlDoc* cobj() const;
+
 protected:
   /** Retrieve an Entity.
    * The entity can be from an external subset or internally declared.

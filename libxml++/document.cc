@@ -334,4 +334,14 @@ _xmlEntity* Document::get_entity(const Glib::ustring& name)
   return xmlGetDocEntity(impl_, (const xmlChar*) name.c_str());
 }
 
+_xmlDoc* Document::cobj()
+{
+  return impl_;
+}
+
+const _xmlDoc* Document::cobj() const
+{
+  return impl_;
+}
+
 } //namespace xmlpp

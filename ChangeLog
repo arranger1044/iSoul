@@ -1,3 +1,7 @@
+2004-02-08  Jim Garrison  <garrison@case.edu>
+
+	* libxml++/document.[h|cc]: added Document::cobj() function
+
 2004-02-06  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++/parsers/sax_parser.cc: Fixed issue #132014.
