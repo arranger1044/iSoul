@@ -1,3 +1,10 @@
+2004-02-09 2.5.1:
+
+* Introduced Glib::ustring instead of std::string (Murray Cumming)
+* Added Document::create_root_node_by_import (Kim Garrison)
+* Fixed bugs #131018, #131329 and #132014.
+* Added TextReader interface (Christophe de Vienne)
+
 2003-12-18 1.0.0:
 
 * Updated msvc files (Ephraim Vider)
