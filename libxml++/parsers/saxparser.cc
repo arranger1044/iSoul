@@ -387,7 +387,7 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
 
   try
   {
-    parser->on_characters(Glib::ustring((const char*) ch, len));
+    parser->on_characters(Glib::ustring((const char*) ch));
   }
   catch(const exception& e)
   {
@@ -486,7 +486,7 @@ void SaxParserCallback::cdata_block(void* context, const xmlChar* value, int len
 
   try
   {
-    parser->on_cdata_block(Glib::ustring((const char*)value, len));
+    parser->on_cdata_block(Glib::ustring((const char*)value));
   }
   catch(const exception& e)
   {
