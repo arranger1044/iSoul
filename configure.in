@@ -2,15 +2,15 @@ AC_INIT(libxml++/libxml++.h)
 
 #release versioning
 GENERIC_MAJOR_VERSION=2
-GENERIC_MINOR_VERSION=6
-GENERIC_MICRO_VERSION=1
+GENERIC_MINOR_VERSION=7
+GENERIC_MICRO_VERSION=0
 GENERIC_VERSION=$GENERIC_MAJOR_VERSION.$GENERIC_MINOR_VERSION.$GENERIC_MICRO_VERSION
 AC_SUBST(GENERIC_MAJOR_VERSION)
 AC_SUBST(GENERIC_MINOR_VERSION)
 AC_SUBST(GENERIC_VERSION)
 
 #shared library versioning
-GENERIC_LIBRARY_VERSION=1:1:0
+GENERIC_LIBRARY_VERSION=1:0:0
 #                       | | |
 #                +------+ | +---+
 #                |        |     |
@@ -74,6 +74,6 @@ AC_OUTPUT(
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile
 
-  libxml++-2.6.pc
+  libxml++-2.8.pc
   libxml++.spec
 )

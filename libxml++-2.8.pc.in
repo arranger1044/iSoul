@@ -7,6 +7,6 @@ Name: libxml++
 Description: C++ wrapper for libxml
 Requires: libxml-2.0 glibmm-2.4
 Version: @VERSION@
-Libs: -L${libdir} -lxml++-2.6
-Cflags: -I${includedir}/libxml++-2.6 -I${libdir}/libxml++-2.6/include
+Libs: -L${libdir} -lxml++-2.8
+Cflags: -I${includedir}/libxml++-2.8 -I${libdir}/libxml++-2.8/include
 
