@@ -1,3 +1,5 @@
+2.7.0:
+
 2004-06-24  Murray Cumming  <murrayc@.com>
 
 	* configure.in, Makefile.am, libxml++-2.*.pc.in: Reverted the changes
