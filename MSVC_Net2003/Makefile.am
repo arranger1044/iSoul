@@ -1,4 +1,3 @@
 SUBDIRS = gendef libxml++ examples
 
-EXTRA_DIST = libxml++.sln \
-             README
+EXTRA_DIST = blank.cpp libxml++.sln README

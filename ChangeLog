@@ -1,12 +1,19 @@
+2005-03-09  Cedric Gustin <cedric.gustin@swing.be>
+
+	* MSVC_Net2003/Makefile.am: Add blank.cpp to EXTRA_DIST.
+	* MSVC_Net2003/examples/*/*.vcproj: Change name of PDB file to
+	$(OutDir)/$(TargetName).pdb.
+
 2005-03-08  Christophe de Vienne  <cdevienne@netcourrier.com>
 
-	* docs/reference/Makefile.am: Added one more rule so the "make distcheck"
-	works from a clean cvs working copy.
+	* docs/reference/Makefile.am: Added one more rule so the "make
+	distcheck" works from a clean cvs working copy.
 
 2005-03-08  Christophe de Vienne  <cdevienne@netcourrier.com>
 
-	* docs/manual/Makefile.am, docs/reference/Makefile.am: Added a few rules
-	so that "make dist" generated the documentation if it's absent.
+	* docs/manual/Makefile.am, docs/reference/Makefile.am: Added a few
+	rules so that "make dist" generated the documentation if it's
+	absent.
 
 2005-02-15  Murray Cumming  <murrayc@murrayc.com>
 

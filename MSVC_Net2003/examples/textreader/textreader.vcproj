@@ -38,7 +38,7 @@
 				OutputFile="$(OutDir)/sax_textreader.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/dispatcher.pdb"
+				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
