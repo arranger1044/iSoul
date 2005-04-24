@@ -1,3 +1,9 @@
+2005-04-24  Murray Cumming <murrayc@murrayc.com>
+
+	* libxml++-2.6.pc.in: Remove -I for the include location of 
+	a config file, because we don't install one. Bug #301727 
+	from Aaron Walker.
+
 2005-03-15  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/document.cc: set_entity_declaration(): Pass 0 instead 
