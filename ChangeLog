@@ -1,5 +1,12 @@
 2005-04-24  Murray Cumming <murrayc@murrayc.com>
 
+	* libxml++/parsers/saxparser.cc: SaxParserCallback::characters()
+	Call on_characters(), not on_cdata_block(), so that the correct 
+	derived handler is called. Bug #301712 and patch from 
+	Aaron Walker.
+
+2005-04-24  Murray Cumming <murrayc@murrayc.com>
+
 	* libxml++-2.6.pc.in: Remove -I for the include location of 
 	a config file, because we don't install one. Bug #301727 
 	from Aaron Walker.
