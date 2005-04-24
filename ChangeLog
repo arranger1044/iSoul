@@ -1,5 +1,11 @@
 2005-04-24  Murray Cumming <murrayc@murrayc.com>
 
+	* libxml++/parsers/domparser.cc: parse_context(): 
+	Delete the context after, not before, checking it for an error.
+ 	Bug #156352 from Jim Garrison.
+
+2005-04-24  Murray Cumming <murrayc@murrayc.com>
+
 	* libxml++/parsers/saxparser.cc: SaxParserCallback::characters()
 	Call on_characters(), not on_cdata_block(), so that the correct 
 	derived handler is called. Bug #301712 and patch from 

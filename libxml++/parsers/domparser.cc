@@ -91,6 +91,11 @@ void DomParser::parse_context()
   //and the implementation of xmlParseMemory(), in xmlSaxParseMemoryWithData().
   initialize_context();
 
+  if(!context_)
+  {
+    throw internal_error("Context not initialized");
+  }
+
   xmlParseDocument(context_);
 
   check_for_exception();
@@ -103,9 +108,11 @@ void DomParser::parse_context()
 
   if(context_->errNo != 0)
   {
-    release_underlying();
     std::ostringstream o;
     o << "libxml error " << context_->errNo;
+
+    release_underlying();
+
     throw parse_error(o.str());
   }
 
@@ -167,7 +174,9 @@ void DomParser::parse_stream(std::istream& in)
   {
     std::ostringstream o;
     o << "libxml error " << context_->errNo;
+
     release_underlying();
+
     throw parse_error(o.str());
   }
 
