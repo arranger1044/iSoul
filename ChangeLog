@@ -1,5 +1,24 @@
 2005-05-15  Murray Cumming <murrayc@murrayc.com>
 
+	* libxml++/document.h: Add comments about possibly deriving this 
+	from Node, though it needs investigation, and we can not do this 
+	in the stable API.
+	* libxml++/nodes/node.cc: get_namespace(), get_namespace_prefix(): 
+	Return an empty string if the node is actually a Document, because 
+	the underlying xmlDocument struct has no ns field. This should 
+	prevent the crash in bug #161825.
+
+2005-05-15  Murray Cumming <murrayc@murrayc.com>
+
+	* libxml++/document.h: Add comments about possibly 
+	needing to derive this from Node. Needs investigation though, 
+	and can not be done in the stable API.
+	* libxml++/nodes/node.cc: get_namespace(), get_namespace_prefix(): 
+	Return empty string if the node is actually a document, because the 
+	underlying C struct for an xmlDocument has no ns field.
+
+2005-05-15  Murray Cumming <murrayc@murrayc.com>
+
 	* docs/index.html: Add link to the LGPL text.
 
 2005-04-24  Murray Cumming <murrayc@murrayc.com>

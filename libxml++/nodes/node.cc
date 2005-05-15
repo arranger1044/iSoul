@@ -185,6 +185,17 @@ NodeSet Node::find(const Glib::ustring& xpath) const
 
 Glib::ustring Node::get_namespace_prefix() const
 {
+  if(impl_->type == XML_DOCUMENT_NODE)
+  {
+    //impl_ is actually of type xmlDoc, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //Therefore, a call to impl_->ns would be invalid.
+    //This can be an issue when calling this method on a Node returned by Node::find().
+    //See the TODO comment on Document, suggesting that Document should derived from Node.
+
+    return Glib::ustring();
+  }
+
   if(impl_ && impl_->ns && impl_->ns->prefix)
     return (char*)impl_->ns->prefix;
   else
@@ -193,6 +204,17 @@ Glib::ustring Node::get_namespace_prefix() const
 
 Glib::ustring Node::get_namespace_uri() const
 {
+  if(impl_->type == XML_DOCUMENT_NODE)
+  {
+    //impl_ is actually of type xmlDoc, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //Therefore, a call to impl_->ns would be invalid.
+    //This can be an issue when calling this method on a Node returned by Node::find().
+    //See the TODO comment on Document, suggesting that Document should derived from Node.
+
+    return Glib::ustring();
+  }
+
    if(impl_ && impl_->ns && impl_->ns->href)
     return (char*)impl_->ns->href;
   else

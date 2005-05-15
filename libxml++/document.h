@@ -39,6 +39,10 @@ typedef enum {
 
 class Document;
 
+//TODO: Make Document inherit from Node, when we can break ABI one day?
+//
+//libxml might intend xmlDox to derive (theoretically) from xmlNode.
+//This is suggested because the XmlNodeSet returned by xmlXPathEval (see the Node::find() implementation) can contain either xmlNode or xmlDocument elements.
 /**
  * Represents a XML document in the dom model.
  */
@@ -50,10 +54,10 @@ class Document : NonCopyable
   public:
     Init();
   };
-  
+
   friend class DomParser;
   friend class SaxParser;
-  
+
 public:
   explicit Document(const Glib::ustring& version = "1.0");
   virtual ~Document();
