@@ -16,7 +16,7 @@
 extern "C"
 {
   struct _xmlParserInputBuffer;
-};
+}
 
 namespace xmlpp
 {
@@ -70,6 +70,6 @@ namespace xmlpp
       friend struct ParserInputBufferCallback;
   };
 
-};
+}
 
 #endif

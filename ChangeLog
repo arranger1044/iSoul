@@ -1,3 +1,11 @@
+2005-06-13  Marek Rouchal  <marek.rouchal@infineon.com>
+
+	* libxml++/io/istreamparserinputbuffer.cc:
+	* libxml++/io/istreamparserinputbuffer.h:
+	* libxml++/io/parserinputbuffer.cc:
+	* libxml++/io/parserinputbuffer.h: Remove extra ;s.
+	Bug #307481
+
 2005-05-15  Murray Cumming <murrayc@murrayc.com>
 
 	* libxml++/document.h: Add comments about possibly deriving this 

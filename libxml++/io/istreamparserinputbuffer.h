@@ -31,6 +31,6 @@ namespace xmlpp
 
       std::istream& input_;
   };
-};
+}
 
 #endif

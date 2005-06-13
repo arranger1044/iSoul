@@ -41,4 +41,4 @@ namespace xmlpp
   {
     return input_;
   }
-};
+}
