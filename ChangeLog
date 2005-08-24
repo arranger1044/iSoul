@@ -1,3 +1,8 @@
+2005-08-25  YS <yselkowitz@users.sourceforge.net>
+
+	* libxml++/Makefile.am: Changed link order to solve a link issue
+	on cygwin. Bug #314419.
+
 2005-06-13  Marek Rouchal  <marek.rouchal@infineon.com>
 
 	* libxml++/io/istreamparserinputbuffer.cc:
