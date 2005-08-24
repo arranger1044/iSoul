@@ -1,3 +1,5 @@
+2.11.0:
+
 2005-08-25  YS <yselkowitz@users.sourceforge.net>
 
 	* libxml++/Makefile.am: Changed link order to solve a link issue

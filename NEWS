@@ -1,3 +1,10 @@
+2.11.0:
+
+* First unstable 2.11.x release, to become stable 2.12.x
+* Fixed Document::set_entity_declaration behavior (Murray Cumming)
+* Updated MSVC.Net2003 project files (Cedric Gustin)
+* Fixed bugs #301727, #301712, #156352, #161825, #307481, #314419
+
 2.10.0:
 
 * Fixed documentation packaging problems (Murray Cumming, Christophe de Vienne)
