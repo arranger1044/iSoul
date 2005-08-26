@@ -50,7 +50,8 @@ class TextReader: NonCopyable
       EndOfFile = 3,
       Error = 2,
       Initial = 0,
-      Interactive = 1
+      Interactive = 1,
+      Reading = 5
     };
 
     enum ParserProperties

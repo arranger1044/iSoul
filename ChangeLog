@@ -1,3 +1,8 @@
+2005-08-26  Christophe de Vienne  <cdevienne@gmail.com>
+
+	* libxml++/parsers/textreader.h: Added xmlReadState "Reading" as
+	suggested by Sebastian Moss.
+
 2.11.0:
 
 2005-08-25  YS <yselkowitz@users.sourceforge.net>
