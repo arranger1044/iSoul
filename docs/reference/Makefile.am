@@ -14,6 +14,7 @@ index_html = @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html/index.html
 
 $(index_html): $(doxygen_configfile_source)
 	doxygen $(doxygen_configfile)
+	rm -f stable && ln -s @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@ stable
 
 @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html: $(index_html)
 

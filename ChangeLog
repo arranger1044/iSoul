@@ -1,3 +1,5 @@
+2.12.0:
+
 2005-08-26  Christophe de Vienne  <cdevienne@gmail.com>
 
 	* libxml++/parsers/textreader.h: Added xmlReadState "Reading" as
