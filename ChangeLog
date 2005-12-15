@@ -1,3 +1,10 @@
+2005-12-15  Robert Fleming  <fleming@cs.washington.edu>
+
+	* libxml++/nodes/node.cc:
+	* libxml++/nodes/node.h: Add find() overload that 
+	takes namespaces to register, using xmlXPathRegisterNs().
+	Bug #323935.
+
 2005-12-15  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/nodes/node.cc: set_namespace(): Pass 0 to 
@@ -14,6 +21,8 @@
 2005-09-21  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++.spec.in: Fixed include and .pc paths. Fixes #316827.
+
+This is the HEAD branch, for API additions. See also the gnome-2-12 branch.
 
 2.12.0:
 

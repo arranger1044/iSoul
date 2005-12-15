@@ -8,6 +8,7 @@
 #include <libxml++/nodes/node.h>
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml/xpath.h>
+#include <libxml/xpathInternals.h>
 #include <libxml/tree.h>
 
 #include <iostream>
@@ -145,10 +146,8 @@ Glib::ustring Node::get_path() const
   return retn;
 }
 
-NodeSet Node::find(const Glib::ustring& xpath) const
+static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
 {
-  xmlXPathContext* ctxt = xmlXPathNewContext(impl_->doc);
-  ctxt->node = impl_;
   xmlXPathObject* result = xmlXPathEval((const xmlChar*)xpath.c_str(), ctxt);
 
   if(!result)
@@ -181,6 +180,29 @@ NodeSet Node::find(const Glib::ustring& xpath) const
   xmlXPathFreeContext(ctxt);
 
   return nodes;
+}
+
+NodeSet Node::find(const Glib::ustring& xpath) const
+{
+  xmlXPathContext* ctxt = xmlXPathNewContext(impl_->doc);
+  ctxt->node = impl_;
+  
+  return find_impl(ctxt, xpath);
+}
+
+NodeSet Node::find(const Glib::ustring& xpath,
+		   const PrefixNsMap& namespaces) const
+{
+  xmlXPathContext* ctxt = xmlXPathNewContext(impl_->doc);
+  ctxt->node = impl_;
+
+  for (PrefixNsMap::const_iterator it=namespaces.begin();
+       it != namespaces.end(); it++)
+    xmlXPathRegisterNs(ctxt,
+		       reinterpret_cast<const xmlChar*>(it->first.c_str()),
+		       reinterpret_cast<const xmlChar*>(it->second.c_str()));
+
+  return find_impl(ctxt, xpath);
 }
 
 Glib::ustring Node::get_namespace_prefix() const
