@@ -1,3 +1,8 @@
+2005-12-15  Vadim Zeitlin  <vadim@wxwindows.org >
+
+	* docs/reference/Doxyfile.in: Fix paths so buildir!=srcdir 
+	builds work. Bug #319863.
+
 2005-09-21  Christophe de Vienne  <cdevienne@netcourrier.com>
 
 	* libxml++.spec.in: Fixed include and .pc paths. Fixes #316827.
