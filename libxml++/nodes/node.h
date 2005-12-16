@@ -107,13 +107,13 @@ public:
    */
   NodeSet find(const Glib::ustring& xpath) const;
 
-  /** A map of namespace prefixes to namespace names.
+  /** A map of namespace prefixes to namespace URIs.
    */
   typedef std::map<Glib::ustring, Glib::ustring> PrefixNsMap;
 
   /** Find nodes from a XPath expression
    * @param xpath The XPath of the nodes.
-   * @param namespaces A map of namespace prefixes to namespace names to be registered.
+   * @param namespaces A map of namespace prefixes to namespace URIs to be used while finding.
    */
   NodeSet find(const Glib::ustring& xpath, const PrefixNsMap& namespaces) const;
 

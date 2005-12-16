@@ -44,7 +44,7 @@ class Document;
 //libxml might intend xmlDox to derive (theoretically) from xmlNode.
 //This is suggested because the XmlNodeSet returned by xmlXPathEval (see the Node::find() implementation) can contain either xmlNode or xmlDocument elements.
 /**
- * Represents a XML document in the dom model.
+ * Represents an XML document in the DOM model.
  */
 class Document : NonCopyable
 {
