@@ -1,3 +1,7 @@
+2005-12-20  Murray Cumming  <murrayc@murrayc.com>
+
+	* docs/manual/libxml++_without_code.xml: Mention pkg-config.
+
 2005-12-16  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/document.h: Minor grammar fixes in documentation.
