@@ -1,3 +1,19 @@
+2.13.1:
+
+* First unstable 2.13.x release, to become stable 2.14.x, for GNOME 2.14.
+* Node:
+  - Added find() overload that takes namespaces to register during the search, 
+  using xmlXPathRegisterNs(). Bug #323935. (Robert Fleming)
+  - set_namespace(): When creating a default namespace, avoid the 
+  "The namespace () has not been declared" warning, by passing 0 to
+  xmlSearchNs() instead of an empty string. Bug #318186.
+  (Erik Oestby).
+* Build: Fix buildir!=srcdir builds. Bug #319863.(Vadim Zeitlin)
+* Documentation:
+  - Tutorial: Mention pkg-config.
+  - Reference: Grammar fixes and a small fix for find().
+  (Murray Cumming)
+
 2.12.0:
 
 * Added the state "Reading" to xml Reader States list.
