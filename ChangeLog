@@ -1,3 +1,12 @@
+2006-03-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/nodes/contentnode.h: get_content() documentation:
+	Replace the TODO because I know know that apos is the fifth 
+	predefined entity.
+	set_content(): Mention that the predefined entities are used 
+	_where necessary_ because XML does not require use of quot or 
+	apos in text nodes - just in attribute values.
+
 2.13.1:
 
 2005-12-20  Murray Cumming  <murrayc@murrayc.com>

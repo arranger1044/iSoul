@@ -21,13 +21,13 @@ public:
   virtual ~ContentNode();
 
   /** Get the text of this content node.
-   * @returns The text. Note that the 5 predefined entities (&amp;, &quot;, &lt;, &qt, TODO: What's the 5th one?)
+   * @returns The text. Note that the 5 predefined entities (&amp;, &quot;, &lt;, &qt, &apos;)
    * are always resolved, so this content will show their human-readable equivalents.
    */
-  Glib::ustring get_content() const;             
+  Glib::ustring get_content() const;
 
   /** Set the text of this content node
-   * @param content The text. This must be unescaped, meaning that the predefined entities will be created for you.
+   * @param content The text. This must be unescaped, meaning that the predefined entities will be created for you where necessary.
    * See get_content().
    */
   void set_content(const Glib::ustring& content);
