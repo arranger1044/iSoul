@@ -1,3 +1,8 @@
+2.14:
+
+* Documentation:
+  - Improved ContentNode documentation (Murray Cumming)
+
 2.13.1:
 
 * First unstable 2.13.x release, to become stable 2.14.x, for GNOME 2.14.
