@@ -1,5 +1,7 @@
 SUBDIRS = parsers exceptions nodes io validators
 
+EXTRA_DIST = libxml++config.h.in
+
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
 DEFS = @DEFS@ -DLIBXMLPP_BUILD
 

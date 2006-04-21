@@ -1,5 +1,9 @@
 2006-04-21  Cedric Gustin  <cedric.gustin@gmail.com>
 
+	* libxml++/Makefile.am: Added libxml++config.h.in to EXTRA_DIST.
+
+2006-04-21  Cedric Gustin  <cedric.gustin@gmail.com>
+
 	* MSVC_Net2003/*.vcproj: Updated for Visual Studio 2005. Added the
 	/vd2 compiler flag (Bug #158040). Renamed target DLL to
 	xml++-2.6 to comply to the value returned by "pkg-config --libs
