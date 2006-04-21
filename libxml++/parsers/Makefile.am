@@ -1,4 +1,5 @@
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
+DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
 h_sources_public = parser.h saxparser.h domparser.h textreader.h
 cc_sources = parser.cc saxparser.cc domparser.cc textreader.cc

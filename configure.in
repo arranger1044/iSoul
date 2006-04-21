@@ -32,6 +32,9 @@ VERSION=$GENERIC_VERSION
 
 AM_INIT_AUTOMAKE(libxml++, $GENERIC_VERSION)
 
+dnl Specify a configuration file (no autoheader)
+AC_CONFIG_HEADERS(config.h libxml++/libxml++config.h)
+
 AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_LANG_CPLUSPLUS
@@ -53,11 +56,23 @@ esac
 AC_MSG_RESULT([$platform_win32])
 AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
 
+AC_MSG_CHECKING([for native Win32])
+case "$host" in
+  *-*-mingw*)
+    os_win32=yes
+    ;;
+  *)
+    os_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$os_win32])
+AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
+
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
 # What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
 # gcc2 uses "-fnative-struct".
-if test x"$platform_win32" = xyes; then
+if test x"$os_win32" = xyes; then
   if test x"$GCC" = xyes; then
     msnative_struct=''
     AC_MSG_CHECKING([how to get MSVC-compatible struct packing])

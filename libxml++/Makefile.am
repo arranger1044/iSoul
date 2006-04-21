@@ -1,6 +1,7 @@
 SUBDIRS = parsers exceptions nodes io validators
 
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
+DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
 h_sources_public = libxml++.h attribute.h dtd.h document.h noncopyable.h keepblanks.h
 h_sources_private = 
@@ -27,4 +28,7 @@ libxml___2_6_la_SOURCES = $(cc_sources) $(h_sources_public) $(h_sources_private)
 # Install the headers:
 library_includedir=$(includedir)/libxml++-2.6/libxml++
 library_include_HEADERS = $(h_sources_public)
+
+library_configdir = $(libdir)/libxml++-2.6/include
+library_config_DATA = libxml++config.h
 

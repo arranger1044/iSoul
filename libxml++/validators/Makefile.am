@@ -1,4 +1,5 @@
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
+DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
 h_sources_public = validator.h dtdvalidator.h
 cc_sources = validator.cc dtdvalidator.cc

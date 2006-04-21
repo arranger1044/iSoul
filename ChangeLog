@@ -1,3 +1,31 @@
+2006-04-21  Cedric Gustin  <cedric.gustin@gmail.com>
+
+	* MSVC_Net2003/*.vcproj: Updated for Visual Studio 2005. Added the
+	/vd2 compiler flag (Bug #158040). Renamed target DLL to
+	xml++-2.6 to comply to the value returned by "pkg-config --libs
+	--msvc-syntax libxml++-2.6".
+	* MSVC_Net2003/libxml++.sln: Updated for Visual Studio 2005. 
+	* MSVC_Net2003/gendef/gendef.cc: Redirect output of dumpbin to a
+	file.
+	* MSVC_Net2003/libxml++/Makefile.am: Get a local copy of the
+	libxml++config.h file created at configure time and distribute it
+	in the source tarball.
+	* libxml++/Makefile.am: Add -DLIBXMLPP_BUILD to the DEFS compiler
+	flags (switch between dllexport/dllimport on win32). Also install
+	libxml++config.h to $(prefix)/lib/libxml++-2.6/include.
+	* libxml++/*/*.Makefile.am: Add -DLIBXMLPP_BUILD to the DEFS
+	compiler flags (switch between dllexport/dllimport on win32).
+	* libxml++/exceptions/exception.h: Tag the xmlpp:exception classs
+	with LIBXMLPP_API to get rid of auto-import errors on win32
+	(mingw32/cygwin).
+	* libxml++/libxml++config.h.in: New file. Define LIBXMLPP_API and
+	switch between dllimport and dllexport on win32.
+	* libxml++-2.6.pc.in: Add ${libdir}/libxml++-2.6/include to Cflags
+	(for libxml++config.h).
+	* configure.in: Added test for a native win32 platform. Use the
+	ms-bitfields on this platform only. Added the libxml++config.h
+	configuration file.
+
 2.14.0:
 
 2006-03-13  Christophe de Vienne  <cdevienne@netcourrier.com>
