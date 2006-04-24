@@ -1,3 +1,9 @@
+2006-04-24  Cedric Gustin  <cedric.gustin@gmail.com>
+
+	* configure.in: Disable autoheader.
+	* config.h.in: New file. Added comments about the difference
+	between config.h.in and libxml++config.h.in.
+
 2006-04-21  Cedric Gustin  <cedric.gustin@gmail.com>
 
 	* libxml++/Makefile.am: Added libxml++config.h.in to EXTRA_DIST.
