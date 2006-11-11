@@ -25,6 +25,18 @@ Node::Node(xmlNode* node)
 Node::~Node()
 {}
 
+const Element* Node::get_parent() const
+{
+  return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
+             static_cast<const Element*>(cobj()->parent->_private) : NULL;
+}
+
+Element* Node::get_parent()
+{
+  return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
+            static_cast<Element*>(cobj()->parent->_private) : NULL;
+}
+
 Node::NodeList Node::get_children(const Glib::ustring& name)
 {
    xmlNode* child = impl_->children;

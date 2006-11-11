@@ -63,6 +63,16 @@ public:
    * @returns The line number.
    */
   int get_line() const;
+  
+  /** Get the parent element for this node 
+   * @returns The parent node
+   */
+  const Element* get_parent() const;  
+
+  /** Get the parent element for this node 
+   * @returns The parent node
+   */
+  Element* get_parent();  
 
   /** Obtain the list of child nodes. You may optionally obtain a list of only the child nodes which have a certain name.
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.

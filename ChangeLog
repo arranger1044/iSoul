@@ -1,3 +1,8 @@
+2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>
+
+    * libxml++/nodes/node.cc:
+    * libxml++/nodes/node.h: Add Node::get_parent() Bug #351876
+
 2006-04-24  Cedric Gustin  <cedric.gustin@gmail.com>
 
 	* configure.in: Disable autoheader.
