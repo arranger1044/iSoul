@@ -61,10 +61,31 @@ class TextReader: NonCopyable
       Validate = 3,
       SubstEntities = 4
     };
+
+  typedef unsigned int size_type;
                         
   public:
-    // TextReader(InputBuffer)
+    /**
+     * Wraps a TextReader object from an underlying libxml object. The TextReader
+     * takes ownership of cobj.
+     * @param cobj The underlying libxml xmlTextReader object. 
+     */
+    TextReader(struct _xmlTextReader* cobj);
+    
+    /**
+     * Creates a new TextReader object to parse a file or URI.
+     * @param URI The URI to read.
+     */
     TextReader(const Glib::ustring& URI);
+    
+    /**
+     * Creates a new TextReader object which parses in memory data. 
+     * @param data The data to parse.
+     * @param size The length of data, or -1 if null terminated.
+     * @param uri The base URI of the file.
+     */ 
+    TextReader(const char* data, size_type size, const Glib::ustring& uri = Glib::ustring());
+    		   
     ~TextReader();
     
     /** Moves the position of the current instance to the next node in the stream, exposing its properties.

@@ -21,6 +21,24 @@ namespace xmlpp
   };
 
 TextReader::TextReader(
+    struct _xmlTextReader* cobj)
+    : propertyreader(new PropertyReader(*this)), impl_( cobj )
+{
+	
+}
+
+TextReader::TextReader(
+	const char* data, 
+	size_type size,
+	const Glib::ustring& uri)
+	: propertyreader(new PropertyReader(*this)), 
+	  impl_( xmlReaderForMemory (data, size == -1 ? strlen(data) : size, uri.c_str(), NULL, 0) )
+{
+  if( ! impl_ )
+    throw internal_error("Cannot instantiate underlying libxml2 structure");
+}
+
+TextReader::TextReader(
     const Glib::ustring& URI)
   : propertyreader(new PropertyReader(*this)), impl_( xmlNewTextReaderFilename(URI.c_str()) )
 {

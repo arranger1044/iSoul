@@ -1,5 +1,11 @@
 2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>
 
+	* libxml++/parsers/textreader.cc
+	* libxml++/parsers/textreader.h: TextReader() can now parse 
+	memory buffers as well as files. Bug #351215
+
+2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>
+
     * libxml++/nodes/node.cc:
     * libxml++/nodes/node.h: Add Node::get_parent() Bug #351876
 
