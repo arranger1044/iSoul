@@ -77,9 +77,8 @@ Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring
     xmlNs* ns = xmlSearchNs(cobj()->doc, cobj(), (const xmlChar*)ns_prefix.c_str());
     if (ns)
     {
-      xmlAttr* attr = xmlSetNsProp(cobj(), ns,
-                                   (const xmlChar*)name.c_str(),
-                                   (const xmlChar*)value.c_str());
+      attr = xmlSetNsProp(cobj(), ns, (const xmlChar*)name.c_str(),
+                          (const xmlChar*)value.c_str());
     }
     else
     {

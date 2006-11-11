@@ -1,5 +1,10 @@
 2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>
 
+	* libxml++/nodes/element.cc: Element::set_attribute():
+	Fix redeclaration of variable in if-block. Bug #361950
+
+2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>
+
 	* libxml++/parsers/textreader.cc
 	* libxml++/parsers/textreader.h: TextReader() can now parse 
 	memory buffers as well as files. Bug #351215
