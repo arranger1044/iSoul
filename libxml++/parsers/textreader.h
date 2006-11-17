@@ -81,10 +81,10 @@ class TextReader: NonCopyable
     /**
      * Creates a new TextReader object which parses in memory data. 
      * @param data The data to parse.
-     * @param size The length of data, or -1 if null terminated.
+     * @param size The number of bytes in data.
      * @param uri The base URI of the file.
      */ 
-    TextReader(const char* data, size_type size, const Glib::ustring& uri = Glib::ustring());
+    TextReader(const unsigned char* data, size_type size, const Glib::ustring& uri = Glib::ustring());
     		   
     ~TextReader();
     

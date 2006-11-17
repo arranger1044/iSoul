@@ -1,3 +1,10 @@
+2006-11-17  Nate Nielsen  <nielsen@memberwebs.com>
+
+	* libxml++/parsers/textreader.cc
+	* libxml++/parsers/textreader.h: Clean up TextReader() data 
+	constructor signature. Removed '-1' as a special null terminated 
+	value. This brings it inline with other parsers.
+
 2.17.1:
 
 2006-11-11  Nate Nielsen  <nielsen@memberwebs.com>

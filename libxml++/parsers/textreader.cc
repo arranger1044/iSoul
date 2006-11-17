@@ -28,11 +28,11 @@ TextReader::TextReader(
 }
 
 TextReader::TextReader(
-	const char* data, 
+	const unsigned char* data, 
 	size_type size,
 	const Glib::ustring& uri)
 	: propertyreader(new PropertyReader(*this)), 
-	  impl_( xmlReaderForMemory (data, size == -1 ? strlen(data) : size, uri.c_str(), NULL, 0) )
+	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), NULL, 0) )
 {
   if( ! impl_ )
     throw internal_error("Cannot instantiate underlying libxml2 structure");
