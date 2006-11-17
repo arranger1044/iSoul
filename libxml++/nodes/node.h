@@ -74,6 +74,26 @@ public:
    */
   Element* get_parent();  
 
+  /** Get the next sibling for this node 
+   * @returns The next sibling
+   */
+  const Node* get_next_sibling() const;  
+
+  /** Get the next sibling for this node 
+   * @returns The next sibling
+   */
+  Node* get_next_sibling();  
+
+  /** Get the previous sibling for this node 
+   * @returns The previous sibling
+   */
+  const Node* get_previous_sibling() const;  
+
+  /** Get the previous sibling for this node 
+   * @returns The previous sibling
+   */
+  Node* get_previous_sibling();  
+
   /** Obtain the list of child nodes. You may optionally obtain a list of only the child nodes which have a certain name.
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.
    * @returns The list of child nodes.

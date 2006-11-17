@@ -37,6 +37,28 @@ Element* Node::get_parent()
             static_cast<Element*>(cobj()->parent->_private) : NULL;
 }
 
+const Node* Node::get_next_sibling() const
+{
+  return const_cast<Node*>(this)->get_next_sibling();
+}
+
+Node* Node::get_next_sibling()
+{
+  return cobj()->next ? 
+	        static_cast<Node*>(cobj()->next->_private) : NULL;
+}
+
+const Node* Node::get_previous_sibling() const
+{
+  return const_cast<Node*>(this)->get_previous_sibling();
+}
+
+Node* Node::get_previous_sibling()
+{
+  return cobj()->prev ? 
+            static_cast<Node*>(cobj()->prev->_private) : NULL;
+}
+
 Node::NodeList Node::get_children(const Glib::ustring& name)
 {
    xmlNode* child = impl_->children;
