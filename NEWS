@@ -1,3 +1,14 @@
+2.17.1:
+
+* Node: Added get_parent() Bug #351876 (Patch by Nate Nielsen)
+* TextReader: Added TextReader(const char* data) constructor, for 
+  parsing memory buffers. Bug #351215 (Patch by Nate Nielsen)
+* Element::set_attribute(): Really return the new attribute.
+  Bug #361950 (Patch by Nate Nielsen)
+* Build: Added MS Visual Studio 2005 project files.
+  (Cedric Gustin)
+
+
 2.14:
 
 * Documentation:
