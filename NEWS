@@ -1,3 +1,9 @@
+2.17.2:
+
+* Node: Adedd get_next_sibling() and get_previous_sibling().
+  Bug #351867.
+  (Nate Nielsen)
+
 2.17.1:
 
 * Node: Added get_parent() Bug #351876 (Patch by Nate Nielsen)
