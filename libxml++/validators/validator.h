@@ -8,7 +8,7 @@
 #ifndef __LIBXMLPP_VALIDATOR_H
 #define __LIBXMLPP_VALIDATOR_H
 
-#ifdef WIN32 //TODO: Why do we do this? murrayc.
+#ifdef _MSC_VER //Ignore warnings about the Visual C++ Bug, where we can not do anything
 #pragma warning (disable : 4786)
 #endif
 
