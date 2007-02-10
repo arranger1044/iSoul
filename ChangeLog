@@ -1,3 +1,17 @@
+2007-02-10  Murray Cumming  <murrayc@murrayc.com>
+
+	* examples/dom_parse_entities/main.cc:
+	* examples/dom_parser/main.cc:
+	* examples/dom_parser_raw/main.cc:
+	* examples/dom_read_write/main.cc:
+	* examples/dom_xpath/main.cc:
+	* examples/dtdvalidation/main.cc:
+	* examples/sax_parser/main.cc:
+	* examples/sax_parser_build_dom/main.cc:
+	* examples/sax_parser_entities/main.cc: Use std::string for file paths, 
+	because we can not know the encoding of file paths. std::string therefore 
+	means unknown encoding.
+
 2007-02-06  Artur Wegele  <a.wegele@web.de>
 
 	* libxml++/parsers/parser.h:

@@ -61,7 +61,7 @@ void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
 
 int main(int argc, char* argv[])
 {
-  Glib::ustring filepath;
+  std::string filepath;
   if(argc > 1 )
     filepath = argv[1]; //Allow the user to specify a different XML file to parse.
   else

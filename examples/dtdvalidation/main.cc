@@ -30,7 +30,7 @@
 
 int main(int argc, char* argv[])
 {
-  Glib::ustring dtdfilepath;
+  std::string dtdfilepath;
   if(argc > 1)
     dtdfilepath = argv[1]; //Allow the user to specify a different dtd file to use.
   else
