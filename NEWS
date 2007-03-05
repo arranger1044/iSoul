@@ -1,3 +1,10 @@
+2.18.0:
+
+* Slight win32 build improvement, possibly.
+  (Artur Wegele)
+* Slight improvement to examples.
+  (Murray Cumming)
+
 2.17.2:
 
 * Node: Adedd get_next_sibling() and get_previous_sibling().
