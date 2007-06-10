@@ -242,7 +242,9 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
   xmlNode* node = xmlNewComment((const xmlChar*)content.c_str());
   if(!node)
     throw internal_error("Cannot create comment node");
-  xmlAddChild( (xmlNode*)impl_, node);
+
+  // Use the result, because node can be freed when merging text nodes:
+  node = xmlAddChild( (xmlNode*)impl_, node);
   return static_cast<CommentNode*>(node->_private);
 }
 

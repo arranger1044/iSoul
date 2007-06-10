@@ -139,7 +139,10 @@ TextNode* Element::add_child_text(const Glib::ustring& content)
   if(cobj()->type == XML_ELEMENT_NODE)
   {
      xmlNode* node = xmlNewText((const xmlChar*)content.c_str());
-     xmlAddChild(cobj(), node);
+
+     // Use the result, because node can be freed when merging text nodes:
+     node = xmlAddChild(cobj(), node); 
+
      return static_cast<TextNode*>(node->_private);
   }
   return 0;
@@ -178,7 +181,9 @@ Glib::ustring Element::get_namespace_uri_for_prefix(const Glib::ustring& ns_pref
 CommentNode* Element::add_child_comment(const Glib::ustring& content)
 {
   xmlNode* node = xmlNewComment((const xmlChar*)content.c_str());
-  xmlAddChild(cobj(), node);
+ 
+  // Use the result, because node can be freed when merging text nodes:
+  node = xmlAddChild(cobj(), node);
   return static_cast<CommentNode*>(node->_private);
 }
 
