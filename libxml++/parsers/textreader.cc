@@ -126,19 +126,19 @@ bool TextReader::is_empty_element() const
 Glib::ustring TextReader::get_local_name() const
 {
   return propertyreader->String(
-      xmlTextReaderLocalName(impl_));
+      xmlTextReaderLocalName(impl_), true);
 }
 
 Glib::ustring TextReader::get_name() const
 {
   return propertyreader->String(
-      xmlTextReaderName(impl_));
+      xmlTextReaderName(impl_), true);
 }
 
 Glib::ustring TextReader::get_namespace_uri() const
 {
   return propertyreader->String(
-      xmlTextReaderNamespaceUri(impl_));
+      xmlTextReaderNamespaceUri(impl_), true);
 }
 
 TextReader::xmlNodeType TextReader::get_node_type() const
@@ -152,7 +152,7 @@ TextReader::xmlNodeType TextReader::get_node_type() const
 Glib::ustring TextReader::get_prefix() const
 {
   return propertyreader->String(
-      xmlTextReaderPrefix(impl_));
+      xmlTextReaderPrefix(impl_), true);
 }
 
 char TextReader::get_quote_char() const
