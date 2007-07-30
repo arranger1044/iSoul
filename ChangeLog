@@ -1,3 +1,18 @@
+2007-07-30  Stef Walter  <stef@memberwebs.com>
+
+	* libxml++/nodes/element.cc:
+	* libxml++/nodes/element.h: Added get_attribute_value(), 
+	to get a simple text value for an attribute, as a 
+	convenience.
+
+2007-07-30  Murray Cumming  <murrayc@murrayc.com>
+
+	* docs/reference/Doxyfile.in: Added newin2p18, 
+	newin2p20, and newin2p22 tags.
+
+This is the trunk branch for libxml++ 2.19/2.20.
+See also the gnome-2-18 branch.
+
 2.18.2:
 
 2007-07-25  Christophe de Vienne  <cdevienne@gmail.com>

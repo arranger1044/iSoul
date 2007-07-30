@@ -46,6 +46,17 @@ public:
   Attribute* get_attribute(const Glib::ustring& name,
                            const Glib::ustring& ns_prefix = Glib::ustring()) const;
 
+  /** Get the value of the attribute with this name, and optionally with this namespace.
+   * For finer control, you might use get_attribute() and use the methods of the Attribute class.
+   * @param name The name of the attribute whose value will be retrieved.
+   * @param ns_prefix Namespace prefix. 
+   * @return The text value of the attribute, or an empty string if no such attribute was found.
+   *
+   * @newin2p20
+   */
+  Glib::ustring get_attribute_value(const Glib::ustring& name, 
+                                    const Glib::ustring& ns_prefix = Glib::ustring()) const;
+
   /** Set the value of the attribute with this name, and optionally with this namespace.
    * A matching attribute will be added if no matching attribute already exists.
    * For finer control, you might want to use get_attribute() and use the methods of the Attribute class.

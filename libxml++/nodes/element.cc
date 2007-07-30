@@ -61,6 +61,13 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
   return 0;
 }
 
+Glib::ustring Element::get_attribute_value(const Glib::ustring& name,
+  									  	   const Glib::ustring& ns_prefix) const
+{
+	Attribute* attr = get_attribute(name, ns_prefix);
+	return attr ? attr->get_value() : Glib::ustring(); 	
+}
+
 Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring& value,
                                   const Glib::ustring& ns_prefix)
 {
