@@ -1,3 +1,9 @@
+2.19.1:
+
+* Element.h: Added get_attribute_value(), 
+  to get a simple text value for an attribute.
+  (Stef Walter) Bug #373573.
+
 2.18.2:
 
 * TextReader: get_name(): Fixed a memory leak. 

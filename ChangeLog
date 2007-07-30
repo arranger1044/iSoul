@@ -1,9 +1,12 @@
+2.19.1:
+
 2007-07-30  Stef Walter  <stef@memberwebs.com>
 
 	* libxml++/nodes/element.cc:
 	* libxml++/nodes/element.h: Added get_attribute_value(), 
 	to get a simple text value for an attribute, as a 
 	convenience.
+	Patch in bug #373573.
 
 2007-07-30  Murray Cumming  <murrayc@murrayc.com>
 

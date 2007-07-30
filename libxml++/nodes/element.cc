@@ -52,20 +52,19 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
     Glib::ustring ns_uri = get_namespace_uri_for_prefix(ns_prefix);  
     xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
                                  (const xmlChar*)ns_uri.c_str());
-	if( attr )
-	{
+    if( attr )
+    {
       return reinterpret_cast<Attribute*>(attr->_private);
-	}
+    }
   }
 
   return 0;
 }
 
-Glib::ustring Element::get_attribute_value(const Glib::ustring& name,
-  									  	   const Glib::ustring& ns_prefix) const
+Glib::ustring Element::get_attribute_value(const Glib::ustring& name, const Glib::ustring& ns_prefix) const
 {
-	Attribute* attr = get_attribute(name, ns_prefix);
-	return attr ? attr->get_value() : Glib::ustring(); 	
+  const Attribute* attr = get_attribute(name, ns_prefix);
+  return attr ? attr->get_value() : Glib::ustring();
 }
 
 Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring& value,
