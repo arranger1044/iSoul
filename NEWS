@@ -1,4 +1,13 @@
+2.18.2:
+
+* TextReader: get_name(): Fixed a memory leak. 
+  (Christophe de Vienne) Bug #447535.
+
 2.18.1:
+
+* Document::add_comment,
+  Element: add_child_text(), add_child_comment(): 
+  avoid accessing freed memory. (Murray Cumming)
 
 2.18.0:
 

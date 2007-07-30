@@ -1,13 +1,17 @@
+2.18.2:
+
 2007-07-25  Christophe de Vienne  <cdevienne@gmail.com>
 
-	* libxml++/parsers/textreader.cc: fix bug #447535.
+	* libxml++/parsers/textreader.cc: get_name():
+	Fixed a memory leak. bug #447535.
 
 2.18.1:
 
 2007-06-10  Murray Cumming  <murrayc@murrayc.com>
 
-	* libxml++/document.cc:
-	* libxml++/nodes/element.cc: Avoid accessing freed memory 
+	* libxml++/document.cc: add_comment(),
+	* libxml++/nodes/element.cc: add_child_text(): 
+	add_child_comment(): Avoid accessing freed memory 
 	when the text nodes are merged by xmlAddChild().
 
 2.18.0:
