@@ -39,38 +39,51 @@ int main(int argc, char* argv[])
   xmlpp::Document document;
   xmlpp::Element* nodeRoot = document.create_root_node("incorrect");
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DtdValidator validator( dtdfilepath );
-    try {
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    try
+    {
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
       validator.validate( &document );
       std::cout << "Validation successfull" << std::endl;
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch( const xmlpp::validity_error& )
     {
       std::cout << "Error validating the document" << std::endl;
     }
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
-    xmlpp::Element* nodeRoot = document.create_root_node("example");
+    xmlpp::Element* nodeRoot2 = document.create_root_node("example");
     xmlpp::Element * child = document.get_root_node()->add_child("examplechild");
     child->set_attribute("id", "an_id");
     child->add_child("child_of_child");
 
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     try
     {
-      xmlpp::DtdValidator validator( dtdfilepath );
-      validator.validate( &document );
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
+      xmlpp::DtdValidator validator2( dtdfilepath );
+      validator2.validate( &document );
       std::cout << "Validation successfull" << std::endl;
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch( const xmlpp::validity_error& )
     {
       std::cout << "Error validating the document" << std::endl;
     }
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch( const xmlpp::parse_error& )
   {
     std::cerr << "Error parsing the dtd" << std::endl;
   }
-
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 }
 

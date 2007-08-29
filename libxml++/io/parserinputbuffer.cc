@@ -41,7 +41,9 @@ namespace xmlpp
         XML_CHAR_ENCODING_NONE);
     if(impl_ == NULL)
     {
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw internal_error("Cannot initialise underlying xmlParserInputBuffer");
+      #endif
     }
   }
 

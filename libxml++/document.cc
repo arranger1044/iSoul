@@ -230,7 +230,13 @@ Element* Document::create_root_node_by_import(const Node* node,
   //Create the node, by copying:
   xmlNode* imported_node = xmlDocCopyNode(const_cast<xmlNode*>(node->cobj()), impl_, recursive);
   if (!imported_node)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to import node");
+    #else
+    return 0;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   xmlDocSetRootElement(impl_, imported_node);
 
@@ -241,7 +247,13 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
 {
   xmlNode* node = xmlNewComment((const xmlChar*)content.c_str());
   if(!node)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Cannot create comment node");
+    #else
+    return 0;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   // Use the result, because node can be freed when merging text nodes:
   node = xmlAddChild( (xmlNode*)impl_, node);
@@ -290,7 +302,13 @@ void Document::do_write_to_file(
   result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty()?NULL:encoding.c_str(), format?1:0);
 
   if(result == -1)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("do_write_to_file() failed.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 }
 
 Glib::ustring Document::do_write_to_string(
@@ -305,7 +323,13 @@ Glib::ustring Document::do_write_to_string(
   xmlDocDumpFormatMemoryEnc(impl_, &buffer, &length, encoding.empty()?NULL:encoding.c_str(), format?1:0);
 
   if(!buffer)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("do_write_to_string() failed.");
+    #else
+    return Glib::ustring();
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   // Create a Glib::ustring copy of the buffer
 

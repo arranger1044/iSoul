@@ -34,14 +34,18 @@ int main(int argc, char* argv[])
 {
   MySaxParser parser;
   
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser.parse_file("example.xml");
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
   return 0;
 }

@@ -17,7 +17,9 @@ const char* exception::what() const throw()
 
 void exception::Raise() const
 {
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   throw *this;
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 exception * exception::Clone() const

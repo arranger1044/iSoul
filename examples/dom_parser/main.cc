@@ -118,8 +118,10 @@ int main(int argc, char* argv[])
   else
     filepath = "example.xml";
   
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DomParser parser;
     parser.set_validate();
     parser.set_substitute_entities(); //We just want the text to be resolved/unescaped automatically.
@@ -130,11 +132,13 @@ int main(int argc, char* argv[])
       const xmlpp::Node* pNode = parser.get_document()->get_root_node(); //deleted by DomParser.
       print_node(pNode);
     }
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
   return 0;
 }

@@ -58,8 +58,14 @@ void DtdValidator::parse_subset(const Glib::ustring& external,const Glib::ustrin
     external.empty() ? 0 : (const xmlChar *)external.c_str(),
     system.empty() ? 0 : (const xmlChar *)system.c_str());
 
-  if ( ! dtd )
-     throw parse_error("Dtd could not be parsed");
+  if (!dtd)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    throw parse_error("Dtd could not be parsed");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   dtd_ = static_cast<Dtd*>(dtd->_private);
 }
@@ -80,8 +86,14 @@ void DtdValidator::parse_stream(std::istream& in)
 
   xmlDtd* dtd = xmlIOParseDTD( 0, ibuff.cobj(), XML_CHAR_ENCODING_UTF8 );
 
-  if ( ! dtd )
-     throw parse_error("Dtd could not be parsed");
+  if (!dtd)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    throw parse_error("Dtd could not be parsed");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   dtd_ = static_cast<Dtd*>(dtd->_private);
 }
@@ -118,20 +130,35 @@ bool DtdValidator::validate(const Document* doc)
 
   if(!valid_)
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Couldn't create parsing context");
+    #else
+    return false;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if (!doc)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Document pointer cannot be 0");
+    #else
+    return false;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   initialize_valid();
 
-  bool res = (bool)xmlValidateDtd( valid_, (xmlDoc*)doc->cobj(), dtd_->cobj() );
+  const bool res = (bool)xmlValidateDtd( valid_, (xmlDoc*)doc->cobj(), dtd_->cobj() );
 
   if(res == 0)
   {
     check_for_exception();
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw validity_error("Document failed Dtd validation");
+    #else
+    return false;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   return res;

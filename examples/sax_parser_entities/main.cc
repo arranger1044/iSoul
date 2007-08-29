@@ -36,17 +36,21 @@ main(int argc, char* argv[])
     filepath = argv[1]; //Allow the user to specify a different XML file to parse.
   else
     filepath = "example.xml";
-    
+
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     MySaxParser parser;
     parser.set_substitute_entities(false); //We want to know about the entities, not have them substituted automatically.
     parser.parse_file(filepath);
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const xmlpp::exception& ex)
   {
     std::cout << "libxml++ exception: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   
   return 0;
 }

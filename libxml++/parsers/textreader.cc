@@ -35,7 +35,11 @@ TextReader::TextReader(
 	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), NULL, 0) )
 {
   if( ! impl_ )
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Cannot instantiate underlying libxml2 structure");
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 }
 
 TextReader::TextReader(
@@ -43,7 +47,11 @@ TextReader::TextReader(
   : propertyreader(new PropertyReader(*this)), impl_( xmlNewTextReaderFilename(URI.c_str()) )
 {
   if( ! impl_ )
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Cannot instantiate underlying libxml2 structure");
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 }
 
 TextReader::~TextReader()

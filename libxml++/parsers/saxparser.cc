@@ -121,10 +121,18 @@ void SaxParser::on_error(const Glib::ustring& text)
 {
 }
 
+
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
 void SaxParser::on_fatal_error(const Glib::ustring& text)
 {
   throw parse_error("Fatal error: " + text);
 }
+#else
+void SaxParser::on_fatal_error(const Glib::ustring&)
+{
+  //throw parse_error("Fatal error: " + text);
+}
+#endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
 void SaxParser::on_cdata_block(const Glib::ustring& text)
 {
@@ -141,8 +149,14 @@ void SaxParser::on_internal_subset(const Glib::ustring& name,
 // (http://www.daa.com.au/~james/gnome/xml-sax/implementing.html)
 void SaxParser::parse()
 {
-  if(!context_)
+  
+  if(!context_) {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Parse context not created.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   xmlSAXHandlerPtr old_sax = context_->sax;
   context_->sax = sax_handler_.get();
@@ -164,8 +178,13 @@ void SaxParser::parse()
 
 void SaxParser::parse_file(const Glib::ustring& filename)
 {
-  if(context_)
+  if(context_) {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   KeepBlanks k(KeepBlanks::Default);
 
@@ -175,8 +194,13 @@ void SaxParser::parse_file(const Glib::ustring& filename)
 
 void SaxParser::parse_memory_raw(const unsigned char* contents, size_type bytes_count)
 {
-  if(context_)
+  if(context_) {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   KeepBlanks k(KeepBlanks::Default);
 
@@ -191,8 +215,13 @@ void SaxParser::parse_memory(const Glib::ustring& contents)
 
 void SaxParser::parse_stream(std::istream& in)
 {
-  if(context_)
+  if(context_) {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Attempt to start a second parse while a parse is in progress.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   KeepBlanks k(KeepBlanks::Default);
 
@@ -280,14 +309,18 @@ xmlEntityPtr SaxParserCallback::get_entity(void* context, const xmlChar* name)
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
   xmlEntityPtr result = 0;
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     result = parser->on_get_entity((const char*)name);
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   
   return result;
 }
@@ -297,19 +330,23 @@ void SaxParserCallback::entity_decl(void* context, const xmlChar* name, int type
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_entity_declaration(
       ( name ? Glib::ustring((const char*)name) : ""),
       static_cast<XmlEntityType>(type),
       ( publicId ? Glib::ustring((const char*)publicId) : ""),
       ( systemId ? Glib::ustring((const char*)systemId) : ""),
       ( content ? Glib::ustring((const char*)content) : "") );
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::start_document(void* context)
@@ -317,15 +354,18 @@ void SaxParserCallback::start_document(void* context)
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
-
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_start_document();
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::end_document(void* context)
@@ -336,14 +376,18 @@ void SaxParserCallback::end_document(void* context)
   if(parser->exception_)
     return;
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_end_document();
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::start_element(void* context,
@@ -360,14 +404,18 @@ void SaxParserCallback::start_element(void* context,
       attributes.push_back(
 			  SaxParser::Attribute( (char*)*cur, (char*)*(cur + 1) ));
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_start_element(Glib::ustring((const char*) name), attributes);
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::end_element(void* context, const xmlChar* name)
@@ -375,14 +423,18 @@ void SaxParserCallback::end_element(void* context, const xmlChar* name)
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_end_element(Glib::ustring((const char*) name));
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
@@ -390,8 +442,10 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     // Here we force the use of Glib::ustring::ustring( InputIterator begin, InputIterator end )
     // instead of Glib::ustring::ustring( const char*, size_type ) because it
     // expects the length of the string in characters, not in bytes.
@@ -399,11 +453,13 @@ void SaxParserCallback::characters(void * context, const xmlChar* ch, int len)
         Glib::ustring(
           reinterpret_cast<const char *>(ch),
           reinterpret_cast<const char *>(ch + len) ) );
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::comment(void* context, const xmlChar* value)
@@ -411,14 +467,18 @@ void SaxParserCallback::comment(void* context, const xmlChar* value)
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_comment(Glib::ustring((const char*) value));
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::warning(void* context, const char* fmt, ...)
@@ -433,14 +493,18 @@ void SaxParserCallback::warning(void* context, const char* fmt, ...)
   vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), fmt, arg);
   va_end(arg);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_warning(Glib::ustring(buff));
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::error(void* context, const char* fmt, ...)
@@ -458,14 +522,18 @@ void SaxParserCallback::error(void* context, const char* fmt, ...)
   vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), fmt, arg);
   va_end(arg);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_error(Glib::ustring(buff));
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::fatal_error(void* context, const char* fmt, ...)
@@ -480,14 +548,18 @@ void SaxParserCallback::fatal_error(void* context, const char* fmt, ...)
   vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), fmt, arg);
   va_end(arg);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     parser->on_fatal_error(Glib::ustring(buff));
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::cdata_block(void* context, const xmlChar* value, int len)
@@ -495,19 +567,23 @@ void SaxParserCallback::cdata_block(void* context, const xmlChar* value, int len
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
 
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     // Here we force the use of Glib::ustring::ustring( InputIterator begin, InputIterator end )
     // see comments in SaxParserCallback::characters
     parser->on_cdata_block(
         Glib::ustring(
           reinterpret_cast<const char *>(value),
           reinterpret_cast<const char *>(value + len) ) );
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
-  } 
+  }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 void SaxParserCallback::internal_subset(void* context, const xmlChar* name,
@@ -516,17 +592,21 @@ void SaxParserCallback::internal_subset(void* context, const xmlChar* name,
   _xmlParserCtxt* the_context = static_cast<_xmlParserCtxt*>(context);
   SaxParser* parser = static_cast<SaxParser*>(the_context->_private);
   
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
-    Glib::ustring pid = publicId ? Glib::ustring((const char*) publicId) : "";
-    Glib::ustring sid = systemId ? Glib::ustring((const char*) systemId) : "";
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+    const Glib::ustring pid = publicId ? Glib::ustring((const char*) publicId) : "";
+    const Glib::ustring sid = systemId ? Glib::ustring((const char*) systemId) : "";
 
     parser->on_internal_subset( Glib::ustring((const char*) name), pid, sid);
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const exception& e)
   {
     parser->handleException(e);
-  } 
+  }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 } // namespace xmlpp

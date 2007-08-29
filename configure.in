@@ -32,6 +32,10 @@ VERSION=$GENERIC_VERSION
 
 AM_INIT_AUTOMAKE(libxml++, $GENERIC_VERSION)
 
+#Offer the ability to omit some API from the library, 
+#to reduce the code size:
+LIBXMLCPP_ARG_ENABLE_API_EXCEPTIONS()
+
 dnl Specify a configuration file (no autoheader)
 AC_CONFIG_HEADERS(config.h libxml++/libxml++config.h)
 
@@ -125,6 +129,8 @@ AC_OUTPUT(
     libxml++/nodes/Makefile
     libxml++/io/Makefile
     libxml++/validators/Makefile
+
+  scripts/Makefile
     
   docs/Makefile
     docs/reference/Makefile

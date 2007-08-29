@@ -32,7 +32,7 @@ fi
 rm -f config.cache acconfig.h
 
 echo "- aclocal."		&& \
-aclocal 			&& \
+aclocal -I "scripts" $ACLOCAL_FLAGS && \
 echo "- libtoolize."		&& \
 libtoolize --force 		&& \
 echo "- autoconf."		&& \

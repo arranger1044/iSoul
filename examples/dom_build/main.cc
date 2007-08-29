@@ -31,8 +31,10 @@
 int
 main(int argc, char* argv[])
 {
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     xmlpp::Document document;
     document.set_internal_subset("example_xml_doc", "", "example_xml_doc.dtd");
 
@@ -57,11 +59,13 @@ main(int argc, char* argv[])
     Glib::ustring whole = document.write_to_string();
     std::cout << "XML built at runtime: " << std::endl << whole << std::endl;
     std::cout << "default namespace: " << nodeRoot->get_namespace_uri() << std::endl;
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
   return 0;
 }

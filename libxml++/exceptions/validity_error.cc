@@ -12,7 +12,9 @@ validity_error::~validity_error() throw()
 
 void validity_error::Raise() const
 {
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   throw *this;
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 exception* validity_error::Clone() const

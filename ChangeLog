@@ -1,3 +1,48 @@
+2007-08-29  Murray Cumming  <murrayc@murrayc.com>
+
+	* autogen.sh:
+	* Makefile.am:
+	* configure.in:
+	* scripts/Makefile.am:
+	* scripts/reduced.m4: Added an --enable-api-exceptions 
+	configure option, which defines LIBXMLCPP_EXCEPTIONS_ENABLED 
+	in libxml++config.h.
+	* examples/dom_build/main.cc:
+	* examples/dom_parse_entities/main.cc:
+	* examples/dom_parser/main.cc:
+	* examples/dom_parser_raw/main.cc:
+	* examples/dom_read_write/main.cc:
+	* examples/dom_xpath/main.cc:
+	* examples/dtdvalidation/main.cc:
+	* examples/import_node/main.cc:
+	* examples/sax_exception/main.cc:
+	* examples/sax_exception/myparser.cc:
+	* examples/sax_parser/main.cc:
+	* examples/sax_parser_build_dom/main.cc:
+	* examples/sax_parser_entities/main.cc:
+	* examples/textreader/main.cc:
+	* libxml++/document.cc:
+	* libxml++/exceptions/exception.cc:
+	* libxml++/exceptions/internal_error.cc:
+	* libxml++/exceptions/parse_error.cc:
+	* libxml++/exceptions/validity_error.cc:
+	* libxml++/io/outputbuffer.cc:
+	* libxml++/io/parserinputbuffer.cc:
+	* libxml++/libxml++config.h.in:
+	* libxml++/nodes/contentnode.cc:
+	* libxml++/nodes/element.cc:
+	* libxml++/nodes/node.cc:
+	* libxml++/parsers/domparser.cc:
+	* libxml++/parsers/parser.cc:
+	* libxml++/parsers/saxparser.cc:
+	* libxml++/parsers/textreader.cc:
+	* libxml++/validators/dtdvalidator.cc:
+	* libxml++/validators/validator.cc:
+	Put LIBXMLCPP_EXCEPTIONS_ENABLED ifdefs around uses of 
+	try, catch, and throw, so that libxml++ can build with 
+	CXXFLAGS="-fno-exceptions". However, we might still 
+	need some alternative error checking API.
+
 2.19.1:
 
 2007-07-30  Stef Walter  <stef@memberwebs.com>

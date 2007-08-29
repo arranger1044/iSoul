@@ -42,9 +42,11 @@ main(int argc, char* argv[])
     filepath = argv[1]; //Allow the user to specify a different XML file to parse.
   else
     filepath = "example.xml";
-    
+
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     SVG::Document doc;
     SVG::Parser parser(doc);
 
@@ -63,11 +65,13 @@ main(int argc, char* argv[])
       SVG::Path* path = dynamic_cast<SVG::Path*>(nl[0]);
       std::cout << "style of first path node with a style = \"" << path->get_style() << "\"" << std::endl;
     }
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const xmlpp::exception& ex)
   {
     std::cout << "libxml++ exception: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   
   return 0;
 }

@@ -49,7 +49,11 @@ void DomParser::parse_file(const Glib::ustring& filename)
 
   if(!context_)
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Couldn't create parsing context");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if(context_->directory == 0)
@@ -72,7 +76,11 @@ void DomParser::parse_memory_raw(const unsigned char* contents, size_type bytes_
 
   if(!context_)
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Couldn't create parsing context");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   parse_context();
@@ -93,7 +101,11 @@ void DomParser::parse_context()
 
   if(!context_)
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Context not initialized");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   xmlParseDocument(context_);
@@ -103,7 +115,12 @@ void DomParser::parse_context()
   if(!context_->wellFormed)
   {
     release_underlying(); //Free doc_;
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Document not well-formed.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if(context_->errNo != 0)
@@ -113,7 +130,11 @@ void DomParser::parse_context()
 
     release_underlying();
 
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error(o.str());
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   doc_ = new Document(context_->myDoc);
@@ -144,7 +165,11 @@ void DomParser::parse_stream(std::istream& in)
 
   if(!context_)
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Couldn't create parsing context");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   initialize_context();
@@ -167,7 +192,12 @@ void DomParser::parse_stream(std::istream& in)
   if(!context_->wellFormed)
   {
     release_underlying(); //Free doc_;
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Document not well-formed.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if(context_->errNo != 0)
@@ -177,7 +207,11 @@ void DomParser::parse_stream(std::istream& in)
 
     release_underlying();
 
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error(o.str());
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   doc_ = new Document(context_->myDoc);

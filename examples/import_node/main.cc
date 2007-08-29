@@ -7,8 +7,12 @@
 using namespace xmlpp;
 using namespace std;
 
-int main (int argc, char *argv[]){
-  try {
+int main (int argc, char *argv[])
+{
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+  try
+  {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     DomParser example1("example1.xml");
     DomParser example2("example2.xml");
     
@@ -29,9 +33,12 @@ int main (int argc, char *argv[]){
     string doc1_string = doc1->write_to_string_formatted();
     cout << doc1_string;
     return EXIT_SUCCESS;
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
-  catch (std::exception &e){
-    cerr << "Caught exception " << e.what() << endl;
+  catch (std::exception& ex)
+  {
+    cerr << "Caught exception " << ex.what() << endl;
     return EXIT_FAILURE;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 }

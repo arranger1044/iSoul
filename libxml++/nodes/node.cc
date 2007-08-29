@@ -101,7 +101,13 @@ Element* Node::add_child(const Glib::ustring& name,
    xmlNs* ns = 0;
 
    if(impl_->type != XML_ELEMENT_NODE)
+   {
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw internal_error("You can only add child nodes to element nodes");
+      #else
+      return 0;
+      #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+   }
 
    //Ignore the namespace if none was specified:
    if(!ns_prefix.empty())
@@ -109,7 +115,13 @@ Element* Node::add_child(const Glib::ustring& name,
      //Use the existing namespace if one exists:
      ns = xmlSearchNs(impl_->doc, impl_, (const xmlChar*)ns_prefix.c_str());
      if (!ns)
+     {
+       #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
        throw exception("The namespace prefix (" + ns_prefix + ") has not been declared.");
+       #else
+       return 0;
+       #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+     }
    }
 
    node = xmlAddChild(impl_, xmlNewNode(ns, (const xmlChar*)name.c_str()));
@@ -133,14 +145,25 @@ Node* Node::import_node(const Node* node, bool recursive)
   //Create the node, by copying:
   xmlNode* imported_node = xmlDocCopyNode(const_cast<xmlNode*>(node->cobj()), impl_->doc, recursive);
   if (!imported_node)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to import node");
+    #else
+    return 0;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 
   //Add the node:
   xmlNode* added_node = xmlAddChild(this->cobj(),imported_node);
   if (!added_node)
   {
     xmlFreeNode(imported_node);
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to add imported node to current node");
+    #else
+    return 0;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   return static_cast<Node*>(imported_node->_private);
@@ -187,14 +210,24 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
   if(!result)
   {
     xmlXPathFreeContext(ctxt);
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Invalid XPath: " + xpath);
+    #else
+    return NodeSet();
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if(result->type != XPATH_NODESET)
   {
     xmlXPathFreeObject(result);
     xmlXPathFreeContext(ctxt);
+
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
     throw internal_error("Only nodeset result types are supported.");
+    #else
+    return NodeSet();
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   xmlNodeSet* nodeset = result->nodesetval;
@@ -288,7 +321,9 @@ void Node::set_namespace(const Glib::ustring& ns_prefix)
   }
   else
   {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
     throw exception("The namespace (" + ns_prefix + ") has not been declared.");
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLE
   }
 }
 

@@ -88,7 +88,9 @@ Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring
     }
     else
     {
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw exception("The namespace prefix (" + ns_prefix + ") has not been declared.");
+      #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     }
   }
 

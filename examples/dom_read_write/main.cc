@@ -42,9 +42,11 @@ main(int argc, char* argv[])
     filepath_out = argv[2]; //Allow the user to specify a different output file.
   else
     filepath_out = "example_output.xml";
-        
+
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DomParser parser;
     parser.set_validate();
     parser.parse_file(filepath_in);
@@ -55,11 +57,13 @@ main(int argc, char* argv[])
       if(document)
         document->write_to_file(filepath_out);
     }
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
   return 0;
 }

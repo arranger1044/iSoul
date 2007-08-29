@@ -135,14 +135,18 @@ void Parser::callback_validity_error(void* context_, const char* msg, ...)
       vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), msg, arg);
       va_end(arg);
 
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       try
       {
+      #endif
         parser->on_validity_error(Glib::ustring(buff));
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       }
       catch(const exception& e)
       {
         parser->handleException(e);
       }
+      #endif
     }
   }
   
@@ -166,14 +170,18 @@ void Parser::callback_validity_warning(void* context_, const char* msg, ...)
       vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), msg, arg);
       va_end(arg);
 
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       try
       {
+      #endif
         parser->on_validity_warning(Glib::ustring(buff));
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       }
       catch(const exception& e)
       {
         parser->handleException(e);
       }
+      #endif
     }
   }
 }

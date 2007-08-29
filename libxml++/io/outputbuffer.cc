@@ -51,10 +51,15 @@ namespace xmlpp
         handler = xmlFindCharEncodingHandler(encoding.c_str());
         if(handler == NULL)
         {
+          #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
           throw internal_error("Cannot initialise an encoder to " + encoding);
+          #else
+          return;
+          #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
         }
       }
     }
+
     impl_ = xmlOutputBufferCreateIO(
         &OutputBufferCallback::on_write,
         &OutputBufferCallback::on_close,
@@ -62,7 +67,9 @@ namespace xmlpp
         handler);
     if(impl_ == NULL)
     {
+      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw internal_error("Cannot initialise underlying xmlOutputBuffer");
+      #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     }
   }
 

@@ -38,16 +38,20 @@ main(int argc, char* argv[])
     filepath = "example.xml";
     
   // Parse the entire document in one go:
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     MySaxParser parser;
     parser.set_substitute_entities(true); //
     parser.parse_file(filepath);
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const xmlpp::exception& ex)
   {
     std::cout << "libxml++ exception: " << ex.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
  
   // Demonstrate incremental parsing, sometimes useful for network connections:

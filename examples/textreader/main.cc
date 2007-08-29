@@ -45,8 +45,10 @@ std::ostream & operator<<(std::ostream & o, indent const & in)
  int
 main(int argc, char* argv[])
 {
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     xmlpp::TextReader reader("example.xml");
 
     while(reader.read())
@@ -77,10 +79,12 @@ main(int argc, char* argv[])
         std::cout << indent(depth) << "novalue" << std::endl;
 
     }
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& e)
   {
     std::cout << "Exception caught: " << e.what() << std::endl;
   }
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
