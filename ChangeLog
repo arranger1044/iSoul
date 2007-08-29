@@ -1,3 +1,5 @@
+2.19.2:
+
 2007-08-29  Murray Cumming  <murrayc@murrayc.com>
 
 	* scripts/Makefile.am: distcheck fixes.

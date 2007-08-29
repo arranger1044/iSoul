@@ -1,3 +1,9 @@
+2.19.2:
+
+* Added an experimental --enable-api-exceptions 
+  configure option, to allow libxml++ to build without 
+  exceptions.
+
 2.19.1:
 
 * Element.h: Added get_attribute_value(), 
