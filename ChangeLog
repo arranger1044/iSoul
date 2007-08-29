@@ -1,5 +1,9 @@
 2007-08-29  Murray Cumming  <murrayc@murrayc.com>
 
+	* scripts/Makefile.am: distcheck fixes.
+
+2007-08-29  Murray Cumming  <murrayc@murrayc.com>
+
 	* autogen.sh:
 	* Makefile.am:
 	* configure.in:
