@@ -1,3 +1,11 @@
+2007-08-30  Murray Cumming  <murrayc@murrayc.com>
+
+	* examples/dom_parser_raw/main.cc: When exceptions are disabled, assume that they are also 
+	disabled in glibmm and then use the extra error parameter to Glib::convert(), to fix the 
+	build when using glibmm with disabled exceptions.
+	* docs/manual/Makefile.am: Use maintainer-clean instead of clean-local to delete the html, 
+	but this still seems to be deleted when building debian packages.
+
 2.19.2:
 
 2007-08-29  Murray Cumming  <murrayc@murrayc.com>

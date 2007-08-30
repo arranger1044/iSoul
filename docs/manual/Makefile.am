@@ -65,7 +65,7 @@ uninstall-local: uninstall-manual
 
 all-local: $(srcdir)/html/index.html
 
-clean-local:
+maintainer-clean-local:
 	-rm -rf $(srcdir)/html
 	-rm -f $(srcdir)/libxml++.dvi $(srcdir)/libxml++.ps $(srcdir)/libxml++.pdf $(srcdir)/libxml++-html.tar.gz
 
