@@ -12,6 +12,8 @@
 
 #include <glibmm/ustring.h>
 
+#include <memory>
+
 extern "C"
 {
   struct _xmlTextReader;

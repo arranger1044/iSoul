@@ -9,6 +9,7 @@
 #include <libxml/parser.h>
 
 #include <cstdarg> //For va_list.
+#include <memory> //For auto_ptr.
 
 namespace xmlpp {
 

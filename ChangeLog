@@ -1,3 +1,13 @@
+2008-01-17  Martin Michlmayr  <tbm@cyrius.com>>
+
+	* libxml++/parsers/parser.cc:
+	* libxml++/parsers/textreader.h:
+	Added includes to fix the build with gcc 4.3 
+	pre-releases.
+	Bug #510053.
+
+2.20.0:
+
 2007-08-30  Murray Cumming  <murrayc@murrayc.com>
 
 	* examples/dom_parser_raw/main.cc: When exceptions are disabled, assume that they are also 

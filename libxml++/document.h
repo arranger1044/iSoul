@@ -104,6 +104,7 @@ public:
    */
   CommentNode* add_comment(const Glib::ustring& content);
 
+  //TODO: Use std::string for filenames.
   /** Write the document to a file.
    * @param filename
    * @param encoding If not provided, UTF-8 is used
