@@ -1,4 +1,4 @@
-/* document.h
+/* ostreamoutputbuffer.h
  * this file is part of libxml++
  *
  * copyright (C) 2003 by libxml++ developer's team

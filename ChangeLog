@@ -1,5 +1,39 @@
 2008-01-17  Martin Michlmayr  <tbm@cyrius.com>>
 
+	* libxml++/attribute.cc:
+	* libxml++/dtd.cc:
+	* libxml++/dtd.h:
+	* libxml++/io/ostreamoutputbuffer.h:
+	* libxml++/io/outputbuffer.h:
+	* libxml++/keepblanks.cc:
+	* libxml++/keepblanks.h:
+	* libxml++/libxml++.h:
+	* libxml++/nodes/cdatanode.cc:
+	* libxml++/nodes/cdatanode.h:
+	* libxml++/nodes/commentnode.cc:
+	* libxml++/nodes/commentnode.h:
+	* libxml++/nodes/contentnode.cc:
+	* libxml++/nodes/element.cc:
+	* libxml++/nodes/element.h:
+	* libxml++/nodes/entityreference.cc:
+	* libxml++/nodes/entityreference.h:
+	* libxml++/nodes/node.cc:
+	* libxml++/nodes/processinginstructionnode.cc:
+	* libxml++/nodes/processinginstructionnode.h:
+	* libxml++/nodes/textnode.cc:
+	* libxml++/nodes/textnode.h:
+	* libxml++/parsers/domparser.cc:
+	* libxml++/parsers/domparser.h:
+	* libxml++/parsers/parser.cc:
+	* libxml++/parsers/parser.h:
+	* libxml++/parsers/saxparser.cc:
+	* libxml++/parsers/textreader.h:
+	Correct the name of the files in their comment blocks, 
+	though this could just be removed instead.
+	Bug #510056.
+
+2008-01-17  Martin Michlmayr  <tbm@cyrius.com>>
+
 	* libxml++/parsers/parser.cc:
 	* libxml++/parsers/textreader.h:
 	Added includes to fix the build with gcc 4.3 
