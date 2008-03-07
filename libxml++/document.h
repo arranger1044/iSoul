@@ -53,6 +53,7 @@ class Document : NonCopyable
   {
   public:
     Init();
+    virtual ~Init();
   };
 
   friend class DomParser;

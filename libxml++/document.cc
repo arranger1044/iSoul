@@ -137,11 +137,16 @@ namespace xmlpp
 
 Document::Init::Init()
 {
-   xmlInitParser(); //Not always necessary, but necessary for thread safety.
-   xmlRegisterNodeDefault(on_libxml_construct);
-   xmlDeregisterNodeDefault(on_libxml_destruct);
-   xmlThrDefRegisterNodeDefault(on_libxml_construct);
-   xmlThrDefDeregisterNodeDefault(on_libxml_destruct);
+  xmlInitParser(); //Not always necessary, but necessary for thread safety.
+  xmlRegisterNodeDefault(on_libxml_construct);
+  xmlDeregisterNodeDefault(on_libxml_destruct);
+  xmlThrDefRegisterNodeDefault(on_libxml_construct);
+  xmlThrDefDeregisterNodeDefault(on_libxml_destruct);
+}
+
+Document::Init::~Init()
+{
+  xmlCleanupParser(); //As per xmlInitParser(), or memory leak will happen.
 }
 
 Document::Init Document::init_;
