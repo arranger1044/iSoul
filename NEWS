@@ -1,3 +1,11 @@
+2.22.0:
+
+* Document: Fix a memory leak, by calling xmlCleanupParser 
+  in the destructor.
+  (Deng Xiyue) Bug #501168 (Matt G.)
+* Build: Fix the build with gcc 4.3 pre-releases.
+  (Martin Michlmayr) Bug #510053.
+
 2.20.0:
 
 Changes since 2.18:
