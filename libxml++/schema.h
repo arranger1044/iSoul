@@ -23,6 +23,7 @@ namespace xmlpp
 
 /** Represents XML Schema.
  *
+ * @newin2p24
  */
 class Schema : NonCopyable
 {

@@ -23,6 +23,7 @@ namespace xmlpp {
 
 /** XML DOM parser.
  *
+ * @newin2p24
  */
 class SchemaValidator : public Validator
 {

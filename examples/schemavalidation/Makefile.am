@@ -6,4 +6,4 @@ noinst_PROGRAMS = example
 #List of source files needed to build the executable:
 example_SOURCES = main.cc
 
-EXTRA_DIST = example.xml example.dtd
+EXTRA_DIST = example.xml example.xsd

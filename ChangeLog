@@ -1,3 +1,11 @@
+2008-03-26  Murray Cumming  <murrayc@murrayc.com>
+
+	* examples/schemavalidation/Makefile.am: Corrected a filename to 
+	fix distcheck
+	* libxml++/schema.h:
+	* libxml++/validators/schemavalidator.h: Added the newin2p24 doxygen 
+	keyword.
+
 2008-03-26  Emilien KIA  <cursor@free.fr>
 
 	* configure.in:
