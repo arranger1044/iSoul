@@ -97,7 +97,55 @@ const Node::NodeList Node::get_children(const Glib::ustring& name) const
 Element* Node::add_child(const Glib::ustring& name,
                          const Glib::ustring& ns_prefix)
 {
-   xmlNode* node = 0;
+  _xmlNode* child = create_new_child_node(name, ns_prefix);
+  if(!child)
+    return 0;
+
+  _xmlNode* node = xmlAddChild(impl_, child);
+  if(node)
+    return static_cast<Element*>(node->_private);
+  else
+     return 0;
+}
+
+Element* Node::add_child(xmlpp::Node* previous_sibling, 
+                         const Glib::ustring& name,
+                         const Glib::ustring& ns_prefix)
+{
+  if(!previous_sibling)
+    return 0;
+
+  _xmlNode* child = create_new_child_node(name, ns_prefix);
+  if(!child)
+    return 0;
+
+  _xmlNode* node = xmlAddNextSibling(previous_sibling->cobj(), child);
+  if(node)
+    return static_cast<Element*>(node->_private);
+  else
+     return 0;
+}
+
+Element* Node::add_child_before(xmlpp::Node* next_sibling, 
+                         const Glib::ustring& name,
+                         const Glib::ustring& ns_prefix)
+{
+  if(!next_sibling)
+    return 0;
+
+  _xmlNode* child = create_new_child_node(name, ns_prefix);
+  if(!child)
+    return 0;
+
+  _xmlNode* node = xmlAddPrevSibling(next_sibling->cobj(), child);
+  if(node)
+    return static_cast<Element*>(node->_private);
+  else
+     return 0;
+}
+
+_xmlNode* Node::create_new_child_node(const Glib::ustring& name, const Glib::ustring& ns_prefix)
+{
    xmlNs* ns = 0;
 
    if(impl_->type != XML_ELEMENT_NODE)
@@ -124,13 +172,9 @@ Element* Node::add_child(const Glib::ustring& name,
      }
    }
 
-   node = xmlAddChild(impl_, xmlNewNode(ns, (const xmlChar*)name.c_str()));
-
-   if(node)
-     return static_cast<Element*>(node->_private);
-   else
-     return 0;
+   return xmlNewNode(ns, (const xmlChar*)name.c_str());
 }
+
 
 void Node::remove_child(Node* node)
 {

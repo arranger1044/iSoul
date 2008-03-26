@@ -94,6 +94,26 @@ public:
    */
   TextNode* add_child_text(const Glib::ustring& content = Glib::ustring());
 
+  /** Add a new text node after the specified existing child node.
+   *
+   * @newin2p24
+   *
+   * @param previous_sibling An existing child node.
+   * @param content The text. This should be unescaped - see ContentNode::set_content().
+   * @returns The new text node.
+   */
+  TextNode* add_child_text(xmlpp::Node* previous_sibling, const Glib::ustring& content = Glib::ustring());
+
+  /** Add a new text node before the specified existing child node.
+   *
+   * @newin2p24
+   *
+   * @param next_sibling An existing child node.
+   * @param content The text. This should be unescaped - see ContentNode::set_content().
+   * @returns The new text node.
+   */
+  TextNode* add_child_text_before(xmlpp::Node* next_sibling, const Glib::ustring& content = Glib::ustring());
+
   /** Set the text of the first text node, adding one if necessary.
    * This is a convenience method, meant as an alternative to iterating over all the child nodes to find the first suitable node then and setting the text directly.
    * @param content The text. This should be unescaped - see ContentNode::set_content().

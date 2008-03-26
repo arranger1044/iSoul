@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 PROJECT_NAME           = @PACKAGE@
 PROJECT_NUMBER         = @VERSION@
-OUTPUT_DIRECTORY       = @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@
+OUTPUT_DIRECTORY       = 
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 USE_WINDOWS_ENCODING   = NO
@@ -26,7 +26,8 @@ DISTRIBUTE_GROUP_DOC   = NO
 TAB_SIZE               = 8
 ALIASES                = "newin2p18=\xrefitem newin2p18s \"Since libxml++ 2.18\" \"New API in libxml++ 2.18\" \n" \
                          "newin2p20=\xrefitem newin2p20s \"Since libxml++ 2.20\" \"New API in libxml++ 2.20\" \n" \
-                         "newin2p22=\xrefitem newin2p22s \"Since libxml++ 2.22\" \"New API in libxml++ 2.22\" \n"
+                         "newin2p22=\xrefitem newin2p22s \"Since libxml++ 2.22\" \"New API in libxml++ 2.22\" \n" \
+                         "newin2p24=\xrefitem newin2p24s \"Since libxml++ 2.24\" \"New API in libxml++ 2.24\" \n"
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
 SUBGROUPING            = YES

@@ -1,3 +1,21 @@
+2008-03-26  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/nodes/element.cc:
+	* libxml++/nodes/element.h: Added add_child_text() with a previous_node 
+	parameter, for adding between existing nodes.
+	Added add_child_text_before() too.
+	* libxml++/nodes/node.cc:
+	* libxml++/nodes/node.h: Added add_child() with a previous_node 
+	parameter, for adding between existing nodes.
+	Added add_child_before() too.
+
+	* docs/index.html: Removed the license clarifications text because I 
+	always found it to be arbitrary and not very informative.
+	* docs/reference/Doxyfile.in: Added a newin2p24 doxygen keyword. 
+	* docs/reference/Makefile.am: Do not create a version-specific 
+	directory name for reference documentation. The Since: text and links 
+	in the documentation are enough to know what was in what version.
+
 2.22.0:
 
 2008-03-07  Deng Xiyue  <murrayc@murrayc.com>

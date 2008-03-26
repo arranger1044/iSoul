@@ -20,7 +20,8 @@ extern "C" {
 }
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
-namespace xmlpp {
+namespace xmlpp
+{
 
 class TextNode;
 class Element;
@@ -50,7 +51,7 @@ public:
    */
   void set_name(const Glib::ustring& name);
 
-  /** Set the namespace prefix used by the node
+  /** Set the namespace prefix used by the node.
    * If no such namespace prefix has been declared then this method will throw an exception.
    * @param ns_prefix The namespace prefix.
    */
@@ -64,32 +65,32 @@ public:
    */
   int get_line() const;
   
-  /** Get the parent element for this node 
+  /** Get the parent element for this node.
    * @returns The parent node
    */
   const Element* get_parent() const;  
 
-  /** Get the parent element for this node 
+  /** Get the parent element for this node.
    * @returns The parent node
    */
   Element* get_parent();  
 
-  /** Get the next sibling for this node 
+  /** Get the next sibling for this node.
    * @returns The next sibling
    */
   const Node* get_next_sibling() const;  
 
-  /** Get the next sibling for this node 
+  /** Get the next sibling for this node.
    * @returns The next sibling
    */
   Node* get_next_sibling();  
 
-  /** Get the previous sibling for this node 
+  /** Get the previous sibling for this node .
    * @returns The previous sibling
    */
   const Node* get_previous_sibling() const;  
 
-  /** Get the previous sibling for this node 
+  /** Get the previous sibling for this node.
    * @returns The previous sibling
    */
   Node* get_previous_sibling();  
@@ -106,12 +107,34 @@ public:
    */
   const NodeList get_children(const Glib::ustring& name = Glib::ustring()) const;
 
-  /** Add a child element to this node
+  /** Add a child element to this node.
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
    */
   Element* add_child(const Glib::ustring& name,
+                     const Glib::ustring& ns_prefix = Glib::ustring());
+
+  /** Add a child element to this node after the specified existing child node.
+   *
+   * @newin2p24
+   *
+   * @param name The new node name
+   * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
+   * @returns The newly-created element
+   */
+  Element* add_child(xmlpp::Node* previous_sibling, const Glib::ustring& name,
+                     const Glib::ustring& ns_prefix = Glib::ustring());
+
+  /** Add a child element to this node before the specified existing child node.
+   *
+   * @newin2p24
+   *
+   * @param name The new node name
+   * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
+   * @returns The newly-created element
+   */
+  Element* add_child_before(xmlpp::Node* next_sibling, const Glib::ustring& name,
                      const Glib::ustring& ns_prefix = Glib::ustring());
 
   /** Remove the child node.
@@ -127,12 +150,12 @@ public:
   Node* import_node(const Node* node, bool recursive = true);
 
   
-  /** Return the XPath of this node
+  /** Return the XPath of this node.
    * @result The XPath of the node.
    */
   Glib::ustring get_path() const;
 
-  /** Find nodes from a XPath expression
+  /** Find nodes from a XPath expression.
    * @param xpath The XPath of the nodes.
    */
   NodeSet find(const Glib::ustring& xpath) const;
@@ -141,7 +164,7 @@ public:
    */
   typedef std::map<Glib::ustring, Glib::ustring> PrefixNsMap;
 
-  /** Find nodes from a XPath expression
+  /** Find nodes from a XPath expression.
    * @param xpath The XPath of the nodes.
    * @param namespaces A map of namespace prefixes to namespace URIs to be used while finding.
    */
@@ -153,6 +176,11 @@ public:
 
   ///Access the underlying libxml implementation.
   const _xmlNode* cobj() const;
+
+protected:
+
+  ///Create the C instance ready to be added to the parent node.
+  _xmlNode* create_new_child_node(const Glib::ustring& name, const Glib::ustring& ns_prefix);
 
 private:
   _xmlNode* impl_;

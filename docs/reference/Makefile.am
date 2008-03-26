@@ -5,24 +5,23 @@ include $(top_srcdir)/docs/Makefile_web.am_fragment
 web_path_reference = $(web_path_docs)reference
 
 
-EXTRA_DIST = README Doxyfile libxml++_doxygen_tags @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html \
+EXTRA_DIST = README Doxyfile libxml++_doxygen_tags html \
              libstdc++.tag.xml
 #Ideally, libstdc++.tag.xml would be installed by gcc, instead of being copied into every project.
 
-index_html = @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html/index.html
+index_html = html/index.html
 
 
 $(index_html): $(doxygen_configfile_source)
 	doxygen $(doxygen_configfile)
-	rm -f stable && ln -s @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@ stable
 
-@GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html: $(index_html)
+html: $(index_html)
 
 libxml++_doxygen_tags: $(index_html)
 
 
 libxml++-reference-html.tar.gz: $(index_html)
-	tar cf - @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html | gzip -c --best >$@
+	tar cf - html | gzip -c --best >$@
 
 
 # Upload to the web site:
@@ -33,12 +32,12 @@ post-html:
 all-local: $(index_html)
 
 doc-clean:
-	-rm -rf @GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html
+	-rm -rf html
 	-rm -f libxml++_doxygen_tags
 	-rm -f $libxml++-reference-html.tar.gz
 
 
-referencedir = $(docdir)/reference/@GENERIC_MAJOR_VERSION@.@GENERIC_MINOR_VERSION@/html
+referencedir = $(docdir)/reference/html
 
 install-reference: $(index_html)
 	@$(NORMAL_INSTALL)

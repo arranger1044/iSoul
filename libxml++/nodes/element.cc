@@ -156,6 +156,40 @@ TextNode* Element::add_child_text(const Glib::ustring& content)
   return 0;
 }
 
+TextNode* Element::add_child_text(xmlpp::Node* previous_sibling, const Glib::ustring& content)
+{
+  if(!previous_sibling)
+    return 0;
+
+  if(cobj()->type == XML_ELEMENT_NODE)
+  {
+     xmlNode* node = xmlNewText((const xmlChar*)content.c_str());
+
+     // Use the result, because node can be freed when merging text nodes:
+     node = xmlAddNextSibling(previous_sibling->cobj(), node); 
+
+     return static_cast<TextNode*>(node->_private);
+  }
+  return 0;
+}
+
+TextNode* Element::add_child_text_before(xmlpp::Node* next_sibling, const Glib::ustring& content)
+{
+  if(!next_sibling)
+    return 0;
+
+  if(cobj()->type == XML_ELEMENT_NODE)
+  {
+     xmlNode* node = xmlNewText((const xmlChar*)content.c_str());
+
+     // Use the result, because node can be freed when merging text nodes:
+     node = xmlAddPrevSibling(next_sibling->cobj(), node); 
+
+     return static_cast<TextNode*>(node->_private);
+  }
+  return 0;
+}
+
 bool Element::has_child_text() const
 {
   return get_child_text() != 0;
