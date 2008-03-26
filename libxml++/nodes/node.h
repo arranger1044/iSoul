@@ -119,6 +119,7 @@ public:
    *
    * @newin2p24
    *
+   * @param previous_sibling An existing child node.
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
@@ -130,6 +131,7 @@ public:
    *
    * @newin2p24
    *
+   * @param next_sibling An existing child node.
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element

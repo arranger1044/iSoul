@@ -1,5 +1,12 @@
 2008-03-26  Murray Cumming  <murrayc@murrayc.com>
 
+	* docs/Makefile.am: Fixed the post-html rule.
+	* docs/index.html: Corrected some links.
+	* libxml++/nodes/node.h: Corrected documentation for the new methods 
+	from the previous commit.
+
+2008-03-26  Murray Cumming  <murrayc@murrayc.com>
+
 	* libxml++/nodes/element.cc:
 	* libxml++/nodes/element.h: Added add_child_text() with a previous_node 
 	parameter, for adding between existing nodes.
@@ -15,6 +22,8 @@
 	* docs/reference/Makefile.am: Do not create a version-specific 
 	directory name for reference documentation. The Since: text and links 
 	in the documentation are enough to know what was in what version.
+
+This is the svn trunk branch. See also the gnome-2-22 branch.
 
 2.22.0:
 
