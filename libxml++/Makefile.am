@@ -5,9 +5,9 @@ EXTRA_DIST = libxml++config.h.in
 INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
 DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
-h_sources_public = libxml++.h attribute.h dtd.h document.h noncopyable.h keepblanks.h
+h_sources_public = libxml++.h attribute.h dtd.h document.h noncopyable.h keepblanks.h schema.h
 h_sources_private = 
-cc_sources = attribute.cc dtd.cc document.cc noncopyable.cc keepblanks.cc
+cc_sources = attribute.cc dtd.cc document.cc noncopyable.cc keepblanks.cc schema.cc
 cc_sources_private =
 
 # Support for DLL on cygwin/mingw using libtool > 1.4

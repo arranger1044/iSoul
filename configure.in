@@ -151,6 +151,7 @@ AC_OUTPUT(
     examples/import_node/Makefile
     examples/textreader/Makefile
     examples/dtdvalidation/Makefile
+    examples/schemavalidation/Makefile
 
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile

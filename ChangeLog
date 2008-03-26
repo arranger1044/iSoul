@@ -1,3 +1,22 @@
+2008-03-26  Emilien KIA  <cursor@free.fr>
+
+	* configure.in:
+	* libxml++/Makefile.am:
+	* libxml++/libxml++.h:
+	* libxml++/schema.cc:
+	* libxml++/schema.h: Added Schema class, similar to the existing Dtd 
+	class.
+	* libxml++/validators/Makefile.am:
+	* libxml++/validators/schemavalidator.cc
+	* libxml++/validators/schemavalidator.h: Added Schema validator class, 
+	similar to the existing DtdValidator class.
+
+	* examples/Makefile.am:
+	* examples/schemavalidation/: New example, similar to the 
+	existing dtdvalidation example.
+
+	Bug #312216.
+
 2008-03-26  Murray Cumming  <murrayc@murrayc.com>
 
 	* docs/Makefile.am: Fixed the post-html rule.

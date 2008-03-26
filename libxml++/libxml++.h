@@ -21,5 +21,6 @@
 #include <libxml++/document.h>
 #include <libxml++/validators/validator.h>
 #include <libxml++/validators/dtdvalidator.h>
+#include <libxml++/validators/schemavalidator.h>
 
 #endif //__LIBXMLCPP_H
