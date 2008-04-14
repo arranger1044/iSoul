@@ -256,6 +256,11 @@ void SaxParser::parse_stream(std::istream& in)
 
 void SaxParser::parse_chunk(const Glib::ustring& chunk)
 {
+  parse_chunk_raw((const unsigned char*)chunk.c_str(), chunk.bytes());
+}
+
+void SaxParser::parse_chunk_raw(const unsigned char* contents, size_type bytes_count)
+{
   KeepBlanks k(KeepBlanks::Default);
 
   if(!context_)
@@ -271,11 +276,10 @@ void SaxParser::parse_chunk(const Glib::ustring& chunk)
   }
   
   if(!exception_)
-    xmlParseChunk(context_, chunk.c_str(), chunk.bytes(), 0 /* don't terminate */);
+    xmlParseChunk(context_, (const char*)contents, bytes_count, 0 /* don't terminate */);
 
   check_for_exception();
 }
-
 
 void SaxParser::release_underlying()
 {

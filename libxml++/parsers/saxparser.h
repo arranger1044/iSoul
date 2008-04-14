@@ -119,6 +119,23 @@ public:
    */
   virtual void parse_chunk(const Glib::ustring& chunk);
 
+  /** Parse a chunk of data.
+   *
+   * @newin2p24
+   *
+   * This lets you pass a document in small chunks, e.g. from a network
+   * connection. The on_* virtual functions are called each time the chunks
+   * provide enough information to advance the parser.
+   *
+   * The first call to parse_chunk will setup the parser. When the last chunk
+   * has been parsed, call finish_chunk_parsing() to finish the parse.
+   *
+   * @throw exception
+   * @param contents The next piece of the XML document as an array of bytes.
+   * @param bytes_count The number of bytes in the @a contents array.
+   */
+  void parse_chunk_raw(const unsigned char* contents, size_type bytes_count);
+
   /** Finish a chunk-wise parse.
    *
    * Call this after the last call to parse_chunk(). Don't use this function with
