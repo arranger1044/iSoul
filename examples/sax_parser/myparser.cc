@@ -20,6 +20,7 @@
  */
 
 #include "myparser.h"
+#include <glibmm/convert.h> //For Glib::ConvertError
 
 #include <iostream>
 
@@ -50,7 +51,23 @@ void MySaxParser::on_start_element(const Glib::ustring& name,
   // Print attributes:
   for(xmlpp::SaxParser::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); ++iter)
   {
-    std::cout << "  Attribute " << iter->name << " = " << iter->value << std::endl;
+    try
+    {
+      std::cout << "  Attribute name=" << iter->name << std::endl;
+    }
+    catch(const Glib::ConvertError& ex)
+    {
+      std::cerr << "MySaxParser::on_start_element(): Exception caught while converting name for std::cout: " << ex.what() << std::endl;
+    }
+
+    try
+    {
+      std::cout << "    , value= " << iter->value << std::endl;
+    }
+    catch(const Glib::ConvertError& ex)
+    {
+      std::cerr << "MySaxParser::on_start_element(): Exception caught while converting value for std::cout: " << ex.what() << std::endl;
+    }
   }
 }
 
@@ -61,26 +78,61 @@ void MySaxParser::on_end_element(const Glib::ustring& name)
 
 void MySaxParser::on_characters(const Glib::ustring& text)
 {
-  std::cout << "on_characters(): " << text << std::endl;
+  try
+  {
+    std::cout << "on_characters(): " << text << std::endl;
+  }
+  catch(const Glib::ConvertError& ex)
+  {
+    std::cerr << "MySaxParser::on_characters(): Exception caught while converting text for std::cout: " << ex.what() << std::endl;
+  }
 }
 
 void MySaxParser::on_comment(const Glib::ustring& text)
 {
-  std::cout << "on_comment(): " << text << std::endl;
+  try
+  {
+    std::cout << "on_comment(): " << text << std::endl;
+  }
+  catch(const Glib::ConvertError& ex)
+  {
+    std::cerr << "MySaxParser::on_comment(): Exception caught while converting text for std::cout: " << ex.what() << std::endl;
+  }
 }
 
 void MySaxParser::on_warning(const Glib::ustring& text)
 {
-  std::cout << "on_warning(): " << text << std::endl;
+  try
+  {
+    std::cout << "on_warning(): " << text << std::endl;
+  }
+  catch(const Glib::ConvertError& ex)
+  {
+    std::cerr << "MySaxParser::on_warning(): Exception caught while converting text for std::cout: " << ex.what() << std::endl;
+  }
 }
 
 void MySaxParser::on_error(const Glib::ustring& text)
 {
-  std::cout << "on_error(): " << text << std::endl;
+  try
+  {
+    std::cout << "on_error(): " << text << std::endl;
+  }
+  catch(const Glib::ConvertError& ex)
+  {
+    std::cerr << "MySaxParser::on_error(): Exception caught while converting text for std::cout: " << ex.what() << std::endl;
+  }
 }
 
 void MySaxParser::on_fatal_error(const Glib::ustring& text)
 {
-  std::cout << "on_fatal_error(): " << text << std::endl;
+  try
+  {
+    std::cout << "on_fatal_error(): " << text << std::endl;
+  }
+  catch(const Glib::ConvertError& ex)
+  {
+    std::cerr << "MySaxParser::on_characters(): Exception caught while converting value for std::cout: " << ex.what() << std::endl;
+  }
 }
 

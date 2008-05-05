@@ -60,17 +60,28 @@ main(int argc, char* argv[])
     
     std::ifstream is(filepath.c_str());
     char buffer[64];
+    const size_t buffer_size = sizeof(buffer) / sizeof(char);
 
+    //Parse the file:
     MySaxParser parser;
-    do {
-      is.read(buffer, 63);
-      Glib::ustring input(buffer, is.gcount());
+    parser.parse_file(filepath);
 
-      parser.parse_chunk(input);
+    //Or parse chunks (though this seems to have problems):
+/*
+    do
+    {
+      memset(buffer, 0, buffer_size);
+      is.read(buffer, buffer_size-1);
+      if(is && is.gcount())
+      {
+        Glib::ustring input(buffer, is.gcount());
+        parser.parse_chunk(input);
+      }
     }
     while(is);
 
     parser.finish_chunk_parsing();
+*/
   }
 
 

@@ -1,3 +1,11 @@
+2008-05-05  Murray Cumming  <murrayc@murrayc.com>
+
+	* examples/sax_parser/main.cc (main): Use parse_file() but leave 
+	the parse_chunk() version commented out, to simplify this example.
+	* examples/sax_parser/myparser.cc
+	Catch Glib::ConvertError exceptions when using std::cout, though 
+	libxml++ should really always supply valid UTF-8 to us.
+
 2008-04-14  Armin Burgmeier  <armin@arbur.net>
 
 	* libxml++/parsers/saxparser.h:
