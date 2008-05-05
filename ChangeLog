@@ -4,6 +4,8 @@
 	* libxml++/parsers/saxparser.cc: Added a parse_chunk_raw() method and
 	changed parse_chunk() to use it.
 
+2.23.1:
+
 2008-03-26  Murray Cumming  <murrayc@murrayc.com>
 
 	* examples/schemavalidation/Makefile.am: Corrected a filename to 

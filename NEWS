@@ -1,3 +1,14 @@
+2.23.1:
+
+* Added Schema and SchemaValidator classes, demonstrated in 
+  examples/schemavalidation.
+  (Emilien KIA) Bug #312216.
+* Element: Added add_child_text() with a previous_node parameter, for adding 
+  between existing nodes. Added add_child_text_before() too.
+* Node: Added add_child() with a previous_node parameter, for adding between 
+  existing nodes. Added add_child_before() too.
+  (Murray Cumming)
+
 2.22.0:
 
 * Document: Fix a memory leak, by calling xmlCleanupParser 
