@@ -1,3 +1,5 @@
+2.23.2:
+
 2008-05-05  Murray Cumming  <murrayc@murrayc.com>
 
 	* examples/sax_parser/main.cc (main): Use parse_file() but leave 

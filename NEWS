@@ -1,3 +1,11 @@
+2.23.2:
+
+* SaxParser: added parse_chunk_raw().
+  (Armin Burgmeier)
+* examples: sax_parser: Catch convert errors when printing an exception to 
+  std:cout, though libxml++/libxml should always supply valid UTF-8.
+  (Murray Cumming)
+
 2.23.1:
 
 * Added Schema and SchemaValidator classes, demonstrated in 
