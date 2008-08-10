@@ -68,7 +68,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xml2.lib glibmm-2.4d.lib"
+				AdditionalDependencies="libxml2.lib glibmm-2.4d.lib"
 				OutputFile="$(OutDir)/$(ProjectName)d.dll"
 				ModuleDefinitionFile="$(ConfigurationName)\$(InputName).def"
 				GenerateDebugInformation="true"
@@ -148,7 +148,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="xml2.lib glibmm-2.4.lib"
+				AdditionalDependencies="libxml2.lib glibmm-2.4.lib"
 				ModuleDefinitionFile="$(ConfigurationName)\$(InputName).def"
 			/>
 			<Tool

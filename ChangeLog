@@ -1,3 +1,20 @@
+2008-08-10  Armin Burgmeier  <armin@arbur.net>
+
+	* MSVC_Net2005/: Renamed from MSVC_Net2003.
+
+	* MSVC_Net2005/libxml++/libxml++.vcproj: Link against libxml2.lib
+	instead of xml2.lib because that's how it is called in Tor's GTK+
+	bundle.
+
+	* MSVC_Net2005/libxml++/libxml++.rc.in: Removed "#include resource.h"
+	because there is no resource.h.
+
+	* MSVC_Net2005/libxml++/libxml++.sln: Build all examples by default.
+
+	* Makefile.am:
+	* configure.in: Adapt build files for the MSVC_Net2003 -> MSVC_Net2005
+	rename.
+
 2.23.2:
 
 2008-05-05  Murray Cumming  <murrayc@murrayc.com>

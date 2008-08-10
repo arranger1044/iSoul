@@ -156,23 +156,23 @@ AC_OUTPUT(
   win32_msvc6/Makefile
     win32_msvc6/examples/Makefile
 
-  MSVC_Net2003/Makefile
-    MSVC_Net2003/libxml++/Makefile
-    MSVC_Net2003/libxml++/libxml++.rc
-    MSVC_Net2003/gendef/Makefile
-    MSVC_Net2003/examples/Makefile
-      MSVC_Net2003/examples/dom_build/Makefile
-      MSVC_Net2003/examples/dom_parse_entities/Makefile
-      MSVC_Net2003/examples/dom_parser/Makefile
-      MSVC_Net2003/examples/dom_read_write/Makefile
-      MSVC_Net2003/examples/dom_xpath/Makefile
-      MSVC_Net2003/examples/dtdvalidation/Makefile
-      MSVC_Net2003/examples/import_node/Makefile
-      MSVC_Net2003/examples/sax_exception/Makefile
-      MSVC_Net2003/examples/sax_parser/Makefile
-      MSVC_Net2003/examples/sax_parser_build_dom/Makefile
-      MSVC_Net2003/examples/sax_parser_entities/Makefile
-      MSVC_Net2003/examples/textreader/Makefile
+  MSVC_Net2005/Makefile
+    MSVC_Net2005/libxml++/Makefile
+    MSVC_Net2005/libxml++/libxml++.rc
+    MSVC_Net2005/gendef/Makefile
+    MSVC_Net2005/examples/Makefile
+      MSVC_Net2005/examples/dom_build/Makefile
+      MSVC_Net2005/examples/dom_parse_entities/Makefile
+      MSVC_Net2005/examples/dom_parser/Makefile
+      MSVC_Net2005/examples/dom_read_write/Makefile
+      MSVC_Net2005/examples/dom_xpath/Makefile
+      MSVC_Net2005/examples/dtdvalidation/Makefile
+      MSVC_Net2005/examples/import_node/Makefile
+      MSVC_Net2005/examples/sax_exception/Makefile
+      MSVC_Net2005/examples/sax_parser/Makefile
+      MSVC_Net2005/examples/sax_parser_build_dom/Makefile
+      MSVC_Net2005/examples/sax_parser_entities/Makefile
+      MSVC_Net2005/examples/textreader/Makefile
 
   libxml++-2.6.pc
   libxml++.spec
