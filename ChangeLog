@@ -1,3 +1,17 @@
+2008-08-14  Murray Cumming  <murrayc@murrayc.com>
+
+	* examples/dom_parser/Makefile.am:
+	* examples/dom_parser/example_with_namespace.xml:
+	Added an example using namespace prefixes, from bug 
+	#547689.
+	* examples/dom_parser/main.cc: Comment out the call to set_validate(), 
+	because that example does not have a DTD.
+	Show the namespace prefixes in the output.
+	* libxml++/attribute.cc: get_value(): Use xmlGetNsProp() instead of 
+	xmlGetProp(), so we don't ignore the namespace prefix, so we get 
+	the correct value.
+	Bug #547689 (Sergei Fedorov)
+
 2008-08-10  Armin Burgmeier  <armin@arbur.net>
 
 	* MSVC_Net2005/: Renamed from MSVC_Net2003.

@@ -44,13 +44,17 @@ void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
   if(nodeText && nodeText->is_white_space()) //Let's ignore the indenting - you don't always want to do this.
     return;
     
-  Glib::ustring nodename = node->get_name();
+  const Glib::ustring nodename = node->get_name();
 
   if(!nodeText && !nodeComment && !nodename.empty()) //Let's not say "name: text".
   {
     print_indentation(indentation);
-    std::cout << "Node name = " << node->get_name() << std::endl;
-    std::cout << "Node name = " << nodename << std::endl;
+
+    const Glib::ustring namespace_prefix = node->get_namespace_prefix();
+    if(namespace_prefix.empty())
+      std::cout << "Node name = " << nodename << std::endl;
+    else
+      std::cout << "Node name = " << namespace_prefix << ":" << nodename << std::endl;
   }
   else if(nodeText) //Let's say when it's text. - e.g. let's say what that white space is.
   {
@@ -88,14 +92,18 @@ void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
     {
       const xmlpp::Attribute* attribute = *iter;
       print_indentation(indentation);
-      std::cout << "  Attribute " << attribute->get_name() << " = " << attribute->get_value() << std::endl;
+
+      const Glib::ustring namespace_prefix = attribute->get_namespace_prefix();
+      if(namespace_prefix.empty())
+        std::cout << "  Attribute " << attribute->get_name() << " = " << attribute->get_value() << std::endl; 
+      else
+        std::cout << "  Attribute " << namespace_prefix  << ":" << attribute->get_name() << " = " << attribute->get_value() << std::endl;
     }
 
     const xmlpp::Attribute* attribute = nodeElement->get_attribute("title");
     if(attribute)
     {
       std::cout << "title found: =" << attribute->get_value() << std::endl;
-      
     }
   }
   
@@ -123,7 +131,7 @@ int main(int argc, char* argv[])
   {
   #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DomParser parser;
-    parser.set_validate();
+    //parser.set_validate();
     parser.set_substitute_entities(); //We just want the text to be resolved/unescaped automatically.
     parser.parse_file(filepath);
     if(parser)

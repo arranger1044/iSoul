@@ -30,8 +30,21 @@ public:
   explicit Attribute(_xmlNode* node);
   virtual ~Attribute();
   
+  //TODO: Can we remove this and just use Node::get_name()?
+
+  /** Get the name of this attribute.
+   * See also Node::get_namespace_prefix() and Node::get_namespace_uri()
+   * @returns The attributes's name.
+   */
   Glib::ustring get_name() const;
+
+  /** Get the value of this attribute.
+   * @returns The attributes's value.
+   */
   Glib::ustring get_value() const;
+
+  /** Set the value of this attribute.
+   */
   void set_value(const Glib::ustring& value);
 
   ///Access the underlying libxml implementation.

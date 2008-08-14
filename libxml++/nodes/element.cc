@@ -39,7 +39,7 @@ const Element::AttributeList Element::get_attributes() const
 Attribute* Element::get_attribute(const Glib::ustring& name,
                                   const Glib::ustring& ns_prefix) const
 {
-  if (ns_prefix.empty())
+  if(ns_prefix.empty())
   {
     xmlAttr* attr = xmlHasProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str());
     if( attr )

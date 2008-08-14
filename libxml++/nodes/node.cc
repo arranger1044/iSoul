@@ -348,7 +348,7 @@ Glib::ustring Node::get_namespace_uri() const
     return Glib::ustring();
   }
 
-   if(impl_ && impl_->ns && impl_->ns->href)
+  if(impl_ && impl_->ns && impl_->ns->href)
     return (char*)impl_->ns->href;
   else
     return Glib::ustring();

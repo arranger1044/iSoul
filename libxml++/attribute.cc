@@ -27,7 +27,11 @@ Glib::ustring Attribute::get_name() const
 
 Glib::ustring Attribute::get_value() const
 {
-  xmlChar *value = xmlGetProp(cobj()->parent, cobj()->name);
+  const xmlChar* ns_prefix = NULL;
+  if(cobj()->ns)
+    ns_prefix = cobj()->ns->prefix;
+
+  xmlChar *value = xmlGetNsProp(cobj()->parent, cobj()->name, ns_prefix);
   Glib::ustring retn = value ? (char *)value : "";
   xmlFree(value);
   return retn;
