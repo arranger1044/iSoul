@@ -22,17 +22,17 @@ Attribute::~Attribute()
 
 Glib::ustring Attribute::get_name() const
 {
-  return cobj()->name ? (char*)cobj()->name : "";
+  return cobj()->name ? (char*)cobj()->name : Glib::ustring();
 }
 
 Glib::ustring Attribute::get_value() const
 {
-  const xmlChar* ns_prefix = NULL;
+  const xmlChar* ns_uri = NULL;
   if(cobj()->ns)
-    ns_prefix = cobj()->ns->prefix;
+    ns_uri = cobj()->ns->href;
 
-  xmlChar *value = xmlGetNsProp(cobj()->parent, cobj()->name, ns_prefix);
-  Glib::ustring retn = value ? (char *)value : "";
+  xmlChar *value = xmlGetNsProp(cobj()->parent, cobj()->name, ns_uri);
+  const Glib::ustring retn = value ? (char*)value : Glib::ustring();
   xmlFree(value);
   return retn;
 }
