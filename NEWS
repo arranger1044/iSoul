@@ -1,3 +1,10 @@
+2.23.3:
+
+* Attribute: Return the correct value even when using a namespace.
+  (Murray Cumming) Bug #547689 (Sergei Fedorov)
+* Fixed MSVC++ Windows build.
+  (Armin Burgmeier)
+
 2.23.2:
 
 * SaxParser: added parse_chunk_raw().

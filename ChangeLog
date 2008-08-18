@@ -1,3 +1,5 @@
+2.23.3:
+
 2008-08-16  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/attribute.cc: get_value(): xmlGetNsProp() takes the 
