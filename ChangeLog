@@ -1,3 +1,12 @@
+2008-10-09  Armin Burgmeier  <armin@openismus.com>
+
+	* MSVC_Net2005/*/*.vcproj: Adapt the new DLL naming convention.
+
+	* MSVC_Net2008/: Added project files for Visual Studio 2008.
+
+	* Makefile.am:
+	* configure.in: Added the new files to the distribution.
+
 2.24.0:
 
 	* configure.in: Increased version to match GNOME 2.24:
