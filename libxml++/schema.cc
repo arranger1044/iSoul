@@ -65,6 +65,10 @@ void Schema::release_underlying()
   if(embedded_doc_ && impl_ && impl_->doc->_private)
   {
     delete (Document*) impl_->doc->_private;
+
+    if(impl)
+      xmlSchemaFree(impl_);
+
     impl_ = 0;
     embedded_doc_ = false;
   }

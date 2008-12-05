@@ -1,3 +1,8 @@
+2008-12-05  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/schema.cc: release_underlying(): Use xmlSchemaFree() 
+	to avoid a leak, as suggested by Balazs Tirpak. Bug #312216.
+
 2008-10-09  Armin Burgmeier  <armin@openismus.com>
 
 	* MSVC_Net2005/*/*.vcproj: Adapt the new DLL naming convention.
