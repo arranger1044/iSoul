@@ -1,3 +1,10 @@
+2008-12-08  Murray Cumming  <murrayc@murrayc.com>
+
+	* libxml++/validators/validator.cc: check_for_exception(): Use an 
+	auto_ptr<> to avoid leaking the exception, as in 
+	Parser::check_for_exception().
+	Bug #563321 (Arjan Franzen)
+
 2008-12-05  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/schema.cc: release_underlying(): Use xmlSchemaFree() 
