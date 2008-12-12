@@ -66,7 +66,7 @@ void Schema::release_underlying()
   {
     delete (Document*) impl_->doc->_private;
 
-    if(impl)
+    if(impl_)
       xmlSchemaFree(impl_);
 
     impl_ = 0;

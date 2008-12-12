@@ -1,3 +1,7 @@
+2008-12-12  Przemysław Grzegorczyk  <pgrzegorczyk@gmail.com>
+
+	* libxml++/schema.cc: Fix a typo to fix the build.
+
 2008-12-08  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/validators/validator.cc: check_for_exception(): Use an 
