@@ -1,3 +1,21 @@
+2008-12-12  Armin Burgmeier  <armin@openismus.com>
+
+	* MSVC_Net2005/libxml++/libxml++.vcproj:
+	* MSVC_Net2008/libxml++/libxml++.vcproj: Added schema.cc and
+	schemavalidator.cc to the project. Bug #563664 (Arjan Franzen).
+
+	* MSVC_Net2005/examples/schemavalidation/schemavalidation.vcproj:
+	* MSVC_Net2005/examples/schemavalidation/Makefile.am:
+	* MSVC_Net2005/examples/Makefile.am:
+	* MSVC_Net2005/libxml++.sln: Added the schema validator example to the
+	MSVC8 solution file.
+
+	* MSVC_Net2008/examples/schemavalidation/schemavalidation.vcproj:
+	* MSVC_Net2008/examples/schemavalidation/Makefile.am:
+	* MSVC_Net2008/examples/Makefile.am:
+	* MSVC_Net2008/libxml++.sln: Added the schema validator example to the
+	MSVC9 solution file.
+
 2008-12-12  Przemysław Grzegorczyk  <pgrzegorczyk@gmail.com>
 
 	* libxml++/schema.cc: Fix a typo to fix the build.

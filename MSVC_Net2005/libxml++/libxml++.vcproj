@@ -306,6 +306,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath="..\..\libxml++\schema.cc"
+				>
+			</File>
 			<Filter
 				Name="exceptions"
 				>
@@ -746,6 +750,10 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\libxml++\validators\schemavalidator.cc"
+					>
+				</File>
+				<File
 					RelativePath="..\..\libxml++\validators\validator.cc"
 					>
 					<FileConfiguration
@@ -794,6 +802,10 @@
 			</File>
 			<File
 				RelativePath="..\..\libxml++\noncopyable.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\libxml++\schema.h"
 				>
 			</File>
 			<Filter
@@ -897,6 +909,10 @@
 				>
 				<File
 					RelativePath="..\..\libxml++\validators\dtdvalidator.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\libxml++\validators\schemavalidator.h"
 					>
 				</File>
 				<File
