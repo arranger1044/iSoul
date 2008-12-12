@@ -1,3 +1,12 @@
+2.24.1:
+
+* Added new Schema and SchemaValidator classes to MSVC project files
+  (Arjan Franzen, Arming Burgmeier) Bug #563664.
+* Avoid a memory leak in Validator::check_for_exception.
+  (Arjan Franzen, Murray Cumming) Bug #563321.
+* Avoid a memory leak in schema class.
+  (Balazs Tirpak, Murray Cumming) Bug #312216.
+
 2.24.0:
 
 Changes since 2.22:
