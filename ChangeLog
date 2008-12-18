@@ -1,3 +1,9 @@
+2008-12-18  Armin Burgmeier  <armin@openismus.com>
+
+	* win32_msvc6/:
+	* Makefile.am:
+	* configure.in: Removed outdated MSVC6 project.
+
 2.24.1:
 
 2008-12-12  Armin Burgmeier  <armin@openismus.com>
@@ -5,7 +11,7 @@
 	* MSVC_Net2008/examples/sax_parser/sax_parser.vcproj.HALLWA.Armin.user:
 	Removed this generated file. It went in by accident.
 
-	* MSVC_Net2008/exapmles/sax_parser/sax_parser.vcproj: Added the
+	* MSVC_Net2008/examples/sax_parser/sax_parser.vcproj: Added the
 	example project file instead, which should have been added from the
 	beginning.
 
