@@ -1,3 +1,5 @@
+2.24.2:
+
 2008-12-20  Armin Burgmeier  <armin@openismus.com>
 
 	* libxml++/schema.cc (set_document): Set embedded_doc_ according to

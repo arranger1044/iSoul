@@ -1,3 +1,10 @@
+2.24.2:
+
+* Fixed another two memory leaks.
+  (Armin Burgmeier) Bug #563321 (Arjan Franzen)
+* Removed obsolete MSVC6 project files
+  (Armin Burgmeier)
+
 2.24.1:
 
 * Added new Schema and SchemaValidator classes to MSVC project files
