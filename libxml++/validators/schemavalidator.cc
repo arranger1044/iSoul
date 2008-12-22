@@ -14,6 +14,22 @@
 #include <sstream>
 #include <iostream>
 
+namespace
+{
+  // This class simply holds a xmlSchemaParserCtxtPtr and releases it on
+  // destruction. This way, we make sure we don't leak it in either case,
+  // even when an exception is thrown.
+  class XmlSchemaParserContextHolder
+  {
+  public:
+    XmlSchemaParserContextHolder(xmlSchemaParserCtxtPtr ptr): ptr_(ptr) {}
+    ~XmlSchemaParserContextHolder() { xmlSchemaFreeParserCtxt(ptr_); }
+
+  private:
+    xmlSchemaParserCtxtPtr ptr_;
+  };
+}
+
 namespace xmlpp
 {
 
@@ -70,22 +86,22 @@ void SchemaValidator::parse_context(_xmlSchemaParserCtxt* context)
 void SchemaValidator::parse_file(const Glib::ustring& filename)
 {
   xmlSchemaParserCtxtPtr ctx = xmlSchemaNewParserCtxt( filename.c_str() );
+  XmlSchemaParserContextHolder holder(ctx);
   parse_context( ctx );
-  xmlSchemaFreeParserCtxt( ctx );
 }
 
 void SchemaValidator::parse_memory(const Glib::ustring& contents)
 {
   xmlSchemaParserCtxtPtr ctx = xmlSchemaNewMemParserCtxt( contents.c_str(), contents.bytes() );
+  XmlSchemaParserContextHolder holder(ctx);
   parse_context( ctx );
-  xmlSchemaFreeParserCtxt( ctx );
 }
 
 void SchemaValidator::parse_document(Document& document)
 {
   xmlSchemaParserCtxtPtr ctx = xmlSchemaNewDocParserCtxt( document.cobj() );
+  XmlSchemaParserContextHolder holder(ctx);
   parse_context( ctx );
-  xmlSchemaFreeParserCtxt( ctx );
 }
 
 void SchemaValidator::set_schema(Schema* schema)

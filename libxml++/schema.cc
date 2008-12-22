@@ -41,7 +41,7 @@ void Schema::set_document(Document* document, bool embed)
   if ( !impl_ )
    throw parse_error("Schema could not be parsed");
   impl_->_private = this;
-  embedded_doc_ = false;
+  embedded_doc_ = embed;
   xmlSchemaFreeParserCtxt( context );
 }
 
@@ -65,12 +65,13 @@ void Schema::release_underlying()
   if(embedded_doc_ && impl_ && impl_->doc->_private)
   {
     delete (Document*) impl_->doc->_private;
-
-    if(impl_)
-      xmlSchemaFree(impl_);
-
-    impl_ = 0;
     embedded_doc_ = false;
+  }
+
+  if(impl_)
+  {
+    xmlSchemaFree(impl_);
+    impl_ = 0;
   }
 }
 

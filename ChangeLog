@@ -1,3 +1,15 @@
+2008-12-20  Armin Burgmeier  <armin@openismus.com>
+
+	* libxml++/schema.cc (set_document): Set embedded_doc_ according to
+	the embed parameter instead of always setting it to false, so that we
+	actually release the document in release_underlying().
+	(release_underlying): Free the schema in all cases, also when the
+	document was not embedded, to avoid a memory leak.
+
+	* libxml++/validators/schemavalidator.cc (parse_file, parse_memory,
+	parse_document): Make sure not to leak the xmlSchemaParserCtxtPtr in
+	case of an exception. Bug #563321, Arjan Franzen.
+
 2008-12-18  Armin Burgmeier  <armin@openismus.com>
 
 	* win32_msvc6/:
