@@ -199,10 +199,15 @@ class TextReader: NonCopyable
     struct PropertyReader;
     friend struct PropertyReader;
 
-    std::auto_ptr<PropertyReader> propertyreader;
+    void setup_exceptions();
+    static void on_libxml_error(void * arg, const char *msg, int severity,
+                              void * locator);
     void check_for_exceptions() const;
 
+    std::auto_ptr<PropertyReader> propertyreader;
     _xmlTextReader* impl_;
+    int severity_;
+    Glib::ustring error_;
 };
 
 }

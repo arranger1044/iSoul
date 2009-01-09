@@ -1,3 +1,14 @@
+2009-01-09  Stef Walter  <stef-list@memberwebs.com>
+
+	* libxml++/parsers/textreader.[h|cc]: Add setup_exceptions(), setting 
+	the on_libxml_error() callback, and call it from the constructors.
+	check_for_exceptions(): Actually check some member variables and throw an 
+	exception if necessary.
+	This should fix bug #348006.
+	It breaks ABI because it adds member variables, but we decided that is 
+	OK because nobody could actually be using this class seriously before 
+	now because it had no error checking.
+
 2.24.2:
 
 2008-12-20  Armin Burgmeier  <armin@openismus.com>

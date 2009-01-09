@@ -1,5 +1,7 @@
 #include <libxml++/parsers/textreader.h>
 #include <libxml++/exceptions/internal_error.h>
+#include <libxml++/exceptions/parse_error.h>
+#include <libxml++/exceptions/validity_error.h>
 
 #include <libxml/xmlreader.h>
 
@@ -24,7 +26,7 @@ TextReader::TextReader(
     struct _xmlTextReader* cobj)
     : propertyreader(new PropertyReader(*this)), impl_( cobj )
 {
-	
+  setup_exceptions();
 }
 
 TextReader::TextReader(
@@ -40,6 +42,8 @@ TextReader::TextReader(
     throw internal_error("Cannot instantiate underlying libxml2 structure");
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
+
+  setup_exceptions();
 }
 
 TextReader::TextReader(
@@ -52,6 +56,8 @@ TextReader::TextReader(
     throw internal_error("Cannot instantiate underlying libxml2 structure");
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
+
+  setup_exceptions();
 }
 
 TextReader::~TextReader()
@@ -335,14 +341,49 @@ bool TextReader::is_valid() const
       xmlTextReaderIsValid(impl_));
 }
 
+void TextReader::setup_exceptions()
+{
+  xmlTextReaderErrorFunc func = NULL;
+  void* arg = NULL; 
 
+  // We respect any other error handlers already setup:
+  xmlTextReaderGetErrorHandler(impl_, &func, &arg);
+  if(!func)
+  {
+     func = (xmlTextReaderErrorFunc)&TextReader::on_libxml_error;
+     xmlTextReaderSetErrorHandler(impl_, func, this);
+  }
+}
 
+void TextReader::on_libxml_error(void* arg, const char* msg, int severity, void* locator)
+{
+  TextReader* ths = (TextReader*)arg;
+  ths->severity_ = severity;
+  ths->error_ = msg ? msg : "unknown parse error";
+}
+
+void TextReader::check_for_exceptions() const
+{
+  if( severity_ == 0 )
+    return;
+    
+  TextReader* ths = const_cast<TextReader*>(this);
+
+  int severity = severity_;
+  ths->severity_ = 0;
+
+  if( severity == XML_PARSER_SEVERITY_ERROR )
+    throw parse_error(error_);
+  else if( severity == XML_PARSER_SEVERITY_VALIDITY_ERROR )
+    throw validity_error(error_);
+}
 
 int TextReader::PropertyReader::Int(
     int value)
 {
   if(value == -1)
     owner_.check_for_exceptions();
+
   return value;
 }
 
@@ -388,11 +429,6 @@ Glib::ustring TextReader::PropertyReader::String(
     return Glib::ustring();
 
   return (const char *)value;
-}
-
-void TextReader::check_for_exceptions() const
-{
-  //TODO: Shouldn't we do something here? murrayc.
 }
 
 } // namespace xmlpp
