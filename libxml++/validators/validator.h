@@ -16,10 +16,6 @@
 #include <libxml++/exceptions/validity_error.h>
 #include <libxml++/exceptions/internal_error.h>
 
-#ifdef WIN32 //TODO: Why do we do this? murrayc.
-#define vsnprintf _vsnprintf
-#endif
-
 extern "C" {
   struct _xmlValidCtxt;
 }

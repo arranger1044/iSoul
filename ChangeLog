@@ -1,3 +1,13 @@
+2009-03-02  Armin Burgmeier  <armin@openismus.com>
+
+	* libxml++/validators/validator.h:
+	* libxml++/parsers/parser.h: Removed the vsnprintf #define on Windows.
+	This could conflict with another define otherwise. Both MSVC and MinGW
+	have vsnprintf (without underscore) as well, and I verified libxml++
+	still compiles in both. If we still need the definition for some
+	reason, then we should re-add it into the source files, so that other
+	libraries don't conflict with our definition.
+
 2009-01-09  Stef Walter  <stef-list@memberwebs.com>
 
 	* libxml++/parsers/textreader.[h|cc]: Add setup_exceptions(), setting 

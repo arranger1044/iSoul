@@ -17,10 +17,6 @@
 
 #include <istream>
 
-#ifdef WIN32 //TODO: Why do we do this? murrayc.
-#define vsnprintf _vsnprintf
-#endif
-
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 extern "C" {
   struct _xmlParserCtxt;
