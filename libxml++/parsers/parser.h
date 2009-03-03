@@ -78,6 +78,8 @@ public:
    */
   virtual void parse_stream(std::istream& in) = 0;
 
+  //TODO: Add stop_parser()/stop_parsing(), wrapping XmlStopParser()?
+
 protected:
   virtual void initialize_context();
   virtual void release_underlying();

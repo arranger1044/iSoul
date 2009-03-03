@@ -1,3 +1,12 @@
+2.24.3
+
+* TextReader: Actually throw exceptions on errors.
+  (This breaks ABI but we do not believe that this class could be used with 
+  this problem so it should not actually break any application.)
+  Bug #348006.
+* Build: Windows: Remove unnecessary vsnprint define.
+  (Armin Burgmeier)
+
 2.24.2:
 
 * Fixed another two memory leaks.
