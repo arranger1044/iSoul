@@ -1,3 +1,7 @@
+2.26.0:
+
+* Increased version number to match GNOME 2.26.
+
 2.24.3
 
 * TextReader: Actually throw exceptions on errors.

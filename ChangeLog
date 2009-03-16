@@ -1,3 +1,9 @@
+2.26.0:
+
+2009-03-16  Murray Cumming  <murrayc@murrayc.com>
+
+	* configure.in: Increased version number to match GNOME 2.26.
+
 2.24.3:
 
 2009-03-02  Armin Burgmeier  <armin@openismus.com>
