@@ -6,7 +6,7 @@
 2009-03-23  Hubert Figuiere  <hub@figuiere.net>
 
 	* libxml++/parsers/textreader.cc: severity_ was not initialised
-	at construction time.
+	at construction time. (Closes #576516)
 
 2.26.0:
 
