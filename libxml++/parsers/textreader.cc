@@ -23,8 +23,9 @@ namespace xmlpp
   };
 
 TextReader::TextReader(
-    struct _xmlTextReader* cobj)
-    : propertyreader(new PropertyReader(*this)), impl_( cobj )
+  struct _xmlTextReader* cobj)
+  : propertyreader(new PropertyReader(*this)), impl_( cobj ),
+    severity_( 0 )
 {
   setup_exceptions();
 }
@@ -34,7 +35,8 @@ TextReader::TextReader(
 	size_type size,
 	const Glib::ustring& uri)
 	: propertyreader(new PropertyReader(*this)), 
-	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), NULL, 0) )
+	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), NULL, 0) ),
+    severity_( 0 )
 {
   if( ! impl_ )
   {
@@ -48,7 +50,8 @@ TextReader::TextReader(
 
 TextReader::TextReader(
     const Glib::ustring& URI)
-  : propertyreader(new PropertyReader(*this)), impl_( xmlNewTextReaderFilename(URI.c_str()) )
+  : propertyreader(new PropertyReader(*this)), impl_( xmlNewTextReaderFilename(URI.c_str()) ),
+    severity_( 0 )
 {
   if( ! impl_ )
   {
