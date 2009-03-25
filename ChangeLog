@@ -1,3 +1,8 @@
+2009-03-25  Hubert Figuiere  <hub@figuiere.net>
+
+	* libxml++/parsers/saxparser.h: Fix some warnings triggered
+	by -Wshadow.
+
 2009-03-23  Hubert Figuiere  <hub@figuiere.net>
 
 	* libxml++/parsers/textreader.cc: severity_ was not initialised

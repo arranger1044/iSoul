@@ -38,8 +38,8 @@ public:
     Glib::ustring name;
     Glib::ustring value;
 
-    Attribute(Glib::ustring const & name, Glib::ustring const & value)
-      : name(name), value(value)
+    Attribute(Glib::ustring const & n, Glib::ustring const & v)
+      : name(n), value(v)
       {
       }
   };
@@ -59,8 +59,8 @@ public:
   {
     Glib::ustring const & name;
 
-    AttributeHasName(Glib::ustring const & name)
-      : name(name)
+    AttributeHasName(Glib::ustring const & n)
+      : name(n)
       {
       }
 
