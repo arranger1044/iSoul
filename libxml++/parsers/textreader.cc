@@ -377,10 +377,13 @@ void TextReader::check_for_exceptions() const
   int severity = severity_;
   ths->severity_ = 0;
 
+  //TODO: Offer an alternative when not using exceptions?
+  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if( severity == XML_PARSER_SEVERITY_ERROR )
     throw parse_error(error_);
   else if( severity == XML_PARSER_SEVERITY_VALIDITY_ERROR )
     throw validity_error(error_);
+  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 }
 
 int TextReader::PropertyReader::Int(int value)

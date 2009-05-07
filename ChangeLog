@@ -1,3 +1,11 @@
+2009-05-07  Murray Cumming  <murrayc@murrayc-x61>
+
+	Fix the build without exceptions, hopefully.
+
+	* libxml++/parsers/textreader.cc: check_for_exceptions(): 
+	Add an ifdef so that this should build with exceptions disabled, 
+	though there is no alternative API yet. Noticed by David King.
+
 2009-05-07  Murray Cumming  <murrayc@murrayc.com>
 
 	* libxml++/parsers/textreader.cc: Whitespace corrections.
