@@ -8,19 +8,21 @@
 namespace xmlpp
 {
   
-  struct TextReader::PropertyReader
-  {
-    TextReader & owner_;
-    PropertyReader(TextReader & owner)
-    : owner_(owner)
-    {}
+class TextReader::PropertyReader
+{
+public:
+  PropertyReader(TextReader& owner)
+  : owner_(owner)
+  {}
 
-    int Int(int value);
-    bool Bool(int value);
-    char Char(int value);
-    Glib::ustring String(xmlChar * value, bool free = false);
-    Glib::ustring String(xmlChar const * value);
-  };
+  int Int(int value);
+  bool Bool(int value);
+  char Char(int value);
+  Glib::ustring String(xmlChar* value, bool free = false);
+  Glib::ustring String(xmlChar const* value);
+
+  TextReader & owner_;
+};
 
 TextReader::TextReader(
   struct _xmlTextReader* cobj)
@@ -381,8 +383,7 @@ void TextReader::check_for_exceptions() const
     throw validity_error(error_);
 }
 
-int TextReader::PropertyReader::Int(
-    int value)
+int TextReader::PropertyReader::Int(int value)
 {
   if(value == -1)
     owner_.check_for_exceptions();
@@ -390,8 +391,7 @@ int TextReader::PropertyReader::Int(
   return value;
 }
 
-bool TextReader::PropertyReader::Bool(
-    int value)
+bool TextReader::PropertyReader::Bool(int value)
 {
   if(value == -1)
     owner_.check_for_exceptions();
@@ -399,23 +399,20 @@ bool TextReader::PropertyReader::Bool(
   return value;
 }
 
-char TextReader::PropertyReader::Char(
-    int value)
+char TextReader::PropertyReader::Char(int value)
 {
   owner_.check_for_exceptions();
   return value;
 }
 
-Glib::ustring TextReader::PropertyReader::String(
-    xmlChar * value,
-    bool free)
+Glib::ustring TextReader::PropertyReader::String(xmlChar* value, bool free)
 {
   owner_.check_for_exceptions();
   
   if(value == (xmlChar *)0)
     return Glib::ustring();
     
-  Glib::ustring result = (char *)value;
+  const Glib::ustring result = (char *)value;
 
   if(free)
     xmlFree(value);
@@ -423,15 +420,14 @@ Glib::ustring TextReader::PropertyReader::String(
   return result;
 }
 
-Glib::ustring TextReader::PropertyReader::String(
-    xmlChar const * value)
+Glib::ustring TextReader::PropertyReader::String(xmlChar const* value)
 {
   owner_.check_for_exceptions();
 
   if(value == (xmlChar *)0)
     return Glib::ustring();
 
-  return (const char *)value;
+  return (const char*)value;
 }
 
 } // namespace xmlpp
