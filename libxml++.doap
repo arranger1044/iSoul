@@ -8,16 +8,17 @@
   <shortdesc xml:lang="en">C++ bindings for libxml2</shortdesc>
   <homepage rdf:resource="http://www.gtkmm.org/" />
   <mailing-list rdf:resource="mailto:gtkmm-list@gnome.org" />
+  <category rdf:resource="http://api.gnome.org/doap-extensions#bindings" />
 
   <maintainer>
     <foaf:Person>
       <foaf:name>Murray Cumming</foaf:name>
-      <foaf:mbox rdf:resource="murrayc@murrayc.com" />
+      <foaf:mbox rdf:resource="mailto:murrayc@murrayc.com" />
       <gnome:userid>murrayc</gnome:userid>
     </foaf:Person>
     <foaf:Person>
       <foaf:name>Christophe de Vienne</foaf:name>
-      <foaf:mbox rdf:resource="cdevienn@src.gnome.org" />
+      <foaf:mbox rdf:resource="mailto:cdevienn@src.gnome.org" />
       <gnome:userid>cdevienn</gnome:userid>
     </foaf:Person>
   </maintainer>
