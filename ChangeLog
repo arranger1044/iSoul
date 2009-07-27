@@ -1,4 +1,11 @@
-2009-05-07  Murray Cumming  <murrayc@murrayc-x61>
+2009-07-27  Johannes Schmid <jschmid@openismus.com> 
+
+	New tarball release
+
+	* configure.in: Updated version to 2.26.1
+	* NEWS: updated
+
+2009-05-07  Murray Cumming  <murrayc@murrayc.com>
 
 	Fix the build without exceptions, hopefully.
 
