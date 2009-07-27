@@ -33,6 +33,7 @@ MySaxParser::~MySaxParser()
 {
 }
 
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
 void MySaxParser::on_start_document()
 {
   std::cout << "on_start_document()" << std::endl;
@@ -135,4 +136,4 @@ void MySaxParser::on_fatal_error(const Glib::ustring& text)
     std::cerr << "MySaxParser::on_characters(): Exception caught while converting value for std::cout: " << ex.what() << std::endl;
   }
 }
-
+#endif

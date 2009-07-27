@@ -38,8 +38,10 @@ void Schema::set_document(Document* document, bool embed)
 
   xmlSchemaParserCtxtPtr context = xmlSchemaNewDocParserCtxt( document->cobj() );
   impl_ = xmlSchemaParse( context );
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if ( !impl_ )
    throw parse_error("Schema could not be parsed");
+#endif
   impl_->_private = this;
   embedded_doc_ = embed;
   xmlSchemaFreeParserCtxt( context );

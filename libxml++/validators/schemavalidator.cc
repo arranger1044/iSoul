@@ -74,8 +74,10 @@ void SchemaValidator::parse_context(_xmlSchemaParserCtxt* context)
   release_underlying(); // Free any existing dtd.
 
   xmlSchema* schema = xmlSchemaParse( context );
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if ( ! schema )
    throw parse_error("Schema could not be parsed");
+#endif
 
   schema->_private = new Schema(schema);
 
@@ -153,20 +155,26 @@ void SchemaValidator::initialize_valid()
 
 bool SchemaValidator::validate(const Document* doc)
 {
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if (!doc)
     throw internal_error("Document pointer cannot be 0");
+#endif
 
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if (!schema_)
     throw internal_error("Must have a schema to validate document");
+#endif
 
   // A context is required at this stage only
   if (!ctxt_)
     ctxt_ = xmlSchemaNewValidCtxt( schema_->cobj() );
 
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if(!ctxt_)
   {
     throw internal_error("Couldn't create validating context");
   }
+#endif
 
   initialize_valid();
 
@@ -175,7 +183,9 @@ bool SchemaValidator::validate(const Document* doc)
   if(res != 0)
   {
     check_for_exception();
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw validity_error("Document failed schema validation");
+#endif
   }
 
   return res;
@@ -183,21 +193,25 @@ bool SchemaValidator::validate(const Document* doc)
 
 bool SchemaValidator::validate(const Glib::ustring& file)
 {
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if (file.empty())
     throw internal_error("File path must not be empty");
+#endif
 
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if (!schema_)
     throw internal_error("Must have a schema to validate document");
-
+#endif
   // A context is required at this stage only
   if (!ctxt_)
     ctxt_ = xmlSchemaNewValidCtxt( schema_->cobj() );
 
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   if(!ctxt_)
   {
     throw internal_error("Couldn't create validating context");
   }
-
+#endif
   initialize_valid();
 
   int res = xmlSchemaValidateFile( ctxt_, file.c_str(), 0 );
@@ -205,7 +219,9 @@ bool SchemaValidator::validate(const Glib::ustring& file)
   if(res != 0)
   {
     check_for_exception();
+#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw validity_error("Document failed schema validation");
+#endif
   }
 
   return res;
