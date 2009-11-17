@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     {
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
       validator.validate( &document );
-      std::cout << "Validation successfull" << std::endl;
+      std::cout << "Validation successful" << std::endl;
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch( const xmlpp::validity_error& )
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
       xmlpp::DtdValidator validator2( dtdfilepath );
       validator2.validate( &document );
-      std::cout << "Validation successfull" << std::endl;
+      std::cout << "Validation successful" << std::endl;
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch( const xmlpp::validity_error& )
