@@ -50,7 +50,7 @@ int main(int argc,char** argv)
 
   FILE * dump; 
   
-  if( (dump = _popen(dumpbin.c_str(),"r")) == NULL ) {
+  if( (dump = _popen(dumpbin.c_str(),"r")) == 0 ) {
 	  cerr << "could not popen dumpbin" << endl;
 	  return 3;
   }
@@ -68,7 +68,7 @@ int main(int argc,char** argv)
   while( !feof(dump)) {
 	  char buf [65000]; 
 	  
-	  if( fgets( buf, 64999, dump ) != NULL ) {
+	  if( fgets( buf, 64999, dump ) != 0 ) {
 		  if(!strstr(buf," UNDEF ") && strstr(buf," External ")) {
 			  char *s = strchr(buf,'|') + 1;
 			  while(*s == ' ' || *s == '\t') s++;

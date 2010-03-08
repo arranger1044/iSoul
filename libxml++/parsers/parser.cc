@@ -77,7 +77,7 @@ void Parser::release_underlying()
   {
     context_->_private = 0; //Not really necessary.
     
-    if( context_->myDoc != NULL )
+    if( context_->myDoc != 0 )
     {
       xmlFreeDoc(context_->myDoc);
     }

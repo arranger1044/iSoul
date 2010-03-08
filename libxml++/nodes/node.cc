@@ -28,13 +28,13 @@ Node::~Node()
 const Element* Node::get_parent() const
 {
   return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
-             static_cast<const Element*>(cobj()->parent->_private) : NULL;
+             static_cast<const Element*>(cobj()->parent->_private) : 0;
 }
 
 Element* Node::get_parent()
 {
   return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
-            static_cast<Element*>(cobj()->parent->_private) : NULL;
+            static_cast<Element*>(cobj()->parent->_private) : 0;
 }
 
 const Node* Node::get_next_sibling() const
@@ -45,7 +45,7 @@ const Node* Node::get_next_sibling() const
 Node* Node::get_next_sibling()
 {
   return cobj()->next ? 
-	        static_cast<Node*>(cobj()->next->_private) : NULL;
+	        static_cast<Node*>(cobj()->next->_private) : 0;
 }
 
 const Node* Node::get_previous_sibling() const
@@ -56,7 +56,7 @@ const Node* Node::get_previous_sibling() const
 Node* Node::get_previous_sibling()
 {
   return cobj()->prev ? 
-            static_cast<Node*>(cobj()->prev->_private) : NULL;
+            static_cast<Node*>(cobj()->prev->_private) : 0;
 }
 
 Node::NodeList Node::get_children(const Glib::ustring& name)

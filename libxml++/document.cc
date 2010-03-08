@@ -195,8 +195,8 @@ void Document::set_internal_subset(const Glib::ustring& name,
 {
   xmlDtd* dtd = xmlCreateIntSubset(impl_,
 				   (const xmlChar*)name.c_str(),
-				   external_id.empty() ? (const xmlChar*)NULL : (const xmlChar*)external_id.c_str(),
-				   system_id.empty() ? (const xmlChar*)NULL : (const xmlChar*)system_id.c_str());
+				   external_id.empty() ? (const xmlChar*)0 : (const xmlChar*)external_id.c_str(),
+				   system_id.empty() ? (const xmlChar*)0 : (const xmlChar*)system_id.c_str());
            
   if (dtd && !dtd->_private)
     dtd->_private = new Dtd(dtd);
@@ -304,7 +304,7 @@ void Document::do_write_to_file(
   xmlIndentTreeOutput = format?1:0;
   int result = 0;
 
-  result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty()?NULL:encoding.c_str(), format?1:0);
+  result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
 
   if(result == -1)
   {
@@ -325,7 +325,7 @@ Glib::ustring Document::do_write_to_string(
   xmlChar* buffer = 0;
   int length = 0;
 
-  xmlDocDumpFormatMemoryEnc(impl_, &buffer, &length, encoding.empty()?NULL:encoding.c_str(), format?1:0);
+  xmlDocDumpFormatMemoryEnc(impl_, &buffer, &length, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
 
   if(!buffer)
   {

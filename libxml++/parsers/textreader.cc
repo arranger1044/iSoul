@@ -37,7 +37,7 @@ TextReader::TextReader(
 	size_type size,
 	const Glib::ustring& uri)
 	: propertyreader(new PropertyReader(*this)), 
-	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), NULL, 0) ),
+	  impl_( xmlReaderForMemory ((const char*)data, size, uri.c_str(), 0, 0) ),
     severity_( 0 )
 {
   if( ! impl_ )
@@ -348,8 +348,8 @@ bool TextReader::is_valid() const
 
 void TextReader::setup_exceptions()
 {
-  xmlTextReaderErrorFunc func = NULL;
-  void* arg = NULL; 
+  xmlTextReaderErrorFunc func = 0;
+  void* arg = 0; 
 
   // We respect any other error handlers already setup:
   xmlTextReaderGetErrorHandler(impl_, &func, &arg);

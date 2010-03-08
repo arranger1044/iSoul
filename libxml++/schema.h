@@ -33,18 +33,18 @@ public:
   explicit Schema(_xmlSchema* schema);
 
   /** Create a schema from a XML document.
-   * @param document XMLSchema document, NULL to create an empty schema document.
+   * @param document XMLSchema document, 0 to create an empty schema document.
    * @param embed If true, the document will be deleted when
    *   the schema is deleted or another document is set.
    */
-  explicit Schema(Document* document = NULL, bool embed = false);
+  explicit Schema(Document* document = 0, bool embed = false);
   ~Schema();
 
   /** Set a new document to the schema.
-   * @param document XMLSchema document, NULL to create an empty schema document.
+   * @param document XMLSchema document, 0 to create an empty schema document.
    * @param embed If true, the document will be deleted when the schema is deleted or another document is set.
    */
-  virtual void set_document(Document* document = NULL, bool embed = false);
+  virtual void set_document(Document* document = 0, bool embed = false);
 
   Glib::ustring get_name() const;
   Glib::ustring get_target_namespace() const;

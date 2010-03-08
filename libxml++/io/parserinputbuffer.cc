@@ -39,7 +39,7 @@ namespace xmlpp
         &ParserInputBufferCallback::on_close,
         static_cast<void*>(this),
         XML_CHAR_ENCODING_NONE);
-    if(impl_ == NULL)
+    if(impl_ == 0)
     {
       #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw internal_error("Cannot initialise underlying xmlParserInputBuffer");

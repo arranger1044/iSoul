@@ -140,7 +140,7 @@ void DomParser::parse_context()
   doc_ = new Document(context_->myDoc);
   // This is to indicate to release_underlying that we took the
   // ownership on the doc.
-  context_->myDoc = NULL;
+  context_->myDoc = 0;
 
   //Free the parse context, but keep the document alive so people can navigate the DOM tree:
   //TODO: Why not keep the context alive too?
@@ -217,7 +217,7 @@ void DomParser::parse_stream(std::istream& in)
   doc_ = new Document(context_->myDoc);
   // This is to indicate to release_underlying that we took the
   // ownership on the doc.
-  context_->myDoc = NULL;
+  context_->myDoc = 0;
 
 
   //Free the parse context, but keep the document alive so people can navigate the DOM tree:

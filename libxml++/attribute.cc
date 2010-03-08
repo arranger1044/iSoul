@@ -27,7 +27,7 @@ Glib::ustring Attribute::get_name() const
 
 Glib::ustring Attribute::get_value() const
 {
-  const xmlChar* ns_uri = NULL;
+  const xmlChar* ns_uri = 0;
   if(cobj()->ns)
     ns_uri = cobj()->ns->href;
 

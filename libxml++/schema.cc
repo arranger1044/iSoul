@@ -82,7 +82,7 @@ Document* Schema::get_document()
   if(impl_)
     return (Document*) impl_->doc->_private;
   else
-    return NULL;
+    return 0;
 }
 
 const Document* Schema::get_document()const
@@ -90,7 +90,7 @@ const Document* Schema::get_document()const
   if(impl_)
     return (Document*) impl_->doc->_private;
   else
-    return NULL;
+    return 0;
 }
 
 _xmlSchema* Schema::cobj()
