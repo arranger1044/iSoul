@@ -1,36 +1,73 @@
-SUBDIRS = parsers exceptions nodes io validators
-
-EXTRA_DIST = libxml++config.h.in
-
-INCLUDES = -I$(top_srcdir) @LIBXML_CFLAGS@
+AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I. $(LIBXMLXX_CFLAGS)
 DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
-h_sources_public = libxml++.h attribute.h dtd.h document.h noncopyable.h keepblanks.h schema.h
-h_sources_private = 
-cc_sources = attribute.cc dtd.cc document.cc noncopyable.cc keepblanks.cc schema.cc
-cc_sources_private =
+h_sources_public = libxml++.h \
+	attribute.h \
+	document.h \
+	dtd.h \
+	keepblanks.h \
+	noncopyable.h \
+	schema.h \
+	exceptions/exception.h \
+	exceptions/parse_error.h \
+	exceptions/validity_error.h \
+	exceptions/internal_error.h \
+	io/istreamparserinputbuffer.h \
+	io/outputbuffer.h \
+	io/ostreamoutputbuffer.h \
+	io/parserinputbuffer.h \
+	nodes/cdatanode.h \
+	nodes/commentnode.h \
+	nodes/contentnode.h \
+	nodes/element.h \
+	nodes/entityreference.h \
+	nodes/node.h \
+	nodes/processinginstructionnode.h \
+	nodes/textnode.h \
+	parsers/parser.h \
+	parsers/saxparser.h \
+	parsers/domparser.h \
+	parsers/textreader.h \
+	validators/dtdvalidator.h \
+	validators/schemavalidator.h \
+	validators/validator.h
+cc_sources = attribute.cc \
+	document.cc \
+	dtd.cc \
+	keepblanks.cc \
+	noncopyable.cc \
+	schema.cc \
+	exceptions/exception.cc \
+	exceptions/parse_error.cc \
+	exceptions/validity_error.cc \
+	exceptions/internal_error.cc \
+	io/istreamparserinputbuffer.cc \
+	io/outputbuffer.cc \
+	io/ostreamoutputbuffer.cc \
+	io/parserinputbuffer.cc \
+	nodes/cdatanode.cc \
+	nodes/commentnode.cc \
+	nodes/contentnode.cc \
+	nodes/entityreference.cc \
+	nodes/element.cc \
+	nodes/node.cc \
+	nodes/processinginstructionnode.cc \
+	nodes/textnode.cc \
+	parsers/parser.cc \
+	parsers/saxparser.cc \
+	parsers/domparser.cc \
+	parsers/textreader.cc \
+	validators/dtdvalidator.cc \
+	validators/schemavalidator.cc \
+	validators/validator.cc
 
-# Support for DLL on cygwin/mingw using libtool > 1.4
-if PLATFORM_WIN32
-win32_dlls_ldflags = -no-undefined -Wl,--export-all-symbols
-else
-win32_dlls_ldflags =
-endif
+win32_dlls_ldflags = -no-undefined
 
 lib_LTLIBRARIES = libxml++-2.6.la
-libxml___2_6_la_LDFLAGS = -version-info $(GENERIC_LIBRARY_VERSION) $(win32_dlls_ldflags) 
-libxml___2_6_la_LIBADD = parsers/libparsers.la \
-                         validators/libvalidators.la \
-                         exceptions/libexceptions.la \
-                         nodes/libnodes.la \
-                         io/libio.la \
-						 @LIBXML_LIBS@
-libxml___2_6_la_SOURCES = $(cc_sources) $(h_sources_public) $(h_sources_private) $(cc_sources_private)
+libxml___2_6_la_LDFLAGS = -version-info $(LIBXMLXX_SO_VERSION) $(win32_dlls_ldflags)
+libxml___2_6_la_LIBADD = $(LIBXMLXX_LIBS)
+libxml___2_6_la_SOURCES = $(cc_sources) $(h_sources_public)
 
 # Install the headers:
 library_includedir=$(includedir)/libxml++-2.6/libxml++
 library_include_HEADERS = $(h_sources_public)
-
-library_configdir = $(libdir)/libxml++-2.6/include
-library_config_DATA = libxml++config.h
-

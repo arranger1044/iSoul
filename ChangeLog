@@ -1,6 +1,70 @@
+2010-03-27  David King  <davidk@openismus.com>
+
+	Refactor build system
+
+	* Makefile.am: Merge from subdir Makefile.am files, excluding doc.
+
+	* MSVC_Net2005/examples/dom_parser_raw/dom_parser_raw.vcproj:
+	* MSVC_Net2008/examples/dom_parser_raw/dom_parser_raw.vcproj: Add
+	missing Visual studio project files.
+
+	* MSVC_Net2005/examples/*/Makefile.am:
+	* MSVC_Net2005/examples/Makefile.am:
+	* MSVC_Net2005/gendef/Makefile.am:
+	* MSVC_Net2005/libxml++/Makefile.am:
+	* MSVC_Net2008/examples/*/Makefile.am:
+	* MSVC_Net2008/examples/Makefile.am:
+	* MSVC_Net2008/gendef/Makefile.am:
+	* MSVC_Net2008/libxml++/Makefile.am: Remove from repository, and move
+	content to Makefile.am, making the MSVC project file build
+	non-recursive.
+
+	* README: Update.
+
+	* autogen.sh: Copy from gtkmm.
+
+	* configure.in: Move to configure.ac.
+
+	* configure.ac: Require autoconf 2.59 and automake 1.9. Use new-style
+	AC_INIT() with bug-report link and homepage URL. Use mm-common for
+	initialisation of version variables. Require libtool 2.2.6 for much
+	faster builds. Use MM_ARG_ENABLE_WARNINGS to configure compiler
+	warning flags. Use MM_CHECK_PERL to check for the required Perl
+	version. Use AC_CONFIG_FILES rather than AC_OUTPUT. Update for
+	Makefile.am changes.
+
+	* config.h.in: Remove from repository, as autoheader is now used.
+
+	* */.cvsignore: Remove old files.
+
+	* doc/manual/Makefile.am: Use the correct Perl.
+
+	* doc/reference/Doxyfile.in:
+	* MSVC_Net2005/libxml++/libxml++.rc.in:
+	* MSVC_Net2008/libxml++/libxml++.rc.in: Use new-style variable names.
+
+	* examples/Makefile.am_fragment:
+	* examples/Makefile.am:
+	* examples/*/Makefile.am: Remove from repository, and move content to
+	Makefile.am, making the examples build non-recursive.
+
+	* .gitignore: Update.
+
+	* libxml++/Makefile.am:
+	* libxml++/*/Makefile.am: Remove from repository, and move content to
+	Makefile.am, making the libxml++ build non-recursive.
+
+	* libxml++.spec.in:
+	* INSTALL: Remove from repository.
+
+	* scripts/README:
+	* scripts/Makfile.am: Remove from repository.
+
+	* scripts/reduced.m4: Move to macros/reduced.m4
+
 2010-03-08  Murray Cumming  <murrayc@murrayc.com>
 
-    Use 0 instead of NULL.
+	Use 0 instead of NULL.
 
 	* MSVC_Net2005/gendef/gendef.cc:
 	* MSVC_Net2008/gendef/gendef.cc:

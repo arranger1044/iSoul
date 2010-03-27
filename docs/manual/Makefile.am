@@ -2,7 +2,7 @@ EXTRA_DIST = $(docbook_docs) html libxml++.xml libxml++_without_code.xml insert_
 
 # Create a DocBook source file with the code inline, instead of the special comments.
 libxml++.xml: libxml++_without_code.xml insert_example_code.pl
-	$(PERL_PATH) insert_example_code.pl ../../examples $< >$@
+	$(PERL) insert_example_code.pl ../../examples $< >$@
 
 docbook_docs = $(srcdir)/libxml++.xml
 

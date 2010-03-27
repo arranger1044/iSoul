@@ -16,7 +16,7 @@
 #ifdef GLIBMM_DLL
   #if defined(LIBXMLPP_BUILD) && defined(_WINDLL)
     // Do not dllexport as it is handled by gendef on MSVC
-    #define LIBXMLPP_API 
+    #define LIBXMLPP_API
   #elif !defined(LIBXMLPP_BUILD)
     #define LIBXMLPP_API __declspec(dllimport)
   #else
