@@ -148,7 +148,7 @@ void Parser::on_start_element(const Glib::ustring& name,
   }
 }
 
-void Parser::on_end_element(const Glib::ustring& name)
+void Parser::on_end_element(const Glib::ustring& /* name */)
 {
   // This causes the next child elements to be added to the sibling, not this node.
   m_context.pop();

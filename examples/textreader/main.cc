@@ -42,8 +42,7 @@ std::ostream & operator<<(std::ostream & o, indent const & in)
   return o;
 }
 
- int
-main(int argc, char* argv[])
+int main(int /* argc */, char** /* argv */)
 {
   #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try

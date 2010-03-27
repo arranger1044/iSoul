@@ -29,7 +29,7 @@
 
 
 int
-main(int argc, char* argv[])
+main(int /* argc */, char** /* argv */)
 {
   #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try

@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
     dtdfilepath = "example.dtd";
 
   xmlpp::Document document;
-  xmlpp::Element* nodeRoot = document.create_root_node("incorrect");
+  /* xmlpp::Element* nodeRoot = */document.create_root_node("incorrect");
 
   #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
     }
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
-    xmlpp::Element* nodeRoot2 = document.create_root_node("example");
+    /* xmlpp::Element* nodeRoot2 = */document.create_root_node("example");
     xmlpp::Element * child = document.get_root_node()->add_child("examplechild");
     child->set_attribute("id", "an_id");
     child->add_child("child_of_child");

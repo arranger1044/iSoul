@@ -54,7 +54,7 @@ void MySaxParser::on_start_element(const Glib::ustring& name,
   }
 }
 
-void MySaxParser::on_end_element(const Glib::ustring& name)
+void MySaxParser::on_end_element(const Glib::ustring& /* name */)
 {
   std::cout << "on_end_element()" << std::endl;
 }

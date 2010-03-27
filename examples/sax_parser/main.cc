@@ -59,8 +59,8 @@ main(int argc, char* argv[])
     //std::cout << "Incremental SAX Parser:" << std:endl;
     
     std::ifstream is(filepath.c_str());
-    char buffer[64];
-    const size_t buffer_size = sizeof(buffer) / sizeof(char);
+    /* char buffer[64];
+    const size_t buffer_size = sizeof(buffer) / sizeof(char); */
 
     //Parse the file:
     MySaxParser parser;

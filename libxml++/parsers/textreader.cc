@@ -360,7 +360,7 @@ void TextReader::setup_exceptions()
   }
 }
 
-void TextReader::on_libxml_error(void* arg, const char* msg, int severity, void* locator)
+void TextReader::on_libxml_error(void* arg, const char* msg, int severity, void* /* locator */)
 {
   TextReader* ths = (TextReader*)arg;
   ths->severity_ = severity;

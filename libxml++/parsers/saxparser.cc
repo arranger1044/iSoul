@@ -69,7 +69,12 @@ SaxParser::SaxParser(bool use_get_entity)
     SaxParserCallback::fatal_error, // fatalError
     0,  // getParameterEntity
     SaxParserCallback::cdata_block, // cdataBlock
-    0  // externalSubset
+    0,  // externalSubset
+    0,  // initialized
+    0,  // private
+    0,  // startElementNs
+    0,  // endElementNs
+    0,  // serror
   };
   *sax_handler_ = temp;
 }
@@ -97,27 +102,27 @@ void SaxParser::on_end_document()
 {
 }
 
-void SaxParser::on_start_element(const Glib::ustring& name, const AttributeList& attributes)
+void SaxParser::on_start_element(const Glib::ustring& /* name */, const AttributeList& /* attributes */)
 {
 }
 
-void SaxParser::on_end_element(const Glib::ustring& name)
+void SaxParser::on_end_element(const Glib::ustring& /* name */)
 {
 }
 
-void SaxParser::on_characters(const Glib::ustring& text)
+void SaxParser::on_characters(const Glib::ustring& /* text */)
 {
 }
 
-void SaxParser::on_comment(const Glib::ustring& text)
+void SaxParser::on_comment(const Glib::ustring& /* text */)
 {
 }
 
-void SaxParser::on_warning(const Glib::ustring& text)
+void SaxParser::on_warning(const Glib::ustring& /* text */)
 {
 }
 
-void SaxParser::on_error(const Glib::ustring& text)
+void SaxParser::on_error(const Glib::ustring& /* text */)
 {
 }
 
@@ -134,7 +139,7 @@ void SaxParser::on_fatal_error(const Glib::ustring&)
 }
 #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
-void SaxParser::on_cdata_block(const Glib::ustring& text)
+void SaxParser::on_cdata_block(const Glib::ustring& /* text */)
 {
 }
 

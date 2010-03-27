@@ -1,3 +1,23 @@
+2010-03-27  David King  <amigadave@amigadave.com>
+
+	Fix several compiler warnings
+
+	* examples/dom_build/main.cc:
+	* examples/dtdvalidation/main.cc:
+	* examples/import_node/main.cc:
+	* examples/sax_exception/main.cc:
+	* examples/sax_exception/my_parser.cc:
+	* examples/sax_parser/main.cc:
+	* examples/sax_parser/my_parser.cc:
+	* examples/sax_parser_build_dom/svgparser.cc:
+	* examples/sax_parser_entities/myparser.cc:
+	* examples/textreader/main.cc:
+	* libxml++/parsers/textreader.cc: Comment out unused parameters and
+	variables.
+
+	* libxml++/parsers/saxparser.cc: Fill in missing fields of
+	xmlSAXHandler struct.
+
 2010-03-27  David King  <davidk@openismus.com>
 
 	Refactor build system
