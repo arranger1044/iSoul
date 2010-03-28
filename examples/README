@@ -1,4 +1,4 @@
-Examples:
+Examples: Enable building with the --enable-examples argument to configure
 
 Simple parsing examples:
   dom_parser - Shows how to parse an XML Document with the DOM parser.

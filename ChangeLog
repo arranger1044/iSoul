@@ -1,3 +1,41 @@
+2010-03-29  David King  <davidk@openismus.com>
+
+	Use mm-common for reference documentation generation
+
+	* .gitignore: Update.
+
+	* Makefile.am: Remove SUBDIRS. Make examples build and documentation
+	build conditional. Build reference documentation with doc-reference.am
+	from mm-common. Add docs/manual/libxml++.pdf target, but do not enable
+	it by default. Add autogen.sh and docs/manual/insert_example_code.pl to
+	dist_noinst_SCRIPTS. Add docs/manual/html/*.html to
+	MAINTAINERCLEANFILES.
+
+	* autogen.sh: Add --enable-maintainer-mode to arguments passed to
+	configure.
+
+	* configure.ac: Add AM_MAINTAINER_MODE. Add a configure argument to
+	enable the build of the examples. Use mm-common macros to add a
+	configure argument to enable documentation, and use the glibmm
+	tagfile. Check for xmllint and db2latex for DTD validation of the
+	DocBook manual and building the PDF documentation, repectively. Remove
+	the last non-toplevel Makefiles from AC_CONFIG_FILES.
+
+	* docs/Makefile.am:
+	* docs/Makefile_web.am_fragment:
+	* docs/manual/Makefile.am:
+	* docs/reference/Makefile.am: Remove from repository, and move content
+	to Makefile.am.
+
+	* docs/manual/docbook-customisation.xsl: Add DocBook customisation
+	parameters.
+
+	* docs/manual/libxml++_without_code.xml: Make validate.
+
+	* docs/reference/Doxyfile.in: Update from mm-common.
+
+	* docs/reference/README: Remove empty file.
+
 2010-03-27  David King  <amigadave@amigadave.com>
 
 	Fix several compiler warnings

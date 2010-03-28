@@ -1,8 +1,6 @@
 ACLOCAL_AMFLAGS = -I macros ${ACLOCAL_FLAGS}
 DISTCHECK_CONFIGURE_FLAGS = --enable-warnings=fatal
 
-SUBDIRS = docs
-
 library_configdir = $(libdir)/libxml++-@LIBXMLXX_API_VERSION@/include
 library_config_DATA = libxml++config.h
 
@@ -15,6 +13,7 @@ libxml___libxml___@LIBXMLXX_API_VERSION@_la_LDFLAGS = \
 libxml___libxml___@LIBXMLXX_API_VERSION@_la_LIBADD = $(LIBXMLXX_LIBS)
 libxml___libxml___@LIBXMLXX_API_VERSION@_la_SOURCES = $(cc_sources) $(h_sources_public)
 
+if ENABLE_EXAMPLES
 noinst_PROGRAMS = examples/dom_build/dom_build \
 	examples/dom_parse_entities/dom_parse_entities \
 	examples/dom_parser/dom_parser \
@@ -29,6 +28,7 @@ noinst_PROGRAMS = examples/dom_build/dom_build \
 	examples/sax_parser_entities/sax_parser_entities \
 	examples/schemavalidation/schemavalidation \
 	examples/textreader/textreader
+endif
 
 AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I. $(LIBXMLXX_CFLAGS)
 AM_CXXFLAGS = $(LIBXMLXX_WXXFLAGS)
@@ -115,6 +115,7 @@ library_nodes_include_HEADERS = $(h_nodes_sources_public)
 library_parsers_include_HEADERS = $(h_parsers_sources_public)
 library_validators_include_HEADERS = $(h_validators_sources_public)
 
+if ENABLE_EXAMPLES
 examples_dom_build_dom_build_SOURCES = examples/dom_build/main.cc
 examples_dom_parse_entities_dom_parse_entities_SOURCES = \
 	examples/dom_parse_entities/main.cc
@@ -176,10 +177,51 @@ examples_schemavalidation_schemavalidation_LDADD = \
 	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
 examples_textreader_textreader_LDADD = \
 	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+endif # ENABLE_EXAMPLES
 
-dist_noinst_DATA = libxml++config.h.in \
+if ENABLE_DOCUMENTATION
+book_name = $(LIBXMLXX_MODULE_NAME)
+doc_input = $(h_sources_public)
+doc_outdir = docs/reference
+# Sets dist_noinst_DATA, DISTCLEANFILES and MAINTAINERCLEANFILES
+include $(top_srcdir)/macros/doc-reference.am
+
+manualdir = $(docdir)/manual
+manual_htmldir = $(manualdir)/html
+manual_html_files = $(wildcard docs/manual/html/*.html)
+
+docs/manual/libxml++.xml: docs/manual/libxml++_without_code.xml docs/manual/insert_example_code.pl
+	$(AM_V_GEN)$(PERL) -- docs/manual/insert_example_code.pl examples $< >$@
+
+docs/manual/html/index.html: docs/manual/libxml++.xml docs/manual/docbook-customisation.xsl
+	$(AM_V_at)rm -fr doc/manual/html
+	$(AM_V_at)$(MKDIR_P) docs/manual/html
+	$(AM_V_GEN)$(XSLTPROC) -o docs/manual/html/ --xinclude --catalogs \
+		docs/manual/docbook-customisation.xsl $<
+
+docs/manual/libxml++.pdf: docs/manual/libxml++.xml
+	$(AM_V_GEN)$(DB2LATEX) -o $@ -O docs/manual -tpdf $<
+
+validate_original_manual: docs/manual/libxml++_without_code.xml
+	$(XMLLINT) --xinclude --postvalid --noout $<
+
+validate_manual: docs/manual/libxml++.xml
+	$(XMLLINT) --xinclude --postvalid --noout $<
+
+all-local: docs/manual/html/index.html
+else # !ENABLE_DOCUMENTATION
+dist_noinst_DATA =
+DISTCLEANFILES =
+MAINTAINERCLEANFILES =
+endif # ENABLE_DOCUMENTATION
+
+dist_noinst_DATA += libxml++config.h.in \
 	libxml++-$(LIBXMLXX_API_VERSION).pc.in \
 	MAINTAINERS \
+	docs/manual/docbook-customisation.xsl \
+	$(manual_html_files) \
+	docs/manual/libxml++.xml \
+	docs/manual/libxml++_without_code.xml \
 	examples/README \
 	examples/dom_parser/example.xml \
 	examples/dom_parser/example_with_namespace.xml \
@@ -249,5 +291,10 @@ dist_noinst_DATA = libxml++config.h.in \
 	MSVC_Net2008/examples/schemavalidation/schemavalidation.vcproj \
 	MSVC_Net2008/examples/textreader/textreader.vcproj
 
-DISTCLEANFILES = MSVC_Net2005/libxml++/libxml++config.h \
+dist_noinst_SCRIPTS = autogen.sh \
+	docs/manual/insert_example_code.pl
+
+DISTCLEANFILES += MSVC_Net2005/libxml++/libxml++config.h \
 	MSVC_Net2008/libxml++/libxml++config.h
+
+MAINTAINERCLEANFILES += docs/manual/html/*.html

@@ -4,4 +4,4 @@ test -n "$srcdir" || srcdir=.
 
 mm-common-prepare --copy --force "$srcdir"
 autoreconf --force --install --verbose "$srcdir"
-test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
+test -n "$NOCONFIGURE" || "$srcdir/configure" --enable-maintainer-mode "$@"

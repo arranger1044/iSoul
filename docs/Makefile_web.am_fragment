@@ -1,5 +1,0 @@
-web_path_project = /home/groups/l/li/libxmlplusplus/htdocs/
-web_path_docs = $(web_path_project)docs/
-rsync_args = -vz --rsh ssh --recursive --cvs-exclude --exclude="**1.0**" --exclude=".cvsignore" --exclude="Makefile" --exclude="Makefile.in" --exclude=".deps" --exclude=".libs"
-
-docdir = $(datadir)/doc/libxml++-2.6/docs

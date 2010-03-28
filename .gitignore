@@ -33,9 +33,10 @@ stamp-h?
 /docs/manual/html/
 /docs/manual/libxml++.xml
 /docs/reference/Doxyfile
+/docs/reference/doxygen.log
 /docs/reference/html/
-/docs/reference/libxml++_doxygen_tags
-/docs/reference/xml/
+/docs/reference/libxml++-2.6.devhelp2
+/docs/reference/libxml++-2.6.tag
 
 # examples
 /examples/dom_build/dom_build
