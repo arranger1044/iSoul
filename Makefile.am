@@ -179,6 +179,9 @@ examples_textreader_textreader_LDADD = \
 	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
 endif # ENABLE_EXAMPLES
 
+docs/manual/libxml++.xml: docs/manual/libxml++_without_code.xml docs/manual/insert_example_code.pl
+	$(AM_V_GEN)$(PERL) -- docs/manual/insert_example_code.pl examples $< >$@
+
 if ENABLE_DOCUMENTATION
 book_name = $(LIBXMLXX_MODULE_NAME)
 doc_input = $(h_sources_public)
@@ -189,9 +192,6 @@ include $(top_srcdir)/macros/doc-reference.am
 manualdir = $(docdir)/manual
 manual_htmldir = $(manualdir)/html
 manual_html_files = $(wildcard docs/manual/html/*.html)
-
-docs/manual/libxml++.xml: docs/manual/libxml++_without_code.xml docs/manual/insert_example_code.pl
-	$(AM_V_GEN)$(PERL) -- docs/manual/insert_example_code.pl examples $< >$@
 
 docs/manual/html/index.html: docs/manual/libxml++.xml docs/manual/docbook-customisation.xsl
 	$(AM_V_at)rm -fr doc/manual/html

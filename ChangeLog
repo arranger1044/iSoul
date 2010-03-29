@@ -1,5 +1,12 @@
 2010-03-29  David King  <davidk@openismus.com>
 
+	Move a target outside a conditional block to fix the build
+
+	* Makefile.am: Move docs/manual/libxml++.xml target outside the
+	ENABLE_DOCUMENTATION conditional block.
+
+2010-03-29  David King  <davidk@openismus.com>
+
 	Use mm-common for reference documentation generation
 
 	* .gitignore: Update.
