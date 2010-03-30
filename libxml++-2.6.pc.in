@@ -3,10 +3,15 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
+docdir=${datarootdir}/doc/@LIBXMLXX_MODULE_NAME@
+doxytagfile=${docdir}/reference/@LIBXMLXX_MODULE_NAME@.tag
+htmlrefdir=${docdir}/reference/html
+htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
 Name: libxml++
 Description: C++ wrapper for libxml
-Requires: libxml-2.0 glibmm-2.4
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -lxml++-2.6
-Cflags: -I${includedir}/libxml++-2.6 -I${libdir}/libxml++-2.6/include
-
+URL: http://libxmlplusplus.sourceforge.net/
+Requires: @LIBXMLXX_MODULES@
+Libs: -L${libdir} -lxml++-@LIBXMLXX_API_VERSION@
+Cflags: -I${includedir}/@LIBXMLXX_MODULE_NAME@ -I${libdir}/@LIBXMLXX_MODULE_NAME@/include

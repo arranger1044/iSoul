@@ -1,3 +1,10 @@
+2010-03-30  David King  <davidk@openismus.com>
+
+	Update pkg-config file
+
+	* libxml++-2.6.pc.in: Add documentation locations to pkg-config file.
+	Update other fields to use variables, rather than hardcoded values.
+
 === 2.30.0 ===
 
 2010-03-30  David King  <davidk@openismus.com>
