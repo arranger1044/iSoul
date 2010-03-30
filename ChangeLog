@@ -1,3 +1,5 @@
+=== 2.30.0 ===
+
 2010-03-30  David King  <davidk@openismus.com>
 
 	Disable AM_MAINTAINER_MODE by default
