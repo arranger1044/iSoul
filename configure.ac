@@ -10,7 +10,7 @@ AC_CONFIG_HEADERS([config.h libxml++config.h])
 
 AM_INIT_AUTOMAKE([1.9 -Wno-portability dist-bzip2 no-define nostdinc subdir-objects])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
-AM_MAINTAINER_MODE([enable])
+AM_MAINTAINER_MODE([disable])
 AC_ARG_VAR([ACLOCAL_FLAGS], [aclocal flags, e.g. -I <macro dir>])
 
 MM_PREREQ([0.8])

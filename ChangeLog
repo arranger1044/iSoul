@@ -1,3 +1,11 @@
+2010-03-30  David King  <davidk@openismus.com>
+
+	Disable AM_MAINTAINER_MODE by default
+
+	* configure.ac: Pass the disable parameter to AM_MAINTAINER_MODE so
+	that tarball users do not need doxygen, mm-common, etc. if they modify
+	files. Maintainer mode is still enabled if running autogen.sh.
+
 2010-03-29  David King  <davidk@openismus.com>
 
 	Move a target outside a conditional block to fix the build
