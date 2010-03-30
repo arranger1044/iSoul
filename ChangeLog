@@ -1,3 +1,16 @@
+2010-03-30  Murray Cumming  <murrayc@murrayc.com>>
+
+    Stop exceptions when using std::cout and UTF-8.
+
+	* examples/*/main.cc: Initialize the global C and C++ locale to prevent 
+    exceptions when ouputing a ustring (with non-ASCII UTF-8) to std::cout.
+    We don't see this problem when writing gtkmm apps because gtk_init() (via 
+    Gtk::Main) initializes the C locale correctly.
+
+    Thanks to Daniel Elstner for the solution (he will document it properly 
+    in the Glib::ustring API reference) and to Nic Reveles and others for 
+    noticing the problem.
+
 2010-03-30  David King  <davidk@openismus.com>
 
 	Update pkg-config file
