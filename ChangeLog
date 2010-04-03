@@ -1,4 +1,10 @@
-2010-03-30  Murray Cumming  <murrayc@murrayc.com>>
+2010-04-03  Armin Burgmeier  <armin@arbur.net>
+
+	* MSVC_Net2005/libxml++.sln:
+	* MSVC_Net2008/libxml++.sln: Add dom_parser_raw project to the
+	solution files.
+
+2010-03-30  Murray Cumming  <murrayc@murrayc.com>
 
     Stop exceptions when using std::cout and UTF-8.
 

@@ -72,6 +72,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "examples_schemavalidation",
 		{58B2B53C-C4FF-47FD-817B-095E45B7F7D4} = {58B2B53C-C4FF-47FD-817B-095E45B7F7D4}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "examples_dom_parser_raw", "examples\dom_parser_raw\dom_parser_raw.vcproj", "{0EAE7EFB-32CC-4C03-B969-9B1E5AAC712D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58B2B53C-C4FF-47FD-817B-095E45B7F7D4} = {58B2B53C-C4FF-47FD-817B-095E45B7F7D4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -138,6 +143,10 @@ Global
 		{78F3E369-5753-48D1-85C0-4B543206F3FE}.Debug|Win32.Build.0 = Debug|Win32
 		{78F3E369-5753-48D1-85C0-4B543206F3FE}.Release|Win32.ActiveCfg = Release|Win32
 		{78F3E369-5753-48D1-85C0-4B543206F3FE}.Release|Win32.Build.0 = Release|Win32
+		{0EAE7EFB-32CC-4C03-B969-9B1E5AAC712D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0EAE7EFB-32CC-4C03-B969-9B1E5AAC712D}.Debug|Win32.Build.0 = Debug|Win32
+		{0EAE7EFB-32CC-4C03-B969-9B1E5AAC712D}.Release|Win32.ActiveCfg = Release|Win32
+		{0EAE7EFB-32CC-4C03-B969-9B1E5AAC712D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
