@@ -1,6 +1,8 @@
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
 includedir=@includedir@
 
 docdir=${datarootdir}/doc/@LIBXMLXX_MODULE_NAME@
