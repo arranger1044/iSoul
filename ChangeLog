@@ -1,3 +1,10 @@
+2010-04-16  David King  <davidk@openismus.com>
+
+	Minor documentation update
+
+	* docs/index.html: Link to latest gnome.org resources.
+	* libxml++/libxml++.h: Add minimal documentation for main page.
+
 2010-04-06  Murray Cumming  <murrayc@murrayc.com>
 
     .pc file: Add datarootdir.
