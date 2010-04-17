@@ -1,3 +1,9 @@
+2010-04-23  David King  <davidk@openismus.com>
+
+	Documentation main page improvements
+
+	* libxml++/libxml++.h: Add external links and compilation example.
+
 2010-04-16  David King  <davidk@openismus.com>
 
 	Minor documentation update

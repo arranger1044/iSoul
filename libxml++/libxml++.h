@@ -11,14 +11,33 @@
  *
  * @section description Description
  *
- * libxml++ is a C++ wrapper for the libxml2 XML parser library. libxml2 and
- * glibmm are required. libxml++ presents a simple C++-like API that can
- * achieve common tasks with less code.
+ * libxml++ is a C++ wrapper for the libxml2 XML parser library. It presents a
+ * simple C++-like API that can achieve common tasks with less code.
  *
- * @section use Use
+ * See also the libxml++ website: http://libxmlplusplus.sourceforge.net/
  *
- * To use libxml++ in your application, include one of the header files. A
- * @c pkg-config file is provided to simplify compilation.
+ * @section basics Basic usage
+ *
+ * Include the libxml++ header:
+ * @code
+ * #include <libxml++.h>
+ * @endcode
+ * This includes every header installed by libxml++, so can slow down
+ * compilation, but suffices for this simple example. Assuming that your
+ * program source files is @c program.cc, compile it with:
+ * @code
+ * g++ program.cc -o program  `pkg-config --cflags --libs libxml++-2.6`
+ * @endcode
+ * Alternatively, if using autoconf, use the following in @c configure.ac:
+ * @code
+ * PKG_CHECK_MODULES([LIBXMLXX], [libxml++-2.6])
+ * @endcode
+ * Then use the generated @c LIBXMLXX_CFLAGS and @c LIBXMLXX_LIBS variables in
+ * the project @c Makefile.am files. For example:
+ * @code
+ * program_CPPFLAGS = $(LIBXMLXX_CFLAGS)
+ * program_LDADD = $(LIBXMLXX_LIBS)
+ * @endcode
  */
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/exceptions/parse_error.h>
