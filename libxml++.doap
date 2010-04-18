@@ -16,6 +16,8 @@
       <foaf:mbox rdf:resource="mailto:murrayc@murrayc.com" />
       <gnome:userid>murrayc</gnome:userid>
     </foaf:Person>
+  </maintainer>
+  <maintainer>
     <foaf:Person>
       <foaf:name>Christophe de Vienne</foaf:name>
       <foaf:mbox rdf:resource="mailto:cdevienn@src.gnome.org" />
