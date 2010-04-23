@@ -24,7 +24,7 @@
  * @endcode
  * This includes every header installed by libxml++, so can slow down
  * compilation, but suffices for this simple example. Assuming that your
- * program source files is @c program.cc, compile it with:
+ * program source file is @c program.cc, compile it with:
  * @code
  * g++ program.cc -o program  `pkg-config --cflags --libs libxml++-2.6`
  * @endcode
