@@ -13,7 +13,7 @@
 
 namespace xmlpp {
 
-/** XML DOM parser.
+/** DOM XML parser.
  *
  */
 class DomParser : public Parser

@@ -1,3 +1,18 @@
+2010-05-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Documentation: Improvements.
+
+	* libxml++/libxml++.h: Expand the main page text, linking to the tutorial
+    and to important classes.
+	* libxml++/parsers/domparser.h:
+	* libxml++/schema.h: Correct the class descriptions.
+	* libxml++/parsers/textreader.h: Add a class description.
+	* libxml++/nodes/element.h:
+	* libxml++/nodes/node.h:
+	* libxml++/parsers/saxparser.h:
+	* libxml++/validators/schemavalidator.h:
+    Correct @newin2p2* to @newin{2,*} now that we use mm-common.
+
 2010-04-27  David King  <davidk@openismus.com>
 
 	Further documentation main page improvements
@@ -21,7 +36,7 @@
 
     .pc file: Add datarootdir.
 
-	* libxml++-2.6.pc.in: Add datarootdir and datadir, as in the gtkmm .pc.in 
+	* libxml++-2.6.pc.in: Add datarootdir and datadir, as in the gtkmm .pc.in
     file, because I started seeing this warning when running autogen.sh in Glom:
     Variable 'datarootdir' not defined in '/opt/gnome228/lib/pkgconfig/libxml++-2.6.pc'
 
@@ -35,13 +50,13 @@
 
     Stop exceptions when using std::cout and UTF-8.
 
-	* examples/*/main.cc: Initialize the global C and C++ locale to prevent 
+	* examples/*/main.cc: Initialize the global C and C++ locale to prevent
     exceptions when ouputing a ustring (with non-ASCII UTF-8) to std::cout.
-    We don't see this problem when writing gtkmm apps because gtk_init() (via 
+    We don't see this problem when writing gtkmm apps because gtk_init() (via
     Gtk::Main) initializes the C locale correctly.
 
-    Thanks to Daniel Elstner for the solution (he will document it properly 
-    in the Glib::ustring API reference) and to Nic Reveles and others for 
+    Thanks to Daniel Elstner for the solution (he will document it properly
+    in the Glib::ustring API reference) and to Nic Reveles and others for
     noticing the problem.
 
 2010-03-30  David King  <davidk@openismus.com>

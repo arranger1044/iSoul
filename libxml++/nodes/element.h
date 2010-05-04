@@ -52,7 +52,7 @@ public:
    * @param ns_prefix Namespace prefix. 
    * @return The text value of the attribute, or an empty string if no such attribute was found.
    *
-   * @newin2p20
+   * @newin{2,20}
    */
   Glib::ustring get_attribute_value(const Glib::ustring& name, 
                                     const Glib::ustring& ns_prefix = Glib::ustring()) const;
@@ -96,7 +96,7 @@ public:
 
   /** Add a new text node after the specified existing child node.
    *
-   * @newin2p24
+   * @newin{2,24}
    *
    * @param previous_sibling An existing child node.
    * @param content The text. This should be unescaped - see ContentNode::set_content().
@@ -106,7 +106,7 @@ public:
 
   /** Add a new text node before the specified existing child node.
    *
-   * @newin2p24
+   * @newin{2,24}
    *
    * @param next_sibling An existing child node.
    * @param content The text. This should be unescaped - see ContentNode::set_content().

@@ -11,11 +11,17 @@
  *
  * @section description Description
  *
- * libxml++ is a C++ wrapper for the libxml2 XML parser library. It presents a
+ * libxml++ is a C++ wrapper for the <a href="http://xmlsoft.org/">libxml2</a> XML parser and builder library. It presents a
  * simple C++-like API that can achieve common tasks with less code.
  *
- * See also <a href="http://libxmlplusplus.sourceforge.net/">the libxml++
- * website</a>.
+ * See also the <a href="http://library.gnome.org/devel/libxml++-tutorial/stable/">libxml++ Tutorial</a> and the <a href="http://libxmlplusplus.sourceforge.net/">libxml++ website</a>.
+ *
+ * @section features Features
+ *
+ * - xmlpp::DomParser: A DOM-style parser.
+ * - xmlpp::SaxParser: A SAX-style parser.
+ * - xmlpp::TextReader: An XmlTextReader-style parser.
+ * - A hiererachy of xmlpp::Node classes.
  *
  * @section basics Basic Usage
  *

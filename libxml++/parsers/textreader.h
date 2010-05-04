@@ -22,6 +22,10 @@ extern "C"
 namespace xmlpp
 {
 
+/** A TextReader-style XML parser
+ * A reader that provides fast, non-cached, forward-only access to XML data,
+ * in the style of .Net's <a href="http://msdn.microsoft.com/en-us/library/system.xml.xmltextreader.aspx">XmlTextReader</a> class.
+ */
 class TextReader: NonCopyable
 {
   public:
@@ -65,31 +69,31 @@ class TextReader: NonCopyable
     };
 
   typedef unsigned int size_type;
-                        
+
   public:
     /**
      * Wraps a TextReader object from an underlying libxml object. The TextReader
      * takes ownership of cobj.
-     * @param cobj The underlying libxml xmlTextReader object. 
+     * @param cobj The underlying libxml xmlTextReader object.
      */
     TextReader(struct _xmlTextReader* cobj);
-    
+
     /**
      * Creates a new TextReader object to parse a file or URI.
      * @param URI The URI to read.
      */
     TextReader(const Glib::ustring& URI);
-    
+
     /**
-     * Creates a new TextReader object which parses in memory data. 
+     * Creates a new TextReader object which parses in memory data.
      * @param data The data to parse.
      * @param size The number of bytes in data.
      * @param uri The base URI of the file.
-     */ 
+     */
     TextReader(const unsigned char* data, size_type size, const Glib::ustring& uri = Glib::ustring());
-    		   
+
     ~TextReader();
-    
+
     /** Moves the position of the current instance to the next node in the stream, exposing its properties.
      * @return true if the node was read successfully, false if there is no more nodes to read.
      */
@@ -99,7 +103,7 @@ class TextReader: NonCopyable
      * @return A Glib::ustring containing the XML content, or and empty Glib::ustring if the current node is neither an element nor attribute, or has no child nodes.
      */
     Glib::ustring read_inner_xml();
-    
+
     /** Reads the current node and its contents, including child nodes and markup.
      * @return A Glib::ustring containing the XML content, or an empty Glib::ustring if the current node is neither an element nor attribute.
      */
@@ -144,7 +148,7 @@ class TextReader: NonCopyable
      * @return true if defaulted, false otherwise.
      */
     bool is_default() const;
-    
+
     /** Check if the current node is empty
      * @return true if empty, false otherwise.
      */

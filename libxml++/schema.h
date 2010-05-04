@@ -21,9 +21,9 @@ extern "C" {
 namespace xmlpp
 {
 
-/** Represents XML Schema.
+/** Represents an XML Schema.
  *
- * @newin2p24
+ * @newin{2,24}
  */
 class Schema : NonCopyable
 {

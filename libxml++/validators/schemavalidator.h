@@ -21,9 +21,9 @@ extern "C" {
 
 namespace xmlpp {
 
-/** XML DOM parser.
+/** Schema Validator
  *
- * @newin2p24
+ * @newin{2,24}
  */
 class SchemaValidator : public Validator
 {

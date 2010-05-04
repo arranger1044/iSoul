@@ -117,7 +117,7 @@ public:
 
   /** Add a child element to this node after the specified existing child node.
    *
-   * @newin2p24
+   * @newin{2,24}
    *
    * @param previous_sibling An existing child node.
    * @param name The new node name
@@ -129,7 +129,7 @@ public:
 
   /** Add a child element to this node before the specified existing child node.
    *
-   * @newin2p24
+   * @newin{2,24}
    *
    * @param next_sibling An existing child node.
    * @param name The new node name

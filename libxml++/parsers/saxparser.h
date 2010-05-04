@@ -121,7 +121,7 @@ public:
 
   /** Parse a chunk of data.
    *
-   * @newin2p24
+   * @newin{2,24}
    *
    * This lets you pass a document in small chunks, e.g. from a network
    * connection. The on_* virtual functions are called each time the chunks
