@@ -1,5 +1,13 @@
 2010-05-04  Murray Cumming  <murrayc@murrayc.com>
 
+    Documentation: Don't hide undocumented API.
+
+	* docs/reference/Doxyfile.in: Use the same options as gtkmm (mostly).
+    In particular, don't hide undocumented API, such as NodeSet, to fix
+    bug #583412 (Hubert Figuiere).
+
+2010-05-04  Murray Cumming  <murrayc@murrayc.com>
+
 	Documentation: Improvements.
 
 	* libxml++/libxml++.h: Expand the main page text, linking to the tutorial
