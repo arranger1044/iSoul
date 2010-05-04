@@ -21,7 +21,7 @@
  * - xmlpp::DomParser: A DOM-style parser.
  * - xmlpp::SaxParser: A SAX-style parser.
  * - xmlpp::TextReader: An XmlTextReader-style parser.
- * - A hiererachy of xmlpp::Node classes.
+ * - A hierarchy of xmlpp::Node classes.
  *
  * @section basics Basic Usage
  *
