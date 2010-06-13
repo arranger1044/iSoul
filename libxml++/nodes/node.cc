@@ -276,11 +276,16 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
 
   xmlNodeSet* nodeset = result->nodesetval;
   NodeSet nodes;
-  if( nodeset )
+  if( nodeset && !xmlXPathNodeSetIsEmpty(nodeset))
   {
-    nodes.reserve( nodeset->nodeNr );
-    for (int i = 0; i != nodeset->nodeNr; ++i)
-      nodes.push_back(static_cast<Node*>(nodeset->nodeTab[i]->_private));
+    const int count = xmlXPathNodeSetGetLength(nodeset);
+    nodes.reserve(count);
+    for (int i = 0; i != count; ++i)
+    {
+      xmlNodePtr cnode = xmlXPathNodeSetItem(nodeset, i);
+      Node* cppNode = static_cast<Node*>(cnode->_private); //libxml creates a C++ instance for us here.
+      nodes.push_back(cppNode);
+    }
   }
   else
   {

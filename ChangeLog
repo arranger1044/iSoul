@@ -1,3 +1,11 @@
+2010-06-13  Murray Cumming  <murrayc@murrayc.com>>
+
+	Node::find(): Use libxml functions instead of direct C access.
+
+	* libxml++/nodes/node.cc: Use xmlXPathNodeSetIsEmpty(), 
+	xmlXPathNodeSetGetLength() and xmlXPathNodeSetItem() instead of direct 
+	xmlNodeSet struct access.
+
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
 	Manual: Use git.gnome.org as the link to the examples source code.
