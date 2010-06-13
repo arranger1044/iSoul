@@ -298,3 +298,13 @@ DISTCLEANFILES += MSVC_Net2005/libxml++/libxml++config.h \
 	MSVC_Net2008/libxml++/libxml++config.h
 
 MAINTAINERCLEANFILES += docs/manual/html/*.html
+
+# Make it easy to upload to the sourceforge web site.
+# The manual and API reference are hosted on library.gnome.org via tarball releases.
+web_path_project = /home/groups/l/li/libxmlplusplus/htdocs/
+rsync_args = -vz --rsh ssh --recursive --cvs-exclude --exclude="**1.0**" --exclude=".cvsignore" --exclude="Makefile" --exclude="Makefile.in" --exclude=".deps" --exclude=".libs"
+
+post-html: docs/index.html
+	rsync $(rsync_args) -r docs/index.html $$USER,libxmlplusplus@web.sourceforge.net:$(web_path_project)
+	rsync $(rsync_args) -r examples $$USER,libxmlplusplus@web.sourceforge.net:$(web_path_project)
+
