@@ -1,5 +1,12 @@
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
+	Node::find(): Revert some of my previous change because it breaks some code.
+
+	* libxml++/nodes/node.cc: find_impl(): Restore the previous behaviour, 
+	because the strange use of _private only seems to happen sometimes.
+
+2010-06-13  Murray Cumming  <murrayc@murrayc.com>
+
 	Node::find(): Cope with weird use of _private in xmlNodeSet.
 
 	* libxml++/nodes/node.cc: The xmlNodeSet seems to contain extra xmlNodes that 

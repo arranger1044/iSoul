@@ -284,13 +284,15 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
     {
       xmlNode* cnode = xmlXPathNodeSetItem(nodeset, i);
 
-      // TODO: It is _very_ strange and undocumented that _private contains a 
-      // pointer to the actual xmlNode (which has the C++ instance in _private, which we set),
-      // Maybe libxml abuses xmlNode::_private.
+      // Usually, this cnode is one that was provided to on_libxml_construct(),
+      // so we have already created a C++ Node and set it in _private.
+      // TODO: But sometimes the xmlNode::_private contains a 
+      // pointer to the actual xmlNode (which has the Node* in _private),
+      // Maybe libxml abuses xmlNode::_private, but only sometimes.
       // I only discovered this through experimentation. murrayc.
       // See bug https://bugzilla.gnome.org/show_bug.cgi?id=386013
-      xmlNode* cnodeReal = static_cast<xmlNode*>(cnode->_private); //libxml creates a C++ instance for us here.
-      Node* cppNode = static_cast<Node*>(cnodeReal->_private); //libxml creates a C++ instance for us here.
+      xmlNode* cnodeReal = cnode; //static_cast<xmlNode*>(cnode->_private);
+      Node* cppNode = static_cast<Node*>(cnodeReal->_private);
       nodes.push_back(cppNode);
     }
   }
