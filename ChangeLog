@@ -1,3 +1,13 @@
+2010-06-13  Murray Cumming  <murrayc@murrayc.com>
+
+	Node::find(): Cope with weird use of _private in xmlNodeSet.
+
+	* libxml++/nodes/node.cc: The xmlNodeSet seems to contain extra xmlNodes that 
+	were never given to on_libxml_construct(). Those xmlNodes seem to abuse 
+	private_, where we find our real xmlNodes containing our C++ Nodes.
+	This fixes bug #386013 (Max Kirillov) though it depends on undocumented 
+	libxml behaviour.
+
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>>
 
 	Node::find(): Use libxml functions instead of direct C access.
