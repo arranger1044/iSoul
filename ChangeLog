@@ -1,5 +1,16 @@
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
+	Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL.
+
+	* libxml++/nodes/node.cc: find_impl(): if the xmlNode has type 
+	XML_NAMESPACE_DECL then it is actually a xmlNs, which is not like a xmlNode 
+	at all (thanks to the awful undocumented libxml++ system of struct 
+	inheritance).
+	So we just igore these items. We need to decide what the caller really 
+	expects.
+
+2010-06-13  Murray Cumming  <murrayc@murrayc.com>
+
 	Node::find(): Revert some of my previous change because it breaks some code.
 
 	* libxml++/nodes/node.cc: find_impl(): Restore the previous behaviour, 
