@@ -1,5 +1,12 @@
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
+	Manual: Use git.gnome.org as the link to the examples source code.
+
+	* docs/manual/libxml++_without_code.xml: Use git.gnome.org for the examples 
+	url base, as we do in gtkmm-documentation.
+
+2010-06-13  Murray Cumming  <murrayc@murrayc.com>
+
 	Restore the mm-common make target and update a link.
 
 	* Makefile.am: Restore (and update) the post-html target that was lost when 
