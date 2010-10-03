@@ -289,13 +289,51 @@ dist_noinst_DATA += libxml++config.h.in \
 	MSVC_Net2008/examples/sax_parser_build_dom/sax_parser_build_dom.vcproj \
 	MSVC_Net2008/examples/sax_parser_entities/sax_parser_entities.vcproj \
 	MSVC_Net2008/examples/schemavalidation/schemavalidation.vcproj \
-	MSVC_Net2008/examples/textreader/textreader.vcproj
+	MSVC_Net2008/examples/textreader/textreader.vcproj \
+	MSVC_Net2010/libxml++.sln \
+	MSVC_Net2010/README \
+	MSVC_Net2010/gendef/gendef.cc \
+	MSVC_Net2010/gendef/gendef.vcxproj \
+	MSVC_Net2010/gendef/gendef.vcxproj.filters \
+	MSVC_Net2010/libxml++/libxml++.rc \
+	MSVC_Net2010/libxml++/libxml++.vcxproj \
+	MSVC_Net2010/libxml++/libxml++.vcxproj.filters \
+	MSVC_Net2010/libxml++/libxml++config.h \
+	MSVC_Net2010/examples/dom_build/dom_build.vcxproj \
+	MSVC_Net2010/examples/dom_build/dom_build.vcxproj.filters \
+	MSVC_Net2010/examples/dom_parse_entities/dom_parse_entities.vcxproj \
+	MSVC_Net2010/examples/dom_parse_entities/dom_parse_entities.vcxproj.filters \
+	MSVC_Net2010/examples/dom_parser/dom_parser.vcxproj \
+	MSVC_Net2010/examples/dom_parser/dom_parser.vcxproj.filters \
+	MSVC_Net2010/examples/dom_parser_raw/dom_parser_raw.vcxproj \
+	MSVC_Net2010/examples/dom_parser_raw/dom_parser_raw.vcxproj.filters \
+	MSVC_Net2010/examples/dom_read_write/dom_read_write.vcxproj \
+	MSVC_Net2010/examples/dom_read_write/dom_read_write.vcxproj.filters \
+	MSVC_Net2010/examples/dom_xpath/dom_xpath.vcxproj \
+	MSVC_Net2010/examples/dom_xpath/dom_xpath.vcxproj.filters \
+	MSVC_Net2010/examples/dtdvalidation/dtdvalidation.vcxproj \
+	MSVC_Net2010/examples/dtdvalidation/dtdvalidation.vcxproj.filters \
+	MSVC_Net2010/examples/import_node/import_node.vcxproj \
+	MSVC_Net2010/examples/import_node/import_node.vcxproj.filters \
+	MSVC_Net2010/examples/sax_exception/sax_exception.vcxproj \
+	MSVC_Net2010/examples/sax_exception/sax_exception.vcxproj.filters \
+	MSVC_Net2010/examples/sax_parser/sax_parser.vcxproj \
+	MSVC_Net2010/examples/sax_parser/sax_parser.vcxproj.filters \
+	MSVC_Net2010/examples/sax_parser_build_dom/sax_parser_build_dom.vcxproj \
+	MSVC_Net2010/examples/sax_parser_build_dom/sax_parser_build_dom.vcxproj.filters \
+	MSVC_Net2010/examples/sax_parser_entities/sax_parser_entities.vcxproj \
+	MSVC_Net2010/examples/sax_parser_entities/sax_parser_entities.vcxproj.filters \
+	MSVC_Net2010/examples/schemavalidation/schemavalidation.vcxproj \
+	MSVC_Net2010/examples/schemavalidation/schemavalidation.vcxproj.filters \
+	MSVC_Net2010/examples/textreader/textreader.vcxproj \
+	MSVC_Net2010/examples/textreader/textreader.vcxproj.filters
 
 dist_noinst_SCRIPTS = autogen.sh \
 	docs/manual/insert_example_code.pl
 
 DISTCLEANFILES += MSVC_Net2005/libxml++/libxml++config.h \
-	MSVC_Net2008/libxml++/libxml++config.h
+	MSVC_Net2008/libxml++/libxml++config.h \
+	MSVC_Net2010/libxml++/libxml++config.h
 
 MAINTAINERCLEANFILES += docs/manual/html/*.html
 
