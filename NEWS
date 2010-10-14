@@ -1,3 +1,11 @@
+2.32.0 (stable):
+
+* Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL to prevent a
+  crash/corruption.
+  (Murray Cumming) Bug #386013 (Max Kirillov)
+* Build: Added an MSVC .net 2010 and 64-bit Windows builds.
+  (Armin Burgmeier)
+
 2.30.1 (stable):
 
 * Documentation:
@@ -7,7 +15,7 @@
   (Murray Cumming) Bug #583412 (Hubert Figuiere).
   - Correct some @newin tags.
   (Murray Cumming)
-  
+
 2.30.0(stable):
 
 * Build system rewrite.
@@ -28,7 +36,7 @@
 2.24.3 (stable):
 
 * TextReader: Actually throw exceptions on errors.
-  (This breaks ABI but we do not believe that this class could be used with 
+  (This breaks ABI but we do not believe that this class could be used with
   this problem so it should not actually break any application.)
   Bug #348006.
 * Build: Windows: Remove unnecessary vsnprint define.
@@ -56,12 +64,12 @@ Changes since 2.22:
 
 * Attribute: Return the correct value even when using a namespace.
   (Murray Cumming) Bug #547689 (Sergei Fedorov)
-* Added Schema and SchemaValidator classes, demonstrated in 
+* Added Schema and SchemaValidator classes, demonstrated in
   examples/schemavalidation.
   (Emilien KIA) Bug #312216.
-* Element: Added add_child_text() with a previous_node parameter, for adding 
+* Element: Added add_child_text() with a previous_node parameter, for adding
   between existing nodes. Added add_child_text_before() too.
-* Node: Added add_child() with a previous_node parameter, for adding between 
+* Node: Added add_child() with a previous_node parameter, for adding between
   existing nodes. Added add_child_before() too.
   (Murray Cumming)
 * SaxParser: added parse_chunk_raw().
@@ -79,24 +87,24 @@ Changes since 2.22:
 
 * SaxParser: added parse_chunk_raw().
   (Armin Burgmeier)
-* examples: sax_parser: Catch convert errors when printing an exception to 
+* examples: sax_parser: Catch convert errors when printing an exception to
   std:cout, though libxml++/libxml should always supply valid UTF-8.
   (Murray Cumming)
 
 2.23.1 (unstable):
 
-* Added Schema and SchemaValidator classes, demonstrated in 
+* Added Schema and SchemaValidator classes, demonstrated in
   examples/schemavalidation.
   (Emilien KIA) Bug #312216.
-* Element: Added add_child_text() with a previous_node parameter, for adding 
+* Element: Added add_child_text() with a previous_node parameter, for adding
   between existing nodes. Added add_child_text_before() too.
-* Node: Added add_child() with a previous_node parameter, for adding between 
+* Node: Added add_child() with a previous_node parameter, for adding between
   existing nodes. Added add_child_before() too.
   (Murray Cumming)
 
 2.22.0 (stable):
 
-* Document: Fix a memory leak, by calling xmlCleanupParser 
+* Document: Fix a memory leak, by calling xmlCleanupParser
   in the destructor.
   (Deng Xiyue) Bug #501168 (Matt G.)
 * Build: Fix the build with gcc 4.3 pre-releases.
@@ -105,35 +113,35 @@ Changes since 2.22:
 2.20.0 (stable):
 
 Changes since 2.18:
-* Element: Added get_attribute_value(), 
+* Element: Added get_attribute_value(),
   to get a simple text value for an attribute.
   (Stef Walter) Bug #373573.
-* Added an experimental --enable-api-exceptions 
-  configure option, to allow libxml++ to build without 
+* Added an experimental --enable-api-exceptions
+  configure option, to allow libxml++ to build without
   exceptions.
   (Murray Cumming)
- 
+
 2.19.2 (unstable):
 
-* Added an experimental --enable-api-exceptions 
-  configure option, to allow libxml++ to build without 
+* Added an experimental --enable-api-exceptions
+  configure option, to allow libxml++ to build without
   exceptions.
 
 2.19.1(unstable):
 
-* Element.h: Added get_attribute_value(), 
+* Element.h: Added get_attribute_value(),
   to get a simple text value for an attribute.
   (Stef Walter) Bug #373573.
 
 2.18.2 (stable):
 
-* TextReader: get_name(): Fixed a memory leak. 
+* TextReader: get_name(): Fixed a memory leak.
   (Christophe de Vienne) Bug #447535.
 
 2.18.1 (stable):
 
 * Document::add_comment,
-  Element: add_child_text(), add_child_comment(): 
+  Element: add_child_text(), add_child_comment():
   avoid accessing freed memory. (Murray Cumming)
 
 2.18.0(stable):
@@ -152,7 +160,7 @@ Changes since 2.18:
 2.17.1 (unstable):
 
 * Node: Added get_parent() Bug #351876 (Patch by Nate Nielsen)
-* TextReader: Added TextReader(const char* data) constructor, for 
+* TextReader: Added TextReader(const char* data) constructor, for
   parsing memory buffers. Bug #351215 (Patch by Nate Nielsen)
 * Element::set_attribute(): Really return the new attribute.
   Bug #361950 (Patch by Nate Nielsen)
@@ -169,9 +177,9 @@ Changes since 2.18:
 
 * First unstable 2.13.x release, to become stable 2.14.x, for GNOME 2.14.
 * Node:
-  - Added find() overload that takes namespaces to register during the search, 
+  - Added find() overload that takes namespaces to register during the search,
   using xmlXPathRegisterNs(). Bug #323935. (Robert Fleming)
-  - set_namespace(): When creating a default namespace, avoid the 
+  - set_namespace(): When creating a default namespace, avoid the
   "The namespace () has not been declared" warning, by passing 0 to
   xmlSearchNs() instead of an empty string. Bug #318186.
   (Erik Oestby).
@@ -205,7 +213,7 @@ Changes since 2.18:
 2.9.1 (unstable):
 
 * First unstable 2.9.x release, to become stable 2.10.x.
-* DomParser, SaxParser: Added 
+* DomParser, SaxParser: Added
   parse_memory_raw(const unsigned char* contents, size_type bytes)
   for parsing non-utf8 text or text of unknown encoding.
 
@@ -286,7 +294,7 @@ Changes since 2.18:
 * Added Document::write_to_file_formatted() and
   Document::write_to_string_formatted() - they add white space indenting.
   (Christophe de Vienne)
-* Added ContentNode::is_white_space() to make it easier for applications to 
+* Added ContentNode::is_white_space() to make it easier for applications to
    ignore white space such as indenting. (Murray Cumming)
 * Node: Added set_name(). (Christophe de Vienne)
 * Compiles with gcc's pedantic warnings as errors.
@@ -327,22 +335,22 @@ Changes since 2.18:
   - Now throws exception if document not found.
   (Christophe de Vienne)
   - Added const get_document() overload. (Murray Cumming)
-  
+
 0.21 (unstable):
 
 * Parsers:
-  - Validation now supported: Use Parser::set_validate() to turn on validation. 
+  - Validation now supported: Use Parser::set_validate() to turn on validation.
     Parsers will then throw validation_error exceptions if validation fails.
     (Murray Cumming)
   - SaxParser: Added parse_chunk() for gradual parsing of XML fragments.
     (Ole Laursen)
 * Node:
-  - Moved add_child_content(), get_child_content(), set_child_content(), 
+  - Moved add_child_content(), get_child_content(), set_child_content(),
     and has_content() to Element class.
   - Fixed set_child_content() to add content instead of creating a node.
     (Murray Cumming)
 * Added spec file for RPMs. (Eric Bourque)
- 
+
 
 2003-02-15: 0.20 (unstable):
 
@@ -350,7 +358,7 @@ Changes since 2.18:
   (Murray Cumming)
 * Added examples/dom_xpath.
   (Stefan Seefeld, Murray Cumming)
- 
+
 2003-02-08: 0.19 (unstable):
 
 * The imlementation now uses libxml's API more instead of reimplementing data structures.
@@ -396,5 +404,4 @@ methods in SaxParser.
 
 * Simplified memory management -
   no more returning of static temporaries.
-* set_*() methods return void. 
-
+* set_*() methods return void.
