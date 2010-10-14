@@ -1,3 +1,9 @@
+2010-10-14  Murray Cumming  <murrayc@murrayc.com>
+
+	website: Change the mailing list location, because I moved it.
+
+	* docs/index.html: The mailing list is now at gnome.org.
+
 2010-10-03  Armin Burgmeier  <armin@arbur.net>
 
 	* MSVC_Net2005/README:
@@ -79,52 +85,52 @@
 
 	Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL.
 
-	* libxml++/nodes/node.cc: find_impl(): if the xmlNode has type 
-	XML_NAMESPACE_DECL then it is actually a xmlNs, which is not like a xmlNode 
-	at all (thanks to the awful undocumented libxml++ system of struct 
+	* libxml++/nodes/node.cc: find_impl(): if the xmlNode has type
+	XML_NAMESPACE_DECL then it is actually a xmlNs, which is not like a xmlNode
+	at all (thanks to the awful undocumented libxml++ system of struct
 	inheritance).
-	So we just igore these items. We need to decide what the caller really 
+	So we just igore these items. We need to decide what the caller really
 	expects.
 
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
 	Node::find(): Revert some of my previous change because it breaks some code.
 
-	* libxml++/nodes/node.cc: find_impl(): Restore the previous behaviour, 
+	* libxml++/nodes/node.cc: find_impl(): Restore the previous behaviour,
 	because the strange use of _private only seems to happen sometimes.
 
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
 	Node::find(): Cope with weird use of _private in xmlNodeSet.
 
-	* libxml++/nodes/node.cc: The xmlNodeSet seems to contain extra xmlNodes that 
-	were never given to on_libxml_construct(). Those xmlNodes seem to abuse 
+	* libxml++/nodes/node.cc: The xmlNodeSet seems to contain extra xmlNodes that
+	were never given to on_libxml_construct(). Those xmlNodes seem to abuse
 	private_, where we find our real xmlNodes containing our C++ Nodes.
-	This fixes bug #386013 (Max Kirillov) though it depends on undocumented 
+	This fixes bug #386013 (Max Kirillov) though it depends on undocumented
 	libxml behaviour.
 
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>>
 
 	Node::find(): Use libxml functions instead of direct C access.
 
-	* libxml++/nodes/node.cc: Use xmlXPathNodeSetIsEmpty(), 
-	xmlXPathNodeSetGetLength() and xmlXPathNodeSetItem() instead of direct 
+	* libxml++/nodes/node.cc: Use xmlXPathNodeSetIsEmpty(),
+	xmlXPathNodeSetGetLength() and xmlXPathNodeSetItem() instead of direct
 	xmlNodeSet struct access.
 
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
 	Manual: Use git.gnome.org as the link to the examples source code.
 
-	* docs/manual/libxml++_without_code.xml: Use git.gnome.org for the examples 
+	* docs/manual/libxml++_without_code.xml: Use git.gnome.org for the examples
 	url base, as we do in gtkmm-documentation.
 
 2010-06-13  Murray Cumming  <murrayc@murrayc.com>
 
 	Restore the mm-common make target and update a link.
 
-	* Makefile.am: Restore (and update) the post-html target that was lost when 
+	* Makefile.am: Restore (and update) the post-html target that was lost when
 	we redid the build system for mm-common.
-	* docs/index.html: Change the link to the manual to point to its new location 
+	* docs/index.html: Change the link to the manual to point to its new location
 	at library.gnome.org.
 
 2.30.1:
