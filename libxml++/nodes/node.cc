@@ -27,8 +27,7 @@ Node::~Node()
 
 const Element* Node::get_parent() const
 {
-  return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
-             static_cast<const Element*>(cobj()->parent->_private) : 0;
+  return const_cast<Node*>(this)->get_parent();
 }
 
 Element* Node::get_parent()

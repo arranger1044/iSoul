@@ -1,3 +1,10 @@
+2010-10-19  Knut Aksel Røysland  <knutroy@ifi.uio.no>
+
+  Node::get_parent(): Removed code duplication.
+
+  * libxml++/nodes/node.cc: get_parent() const: Use const_cast<> to call
+  the non-const version, instead of duplicating the code.
+
 2.32.0:
 
 2010-10-14  Murray Cumming  <murrayc@murrayc.com>
