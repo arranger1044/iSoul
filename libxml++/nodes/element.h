@@ -39,7 +39,9 @@ public:
    * @returns The list of attributes.
    */
   const AttributeList get_attributes() const;
-    
+
+  //TODO: There should be a const and non-const version.
+  //See the patch at https://bugzilla.gnome.org/show_bug.cgi?id=632524
   // FIXME: the following only returns explicitely provided
   // attributes, not default ones declared in the dtd.
   // TOOD: Is this still true? murrayc
@@ -49,12 +51,12 @@ public:
   /** Get the value of the attribute with this name, and optionally with this namespace.
    * For finer control, you might use get_attribute() and use the methods of the Attribute class.
    * @param name The name of the attribute whose value will be retrieved.
-   * @param ns_prefix Namespace prefix. 
+   * @param ns_prefix Namespace prefix.
    * @return The text value of the attribute, or an empty string if no such attribute was found.
    *
    * @newin{2,20}
    */
-  Glib::ustring get_attribute_value(const Glib::ustring& name, 
+  Glib::ustring get_attribute_value(const Glib::ustring& name,
                                     const Glib::ustring& ns_prefix = Glib::ustring()) const;
 
   /** Set the value of the attribute with this name, and optionally with this namespace.
@@ -74,8 +76,8 @@ public:
    */
   void remove_attribute(const Glib::ustring& name,
                         const Glib::ustring& ns_prefix = Glib::ustring());
-  
-  
+
+
   /** Get the first child text content node.
    * This is a convenience method, meant as an alternative to iterating over all the child nodes to find the first suitable node then and getting the text directly.
    * @returns The first text node, if any.
