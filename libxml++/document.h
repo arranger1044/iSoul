@@ -25,7 +25,7 @@ extern "C" {
 }
 #endif //DOXYGEN_SHOULD_SKIP_THIS
 
-namespace xmlpp 
+namespace xmlpp
 {
 
 typedef enum {
@@ -62,17 +62,18 @@ class Document : NonCopyable
 public:
   explicit Document(const Glib::ustring& version = "1.0");
   virtual ~Document();
-  
+
   /** @return The encoding used in the source from which the document has been loaded.
     */
   Glib::ustring get_encoding() const;
-  
+
   Dtd* get_internal_subset() const;
-  
+
   void set_internal_subset(const Glib::ustring& name,
                            const Glib::ustring& external_id,
                            const Glib::ustring& system_id);
 
+  //TODO: There should be a const and non-const version.
   /** Return the root node.
    * This function does _not_ create a default root node if it doesn't exist.
    * @return A pointer to the root node if it exists, 0 otherwise.
