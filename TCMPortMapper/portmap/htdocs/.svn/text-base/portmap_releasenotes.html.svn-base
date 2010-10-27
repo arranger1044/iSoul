@@ -1,0 +1,101 @@
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>Port Map Release Notes</title>
+		<meta name="robots" content="anchors">
+		<link href="portmap_releasenotes.css" type="text/css" rel="stylesheet" media="all">
+	</head>
+
+	<body>
+		<br />
+			<table class="dots" width="100%" border="0" cellspacing="0" cellpadding="0" summary="Two column table with heading">
+				<tr>
+					<td class="blue" colspan="2">
+						<h3>Version 1.3.1: fixed a threading related crash</h3>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<ul>
+						  <li>fixed a crash in stopListeningToExternalIPAddressChanges (see <a href="http://code.google.com/p/tcmportmapper/issues/detail?id=31">Issue #31</a> for a crashlog)</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		<br />
+			<table class="dots" width="100%" border="0" cellspacing="0" cellpadding="0" summary="Two column table with heading">
+				<tr>
+					<td class="blue" colspan="2">
+						<h3>Version 1.3: Airport Extreme Base Station and mDNSResponder havoc relief</h3>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<ul>
+						  <li>fixed an issue where Port Map would trigger a bug in the mDNSResponder after machine wake if the computer is in a Network that supports NAT-PMP (e.g. Apple Airport Extreme Base Stations) and Back to My Mac is enabled. </li>
+						  <li>fixed an issue where Port Map would trigger a bug in the mDNSResponder after network change to a  Network which supports NAT-PMP (e.g. Apple Airport Extreme Base Stations) and Back to My Mac is enabled. </li>
+						  <li>if you still encounter a massive logging of mDNSResponder you now can switch Port Map off and on again to resolve this issue, until mDNSResponder is fixed by Apple.</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		<br />
+			<table class="dots" width="100%" border="0" cellspacing="0" cellpadding="0" summary="Two column table with heading">
+				<tr>
+					<td class="blue" colspan="2">
+						<h3>Version 1.2: small bugfixes</h3>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<ul>
+						  <li>fixed an issue with TCMPortMappingTransportProtocolBoth and UPNP where port mappings would increase their public port on refresh</li>
+						  <li>fixed an issue with TCMPortMappingTransportProtocolBoth and UPNP where port mapping would leave their UDP part mapped</li>
+						  <li>fixed a small memory leak with UPNP (32 bytes per refresh complete refresh)</li>
+						  <li>improved compatibility with a bug in mDNSResponder by not continuously listening to 5350 - but only if we discovered a NAT-PMP compatible gateway. If you encounter a massive logging of mDNSResponder you now can switch Port Map off and on again to resolve this issue, until mDNSResponder is fixed by Apple.</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		<br />
+			<table class="dots" width="100%" border="0" cellspacing="0" cellpadding="0" summary="Two column table with heading">
+				<tr>
+					<td class="blue" colspan="2">
+						<h3>Version 1.1: Update of underlying libraries and bugfixes</h3>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<ul>
+						  <li>updated of miniupnpc library to version 1.2 - should increase compatibility with more router/gateways, e.g. the Arcor EasyBox A300.</li>
+						  <li>update of libnatpmp to libnatpmp-20081006</li>
+						  <li>fixed an issue with AVM routers that caused generation of too many and stale UPNP mappings</li>
+						  <li>fixed an issue with NAT-PMP and the current Airport Extreme Base stations that caused external IP changes not to be noticed</li>
+						  <li>fixed an issue that caused TCMPortMapper to not recognize global network changes if it was started while no network was connected</li>
+						  <li>fixed a crashing issue appearing with certain setups where UPNP devices have been discovered that inevitably lead to miniwget crashes due to missing content</li>
+						  <li>fixed too eager error reporting in case of system wake up by increasing the interval of the refresh after wake up from 1.0 to 2.0 seconds</li>
+						  <li>fixed reporting of "Router incompatible." in the case of an Apple Airport and not DSL or other network connection. Now correctly "No external Address." is displayed but mappings still can be setup to be active when the device goes online again.</li>
+						  <li>fixed an issue where quickly turning NAT-PMP port mappings on and off raised an exception instead of updating the mapping.</li>
+						  <li>fixed an issue where choosing multiple UPNP port mappings for deletion did sometimes disable the remove button.</li>
+						  <li>improved long time running UPNP setups by decreasing the regular refresh interval</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<table class="dots" width="100%" border="0" cellspacing="0" cellpadding="0" summary="Two column table with heading">
+				<tr>
+					<td class="blue" colspan="2">
+						<h3>Version 1.0: Initial release</h3>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">
+						<p></p>
+					</td>
+				</tr>
+			</table>
+	</body>
+
+</html>

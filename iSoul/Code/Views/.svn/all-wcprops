@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/51/trunk/iSoul/Code/Views
+END
+BottomBar.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/BottomBar.h
+END
+VerticalAdjustCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/VerticalAdjustCell.m
+END
+QueueCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/QueueCell.m
+END
+BubbleTextView.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/32/trunk/iSoul/Code/Views/BubbleTextView.h
+END
+DownloadProgressCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DownloadProgressCell.h
+END
+BottomBar.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/BottomBar.m
+END
+BubbleTextView.m
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/51/trunk/iSoul/Code/Views/BubbleTextView.m
+END
+DownloadProgressCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DownloadProgressCell.m
+END
+BadgeCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/BadgeCell.h
+END
+DockBadge.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DockBadge.h
+END
+BadgeCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/BadgeCell.m
+END
+DownloadFilenameCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DownloadFilenameCell.h
+END
+DockBadge.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DockBadge.m
+END
+ImageAndTextCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/ImageAndTextCell.h
+END
+DownloadFilenameCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/DownloadFilenameCell.m
+END
+ImageAndTextCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/ImageAndTextCell.m
+END
+QueueCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/QueueCell.h
+END
+VerticalAdjustCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/13/trunk/iSoul/Code/Views/VerticalAdjustCell.h
+END

@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/20/trunk/TCMPortMapper/framework
+END
+OUItoCompany.plist
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/OUItoCompany.plist
+END
+TCMPortMapper-Info.plist
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMPortMapper-Info.plist
+END
+miniupnp_modeldescription.patch
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/miniupnp_modeldescription.patch
+END
+TCMPortMapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMPortMapper.h
+END
+TCMPortMapper_prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMPortMapper_prefix.pch
+END
+Ethernet-OUI.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/Ethernet-OUI.txt
+END
+TCMUPNPPortMapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMUPNPPortMapper.h
+END
+TCMPortMapper.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMPortMapper.m
+END
+OUI-FindAndReplaceRegexes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/OUI-FindAndReplaceRegexes.txt
+END
+TCMUPNPPortMapper.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMUPNPPortMapper.m
+END
+IXSCNotificationManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/IXSCNotificationManager.h
+END
+OUItoCompanyXML.plist
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/OUItoCompanyXML.plist
+END
+TCMNATPMPPortMapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMNATPMPPortMapper.h
+END
+NSNotificationCenterThreadingAdditions.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.h
+END
+IXSCNotificationManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/IXSCNotificationManager.m
+END
+TCMNATPMPPortMapper.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/TCMNATPMPPortMapper.m
+END
+NSNotificationCenterThreadingAdditions.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/13/trunk/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m
+END

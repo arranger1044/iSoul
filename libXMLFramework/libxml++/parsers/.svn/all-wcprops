@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers
+END
+domparser.cc
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/domparser.cc
+END
+parser.cc
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/parser.cc
+END
+parser.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/parser.h
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/Makefile.in
+END
+domparser.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/domparser.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/Makefile.am
+END
+saxparser.cc
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/saxparser.cc
+END
+saxparser.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/parsers/saxparser.h
+END

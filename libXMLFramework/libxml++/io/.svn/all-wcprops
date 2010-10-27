@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io
+END
+outputbuffer.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/outputbuffer.h
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/Makefile.in
+END
+ostreamoutputbuffer.cc
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/ostreamoutputbuffer.cc
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/Makefile.am
+END
+ostreamoutputbuffer.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/ostreamoutputbuffer.h
+END
+outputbuffer.cc
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/13/trunk/libXMLFramework/libxml++/io/outputbuffer.cc
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/53/trunk/iSoul/Resources/English.lproj
+END
+InfoPlist.strings
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/13/trunk/iSoul/Resources/English.lproj/InfoPlist.strings
+END
+SearchView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/53/trunk/iSoul/Resources/English.lproj/SearchView.xib
+END
+Preferences.xib
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/46/trunk/iSoul/Resources/English.lproj/Preferences.xib
+END
+DownloadView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/34/trunk/iSoul/Resources/English.lproj/DownloadView.xib
+END
+FriendsView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/34/trunk/iSoul/Resources/English.lproj/FriendsView.xib
+END
+MainMenu.xib
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/45/trunk/iSoul/Resources/English.lproj/MainMenu.xib
+END
+ChatView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/34/trunk/iSoul/Resources/English.lproj/ChatView.xib
+END
+BrowseView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/34/trunk/iSoul/Resources/English.lproj/BrowseView.xib
+END

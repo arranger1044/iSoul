@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/13/trunk/Museek/Muhelp
+END
+Codec.cc
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/Museek/Muhelp/Codec.cc
+END
+string_ext.hh
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/13/trunk/Museek/Muhelp/string_ext.hh
+END
+DirEntry.cc
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/13/trunk/Museek/Muhelp/DirEntry.cc
+END
+Muconf.hh
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/13/trunk/Museek/Muhelp/Muconf.hh
+END
+Codec.hh
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/Museek/Muhelp/Codec.hh
+END
+Muconf.cc
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/13/trunk/Museek/Muhelp/Muconf.cc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/13/trunk/Museek/Muhelp/CMakeLists.txt
+END
+DirEntry.hh
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/13/trunk/Museek/Muhelp/DirEntry.hh
+END
