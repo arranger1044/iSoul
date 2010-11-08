@@ -1,3 +1,11 @@
+2010-11-08  Murray Cumming  <murrayc@murrayc.com>
+
+	Do not call xmlCleanupParser() because it is brutal.
+
+	* libxml++/document.cc: ~Init(): Do not call xmlCleanupParser() because it
+	breaks libxml generally and should only be called by an application
+	explicitly before it ends, for instance at the end of its main().
+
 2010-10-19  Knut Aksel Røysland  <knutroy@ifi.uio.no>
 
   Node::get_parent(): Removed code duplication.

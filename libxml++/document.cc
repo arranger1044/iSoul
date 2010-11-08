@@ -108,7 +108,7 @@ void on_libxml_destruct(xmlNode* node)
     xmlpp::Dtd* cppDtd = static_cast<xmlpp::Dtd*>(node->_private);
     if(cppDtd)
     {
-      delete cppDtd;     
+      delete cppDtd;
       bPrivateDeleted = true;
     }
   }
@@ -146,7 +146,16 @@ Document::Init::Init()
 
 Document::Init::~Init()
 {
-  xmlCleanupParser(); //As per xmlInitParser(), or memory leak will happen.
+  //We don't call this because it breaks libxml generally and should only be
+  //called at the very end of a process, such as at the end of a main().
+  //libxml might still be used by the application, so we don't want to break
+  //that.
+  //This is important even here, which usually happens only when the library
+  //is unloaded, because that might happen during normal application use,
+  //if the application does dynamic library loading, for instance to load
+  //plugins.
+  //See http://xmlsoft.org/html/libxml-parser.html#xmlCleanupParser
+  //xmlCleanupParser(); //As per xmlInitParser(), or memory leak will happen.
 }
 
 Document::Init Document::init_;
@@ -173,7 +182,7 @@ Glib::ustring Document::get_encoding() const
   Glib::ustring encoding;
   if(impl_->encoding)
     encoding = (const char*)impl_->encoding;
-    
+
   return encoding;
 }
 
@@ -182,10 +191,10 @@ Dtd* Document::get_internal_subset() const
   xmlDtd* dtd = xmlGetIntSubset(impl_);
   if(!dtd)
     return 0;
-    
+
   if(!dtd->_private)
     dtd->_private = new Dtd(dtd);
-    
+
   return reinterpret_cast<Dtd*>(dtd->_private);
 }
 
@@ -197,7 +206,7 @@ void Document::set_internal_subset(const Glib::ustring& name,
 				   (const xmlChar*)name.c_str(),
 				   external_id.empty() ? (const xmlChar*)0 : (const xmlChar*)external_id.c_str(),
 				   system_id.empty() ? (const xmlChar*)0 : (const xmlChar*)system_id.c_str());
-           
+
   if (dtd && !dtd->_private)
     dtd->_private = new Dtd(dtd);
 }
@@ -360,7 +369,7 @@ void Document::set_entity_declaration(const Glib::ustring& name, XmlEntityType t
                               const Glib::ustring& publicId, const Glib::ustring& systemId,
                               const Glib::ustring& content)
 {
-  xmlAddDocEntity( impl_, (const xmlChar*) name.c_str(), type, 
+  xmlAddDocEntity( impl_, (const xmlChar*) name.c_str(), type,
     publicId.empty() ? (const xmlChar*)0 : (const xmlChar*)publicId.c_str(),
     systemId.empty() ? (const xmlChar*)0 : (const xmlChar*)systemId.c_str(),
     (const xmlChar*) content.c_str() );
