@@ -7,6 +7,7 @@
 #include <libxml++/nodes/element.h>
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/exceptions/internal_error.h>
+#include <libxml++/document.h>
 
 #include <libxml/tree.h>
 
@@ -25,6 +26,7 @@ Element::AttributeList Element::get_attributes()
   AttributeList attributes;
   for(xmlAttr* attr = cobj()->properties; attr; attr = attr->next)
   {
+    Document::create_wrapper(reinterpret_cast<xmlNode*>(attr));
     attributes.push_back(reinterpret_cast<Attribute*>(attr->_private));
   }
 
@@ -44,6 +46,7 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
     xmlAttr* attr = xmlHasProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str());
     if( attr )
     {
+      Document::create_wrapper(reinterpret_cast<xmlNode*>(attr));
       return reinterpret_cast<Attribute*>(attr->_private);
     }
   }
@@ -54,6 +57,7 @@ Attribute* Element::get_attribute(const Glib::ustring& name,
                                  (const xmlChar*)ns_uri.c_str());
     if( attr )
     {
+      Document::create_wrapper(reinterpret_cast<xmlNode*>(attr));
       return reinterpret_cast<Attribute*>(attr->_private);
     }
   }
@@ -95,7 +99,10 @@ Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring
   }
 
   if(attr)
+  {
+    Document::create_wrapper(reinterpret_cast<xmlNode*>(attr));
     return reinterpret_cast<Attribute*>(attr->_private);
+  }
   else
     return 0;
 }
@@ -117,7 +124,10 @@ const TextNode* Element::get_child_text() const
   // FIXME: return only the first content node
   for(xmlNode* child = cobj()->children; child; child = child->next)
      if(child->type == XML_TEXT_NODE)
-        return static_cast<TextNode*>(child->_private);
+     {
+       Document::create_wrapper(child);
+       return static_cast<TextNode*>(child->_private);
+     }
 
   return 0;
 }
@@ -128,7 +138,10 @@ TextNode* Element::get_child_text()
   // What should we do instead? Update the documentation if we change this. murrayc.
   for(xmlNode* child = cobj()->children; child; child = child->next)
      if(child->type == XML_TEXT_NODE)
-        return static_cast<TextNode*>(child->_private);
+     {
+       Document::create_wrapper(child);
+       return static_cast<TextNode*>(child->_private);
+     }
 
   return 0;
 }
@@ -151,6 +164,7 @@ TextNode* Element::add_child_text(const Glib::ustring& content)
      // Use the result, because node can be freed when merging text nodes:
      node = xmlAddChild(cobj(), node); 
 
+     Document::create_wrapper(node);
      return static_cast<TextNode*>(node->_private);
   }
   return 0;
@@ -168,6 +182,7 @@ TextNode* Element::add_child_text(xmlpp::Node* previous_sibling, const Glib::ust
      // Use the result, because node can be freed when merging text nodes:
      node = xmlAddNextSibling(previous_sibling->cobj(), node); 
 
+     Document::create_wrapper(node);
      return static_cast<TextNode*>(node->_private);
   }
   return 0;
@@ -185,6 +200,7 @@ TextNode* Element::add_child_text_before(xmlpp::Node* next_sibling, const Glib::
      // Use the result, because node can be freed when merging text nodes:
      node = xmlAddPrevSibling(next_sibling->cobj(), node); 
 
+     Document::create_wrapper(node);
      return static_cast<TextNode*>(node->_private);
   }
   return 0;
@@ -226,6 +242,7 @@ CommentNode* Element::add_child_comment(const Glib::ustring& content)
  
   // Use the result, because node can be freed when merging text nodes:
   node = xmlAddChild(cobj(), node);
+  Document::create_wrapper(node);
   return static_cast<CommentNode*>(node->_private);
 }
 

@@ -7,6 +7,7 @@
 #include <libxml++/nodes/element.h>
 #include <libxml++/nodes/node.h>
 #include <libxml++/exceptions/internal_error.h>
+#include <libxml++/document.h>
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
 #include <libxml/tree.h>
@@ -32,8 +33,11 @@ const Element* Node::get_parent() const
 
 Element* Node::get_parent()
 {
-  return cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE ? 
-            static_cast<Element*>(cobj()->parent->_private) : 0;
+  if(!(cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE))
+    return 0;
+
+  Document::create_wrapper(cobj()->parent);
+  return static_cast<Element*>(cobj()->parent->_private);
 }
 
 const Node* Node::get_next_sibling() const
@@ -43,8 +47,11 @@ const Node* Node::get_next_sibling() const
 
 Node* Node::get_next_sibling()
 {
-  return cobj()->next ? 
-	        static_cast<Node*>(cobj()->next->_private) : 0;
+  if(!cobj()->next)
+    return 0;
+
+  Document::create_wrapper(cobj()->next);
+  return static_cast<Node*>(cobj()->next->_private);
 }
 
 const Node* Node::get_previous_sibling() const
@@ -54,8 +61,11 @@ const Node* Node::get_previous_sibling() const
 
 Node* Node::get_previous_sibling()
 {
-  return cobj()->prev ? 
-            static_cast<Node*>(cobj()->prev->_private) : 0;
+  if(!cobj()->prev)
+    return 0;
+
+  Document::create_wrapper(cobj()->prev);
+  return static_cast<Node*>(cobj()->prev->_private);
 }
 
 Node::NodeList Node::get_children(const Glib::ustring& name)
@@ -67,20 +77,10 @@ Node::NodeList Node::get_children(const Glib::ustring& name)
    NodeList children;
    do
    {
-      if(child->_private)
+      if(name.empty() || name == (const char*)child->name)
       {
-        if(name.empty() || name == (const char*)child->name)
-          children.push_back(reinterpret_cast<Node*>(child->_private));
-      }
-      else
-      {
-        //This should not happen:
-        //This is for debugging only:
-        //if(child->type == XML_ENTITY_DECL)
-        //{
-        //  xmlEntity* centity = (xmlEntity*)child;
-        //  std::cerr << "Node::get_children(): unexpected unwrapped Entity Declaration node name =" << centity->name << std::endl;
-        //}
+        Document::create_wrapper(child);
+        children.push_back(reinterpret_cast<Node*>(child->_private));
       }
    }
    while((child = child->next));
@@ -101,10 +101,11 @@ Element* Node::add_child(const Glib::ustring& name,
     return 0;
 
   _xmlNode* node = xmlAddChild(impl_, child);
-  if(node)
-    return static_cast<Element*>(node->_private);
-  else
-     return 0;
+  if(!node)
+    return 0;
+ 
+  Document::create_wrapper(node);
+  return static_cast<Element*>(node->_private);
 }
 
 Element* Node::add_child(xmlpp::Node* previous_sibling, 
@@ -119,10 +120,11 @@ Element* Node::add_child(xmlpp::Node* previous_sibling,
     return 0;
 
   _xmlNode* node = xmlAddNextSibling(previous_sibling->cobj(), child);
-  if(node)
-    return static_cast<Element*>(node->_private);
-  else
-     return 0;
+  if(!node)
+    return 0;
+
+  Document::create_wrapper(node);
+  return static_cast<Element*>(node->_private);
 }
 
 Element* Node::add_child_before(xmlpp::Node* next_sibling, 
@@ -137,10 +139,11 @@ Element* Node::add_child_before(xmlpp::Node* next_sibling,
     return 0;
 
   _xmlNode* node = xmlAddPrevSibling(next_sibling->cobj(), child);
-  if(node)
-    return static_cast<Element*>(node->_private);
-  else
-     return 0;
+  if(!node)
+    return 0;
+
+  Document::create_wrapper(node);
+  return static_cast<Element*>(node->_private);
 }
 
 _xmlNode* Node::create_new_child_node(const Glib::ustring& name, const Glib::ustring& ns_prefix)
@@ -179,6 +182,7 @@ void Node::remove_child(Node* node)
 {
   //TODO: Allow a node to be removed without deleting it, to allow it to be moved?
   //This would require a more complex memory management API.
+  Document::free_wrappers(node->cobj());
   xmlUnlinkNode(node->cobj());
   xmlFreeNode(node->cobj()); //The C++ instance will be deleted in a callback.
 }
@@ -200,6 +204,7 @@ Node* Node::import_node(const Node* node, bool recursive)
   xmlNode* added_node = xmlAddChild(this->cobj(),imported_node);
   if (!added_node)
   {
+    Document::free_wrappers(imported_node);
     xmlFreeNode(imported_node);
 
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -209,6 +214,7 @@ Node* Node::import_node(const Node* node, bool recursive)
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
+  Document::create_wrapper(imported_node);
   return static_cast<Node*>(imported_node->_private);
 }
 
@@ -292,6 +298,7 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
       
       //TODO: Check for other cnode->type values?
   
+      Document::create_wrapper(cnode);
       Node* cppNode = static_cast<Node*>(cnode->_private);
       nodes.push_back(cppNode);
     }

@@ -2,6 +2,7 @@
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/exceptions/parse_error.h>
 #include <libxml++/exceptions/validity_error.h>
+#include <libxml++/document.h>
 
 #include <libxml/xmlreader.h>
 
@@ -298,7 +299,10 @@ Node* TextReader::get_current_node()
 {
   xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
   if(node)
+  {
+    Document::create_wrapper(node);
     return static_cast<Node*>(node->_private);
+  }
     
   check_for_exceptions();
   return 0;
@@ -308,7 +312,10 @@ const Node* TextReader::get_current_node() const
 {
   xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
   if(node)
+  {
+    Document::create_wrapper(node);
     return static_cast<Node*>(node->_private);
+  }
 
   check_for_exceptions();
   return 0;
@@ -328,7 +335,11 @@ Node* TextReader::expand()
 {
   xmlNodePtr node = xmlTextReaderExpand(impl_);
   if(node)
+  if(node)
+  {
+    Document::create_wrapper(node);
     return static_cast<Node*>(node->_private);
+  }
     
   check_for_exceptions();
   return 0;

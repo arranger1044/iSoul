@@ -26,14 +26,17 @@
 
 #include <iostream>
 
-namespace
+namespace xmlpp
 {
 
-//Called by libxml whenever it constructs something,
-//such as a node or attribute.
-//This allows us to create a C++ instance for every C instance.
-void on_libxml_construct(xmlNode* node)
+void Document::create_wrapper(xmlNode* node)
 {
+  if(node->_private)
+  {
+	  //Node already wrapped, skip
+	  return;
+  }
+
   switch (node->type)
   {
     case XML_ELEMENT_NODE:
@@ -97,51 +100,9 @@ void on_libxml_construct(xmlNode* node)
   }
 }
 
-//Called by libxml whenever it destroys something
-//such as a node or attribute.
-//This allows us to delete the C++ instance for the C instance, if any.
-void on_libxml_destruct(xmlNode* node)
-{
-  bool bPrivateDeleted = false;
-  if (node->type == XML_DTD_NODE)
-  {
-    xmlpp::Dtd* cppDtd = static_cast<xmlpp::Dtd*>(node->_private);
-    if(cppDtd)
-    {
-      delete cppDtd;
-      bPrivateDeleted = true;
-    }
-  }
-  else if (node->type == XML_DOCUMENT_NODE)
-    // do nothing. See on_libxml_construct for an explanation
-    ;
-  else
-  {
-    xmlpp::Node* cppNode =  static_cast<xmlpp::Node*>(node->_private);
-    if(cppNode)
-    {
-      delete cppNode;
-      bPrivateDeleted = true;
-    }
-  }
-
-  //This probably isn't necessary:
-  if(bPrivateDeleted)
-    node->_private = 0;
-}
-
-} //anonymous namespace
-
-namespace xmlpp
-{
-
 Document::Init::Init()
 {
   xmlInitParser(); //Not always necessary, but necessary for thread safety.
-  xmlRegisterNodeDefault(on_libxml_construct);
-  xmlDeregisterNodeDefault(on_libxml_destruct);
-  xmlThrDefRegisterNodeDefault(on_libxml_construct);
-  xmlThrDefDeregisterNodeDefault(on_libxml_destruct);
 }
 
 Document::Init::~Init()
@@ -174,7 +135,42 @@ Document::Document(xmlDoc* doc)
 
 Document::~Document()
 {
+  free_wrappers(reinterpret_cast<xmlNode*>(impl_));
   xmlFreeDoc(impl_);
+}
+
+void Document::free_wrappers(xmlNode* node)
+{
+  //Walk the children list
+  for(xmlNode* child=node->children; child; child=child->next)
+     free_wrappers(child);
+
+  //Delete the local one
+  switch(node->type)
+  {
+    //Node types that have no properties
+    case XML_DTD_NODE:
+      delete static_cast<Dtd*>(node->_private);
+      node->_private=0;
+      return;
+    case XML_ATTRIBUTE_NODE:
+    case XML_ELEMENT_DECL:
+    case XML_ATTRIBUTE_DECL:
+    case XML_ENTITY_DECL:
+      delete static_cast<Node*>(node->_private);
+      node->_private=0;
+      return;
+    case XML_DOCUMENT_NODE:
+      //Do not free now, the ownernship is reversed
+      return;
+    default:
+      delete static_cast<Node*>(node->_private);
+      node->_private=0;
+  }
+
+  //Walk the attributes list
+  for(xmlAttr* attr=node->properties; attr; attr=attr->next)
+     free_wrappers(reinterpret_cast<xmlNode*>(attr));
 }
 
 Glib::ustring Document::get_encoding() const
@@ -217,7 +213,10 @@ Element* Document::get_root_node() const
   if(root == 0)
     return 0;
   else
+  {
+    create_wrapper(root);
     return reinterpret_cast<Element*>(root->_private);
+  }
 }
 
 Element* Document::create_root_node(const Glib::ustring& name,
@@ -271,6 +270,7 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
 
   // Use the result, because node can be freed when merging text nodes:
   node = xmlAddChild( (xmlNode*)impl_, node);
+  create_wrapper(node);
   return static_cast<CommentNode*>(node->_private);
 }
 

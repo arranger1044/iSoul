@@ -170,6 +170,10 @@ public:
   ///Access the underlying libxml implementation.
   const _xmlDoc* cobj() const;
 
+  ///Construct the right C++ instances for a given element
+  static void create_wrapper(_xmlNode* node);
+  ///Recursively destroy the created C++ instances
+  static void free_wrappers(_xmlNode* attr);
 protected:
   /** Retrieve an Entity.
    * The entity can be from an external subset or internally declared.
