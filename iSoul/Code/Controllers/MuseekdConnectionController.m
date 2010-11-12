@@ -1154,7 +1154,7 @@
 	Room *room = [store joinRoom:roomname withUserCount:numUsers];
 	
 	for (uint32_t i = 0; i < numUsers; i++) {
-		NSString *username = [msg readString];
+		NSString * username = [msg readString];
 		
 		// get or create the user object
 		User *user = [store getOrAddUserWithName:username];

@@ -1,7 +1,7 @@
 TiSoul
 v7
 r0
-t311256426.801271
+t311262112.948915
 cCheck dependencies
 cProcessInfoPlistFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Info.plist iSoul-Info.plist
 cCopyStringsFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Resources/English.lproj/InfoPlist.strings Resources/English.lproj/InfoPlist.strings
@@ -5279,8 +5279,8 @@ t1288637300
 s17519832
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-c000000004CDD2DEA00000000000000CC
-t1289563626
+c000000004CDD43A200000000000000CC
+t1289569186
 s204
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper
@@ -5491,9 +5491,9 @@ i<Foundation/Foundation.h>
 i"Constants.h"
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m
-c000000004CD2F884000000000000A801
-t1288894596
-s43009
+c000000004CDD3CF2000000000000A802
+t1289567474
+s43010
 i"MuseekdConnectionController.h"
 i"Constants.h"
 i"MuseekReader.h"
@@ -5680,8 +5680,8 @@ s268
 i<Cocoa/Cocoa.h>
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m
-c000000004CB4404A00000000000004A6
-t1286881354
+c000000004CDD42DB00000000000004A6
+t1289568987
 s1190
 i"NSStringSpeed.h"
 
@@ -6026,8 +6026,8 @@ s210
 i<Cocoa/Cocoa.h>
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m
-c000000004CB4404B000000000000022B
-t1286881355
+c000000004CDD4349000000000000022B
+t1289569097
 s555
 i"SpeedTransformer.h"
 i"NSStringSpeed.h"
@@ -8151,9 +8151,9 @@ t1286881354
 s73879
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib
-c000000004CDD1780000000000001EA5C
-t1289557888
-s125532
+c000000004CDD441E000000000001F848
+t1289569310
+s129096
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/DownloadView.xib
 c000000004CB4404A0000000000012E3D
@@ -8196,11 +8196,11 @@ t1286881354
 s1902
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app
-t1289563626
+t1289569312
 s102
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Frameworks/TCMPortMapper.framework
-t1289563626
+t1289569186
 s204
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Frameworks/libXMLFramework.framework
@@ -8216,7 +8216,7 @@ t1286905905
 s938
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul
-t1289563626
+t1289569098
 s620792
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/PkgInfo
@@ -8460,8 +8460,8 @@ t1286905907
 s11501
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Resources/English.lproj/ChatView.nib
-t1289557892
-s19990
+t1289569312
+s20716
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Resources/English.lproj/DownloadView.nib
 t1286905908
@@ -9928,7 +9928,7 @@ t1289555873
 s20872
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o
-t1289555873
+t1289567476
 s157972
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdController.o
@@ -9956,7 +9956,7 @@ t1288637311
 s10304
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o
-t1288637311
+t1289569098
 s9672
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSTreeController-DMExtensions.o
@@ -10012,7 +10012,7 @@ t1288637315
 s6624
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o
-t1288637310
+t1289569098
 s10116
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SplitOperation.o
@@ -10087,7 +10087,7 @@ s1012
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies311256426#311256426#0(0"0(0#1#0"8634910816#0"0#
+lSLF07#2@18"Check dependencies311262112#311262112#0(0"0(0#1#0"8640387520#0"0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/AQDataExtensions.o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Extensions/AQDataExtensions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s308598717.455210
@@ -10883,8 +10883,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@135"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m308600168#308600168#0(0"0(0#0#127"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m8638226400#1883"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/include" -I../TCMPortMapper/framework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources" -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-ecramzyvljlngibglsdormwloiea/iSoul_Prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o"0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s311248673.036309
-e311248673.463105
+s311260275.583230
+e311260276.233511
 r1
 xCompileC
 xbuild/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o
@@ -10893,7 +10893,7 @@ xnormal
 xx86_64
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@131"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m311248673#311248673#0(0"0(0#0#123"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m8642153888#1823"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o0#
+lSLF07#2@131"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m311260275#311260276#0(0"0(0#0#123"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m8641380672#1823"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdConnectionController.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdConnectionController.o0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/MuseekdController.o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Controllers/MuseekdController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s308600168.674706
@@ -11052,8 +11052,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@120"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m308598718#308598718#0(0"0(0#0#112"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m8610016768#1854"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/include" -I../TCMPortMapper/framework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources" -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-ecramzyvljlngibglsdormwloiea/iSoul_Prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o"0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s310330111.352827
-e310330111.491149
+s311261898.149778
+e311261898.523840
 r1
 xCompileC
 xbuild/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o
@@ -11062,7 +11062,7 @@ xnormal
 xx86_64
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@116"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m310330111#310330111#0(0"0(0#0#108"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m8616582816#1794"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o0#
+lSLF07#2@116"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m311261898#311261898#0(0"0(0#0#108"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m8632052768#1794"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Extensions/NSStringSpeed.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSStringSpeed.o0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/NSTreeController-DMExtensions.o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Extensions/NSTreeController-DMExtensions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s308598718.519599
@@ -11416,8 +11416,8 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@125"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m308598717#308598717#0(0"0(0#0#117"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m8620159104#1862"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/include" -I../TCMPortMapper/framework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources" -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-ecramzyvljlngibglsdormwloiea/iSoul_Prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o"0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s310330110.728987
-e310330110.891813
+s311261897.916154
+e311261898.416982
 r1
 xCompileC
 xbuild/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o
@@ -11426,7 +11426,7 @@ xnormal
 xx86_64
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@121"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m310330110#310330110#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m8616400800#1802"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o0#
+lSLF07#2@121"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m311261897#311261898#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m8641717824#1802"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wunused-function -Wunused-variable -Wunused-value -Wshadow -Wsign-compare -Wnewline-eof -Wundeclared-selector -D_DEBUG -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/iSoul.hmap -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/include -I../TCMPortMapper/framework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources/x86_64 -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/DerivedSources -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/iSoul_Prefix-eprvwllwqhamutbmhuvbifxpjimh/iSoul_Prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Transformers/SpeedTransformer.m -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SpeedTransformer.o0#
 
 CCompileC build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/SplitOperation.o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/Code/Models/SplitOperation.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
 s308598720.241582
@@ -11731,12 +11731,12 @@ CCompileXIB /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-on
 r0
 
 CCompileXIB /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib
-s311250692.186232
-e311250692.559310
+s311262112.604008
+e311262112.940518
 r1
 xCompileXIB
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib
-lSLF07#2@47"CompileXIB Resources/English.lproj/ChatView.xib311250692#311250692#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib8642121344#486"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Resources/English.lproj/ChatView.nib /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib --sdk /Developer/SDKs/MacOSX10.5.sdk0#
+lSLF07#2@47"CompileXIB Resources/English.lproj/ChatView.xib311262112#311262112#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib8646465408#486"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Resources/English.lproj/ChatView.nib /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/ChatView.xib --sdk /Developer/SDKs/MacOSX10.5.sdk0#
 
 CCompileXIB /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Resources/English.lproj/DownloadView.xib
 r0
@@ -15316,8 +15316,8 @@ old: warning: directory '/Users/valerio/Desktop/solar secret project rainbow /is
 lSLF07#2@128"Link /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul308600454#308600454#0(268"ld: warning: directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not foundld: warning: directory '/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found2(22@103"Directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not found308600454#0#117#0(6@0"308600454#0#0#0#0#0"0(22@137"Directory '/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found308600454#117#151#0(6@0"308600454#0#0#0#0#0"0(0#0#0"8633941376#1216"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk "-L/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug" -L/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/../../../../Downloads" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul" -filelist "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/iSoul.LinkFileList" -mmacosx-version-min=10.5 "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper" -lcrypto -framework AudioToolbox -framework Cocoa -framework ScriptingBridge -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul"0#
 
 CLd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul normal x86_64
-s311256426.631762
-e311256426.731221
+s311261898.523922
+e311261898.615133
 r1
 xLd
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul
@@ -15325,7 +15325,7 @@ xnormal
 xx86_64
 old: warning: directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not found
 old: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found
-lSLF07#2@124"Link /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul311256426#311256426#0(264"ld: warning: directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not foundld: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found2(22@103"Directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not found311256426#0#117#0(6@0"311256426#0#0#0#0#0"0(22@133"Directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found311256426#117#147#0(6@0"311256426#0#0#0#0#0"0(0#0#0"8639320672#1178"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -L/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -filelist /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/iSoul.LinkFileList -mmacosx-version-min=10.5 /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper -lcrypto -framework AudioToolbox -framework Cocoa -framework ScriptingBridge -lz.1.2.3 -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul0#
+lSLF07#2@124"Link /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul311261898#311261898#0(264"ld: warning: directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not foundld: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found2(22@103"Directory '/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib' following -L not found311261898#0#117#0(6@0"311261898#0#0#0#0#0"0(22@133"Directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads' following -F not found311261898#117#147#0(6@0"311261898#0#0#0#0#0"0(0#0#0"8623707488#1178"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -L/Developer/SDKs/MacOSX10.5.sdk/Developer/SDKs/MacOSX10.6.sdk/usr/lib -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/../../../../Downloads -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul -filelist /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/iSoul.build/Debug/iSoul.build/Objects-normal/x86_64/iSoul.LinkFileList -mmacosx-version-min=10.5 /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper -lcrypto -framework AudioToolbox -framework Cocoa -framework ScriptingBridge -lz.1.2.3 -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/MacOS/iSoul0#
 
 CPBXCp build/Debug/iSoul.app/Contents/Frameworks/TCMPortMapper.framework "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework"
 s308600891.055186
@@ -15337,13 +15337,13 @@ x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMP
 lSLF07#2@129"Copy /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework308600891#308600891#0(0"0(0#0#124"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework8638314784#490"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Frameworks"0#
 
 CPBXCp build/Debug/iSoul.app/Contents/Frameworks/TCMPortMapper.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-s311256426.731304
-e311256426.796036
+s311261986.412665
+e311261986.421441
 r1
 xPBXCp
 xbuild/Debug/iSoul.app/Contents/Frameworks/TCMPortMapper.framework
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-lSLF07#2@125"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework311256426#311256426#0(0"0(0#0#120"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework8632310848#472"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Frameworks0#
+lSLF07#2@125"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework311261986#311261986#0(0"0(0#0#120"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework8646806560#472"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app/Contents/Frameworks0#
 
 CPBXCp build/Debug/iSoul.app/Contents/Frameworks/libXMLFramework.framework "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework"
 s308598723.507639
@@ -15428,10 +15428,10 @@ x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSou
 lSLF07#2@108"Touch /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/iSoul.app308600891#308600891#0(0"0(0#0#0"8636552416#217"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul"    /usr/bin/touch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/iSoul/build/Debug/iSoul.app"0#
 
 CTouch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app
-s311256426.796154
-e311256426.801181
+s311262112.945284
+e311262112.948814
 r1
 xTouch
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app
-lSLF07#2@104"Touch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app311256426#311256426#0(0"0(0#0#0"8636156896#205"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /usr/bin/touch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app0#
+lSLF07#2@104"Touch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app311262112#311262112#0(0"0(0#0#0"8640452864#205"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul    /usr/bin/touch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/build/Debug/iSoul.app0#
 
