@@ -21,7 +21,8 @@
 	IBOutlet NSTextField *textField;
 	IBOutlet NSTableView *userList;
 	IBOutlet NSSplitView *splitView;
-	IBOutlet NSView *leftPane;
+	IBOutlet NSView *usersPane;
+    IBOutlet NSView * chatView;
 	IBOutlet NSButton *button;
 	IBOutlet NSMenuItem *friendMenuItem;
 	
@@ -49,7 +50,7 @@
 // public methods
 - (void)setDividerPosition:(float)width;
 - (void)setRoomName:(NSString *)newName isPrivate:(BOOL)yesOrNo;
-
+- (NSNumber *)getDividerPosition;
 // private methods
 - (void)userInfoUpdated:(NSNotification *)notification;
 - (void)setFetchPredicate;

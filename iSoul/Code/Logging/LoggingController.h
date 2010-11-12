@@ -8,16 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define LOG_PATH @"Library/Logs/rainbow.log"
-
 @class LoggingConsole;
 
 @interface LoggingController : NSObject {
 
-    LoggingConsole * console;
+    NSString * startingDate;
+    BOOL isLogging;
 }
+
+@property (nonatomic, assign) BOOL isLogging;
 
 + (LoggingController *)sharedInstance;
 - (void)startLogging;
+- (void)gzipAndArchiveLog:(NSString *)logPath toDirectory:(NSString *)dirPath;
 
 @end

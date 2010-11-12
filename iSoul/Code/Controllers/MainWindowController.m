@@ -28,6 +28,8 @@
 #import "DockBadge.h"
 #import "NSStringSpeed.h"
 #import "ExpandingSidebar.h"
+#import "LoggingController.h"
+#import "LoggingConsole.h"
 
 #define kMinSplitPosition	150
 
@@ -43,13 +45,16 @@
 @synthesize transferToolsEnabled;
 @synthesize downloadToolsEnabled;
 @synthesize selectedView;
+@synthesize console;
 
 #pragma mark initialisation and deallocation
 
 - (id)init
 {
+    DNSLog(@"init");
 	self = [super init];
 	if (self) {
+        
 		downloadIcon = [[NSImage imageNamed:@"SidebarDownloads"] retain];
 		uploadIcon = [[NSImage imageNamed:@"SidebarUploads"] retain];
 		searchIcon = [[NSImage imageNamed:@"SidebarSearch"] retain];
@@ -58,7 +63,7 @@
 		chatIcon = [[NSImage imageNamed:@"SidebarInstantMessage"] retain];
 		chatRoomIcon = [[NSImage imageNamed:@"SidebarChatRoom"] retain];
 		sharesIcon = [[NSImage imageNamed:@"SidebarShares"] retain];
-				
+        
 		NSSortDescriptor *name = [[NSSortDescriptor alloc] 
 								   initWithKey:@"name" 
 								   ascending:YES
@@ -93,6 +98,8 @@
 	[museekdConnectionController release];
 	[store release];
 	
+    self.console = nil;
+    
 	[super dealloc];
 }
 
@@ -100,12 +107,22 @@
 {
 	// resize the window to the last setting
 	[[self window] setFrameUsingName:@"Main Window"];
+    
+    LoggingConsole * logConsole = [[LoggingConsole alloc] initWithWindowNibName:nil];
+    self.console = logConsole;
+    [logConsole release];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowConsoleStartUp"])
+    {
+        //[console showWindow:self];   
+        [console window];
+    }
 		
 	// the 3 windows are manually added to the menu
 	// so no need to automatically add them
 	[[self window] setExcludedFromWindowsMenu:YES];
 	[userInfoWindow setExcludedFromWindowsMenu:YES];
 	[chatRoomWindow setExcludedFromWindowsMenu:YES];
+    [[console window] setExcludedFromWindowsMenu:YES];
 	
 	// connect the main window controller
 	[self setManagedObjectContext:[[NSApp delegate] managedObjectContext]];
@@ -672,7 +689,18 @@
 	if ((selectedView == sbDownloadMenuType) ||
 		(selectedView == sbUploadMenuType)) {
 		DownloadViewController *dvc = [[NSApp delegate] downloadViewController];
-		[dvc clearTransfers:YES];
+		//[dvc clearTransfers:YES];
+        [dvc clearAllTransfers];
+	}
+}
+
+- (IBAction)clearCompleteTransfers:(id)sender
+{
+	// only the download view can clear
+	if ((selectedView == sbDownloadMenuType) ||
+		(selectedView == sbUploadMenuType)) {
+		DownloadViewController *dvc = [[NSApp delegate] downloadViewController];
+		[dvc clearCompleteTransfers];
 	}
 }
 
@@ -834,14 +862,23 @@
 - (IBAction)showOrHideWindow:(id)sender
 {
 	NSWindow *w = nil;
-	if ([sender isEqual:menuShowUserInfo]) {
+	if ([sender isEqual:menuShowUserInfo]) 
+    {
 		w = userInfoWindow;
-	} else if ([sender isEqual:menuShowChatRooms]) {
+	} 
+    else if ([sender isEqual:menuShowChatRooms]) 
+    {
 		w = chatRoomWindow;
-	} else if ([sender isEqual:menuShowMainWindow]) {
+	} 
+    else if ([sender isEqual:menuShowMainWindow]) 
+    {
 		w = [self window];
 	}
-	
+	else if ([sender isEqual:menuShowConsole])
+    {
+        w = [console window];
+    }
+    
 	if ([w isKeyWindow]) {
 		[w orderOut:self];
 	} else {
@@ -993,6 +1030,12 @@
 			
 			// filter for the correct room
 			[cvc setRoomName:[selected name] isPrivate:(type == sbChatType)];
+            DNSLog(@"Divider %d", [[selected tag] intValue]);
+            /* Check for 0 tags, in that case the current tag is assigned */
+            if ([[selected tag] intValue] == -1)
+            {
+                [selected setTag:[cvc getDividerPosition]];
+            }
 			[cvc setDividerPosition:[[selected tag] floatValue]];
 			
 			[self setUserControlsEnabled:YES];
@@ -1079,6 +1122,7 @@
 }
 
 - (IBAction)openPreferences:(id)sender {
+    DNSLog(@"capro");
 	[[PrefsWindowController sharedPrefsWindowController] showWindow:nil];
 }
 
@@ -1153,6 +1197,7 @@
 		[menuShowUserInfo setState:([userInfoWindow isKeyWindow] ? NSOnState : NSOffState)];
 		[menuShowChatRooms setState:([chatRoomWindow isKeyWindow] ? NSOnState : NSOffState)];
 		[menuShowMainWindow setState:([[self window] isKeyWindow] ? NSOnState : NSOffState)];
+        [menuShowConsole setState:([[console window] isKeyWindow] ? NSOnState : NSOffState)];
 	}
 }
 

@@ -463,9 +463,16 @@
 		A7F6AF7B10F8A58700B784A4 /* MenuBan.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F6AF7A10F8A58700B784A4 /* MenuBan.png */; };
 		A7F6AF8710F8A78800B784A4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6AF8610F8A78800B784A4 /* User.m */; };
 		A7F6B18B10F9061800B784A4 /* CountryNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */; };
+		B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */ = {isa = PBXBuildFile; fileRef = B95D56491284866C0034F7AC /* PrefLogging.png */; };
+		B95FA5241280098800BFB18E /* GreenDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5211280098800BFB18E /* GreenDot.png */; };
+		B95FA5251280098800BFB18E /* RedDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5221280098800BFB18E /* RedDot.png */; };
+		B95FA5261280098800BFB18E /* YellowDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5231280098800BFB18E /* YellowDot.png */; };
 		B960F7A41271F88D00F2B394 /* LoggingConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = B960F7A01271F88D00F2B394 /* LoggingConsole.m */; };
 		B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B960F7A31271F88D00F2B394 /* LoggingController.m */; };
 		B960F7A81271F92200F2B394 /* LoggingConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = B960F7A71271F92200F2B394 /* LoggingConsole.xib */; };
+		B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */; };
+		B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */; };
+		B9FAEF6C1282157D00300C45 /* clean.ico in Resources */ = {isa = PBXBuildFile; fileRef = B9FAEF6B1282157D00300C45 /* clean.ico */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1063,11 +1070,19 @@
 		A7F6AF8610F8A78800B784A4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A7F6B18910F9061800B784A4 /* CountryNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryNameTransformer.h; sourceTree = "<group>"; };
 		A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryNameTransformer.m; sourceTree = "<group>"; };
+		B95D56491284866C0034F7AC /* PrefLogging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrefLogging.png; sourceTree = "<group>"; };
+		B95FA5211280098800BFB18E /* GreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenDot.png; sourceTree = "<group>"; };
+		B95FA5221280098800BFB18E /* RedDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDot.png; sourceTree = "<group>"; };
+		B95FA5231280098800BFB18E /* YellowDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowDot.png; sourceTree = "<group>"; };
 		B960F79F1271F88D00F2B394 /* LoggingConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingConsole.h; sourceTree = "<group>"; };
 		B960F7A01271F88D00F2B394 /* LoggingConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingConsole.m; sourceTree = "<group>"; };
 		B960F7A21271F88D00F2B394 /* LoggingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingController.h; sourceTree = "<group>"; };
 		B960F7A31271F88D00F2B394 /* LoggingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingController.m; sourceTree = "<group>"; };
 		B960F7A71271F92200F2B394 /* LoggingConsole.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoggingConsole.xib; sourceTree = "<group>"; };
+		B9FAED9A12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
+		B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
+		B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/local/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		B9FAEF6B1282157D00300C45 /* clean.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = clean.ico; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1080,6 +1095,7 @@
 				A76D2D7310D9144F00DD9F82 /* AudioToolbox.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				A78989C610E80FCC0034EF55 /* ScriptingBridge.framework in Frameworks */,
+				B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,6 +1145,7 @@
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				A76D2D9510D9180200DD9F82 /* libcrypto.dylib */,
 				A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */,
+				B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1190,9 +1207,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B960F7A71271F92200F2B394 /* LoggingConsole.xib */,
 				A76D2BC510D9135900DD9F82 /* Images */,
 				A76D2EF210D9241300DD9F82 /* config.xml */,
+				B960F7A71271F92200F2B394 /* LoggingConsole.xib */,
 				A76D2BB310D9135300DD9F82 /* BrowseView.xib */,
 				A76D2BB510D9135300DD9F82 /* ChatView.xib */,
 				A76D2BB710D9135300DD9F82 /* DownloadView.xib */,
@@ -1251,6 +1268,7 @@
 		A718C0DB10E387FD003AEC33 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				B95D56491284866C0034F7AC /* PrefLogging.png */,
 				A718C0E310E3883C003AEC33 /* PrefAccount.png */,
 				A718C0E410E3883C003AEC33 /* PrefAdvanced.png */,
 				A718C0E510E3883C003AEC33 /* PrefDonations.png */,
@@ -1422,6 +1440,9 @@
 		A718C24F10E38C09003AEC33 /* Connection Button */ = {
 			isa = PBXGroup;
 			children = (
+				B95FA5211280098800BFB18E /* GreenDot.png */,
+				B95FA5221280098800BFB18E /* RedDot.png */,
+				B95FA5231280098800BFB18E /* YellowDot.png */,
 				A718C25010E38C2E003AEC33 /* Away_selected.png */,
 				A718C25110E38C2E003AEC33 /* Away.png */,
 				A718C25210E38C2E003AEC33 /* Connect_selected.png */,
@@ -1435,6 +1456,7 @@
 		A76D2BC510D9135900DD9F82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAEF6B1282157D00300C45 /* clean.ico */,
 				A718C12A10E388E6003AEC33 /* Chat View */,
 				A718C24F10E38C09003AEC33 /* Connection Button */,
 				A718C19710E38A39003AEC33 /* Download View */,
@@ -1825,6 +1847,8 @@
 		B960F79E1271F86500F2B394 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				B9FAED9A12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.h */,
+				B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */,
 				B960F79F1271F88D00F2B394 /* LoggingConsole.h */,
 				B960F7A01271F88D00F2B394 /* LoggingConsole.m */,
 				B960F7A21271F88D00F2B394 /* LoggingController.h */,
@@ -2326,6 +2350,11 @@
 				A78E44A910E683B8002DBFF8 /* ProgressCaps_dark.png in Resources */,
 				A7F6AF7B10F8A58700B784A4 /* MenuBan.png in Resources */,
 				B960F7A81271F92200F2B394 /* LoggingConsole.xib in Resources */,
+				B95FA5241280098800BFB18E /* GreenDot.png in Resources */,
+				B95FA5251280098800BFB18E /* RedDot.png in Resources */,
+				B95FA5261280098800BFB18E /* YellowDot.png in Resources */,
+				B9FAEF6C1282157D00300C45 /* clean.ico in Resources */,
+				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2398,6 +2427,7 @@
 				A7C996F81121B312004ADC49 /* SidebarItem.m in Sources */,
 				B960F7A41271F88D00F2B394 /* LoggingConsole.m in Sources */,
 				B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */,
+				B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

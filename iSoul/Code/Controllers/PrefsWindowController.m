@@ -63,7 +63,8 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	// create the pop up menus for download locations
 	[self setupDownloadMenu];
 	[self setupIncompleteMenu];
-	
+	[self setupLogPathMenu:YES];
+    [self setupLogPathMenu:NO];
 	// request the current level of priveleges
 	[museek checkPriveleges];
 }
@@ -76,6 +77,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	[self addView:sharingPrefsView label:@"Sharing" image:[NSImage imageNamed:@"PrefSharing"]];
 	[self addView:talksPrefsView label:@"Talks" image:[NSImage imageNamed:@"PrefTalks"]];
 	[self addView:networkPrefsView label:@"Network" image:[NSImage imageNamed:@"PrefNetwork"]];
+    [self addView:loggingPrefsView label:@"Logging" image:[NSImage imageNamed:@"PrefLogging"]];
 	[self addView:itunesPrefsView label:@"iTunes" image:[NSImage imageNamed:@"PrefItunes"]];
 	[self addView:donationsPrefsView label:@"Donations" image:[NSImage imageNamed:@"PrefDonations"]];
 }
@@ -147,7 +149,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 									  attributes:nil 
 										   error:&error];
 		if (!success) {
-			NSLog(@"error creating default save folder %@, error %@");
+			NSLog(@"error creating default save folder %@, error %@", incompletePath, [error description]);
 		} else {
 			chosen = [self addMenuItemForPath:defaultPath toMenu:menu];
 		}
@@ -167,27 +169,92 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	
 }
 
+- (void)setupLogPathMenu:(BOOL)archived{
+    NSMenu * menu;
+    NSString * path;
+    if (archived)
+    {
+        /* archived log directory */
+        menu = [[NSMenu alloc] initWithTitle:@"Dir Log Path"];
+        path = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogDirPath"];
+    }
+    else
+    {
+        /* current log path */
+        menu = [[NSMenu alloc] initWithTitle:@"Log File Path"];
+        path = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"];
+    }
+
+	
+    //DNSLog(@"%@", [path stringByDeletingLastPathComponent]);
+    NSMenuItem * chosenItem = [self addMenuItemForPath:path toMenu:menu];
+    if (!chosenItem) 
+    {
+		// log path does not exist, create a new one 
+		NSString * defaultLogPath = [path stringByExpandingTildeInPath];
+		NSFileManager * FM = [NSFileManager defaultManager];
+		NSError * error;
+		BOOL success = [FM createDirectoryAtPath:defaultLogPath 
+					 withIntermediateDirectories:YES 
+									  attributes:nil 
+										   error:&error];
+		if (!success) 
+        {
+			DNSLog(@"error creating default save folder %@, error %@", defaultLogPath, [error description]);
+		} 
+        else 
+        {
+			chosenItem = [self addMenuItemForPath:defaultLogPath toMenu:menu];
+		}
+	}
+    // if we have no directory selected, do not bother making the menu
+    if (chosenItem) {
+        [chosenItem setTag:2];
+        [menu addItem:[NSMenuItem separatorItem]];
+        [menu addItemWithTitle:@"Other..." 
+                        action:@selector(newMenuItem:) 
+                 keyEquivalent:@""];
+        if (archived)
+        {
+            [dirPathPopup setMenu:menu];
+            [dirPathPopup selectItem:chosenItem];
+            [self logPathChanged:dirPathPopup];
+        }
+        else
+        {
+            [logPathPopup setMenu:menu];
+            [logPathPopup selectItem:chosenItem];
+            [self logPathChanged:logPathPopup];
+        }
+    }
+}
+
 - (NSMenuItem *)addMenuItemForPath:(NSString *)path toMenu:(NSMenu *)menu
 {
 	// first check that the path exists
 	// if not, do not bother adding to the menu
-	NSFileManager *fm = [NSFileManager defaultManager];
+	NSFileManager * fm = [NSFileManager defaultManager];
 	BOOL isDirectory;
 	BOOL fileExists = [fm fileExistsAtPath:path isDirectory:&isDirectory];
-	if (!(fileExists && isDirectory)) {
-		NSLog(@"menu folder %@ does not exist", path);
+	if (!(fileExists && isDirectory)) 
+    {
+		DNSLog(@"Menu folder %@ does not exist", path);
 		return nil;
 	}
-	
-	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[path lastPathComponent] 
+	else
+    {
+        DNSLog(@"Menu folder %@ exists", path);
+    }
+    
+	NSMenuItem * item = [[NSMenuItem alloc] initWithTitle:[path lastPathComponent] 
 												  action:NULL keyEquivalent:@""];
-	NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
+	NSImage * icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
 	[icon setScalesWhenResized:YES];
 	[icon setSize:NSMakeSize(16.0, 16.0)];
 	[item setImage:icon];
 	[item setRepresentedObject:path];
 	[menu insertItem:item atIndex:0];
-	[item release];	
+	[item release];
 	return item;
 }
 
@@ -375,7 +442,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 
 - (IBAction)addSharedFolder:(id)sender
 {
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	NSOpenPanel * openPanel = [NSOpenPanel openPanel];
 	[openPanel setCanChooseFiles:NO];
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setAllowsMultipleSelection:YES];
@@ -432,13 +499,26 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 			}
 			
 			// finally, choose the new item in the correct popup
-			if ([menu isEqual:[downloadPopup menu]]) {
+			if ([menu isEqual:[downloadPopup menu]]) 
+            {
 				[downloadPopup selectItem:chosen];
 				[self downloadLocationChanged:downloadPopup];
-			} else {
+			} 
+            else if ([menu isEqual:[incompletePopup menu]])
+            {
 				[incompletePopup selectItem:chosen];
 				[self incompleteLocationChanged:incompletePopup];
-			}					
+			}
+            else if ([menu isEqual:[logPathPopup menu]])
+            {
+				[logPathPopup selectItem:chosen];
+				[self logPathChanged:logPathPopup];
+			}
+            else if ([menu isEqual:[dirPathPopup menu]])
+            {
+                [dirPathPopup selectItem:chosen];
+				[self logPathChanged:dirPathPopup];
+            }
 		}
 	}
 }
@@ -558,6 +638,45 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	restartRequired = YES;	
 }
 
+- (IBAction)logPathChanged:(id)sender
+{
+	NSMenuItem * item = [sender selectedItem];
+	if ([item tag] < 1) return;		// default values have tag 1, non-default 2
+	
+	NSString * logPath = [item representedObject];
+	NSString * oldPath;
+    
+    if ([sender isEqual:logPathPopup])
+    {
+        oldPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"];
+        
+    }
+    else if ([sender isEqual:dirPathPopup])
+    {
+        oldPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogDirPath"];
+    }
+    
+	if ([oldPath isEqualToString:logPath]) 
+    {
+		DNSLog(@"no need to change incomplete folder, already set to %@", oldPath);
+		return;
+	}		
+    
+	DNSLog(@"changing logPath folder to %@", logPath);
+	
+	// first update the preferences
+    if ([sender isEqual:logPathPopup])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:logPath forKey:@"LogPath"];
+        
+    }
+    else if ([sender isEqual:dirPathPopup])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:logPath forKey:@"LogDirPath"];
+    }
+
+}
+
 - (IBAction)userImageChanged:(id)sender
 {
 	// the image data has changed, the image
@@ -583,7 +702,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 
 - (IBAction)newMenuItem:(id)sender
 {
-	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	NSOpenPanel * openPanel = [NSOpenPanel openPanel];
 	[openPanel setCanChooseFiles:NO];
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setAllowsMultipleSelection:NO];

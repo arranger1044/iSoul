@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,14 +278,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>55</integer>
+									<integer>37</integer>
 									<integer>4</integer>
 									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {251, 946}}</string>
+							<string>{{0, 390}, {251, 946}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,14 +315,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>usersocket.cpp</string>
+								<string>peermessages.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,14 +328,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>usersocket.cpp</string>
+										<string>peermessages.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B960F6651271DAE300F2B394</string>
+										<string>B9CC7350128CA4CC00A59AB2</string>
 										<key>history</key>
 										<array>
-											<string>B960F6381271DAE300F2B394</string>
 											<string>B960F6391271DAE300F2B394</string>
 											<string>B960F63A1271DAE300F2B394</string>
 											<string>B960F63B1271DAE300F2B394</string>
@@ -361,8 +360,6 @@
 											<string>B960F64F1271DAE300F2B394</string>
 											<string>B960F6501271DAE300F2B394</string>
 											<string>B960F6511271DAE300F2B394</string>
-											<string>B960F6521271DAE300F2B394</string>
-											<string>B960F6531271DAE300F2B394</string>
 											<string>B960F6541271DAE300F2B394</string>
 											<string>B960F6551271DAE300F2B394</string>
 											<string>B960F6561271DAE300F2B394</string>
@@ -379,7 +376,10 @@
 											<string>B960F6611271DAE300F2B394</string>
 											<string>B960F6621271DAE300F2B394</string>
 											<string>B960F6631271DAE300F2B394</string>
-											<string>B960F6641271DAE300F2B394</string>
+											<string>B9CC734D128CA4CC00A59AB2</string>
+											<string>B9CC734E128CA4CC00A59AB2</string>
+											<string>B9CC734F128CA4CC00A59AB2</string>
+											<string>B960F6531271DAE300F2B394</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -391,14 +391,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {708, 770}}</string>
+								<string>{{0, 0}, {708, 766}}</string>
 								<key>RubberWindowFrame</key>
 								<string>698 167 981 1005 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>770pt</string>
+							<string>766pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -411,14 +411,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 775}, {708, 189}}</string>
+								<string>{{0, 771}, {708, 193}}</string>
 								<key>RubberWindowFrame</key>
 								<string>698 167 981 1005 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>189pt</string>
+							<string>193pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -437,9 +437,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>B960F6661271DAE300F2B394</string>
+				<string>B9CC7351128CA4CC00A59AB2</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>B960F6671271DAE300F2B394</string>
+				<string>B9CC7352128CA4CC00A59AB2</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -577,7 +577,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B90E5A691264DB5B00CE793D</string>
 		<string>/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/museek.xcodeproj</string>
 	</array>
@@ -659,7 +658,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>B90E5A691264DB5B00CE793D</string>
-				<string>B960F6681271DAE300F2B394</string>
+				<string>B9CC7353128CA4CC00A59AB2</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

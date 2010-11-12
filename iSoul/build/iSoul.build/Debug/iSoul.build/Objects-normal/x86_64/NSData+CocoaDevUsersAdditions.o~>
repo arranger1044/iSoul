@@ -1,0 +1,3 @@
+/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Logging/NSData+CocoaDevUsersAdditions.m:101: warning: incomplete implementation of category 'NSDataExtension'
+/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Logging/NSData+CocoaDevUsersAdditions.m:101: warning: method definition for '-zlibDeflate' not found
+/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/Code/Logging/NSData+CocoaDevUsersAdditions.m:101: warning: method definition for '-zlibInflate' not found

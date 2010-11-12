@@ -343,18 +343,9 @@
 	return ret;
 }
 
-- (void)clearTransfers:(BOOL)all
+- (void)clearTransfers:(NSArray *)transfersToRemove
 {
-	NSIndexSet *rows;
-	if (all) {
-		rows = [NSIndexSet indexSetWithIndexesInRange:
-				NSMakeRange(0, [outlineView numberOfRows])];
-	} else {
-		rows = [outlineView selectedRowIndexes];
-	}
-	NSArray *transfersToRemove = [self transfersAtIndexes:rows];
-	
-	// prompt user if any of the transfers are incomplete
+    // prompt user if any of the transfers are incomplete
 	NSNumber *promptUser = [[NSUserDefaults standardUserDefaults] 
 							valueForKey:@"PromptPartialFile"];
 	if ([promptUser boolValue]) {
@@ -399,6 +390,20 @@
 	[outlineView reloadData];
 }
 
+- (void)clearAllTransfers
+{
+	NSIndexSet * rows = [NSIndexSet indexSetWithIndexesInRange:
+                         NSMakeRange(0, [outlineView numberOfRows])];
+
+	NSArray * transfersToRemove = [self transfersAtIndexes:rows];
+	[self clearTransfers:transfersToRemove];
+}
+
+- (void)clearCompleteTransfers
+{
+    /* Shall get the completed transfers */
+}
+
 - (IBAction)pauseTransfers:(id)sender
 {
 	NSArray *selectedTransfers = [self selectedTransfers];
@@ -421,7 +426,11 @@
 
 - (IBAction)clearSelectedTransfers:(id)sender
 {
-	[self clearTransfers:NO];
+    NSIndexSet * rows = [outlineView selectedRowIndexes];
+    
+	NSArray * transfersToRemove = [self transfersAtIndexes:rows];
+	[self clearTransfers:transfersToRemove];
+	//[self clearTransfers:NO];
 }
 
 #pragma mark outline view datasource methods

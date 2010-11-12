@@ -16,6 +16,7 @@
 @class MuseekdController;
 @class SidebarItem;
 @class User;
+@class LoggingConsole;
 
 @interface MainWindowController : NSWindowController {
 	IBOutlet NSSplitView *splitView;
@@ -30,6 +31,7 @@
 	IBOutlet NSArrayController *roomController;
 	IBOutlet NSTableView *roomList;
 	IBOutlet NSWindow *userInfoWindow;
+    //IBOutlet NSWindow * console;
 	IBOutlet NSPanel *newFriendPanel;
 	IBOutlet NSPanel *noUsernamePanel;
 	IBOutlet NSPanel *upnpPanel;
@@ -44,6 +46,7 @@
 	IBOutlet NSMenuItem *menuShowMainWindow;
 	IBOutlet NSMenuItem *menuShowUserInfo;
 	IBOutlet NSMenuItem *menuShowChatRooms;
+    IBOutlet NSMenuItem * menuShowConsole;
 	IBOutlet NSMenu *soulseekMenu;
 	IBOutlet NSMenu *windowMenu;
 	
@@ -51,6 +54,8 @@
 	MuseekdConnectionController *museekdConnectionController;
 	DataStore *store;	
 	User *userToShow;
+    
+    LoggingConsole * console;
 	
 	// controls which parts of the toolbar are enabled
 	SidebarType selectedView;
@@ -82,6 +87,7 @@
 @property BOOL transferToolsEnabled;
 @property BOOL downloadToolsEnabled;
 @property SidebarType selectedView;
+@property (nonatomic, retain) LoggingConsole * console;
 
 // toolbar methods
 - (IBAction)connectOrDisconnect:(id)sender;
@@ -96,6 +102,7 @@
 - (IBAction)pause:(id)sender;
 - (IBAction)clearTransfer:(id)sender;
 - (IBAction)clearAllTransfers:(id)sender;
+- (IBAction)clearCompleteTransfers:(id)sender;
 - (IBAction)downloadFolder:(id)sender;
 - (IBAction)download:(id)sender;
 

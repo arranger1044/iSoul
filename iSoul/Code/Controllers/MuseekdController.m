@@ -89,6 +89,7 @@
 	NSString *museekdPath = [NSString stringWithFormat:@"%@/Contents/Resources/museek", basePath];
 	[museekd setLaunchPath:museekdPath];
 	
+    /* TODO this ifdef shall be deleted somehow */
 #ifdef _DEBUG
 	[museekd setStandardOutput:[NSFileHandle fileHandleWithStandardOutput]];
 	[museekd setStandardError:[NSFileHandle fileHandleWithStandardError]];

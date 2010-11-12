@@ -22,7 +22,6 @@
 #import "ShareNode.h"
 #import "MainWindowController.h"
 #import "TCMPortMapper.h"
-
 #import "LoggingController.h"
 
 @implementation iSoul_AppDelegate
@@ -38,63 +37,70 @@
 @synthesize museekdConnectionController;
 @synthesize mainWindowController;
 
+
 #pragma mark initialization & deallocation
 
 + (void)initialize
 {
-	// register the default settings
-    debug_NSLog(@"BOMBA INIT");
-	NSMutableDictionary *d = [NSMutableDictionary dictionary];
-	NSString *savePath = [pathDownloads stringByExpandingTildeInPath];
-	NSString *incompletePath = [pathIncomplete stringByExpandingTildeInPath];	
-	
-	[d setValue:[NSNumber numberWithBool:YES] forKey:@"AutoLogin"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"BandwidthIcon"];
-	[d setValue:[NSNumber numberWithBool:YES] forKey:@"BandwidthSidebar"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"BounceIcon"];
-	[d setValue:@"" forKey:@"Description"];	
-	[d setValue:savePath forKey:@"DownloadPath"];
-	[d setValue:[NSNumber numberWithInt:0] forKey:@"DownloadRate"];
-	[d setValue:[NSNumber numberWithInt:0] forKey:@"DownloadSlots"];
-	[d setValue:[NSNumber numberWithInt:0] forKey:@"ImportAction"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportAudio"];
-	[d setValue:@"iSoul" forKey:@"ImportPlaylist"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportToPlaylist"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportVideo"];
-	[d setValue:incompletePath forKey:@"IncompletePath"];
-	[d setValue:[NSNumber numberWithBool:YES] forKey:@"LocalMuseekd"];
-	[d setValue:[NSNumber numberWithInt:1000] forKey:@"MaxSearchResults"];
-	[d setValue:@"127.0.0.1" forKey:@"MuseekdAddress"];
-	[d setValue:@"" forKey:@"MuseekdPassword"];
-	[d setValue:[NSNumber numberWithInt:2242] forKey:@"MuseekdPort"];
-	[d setValue:@"" forKey:@"Password"];
-	[d setValue:[NSNumber numberWithInt:2240] forKey:@"PortHigh"];
-	[d setValue:[NSNumber numberWithInt:2234] forKey:@"PortLow"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptNewVersion"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptPartialFile"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptQuitWithActiveTransfers"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"RemoveCompleteDownload"];
-	[d setValue:[NSNumber numberWithBool:YES] forKey:@"SearchMainDatabase"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchFriendsList"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchChatRooms"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"SelectNewDownload"];
-	[d setValue:[NSNumber numberWithInt:2242] forKey:@"ServerPort"];
-	[d setValue:@"server.slsknet.org" forKey:@"ServerUrl"];
-	[d setValue:[NSNumber numberWithInt:0] forKey:@"UploadRate"];
-	[d setValue:[NSNumber numberWithInt:3] forKey:@"UploadSlots"];
-	[d setValue:[NSNumber numberWithBool:NO] forKey:@"UPNP"];
-	[d setValue:@"" forKey:@"Username"];
-	
-	NSImage *defaultImage = [NSImage imageNamed:@"PrefAccount"];
-	[d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
-	
-	[[NSUserDefaults standardUserDefaults] registerDefaults:d];
-}
-
-- (void)changeStdErr{
-    NSString * logPath = [NSHomeDirectory() stringByAppendingPathComponent:LOG_PATH];
-	freopen([logPath fileSystemRepresentation], "a", stderr);
-    freopen([logPath fileSystemRepresentation], "a", stdout);
+    if (self == [iSoul_AppDelegate class])
+    {        
+        
+        
+        [[LoggingController sharedInstance] startLogging];
+        // register the default settings
+        debug_NSLog(@"BOMBA INIT");
+        NSMutableDictionary *d = [NSMutableDictionary dictionary];
+        NSString *savePath = [pathDownloads stringByExpandingTildeInPath];
+        NSString *incompletePath = [pathIncomplete stringByExpandingTildeInPath];	
+        
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"AutoLogin"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"BandwidthIcon"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"BandwidthSidebar"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"BounceIcon"];
+        [d setValue:@"" forKey:@"Description"];	
+        [d setValue:savePath forKey:@"DownloadPath"];
+        [d setValue:[NSNumber numberWithInt:0] forKey:@"DownloadRate"];
+        [d setValue:[NSNumber numberWithInt:0] forKey:@"DownloadSlots"];
+        [d setValue:[NSNumber numberWithInt:0] forKey:@"ImportAction"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportAudio"];
+        [d setValue:@"iSoul" forKey:@"ImportPlaylist"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportToPlaylist"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"ImportVideo"];
+        [d setValue:incompletePath forKey:@"IncompletePath"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"LocalMuseekd"];
+        [d setValue:[NSNumber numberWithInt:1000] forKey:@"MaxSearchResults"];
+        [d setValue:@"127.0.0.1" forKey:@"MuseekdAddress"];
+        [d setValue:@"" forKey:@"MuseekdPassword"];
+        [d setValue:[NSNumber numberWithInt:2242] forKey:@"MuseekdPort"];
+        [d setValue:@"" forKey:@"Password"];
+        [d setValue:[NSNumber numberWithInt:2240] forKey:@"PortHigh"];
+        [d setValue:[NSNumber numberWithInt:2234] forKey:@"PortLow"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptNewVersion"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptPartialFile"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptQuitWithActiveTransfers"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"RemoveCompleteDownload"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"SearchMainDatabase"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchFriendsList"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchChatRooms"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SelectNewDownload"];
+        [d setValue:[NSNumber numberWithInt:2242] forKey:@"ServerPort"];
+        [d setValue:@"server.slsknet.org" forKey:@"ServerUrl"];
+        [d setValue:[NSNumber numberWithInt:0] forKey:@"UploadRate"];
+        [d setValue:[NSNumber numberWithInt:3] forKey:@"UploadSlots"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"UPNP"];
+        [d setValue:@"" forKey:@"Username"];
+        
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"ShowConsoleStartUp"];
+        NSString * logPath = [NSHomeDirectory() stringByAppendingPathComponent:LOG_PATH];
+        [d setValue:logPath forKey:@"LogPath"];
+        NSString * dirPath = [NSHomeDirectory() stringByAppendingPathComponent:DIR_PATH];
+        [d setValue:dirPath forKey:@"LogDirPath"];
+        
+        NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
+        [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:d];   
+    }
 }
 
 - (id)init
@@ -102,24 +108,24 @@
 	self = [super init];
 	if (self) {
         
-        [self changeStdErr];
-        [[LoggingController sharedInstance] startLogging];
-        
 		debug_NSLog(@"initialising app delegate");
 		
-		// Launch museekd
+		/* Launch museekd */
 		NSNumber *useInternalMuseekd = [[NSUserDefaults standardUserDefaults] 
 										valueForKey:@"LocalMuseekd"];
-		if ([useInternalMuseekd boolValue]) {
+		if ([useInternalMuseekd boolValue]) 
+        {
 			museekdController = [[MuseekdController alloc] init];
 			BOOL success = [museekdController startMuseekd];
 			if (!success) NSLog(@"failed to start museekd task");
-		} else {
+		} 
+        else 
+        {
 			debug_NSLog(@"not starting internal museekd daemon");
 		}
 		
-		// now create the data store object, which
-		// provides an interface for the core data model
+		/* now create the data store object, which
+		   provides an interface for the core data model */
 		NSManagedObjectContext *moc = [self managedObjectContext];
 		store = [[DataStore alloc] init];
 		[store setManagedObjectContext:moc];
@@ -134,7 +140,7 @@
 						   [[[NSApp dockTile] contentView] frame]];
 		[[NSApp dockTile] setContentView:view];
 		[view release];
-		
+        
 		// finally, create the individual window controllers
 		searchViewController = [[SearchViewController alloc] init];
 		[searchViewController setManagedObjectContext:moc];
@@ -241,6 +247,12 @@
 {
 	[museekdController stopMuseekd];
 	[[TCMPortMapper sharedInstance] stopBlocking];
+    /* Compress and archive logging */
+    //NSString * logPath = [NSHomeDirectory() stringByAppendingPathComponent:LOG_PATH];
+    NSString * logPath = [[[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"] 
+                          stringByAppendingPathComponent:logFileName];
+    NSString * dirPath = [NSHomeDirectory() stringByAppendingPathComponent:DIR_PATH];
+    [[LoggingController sharedInstance] gzipAndArchiveLog:logPath toDirectory:dirPath];
 }
 
 - (void)scanSharesFile:(id)object

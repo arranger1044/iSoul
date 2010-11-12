@@ -12,10 +12,13 @@
 @interface LoggingConsole : NSWindowController {
 
     NSTextView * loggingView;
+    NSToolbarItem * cleanButton;
 }
 
 @property (nonatomic, assign) IBOutlet NSTextView * loggingView;
+@property (nonatomic, assign) IBOutlet NSToolbarItem * cleanButton;
 
 - (void)logMessage:(NSString *)message;
+- (IBAction)cleanConsole:(id)sender;
 
 @end

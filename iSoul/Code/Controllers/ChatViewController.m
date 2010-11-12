@@ -16,9 +16,8 @@
 #import "BubbleTextView.h"
 #import "iSoul_AppDelegate.h"
 
-#define kLeftPaneMinimum	140
-#define kRightPaneMinimum	140
-#define kDefaultDividerPosition	240
+#define kUsersPaneMinimum	240
+#define kChatPaneMinimum	140
 
 @implementation ChatViewController
 
@@ -183,13 +182,15 @@
 - (IBAction)toggleSidePanel:(id)sender
 {
 	// check if the side pane has been collapsed
-	BOOL collapsed = [splitView isSubviewCollapsed:leftPane];
+	BOOL collapsed = [splitView isSubviewCollapsed:usersPane];
 	
 	if (collapsed) {
 		[splitView setPosition:lastDividerPosition ofDividerAtIndex:0];
 	} else {
-		NSRect r = [leftPane frame];
-		lastDividerPosition = r.size.width;
+		//NSRect r = [usersPane frame];
+		//lastDividerPosition = r.size.width;
+        NSRect cR = [chatView frame];
+        lastDividerPosition = cR.size.width;
 		[splitView setPosition:0 ofDividerAtIndex:0];
 	}
 }
@@ -198,9 +199,27 @@
 
 - (void)setDividerPosition:(float)width
 {
-	[splitView setPosition:width ofDividerAtIndex:0];
-	BOOL collapsed = [splitView isSubviewCollapsed:leftPane];
+    float space = fabsf(chatView.frame.size.width - width);
+    float timeT = space * 0.2 / 200;
+    /* Let's try to animate the sliding */
+    NSRect view0TargetFrame = NSMakeRect(chatView.frame.origin.x, chatView.frame.origin.y, width, chatView.frame.size.height);
+	NSRect view1TargetFrame = NSMakeRect(width + splitView.dividerThickness, usersPane.frame.origin.y, NSMaxX(usersPane.frame) - width - splitView.dividerThickness, usersPane.frame.size.height);
+	
+	[NSAnimationContext beginGrouping];
+	[[NSAnimationContext currentContext] setDuration:timeT];
+	[[chatView animator] setFrame: view0TargetFrame];
+	[[usersPane animator] setFrame: view1TargetFrame];
+	[NSAnimationContext endGrouping];
+    
+	//[splitView setPosition:width ofDividerAtIndex:0];
+    
+	BOOL collapsed = [splitView isSubviewCollapsed:usersPane];
 	[button setState:!collapsed];
+}
+
+- (NSNumber *)getDividerPosition
+{
+    return [NSNumber numberWithFloat:chatView.frame.size.width];
 }
 
 #pragma mark private methods
@@ -351,53 +370,60 @@
 
 - (BOOL)splitView:(NSSplitView *)sender canCollapseSubview:(NSView *)subview
 {
-    return (subview == leftPane);
+    return (subview == usersPane);
 }
 
 - (CGFloat)splitView:(NSSplitView *)aSplitView 
 constrainMinCoordinate:(CGFloat)proposedMin 
 		 ofSubviewAt:(NSInteger)dividerIndex
 {
-	return proposedMin + kLeftPaneMinimum;
+	return proposedMin + kUsersPaneMinimum;
 }
 
 - (CGFloat)splitView:(NSSplitView *)aSplitView 
 constrainMaxCoordinate:(CGFloat)proposedMax 
 		 ofSubviewAt:(NSInteger)dividerIndex
 {
-	return proposedMax - kRightPaneMinimum;
+	return proposedMax - kChatPaneMinimum;
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview
 {
-	if ([subview isEqual:leftPane]) return NO;
+	if ([subview isEqual:usersPane]) return NO;
 	return YES;
 }
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)aNotification
 {
-	if (firstResize) {
-		firstResize = NO;
-		if ([[currentRoom isPrivate] boolValue]) {
-			[splitView setPosition:0 ofDividerAtIndex:0];
-		} else {
-			[splitView setPosition:kDefaultDividerPosition ofDividerAtIndex:0];
-		}
-		lastDividerPosition = kDefaultDividerPosition;
-		return;
-	}
+//	if (firstResize) {
+//		firstResize = NO;
+//		if ([[currentRoom isPrivate] boolValue]) {
+//			[splitView setPosition:0 ofDividerAtIndex:0];
+//		} else {
+//			[splitView setPosition:kDefaultDividerPosition ofDividerAtIndex:0];
+//		}
+//		lastDividerPosition = kDefaultDividerPosition;
+//		return;
+//	}
 	
 	// need to update the hidden status if we have moved the frame manually
-	BOOL collapsed = [splitView isSubviewCollapsed:leftPane];
+	BOOL collapsed = [splitView isSubviewCollapsed:usersPane];
 	[button setState:!collapsed];
 	
+    
 	// store the current divider position in the sidebar tag
 	if ([delegate respondsToSelector:@selector(chatViewDidResize:)]) {
 		
 		float width = 0;
 		if (!collapsed) {
-			NSRect r = [leftPane frame];
-			width = r.size.width;
+//			NSRect userR = [usersPane frame];
+//            NSRect chatR = [splitView frame];
+            NSRect chatR = [chatView frame];
+			//width = r.size.width;
+            //DNSLog(@"AFRICA %f %f %f", chatR.size.width, userR.size.width, cR.size.width);
+            //width = chatR.size.width - userR.size.width;
+            width = chatR.size.width;
+            //width = [splitView]
 		}
 
 		[delegate performSelector:@selector(chatViewDidResize:)

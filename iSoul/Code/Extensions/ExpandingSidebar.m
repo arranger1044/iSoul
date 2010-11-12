@@ -55,17 +55,20 @@
 	switch (connectionState) {
 		case usOnline:
 		{
-			statusImage = [NSImage imageNamed:@"Connect"];
+			//statusImage = [NSImage imageNamed:@"Connect"];
+            statusImage = [NSImage imageNamed:@"GreenDot"];
 			break;
 		}
 		case usOffline:
 		{
-			statusImage = [NSImage imageNamed:@"Disconnect"];
+			//statusImage = [NSImage imageNamed:@"Disconnect"];
+            statusImage = [NSImage imageNamed:@"RedDot"];
 			break;
 		}
 		case usAway:
 		{
-			statusImage = [NSImage imageNamed:@"Away"];
+			//statusImage = [NSImage imageNamed:@"Away"];
+            statusImage = [NSImage imageNamed:@"YellowDot"];
 			break;
 		}
 	}

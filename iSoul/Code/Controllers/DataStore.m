@@ -17,8 +17,6 @@
 #import "MainWindowController.h"
 #import "iSoul_AppDelegate.h"
 
-#define kDefaultChatDividerPosition	240
-
 @implementation DataStore
 
 @synthesize managedObjectContext;
@@ -256,6 +254,11 @@
 	[self clearAllEntities:@"Transfer"];	
 }
 
+- (void)clearCompleteTransfers
+{
+    
+}
+
 - (void)removeTransfer:(Transfer *)transfer sendUpdates:(BOOL)sendUpdates
 {	
 	// first inform the download view that the transfer should be removed
@@ -286,7 +289,7 @@
 	item = [self addSidebarItemWithName:username 
 								 parent:chatRoot 
 							  sortIndex:kChatIndexStart + sidebarSortIndex++ 
-									tag:0 
+									tag:-1 
 								   type:sbChatType];
 	
 	// create a new room to contain the chat messages
@@ -504,7 +507,7 @@
 		SidebarItem *item = [self addSidebarItemWithName:roomname 
 												  parent:chatRoot 
 											   sortIndex:kChatRoomIndexStart + sidebarSortIndex++ 
-													 tag:kDefaultChatDividerPosition 
+													 tag:-1 
 													type:sbChatRoomType];
 		[item setCount:[room numberOfUsers]];
 		

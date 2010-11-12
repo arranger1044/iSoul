@@ -15,3 +15,6 @@ NSString * const pathShares = @"config.shares";
 NSString * const pathShareState = @"config.shares.state";
 NSString * const pathUserImage = @"config.image";
 NSString * const pathPidFile = @"museekd.pid";
+NSString * const LOG_PATH = @"Library/Logs/";
+NSString * const DIR_PATH = @"Library/Logs/Rainbow";
+NSString * const logFileName = @"rainbow.log";

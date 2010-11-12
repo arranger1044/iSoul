@@ -55,8 +55,10 @@
 - (IBAction)clearSelectedTransfers:(id)sender;
 
 // public methods
-- (void)clearTransfers:(BOOL)all;
-
+//- (void)clearTransfers:(BOOL)all;
+//- (void)clearTransfers:(NSArray *)transfersToRemove;
+- (void)clearAllTransfers;
+- (void)clearCompleteTransfers;
 // private methods
 - (void)populateTree;
 - (void)transferUpdated:(NSNotification *)notification;

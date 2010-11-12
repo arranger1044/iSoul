@@ -1,7 +1,7 @@
 Tmuseek
 v7
 r0
-t309608654.287058
+t311256425.825119
 cCheck dependencies
 cCompileC build/museek.build/Debug/museek.build/Objects-normal/x86_64/aes.o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/Mucipher/aes.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
 cCompileC build/museek.build/Debug/museek.build/Objects-normal/x86_64/hexdigest.o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/Mucipher/hexdigest.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
@@ -2098,15 +2098,15 @@ s2045
 i"platform.h"
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/libXMLFramework.framework
-t1286984430
+t1288637300
 s170
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/libevent.framework
-t1286984430
+t1288637300
 s170
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek
-t1286984430
+t1288637300
 s17519832
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/museek.build/Debug/museek.build/Objects-normal/x86_64/Codec.o
@@ -2891,13 +2891,13 @@ i<shlobj.h>
 i<string>
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework
-c000000004CB5D2EA00000000000000AA
-t1286984426
+c000000004CCF0B7000000000000000AA
+t1288637296
 s170
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework/libXMLFramework
-c000000004CB5D2EA00000000000397A8
-t1286984426
+c000000004CCF0B7000000000000397A8
+t1288637296
 s235432
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/libxml++/api_export.h
@@ -3068,13 +3068,13 @@ i<deque>
 i<memory>
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework
-c000000004CB5D2E500000000000000AA
-t1286984421
+c000000004CCF0B6A00000000000000AA
+t1288637290
 s170
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework/libevent
-c000000004CB5D2E5000000000001BA58
-t1286984421
+c000000004CCF0B6A000000000001BA58
+t1288637290
 s113240
 
 N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/config.h
@@ -3122,7 +3122,7 @@ s36628
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies309608654#309608654#0(0"0(0#1#0"8649404032#0"0#
+lSLF07#2@18"Check dependencies311256425#311256425#0(0"0(0#1#0"8624893280#0"0#
 
 CCompileC build/museek.build/Debug/museek.build/Objects-normal/x86_64/Codec.o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/Muhelp/Codec.cc" normal x86_64 c++ com.apple.compilers.gcc.4_2
 s308598691.972035
@@ -3792,15 +3792,15 @@ old: warning: directory '/Users/valerio/Desktop/solar secret project rainbow /is
 lSLF07#2@105"Link /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug/museek308598693#308598696#0(200"ld: warning: directory '/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found1(22@186"Directory '/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found308598696#0#200#0(6@0"308598696#0#0#0#0#0"0(0#0#0"8621580224#1366"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek"    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk "-L/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug" -L../libXMLFramework -L../libXMLFramework/libxml++ -L../libXMLFramework/libxml++/exceptions -L../libXMLFramework/libxml++/io -L../libXMLFramework/libxml++/nodes -L../libXMLFramework/libxml++/parsers "-L/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug" -filelist "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/museek.build/Debug/museek.build/Objects-normal/x86_64/museek.LinkFileList" -mmacosx-version-min=10.5 "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework/libXMLFramework" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libevent/build/Debug/libevent.framework/libevent" -lxml2 -liconv -lz -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug/museek"0#
 
 CLd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek normal x86_64
-s308677226.229545
-e308677230.331753
+s310330096.633089
+e310330100.403901
 r1
 xLd
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek
 xnormal
 xx86_64
 old: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found
-lSLF07#2@101"Link /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek308677226#308677230#0(196"ld: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found1(22@182"Directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found308677230#0#196#0(6@0"308677230#0#0#0#0#0"0(0#0#0"8627179680#1318"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug -L../libXMLFramework -L../libXMLFramework/libxml++ -L../libXMLFramework/libxml++/exceptions -L../libXMLFramework/libxml++/io -L../libXMLFramework/libxml++/nodes -L../libXMLFramework/libxml++/parsers -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug -filelist /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/museek.build/Debug/museek.build/Objects-normal/x86_64/museek.LinkFileList -mmacosx-version-min=10.5 /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework/libXMLFramework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework/libevent -lxml2 -liconv -lz -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek0#
+lSLF07#2@101"Link /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek310330096#310330100#0(196"ld: warning: directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found1(22@182"Directory '/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A' following -L not found310330100#0#196#0(6@0"310330100#0#0#0#0#0"0(0#0#0"8607941056#1318"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/g++-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug -L../libXMLFramework -L../libXMLFramework/libxml++ -L../libXMLFramework/libxml++/exceptions -L../libXMLFramework/libxml++/io -L../libXMLFramework/libxml++/nodes -L../libXMLFramework/libxml++/parsers -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug -filelist /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/museek.build/Debug/museek.build/Objects-normal/x86_64/museek.LinkFileList -mmacosx-version-min=10.5 /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework/libXMLFramework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework/libevent -lxml2 -liconv -lz -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug/museek0#
 
 CPBXCp build/Debug/libXMLFramework.framework "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework"
 s308598696.888903
@@ -3812,13 +3812,13 @@ x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libX
 lSLF07#2@133"Copy /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework308598696#308598696#0(0"0(0#0#128"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework8609755904#466"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug"0#
 
 CPBXCp build/Debug/libXMLFramework.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework
-s308677230.332611
-e308677230.456130
+s310330100.404854
+e310330100.493684
 r1
 xPBXCp
 xbuild/Debug/libXMLFramework.framework
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework
-lSLF07#2@129"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework308677230#308677230#0(0"0(0#0#124"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework8625784192#448"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug0#
+lSLF07#2@129"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework310330100#310330100#0(0"0(0#0#124"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework8612068160#448"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libXMLFramework/build/Debug/libXMLFramework.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug0#
 
 CPBXCp build/Debug/libevent.framework "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libevent/build/Debug/libevent.framework"
 s308598696.888234
@@ -3830,11 +3830,11 @@ x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libe
 lSLF07#2@119"Copy /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libevent/build/Debug/libevent.framework308598696#308598696#0(0"0(0#0#114"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libevent/build/Debug/libevent.framework8610732256#452"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/libevent/build/Debug/libevent.framework" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/Museek/build/Debug"0#
 
 CPBXCp build/Debug/libevent.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework
-s308677230.331936
-e308677230.512644
+s310330100.404111
+e310330100.482573
 r1
 xPBXCp
 xbuild/Debug/libevent.framework
 x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework
-lSLF07#2@115"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework308677230#308677230#0(0"0(0#0#110"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework8638358080#434"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug0#
+lSLF07#2@115"Copy /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework310330100#310330100#0(0"0(0#0#110"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework8615486880#434"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/libevent/build/Debug/libevent.framework /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/Museek/build/Debug0#
 

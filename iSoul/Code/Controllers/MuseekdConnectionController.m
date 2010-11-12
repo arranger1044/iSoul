@@ -301,7 +301,7 @@
 - (void)stopSearchForTicket:(uint32_t)ticket
 {
 	if (state == usOffline) return;
-	printf("\nnn\n");
+	//printf("\nnn\n");
 	MuseekMessage *msg = [[MuseekMessage alloc] init];
 	[msg appendUInt32:mdSearchReply];
 	[msg appendUInt32:ticket];	// the ticket to stop searching for

@@ -7,16 +7,54 @@
 //
 
 #import "LoggingConsole.h"
-
+#import "LoggingController.h"
+#import "Constants.h"
 
 @implementation LoggingConsole
 
 @synthesize loggingView;
+@synthesize cleanButton;
+
+- (void)logReadMessage:(NSNotification *)aNotification
+{
+    NSString * readChars = [[NSString alloc] initWithData:[[aNotification userInfo] objectForKey:NSFileHandleNotificationDataItem] 
+                                                 encoding:NSUTF8StringEncoding];
+    [self logMessage:readChars];
+    [readChars release];
+    [[aNotification object] readInBackgroundAndNotify];
+}
+
+
+- (id)initWithWindowNibName:(NSString *)windowNibName{
+    
+    if ([super initWithWindowNibName:@"LoggingConsole"])
+    {
+        DNSLog(@"init Console");
+    }
+    return self;
+}
 
 - (void)awakeFromNib{
 
     [self.window setTitle:@"Console"];
     [loggingView setEditable:NO];
+    
+    /* Ask to log */
+    [[LoggingController sharedInstance] startLogging];
+    
+    NSString * logPath = [[[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"] 
+                          stringByAppendingPathComponent:logFileName];
+    
+    /* Start receiving notification for file */
+    NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:logPath];
+    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(logReadMessage:)
+                               name:NSFileHandleReadCompletionNotification
+                             object:fh];
+    
+    [fh readInBackgroundAndNotify]; 
+    
 }
 
 - (void)logMessage:(NSString *)message{
@@ -44,6 +82,10 @@
         [loggingView scrollRangeToVisible: range];
     }
     
+}
+
+- (void)cleanConsole:(id)sender{
+    [loggingView setString:@""];
 }
 
 @end

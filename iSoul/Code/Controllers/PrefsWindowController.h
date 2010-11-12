@@ -25,11 +25,14 @@
 	IBOutlet NSView *itunesPrefsView;
 	IBOutlet NSView *networkPrefsView;
 	IBOutlet NSView *donationsPrefsView;
+    IBOutlet NSView *loggingPrefsView;
 	
 	IBOutlet NSTextView *description;
 	IBOutlet NSProgressIndicator *progress;
 	IBOutlet NSPopUpButton *downloadPopup; 
-	IBOutlet NSPopUpButton *incompletePopup; 
+	IBOutlet NSPopUpButton *incompletePopup;
+    IBOutlet NSPopUpButton * logPathPopup;
+    IBOutlet NSPopUpButton * dirPathPopup;
 	IBOutlet NSTextField *userToShareWith;
 	IBOutlet NSButton *addFolderButton;
 
@@ -59,6 +62,7 @@
 - (void)stopScanning:(id)object;
 - (void)setupDownloadMenu;
 - (void)setupIncompleteMenu;
+- (void)setupLogPathMenu:(BOOL)archived;
 - (NSMenuItem *)addMenuItemForPath:(NSString *)path toMenu:(NSMenu *)menu;
 - (void)saveSharesFiles:(id)object;
 - (void)descriptionChanged:(NSNotification *)notification;
@@ -77,6 +81,7 @@
 - (IBAction)uploadSlotsChanged:(id)sender;
 - (IBAction)downloadLocationChanged:(id)sender;
 - (IBAction)incompleteLocationChanged:(id)sender;
+- (IBAction)logPathChanged:(id)sender;
 - (IBAction)userImageChanged:(id)sender;
 - (IBAction)newMenuItem:(id)sender;
 - (IBAction)downloadRateChanged:(id)sender;

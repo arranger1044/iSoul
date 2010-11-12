@@ -25,7 +25,7 @@
 	// holds the different views for the main window
 	IBOutlet NSSplitView *splitView;
 	IBOutlet NSScrollView *mainView;
-	IBOutlet MainWindowController *mainWindowController;
+	IBOutlet MainWindowController * mainWindowController;
 	SearchViewController *searchViewController;
 	DownloadViewController *downloadViewController;
 	ChatViewController *chatViewController;

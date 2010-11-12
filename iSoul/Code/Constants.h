@@ -10,6 +10,7 @@
 
 //#ifdef _DEBUG
 #define debug_NSLog(format, ...) NSLog((@"%s [Line %d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define DNSLog(format, ...) NSLog((@"%s@%d: " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 //#else
 //#define debug_NSLog(format, ...)
 //#endif
@@ -20,6 +21,8 @@
 #define kWishIndexStart		0
 #define kSearchIndexStart	10000
 #define kUserIconSize		32.0
+
+#define kDefaultDividerPosition	400
 
 // museekd command constants
 #define mdMessageMask		(0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x40)
@@ -139,3 +142,6 @@ extern NSString * const pathShares;
 extern NSString * const pathShareState;
 extern NSString * const pathUserImage;
 extern NSString * const pathPidFile;
+extern NSString * const logFileName;
+extern NSString * const LOG_PATH;
+extern NSString * const DIR_PATH;
