@@ -1,5 +1,13 @@
 2010-11-14  Murray Cumming  <murrayc@murrayc.com>
 
+	Change the --enable-examples default to yes.
+
+	* configure.ac: Build the examples by default, so we at least check the 
+	build more often. Disabling them is only useful for package building, 
+	which is the less common case.
+
+2010-11-14  Murray Cumming  <murrayc@murrayc.com>
+
 	Moved create_wrapper() and free_wrappers() to Node.
 
 	* libxml++/document.[h|cc]:

@@ -33,7 +33,7 @@ AC_ARG_ENABLE([examples],
         [AS_HELP_STRING([--enable-examples],
                 [build the examples])],
         [enable_examples=$enableval],
-        [enable_examples=no])
+        [enable_examples=yes])
 
 AM_CONDITIONAL([ENABLE_EXAMPLES], [test "x$enable_examples" = xyes])
 
