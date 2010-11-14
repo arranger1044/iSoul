@@ -68,7 +68,7 @@ void DtdValidator::parse_subset(const Glib::ustring& external,const Glib::ustrin
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
-  Document::create_wrapper(reinterpret_cast<xmlNode*>(dtd));
+  Node::create_wrapper(reinterpret_cast<xmlNode*>(dtd));
   dtd_ = static_cast<Dtd*>(dtd->_private);
 }
 
@@ -97,7 +97,7 @@ void DtdValidator::parse_stream(std::istream& in)
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
-  Document::create_wrapper(reinterpret_cast<xmlNode*>(dtd));
+  Node::create_wrapper(reinterpret_cast<xmlNode*>(dtd));
   dtd_ = static_cast<Dtd*>(dtd->_private);
 }
 
@@ -108,7 +108,7 @@ void DtdValidator::release_underlying()
     //Make a local copy as the wrapper is destroyed first
     //After free_wrappers is called dtd_ will be invalid (e.g. delete dtd_)
     xmlDtd* dtd=dtd_->cobj();
-    Document::free_wrappers(reinterpret_cast<xmlNode*>(dtd));
+    Node::free_wrappers(reinterpret_cast<xmlNode*>(dtd));
     xmlFreeDtd(dtd);
     dtd_ = 0;
   }

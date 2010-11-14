@@ -11,94 +11,16 @@
 #include <libxml++/dtd.h>
 #include <libxml++/attribute.h>
 #include <libxml++/nodes/element.h>
-#include <libxml++/nodes/entityreference.h>
-#include <libxml++/nodes/textnode.h>
-#include <libxml++/nodes/commentnode.h>
-#include <libxml++/nodes/cdatanode.h>
-#include <libxml++/nodes/processinginstructionnode.h>
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/keepblanks.h>
 #include <libxml++/io/ostreamoutputbuffer.h>
 
 #include <libxml/tree.h>
 
-#include <assert.h>
-
 #include <iostream>
 
 namespace xmlpp
 {
-
-void Document::create_wrapper(xmlNode* node)
-{
-  if(node->_private)
-  {
-	  //Node already wrapped, skip
-	  return;
-  }
-
-  switch (node->type)
-  {
-    case XML_ELEMENT_NODE:
-    {
-      node->_private = new xmlpp::Element(node);
-      break;
-    }
-    case XML_ATTRIBUTE_NODE:
-    {
-      node->_private = new xmlpp::Attribute(node);
-      break;
-    }
-    case XML_TEXT_NODE:
-    {
-      node->_private = new xmlpp::TextNode(node);
-      break;
-    }
-    case XML_COMMENT_NODE:
-    {
-      node->_private = new xmlpp::CommentNode(node);
-      break;
-    }
-    case XML_CDATA_SECTION_NODE:
-    {
-      node->_private = new xmlpp::CdataNode(node);
-      break;
-    }
-    case XML_PI_NODE:
-    {
-      node->_private = new xmlpp::ProcessingInstructionNode(node);
-      break;
-    }
-    case XML_DTD_NODE:
-    {
-      node->_private = new xmlpp::Dtd(reinterpret_cast<xmlDtd*>(node));
-      break;
-    }
-    //case XML_ENTITY_NODE:
-    //{
-    //  assert(0 && "Warning: XML_ENTITY_NODE not implemented");
-    //  //node->_private = new xmlpp::ProcessingInstructionNode(node);
-    //  break;
-    //}
-    case XML_ENTITY_REF_NODE:
-    {
-      node->_private = new xmlpp::EntityReference(node);
-      break;
-    }
-    case XML_DOCUMENT_NODE:
-    {
-      // do nothing ! in case of documents it's the wrapper that is the owner
-      break;
-    }
-    default:
-    {
-      // good default for release versions
-      node->_private = new xmlpp::Node(node);
-      assert(0 && "Warning: new node of unknown type created");
-      break;
-    }
-  }
-}
 
 Document::Init::Init()
 {
@@ -135,42 +57,8 @@ Document::Document(xmlDoc* doc)
 
 Document::~Document()
 {
-  free_wrappers(reinterpret_cast<xmlNode*>(impl_));
+  Node::free_wrappers(reinterpret_cast<xmlNode*>(impl_));
   xmlFreeDoc(impl_);
-}
-
-void Document::free_wrappers(xmlNode* node)
-{
-  //Walk the children list
-  for(xmlNode* child=node->children; child; child=child->next)
-     free_wrappers(child);
-
-  //Delete the local one
-  switch(node->type)
-  {
-    //Node types that have no properties
-    case XML_DTD_NODE:
-      delete static_cast<Dtd*>(node->_private);
-      node->_private=0;
-      return;
-    case XML_ATTRIBUTE_NODE:
-    case XML_ELEMENT_DECL:
-    case XML_ATTRIBUTE_DECL:
-    case XML_ENTITY_DECL:
-      delete static_cast<Node*>(node->_private);
-      node->_private=0;
-      return;
-    case XML_DOCUMENT_NODE:
-      //Do not free now, the ownernship is reversed
-      return;
-    default:
-      delete static_cast<Node*>(node->_private);
-      node->_private=0;
-  }
-
-  //Walk the attributes list
-  for(xmlAttr* attr=node->properties; attr; attr=attr->next)
-     free_wrappers(reinterpret_cast<xmlNode*>(attr));
 }
 
 Glib::ustring Document::get_encoding() const
@@ -214,7 +102,7 @@ Element* Document::get_root_node() const
     return 0;
   else
   {
-    create_wrapper(root);
+    Node::create_wrapper(root);
     return reinterpret_cast<Element*>(root->_private);
   }
 }
@@ -270,7 +158,7 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
 
   // Use the result, because node can be freed when merging text nodes:
   node = xmlAddChild( (xmlNode*)impl_, node);
-  create_wrapper(node);
+  Node::create_wrapper(node);
   return static_cast<CommentNode*>(node->_private);
 }
 

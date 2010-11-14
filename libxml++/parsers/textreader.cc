@@ -300,7 +300,7 @@ Node* TextReader::get_current_node()
   xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
   if(node)
   {
-    Document::create_wrapper(node);
+    Node::create_wrapper(node);
     return static_cast<Node*>(node->_private);
   }
     
@@ -313,7 +313,7 @@ const Node* TextReader::get_current_node() const
   xmlNodePtr node = xmlTextReaderCurrentNode(impl_);
   if(node)
   {
-    Document::create_wrapper(node);
+    Node::create_wrapper(node);
     return static_cast<Node*>(node->_private);
   }
 
@@ -337,7 +337,7 @@ Node* TextReader::expand()
   if(node)
   if(node)
   {
-    Document::create_wrapper(node);
+    Node::create_wrapper(node);
     return static_cast<Node*>(node->_private);
   }
     

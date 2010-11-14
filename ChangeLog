@@ -1,3 +1,34 @@
+2010-11-14  Murray Cumming  <murrayc@murrayc.com>
+
+	Moved create_wrapper() and free_wrappers() to Node.
+
+	* libxml++/document.[h|cc]:
+	* libxml++/nodes/node.[h|cc]: Moved create_wrapper() and free_wrappers() 
+	to here from Document.
+	free_wrappers(): Never return inside the switch/case, so we check 
+	xmlNode::properties for all struct types, and to avoid making the behaviour 
+	non-obvious.
+	* libxml++/parsers/textreader.cc:
+	* libxml++/validators/dtdvalidator.cc:
+	* libxml++/nodes/element.cc: Adapted.
+	
+2010-11-08  Alessandro Pignotti <a.pignotti@sssup.it>
+
+	Make libxml++ compatible with separate and multi-threaded libxml2 usage.
+
+	* libxml++/document.[h|cc]: Added create_wrapper() and free_wrappers(),
+	replacing on_libxml_construct() and on_libxml_destruct() .
+	Init(): Do not register these global callbacks with libxml.
+	* libxml++/nodes/element.cc:
+	* libxml++/nodes/node.[h|cc]:
+	* libxml++/parsers/textreader.cc:
+	* libxml++/validators/dtdvalidator.cc: Call these create_wrapper() before 
+	ever trying to get a C++ instance from a C instance. Call free_wrappers() 
+	in destructors and other places where we want the instance to be destroyed.
+	
+	This avoids use of libxml's global function pointers, which are not 
+	thread-safe.
+
 2010-11-08  Murray Cumming  <murrayc@murrayc.com>
 
 	Do not call xmlCleanupParser() because it is brutal.

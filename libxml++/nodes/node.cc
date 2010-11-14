@@ -6,6 +6,11 @@
 
 #include <libxml++/nodes/element.h>
 #include <libxml++/nodes/node.h>
+#include <libxml++/nodes/entityreference.h>
+#include <libxml++/nodes/textnode.h>
+#include <libxml++/nodes/commentnode.h>
+#include <libxml++/nodes/cdatanode.h>
+#include <libxml++/nodes/processinginstructionnode.h>
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/document.h>
 #include <libxml/xpath.h>
@@ -36,7 +41,7 @@ Element* Node::get_parent()
   if(!(cobj()->parent && cobj()->parent->type == XML_ELEMENT_NODE))
     return 0;
 
-  Document::create_wrapper(cobj()->parent);
+  Node::create_wrapper(cobj()->parent);
   return static_cast<Element*>(cobj()->parent->_private);
 }
 
@@ -50,7 +55,7 @@ Node* Node::get_next_sibling()
   if(!cobj()->next)
     return 0;
 
-  Document::create_wrapper(cobj()->next);
+  Node::create_wrapper(cobj()->next);
   return static_cast<Node*>(cobj()->next->_private);
 }
 
@@ -64,7 +69,7 @@ Node* Node::get_previous_sibling()
   if(!cobj()->prev)
     return 0;
 
-  Document::create_wrapper(cobj()->prev);
+  Node::create_wrapper(cobj()->prev);
   return static_cast<Node*>(cobj()->prev->_private);
 }
 
@@ -79,7 +84,7 @@ Node::NodeList Node::get_children(const Glib::ustring& name)
    {
       if(name.empty() || name == (const char*)child->name)
       {
-        Document::create_wrapper(child);
+        Node::create_wrapper(child);
         children.push_back(reinterpret_cast<Node*>(child->_private));
       }
    }
@@ -104,7 +109,7 @@ Element* Node::add_child(const Glib::ustring& name,
   if(!node)
     return 0;
  
-  Document::create_wrapper(node);
+  Node::create_wrapper(node);
   return static_cast<Element*>(node->_private);
 }
 
@@ -123,7 +128,7 @@ Element* Node::add_child(xmlpp::Node* previous_sibling,
   if(!node)
     return 0;
 
-  Document::create_wrapper(node);
+  Node::create_wrapper(node);
   return static_cast<Element*>(node->_private);
 }
 
@@ -142,7 +147,7 @@ Element* Node::add_child_before(xmlpp::Node* next_sibling,
   if(!node)
     return 0;
 
-  Document::create_wrapper(node);
+  Node::create_wrapper(node);
   return static_cast<Element*>(node->_private);
 }
 
@@ -182,7 +187,7 @@ void Node::remove_child(Node* node)
 {
   //TODO: Allow a node to be removed without deleting it, to allow it to be moved?
   //This would require a more complex memory management API.
-  Document::free_wrappers(node->cobj());
+  Node::free_wrappers(node->cobj());
   xmlUnlinkNode(node->cobj());
   xmlFreeNode(node->cobj()); //The C++ instance will be deleted in a callback.
 }
@@ -204,7 +209,7 @@ Node* Node::import_node(const Node* node, bool recursive)
   xmlNode* added_node = xmlAddChild(this->cobj(),imported_node);
   if (!added_node)
   {
-    Document::free_wrappers(imported_node);
+    Node::free_wrappers(imported_node);
     xmlFreeNode(imported_node);
 
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -214,7 +219,7 @@ Node* Node::import_node(const Node* node, bool recursive)
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
-  Document::create_wrapper(imported_node);
+  Node::create_wrapper(imported_node);
   return static_cast<Node*>(imported_node->_private);
 }
 
@@ -298,7 +303,7 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
       
       //TODO: Check for other cnode->type values?
   
-      Document::create_wrapper(cnode);
+      Node::create_wrapper(cnode);
       Node* cppNode = static_cast<Node*>(cnode->_private);
       nodes.push_back(cppNode);
     }
@@ -390,6 +395,115 @@ void Node::set_namespace(const Glib::ustring& ns_prefix)
     throw exception("The namespace (" + ns_prefix + ") has not been declared.");
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLE
   }
+}
+
+void Node::create_wrapper(xmlNode* node)
+{
+  if(node->_private)
+  {
+	  //Node already wrapped, skip
+	  return;
+  }
+
+  switch (node->type)
+  {
+    case XML_ELEMENT_NODE:
+    {
+      node->_private = new xmlpp::Element(node);
+      break;
+    }
+    case XML_ATTRIBUTE_NODE:
+    {
+      node->_private = new xmlpp::Attribute(node);
+      break;
+    }
+    case XML_TEXT_NODE:
+    {
+      node->_private = new xmlpp::TextNode(node);
+      break;
+    }
+    case XML_COMMENT_NODE:
+    {
+      node->_private = new xmlpp::CommentNode(node);
+      break;
+    }
+    case XML_CDATA_SECTION_NODE:
+    {
+      node->_private = new xmlpp::CdataNode(node);
+      break;
+    }
+    case XML_PI_NODE:
+    {
+      node->_private = new xmlpp::ProcessingInstructionNode(node);
+      break;
+    }
+    case XML_DTD_NODE:
+    {
+      node->_private = new xmlpp::Dtd(reinterpret_cast<xmlDtd*>(node));
+      break;
+    }
+    //case XML_ENTITY_NODE:
+    //{
+    //  assert(0 && "Warning: XML_ENTITY_NODE not implemented");
+    //  //node->_private = new xmlpp::ProcessingInstructionNode(node);
+    //  break;
+    //}
+    case XML_ENTITY_REF_NODE:
+    {
+      node->_private = new xmlpp::EntityReference(node);
+      break;
+    }
+    case XML_DOCUMENT_NODE:
+    {
+      // do nothing. For Documents it's the wrapper that is the owner.
+      break;
+    }
+    default:
+    {
+      // good default for release versions
+      node->_private = new xmlpp::Node(node);
+      std::cerr << G_STRFUNC << "Warning: new node of unknown type created: " << node->type << std::endl;
+      break;
+    }
+  }
+}
+
+void Node::free_wrappers(xmlNode* node)
+{
+  if(!node)
+    return;
+    
+  //Walk the children list
+  for(xmlNode* child=node->children; child; child=child->next)
+    free_wrappers(child);
+
+  //Delete the local one
+  switch(node->type)
+  {
+    //Node types that have no properties
+    case XML_DTD_NODE:
+      delete static_cast<Dtd*>(node->_private);
+      node->_private = 0;
+      break;
+    case XML_ATTRIBUTE_NODE:
+    case XML_ELEMENT_DECL:
+    case XML_ATTRIBUTE_DECL:
+    case XML_ENTITY_DECL:
+      delete static_cast<Node*>(node->_private);
+      node->_private = 0;
+      break;
+    case XML_DOCUMENT_NODE:
+      //Do not free now. The Document is usually the one who owns the caller.
+      break;
+    default:
+      delete static_cast<Node*>(node->_private);
+      node->_private = 0;
+      break;
+  }
+
+  //Walk the attributes list
+  for(xmlAttr* attr = node->properties; attr; attr = attr->next)
+    free_wrappers(reinterpret_cast<xmlNode*>(attr));
 }
 
 

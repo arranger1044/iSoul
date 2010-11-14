@@ -179,6 +179,22 @@ public:
   ///Access the underlying libxml implementation.
   const _xmlNode* cobj() const;
 
+  /** Construct the correct C++ instance for a given libxml C struct instance.
+   *
+   * This is only for use by the libxml++ implementation.
+   *
+   * @para node A pointer to an xmlNode or a "derived" struct, such as xmlDoc, xmlAttr, etc.
+   */
+  static void create_wrapper(_xmlNode* node);
+  
+  /** Delete the C++ instance for a given libxml C struct instance, and also 
+   * recursively destroy the C++ instances for any children.
+   *
+   * This is only for use by the libxml++ implementation.
+   * @para node A pointer to an xmlNode or a "derived" struct, such as xmlDoc, xmlAttr, etc.
+   */
+  static void free_wrappers(_xmlNode* attr);
+  
 protected:
 
   ///Create the C instance ready to be added to the parent node.
