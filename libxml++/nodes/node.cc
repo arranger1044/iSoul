@@ -484,24 +484,28 @@ void Node::free_wrappers(xmlNode* node)
     case XML_DTD_NODE:
       delete static_cast<Dtd*>(node->_private);
       node->_private = 0;
-      break;
+      return;
     case XML_ATTRIBUTE_NODE:
     case XML_ELEMENT_DECL:
     case XML_ATTRIBUTE_DECL:
     case XML_ENTITY_DECL:
       delete static_cast<Node*>(node->_private);
       node->_private = 0;
-      break;
+      return;
     case XML_DOCUMENT_NODE:
       //Do not free now. The Document is usually the one who owns the caller.
-      break;
+      return;
     default:
       delete static_cast<Node*>(node->_private);
       node->_private = 0;
       break;
   }
 
-  //Walk the attributes list
+  //Walk the attributes list.
+  //Note that some "derived" struct have a different layout, so 
+  //_xmlNode::properties would be a nonsense value, leading to crashes,
+  //(and shown as valgrind warnings), so we return above, to avoid 
+  //checking it here.
   for(xmlAttr* attr = node->properties; attr; attr = attr->next)
     free_wrappers(reinterpret_cast<xmlNode*>(attr));
 }

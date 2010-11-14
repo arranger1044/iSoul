@@ -1,5 +1,15 @@
 2010-11-14  Murray Cumming  <murrayc@murrayc.com>
 
+	free_wrappers(): Fix crash.
+
+	* libxml++/nodes/node.cc: free_wrappers(): Revert my change to check 
+	xmlNode::properties for all types, because the layout of some structs 
+	is apparently completely different (not really deriving fully), and this 
+	caused a crash in examples/sax_parser/.
+	Added an explanatory comment.
+
+2010-11-14  Murray Cumming  <murrayc@murrayc.com>
+
 	Change the --enable-examples default to yes.
 
 	* configure.ac: Build the examples by default, so we at least check the 
