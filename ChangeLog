@@ -1,3 +1,5 @@
+2.33.1:
+
 2010-11-14  Murray Cumming  <murrayc@murrayc.com>
 
 	free_wrappers(): Fix crash.
@@ -30,7 +32,7 @@
 	* libxml++/validators/dtdvalidator.cc:
 	* libxml++/nodes/element.cc: Adapted.
 	
-2010-11-08  Alessandro Pignotti <a.pignotti@sssup.it>
+2010-11-08  Alessandro Pignotti  <a.pignotti@sssup.it>
 
 	Make libxml++ compatible with separate and multi-threaded libxml2 usage.
 

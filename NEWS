@@ -1,3 +1,18 @@
+2.33.1 (stable):
+
+* (Hopefully) allow separate and multi-threaded libxml2 usage by 
+  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault() 
+  callbacks.
+  (Alessandro Pignotti)
+* Do not call xmlCleanupParser() when the library is unloaded, 
+  because it is brutal and can break other parts of applications that try to 
+  use libxml separately.
+  (Murray Cumming)
+* Minor code improvement.
+  (Knut Aksel Røysland)
+* Build: Build the examples by default.
+  (Murray Cumming)
+  
 2.32.0 (stable):
 
 * Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL to prevent a
