@@ -1,4 +1,4 @@
-2.33.1 (stable):
+2.33.1 (unstable):
 
 * (Hopefully) allow separate and multi-threaded libxml2 usage by 
   not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault() 
