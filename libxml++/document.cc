@@ -199,9 +199,7 @@ void Document::do_write_to_file(
 {
   KeepBlanks k(KeepBlanks::Default);
   xmlIndentTreeOutput = format?1:0;
-  int result = 0;
-
-  result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
+  const int result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
 
   if(result == -1)
   {
@@ -250,7 +248,16 @@ void Document::do_write_to_stream(std::ostream& output, const Glib::ustring& enc
 {
   // TODO assert document encoding is UTF-8 if encoding is different than UTF-8
   OStreamOutputBuffer buffer(output, encoding);
-  xmlSaveFormatFileTo(buffer.cobj(), impl_, encoding.c_str(), format?1:0);
+  const int result = xmlSaveFormatFileTo(buffer.cobj(), impl_, encoding.c_str(), format ? 1 : 0);
+  
+  if(result == -1)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    throw exception("do_write_to_stream() failed.");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
 }
 
 void Document::set_entity_declaration(const Glib::ustring& name, XmlEntityType type,
