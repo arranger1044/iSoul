@@ -1,3 +1,12 @@
+2.33.2 (unstable):
+
+* Node::remove_child(): Fix a memory management problem introduced in 
+  2.33.1.
+  (Murray Cumming)
+* Document::do_write_to_stream(), Schema::set_document(): Check the results from 
+	xmlSchemaNewDocParserCtxt() and xmlSaveFormatFileTo().
+  (Murray Cumming) Bug #635846 (Markus Elfring)
+	
 2.33.1 (unstable):
 
 * (Hopefully) allow separate and multi-threaded libxml2 usage by 

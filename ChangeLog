@@ -1,3 +1,5 @@
+2.33.2:
+
 2011-02-11  Murray Cumming  <murrayc@murrayc.com>
 
 	Node::remove_child(): Fix a use of deleted memory
