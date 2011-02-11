@@ -187,9 +187,11 @@ void Node::remove_child(Node* node)
 {
   //TODO: Allow a node to be removed without deleting it, to allow it to be moved?
   //This would require a more complex memory management API.
-  Node::free_wrappers(node->cobj());
-  xmlUnlinkNode(node->cobj());
-  xmlFreeNode(node->cobj()); //The C++ instance will be deleted in a callback.
+  
+  xmlNode* cnode = node->cobj();
+  Node::free_wrappers(cnode); //This delete the C++ node (not this) itself.
+  xmlUnlinkNode(cnode);
+  xmlFreeNode(cnode);
 }
 
 Node* Node::import_node(const Node* node, bool recursive)

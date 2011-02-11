@@ -1,3 +1,13 @@
+2011-02-11  Murray Cumming  <murrayc@murrayc.com>
+
+	Node::remove_child(): Fix a use of deleted memory
+
+	* libxml++/nodes/node.cc:
+	Use a temporary variable to avoid accessing the node C++ instance after we 
+	have deleted it. Valgrind foudn this.
+	Also remove the comment about the libxml deleting our C++ instance via a 
+	callback, because we don't do that anymore.
+
 2010-11-26  Murray Cumming  <murrayc@murrayc.com>
 
 	Check some libxml function return values.
