@@ -44,9 +44,6 @@
 {
     if (self == [iSoul_AppDelegate class])
     {        
-        
-        
-        [[LoggingController sharedInstance] startLogging];
         // register the default settings
         debug_NSLog(@"BOMBA INIT");
         NSMutableDictionary *d = [NSMutableDictionary dictionary];
@@ -101,7 +98,8 @@
         NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
         [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
         
-        [[NSUserDefaults standardUserDefaults] registerDefaults:d];   
+        [[NSUserDefaults standardUserDefaults] registerDefaults:d];  
+        [[LoggingController sharedInstance] startLogging];
     }
 }
 

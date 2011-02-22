@@ -118,6 +118,7 @@ static LoggingController * sharedControllerIstance = nil;
     if (!isLogging)
     {
         //NSString * logPath = [NSHomeDirectory() stringByAppendingPathComponent:LOG_PATH];
+        DNSLog(@"LP %@", [[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"]);
         NSString * logPath = [[[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"] 
                               stringByAppendingPathComponent:logFileName];
 

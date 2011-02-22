@@ -285,11 +285,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>135</integer>
+									<integer>123</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {253, 991}}</string>
+							<string>{{0, 1870}, {253, 991}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -326,7 +328,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ChatViewController.m</string>
+								<string>iSoul_AppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,11 +336,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ChatViewController.m</string>
+										<string>iSoul_AppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B920D233131412F400E61A1D</string>
+										<string>B920D2611314225700E61A1D</string>
 										<key>history</key>
 										<array>
 											<string>B90E5A0D12647A9C00CE793D</string>
@@ -428,7 +430,6 @@
 											<string>B95FA579128030FA00BFB18E</string>
 											<string>B95FA57B128030FA00BFB18E</string>
 											<string>B9FAEF7412821EA300300C45</string>
-											<string>B95D563C1284820B0034F7AC</string>
 											<string>B95D563D1284820B0034F7AC</string>
 											<string>B95D566012848D310034F7AC</string>
 											<string>B95D566112848D310034F7AC</string>
@@ -442,7 +443,6 @@
 											<string>B95D566912848D310034F7AC</string>
 											<string>B97615981286108A008994E9</string>
 											<string>B97615AC12861148008994E9</string>
-											<string>B95F2B0212869D5400E5A91F</string>
 											<string>B95F2B101286C3E200E5A91F</string>
 											<string>B95F2B111286C3E200E5A91F</string>
 											<string>B95F2B121286C3E200E5A91F</string>
@@ -470,19 +470,13 @@
 											<string>B97951B7128D7D51009B7D9B</string>
 											<string>B97951BA128D7D51009B7D9B</string>
 											<string>B97951BB128D7D51009B7D9B</string>
-											<string>B97951C2128D7D51009B7D9B</string>
 											<string>B97951C3128D7D51009B7D9B</string>
-											<string>B985A729128DDBFC00ED42FF</string>
 											<string>B985A7AD128E08BB00ED42FF</string>
 											<string>B985A7AE128E08BB00ED42FF</string>
 											<string>B985A7AF128E08BB00ED42FF</string>
-											<string>B985A7B0128E08BB00ED42FF</string>
 											<string>B985A7B1128E08BB00ED42FF</string>
 											<string>B985A7B2128E08BB00ED42FF</string>
 											<string>B985A7B3128E08BB00ED42FF</string>
-											<string>B985A7B4128E08BB00ED42FF</string>
-											<string>B985A7B5128E08BB00ED42FF</string>
-											<string>B985A7B6128E08BB00ED42FF</string>
 											<string>B985A7B7128E08BB00ED42FF</string>
 											<string>B921BBBE128F1FBE00BD7BC2</string>
 											<string>B921BBBF128F1FBE00BD7BC2</string>
@@ -533,7 +527,6 @@
 											<string>B9288AC612FA0AF0003C40C6</string>
 											<string>B9288AC712FA0AF0003C40C6</string>
 											<string>B98E7BD613029916003A0B2D</string>
-											<string>B98E7BD713029916003A0B2D</string>
 											<string>B98E7BD813029916003A0B2D</string>
 											<string>B98E7BD913029916003A0B2D</string>
 											<string>B98E7BDA13029916003A0B2D</string>
@@ -570,7 +563,16 @@
 											<string>B984E8091306F3260083327A</string>
 											<string>B984E80A1306F3260083327A</string>
 											<string>B984E80B1306F3260083327A</string>
-											<string>B93BCD5113131CA500968C63</string>
+											<string>B920D2571314225700E61A1D</string>
+											<string>B920D2581314225700E61A1D</string>
+											<string>B920D2591314225700E61A1D</string>
+											<string>B920D25A1314225700E61A1D</string>
+											<string>B920D25B1314225700E61A1D</string>
+											<string>B920D25C1314225700E61A1D</string>
+											<string>B920D25D1314225700E61A1D</string>
+											<string>B920D25E1314225700E61A1D</string>
+											<string>B920D25F1314225700E61A1D</string>
+											<string>B920D2601314225700E61A1D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -768,8 +770,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B920D24A13141AD100E61A1D</string>
+		<string>B920D24B13141AD100E61A1D</string>
 		<string>B90E59F81264793F00CE793D</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/iSoul.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1010,7 +1016,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainWindowController.m</string>
+										<string>Constants.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1068,8 +1074,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>B984E7701306BB030083327A</string>
-				<string>B984E7711306BB030083327A</string>
+				<string>B920D2621314225700E61A1D</string>
+				<string>B920D2631314225700E61A1D</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -1134,7 +1140,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>B93BCD5B13131CA500968C63</string>
+				<string>B920D24913141AD100E61A1D</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

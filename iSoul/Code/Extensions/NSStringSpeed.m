@@ -14,16 +14,16 @@
 + (NSString *)stringForSpeed:(float)speed
 {
     if (speed <= 999.95) //0.0 K to 999.9 K
-        return [NSString localizedStringWithFormat:@"%.2f KB", speed];
+        return [NSString localizedStringWithFormat:@"%.1f KB", speed];
     
     speed /= 1024.0;
     
     if (speed <= 99.995) //0.98 M to 99.99 M
-        return [NSString localizedStringWithFormat:@"%.2f MB", speed];
+        return [NSString localizedStringWithFormat:@"%.1f MB", speed];
     else if (speed <= 999.95) //100.0 M to 999.9 M
         return [NSString localizedStringWithFormat:@"%.1f MB", speed];
     else //insane speeds
-        return [NSString localizedStringWithFormat: @"%.2f GB", (speed / 1024.0f)];
+        return [NSString localizedStringWithFormat: @"%.1f GB", (speed / 1024.0f)];
 }
 
 + (NSString *)stringForTime:(float)t
