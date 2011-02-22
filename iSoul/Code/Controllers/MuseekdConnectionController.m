@@ -300,11 +300,16 @@
 
 - (void)stopSearchForTicket:(uint32_t)ticket
 {
-	if (state == usOffline) return;
+	if (state == usOffline) 
+    {
+        DNSLog(@"Status: offline");
+        return;
+    }
 	//printf("\nnn\n");
 	MuseekMessage *msg = [[MuseekMessage alloc] init];
 	[msg appendUInt32:mdSearchReply];
 	[msg appendUInt32:ticket];	// the ticket to stop searching for
+    DNSLog(@"Trying to remove ticket");
 	[output send:msg];
 	[msg release];
 }
@@ -1060,9 +1065,10 @@
 	// first get the associated transfer and remove it from the cache
 	Transfer *t = [store findOrAddTransferWithPath:path forUser:username isNew:NULL];
 	[clearedTransfers removeObject:t];
-	BOOL allGone = [clearedTransfers count] == 0;
-	
-	[store removeTransfer:t sendUpdates:allGone];
+	//BOOL allGone = [clearedTransfers count] == 0;
+	DNSLog(@"send to remove");
+	//[store removeTransfer:t sendUpdates:allGone];
+    [store removeTransfer:t sendUpdates:YES];
 }
 
 - (void)readStatusMessage:(MuseekMessage *)msg
@@ -1274,7 +1280,12 @@
 		if ([[ticket files] count] > [maxCount unsignedIntValue]) {
 			debug_NSLog(@"stopping searching for %@, obtained %u results", 
 						[ticket searchTerm], [[ticket files] count]);
-			[self stopSearchForTicket:ticketNumber];
+//            for (Ticket * t in [store find:@"Ticket"withPredicate:[NSPredicate predicateWithFormat:@"searchTerm == %@", 
+//                                 [ticket searchTerm]]])
+//                {
+                    [self stopSearchForTicket:ticketNumber];                
+//                }
+			
 			[ticket setStopped:[NSNumber numberWithBool:YES]];
 		}		
 	}

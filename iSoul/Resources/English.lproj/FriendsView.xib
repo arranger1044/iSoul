@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10C540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">740</string>
-		<string key="IBDocument.AppKitVersion">1038.25</string>
-		<string key="IBDocument.HIToolboxVersion">458.00</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">740</string>
+			<string key="NS.object.0">804</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -56,13 +56,13 @@
 									<object class="NSTableView" id="923215385">
 										<reference key="NSNextResponder" ref="1037741288"/>
 										<int key="NSvFlags">4370</int>
-										<string key="NSFrameSize">{619, 428}</string>
+										<string key="NSFrameSize">{642, 428}</string>
 										<reference key="NSSuperview" ref="1037741288"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="624611761">
 											<reference key="NSNextResponder" ref="288551306"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{619, 17}</string>
+											<string key="NSFrameSize">{642, 17}</string>
 											<reference key="NSSuperview" ref="288551306"/>
 											<reference key="NSTableView" ref="923215385"/>
 										</object>
@@ -294,6 +294,37 @@
 												<bool key="NSIsResizeable">YES</bool>
 												<reference key="NSTableView" ref="923215385"/>
 											</object>
+											<object class="NSTableColumn" id="375713792">
+												<string key="NSIdentifier">location</string>
+												<double key="NSWidth">20</double>
+												<double key="NSMinWidth">10</double>
+												<double key="NSMaxWidth">3.4028234663852886e+38</double>
+												<object class="NSTableHeaderCell" key="NSHeaderCell">
+													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags2">2048</int>
+													<string key="NSContents"/>
+													<reference key="NSSupport" ref="26"/>
+													<reference key="NSBackgroundColor" ref="533468484"/>
+													<reference key="NSTextColor" ref="431855290"/>
+												</object>
+												<object class="NSImageCell" key="NSDataCell" id="700308779">
+													<int key="NSCellFlags">67239424</int>
+													<int key="NSCellFlags2">33685504</int>
+													<reference key="NSSupport" ref="26"/>
+													<int key="NSAlign">0</int>
+													<int key="NSScale">0</int>
+													<int key="NSStyle">0</int>
+													<bool key="NSAnimates">NO</bool>
+												</object>
+												<int key="NSResizingMask">2</int>
+												<bool key="NSIsResizeable">YES</bool>
+												<reference key="NSTableView" ref="923215385"/>
+												<object class="NSSortDescriptor" key="NSSortDescriptorPrototype">
+													<string key="NSKey">country</string>
+													<bool key="NSAscending">YES</bool>
+													<string key="NSSelector">localizedCaseInsensitiveCompare:</string>
+												</object>
+											</object>
 										</object>
 										<double key="NSIntercellSpacingWidth">3</double>
 										<double key="NSIntercellSpacingHeight">2</double>
@@ -340,6 +371,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{-100, -100}, {223, 15}}</string>
 								<reference key="NSSuperview" ref="643301823"/>
+								<bool key="NSEnabled">YES</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="643301823"/>
 								<string key="NSAction">_doScroller:</string>
@@ -364,7 +396,7 @@
 						<string key="NSFrameSize">{619, 445}</string>
 						<reference key="NSSuperview" ref="758768598"/>
 						<reference key="NSNextKeyView" ref="1037741288"/>
-						<int key="NSsFlags">528</int>
+						<int key="NSsFlags">656</int>
 						<reference key="NSVScroller" ref="867340188"/>
 						<reference key="NSHScroller" ref="298351736"/>
 						<reference key="NSContentView" ref="1037741288"/>
@@ -384,6 +416,9 @@
 					<string>name</string>
 					<string>averageSpeed</string>
 					<string>numberOfFiles</string>
+					<string>c</string>
+					<string>cou</string>
+					<string>country</string>
 				</object>
 				<bool key="NSAutomaticallyPreparesContent">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy">
@@ -695,6 +730,26 @@
 					</object>
 					<int key="connectionID">57</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.country</string>
+						<reference key="source" ref="375713792"/>
+						<reference key="destination" ref="115247664"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="375713792"/>
+							<reference key="NSDestination" ref="115247664"/>
+							<string key="NSLabel">value: arrangedObjects.country</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.country</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">CountryImageTransformer</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">64</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -764,6 +819,7 @@
 							<reference ref="862377685"/>
 							<reference ref="208216649"/>
 							<reference ref="617074966"/>
+							<reference ref="375713792"/>
 						</object>
 						<reference key="parent" ref="643301823"/>
 					</object>
@@ -874,6 +930,20 @@
 						<reference key="object" ref="560170152"/>
 						<reference key="parent" ref="474247400"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">58</int>
+						<reference key="object" ref="375713792"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="700308779"/>
+						</object>
+						<reference key="parent" ref="923215385"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">59</int>
+						<reference key="object" ref="700308779"/>
+						<reference key="parent" ref="375713792"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -901,6 +971,7 @@
 					<string>44.IBPluginDependency</string>
 					<string>45.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
+					<string>59.IBPluginDependency</string>
 					<string>6.CustomClassName</string>
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
@@ -930,6 +1001,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>MenuSelectedTableView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -953,7 +1025,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">57</int>
+			<int key="maxID">64</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -981,6 +1053,13 @@
 						<string key="NS.key.0">removeFriends:</string>
 						<string key="NS.object.0">id</string>
 					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">removeFriends:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">removeFriends:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -994,6 +1073,30 @@
 							<string>NSArrayController</string>
 							<string>NSMenuItem</string>
 							<string>NSTableView</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>arrayController</string>
+							<string>friendMenuItem</string>
+							<string>tableView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">arrayController</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">friendMenuItem</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">tableView</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1024,6 +1127,7 @@
 							<string>changeView:</string>
 							<string>changeViewStyle:</string>
 							<string>clearAllTransfers:</string>
+							<string>clearCompleteTransfers:</string>
 							<string>clearFinishedTransfers:</string>
 							<string>clearTransfer:</string>
 							<string>closeFriendSheet:</string>
@@ -1045,6 +1149,7 @@
 							<string>removeSideItem:</string>
 							<string>resume:</string>
 							<string>search:</string>
+							<string>showOrHideWindow:</string>
 							<string>toggleOnlineStatus:</string>
 							<string>userInfo:</string>
 						</object>
@@ -1081,6 +1186,182 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addNewFriend:</string>
+							<string>addOrRemoveFriend:</string>
+							<string>banOrUnbanUser:</string>
+							<string>browseUser:</string>
+							<string>changeSearchStyle:</string>
+							<string>changeView:</string>
+							<string>changeViewStyle:</string>
+							<string>clearAllTransfers:</string>
+							<string>clearCompleteTransfers:</string>
+							<string>clearFinishedTransfers:</string>
+							<string>clearTransfer:</string>
+							<string>closeFriendSheet:</string>
+							<string>closeUPNPSheet:</string>
+							<string>closeUsernameSheet:</string>
+							<string>connectOrDisconnect:</string>
+							<string>download:</string>
+							<string>downloadFolder:</string>
+							<string>joinRooms:</string>
+							<string>leaveChatroom:</string>
+							<string>newChatroom:</string>
+							<string>newSearch:</string>
+							<string>newWish:</string>
+							<string>openPreferences:</string>
+							<string>pause:</string>
+							<string>popUpMenu:</string>
+							<string>privateChat:</string>
+							<string>removeSearch:</string>
+							<string>removeSideItem:</string>
+							<string>resume:</string>
+							<string>search:</string>
+							<string>showOrHideWindow:</string>
+							<string>toggleOnlineStatus:</string>
+							<string>userInfo:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">addNewFriend:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">addOrRemoveFriend:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">banOrUnbanUser:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">browseUser:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeSearchStyle:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeView:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeViewStyle:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clearAllTransfers:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clearCompleteTransfers:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clearFinishedTransfers:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clearTransfer:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">closeFriendSheet:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">closeUPNPSheet:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">closeUsernameSheet:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">connectOrDisconnect:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">download:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">downloadFolder:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">joinRooms:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">leaveChatroom:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">newChatroom:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">newSearch:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">newWish:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openPreferences:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pause:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">popUpMenu:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">privateChat:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">removeSearch:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">removeSideItem:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">resume:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">search:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showOrHideWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleOnlineStatus:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">userInfo:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -1090,6 +1371,11 @@
 							<string>bottomBar</string>
 							<string>chatRoomWindow</string>
 							<string>connectToSoulseek</string>
+							<string>createChatRoomPanel</string>
+							<string>menuShowChatRooms</string>
+							<string>menuShowConsole</string>
+							<string>menuShowMainWindow</string>
+							<string>menuShowUserInfo</string>
 							<string>newFriendName</string>
 							<string>newFriendOK</string>
 							<string>newFriendPanel</string>
@@ -1103,18 +1389,25 @@
 							<string>searchField</string>
 							<string>setOnlineStatus</string>
 							<string>sidebar</string>
+							<string>soulseekMenu</string>
+							<string>splitView</string>
 							<string>splitterLeftPane</string>
 							<string>splitterRightPane</string>
-							<string>statusImage</string>
 							<string>treeController</string>
 							<string>upnpPanel</string>
 							<string>userInfoWindow</string>
 							<string>viewSegment</string>
+							<string>windowMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>BottomBar</string>
 							<string>NSWindow</string>
+							<string>NSMenuItem</string>
+							<string>NSPanel</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
 							<string>NSTextField</string>
 							<string>NSButton</string>
@@ -1129,13 +1422,174 @@
 							<string>NSSearchField</string>
 							<string>NSMenuItem</string>
 							<string>ExpandingSidebar</string>
+							<string>NSMenu</string>
+							<string>NSSplitView</string>
 							<string>NSView</string>
 							<string>NSView</string>
-							<string>NSImageView</string>
 							<string>NSTreeController</string>
 							<string>NSPanel</string>
 							<string>NSWindow</string>
 							<string>NSSegmentedControl</string>
+							<string>NSMenu</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>bottomBar</string>
+							<string>chatRoomWindow</string>
+							<string>connectToSoulseek</string>
+							<string>createChatRoomPanel</string>
+							<string>menuShowChatRooms</string>
+							<string>menuShowConsole</string>
+							<string>menuShowMainWindow</string>
+							<string>menuShowUserInfo</string>
+							<string>newFriendName</string>
+							<string>newFriendOK</string>
+							<string>newFriendPanel</string>
+							<string>noUsernamePanel</string>
+							<string>openPreferencesButton</string>
+							<string>openRouterButton</string>
+							<string>popUp</string>
+							<string>removeButton</string>
+							<string>roomController</string>
+							<string>roomList</string>
+							<string>searchField</string>
+							<string>setOnlineStatus</string>
+							<string>sidebar</string>
+							<string>soulseekMenu</string>
+							<string>splitView</string>
+							<string>splitterLeftPane</string>
+							<string>splitterRightPane</string>
+							<string>treeController</string>
+							<string>upnpPanel</string>
+							<string>userInfoWindow</string>
+							<string>viewSegment</string>
+							<string>windowMenu</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">bottomBar</string>
+								<string key="candidateClassName">BottomBar</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chatRoomWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">connectToSoulseek</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">createChatRoomPanel</string>
+								<string key="candidateClassName">NSPanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuShowChatRooms</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuShowConsole</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuShowMainWindow</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menuShowUserInfo</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">newFriendName</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">newFriendOK</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">newFriendPanel</string>
+								<string key="candidateClassName">NSPanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">noUsernamePanel</string>
+								<string key="candidateClassName">NSPanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">openPreferencesButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">openRouterButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">popUp</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">removeButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">roomController</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">roomList</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">searchField</string>
+								<string key="candidateClassName">NSSearchField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">setOnlineStatus</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sidebar</string>
+								<string key="candidateClassName">ExpandingSidebar</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">soulseekMenu</string>
+								<string key="candidateClassName">NSMenu</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">splitView</string>
+								<string key="candidateClassName">NSSplitView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">splitterLeftPane</string>
+								<string key="candidateClassName">NSView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">splitterRightPane</string>
+								<string key="candidateClassName">NSView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">treeController</string>
+								<string key="candidateClassName">NSTreeController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">upnpPanel</string>
+								<string key="candidateClassName">NSPanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userInfoWindow</string>
+								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">viewSegment</string>
+								<string key="candidateClassName">NSSegmentedControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">windowMenu</string>
+								<string key="candidateClassName">NSMenu</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1281,14 +1735,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSImageCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSImageView</string>
-					<string key="superclassName">NSControl</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSImageView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1651,6 +2097,14 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">NSSplitView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSSplitView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">NSTableColumn</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1725,6 +2179,13 @@
 						<string key="NS.key.0">view</string>
 						<string key="NS.object.0">NSView</string>
 					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">view</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">view</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSViewController.h</string>
@@ -1759,6 +2220,13 @@
 						<string key="NS.key.0">showWindow:</string>
 						<string key="NS.object.0">id</string>
 					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">showWindow:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">showWindow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSWindowController.h</string>
@@ -1767,6 +2235,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1050" key="NS.object.0"/>
@@ -1778,5 +2247,28 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../../iSoul.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>MenuGetInfo</string>
+				<string>NSMenuCheckmark</string>
+				<string>NSMenuMixedState</string>
+				<string>SidebarFriends</string>
+				<string>SidebarInstantMessage</string>
+				<string>SidebarShares</string>
+				<string>StatusOffline</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{16, 16}</string>
+				<string>{9, 8}</string>
+				<string>{7, 2}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+				<string>{16, 16}</string>
+				<string>{14, 14}</string>
+			</object>
+		</object>
 	</data>
 </archive>

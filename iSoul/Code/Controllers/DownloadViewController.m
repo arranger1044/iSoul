@@ -169,7 +169,8 @@
 	
 	// we want to fetch all transfers from this user
 	// that are queued remotely to get a queue update
-	if ([[[transfer user] status] unsignedIntValue] != usOffline) {
+	if ([[[transfer user] status] unsignedIntValue] != usOffline) 
+    {
 		NSPredicate *pred = [NSPredicate predicateWithFormat:
 							 @"user == %@ && state == %u", 
 							 [transfer user], tfQueuedRemotely];

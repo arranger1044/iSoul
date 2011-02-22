@@ -252,9 +252,21 @@
 			break;
 		}
 		case tfNegotiating:
+        {
+			[caption appendString:@"Negotiating..."];
+			break;
+		}
 		case tfEstablishing:
 		case tfInitiating:
+        {
+			[caption appendString:@"Initiating Transfer"];
+			break;
+		}
 		case tfConnecting:
+        {
+			[caption appendString:@"Connecting..."];
+			break;
+		}
 		case tfGettingAddress:
 		case tfGettingStatus:
 		{
@@ -263,7 +275,7 @@
 		}
 		case tfAwaitingUser:
 		{
-			[caption appendString:@"Offline"];
+			[caption appendString:@"User is Offline"];
 			break;
 		}
 		case tfAborted:
@@ -272,12 +284,20 @@
 			break;
 		}
 		case tfCannotConnect:
-		case tfConnectionClosed:
-		{
+        {
 			[caption appendString:@"Cannot connect"];
 			break;
 		}
+		case tfConnectionClosed:
+		{
+			[caption appendString:@"Cannot connect - Connection Closed"];
+			break;
+		}
 		case tfRemoteError:
+        {
+			[caption appendFormat:@"Error - %@",[activeTransfer error]];
+			break;
+		}
 		case tfLocalError:
 		{
 			[caption appendFormat:@"Error - %@",[activeTransfer error]];

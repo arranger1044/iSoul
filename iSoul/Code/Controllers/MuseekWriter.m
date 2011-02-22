@@ -91,7 +91,10 @@
 		
 		// first write to the stream
 		[stream write:[msg bytes] maxLength:[msg length]];
-		
+		if ([msg code] == mdSearchReply)
+        {
+            DNSLog(@"Trying to remove");
+        }
 		// now remove the message from the queue
 		[queue removeObjectAtIndex:0];
 		

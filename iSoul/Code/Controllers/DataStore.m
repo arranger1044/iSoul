@@ -266,7 +266,7 @@
 	if (sendUpdates) {		
 		[nc postNotificationName:@"TransferRemoved" object:transfer];
 	}
-	
+	DNSLog(@"Remove frome store");
 	// now remove the transfer object	
 	[managedObjectContext deleteObject:transfer];
 	

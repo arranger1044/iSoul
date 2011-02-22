@@ -96,6 +96,8 @@
         NSString * dirPath = [NSHomeDirectory() stringByAppendingPathComponent:DIR_PATH];
         [d setValue:dirPath forKey:@"LogDirPath"];
         
+        [d setValue:[NSNumber numberWithInt:0] forKey:@"SelectedSegmentView"];
+        
         NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
         [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
         

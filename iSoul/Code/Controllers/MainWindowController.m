@@ -103,6 +103,22 @@
 	[super dealloc];
 }
 
+- (void)setSegmentEnabled:(BOOL)enabled{
+    if (enabled)
+    {
+        int vState = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentView"];
+        [viewSegment setSelectedSegment:vState];
+        segmentEnabled = YES;        
+    }
+    else
+    {
+        [viewSegment setSelected:NO forSegment:0];
+        [viewSegment setSelected:NO forSegment:1];
+        [viewSegment setSelected:NO forSegment:2];
+        segmentEnabled = NO;
+    }
+}
+
 - (void)awakeFromNib
 {
 	// resize the window to the last setting
@@ -279,8 +295,11 @@
 	float downSpeed = 0;
 	float upSpeed = 0;
 	
+    /* Maybe I shall get only the active transfers */
+    NSPredicate * pred = [NSPredicate predicateWithFormat:
+                         @"state != %u", tfFinished];
 	// fetch all the transfers from the moc
-	NSArray *transfers = [store findArrayOf:@"Transfer" withPredicate:nil];
+	NSArray *transfers = [store findArrayOf:@"Transfer" withPredicate:pred];
 	
 	for (Transfer *transfer in transfers) {
 		// the transfer rate in KB/s for active transfers
@@ -866,7 +885,8 @@
     {
 		w = userInfoWindow;
 	} 
-    else if ([sender isEqual:menuShowChatRooms]) 
+    else if ([sender isEqual:menuShowChatRooms] || 
+             [sender isEqual:showRoomList]) 
     {
 		w = chatRoomWindow;
 	} 
@@ -1117,8 +1137,32 @@
 		[museekdConnectionController joinRoom:[room name]];
 	}
 	
+    //
 	// now hide the room list window
-	[chatRoomWindow orderOut:self];
+	//[chatRoomWindow orderOut:self];
+    
+    /* I guess we shall move behind the main window not disapper */
+    [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+    
+    //[chatRoomWindow orderBack:self];
+}
+
+- (IBAction)createAndJoinRoom:(id)sender
+{
+    [NSApp beginSheet: createChatRoomPanel
+	   modalForWindow:[self window]
+		modalDelegate:self
+	   didEndSelector:nil
+		  contextInfo:NULL];
+    
+	// get the selected rooms and add to museek
+//	NSArray *selected = [roomController selectedObjects];
+//	debug_NSLog(@"joining %u rooms", [selected count]);
+//	
+//	for (Room *room in selected) {
+//		[museekdConnectionController joinRoom:[room name]];
+//	}
+	
 }
 
 - (IBAction)openPreferences:(id)sender {

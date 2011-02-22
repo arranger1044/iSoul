@@ -28,6 +28,25 @@
 @synthesize listSortDescriptors;
 @synthesize treeSortDescriptors;
 
+- (void)loadLastViewState{
+    
+    int vState = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentView"];
+    switch (vState) 
+    {
+        case 0:
+            viewState = vwList;
+            break;
+        case 1:
+            viewState = vwFolder;
+            break;
+        case 2:
+            viewState = vwBrowse;
+            break;
+        default:
+            break;
+    }
+}
+
 - (id)init
 {
 	if (![super initWithNibName:@"SearchView" bundle:nil]) {
@@ -49,7 +68,9 @@
 	userRoot = [[PathNode alloc] init];
 	
 	// indicates which of the search views is showing
-	viewState = vwList;
+    /* This shall be read from NSUserDefaults */
+    //viewState = vwList;
+    [self loadLastViewState];
 	
 	// splits file trees in the background
 	// otherwise the main thread is totally blocked

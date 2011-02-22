@@ -11,6 +11,9 @@
 //#ifdef _DEBUG
 #define debug_NSLog(format, ...) NSLog((@"%s [Line %d] " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define DNSLog(format, ...) NSLog((@"%s@%d: " format), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+#define rect2Log(X) DNSLog(@"x:%f y:%f w:%f h:%f",X.origin.x, X.origin.y, X.size.width, X.size.height)
+#define point2Log(X) DNSLog(@"x:%f y:%f", X.x, X.y)
 //#else
 //#define debug_NSLog(format, ...)
 //#endif

@@ -33,6 +33,7 @@
 	IBOutlet NSWindow *userInfoWindow;
     //IBOutlet NSWindow * console;
 	IBOutlet NSPanel *newFriendPanel;
+    IBOutlet NSPanel *createChatRoomPanel;
 	IBOutlet NSPanel *noUsernamePanel;
 	IBOutlet NSPanel *upnpPanel;
 	IBOutlet NSTextField *newFriendName;
@@ -49,6 +50,7 @@
     IBOutlet NSMenuItem * menuShowConsole;
 	IBOutlet NSMenu *soulseekMenu;
 	IBOutlet NSMenu *windowMenu;
+    IBOutlet NSToolbarItem * showRoomList;
 	
 	NSManagedObjectContext *managedObjectContext;
 	MuseekdConnectionController *museekdConnectionController;

@@ -463,6 +463,7 @@
 		A7F6AF7B10F8A58700B784A4 /* MenuBan.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F6AF7A10F8A58700B784A4 /* MenuBan.png */; };
 		A7F6AF8710F8A78800B784A4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6AF8610F8A78800B784A4 /* User.m */; };
 		A7F6B18B10F9061800B784A4 /* CountryNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */; };
+		B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */ = {isa = PBXBuildFile; fileRef = B90E73ED12994B3F009B37A2 /* ChatRoomList.png */; };
 		B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */ = {isa = PBXBuildFile; fileRef = B95D56491284866C0034F7AC /* PrefLogging.png */; };
 		B95FA5241280098800BFB18E /* GreenDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5211280098800BFB18E /* GreenDot.png */; };
 		B95FA5251280098800BFB18E /* RedDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5221280098800BFB18E /* RedDot.png */; };
@@ -470,6 +471,7 @@
 		B960F7A41271F88D00F2B394 /* LoggingConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = B960F7A01271F88D00F2B394 /* LoggingConsole.m */; };
 		B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B960F7A31271F88D00F2B394 /* LoggingController.m */; };
 		B960F7A81271F92200F2B394 /* LoggingConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = B960F7A71271F92200F2B394 /* LoggingConsole.xib */; };
+		B984E8361306FCD60083327A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B984E8351306FCD60083327A /* QuartzCore.framework */; };
 		B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */; };
 		B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */; };
 		B9FAEF6C1282157D00300C45 /* clean.ico in Resources */ = {isa = PBXBuildFile; fileRef = B9FAEF6B1282157D00300C45 /* clean.ico */; };
@@ -1070,6 +1072,7 @@
 		A7F6AF8610F8A78800B784A4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A7F6B18910F9061800B784A4 /* CountryNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryNameTransformer.h; sourceTree = "<group>"; };
 		A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryNameTransformer.m; sourceTree = "<group>"; };
+		B90E73ED12994B3F009B37A2 /* ChatRoomList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatRoomList.png; sourceTree = "<group>"; };
 		B95D56491284866C0034F7AC /* PrefLogging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrefLogging.png; sourceTree = "<group>"; };
 		B95FA5211280098800BFB18E /* GreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenDot.png; sourceTree = "<group>"; };
 		B95FA5221280098800BFB18E /* RedDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedDot.png; sourceTree = "<group>"; };
@@ -1079,6 +1082,7 @@
 		B960F7A21271F88D00F2B394 /* LoggingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingController.h; sourceTree = "<group>"; };
 		B960F7A31271F88D00F2B394 /* LoggingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingController.m; sourceTree = "<group>"; };
 		B960F7A71271F92200F2B394 /* LoggingConsole.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoggingConsole.xib; sourceTree = "<group>"; };
+		B984E8351306FCD60083327A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B9FAED9A12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
 		B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/local/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
@@ -1096,6 +1100,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				A78989C610E80FCC0034EF55 /* ScriptingBridge.framework in Frameworks */,
 				B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */,
+				B984E8361306FCD60083327A /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1151,7 @@
 				A76D2D9510D9180200DD9F82 /* libcrypto.dylib */,
 				A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */,
 				B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */,
+				B984E8351306FCD60083327A /* QuartzCore.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1457,6 +1463,7 @@
 			isa = PBXGroup;
 			children = (
 				B9FAEF6B1282157D00300C45 /* clean.ico */,
+				B90E73ED12994B3F009B37A2 /* ChatRoomList.png */,
 				A718C12A10E388E6003AEC33 /* Chat View */,
 				A718C24F10E38C09003AEC33 /* Connection Button */,
 				A718C19710E38A39003AEC33 /* Download View */,
@@ -2355,6 +2362,7 @@
 				B95FA5261280098800BFB18E /* YellowDot.png in Resources */,
 				B9FAEF6C1282157D00300C45 /* clean.ico in Resources */,
 				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
+				B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2624,6 +2632,7 @@
 				GCC_ENABLE_SSE42_EXTENSIONS = NO;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
