@@ -1,1797 +1,0 @@
-TTCMPortMapper
-v7
-r0
-t320086623.556286
-cCheck dependencies
-cSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current A
-cSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources Versions/Current/Resources
-cSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers Versions/Current/Headers
-cSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper Versions/Current/TCMPortMapper
-cProcessInfoPlistFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist framework/TCMPortMapper-Info.plist
-cCpHeader build/Debug/TCMPortMapper.framework/Versions/A/Headers/TCMPortMapper.h framework/TCMPortMapper.h
-cCopyPlistFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist framework/OUItoCompany.plist
-cProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c normal x86_64 c com.apple.compilers.gcc.4_2
-cLd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper normal x86_64
-cPhaseScriptExecution Versioning "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh"
-cTouch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-
-N/Developer/SDKs/MacOSX10.5.sdk
-c000000004C238B9B00000000000000EE
-t1277397915
-s238
-
-N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
-c0000000040C4AA6800000000000001E5
-t1086630504
-s485
-
-N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004864A1C900000000000012EE
-t1214554569
-s4846
-
-N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SCSchemaDefinitions.h
-c0000000047BAC505000000000003349B
-t1203422469
-s210075
-
-N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/SystemConfiguration.framework/Headers/SystemConfiguration.h
-c0000000047BAC5050000000000001876
-t1203422469
-s6262
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/arpa/inet.h
-c00000000464386D70000000000001533
-t1178830551
-s5427
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/ctype.h
-c0000000047BA99310000000000002C3A
-t1203411249
-s11322
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/errno.h
-c0000000047BA993000000000000003EB
-t1203411248
-s1003
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/fcntl.h
-c0000000047BA993000000000000003EA
-t1203411248
-s1002
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/net/if.h
-c0000000047E883BC00000000000033C4
-t1206420412
-s13252
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/net/if_dl.h
-c0000000047E883BC00000000000013E6
-t1206420412
-s5094
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/net/route.h
-c0000000047E883BC0000000000002D55
-t1206420412
-s11605
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netdb.h
-c00000000464386E20000000000002F2B
-t1178830562
-s12075
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netinet/if_ether.h
-c0000000047E883C300000000000016B4
-t1206420419
-s5812
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netinet/in.h
-c0000000047E883C30000000000005346
-t1206420419
-s21318
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netinet6/in6.h
-c0000000047E883C90000000000004970
-t1206420425
-s18800
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/openssl/md5.h
-c0000000048649BAE0000000000001263
-t1214553006
-s4707
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/poll.h
-c0000000047BA993000000000000003EC
-t1203411248
-s1004
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/pthread.h
-c0000000047BA9932000000000000380F
-t1203411250
-s14351
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdio.h
-c0000000047BA99310000000000003D1D
-t1203411249
-s15645
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdlib.h
-c0000000047BA99310000000000002A79
-t1203411249
-s10873
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/string.h
-c0000000047BA99320000000000001731
-t1203411250
-s5937
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/param.h
-c0000000047E883D00000000000002742
-t1206420432
-s10050
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/queue.h
-c0000000047E883D10000000000005D70
-t1206420433
-s23920
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/socket.h
-c0000000047E883D1000000000000559B
-t1206420433
-s21915
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/sysctl.h
-c0000000047E883D1000000000000795B
-t1206420433
-s31067
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/time.h
-c0000000047E883D20000000000001E18
-t1206420434
-s7704
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/types.h
-c0000000047E883D2000000000000290F
-t1206420434
-s10511
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/un.h
-c0000000047E883D20000000000001072
-t1206420434
-s4210
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/time.h
-c0000000047BA9932000000000000178E
-t1203411250
-s6030
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/include/unistd.h
-c0000000047BA993200000000000053FF
-t1203411250
-s21503
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
-c000000004A11EAF1000000000000190C
-t1242688241
-s6412
-
-N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/powerpc-apple-darwin10/4.2.1/include/stdint.h
-c000000004A11EB05000000000000190C
-t1242688261
-s6412
-
-N/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004CD605D10000000000B3E910
-t1289094609
-s11790608
-
-N/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
-c000000004CD6065B0000000000118EB0
-t1289094747
-s1150640
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-t1286908090
-s204
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers
-t3
-s24
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources
-t3
-s26
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper
-t3
-s30
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Headers/TCMPortMapper.h
-t1286905897
-s4697
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist
-t1286908090
-s666
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist
-t1286905897
-s499796
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper
-t1286905904
-s172312
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current
-t3
-s1
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o
-t1286905902
-s16224
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o
-t1286905902
-s13028
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o
-t1286905902
-s60068
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList
-c000000004CB4A0290000000000000AE9
-t1286905897
-s2793
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o
-t1286905903
-s104752
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o
-t1286905902
-s65460
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o
-t1286905903
-s6372
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o
-t1286905902
-s7100
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o
-t1286905903
-s4740
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o
-t1286905903
-s5912
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o
-t1286905903
-s22884
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o
-t1286905903
-s9772
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o
-t1286905903
-s5864
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o
-t1286905903
-s11964
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o
-t1286905903
-s21560
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o
-t1286905903
-s4052
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o
-t1286905903
-s6876
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh
-c000000004CB4A02900000000000003C2
-t1286905897
-s962
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.h
-c000000004CB44051000000000000064A
-t1286881361
-s1610
-i<Foundation/Foundation.h>
-i<SystemConfiguration/SystemConfiguration.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m
-c000000004CB440510000000000000789
-t1286881361
-s1929
-i"IXSCNotificationManager.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.h
-c000000004CB44051000000000000020B
-t1286881361
-s523
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m
-c000000004CB440510000000000000622
-t1286881361
-s1570
-i"NSNotificationCenterThreadingAdditions.h"
-i<pthread.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/OUItoCompany.plist
-c000000004CB44051000000000007A054
-t1286881361
-s499796
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.h
-c000000004CB4405100000000000005C6
-t1286881361
-s1478
-i"TCMPortMapper.h"
-i"natpmp.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m
-c000000004CB44051000000000000612D
-t1286881361
-s24877
-i"TCMNATPMPPortMapper.h"
-i"NSNotificationCenterThreadingAdditions.h"
-i"natpmp.h"
-i<netinet/in.h>
-i<netinet6/in6.h>
-i<net/if.h>
-i<arpa/inet.h>
-i<sys/socket.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.h
-c000000004CB440510000000000001259
-t1286881361
-s4697
-i<Foundation/Foundation.h>
-i<errno.h>
-i<string.h>
-i<unistd.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m
-c000000004CB440510000000000007801
-t1286881361
-s30721
-i"TCMPortMapper.h"
-i"TCMNATPMPPortMapper.h"
-i"TCMUPNPPortMapper.h"
-i"IXSCNotificationManager.h"
-i"NSNotificationCenterThreadingAdditions.h"
-i<SystemConfiguration/SystemConfiguration.h>
-i<SystemConfiguration/SCSchemaDefinitions.h>
-i<sys/sysctl.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i<net/route.h>
-i<netinet/if_ether.h>
-i<net/if_dl.h>
-i<openssl/md5.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch
-c000000004CB440510000000000000097
-t1286881361
-s151
-i<Cocoa/Cocoa.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.h
-c000000004CB440510000000000000490
-t1286881361
-s1168
-i"TCMPortMapper.h"
-i"TCMNATPMPPortMapper.h"
-i"miniwget.h"
-i"miniupnpc.h"
-i"upnpcommands.h"
-i"upnperrors.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m
-c000000004CB440510000000000006C3D
-t1286881361
-s27709
-i"TCMUPNPPortMapper.h"
-i<SystemConfiguration/SystemConfiguration.h>
-i<SystemConfiguration/SCSchemaDefinitions.h>
-i"NSNotificationCenterThreadingAdditions.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c
-c000000004CB44051000000000000317C
-t1286881361
-s12668
-i<stdio.h>
-i<ctype.h>
-i<netinet/in.h>
-i<sys/param.h>
-i<stdlib.h>
-i<sys/sysctl.h>
-i<sys/socket.h>
-i<net/route.h>
-i<unistd.h>
-i<string.h>
-i<sys/socket.h>
-i<net/if.h>
-i<net/route.h>
-i<unknwn.h>
-i<winreg.h>
-i"getgateway.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.h
-c000000004CB44051000000000000047F
-t1286881361
-s1151
-i<stdint.h>
-i"declspec.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c
-c000000004CB440510000000000002353
-t1286881361
-s9043
-i<string.h>
-i<time.h>
-i<sys/time.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<errno.h>
-i<unistd.h>
-i<fcntl.h>
-i<sys/types.h>
-i<sys/socket.h>
-i"natpmp.h"
-i"getgateway.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.h
-c000000004CB440510000000000001808
-t1286881361
-s6152
-i<time.h>
-i<sys/time.h>
-i<winsock2.h>
-i<stdint.h>
-i<netinet/in.h>
-i"declspec.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/bsdqueue.h
-c000000004CB4405100000000000046BD
-t1286881361
-s18109
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/codelength.h
-c000000004CB44051000000000000038A
-t1286881361
-s906
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/declspec.h
-c000000004CB4405100000000000000F8
-t1286881361
-s248
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c
-c000000004CB440510000000000001062
-t1286881361
-s4194
-i"igd_desc_parse.h"
-i<stdio.h>
-i<string.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.h
-c000000004CB4405100000000000006A1
-t1286881361
-s1697
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c
-c000000004CB440510000000000000C45
-t1286881361
-s3141
-i<stdio.h>
-i<string.h>
-i<io.h>
-i<winsock2.h>
-i<unistd.h>
-i<sys/types.h>
-i<sys/socket.h>
-i"minisoap.h"
-i"miniupnpcstrings.h"
-i<stdlib.h>
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.h
-c000000004CB4405100000000000001DC
-t1286881361
-s476
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c
-c000000004CB440510000000000000A12
-t1286881361
-s2578
-i<stdio.h>
-i<string.h>
-i<stdlib.h>
-i<unistd.h>
-i<sys/types.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<sys/socket.h>
-i<sys/un.h>
-i"minissdpc.h"
-i"miniupnpc.h"
-i"codelength.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.h
-c000000004CB4405100000000000001DC
-t1286881361
-s476
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c
-c000000004CB4405100000000000046C1
-t1286881361
-s18113
-i<stdio.h>
-i<stdlib.h>
-i<string.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<unistd.h>
-i<sys/socket.h>
-i<sys/types.h>
-i<sys/param.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i<poll.h>
-i<netdb.h>
-i"miniupnpc.h"
-i"minissdpc.h"
-i"miniwget.h"
-i"minisoap.h"
-i"minixml.h"
-i"upnpcommands.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.h
-c000000004CB440510000000000000DE6
-t1286881361
-s3558
-i"declspec.h"
-i"igd_desc_parse.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpcstrings.h
-c000000004CB4405100000000000001DF
-t1286881361
-s479
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c
-c000000004CB4405100000000000014CB
-t1286881361
-s5323
-i<stdio.h>
-i<stdlib.h>
-i<string.h>
-i"miniupnpc.h"
-i<winsock2.h>
-i<io.h>
-i<unistd.h>
-i<sys/param.h>
-i<sys/socket.h>
-i<netdb.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i"miniupnpcstrings.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.h
-c000000004CB44051000000000000024D
-t1286881361
-s589
-i"declspec.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c
-c000000004CB4405100000000000012DE
-t1286881361
-s4830
-i"minixml.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.h
-c000000004CB440510000000000000491
-t1286881361
-s1169
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c
-c000000004CB440510000000000003F81
-t1286881361
-s16257
-i<stdlib.h>
-i<stdio.h>
-i<string.h>
-i"upnpcommands.h"
-i"miniupnpc.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.h
-c000000004CB440510000000000001AEE
-t1286881361
-s6894
-i"upnpreplyparse.h"
-i"declspec.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c
-c000000004CB440510000000000000544
-t1286881361
-s1348
-i<string.h>
-i"upnperrors.h"
-i"upnpcommands.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.h
-c000000004CB44051000000000000024F
-t1286881361
-s591
-i"declspec.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c
-c000000004CB440510000000000000BE3
-t1286881361
-s3043
-i<stdlib.h>
-i<string.h>
-i<stdio.h>
-i"upnpreplyparse.h"
-i"minixml.h"
-
-N/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.h
-c000000004CB44051000000000000055C
-t1286881361
-s1372
-i"bsdqueue.h"
-i<sys/queue.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-t1298393823
-s204
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers
-t3
-s24
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources
-t3
-s26
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper
-t3
-s30
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Headers/TCMPortMapper.h
-t1298391950
-s4697
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist
-t1298393733
-s666
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist
-t1298391950
-s499796
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper
-t1298391957
-s172184
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current
-t3
-s1
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o
-t1298391956
-s16216
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o
-t1298391956
-s13020
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o
-t1298391956
-s60052
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList
-c000000004D63E38E0000000000000AA9
-t1298391950
-s2729
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o
-t1298391956
-s104728
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o
-t1298391956
-s65444
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o
-t1298391957
-s6364
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o
-t1298391956
-s7092
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o
-t1298391956
-s4732
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o
-t1298391956
-s5904
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o
-t1298391956
-s22852
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o
-t1298391956
-s9764
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o
-t1298391957
-s5856
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o
-t1298391957
-s11956
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o
-t1298391957
-s21552
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o
-t1298391957
-s4044
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o
-t1298391957
-s6868
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh
-c000000004D63E38E00000000000003C2
-t1298391950
-s962
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.h
-c000000004CB44051000000000000064A
-t1286881361
-s1610
-i<Foundation/Foundation.h>
-i<SystemConfiguration/SystemConfiguration.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m
-c000000004CB440510000000000000789
-t1286881361
-s1929
-i"IXSCNotificationManager.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.h
-c000000004CB44051000000000000020B
-t1286881361
-s523
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m
-c000000004CB440510000000000000622
-t1286881361
-s1570
-i"NSNotificationCenterThreadingAdditions.h"
-i<pthread.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/OUItoCompany.plist
-c000000004CB44051000000000007A054
-t1286881361
-s499796
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.h
-c000000004CB4405100000000000005C6
-t1286881361
-s1478
-i"TCMPortMapper.h"
-i"natpmp.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m
-c000000004CB44051000000000000612D
-t1286881361
-s24877
-i"TCMNATPMPPortMapper.h"
-i"NSNotificationCenterThreadingAdditions.h"
-i"natpmp.h"
-i<netinet/in.h>
-i<netinet6/in6.h>
-i<net/if.h>
-i<arpa/inet.h>
-i<sys/socket.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.h
-c000000004CB440510000000000001259
-t1286881361
-s4697
-i<Foundation/Foundation.h>
-i<errno.h>
-i<string.h>
-i<unistd.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m
-c000000004CB440510000000000007801
-t1286881361
-s30721
-i"TCMPortMapper.h"
-i"TCMNATPMPPortMapper.h"
-i"TCMUPNPPortMapper.h"
-i"IXSCNotificationManager.h"
-i"NSNotificationCenterThreadingAdditions.h"
-i<SystemConfiguration/SystemConfiguration.h>
-i<SystemConfiguration/SCSchemaDefinitions.h>
-i<sys/sysctl.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i<net/route.h>
-i<netinet/if_ether.h>
-i<net/if_dl.h>
-i<openssl/md5.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch
-c000000004CB440510000000000000097
-t1286881361
-s151
-i<Cocoa/Cocoa.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.h
-c000000004CB440510000000000000490
-t1286881361
-s1168
-i"TCMPortMapper.h"
-i"TCMNATPMPPortMapper.h"
-i"miniwget.h"
-i"miniupnpc.h"
-i"upnpcommands.h"
-i"upnperrors.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m
-c000000004CB440510000000000006C3D
-t1286881361
-s27709
-i"TCMUPNPPortMapper.h"
-i<SystemConfiguration/SystemConfiguration.h>
-i<SystemConfiguration/SCSchemaDefinitions.h>
-i"NSNotificationCenterThreadingAdditions.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c
-c000000004CB44051000000000000317C
-t1286881361
-s12668
-i<stdio.h>
-i<ctype.h>
-i<netinet/in.h>
-i<sys/param.h>
-i<stdlib.h>
-i<sys/sysctl.h>
-i<sys/socket.h>
-i<net/route.h>
-i<unistd.h>
-i<string.h>
-i<sys/socket.h>
-i<net/if.h>
-i<net/route.h>
-i<unknwn.h>
-i<winreg.h>
-i"getgateway.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.h
-c000000004CB44051000000000000047F
-t1286881361
-s1151
-i<stdint.h>
-i"declspec.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c
-c000000004CB440510000000000002353
-t1286881361
-s9043
-i<string.h>
-i<time.h>
-i<sys/time.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<errno.h>
-i<unistd.h>
-i<fcntl.h>
-i<sys/types.h>
-i<sys/socket.h>
-i"natpmp.h"
-i"getgateway.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.h
-c000000004CB440510000000000001808
-t1286881361
-s6152
-i<time.h>
-i<sys/time.h>
-i<winsock2.h>
-i<stdint.h>
-i<netinet/in.h>
-i"declspec.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/bsdqueue.h
-c000000004CB4405100000000000046BD
-t1286881361
-s18109
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/codelength.h
-c000000004CB44051000000000000038A
-t1286881361
-s906
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/declspec.h
-c000000004CB4405100000000000000F8
-t1286881361
-s248
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c
-c000000004CB440510000000000001062
-t1286881361
-s4194
-i"igd_desc_parse.h"
-i<stdio.h>
-i<string.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.h
-c000000004CB4405100000000000006A1
-t1286881361
-s1697
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c
-c000000004CB440510000000000000C45
-t1286881361
-s3141
-i<stdio.h>
-i<string.h>
-i<io.h>
-i<winsock2.h>
-i<unistd.h>
-i<sys/types.h>
-i<sys/socket.h>
-i"minisoap.h"
-i"miniupnpcstrings.h"
-i<stdlib.h>
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.h
-c000000004CB4405100000000000001DC
-t1286881361
-s476
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c
-c000000004CB440510000000000000A12
-t1286881361
-s2578
-i<stdio.h>
-i<string.h>
-i<stdlib.h>
-i<unistd.h>
-i<sys/types.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<sys/socket.h>
-i<sys/un.h>
-i"minissdpc.h"
-i"miniupnpc.h"
-i"codelength.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.h
-c000000004CB4405100000000000001DC
-t1286881361
-s476
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c
-c000000004CB4405100000000000046C1
-t1286881361
-s18113
-i<stdio.h>
-i<stdlib.h>
-i<string.h>
-i<winsock2.h>
-i<Ws2tcpip.h>
-i<io.h>
-i<unistd.h>
-i<sys/socket.h>
-i<sys/types.h>
-i<sys/param.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i<poll.h>
-i<netdb.h>
-i"miniupnpc.h"
-i"minissdpc.h"
-i"miniwget.h"
-i"minisoap.h"
-i"minixml.h"
-i"upnpcommands.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.h
-c000000004CB440510000000000000DE6
-t1286881361
-s3558
-i"declspec.h"
-i"igd_desc_parse.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpcstrings.h
-c000000004CB4405100000000000001DF
-t1286881361
-s479
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c
-c000000004CB4405100000000000014CB
-t1286881361
-s5323
-i<stdio.h>
-i<stdlib.h>
-i<string.h>
-i"miniupnpc.h"
-i<winsock2.h>
-i<io.h>
-i<unistd.h>
-i<sys/param.h>
-i<sys/socket.h>
-i<netdb.h>
-i<netinet/in.h>
-i<arpa/inet.h>
-i"miniupnpcstrings.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.h
-c000000004CB44051000000000000024D
-t1286881361
-s589
-i"declspec.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c
-c000000004CB4405100000000000012DE
-t1286881361
-s4830
-i"minixml.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.h
-c000000004CB440510000000000000491
-t1286881361
-s1169
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c
-c000000004CB440510000000000003F81
-t1286881361
-s16257
-i<stdlib.h>
-i<stdio.h>
-i<string.h>
-i"upnpcommands.h"
-i"miniupnpc.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.h
-c000000004CB440510000000000001AEE
-t1286881361
-s6894
-i"upnpreplyparse.h"
-i"declspec.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c
-c000000004CB440510000000000000544
-t1286881361
-s1348
-i<string.h>
-i"upnperrors.h"
-i"upnpcommands.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.h
-c000000004CB44051000000000000024F
-t1286881361
-s591
-i"declspec.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c
-c000000004CB440510000000000000BE3
-t1286881361
-s3043
-i<stdlib.h>
-i<string.h>
-i<stdio.h>
-i"upnpreplyparse.h"
-i"minixml.h"
-
-N/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.h
-c000000004CB44051000000000000055C
-t1286881361
-s1372
-i"bsdqueue.h"
-i<sys/queue.h>
-
-N/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch.gch
-t1298391955
-s51118352
-
-N/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch.gch
-t1286905901
-s51118352
-
-N/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch.gch
-t1298391950
-s2195824
-
-N/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch.gch
-t1286905897
-s2195824
-
-Nframework/TCMPortMapper-Info.plist
-c000000004CB44051000000000000029E
-t1286881361
-s670
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies320086623#320086623#0(0"0(0#1#0"8606033856#0"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598702.044811
-e308598702.457381
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@132"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m308598702#308598702#0(0"0(0#0#124"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m8621772544#1617"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084755.950610
-e320084756.325782
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@128"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m320084755#320084756#0(0"0(0#0#120"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m8615474336#1577"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/IXSCNotificationManager.m -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/IXSCNotificationManager.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598702.757017
-e308598702.880353
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@147"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m308598702#308598702#0(0"0(0#0#139"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m8619932128#1647"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084756.635720
-e320084756.758770
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@143"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m320084756#320084756#0(0"0(0#0#135"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m8615404032#1607"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/NSNotificationCenterThreadingAdditions.m -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/NSNotificationCenterThreadingAdditions.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598702.046108
-e308598702.536525
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@128"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m308598702#308598702#0(0"0(0#0#120"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m8620225856#1609"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084755.951492
-e320084756.386888
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@124"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m320084755#320084756#0(0"0(0#0#116"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m8614876800#1569"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMNATPMPPortMapper.m -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMNATPMPPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598702.457477
-e308598703.452906
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@122"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m308598702#308598703#0(0"0(0#0#114"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m8620162240#1597"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084756.325877
-e320084756.852729
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@118"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m320084756#320084756#0(0"0(0#0#110"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m8617391872#1557"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.m -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598702.536622
-e308598702.756889
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@126"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m308598702#308598702#0(0"0(0#0#118"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m8619663680#1605"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084756.386982
-e320084756.635627
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@122"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m320084756#320084756#0(0"0(0#0#114"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m8616019616#1565"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMUPNPPortMapper.m -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMUPNPPortMapper.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.702276
-e308598703.785934
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c308598703#308598703#0(0"0(0#0#121"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c8609929792#1591"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084757.067527
-e320084757.141313
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@125"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c320084757#320084757#0(0"0(0#0#117"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c8608743296#1551"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/getgateway.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/getgateway.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598702.880450
-e308598702.960856
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@133"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c308598702#308598702#0(0"0(0#0#125"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c8617942720#1599"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.758867
-e320084756.810907
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c320084756#320084756#0(0"0(0#0#121"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c8614160672#1559"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/igd_desc_parse.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/igd_desc_parse.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598702.960952
-e308598703.053996
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@127"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c308598702#308598703#0(0"0(0#0#119"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c8609204032#1587"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.811006
-e320084756.882123
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@123"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c320084756#320084756#0(0"0(0#0#115"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c8612698944#1547"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minisoap.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minisoap.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.054096
-e308598703.436813
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@128"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c308598703#308598703#0(0"0(0#0#120"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c8606168928#1589"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.852818
-e320084756.922743
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@124"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c320084756#320084756#0(0"0(0#0#116"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c8615945440#1549"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minissdpc.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minissdpc.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.436916
-e308598703.648915
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@128"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c308598703#308598703#0(0"0(0#0#120"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c8601079136#1589"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.882217
-e320084756.996977
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@124"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c320084756#320084756#0(0"0(0#0#116"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c8617877376#1549"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniupnpc.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniupnpc.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.452996
-e308598703.575318
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@127"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c308598703#308598703#0(0"0(0#0#119"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c8621466496#1587"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.922837
-e320084756.981107
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@123"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c320084756#320084756#0(0"0(0#0#115"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c8617147136#1547"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/miniwget.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/miniwget.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.575481
-e308598703.619344
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@126"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c308598703#308598703#0(0"0(0#0#118"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c8619527648#1585"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.981196
-e320084757.021308
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@122"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c320084756#320084757#0(0"0(0#0#114"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c8615815808#1545"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/minixml.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/minixml.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.739108
-e308598703.804959
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@125"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c308598703#308598703#0(0"0(0#0#117"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c8620287904#1583"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084757.100732
-e320084757.185129
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@121"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c320084757#320084757#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c8608449344#1543"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/libnatpmp/natpmp.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/natpmp.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.619434
-e308598703.702184
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@131"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c308598703#308598703#0(0"0(0#0#123"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c8609177792#1595"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084756.997072
-e320084757.067434
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@127"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c320084756#320084757#0(0"0(0#0#119"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c8615413824#1555"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpcommands.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpcommands.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.649054
-e308598703.684452
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c308598703#308598703#0(0"0(0#0#121"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c8606437536#1591"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084757.021399
-e320084757.057658
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@125"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c320084757#320084757#0(0"0(0#0#117"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c8612917984#1551"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnperrors.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnperrors.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o" "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s308598703.684593
-e308598703.739011
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@133"Compile /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c308598703#308598703#0(0"0(0#0#125"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c8601786464#1599"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c" -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o"0#
-
-CCompileC "build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o" /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c normal x86_64 c com.apple.compilers.gcc.4_2
-s320084757.057754
-e320084757.100635
-r1
-xCompileC
-xbuild/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c320084757#320084757#0(0"0(0#0#121"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c8610588896#1559"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -include /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/miniupnpc/upnpreplyparse.c -o "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/upnpreplyparse.o"0#
-
-CCopyPlistFile "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist" framework/OUItoCompany.plist
-s308598697.197887
-e308598697.541818
-r1
-xCopyPlistFile
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist
-xframework/OUItoCompany.plist
-lSLF07#2@33"Copy framework/OUItoCompany.plist308598697#308598697#0(0"0(0#0#117"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/OUItoCompany.plist8610180512#375"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist framework/OUItoCompany.plist --outdir "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources"0#
-
-CCopyPlistFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist framework/OUItoCompany.plist
-s320084750.425309
-e320084750.802246
-r1
-xCopyPlistFile
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/OUItoCompany.plist
-xframework/OUItoCompany.plist
-lSLF07#2@33"Copy framework/OUItoCompany.plist320084750#320084750#0(0"0(0#0#113"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/OUItoCompany.plist8617350400#363"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist framework/OUItoCompany.plist --outdir /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources0#
-
-CCpHeader build/Debug/TCMPortMapper.framework/Versions/A/Headers/TCMPortMapper.h framework/TCMPortMapper.h
-s320084750.421108
-e320084750.425242
-r1
-xCpHeader
-xbuild/Debug/TCMPortMapper.framework/Versions/A/Headers/TCMPortMapper.h
-xframework/TCMPortMapper.h
-lSLF07#2@30"Copy framework/TCMPortMapper.h320084750#320084750#0(0"0(0#0#110"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.h8617394208#505"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper.h /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Headers0#
-
-CLd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper" normal x86_64
-s308598703.805051
-e308598704.021554
-r1
-xLd
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper
-xnormal
-xx86_64
-lSLF07#2@154"Link /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper308598703#308598704#0(0"0(0#0#0"8603197216#1085"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch x86_64 -dynamiclib -isysroot /Developer/SDKs/MacOSX10.5.sdk "-L/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -filelist "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList" -install_name @executable_path/../Frameworks/TCMPortMapper.framework/Versions/A/TCMPortMapper -mmacosx-version-min=10.5 -framework Foundation -framework AppKit -lssl -lcrypto -framework Foundation -framework SystemConfiguration -single_module -compatibility_version 1 -current_version 1 -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper"0#
-
-CLd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper normal x86_64
-s320084757.185210
-e320084757.330086
-r1
-xLd
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper
-xnormal
-xx86_64
-lSLF07#2@150"Link /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper320084757#320084757#0(0"0(0#0#0"8617375296#1057"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/gcc-4.2 -arch x86_64 -dynamiclib -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -filelist "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList" -install_name @executable_path/../Frameworks/TCMPortMapper.framework/Versions/A/TCMPortMapper -mmacosx-version-min=10.5 -framework Foundation -framework AppKit -lssl -lcrypto -framework Foundation -framework SystemConfiguration -single_module -compatibility_version 1 -current_version 1 -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/TCMPortMapper0#
-
-CPhaseScriptExecution Versioning "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh"
-s308601211.978533
-e308601212.073610
-r1
-xPhaseScriptExecution
-xVersioning
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh
-lSLF07#2@36"Run custom shell script 'Versioning'308601211#308601212#0(0"0(0#0#0"8608108544#19322"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER valerio    setenv ALWAYS_SEARCH_USER_PATHS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS x86_64    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386 ppc"    setenv ARCHS_STANDARD_32_BIT "i386 ppc"    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build"    setenv BUILD_ROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build"    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug"    setenv CACHE_ROOT /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/JavaClasses"    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A"    setenv CODE_SIGNING_ALLOWED YES    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug"    setenv CONFIGURATION_TEMP_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug"    setenv CONTENTS_FOLDER_PATH TCMPortMapper.framework/Versions/A    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH x86_64    setenv CURRENT_VARIANT normal    setenv CURRENT_VERSION Current    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DERIVED_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DERIVED_SOURCES_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT "/tmp/Port Map.dst"    setenv DWARF_DSYM_FILE_NAME TCMPortMapper.framework.dSYM    setenv DWARF_DSYM_FOLDER_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug"    setenv DYLIB_COMPATIBILITY_VERSION 1    setenv DYLIB_CURRENT_VERSION 1    setenv DYLIB_INSTALL_NAME_BASE "@executable_path/../Frameworks"    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj    setenv EXECUTABLE_FOLDER_PATH TCMPortMapper.framework/Versions/A    setenv EXECUTABLE_NAME TCMPortMapper    setenv EXECUTABLE_PATH TCMPortMapper.framework/Versions/A/TCMPortMapper    setenv FILE_LIST "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects/LinkFileList"    setenv FIXED_FILES_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/FixedFiles"    setenv FRAMEWORKS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME TCMPortMapper.framework    setenv GCC3_VERSION 3.3    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_FIX_AND_CONTINUE YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_MODEL_TUNING G5    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER framework/TCMPortMapper_prefix.pch    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION 4.2    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include\" framework"    setenv ICONV /usr/bin/iconv    setenv INFOPLISTSTRINGS_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj/InfoPlist.strings    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE framework/TCMPortMapper-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PATH TCMPortMapper.framework/Versions/A/Resources/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR "/tmp/Port Map.dst@executable_path/../Frameworks"    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER valerio    setenv INSTALL_PATH "@executable_path/../Frameworks"    setenv INSTALL_ROOT "/tmp/Port Map.dst"    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_DYLIB_INSTALL_NAME "@executable_path/../Frameworks/TCMPortMapper.framework/Versions/A/TCMPortMapper"    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper-LinkMap-normal-x86_64.txt"    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_x86_64 "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList"    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_dylib    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv MAC_OS_X_VERSION_ACTUAL 1064    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0604    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects"    setenv OBJECT_FILE_DIR_normal "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal"    setenv OBJROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build"    setenv ONLY_ACTIVE_ARCH YES    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_CFLAGS -DDEBUG    setenv OTHER_CPLUSPLUSFLAGS -DDEBUG    setenv OTHER_LDFLAGS "-framework Foundation -framework AppKit -lssl -lcrypto"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.framework    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH TCMPortMapper.framework/Versions/A/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS "c objective-c"    setenv PKGINFO_FILE_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/PkgInfo"    setenv PKGINFO_PATH TCMPortMapper.framework/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PLUGINS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/PrefixHeaders"    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH TCMPortMapper.framework/Versions/A/PrivateHeaders    setenv PRODUCT_NAME TCMPortMapper    setenv PRODUCT_SETTINGS_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper-Info.plist"    setenv PRODUCT_TYPE com.apple.product-type.framework    setenv PROFILING_CODE NO    setenv PROJECT "Port Map"    setenv PROJECT_DERIVED_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/DerivedSources"    setenv PROJECT_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv PROJECT_FILE_PATH "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/Port Map.xcodeproj"    setenv PROJECT_NAME "Port Map"    setenv PROJECT_TEMP_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build"    setenv PUBLIC_HEADERS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/ResourceManagerResources"    setenv REZ_OBJECTS_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/ResourceManagerResources/Objects"    setenv REZ_SEARCH_PATHS "\"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/SDKs/MacOSX10.5.sdk    setenv SDK_DIR /Developer/SDKs/MacOSX10.5.sdk    setenv SDK_NAME macosx10.5    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/DerivedSources"    setenv SHARED_FRAMEWORKS_FOLDER_PATH TCMPortMapper.framework/Versions/A/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv SRCROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SYMBOL_REPOSITORY_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/SymbolRepositories"    setenv SYMROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME TCMPortMapper    setenv TARGET_BUILD_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug"    setenv TARGET_NAME TCMPortMapper    setenv TARGET_TEMP_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_FILES_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_FILE_DIR "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_ROOT "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build"    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv UNSTRIPPED_PRODUCT NO    setenv USER valerio    setenv USER_APPS_DIR /Users/valerio/Applications    setenv USER_HEADER_SEARCH_PATHS framework    setenv USER_LIBRARY_DIR /Users/valerio/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH TCMPortMapper.framework/Versions/A/Resources/version.plist    setenv VERSIONS_FOLDER_PATH TCMPortMapper.framework/Versions    setenv VERSION_INFO_BUILDER valerio    setenv VERSION_INFO_FILE TCMPortMapper_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:TCMPortMapper  PROJECT:Port Map-\""    setenv WRAPPER_EXTENSION framework    setenv WRAPPER_NAME TCMPortMapper.framework    setenv WRAPPER_SUFFIX .framework    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_VERSION_ACTUAL 0323    setenv XCODE_VERSION_MAJOR 0300    setenv XCODE_VERSION_MINOR 0320    setenv YACC /Developer/usr/bin/yacc    setenv ZERO_LINK NO    /bin/sh -c "\"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh\""0#
-
-CPhaseScriptExecution Versioning "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh"
-s320086623.441300
-e320086623.554026
-r1
-xPhaseScriptExecution
-xVersioning
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh
-lSLF07#2@36"Run custom shell script 'Versioning'320086623#320086623#0(0"0(0#0#0"8610389888#19298"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER valerio    setenv ALWAYS_SEARCH_USER_PATHS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS x86_64    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386 ppc"    setenv ARCHS_STANDARD_32_BIT "i386 ppc"    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build    setenv BUILD_ROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug    setenv CACHE_ROOT /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/JavaClasses"    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A    setenv CODE_SIGNING_ALLOWED YES    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug    setenv CONFIGURATION_TEMP_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug"    setenv CONTENTS_FOLDER_PATH TCMPortMapper.framework/Versions/A    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH x86_64    setenv CURRENT_VARIANT normal    setenv CURRENT_VERSION Current    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DERIVED_FILE_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DERIVED_SOURCES_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources"    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT "/tmp/Port Map.dst"    setenv DWARF_DSYM_FILE_NAME TCMPortMapper.framework.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug    setenv DYLIB_COMPATIBILITY_VERSION 1    setenv DYLIB_CURRENT_VERSION 1    setenv DYLIB_INSTALL_NAME_BASE "@executable_path/../Frameworks"    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn .git CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj    setenv EXECUTABLE_FOLDER_PATH TCMPortMapper.framework/Versions/A    setenv EXECUTABLE_NAME TCMPortMapper    setenv EXECUTABLE_PATH TCMPortMapper.framework/Versions/A/TCMPortMapper    setenv FILE_LIST "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects/LinkFileList"    setenv FIXED_FILES_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/FixedFiles"    setenv FRAMEWORKS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME TCMPortMapper.framework    setenv GCC3_VERSION 3.3    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_FIX_AND_CONTINUE YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_MODEL_TUNING G5    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER framework/TCMPortMapper_prefix.pch    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION 4.2    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include\" framework"    setenv ICONV /usr/bin/iconv    setenv INFOPLISTSTRINGS_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj/InfoPlist.strings    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE framework/TCMPortMapper-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PATH TCMPortMapper.framework/Versions/A/Resources/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR "/tmp/Port Map.dst@executable_path/../Frameworks"    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER valerio    setenv INSTALL_PATH "@executable_path/../Frameworks"    setenv INSTALL_ROOT "/tmp/Port Map.dst"    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_DYLIB_INSTALL_NAME "@executable_path/../Frameworks/TCMPortMapper.framework/Versions/A/TCMPortMapper"    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper-LinkMap-normal-x86_64.txt"    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_x86_64 "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal/x86_64/TCMPortMapper.LinkFileList"    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_dylib    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv MAC_OS_X_VERSION_ACTUAL 1066    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0606    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects"    setenv OBJECT_FILE_DIR_normal "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Objects-normal"    setenv OBJROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build    setenv ONLY_ACTIVE_ARCH YES    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_CFLAGS -DDEBUG    setenv OTHER_CPLUSPLUSFLAGS -DDEBUG    setenv OTHER_LDFLAGS "-framework Foundation -framework AppKit -lssl -lcrypto"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.framework    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH TCMPortMapper.framework/Versions/A/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS "c objective-c"    setenv PKGINFO_FILE_PATH "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/PkgInfo"    setenv PKGINFO_PATH TCMPortMapper.framework/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLATFORM_PRODUCT_BUILD_VERSION 10M2423    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PLUGINS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/PrefixHeaders"    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH TCMPortMapper.framework/Versions/A/PrivateHeaders    setenv PRODUCT_NAME TCMPortMapper    setenv PRODUCT_SETTINGS_PATH /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.framework    setenv PROFILING_CODE NO    setenv PROJECT "Port Map"    setenv PROJECT_DERIVED_FILE_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/DerivedSources"    setenv PROJECT_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv PROJECT_FILE_PATH "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/Port Map.xcodeproj"    setenv PROJECT_NAME "Port Map"    setenv PROJECT_TEMP_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build"    setenv PUBLIC_HEADERS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/ResourceManagerResources"    setenv REZ_OBJECTS_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/ResourceManagerResources/Objects"    setenv REZ_SEARCH_PATHS "\"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/SDKs/MacOSX10.5.sdk    setenv SDK_DIR /Developer/SDKs/MacOSX10.5.sdk    setenv SDK_NAME macosx10.5    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH TCMPortMapper.framework/Versions/A/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv SRCROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SYMBOL_REPOSITORY_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/SymbolRepositories"    setenv SYMROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME TCMPortMapper    setenv TARGET_BUILD_DIR /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug    setenv TARGET_NAME TCMPortMapper    setenv TARGET_TEMP_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_FILES_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_FILE_DIR "/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build"    setenv TEMP_ROOT /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH TCMPortMapper.framework/Versions/A/Resources    setenv UNSTRIPPED_PRODUCT NO    setenv USER valerio    setenv USER_APPS_DIR /Users/valerio/Applications    setenv USER_HEADER_SEARCH_PATHS framework    setenv USER_LIBRARY_DIR /Users/valerio/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH TCMPortMapper.framework/Versions/A/Resources/version.plist    setenv VERSIONS_FOLDER_PATH TCMPortMapper.framework/Versions    setenv VERSION_INFO_BUILDER valerio    setenv VERSION_INFO_FILE TCMPortMapper_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:TCMPortMapper  PROJECT:Port Map-\""    setenv WRAPPER_EXTENSION framework    setenv WRAPPER_NAME TCMPortMapper.framework    setenv WRAPPER_SUFFIX .framework    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 10M2423    setenv XCODE_VERSION_ACTUAL 0325    setenv XCODE_VERSION_MAJOR 0300    setenv XCODE_VERSION_MINOR 0320    setenv YACC /Developer/usr/bin/yacc    setenv ZERO_LINK NO    setenv _REAL_SDKROOT macosx10.5    /bin/sh -c "\"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/Script-F24602C10DB4AB3E00C509E9.sh\""0#
-
-CProcessInfoPlistFile "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist" framework/TCMPortMapper-Info.plist
-s308598697.134026
-e308598697.175698
-r1
-xProcessInfoPlistFile
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist
-xframework/TCMPortMapper-Info.plist
-lSLF07#2@42"Process framework/TCMPortMapper-Info.plist308598697#308598697#0(0"0(0#0#123"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper-Info.plist8620328672#362"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    builtin-infoPlistUtility framework/TCMPortMapper-Info.plist -expandbuildsettings -platform macosx -o "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist"0#
-
-CProcessInfoPlistFile /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist framework/TCMPortMapper-Info.plist
-s320084750.403994
-e320084750.421037
-r1
-xProcessInfoPlistFile
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist
-xframework/TCMPortMapper-Info.plist
-lSLF07#2@42"Process framework/TCMPortMapper-Info.plist320084750#320084750#0(0"0(0#0#119"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper-Info.plist8617741312#350"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    builtin-infoPlistUtility framework/TCMPortMapper-Info.plist -expandbuildsettings -platform macosx -o /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/A/Resources/Info.plist0#
-
-CProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320084750.802374
-e320084755.950486
-r1
-xProcessPCH
-x/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch.gch
-xframework/TCMPortMapper_prefix.pch
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Precompile framework/TCMPortMapper_prefix.pch320084750#320084755#0(0"0(0#0#119"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch8616000512#1396"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch -o /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-abkhmyvgxbkaideovrizmmxslrhh/TCMPortMapper_prefix.pch.gch0#
-
-CProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s308598697.541916
-e308598702.044577
-r1
-xProcessPCH
-x/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch.gch
-xframework/TCMPortMapper_prefix.pch
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Precompile framework/TCMPortMapper_prefix.pch308598697#308598702#0(0"0(0#0#123"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch8620853920#1432"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch" -o /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-bqxranwhcerupeenokvtxxuxscyq/TCMPortMapper_prefix.pch.gch0#
-
-CProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 c com.apple.compilers.gcc.4_2
-s320084750.803288
-e320084751.136146
-r1
-xProcessPCH
-x/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch.gch
-xframework/TCMPortMapper_prefix.pch
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Precompile framework/TCMPortMapper_prefix.pch320084750#320084751#0(0"0(0#0#119"/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch8615933280#1386"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" -F/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug -Iframework -I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/include -Iframework "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch -o /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-efevqujrtfdpyoclcarxvsvtxksa/TCMPortMapper_prefix.pch.gch0#
-
-CProcessPCH /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch.gch framework/TCMPortMapper_prefix.pch normal x86_64 c com.apple.compilers.gcc.4_2
-s308598697.542664
-e308598698.246409
-r1
-xProcessPCH
-x/var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch.gch
-xframework/TCMPortMapper_prefix.pch
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@45"Precompile framework/TCMPortMapper_prefix.pch308598697#308598698#0(0"0(0#0#123"/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch8620423072#1422"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.5 -gdwarf-2 "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/TCMPortMapper.hmap" "-F/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/include" -Iframework "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources/x86_64" "-I/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Port Map.build/Debug/TCMPortMapper.build/DerivedSources" -DDEBUG -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/framework/TCMPortMapper_prefix.pch" -o /var/folders/rw/rwL-bAlDFzW2WmDHT9cEp++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TCMPortMapper_prefix-fhmenfjilktdqqclnkbbhiiblmro/TCMPortMapper_prefix.pch.gch0#
-
-CSymLink "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers" Versions/Current/Headers
-s308598697.131301
-e308598697.133966
-r1
-xSymLink
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers
-xVersions/Current/Headers
-lSLF07#2@140"Process /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers308598697#308598697#0(0"0(0#0#0"8621036736#274"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /bin/ln -sf Versions/Current/Headers "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers"0#
-
-CSymLink "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources" Versions/Current/Resources
-s308598697.053899
-e308598697.130423
-r1
-xSymLink
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources
-xVersions/Current/Resources
-lSLF07#2@142"Process /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources308598697#308598697#0(0"0(0#0#0"8621764032#278"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /bin/ln -sf Versions/Current/Resources "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources"0#
-
-CSymLink "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper" Versions/Current/TCMPortMapper
-s308598697.130509
-e308598697.132956
-r1
-xSymLink
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper
-xVersions/Current/TCMPortMapper
-lSLF07#2@146"Process /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper308598697#308598697#0(0"0(0#0#0"8621101056#286"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /bin/ln -sf Versions/Current/TCMPortMapper "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper"0#
-
-CSymLink "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current" A
-s308598697.053104
-e308598697.131243
-r1
-xSymLink
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current
-xA
-lSLF07#2@149"Process /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current308598697#308598697#0(0"0(0#0#0"8621819072#260"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /bin/ln -sf A "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current"0#
-
-CSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers Versions/Current/Headers
-s320084750.400539
-e320084750.403529
-r1
-xSymLink
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers
-xVersions/Current/Headers
-lSLF07#2@136"Process /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers320084750#320084750#0(0"0(0#0#0"8617939168#262"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /bin/ln -sf Versions/Current/Headers /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Headers0#
-
-CSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources Versions/Current/Resources
-s320084750.333384
-e320084750.401310
-r1
-xSymLink
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources
-xVersions/Current/Resources
-lSLF07#2@138"Process /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources320084750#320084750#0(0"0(0#0#0"8608284992#266"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /bin/ln -sf Versions/Current/Resources /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Resources0#
-
-CSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper Versions/Current/TCMPortMapper
-s320084750.401379
-e320084750.403925
-r1
-xSymLink
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper
-xVersions/Current/TCMPortMapper
-lSLF07#2@142"Process /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper320084750#320084750#0(0"0(0#0#0"8617882688#274"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /bin/ln -sf Versions/Current/TCMPortMapper /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/TCMPortMapper0#
-
-CSymLink /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current A
-s320084750.322675
-e320084750.400435
-r1
-xSymLink
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current
-xA
-lSLF07#2@145"Process /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current320084750#320084750#0(0"0(0#0#0"8608328160#248"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /bin/ln -sf A /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework/Versions/Current0#
-
-CTouch "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework"
-s308600890.958830
-e308600890.960941
-r1
-xTouch
-x/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-lSLF07#2@130"Touch /Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework308600890#308600890#0(0"0(0#0#0"8640410208#247"    cd "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper"    /usr/bin/touch -c "/Users/valerio/Desktop/solar secret project rainbow /isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework"0#
-
-CTouch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-s320086623.554094
-e320086623.556260
-r1
-xTouch
-x/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework
-lSLF07#2@126"Touch /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework320086623#320086623#0(0"0(0#0#0"8638034176#235"    cd /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper    /usr/bin/touch -c /Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/TCMPortMapper/build/Debug/TCMPortMapper.framework0#
-

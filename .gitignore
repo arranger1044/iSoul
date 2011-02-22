@@ -1,4 +1,8 @@
 .DS_Store
 /.svn/
 */.svn/
-*/build
+/iSoul/build/
+/Museek/build/
+/libevent/build/
+/libXMLFramework/build/
+/TCMPortMapper/build/

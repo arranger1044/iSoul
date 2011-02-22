@@ -340,7 +340,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B920D2611314225700E61A1D</string>
+										<string>B920D26A1314328800E61A1D</string>
 										<key>history</key>
 										<array>
 											<string>B90E5A0D12647A9C00CE793D</string>
@@ -770,13 +770,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B920D26B1314328800E61A1D</string>
 		<string>B920D24A13141AD100E61A1D</string>
 		<string>B920D24B13141AD100E61A1D</string>
 		<string>B90E59F81264793F00CE793D</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/valerio/Desktop/solarsecretprojectrainbow/isoul/isoul-read-only/iSoul/iSoul.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>400 128 1257 1050 0 0 1920 1178 </string>
