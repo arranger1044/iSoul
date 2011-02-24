@@ -116,6 +116,7 @@ library_parsers_include_HEADERS = $(h_parsers_sources_public)
 library_validators_include_HEADERS = $(h_validators_sources_public)
 
 if ENABLE_EXAMPLES
+
 examples_dom_build_dom_build_SOURCES = examples/dom_build/main.cc
 examples_dom_parse_entities_dom_parse_entities_SOURCES = \
 	examples/dom_parse_entities/main.cc
@@ -149,34 +150,36 @@ examples_schemavalidation_schemavalidation_SOURCES = \
 	examples/schemavalidation/main.cc
 examples_textreader_textreader_SOURCES = examples/textreader/main.cc
 
+examples_ldadd = libxml++/libxml++-$(LIBXMLXX_API_VERSION).la $(LIBXMLXX_LIBS)
+
 examples_dom_build_dom_build_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dom_parse_entities_dom_parse_entities_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dom_parser_dom_parser_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dom_parser_raw_dom_parser_raw_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dom_read_write_dom_read_write_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dom_xpath_dom_xpath_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_dtdvalidation_dtdvalidation_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_import_node_import_node_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_sax_exception_sax_exception_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_sax_parser_sax_parser_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_sax_parser_build_dom_sax_parser_build_dom_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_sax_parser_entities_sax_parser_entities_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_schemavalidation_schemavalidation_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 examples_textreader_textreader_LDADD = \
-	libxml++/libxml++-$(LIBXMLXX_API_VERSION).la
+	$(examples_ldadd)
 endif # ENABLE_EXAMPLES
 
 docs/manual/libxml++.xml: docs/manual/libxml++_without_code.xml docs/manual/insert_example_code.pl

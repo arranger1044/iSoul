@@ -1,3 +1,9 @@
+2011-02-24  Murray Cumming  <murrayc@murrayc.com>
+
+	Fix the build with the changed linker behaviour on Ubuntu Natty.
+
+	* Makefile.am: Link the examples to glibmm explicitly.
+
 2.33.2:
 
 2011-02-11  Murray Cumming  <murrayc@murrayc.com>
