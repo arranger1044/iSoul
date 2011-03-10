@@ -1050,7 +1050,7 @@
 			
 			// filter for the correct room
 			[cvc setRoomName:[selected name] isPrivate:(type == sbChatType)];
-            DNSLog(@"Divider %d", [[selected tag] intValue]);
+            //DNSLog(@"Divider %d", [[selected tag] intValue]);
             /* Check for 0 tags, in that case the current tag is assigned */
             if ([[selected tag] intValue] == -1)
             {

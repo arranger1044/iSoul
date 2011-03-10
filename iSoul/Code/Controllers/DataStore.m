@@ -351,6 +351,57 @@
 	return ticker;
 }
 
+- (unsigned int)resetSidebarCount:(NSString *)name{
+    
+    unsigned int readMessages = 0;
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
+    
+    SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
+    if (item == nil) 
+    {
+        DNSLog(@"Could not find sidebar item for room %@", name);
+    } 
+    else 
+    {
+        readMessages = [[item count] unsignedIntValue];
+        //DNSLog(@"%@", [item count]);
+        [item resetCount];
+        //DNSLog(@"%@", [item count]);
+        // send a notification to inform the main window controller
+        // and the chat view controller
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"SidebarCountUpdated" object:item];
+    }
+    
+    return readMessages;
+}
+
+- (void)updateSidebar:(NSString *)name withCount:(NSNumber *)count{
+
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
+
+    SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
+    if (item == nil) 
+    {
+        DNSLog(@"Could not find sidebar item for room %@", name);
+    } 
+    else 
+    {
+        //DNSLog(@"%@", [item count]);
+        
+        NSNumber * newCount = [NSNumber numberWithUnsignedInt:([[item count] unsignedIntValue] + 
+                                                               [count unsignedIntValue])];
+        [item setCount:newCount];
+        //DNSLog(@"%@", [item count]);
+        // send a notification to inform the main window controller
+        // and the chat view controller
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"SidebarCountUpdated" object:item];
+    }
+
+}
+
 - (void)addMessage:(NSString *)msg toRoom:(NSString *)roomname forUser:(NSString *)username isPrivate:(BOOL)privateMsg
 {
 	// find or create user and room objects
@@ -358,16 +409,20 @@
 							  @"name == %@ && isPrivate == %u", roomname, privateMsg];
 	
 	Room *room = (Room *)[self find:@"Room" withPredicate:predicate];
-	if (room == nil) {
+	if (room == nil) 
+    {
 		// if this is a private chat, create a new room
-		if (privateMsg) {
+		if (privateMsg) 
+        {
 			SidebarItem *item = [self startPrivateChat:username];
 			room = (Room *)[self find:@"Room" withPredicate:predicate];
 			
 			// select the room in the main view
 			[managedObjectContext processPendingChanges];
 			[[[NSApp delegate] mainWindowController] selectItem:item];
-		} else {			
+		} 
+        else 
+        {			
 			NSLog(@"could not find room %@ for message %@", roomname, msg);
 			return;
 		}
@@ -386,6 +441,9 @@
 	[chat setUser:user];
 	[chat setIsPrivate:[NSNumber numberWithBool:privateMsg]];
 	[chat setRoom:room];	// set the room last, as this triggers the kvo in chatViewController
+    DNSLog(@"%@", [[chat room] name]);
+    
+
 }
 
 - (User *)addUser:(NSString *)username toRoom:(NSString *)roomname
@@ -407,18 +465,18 @@
 	// update the room count
 	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:[[room users] count]]];
 	
-	// update the sidebar item count
-	SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
-	if (item == nil) {
-		NSLog(@"could not find sidebar item for room %@", roomname);
-	} else {
-		[item setCount:[room numberOfUsers]];
-		
-		// send a notification to inform the main window controller
-		// and the chat view controller
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc postNotificationName:@"SidebarCountUpdated" object:item];
-	}
+//	// update the sidebar item count
+//	SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
+//	if (item == nil) {
+//		NSLog(@"could not find sidebar item for room %@", roomname);
+//	} else {
+//		[item setCount:[room numberOfUsers]];
+//		
+//		// send a notification to inform the main window controller
+//		// and the chat view controller
+//		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//		[nc postNotificationName:@"SidebarCountUpdated" object:item];
+//	}
 
 	return user;
 }
@@ -447,19 +505,19 @@
 	// update the room count
 	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:[[room users] count]]];
 	
-	// update the sidebar count
-	predicate = [NSPredicate predicateWithFormat:@"name == %@",roomname];
-	SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
-	if (item == nil) {
-		NSLog(@"could not find sidebar item for room %@", roomname);
-	} else {
-		[item setCount:[room numberOfUsers]];
-		
-		// send a notification to inform the main window controller
-		// and the chat view controller
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-		[nc postNotificationName:@"SidebarCountUpdated" object:item];
-	}
+//	// update the sidebar count
+//	predicate = [NSPredicate predicateWithFormat:@"name == %@",roomname];
+//	SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
+//	if (item == nil) {
+//		NSLog(@"could not find sidebar item for room %@", roomname);
+//	} else {
+//		[item setCount:[room numberOfUsers]];
+//		
+//		// send a notification to inform the main window controller
+//		// and the chat view controller
+//		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//		[nc postNotificationName:@"SidebarCountUpdated" object:item];
+//	}
 	
 }
 
@@ -509,7 +567,8 @@
 											   sortIndex:kChatRoomIndexStart + sidebarSortIndex++ 
 													 tag:-1 
 													type:sbChatRoomType];
-		[item setCount:[room numberOfUsers]];
+		//[item setCount:[room numberOfUsers]];
+        [item setCount:[NSNumber numberWithUnsignedInt:0]];
 		
 		// now select the room in the sidebar
 		[managedObjectContext processPendingChanges];

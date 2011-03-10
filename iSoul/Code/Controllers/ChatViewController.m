@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 #import "User.h"
+#import "SidebarItem.h"
 #import "MuseekdConnectionController.h"
 #import "ChatMessage.h"
 #import "MainWindowController.h"
@@ -27,6 +28,8 @@
 @synthesize store;
 @synthesize tableSortDescriptors;
 @synthesize delegate;
+@synthesize observedRooms;
+@synthesize unreadMessages;
 
 - (id)init
 {
@@ -38,14 +41,25 @@
 	// stores usernames that have been seen so far
 	// if a user is new, then the user info is requested
 	usersSoFar = [[NSMutableArray alloc] init];
+    
+    NSMutableSet * roomsToObserv = [[NSMutableSet alloc] init];
+    self.observedRooms = roomsToObserv;
+    [roomsToObserv release];
 	
+    unreadMessages = 0;
+    
 	return self;
 }
 
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[currentRoom removeObserver:self forKeyPath:@"messages"];
+	//[currentRoom removeObserver:self forKeyPath:@"messages"];
+    for (Room * room in observedRooms)
+    {
+        [room removeObserver:self forKeyPath:@"messages"];
+    }
+    [observedRooms release];
 	[currentRoom release];
 	[usersSoFar release];
 	[museek release];
@@ -78,6 +92,11 @@
 	[nc addObserver:self 
 		   selector:@selector(userInfoUpdated:) 
 			   name:@"UserInfoUpdated" object:nil];
+    
+    [nc addObserver:self 
+		   selector:@selector(windowIsMain:) 
+			   name:@"NSWindowDidBecomeMainNotification" 
+             object:nil];
 	
 	// horrid hack, forces the first resize of the 
 	// split view to set the left pane to the default 
@@ -89,7 +108,6 @@
 	// selects the correct users from the data model
 	[self setFetchPredicate];
     
-
 }
 
 #pragma mark properties
@@ -99,31 +117,71 @@
 	return [usersController selectedObjects];
 }
 
+- (void)windowIsMain:(NSNotification *)notification{
+    
+    if ([[notification object] isEqual:[[NSApp delegate] window]])
+    {
+        if ([[[NSApp delegate] currentViewController] isEqual:self])
+        {
+            unsigned int readMessages = [store resetSidebarCount:[currentRoom name]];
+            self.unreadMessages -= readMessages;
+        }
+    }
+}
+
 - (void)setRoomName:(NSString *)newName isPrivate:(BOOL)isPrivate
 {
-	if ([newName isEqualToString:[currentRoom name]]) return;
-	
-	// stop observing the old room
-	[currentRoom removeObserver:self forKeyPath:@"messages"];
-	[currentRoom release];
-	
-	// clear the chat view contents
-	NSAttributedString *blankString = [[NSAttributedString alloc] initWithString:@""];
-	[[messageView textStorage] setAttributedString:blankString];
-	[blankString release];
-	
-	// get the new room from the store, and load new messages
-	// if the room isn't found, the currentRoom will be nil
-	NSPredicate *pred = [NSPredicate predicateWithFormat:
-						 @"name == %@ && isPrivate == %u", newName, isPrivate];
-	currentRoom = (Room *)[store find:@"Room" withPredicate:pred];
-	[currentRoom retain];
-	[currentRoom addObserver:self 
-				  forKeyPath:@"messages" 
-					 options:NSKeyValueObservingOptionNew 
-					 context:NULL];
-	[self addRoomMessages:[currentRoom messages]];
-	[self setFetchPredicate];
+    
+    /* Reset sidebar counter */
+    unsigned int readMessages = [store resetSidebarCount:newName];
+    self.unreadMessages -= readMessages;
+    
+    if ([newName isEqualToString:[currentRoom name]]) return;
+    
+    BOOL alreadyObserved = NO;
+    
+    for (Room * room in observedRooms)
+    {
+        if ([[room name] isEqual:newName])
+        {
+            alreadyObserved = YES;
+            break;
+        }
+    }
+    
+    //BOOL alreadyObserved = [observedRooms containsObject:newName];
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:
+                         @"name == %@ && isPrivate == %u", newName, isPrivate];
+    currentRoom = (Room *)[store find:@"Room" withPredicate:pred];
+    [currentRoom retain];
+    
+    if (!alreadyObserved) 
+    {
+        // get the new room from the store, and load new messages
+        // if the room isn't found, the currentRoom will be nil
+
+        [currentRoom addObserver:self 
+                      forKeyPath:@"messages" 
+                         options:NSKeyValueObservingOptionNew 
+                         context:NULL];
+        
+        /* Adding it to the observed rooms */
+        [observedRooms addObject:currentRoom];
+        DNSLog(@"Adding room to observed ones %@", [currentRoom name]);
+    }
+    
+    // clear the chat view contents
+    NSAttributedString *blankString = [[NSAttributedString alloc] initWithString:@""];
+    [[messageView textStorage] setAttributedString:blankString];
+    [blankString release];
+    
+    [self addRoomMessages:[currentRoom messages]];
+    [self setFetchPredicate];
+
+//	// stop observing the old room
+//	[currentRoom removeObserver:self forKeyPath:@"messages"];
+//	[currentRoom release];
 }
 
 - (NSArray *)chatSortDescriptors
@@ -142,18 +200,32 @@
 						change:(NSDictionary *)change 
 					   context:(void *)context
 {
-	if ([object isEqual:currentRoom]) {
-		NSSet *newMessages = [change objectForKey:NSKeyValueChangeNewKey];
+    NSSet *newMessages = [change objectForKey:NSKeyValueChangeNewKey];
+    unsigned int newMessagesCount = [newMessages count];
+    //DNSLog(@"%u", newMessagesCount);
+    
+	if ([object isEqual:currentRoom]) 
+    {
+		//DNSLog(@"%@", [object name]);
 		[self addRoomMessages:newMessages];
-		
-		// bounce the dock icon if necessary
-		NSNumber *bounceDock = [[NSUserDefaults standardUserDefaults] 
-								valueForKey:@"BounceIcon"];
-		if ([bounceDock boolValue]) {
-			[NSApplication sharedApplication];
-			[NSApp requestUserAttention:NSInformationalRequest];
-		}
+        
+        /* If the window is not visible we need to update the current room sidebar
+           count as well */
+        if (![[[NSApp delegate] window] isMainWindow])
+        {
+            NSNumber * newCount = [NSNumber numberWithUnsignedInt:newMessagesCount];
+            [store updateSidebar:[object name] withCount:newCount];
+            self.unreadMessages += newMessagesCount;
+        }
+
 	}
+    else 
+    {
+        /* We update the other room side bar count */
+        NSNumber * newCount = [NSNumber numberWithUnsignedInt:newMessagesCount];
+        [store updateSidebar:[object name] withCount:newCount];
+        self.unreadMessages += newMessagesCount;
+    }
 }
 
 - (void)userInfoUpdated:(NSNotification *)notification
@@ -193,7 +265,7 @@
 	if (collapsed) 
     {
 		//[splitView setPosition:lastDividerPosition ofDividerAtIndex:0];
-        DNSLog(@"decollapsing");
+        //DNSLog(@"decollapsing");
         //[usersPane setHidden:NO];
         [self setDividerPosition:lastDividerPosition];
         //[button setState:YES];
@@ -202,7 +274,7 @@
     {
 		//NSRect r = [usersPane frame];
 		//lastDividerPosition = r.size.width;
-        DNSLog(@"collapsing");
+        //DNSLog(@"collapsing");
         NSRect cR = [chatView frame];
         lastDividerPosition = cR.size.width;
         float maxWidth = splitView.frame.size.width;
@@ -238,9 +310,9 @@
 }
 
 - (void)animationDidEnd:(NSAnimation *)animation{
-    DNSLog(@"ENDING");
-    rect2Log(chatView.frame);
-    rect2Log(usersPane.frame);
+//    DNSLog(@"ENDING");
+//    rect2Log(chatView.frame);
+//    rect2Log(usersPane.frame);
     float width = chatView.frame.size.width;
 //    //[splitView adjustSubviews];
 //    //[splitView setPosition:(width) ofDividerAtIndex:0];
@@ -263,7 +335,7 @@
 - (void)setDividerPosition:(float)width
 {
     //if (chatView.frame.size.width < splitView.frame.size.width)
-    DNSLog(@"dims %f %f", chatView.frame.size.width, width);
+    //DNSLog(@"dims %f %f", chatView.frame.size.width, width);
     if (chatView.frame.size.width != width)
     {
         [usersPane setHidden:NO];
@@ -271,14 +343,14 @@
         float timeT = space * 0.2 / 200;
         /* Let's try to animate the sliding */
         float minWidth = MAX(1, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
-        DNSLog(@"t %f r %f q %f", width, width + splitView.dividerThickness, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
+        //DNSLog(@"t %f r %f q %f", width, width + splitView.dividerThickness, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
         NSRect view0TargetFrame = NSMakeRect(chatView.frame.origin.x, chatView.frame.origin.y, width, chatView.frame.size.height);
         NSRect view1TargetFrame = NSMakeRect(width /* + splitView.dividerThickness + 1 */, usersPane.frame.origin.y, 
                                              /* minWidth */
                                              splitView.frame.size.width - width, 
                                              usersPane.frame.size.height);
-        rect2Log(view0TargetFrame);
-        rect2Log(view1TargetFrame);
+        //rect2Log(view0TargetFrame);
+        //rect2Log(view1TargetFrame);
         //    CAAnimation * animation = [usersPane animationForKey:@"frameOrigin"];
         //    [animation setDelegate:self];
         //    CAAnimation * animation2 = [chatView animationForKey:@"frameOrigin"];
@@ -528,13 +600,13 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 	float width = chatView.frame.size.width;
     if (width >= splitView.frame.size.width - splitView.dividerThickness)
     {
-        DNSLog(@"coll %f", width);
+        //DNSLog(@"coll %f", width);
         [button setState:NO];
     }
     else
     {
         
-        DNSLog(@"decoll %f %f", width, splitView.frame.size.width);
+        //DNSLog(@"decoll %f %f", width, splitView.frame.size.width);
         [button setState:YES];
     }
     

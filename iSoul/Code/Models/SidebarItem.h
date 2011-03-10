@@ -24,7 +24,9 @@
 @property (nonatomic, retain) SidebarItem * parent;
 @property (nonatomic, retain) NSSet* tickets;
 
+- (void)resetCount;
 @end
+
 
 
 @interface SidebarItem (CoreDataGeneratedAccessors)

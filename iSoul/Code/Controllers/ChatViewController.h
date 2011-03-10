@@ -29,18 +29,22 @@
 	id delegate;
 	BOOL firstResize;
 	float lastDividerPosition;
+    unsigned int unreadMessages;
 	NSManagedObjectContext *managedObjectContext; 
 	MuseekdConnectionController *museek;
 	DataStore *store;
 	Room *currentRoom;
 	NSMutableArray *usersSoFar;
 	NSArray *tableSortDescriptors;
+    NSMutableSet * observedRooms;
 }
 
 @property (retain) NSManagedObjectContext *managedObjectContext;
 @property (retain) MuseekdConnectionController *museek;
 @property (retain) DataStore *store;
 @property (retain) NSArray *tableSortDescriptors;
+@property (retain) NSMutableSet * observedRooms;
+@property (assign) unsigned int unreadMessages;
 @property (assign) id delegate;
 @property (readonly) NSArray *selectedUsers;
 

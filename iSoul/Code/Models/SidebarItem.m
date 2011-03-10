@@ -22,4 +22,11 @@
 @dynamic parent;
 @dynamic tickets;
 
+- (void)resetCount
+{
+    NSNumber * zero = [[NSNumber alloc] initWithUnsignedInt:0];
+    [self setCount:zero]; 
+    [zero release];
+}
+
 @end

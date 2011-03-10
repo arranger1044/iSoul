@@ -36,6 +36,8 @@
 - (void)addDefaultSidebarItems;
 - (NSManagedObject *)createEntity:(NSString *)entityName;
 - (User *)getOrAddUserWithName:(NSString *)username;
+- (void)updateSidebar:(NSString *)name withCount:(NSNumber *)count;
+- (unsigned int)resetSidebarCount:(NSString *)name;
 
 // search methods
 - (SidebarItem *)newSearch;

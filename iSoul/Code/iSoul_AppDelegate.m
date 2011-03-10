@@ -51,9 +51,9 @@
         NSString *incompletePath = [pathIncomplete stringByExpandingTildeInPath];	
         
         [d setValue:[NSNumber numberWithBool:YES] forKey:@"AutoLogin"];
-        [d setValue:[NSNumber numberWithBool:NO] forKey:@"BandwidthIcon"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"BandwidthIcon"];
         [d setValue:[NSNumber numberWithBool:YES] forKey:@"BandwidthSidebar"];
-        [d setValue:[NSNumber numberWithBool:NO] forKey:@"BounceIcon"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"BounceIcon"];
         [d setValue:@"" forKey:@"Description"];	
         [d setValue:savePath forKey:@"DownloadPath"];
         [d setValue:[NSNumber numberWithInt:0] forKey:@"DownloadRate"];
@@ -77,8 +77,8 @@
         [d setValue:[NSNumber numberWithBool:NO] forKey:@"PromptQuitWithActiveTransfers"];
         [d setValue:[NSNumber numberWithBool:NO] forKey:@"RemoveCompleteDownload"];
         [d setValue:[NSNumber numberWithBool:YES] forKey:@"SearchMainDatabase"];
-        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchFriendsList"];
-        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SearchChatRooms"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"SearchFriendsList"];
+        [d setValue:[NSNumber numberWithBool:YES] forKey:@"SearchChatRooms"];
         [d setValue:[NSNumber numberWithBool:NO] forKey:@"SelectNewDownload"];
         [d setValue:[NSNumber numberWithInt:2242] forKey:@"ServerPort"];
         [d setValue:@"server.slsknet.org" forKey:@"ServerUrl"];
@@ -169,7 +169,6 @@
 		PrefsWindowController *pwc = [PrefsWindowController sharedPrefsWindowController];
 		[pwc setMuseek:museekdConnectionController];
         
-        
 	}
 	return self;
 }
@@ -207,6 +206,13 @@
 	// once done, load them in the preferences controller
 	[NSThread detachNewThreadSelector:@selector(scanSharesFile:) 
 							 toTarget:self withObject:nil];
+    
+    /* Add an observer for the unread messages number to be displayed in the 
+     dock tile */
+    [chatViewController addObserver:self 
+                         forKeyPath:@"unreadMessages" 
+                            options:0 
+                            context:NULL];
 }
 
 #pragma mark properties
@@ -593,6 +599,36 @@
     }
 	 */
     return NSTerminateNow;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+					  ofObject:(id)object 
+						change:(NSDictionary *)change 
+					   context:(void *)context
+{
+    NSNumber * integerValue = [object valueForKey:keyPath];
+    unsigned int unreadMessages = [integerValue unsignedIntValue];
+    //DNSLog(@"%u %@", unreadMessages, integerValue);
+    NSDockTile *aTitle = [[NSApplication sharedApplication] dockTile];
+    NSString * countString;
+    if (unreadMessages > 0)
+    {
+      countString  = [NSString stringWithFormat:@"%u", unreadMessages];
+    }
+    else 
+    {
+        countString  = [NSString stringWithFormat:@""];
+    }
+    [aTitle setBadgeLabel:countString];
+    
+    // bounce the dock icon if necessary
+    NSNumber * bounceDock = [[NSUserDefaults standardUserDefaults] 
+                             valueForKey:@"BounceIcon"];
+    if ([bounceDock boolValue]) 
+    {
+        [NSApplication sharedApplication];
+        [NSApp requestUserAttention:NSInformationalRequest];
+    }
 }
 
 @end
