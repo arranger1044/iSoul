@@ -103,7 +103,7 @@
 	[super dealloc];
 }
 
-- (void)setSegmentEnabled:(BOOL)enabled{
+- (void)setSegmentEnabled:(BOOL)enabled {
     if (enabled)
     {
         int vState = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentView"];
@@ -306,7 +306,7 @@
 		float transferRate = 0;
 		TransferState state = [[transfer state] unsignedIntValue];
 		if (state == tfTransferring) {
-			transferRate = [[transfer rate] floatValue] / 1024.0;
+			transferRate = [[transfer rate] floatValue] / 1000.0;
 		}
 		
 		if ([[transfer isUpload] boolValue]) {
@@ -377,25 +377,24 @@
 	NSInteger row = [sidebar editedRow];
 	SidebarItem *item = [[sidebar itemAtRow:row] representedObject];
 	SidebarType type = [[item type] unsignedIntValue];
+	NSString *searchTerm = NULL;
 	
 	// perform different actions depending on which type we have
 	switch (type) {
 		case sbSearchType:
-		{
-			NSString *searchTerm = [item name];
+			searchTerm = [item name];
 			[self performSearch:searchTerm];			
 			break;
-		}
 		case sbWishType:
-		{
-			NSString *searchTerm = [item name];
+			searchTerm = [item name];
 			[museekdConnectionController addWishlistItem:searchTerm];
 			break;
-		}
+		default:
+			break;
 	}
 	
 	// force the view to reload
-	[sidebar selectRow:row byExtendingSelection:NO];
+	[sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 	[self changeView:sidebar];
 }
 
@@ -727,17 +726,13 @@
 {
 	switch (selectedView) {
 		case sbSearchType:
-		{
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
-			[svc downloadFolder:self];
+			[[[NSApp delegate] searchViewController] downloadFolder:self];
 			break;
-		}
 		case sbShareType:
-		{
-			BrowseViewController *bvc = [[NSApp delegate] browseViewController];
-			[bvc transferFolder:self];
+			[[[NSApp delegate] browseViewController] transferFolder:self];
 			break;
-		}
+		default:
+			break;
 	}
 }
 
@@ -745,22 +740,17 @@
 {
 	switch (selectedView) {
 		case sbSearchType:
-		{
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
-			
 			// get the selected items from the search view
-			[svc downloadFile:self];
+			[[[NSApp delegate] searchViewController] downloadFile:self];
 			
 			break;
-		}
 		case sbShareType:
-		{
 			// download the selected item in the browse view
-			BrowseViewController *bvc = [[NSApp delegate] browseViewController];
-			[bvc transferFiles:self];
+			[[[NSApp delegate] browseViewController] transferFiles:self];
 			
 			break;
-		}
+		default:
+			break;
 	}
 }
 
@@ -825,18 +815,17 @@
 	}
 }
 
-- (IBAction)removeSearch:(id)sender
-{
+- (IBAction)removeSearch:(id)sender {
 	NSUInteger row = [sidebar selectedRow];
 	id itemAtRow = [sidebar itemAtRow:row];
 	if (!itemAtRow) return;
+	
 	SidebarItem *selected = [itemAtRow representedObject];
+	SearchViewController *svc = [[NSApp delegate] searchViewController];
 	
 	switch (selectedView) {
 		case sbSearchType:
-		{
 			// clear the search view first
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
 			[svc setCurrentTickets:nil];
 			
 			// now remove the search ticket from core data
@@ -845,11 +834,8 @@
 			// now remove the side item
 			[managedObjectContext deleteObject:selected];
 			break;
-		}
 		case sbWishType:
-		{
 			// clear the search view first
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
 			[svc setCurrentTickets:nil];
 			
 			// clear the selected wish from the server
@@ -862,8 +848,8 @@
 			[managedObjectContext deleteObject:selected];
 			
 			break;
-		}
-			
+		default:
+			break;
 	}	
 }
 
@@ -930,8 +916,7 @@
 }
 
 
-- (IBAction)removeSideItem:(id)sender
-{
+- (IBAction)removeSideItem:(id)sender {
 	NSUInteger row = [sidebar selectedRow];
 	id itemAtRow = [sidebar itemAtRow:row];
 	if (!itemAtRow) return;
@@ -939,10 +924,8 @@
 	
 	switch (selectedView) {
 		case sbSearchType:
-		{
 			// clear the search view first
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
-			[svc setCurrentTickets:nil];
+			[[[NSApp delegate] searchViewController] setCurrentTickets:nil];
 			
 			// now remove the search ticket from core data
 			[museekdConnectionController removeSearchForTickets:[selected tickets]];	
@@ -950,13 +933,10 @@
 			// now remove the side item
 			[managedObjectContext deleteObject:selected];
 			break;
-		}
 		case sbChatType:
 		case sbChatRoomType:
-		{
 			// reset the chat view
-			ChatViewController *cvc = [[NSApp delegate] chatViewController];
-			[cvc setRoomName:@"" isPrivate:YES];
+			[[[NSApp delegate] chatViewController] setRoomName:@"" isPrivate:YES];
 			
 			// leave chatroom
 			[museekdConnectionController leaveRoom:[selected name]];
@@ -964,12 +944,9 @@
 			// remove the side panel object
 			[managedObjectContext deleteObject:selected];
 			break;
-		}
 		case sbWishType:
-		{
 			// clear the search view first
-			SearchViewController *svc = [[NSApp delegate] searchViewController];
-			[svc setCurrentTickets:nil];
+			[[[NSApp delegate] searchViewController] setCurrentTickets:nil];
 			
 			// clear the selected wish from the server
 			[museekdConnectionController removeWishlistItem:[selected name]];
@@ -980,12 +957,9 @@
 			[managedObjectContext deleteObject:selected];
 			
 			break;
-		}
 		case sbShareType:
-		{
 			// clear the browse view
-			BrowseViewController *bvc = [[NSApp delegate] browseViewController];
-			[bvc setFiles:nil];
+			[[[NSApp delegate] browseViewController] setFiles:nil];
 			
 			// then just delete the sidebar entry
 			// if the user is browsed again, the
@@ -993,9 +967,9 @@
 			[managedObjectContext deleteObject:selected];			
 			
 			break;
-		}
-	}	
-	
+		default:
+			break;
+	}
 }
 
 - (IBAction)changeView:(id)sender
@@ -1131,7 +1105,7 @@
 {
 	// get the selected rooms and add to museek
 	NSArray *selected = [roomController selectedObjects];
-	debug_NSLog(@"joining %u rooms", [selected count]);
+	debug_NSLog(@"joining %lu rooms", [selected count]);
 	
 	for (Room *room in selected) {
 		[museekdConnectionController joinRoom:[room name]];

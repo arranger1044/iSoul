@@ -213,6 +213,9 @@
                          forKeyPath:@"unreadMessages" 
                             options:0 
                             context:NULL];
+	
+	// Init Growl
+	[GrowlApplicationBridge setGrowlDelegate: self];
 }
 
 #pragma mark properties
@@ -425,7 +428,7 @@
     NSManagedObjectModel *mom = [self managedObjectModel];
     if (!mom) {
         NSAssert(NO, @"Managed object model is nil");
-        NSLog(@"%@:%s No model to generate a store from", [self class], _cmd);
+        NSLog(@"%@:%@ No model to generate a store from", [self class], NSStringFromSelector(_cmd));
         return nil;
     }
 	
@@ -502,7 +505,7 @@
     NSError *error = nil;
     
     if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%s unable to commit editing before saving", [self class], _cmd);
+        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
     }
 	
     if (![[self managedObjectContext] save:&error]) {
@@ -556,7 +559,7 @@
     if (!managedObjectContext) return NSTerminateNow;
 
     if (![managedObjectContext commitEditing]) {
-        NSLog(@"%@:%s unable to commit editing to terminate", [self class], _cmd);
+        NSLog(@"%@:%@ unable to commit editing to terminate", [self class], NSStringFromSelector(_cmd));
         return NSTerminateCancel;
     }
 
@@ -604,31 +607,27 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath 
 					  ofObject:(id)object 
 						change:(NSDictionary *)change 
-					   context:(void *)context
-{
-    NSNumber * integerValue = [object valueForKey:keyPath];
-    unsigned int unreadMessages = [integerValue unsignedIntValue];
-    //DNSLog(@"%u %@", unreadMessages, integerValue);
-    NSDockTile *aTitle = [[NSApplication sharedApplication] dockTile];
-    NSString * countString;
-    if (unreadMessages > 0)
-    {
-      countString  = [NSString stringWithFormat:@"%u", unreadMessages];
-    }
-    else 
-    {
-        countString  = [NSString stringWithFormat:@""];
-    }
-    [aTitle setBadgeLabel:countString];
-    
-    // bounce the dock icon if necessary
-    NSNumber * bounceDock = [[NSUserDefaults standardUserDefaults] 
-                             valueForKey:@"BounceIcon"];
-    if ([bounceDock boolValue]) 
-    {
-        [NSApplication sharedApplication];
-        [NSApp requestUserAttention:NSInformationalRequest];
-    }
+					   context:(void *)context {
+	
+	NSNumber * integerValue = [object valueForKey:keyPath];
+	unsigned int unreadMessages = [integerValue unsignedIntValue];
+	//DNSLog(@"%u %@", unreadMessages, integerValue);
+	NSDockTile *aTitle = [[NSApplication sharedApplication] dockTile];
+	NSString * countString;
+	
+	if (unreadMessages > 0)
+	  countString  = [NSString stringWithFormat:@"%u", unreadMessages];
+	else
+		countString  = [NSString stringWithFormat:@""];
+	[aTitle setBadgeLabel:countString];
+
+	// bounce the dock icon if necessary
+	NSNumber * bounceDock = [[NSUserDefaults standardUserDefaults] 
+							 valueForKey:@"BounceIcon"];
+	if ([bounceDock boolValue]) {
+		[NSApplication sharedApplication];
+		[NSApp requestUserAttention:NSInformationalRequest];
+	}
 }
 
 @end

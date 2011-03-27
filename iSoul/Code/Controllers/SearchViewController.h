@@ -66,12 +66,12 @@
 
 @property (retain) MuseekdConnectionController *museek;
 @property (retain) NSManagedObjectContext *managedObjectContext;
-@property (retain) NSSet *currentTickets;
+@property (nonatomic, retain) NSSet *currentTickets;
 @property (retain) NSArray *listSortDescriptors;
 @property (retain) NSArray *treeSortDescriptors;
 @property (retain) PathNode *treeRoot;
 @property (retain) NSArray *folderContents;
-@property (readwrite) ViewState viewState;
+@property (nonatomic, readwrite) ViewState viewState;
 @property (readonly) NSArray *selectedUsers;
 
 // public methods

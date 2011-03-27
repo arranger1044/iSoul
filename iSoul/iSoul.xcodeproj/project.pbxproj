@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -380,7 +380,7 @@
 		A718C24610E38B99003AEC33 /* 60min.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C21B10E38B99003AEC33 /* 60min.png */; };
 		A718C24710E38B99003AEC33 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C21C10E38B99003AEC33 /* User.png */; };
 		A718C24C10E38BDF003AEC33 /* DownloadBadge.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C24910E38BDF003AEC33 /* DownloadBadge.png */; };
-		A718C24D10E38BDF003AEC33 /* SolarSeek.icns in Resources */ = {isa = PBXBuildFile; fileRef = A718C24A10E38BDF003AEC33 /* SolarSeek.icns */; };
+		A718C24D10E38BDF003AEC33 /* iSoul.icns in Resources */ = {isa = PBXBuildFile; fileRef = A718C24A10E38BDF003AEC33 /* iSoul.icns */; };
 		A718C24E10E38BDF003AEC33 /* UploadBadge.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C24B10E38BDF003AEC33 /* UploadBadge.png */; };
 		A718C25610E38C2E003AEC33 /* Away_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C25010E38C2E003AEC33 /* Away_selected.png */; };
 		A718C25710E38C2E003AEC33 /* Away.png in Resources */ = {isa = PBXBuildFile; fileRef = A718C25110E38C2E003AEC33 /* Away.png */; };
@@ -473,8 +473,12 @@
 		B960F7A81271F92200F2B394 /* LoggingConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = B960F7A71271F92200F2B394 /* LoggingConsole.xib */; };
 		B984E8361306FCD60083327A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B984E8351306FCD60083327A /* QuartzCore.framework */; };
 		B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */; };
-		B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */; };
 		B9FAEF6C1282157D00300C45 /* clean.ico in Resources */ = {isa = PBXBuildFile; fileRef = B9FAEF6B1282157D00300C45 /* clean.ico */; };
+		DD494E21133FF2BA00974169 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD494E20133FF2BA00974169 /* libz.dylib */; };
+		DD4F1D6A131B0D5000442671 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = DD4F1D69131B0D5000442671 /* Growl Registration Ticket.growlRegDict */; };
+		DD4F2D6D131B0DCA00442671 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
+		DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
+		DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -506,20 +510,6 @@
 			remoteGlobalIDString = 8DD76F620486A84900D96B5E;
 			remoteInfo = museek;
 		};
-		A76D2F2B10D9291800DD9F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = libXMLFramework;
-		};
-		A76D2F2D10D9291800DD9F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = libevent;
-		};
 		A796D11010F53A4600E3F8CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A796D10910F53A4600E3F8CC /* Port Map.xcodeproj */;
@@ -543,6 +533,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */,
 				A796D11510F53A7D00E3F8CC /* TCMPortMapper.framework in CopyFiles */,
 				A76D2E0210D91B3700DD9F82 /* libevent.framework in CopyFiles */,
 				A76D2E0110D91B3300DD9F82 /* libXMLFramework.framework in CopyFiles */,
@@ -930,7 +921,7 @@
 		A718C21B10E38B99003AEC33 /* 60min.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 60min.png; sourceTree = "<group>"; };
 		A718C21C10E38B99003AEC33 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
 		A718C24910E38BDF003AEC33 /* DownloadBadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownloadBadge.png; sourceTree = "<group>"; };
-		A718C24A10E38BDF003AEC33 /* SolarSeek.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SolarSeek.icns; sourceTree = "<group>"; };
+		A718C24A10E38BDF003AEC33 /* iSoul.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iSoul.icns; sourceTree = "<group>"; };
 		A718C24B10E38BDF003AEC33 /* UploadBadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UploadBadge.png; sourceTree = "<group>"; };
 		A718C25010E38C2E003AEC33 /* Away_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Away_selected.png; sourceTree = "<group>"; };
 		A718C25110E38C2E003AEC33 /* Away.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Away.png; sourceTree = "<group>"; };
@@ -1087,6 +1078,11 @@
 		B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/local/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		B9FAEF6B1282157D00300C45 /* clean.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = clean.ico; sourceTree = "<group>"; };
+		DD494E20133FF2BA00974169 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DD4F1D69131B0D5000442671 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		DD4F2D6C131B0DCA00442671 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
+		DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-Utilities.h"; sourceTree = "<group>"; };
+		DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber-Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1094,13 +1090,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD494E21133FF2BA00974169 /* libz.dylib in Frameworks */,
 				A796D12810F53B2D00E3F8CC /* TCMPortMapper.framework in Frameworks */,
 				A76D2D9910D9182700DD9F82 /* libcrypto.dylib in Frameworks */,
 				A76D2D7310D9144F00DD9F82 /* AudioToolbox.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				A78989C610E80FCC0034EF55 /* ScriptingBridge.framework in Frameworks */,
-				B9FAEDB112818DF900300C45 /* libz.1.2.3.dylib in Frameworks */,
 				B984E8361306FCD60083327A /* QuartzCore.framework in Frameworks */,
+				DD4F2D6D131B0DCA00442671 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1149,7 @@
 				A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */,
 				B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */,
 				B984E8351306FCD60083327A /* QuartzCore.framework */,
+				DD4F2D6C131B0DCA00442671 /* Growl.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1177,6 +1175,7 @@
 		29B97314FDCFA39411CA2CEA /* iSoul */ = {
 			isa = PBXGroup;
 			children = (
+				DD494E20133FF2BA00974169 /* libz.dylib */,
 				A796D10910F53A4600E3F8CC /* Port Map.xcodeproj */,
 				A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */,
 				A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */,
@@ -1205,6 +1204,8 @@
 				77C8280C06725ACE000B614F /* iSoul_AppDelegate.m */,
 				A718C54A10E39116003AEC33 /* iSoul_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */,
+				DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */,
 			);
 			name = "Other Sources";
 			path = Code;
@@ -1215,6 +1216,7 @@
 			children = (
 				A76D2BC510D9135900DD9F82 /* Images */,
 				A76D2EF210D9241300DD9F82 /* config.xml */,
+				DD4F1D69131B0D5000442671 /* Growl Registration Ticket.growlRegDict */,
 				B960F7A71271F92200F2B394 /* LoggingConsole.xib */,
 				A76D2BB310D9135300DD9F82 /* BrowseView.xib */,
 				A76D2BB510D9135300DD9F82 /* ChatView.xib */,
@@ -1437,7 +1439,7 @@
 			isa = PBXGroup;
 			children = (
 				A718C24910E38BDF003AEC33 /* DownloadBadge.png */,
-				A718C24A10E38BDF003AEC33 /* SolarSeek.icns */,
+				A718C24A10E38BDF003AEC33 /* iSoul.icns */,
 				A718C24B10E38BDF003AEC33 /* UploadBadge.png */,
 			);
 			path = Icon;
@@ -1880,8 +1882,6 @@
 			);
 			dependencies = (
 				A76D2F2A10D9291800DD9F82 /* PBXTargetDependency */,
-				A76D2F2C10D9291800DD9F82 /* PBXTargetDependency */,
-				A76D2F2E10D9291800DD9F82 /* PBXTargetDependency */,
 				A796D12410F53B0500E3F8CC /* PBXTargetDependency */,
 			);
 			name = iSoul;
@@ -1896,7 +1896,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "iSoul" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -2346,7 +2346,7 @@
 				A718C24610E38B99003AEC33 /* 60min.png in Resources */,
 				A718C24710E38B99003AEC33 /* User.png in Resources */,
 				A718C24C10E38BDF003AEC33 /* DownloadBadge.png in Resources */,
-				A718C24D10E38BDF003AEC33 /* SolarSeek.icns in Resources */,
+				A718C24D10E38BDF003AEC33 /* iSoul.icns in Resources */,
 				A718C24E10E38BDF003AEC33 /* UploadBadge.png in Resources */,
 				A718C25610E38C2E003AEC33 /* Away_selected.png in Resources */,
 				A718C25710E38C2E003AEC33 /* Away.png in Resources */,
@@ -2363,6 +2363,7 @@
 				B9FAEF6C1282157D00300C45 /* clean.ico in Resources */,
 				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
 				B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */,
+				DD4F1D6A131B0D5000442671 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2436,6 +2437,7 @@
 				B960F7A41271F88D00F2B394 /* LoggingConsole.m in Sources */,
 				B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */,
 				B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */,
+				DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2446,16 +2448,6 @@
 			isa = PBXTargetDependency;
 			name = museek;
 			targetProxy = A76D2F2910D9291800DD9F82 /* PBXContainerItemProxy */;
-		};
-		A76D2F2C10D9291800DD9F82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libXMLFramework;
-			targetProxy = A76D2F2B10D9291800DD9F82 /* PBXContainerItemProxy */;
-		};
-		A76D2F2E10D9291800DD9F82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libevent;
-			targetProxy = A76D2F2D10D9291800DD9F82 /* PBXContainerItemProxy */;
 		};
 		A796D12410F53B0500E3F8CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2535,63 +2527,40 @@
 		26FC0A850875C7B200E6366F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Downloads\"",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = _DEBUG;
-				INFOPLIST_FILE = "iSoul-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)//Developer/SDKs/MacOSX10.6.sdk/usr/lib\"",
-				);
-				PRODUCT_NAME = iSoul;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		26FC0A860875C7B200E6366F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Downloads\"",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
-				INFOPLIST_FILE = "iSoul-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)//Developer/SDKs/MacOSX10.6.sdk/usr/lib\"",
-				);
-				PRODUCT_NAME = iSoul;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		26FC0A890875C7B200E6366F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(HOME)/Downloads\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = _DEBUG;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -2615,22 +2584,39 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
+				INFOPLIST_FILE = "iSoul-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				PRODUCT_NAME = iSoul;
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		26FC0A8A0875C7B200E6366F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(HOME)/Downloads\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_SSE3_EXTENSIONS = NO;
-				GCC_ENABLE_SSE41_EXTENSIONS = NO;
-				GCC_ENABLE_SSE42_EXTENSIONS = NO;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -2656,8 +2642,16 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
+				INFOPLIST_FILE = "iSoul-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib\"",
+				);
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				PRODUCT_NAME = iSoul;
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};

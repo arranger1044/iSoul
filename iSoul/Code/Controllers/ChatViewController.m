@@ -342,7 +342,7 @@
         float space = fabsf(chatView.frame.size.width - width);
         float timeT = space * 0.2 / 200;
         /* Let's try to animate the sliding */
-        float minWidth = MAX(1, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
+//        float minWidth = MAX(1, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
         //DNSLog(@"t %f r %f q %f", width, width + splitView.dividerThickness, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
         NSRect view0TargetFrame = NSMakeRect(chatView.frame.origin.x, chatView.frame.origin.y, width, chatView.frame.size.height);
         NSRect view1TargetFrame = NSMakeRect(width /* + splitView.dividerThickness + 1 */, usersPane.frame.origin.y, 

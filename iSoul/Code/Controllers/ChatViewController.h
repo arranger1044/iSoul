@@ -15,7 +15,7 @@
 @class MuseekdConnectionController;
 @class Room;
 
-@interface ChatViewController : NSViewController {
+@interface ChatViewController : NSViewController<NSAnimationDelegate> {
 	IBOutlet NSArrayController *usersController;
 	IBOutlet BubbleTextView *messageView;
 	IBOutlet NSTextField *textField;

@@ -45,7 +45,7 @@
 @property (retain) NSManagedObjectContext *managedObjectContext;
 @property (retain) MuseekdConnectionController *museek;
 @property (retain) DataStore *store;
-@property BOOL uploads;
+@property (nonatomic) BOOL uploads;
 @property (readonly) NSArray *selectedUsers;
 @property (readonly) NSArray *selectedTransfers;
 

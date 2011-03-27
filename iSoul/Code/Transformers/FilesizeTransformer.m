@@ -11,18 +11,21 @@
 
 @implementation FilesizeTransformer
 
-+ (Class)transformedValueClass 
-{
++ (Class)transformedValueClass {
 	return [NSString class];
 }
 
-+ (BOOL)allowsReverseTransformation
-{
++ (BOOL)allowsReverseTransformation {
 	return NO;
 }
 
-- (id)transformedValue:(id)value
-{
++ (void)initialize {
+	NSString *name = @"FilesizeTransformer";
+	
+	[[NSValueTransformer class] setValueTransformer:[self new] forName:name];
+}
+
+- (id)transformedValue:(id)value {
 	NSNumber *fileSize = (NSNumber *)value;
 	
 	if (!fileSize) return @"";
@@ -30,17 +33,18 @@
 	uint32_t intSize = [fileSize unsignedIntValue];
 	float floatSize = [fileSize floatValue];
 	
-	if (intSize == 0) return @"";
-	else if (intSize == 1) return @"1 byte";
-	else if (intSize < 1024) {
+	if (intSize == 0)
+		return @"";
+	else if (intSize == 1)
+		return @"1 byte";
+	else if (intSize < 1000.0)
 		return [NSString stringWithFormat:@"%d bytes", intSize];
-	} else if (intSize < 1024 * 1024) {
-		return [NSString stringWithFormat:@"%1.0f KB", floatSize/1024.0];
-	} else if (intSize < 1024 * 1024 * 1024) {
-		return [NSString stringWithFormat:@"%1.1f MB", floatSize/(1024.0 * 1024.0)];
-	} else {
-		return [NSString stringWithFormat:@"%1.1f GB", floatSize/(1024.0 * 1024.0 * 1024.0)];
-	}
+	else if (intSize < 1000.0 * 1000.0)
+		return [NSString stringWithFormat:@"%1.0f KB", floatSize / 1000.0];
+	else if (intSize < 1000.0 * 1000.0 * 1000.0)
+		return [NSString stringWithFormat:@"%1.1f MB", floatSize / (1000.0 * 1000.0)];
+	else
+		return [NSString stringWithFormat:@"%1.1f GB", floatSize / (1000.0 * 1000.0 * 1000.0)];
 	
 }
 

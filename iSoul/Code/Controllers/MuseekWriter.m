@@ -55,8 +55,7 @@
 
 #pragma mark methods
 
-- (void)open
-{
+- (void)open {
 	if (stream) {
 		[stream setDelegate:self];
 		[stream scheduleInRunLoop:[NSRunLoop currentRunLoop] 

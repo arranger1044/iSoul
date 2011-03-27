@@ -10,7 +10,7 @@
 
 @class MuseekMessage;
 
-@interface MuseekWriter : NSObject {
+@interface MuseekWriter : NSObject<NSStreamDelegate> {
 	id delegate;
 	BOOL inProgress;
 	NSOutputStream *stream;

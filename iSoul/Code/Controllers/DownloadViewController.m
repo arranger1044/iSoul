@@ -189,7 +189,7 @@
 		NSPredicate *pred = [NSPredicate predicateWithFormat:
 							 @"state == %u", tfQueuedRemotely];
 		NSArray *queuedTransfers = [store findArrayOf:@"Transfer" withPredicate:pred];
-		debug_NSLog(@"requesting %u queue updates", [queuedTransfers count]);
+		debug_NSLog(@"requesting %lu queue updates", [queuedTransfers count]);
 		for (Transfer *t in queuedTransfers) {
 			[museek getTransferState:t];
 		}		
@@ -372,7 +372,7 @@
 		}
 	}
 	
-	debug_NSLog(@"removing %u transfers", [transfersToRemove count]);
+	debug_NSLog(@"removing %lu transfers", [transfersToRemove count]);
 	for (Transfer *transfer in transfersToRemove) {
 		
 		[museek removeTransfer:transfer];
@@ -409,7 +409,7 @@
 {
 	NSArray *selectedTransfers = [self selectedTransfers];
 	
-	debug_NSLog(@"pausing %u transfers", [selectedTransfers count]);
+	debug_NSLog(@"pausing %lu transfers", [selectedTransfers count]);
 	for (Transfer *transfer in selectedTransfers) {
 		[museek abortTransfer:transfer];
 	}
@@ -419,7 +419,7 @@
 {
 	NSArray *selectedTransfers = [self selectedTransfers];
 	
-	debug_NSLog(@"resuming %u transfers", [selectedTransfers count]);
+	debug_NSLog(@"resuming %lu transfers", [selectedTransfers count]);
 	for (Transfer *transfer in selectedTransfers) {
 		[museek resumeTransfer:transfer];
 	}	

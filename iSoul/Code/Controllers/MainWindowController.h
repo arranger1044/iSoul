@@ -84,7 +84,7 @@
 @property (retain) User *userToShow;
 @property (retain) DataStore *store;
 @property (retain) MuseekdConnectionController *museekdConnectionController;
-@property BOOL segmentEnabled;
+@property (nonatomic) BOOL segmentEnabled;
 @property BOOL userControlsEnabled;
 @property BOOL transferToolsEnabled;
 @property BOOL downloadToolsEnabled;

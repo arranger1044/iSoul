@@ -167,7 +167,7 @@
 					[item name]);
 		[item addTicketsObject:ticket];
 	} else {
-		debug_NSLog(@"adding new search with index %u", kSearchIndexStart + sidebarSortIndex);
+		debug_NSLog(@"adding new search with index %lu", kSearchIndexStart + sidebarSortIndex);
 		
 		// search created with search field, create new sidebar item
 		SidebarItem *newSearch = [self addSidebarItemWithName:[ticket searchTerm] 
@@ -194,7 +194,7 @@
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc postNotificationName:@"SidebarCountUpdated" object:item];
 	} else {
-		debug_NSLog(@"error finding sidebar item for ticket %u", ticket);
+		debug_NSLog(@"error finding sidebar item for ticket %p", ticket);
 	}
 }
 
@@ -214,7 +214,7 @@
 
 - (void)addNewWishlist:(NSString *)searchTerm
 {
-	debug_NSLog(@"adding new wishlist item with index %u", kWishIndexStart + sidebarSortIndex);
+	debug_NSLog(@"adding new wishlist item with index %lu", kWishIndexStart + sidebarSortIndex);
 	
 	[self addSidebarItemWithName:searchTerm 
 						  parent:searchRoot

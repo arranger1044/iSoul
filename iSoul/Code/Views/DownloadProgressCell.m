@@ -104,8 +104,8 @@
 		for (PathNode *child in [node children]) {
 			if (![child isFolder]) {
 				Transfer *transfer = [child representedObject];
-				filePosition += [[transfer position] floatValue] / 1024.0;
-				fileSize += [[transfer size] floatValue] / 1024.0;
+				filePosition += [[transfer position] floatValue] / 1000.0;
+				fileSize += [[transfer size] floatValue] / 1000.0;
 				
 				// determine the most important state to use
 				switch ([[transfer state] unsignedIntValue]) {
@@ -182,8 +182,8 @@
 		state = [[transfer state] unsignedIntValue];
 		
 		// calculate the file size and position in KB
-		filePosition =  [[transfer position] floatValue] / 1024.0;
-		fileSize = [[transfer size] floatValue] / 1024.0;
+		filePosition =  [[transfer position] floatValue] / 1000.0;
+		fileSize = [[transfer size] floatValue] / 1000.0;
 		
 		activeTransfer = transfer;
 	}	
@@ -226,7 +226,7 @@
 			}
 			
 			// calculate the transfer rate in KB/s
-			float rate = [[activeTransfer rate] floatValue] / 1024.0;
+			float rate = [[activeTransfer rate] floatValue] / 1000.0;
 			if (rate <= 0) break;
 			
 			// calculate the time remaining in seconds

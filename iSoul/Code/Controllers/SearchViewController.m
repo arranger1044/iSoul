@@ -47,11 +47,10 @@
     }
 }
 
-- (id)init
-{
-	if (![super initWithNibName:@"SearchView" bundle:nil]) {
+- (id)init {
+	if (![super initWithNibName:@"SearchView" bundle:nil])
 		return nil;
-	}
+	
 	[self setTitle:@"Search"];
 	
 	// do not bother splitting files until the nib is awake
@@ -116,8 +115,7 @@
 	return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[sortTimer invalidate];
 	[sortTimer release];
@@ -134,8 +132,7 @@
 	[super dealloc];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
 	// set the double click target to download files
 	[listTable setTarget:self];
 	[listTable setDoubleAction:@selector(downloadFile:)];
@@ -155,8 +152,7 @@
 
 #pragma mark properties
 
-- (NSArray *)selectedUsers
-{
+- (NSArray *)selectedUsers {
 	NSArray *results = [resultsController selectedObjects];
 	
 	if ([results count] > 0) {
@@ -173,14 +169,12 @@
 }
 
 // filters the search results for this ticket only
-- (void)setCurrentTickets:(NSSet *)newTickets
-{
+- (void)setCurrentTickets:(NSSet *)newTickets {
 	if ([newTickets isEqual:currentTickets]) return;
 	
 	// stop observing changes in the old ticket
-	for (Ticket *t in currentTickets) {
+	for (Ticket *t in currentTickets)
 		[t removeObserver:self forKeyPath:@"files"];
-	}	
 	[queue cancelAllOperations];
 	
 	// clear the current file trees
@@ -195,33 +189,26 @@
 	[self setFetchPredicate];	// once the nib is awake, the results will be split here
 }
 
-- (void)setViewState:(ViewState)newState
-{
+- (void)setViewState:(ViewState)newState {
 	//if (viewState == newState) return;
 	
 	viewState = newState;
 	switch (viewState) {
 		case vwList:
-		{
 			[self setView:listView];
 			[resultsController rearrangeObjects];
 			break;
-		}
 		case vwFolder:
-		{
 			[self setView:folderView];
-			NSLog(@"folder tree has %u children", [[treeRoot children] count]);
+			NSLog(@"folder tree has %lu children", [[treeRoot children] count]);
 			[treeController rearrangeObjects];
-			NSLog(@"folder tree has %u children", [[treeRoot children] count]);
+			NSLog(@"folder tree has %lu children", [[treeRoot children] count]);
 			[outlineView reloadData];
 			break;
-		}
 		case vwBrowse:
-		{
 			[self setView:browserView];
 			[userBrowser loadColumnZero];
 			break;
-		}
 	}
 }
 
@@ -231,8 +218,8 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath 
 					  ofObject:(id)object 
 						change:(NSDictionary *)change 
-					   context:(void *)context
-{
+					   context:(void *)context {
+	
 	if ([currentTickets containsObject:object]) {
 		NSSet *newItems = [change objectForKey:NSKeyValueChangeNewKey];
 		if ([newItems count] > 0)	// split the new items and add to the tree
@@ -242,18 +229,16 @@
 
 #pragma mark public methods
 
-- (IBAction)downloadFile:(id)sender
-{
+- (IBAction)downloadFile:(id)sender {
 	NSArray *selected = nil;
+	NSArray *selectedNodes = nil;
+	
 	switch (viewState) {
 		case vwList:
-		{
 			selected = [resultsController selectedObjects];
 			break;
-		}
 		case vwFolder:
-		{
-			NSArray *selectedNodes = [treeController selectedObjects];
+			selectedNodes = [treeController selectedObjects];
 			
 			// download folders and files separately
 			// don't worry about duplicates, museekd takes care of it
@@ -268,32 +253,26 @@
 			selected = [NSArray arrayWithArray:files];
 			[files release];
 			break;
-		}
 		case vwBrowse:
-		{
 			selected = [browseController selectedObjects];
 			break;
-		}
 	}	
 	
-	debug_NSLog(@"downloading %u results", [selected count]);
-	for (id result in selected) {
+	debug_NSLog(@"downloading %lu results", [selected count]);
+	for (id result in selected)
 		[museek downloadFile:result];
-	}
 }
 
-- (IBAction)downloadFolder:(id)sender
-{
+- (IBAction)downloadFolder:(id)sender {
 	NSArray *selected = nil;
+	NSArray *selectedNodes = nil;
+	
 	switch (viewState) {
 		case vwList:
-		{
 			selected = [resultsController selectedObjects];
 			break;
-		}
 		case vwFolder:
-		{
-			NSArray *selectedNodes = [treeController selectedObjects];
+			selectedNodes = [treeController selectedObjects];
 			
 			// download folders and files separately
 			// don't worry about duplicates, museekd takes care of it
@@ -314,12 +293,9 @@
 			selected = [NSArray arrayWithArray:files];
 			[files release];
 			break;
-		}
 		case vwBrowse:
-		{
 			selected = [browseController selectedObjects];
 			break;
-		}
 	}	
 		
 	// get the folder path from the full file path
@@ -335,8 +311,7 @@
 	}
 }
 
-- (IBAction)browserSelected:(id)sender
-{
+- (IBAction)browserSelected:(id)sender {
 	// get the currently selected node
 	PathNode *node = [[userBrowser selectedCell] representedObject];
 	
@@ -354,9 +329,9 @@
 
 #pragma mark private methods
 
-- (void)setFetchPredicate
-{
+- (void)setFetchPredicate {
 	NSPredicate *predicate;
+	
 	if (currentTickets && isAwake) {
 		NSUInteger i;
 		NSArray *tickets = [currentTickets allObjects];
@@ -378,15 +353,14 @@
 				   options:NSKeyValueObservingOptionNew 
 				   context:NULL];
 		}		
-	} else {
+	} else
 		predicate = [NSPredicate predicateWithValue:NO];
-	}
+	
 	[resultsController setFetchPredicate:predicate];
 	debug_NSLog(@"the search fetch predicate is now set to: %@", [resultsController fetchPredicate]);
 }
 
-- (void)addSetToFileTree:(NSSet *)fileSet sortImmediately:(BOOL)shouldSort
-{
+- (void)addSetToFileTree:(NSSet *)fileSet sortImmediately:(BOOL)shouldSort {
 	// bit tricky, each entry needs to have 
 	// its parent folder added to the tree
 	// but different users with the same parent
@@ -418,13 +392,13 @@
 			[usersFiles addObject:r];
 		}
 	}
+	
 	// add the final batch of files
 	[self addFolderToTree:usersFiles shouldSort:shouldSort];
 	[usersFiles release];
 }
 
-- (void)addFolderToTree:(NSMutableArray *)list shouldSort:(BOOL)yesOrNo
-{
+- (void)addFolderToTree:(NSMutableArray *)list shouldSort:(BOOL)yesOrNo {
 	if ([list count] == 0) return;
 	
 	// create a new operation and put it on the q
@@ -437,14 +411,12 @@
 
 // this method is called when an operation queue
 // item has completed, which can be from any thread
-- (void)splitFinished:(NSNotification *)notification
-{
+- (void)splitFinished:(NSNotification *)notification {
 	[self performSelectorOnMainThread:@selector(addTreesToRoots:) 
 						   withObject:notification waitUntilDone:NO];
 }
 
-- (void)addTreesToRoots:(NSNotification *)notification
-{
+- (void)addTreesToRoots:(NSNotification *)notification {
 	NSDictionary *d = [notification userInfo];
 	[treeRoot addChild:[d objectForKey:@"foldertree"]];
 	[userRoot addChild:[d objectForKey:@"usertree"]];
@@ -452,32 +424,24 @@
 	// only refresh the controller if necessary
 	BOOL sortNow = [[d objectForKey:@"shouldSort"] boolValue];
 	
-	if (sortNow) {
+	if (sortNow)
 		[self resortTables:nil];
-	} else {
+	else
 		sortPending = YES;	// sort with the next timer tick
-	}	
 }
 
-- (void)resortTables:(NSTimer *)timer
-{
+- (void)resortTables:(NSTimer *)timer {
 	if (sortPending) {
 		switch (viewState) {
 			case vwList:
-			{
 				[resultsController rearrangeObjects];
 				break;
-			}
 			case vwFolder:
-			{
 				[treeController rearrangeObjects];
 				break;
-			}
 			case vwBrowse:
-			{
 				[userBrowser reloadColumn:0];
 				break;
-			}
 		}
 		sortPending = NO;
 	}	
@@ -488,8 +452,8 @@
 - (void)tableView:(NSTableView *)aTableView 
   willDisplayCell:(id)aCell 
    forTableColumn:(NSTableColumn *)aTableColumn 
-			  row:(NSInteger)rowIndex
-{
+			  row:(NSInteger)rowIndex {
+	
 	// only set images for the filename column
 	if ([[aTableColumn identifier] isEqualToString:@"filename"]) {
 		NSString *filename = [aCell stringValue];
@@ -512,22 +476,21 @@
 	
 	// get the corresponding Result
 	// if the queue time is > 0, grey the line
-	if ([aCell isHighlighted]) {
+	if ([aCell isHighlighted])
 		[aCell setTextColor:[NSColor whiteColor]];
-	} else {
+	else {
 		NSArrayController *ac;
-		if (viewState == vwList) {
+		if (viewState == vwList)
 			ac = resultsController;
-		} else {
+		else
 			ac = browseController;
-		}
+		
 		if ([[ac arrangedObjects] count] > 0) {
 			Result *r = [[ac arrangedObjects] objectAtIndex:rowIndex];
-			if ([[r user] queueTime] > 0) {
+			if ([[r user] queueTime] > 0)
 				[aCell setTextColor:[NSColor darkGrayColor]];
-			} else {
+			else
 				[aCell setTextColor:[NSColor blackColor]];
-			}
 		}			
 	}
 }
@@ -537,20 +500,20 @@
 - (void)outlineView:(NSOutlineView *)outlineView 
 	willDisplayCell:(id)cell 
 	 forTableColumn:(NSTableColumn *)tableColumn 
-			   item:(id)item
-{
+			   item:(id)item {
+	
 	PathNode *node = (PathNode *)[item representedObject];
 	if ([[tableColumn identifier] isEqualToString:@"filename"]) {
 		// display an icon in the filename column
 		NSImage *myImage = nil;
 		if ([node isFolder]) {
-			if ([node isExpanded]) {
+			if ([node isExpanded])
 				myImage = [[NSWorkspace sharedWorkspace] 
 						   iconForFileType:NSFileTypeForHFSTypeCode(kOpenFolderIcon)];
-			} else {
+			else
 				myImage = [[NSWorkspace sharedWorkspace] 
 						   iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)];
-			}
+			
 			[myImage setScalesWhenResized:YES];
 			[myImage setSize:NSMakeSize(16.0, 16.0)];
 		} else {
@@ -568,8 +531,7 @@
 			}
 		}
 		[cell setImage:myImage];
-	}
-	else {
+	} else {
 		// hide the cells that make no sense for folder items
 		if ([node isFolder] && 
 			([[tableColumn identifier] isEqualToString:@"bitrate"] ||
@@ -579,48 +541,42 @@
 	}
 	
 	// display in a grey colour if there is a q
-	if ([cell isHighlighted]) {
+	if ([cell isHighlighted])
 		[cell setTextColor:[NSColor whiteColor]];
-	} else if ([[[node user] hasFreeSlots] boolValue]) {
+	else if ([[[node user] hasFreeSlots] boolValue])
 		[cell setTextColor:[NSColor blackColor]];
-	} else {
+	else
 		[cell setTextColor:[NSColor darkGrayColor]];
-	}
 }
 
 // store the expanded state of the node
 // so that the tree can be restored when changing between users
-- (void)outlineViewItemDidExpand:(NSNotification *)notification
-{
+- (void)outlineViewItemDidExpand:(NSNotification *)notification {
 	PathNode *node = [[[notification userInfo] valueForKey:@"NSObject"] representedObject];
 	[node setIsExpanded:YES];
 }
 
-- (void)outlineViewItemDidCollapse:(NSNotification *)notification
-{
+- (void)outlineViewItemDidCollapse:(NSNotification *)notification {
 	PathNode *node = [[[notification userInfo] valueForKey:@"NSObject"] representedObject];
 	[node setIsExpanded:NO];
 }
 
 // expand a folder when it is selected in the outline view
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification
-{
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
 	NSIndexSet *selected = [outlineView selectedRowIndexes];
 	if ([selected count] != 1) return;
 	
 	NSUInteger i = [selected firstIndex];
 	PathNode *node = [[outlineView itemAtRow:i] representedObject];
-	if ([node isFolder] && ![node isExpanded]) {
+	if ([node isFolder] && ![node isExpanded])
 		[outlineView expandItem:[outlineView itemAtRow:i]];
-	}
 }
 
 #pragma mark browser delegate methods
 
 // this is not strictly a delegate method, but is called
 // to walk to the root node for each column
-- (PathNode *)parentNodeForColumn:(NSInteger)column
-{
+- (PathNode *)parentNodeForColumn:(NSInteger)column {
 	PathNode *node = userRoot;
 	
 	// walk to the specified column depth
@@ -632,8 +588,7 @@
 	return node;
 }
 
-- (NSInteger)browser:(NSBrowser *)sender numberOfRowsInColumn:(NSInteger)column
-{
+- (NSInteger)browser:(NSBrowser *)sender numberOfRowsInColumn:(NSInteger)column {
 	PathNode *node = [self parentNodeForColumn:column];
 	
 	// only display folders in the browser view
@@ -643,8 +598,8 @@
 - (void)browser:(NSBrowser *)sender 
 willDisplayCell:(id)cell 
 		  atRow:(NSInteger)row 
-		 column:(NSInteger)column
-{
+		 column:(NSInteger)column {
+	
 	PathNode *parent = [self parentNodeForColumn:column];
 	
 	// now cycle until we find the correct child folder
@@ -656,16 +611,16 @@ willDisplayCell:(id)cell
 	// set the image for each cell
 	// display an icon in the filename column
 	NSImage *myImage = nil;
-	if (column == 0) {
+	if (column == 0)
 		myImage = [NSImage imageNamed:@"User"];
-	} else {
-		if ([node isExpanded]) {
+	else {
+		if ([node isExpanded])
 			myImage = [[NSWorkspace sharedWorkspace] 
 					   iconForFileType:NSFileTypeForHFSTypeCode(kOpenFolderIcon)];
-		} else {
+		else
 			myImage = [[NSWorkspace sharedWorkspace] 
 					   iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)];
-		}
+		
 		[myImage setScalesWhenResized:YES];
 		[myImage setSize:NSMakeSize(16.0, 16.0)];
 	}
@@ -676,24 +631,21 @@ willDisplayCell:(id)cell
 #pragma mark menu delegate methods
 
 // set the correct text for the friends menu item
-- (void)menuNeedsUpdate:(NSMenu *)menu
-{
+- (void)menuNeedsUpdate:(NSMenu *)menu {
 	// the user to send the message to
 	NSArray *results = [resultsController selectedObjects];
 	Result *result = [results lastObject];
 	BOOL isFriend = [[[result user] isFriend] boolValue];
 	
-	if (isFriend) {
+	if (isFriend)
 		[friendMenuItem setTitle:@"Remove From Friends"];
-	} else {
+	else
 		[friendMenuItem setTitle:@"Add To Friends"];
-	}
 	
-	if ([results count] == 1) {
+	if ([results count] == 1)
 		[downloadMenuItem setTitle:@"Download File"];
-	} else {
+	else
 		[downloadMenuItem setTitle:@"Download Files"];
-	}
 }
 
 @end

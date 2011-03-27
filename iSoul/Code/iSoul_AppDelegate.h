@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
 @class SearchViewController;
 @class MainWindowController;
@@ -18,7 +19,7 @@
 @class MuseekdController;
 @class MuseekdConnectionController;
 
-@interface iSoul_AppDelegate : NSObject 
+@interface iSoul_AppDelegate : NSObject<GrowlApplicationBridgeDelegate>
 {
     NSWindow *window;
     

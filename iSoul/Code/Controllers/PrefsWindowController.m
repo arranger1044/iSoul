@@ -149,7 +149,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 									  attributes:nil 
 										   error:&error];
 		if (!success) {
-			NSLog(@"error creating default save folder %@, error %@", incompletePath, [error description]);
+			NSLog(@"error creating default save folder %@, error %@", defaultPath, [error description]);
 		} else {
 			chosen = [self addMenuItemForPath:defaultPath toMenu:menu];
 		}

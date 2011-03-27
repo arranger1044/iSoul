@@ -93,5 +93,7 @@
 - (void)readShares:(MuseekMessage *)msg;
 - (NSSet *)readFolder:(MuseekMessage *)msg withPath:(NSString *)folderPath;
 - (void)addFileToiTunes:(NSString *)remotePath;
+- (void)growlNotify:(NSString *)title msg:(NSString *)msg;
+- (void)growlNotify:(NSString *)title msg:(NSString *)msg name:(NSString *)name;
 
 @end

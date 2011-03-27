@@ -22,6 +22,7 @@
 #import "iTunes.h"
 #import "MainWindowController.h"
 #import "iSoul_AppDelegate.h"
+#import "NSNumber-Utilities.h"
 
 @implementation MuseekdConnectionController
 
@@ -535,6 +536,20 @@
 	[user setCountry:countryCode];
 }
 
+- (void)growlNotify:(NSString *)title msg:(NSString *)msg  {
+	[self growlNotify:title msg:msg name:title];
+}
+
+- (void)growlNotify:(NSString *)title msg:(NSString *)msg name:(NSString *)name {
+	[GrowlApplicationBridge notifyWithTitle:title
+								description:msg
+						   notificationName:name
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:[NSDate date]];
+}
+
 
 #pragma mark museek reponse methods
 
@@ -892,13 +907,14 @@
 	if ([clearedTransfers containsObject:transfer]) return;
 	
 	// populate the updated settings
-	[transfer setIsUpload:[NSNumber numberWithBool:isUpload]];
-	[transfer setPlaceInQueue:[NSNumber numberWithUnsignedInt:placeInQueue]];
-	[transfer setState:[NSNumber numberWithUnsignedInt:transferState]];
-	[transfer setError:error];
-	[transfer setPosition:[NSNumber numberWithLongLong:position]];
-	[transfer setSize:[NSNumber numberWithLongLong:size]];
-	[transfer setRate:[NSNumber numberWithUnsignedInt:rate]];
+	NSNumber *oldTransferState = transfer.state;
+	transfer.isUpload = [NSNumber numberWithBool:isUpload];
+	transfer.placeInQueue = [NSNumber numberWithUnsignedInt:placeInQueue];
+	transfer.state = [NSNumber numberWithUnsignedInt:transferState];
+	transfer.error = error;
+	transfer.position = [NSNumber numberWithLongLong:position];
+	transfer.size = [NSNumber numberWithLongLong:size];
+	transfer.rate = [NSNumber numberWithUnsignedInt:rate];
 	
 	// send a notification to inform the DownloadView controller to reload the item
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -933,7 +949,7 @@
 		NSNumber *importVideo = [def valueForKey:@"ImportVideo"];
 		
 		// first determine if the file is a music or video file
-		NSString *extension = [[[transfer path] pathExtension] lowercaseString];
+		NSString *extension = [[transfer.path pathExtension] lowercaseString];
 		NSWorkspace *ws = [NSWorkspace sharedWorkspace];
 		BOOL audioFile = [ws filenameExtension:extension isValidForType:@"public.audio"];
 		BOOL videoFile = [ws filenameExtension:extension isValidForType:@"public.video"];		
@@ -944,6 +960,27 @@
 			[NSThread detachNewThreadSelector:@selector(addFileToiTunes:) 
 									 toTarget:self withObject:[transfer path]];
 		}		
+	}
+	
+	// Growl notifications
+	NSString *fileName = [[transfer.path componentsSeparatedByString:@"\\"] lastObject];
+	NSString *transferredSize = [transfer.size humanReadableBase10];
+	
+	if ([oldTransferState compare:transfer.state] != NSOrderedSame) {
+		switch (transferState) {
+			case tfTransferring:
+				if (isUpload)
+					break;
+				[self growlNotify:@"Download started" msg:[NSString stringWithFormat:@"'%@' started downloading", fileName] ];
+				break;
+			case tfFinished:
+				[self growlNotify:@"Download finished" msg:[NSString stringWithFormat:@"'%@' (%@) successfully downloaded", fileName, transferredSize] ];
+				break;
+			case tfLocalError:
+			case tfRemoteError:
+				[self growlNotify:@"Download failed" msg:[NSString stringWithFormat:@"'%@' failed downloading", fileName] ];
+				break;
+		}
 	}
 }
 
@@ -1120,7 +1157,7 @@
 		}
 		
 		
-		debug_NSLog(@"added room %@ with %u users and %u tickers", 
+		debug_NSLog(@"added room %@ with %lu users and %lu tickers", 
 					[room name], [[room users] count], [[room tickers] count]);
 	}	
 }
@@ -1149,6 +1186,10 @@
 	
 	// add the message with room the same as the user
 	[store addMessage:message toRoom:username forUser:username isPrivate:YES];
+	
+	// Growl notification
+	if (![NSApp isActive])
+		[self growlNotify:username msg:message name:@"Received message"];
 }
 
 - (void)roomJoined:(MuseekMessage *)msg
@@ -1278,7 +1319,7 @@
 		NSNumber *maxCount = [[NSUserDefaults standardUserDefaults] 
 							  valueForKey:@"MaxSearchResults"];
 		if ([[ticket files] count] > [maxCount unsignedIntValue]) {
-			debug_NSLog(@"stopping searching for %@, obtained %u results", 
+			debug_NSLog(@"stopping searching for %@, obtained %lu results", 
 						[ticket searchTerm], [[ticket files] count]);
 //            for (Ticket * t in [store find:@"Ticket"withPredicate:[NSPredicate predicateWithFormat:@"searchTerm == %@", 
 //                                 [ticket searchTerm]]])
@@ -1521,7 +1562,7 @@
 		}
 		default:
 		{
-			debug_NSLog(@"received museek message with code 0x%04x", code);
+			debug_NSLog(@"received museek message with code 0x%04lx", code);
 			break;
 		}
 	}

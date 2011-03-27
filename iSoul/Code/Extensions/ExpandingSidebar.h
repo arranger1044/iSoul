@@ -13,7 +13,7 @@
 	ConnectionState connectionState;
 }
 
-@property ConnectionState connectionState;
+@property (nonatomic) ConnectionState connectionState;
 
 - (NSRect)getIconRect;
 

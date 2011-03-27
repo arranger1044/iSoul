@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MuseekReader : NSObject {
+@interface MuseekReader : NSObject<NSStreamDelegate> {
 	id delegate;
 	NSInputStream *stream;
 	NSMutableData *data;
