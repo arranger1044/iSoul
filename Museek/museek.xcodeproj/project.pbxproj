@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -441,7 +441,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "museek" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -554,46 +554,29 @@
 		1DEB923208733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"_GLIBCXX_DEBUG=1",
-					"_GLIBCXX_DEBUG_PEDANTIC=1",
-				);
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"../libXMLFramework/**",
-					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
-				);
-				PRODUCT_NAME = museek;
 			};
 			name = Debug;
 		};
 		1DEB923308733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
-				);
-				PRODUCT_NAME = museek;
 			};
 			name = Release;
 		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -602,17 +585,28 @@
 					"../libevent/**",
 					"../libXMLFramework/**",
 				);
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"../libXMLFramework/**",
+					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				PRODUCT_NAME = museek;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -621,8 +615,14 @@
 					"../libevent/**",
 					"../libXMLFramework/**",
 				);
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
+				);
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				PRODUCT_NAME = museek;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
