@@ -1,41 +1,24 @@
 diff -Naur miniupnpc-20080217/igd_desc_parse.c miniupnpcpatched/igd_desc_parse.c
---- miniupnpc-20080217/igd_desc_parse.c	2006-11-19 23:32:55.000000000 +0100
-+++ miniupnpcpatched/igd_desc_parse.c	2008-02-17 13:17:43.000000000 +0100
-@@ -17,6 +17,7 @@
- 	struct IGDdatas * datas = (struct IGDdatas *)d;
- 	memcpy( datas->cureltname, name, l);
- 	datas->cureltname[l] = '\0';
-+    //printf("element:%s\n",datas->cureltname);
- 	datas->level++;
- }
- 
-@@ -60,6 +61,8 @@
+--- miniupnpc-20080217/igd_desc_parse.c	2010-12-11 19:27:08.000000000 +0100
++++ miniupnpcpatched/igd_desc_parse.c	2010-12-30 01:04:26.000000000 +0100
+@@ -69,6 +69,8 @@ void IGDdata(void * d, const char * data
             datas->level, datas->cureltname, l, data);	*/
  	if( !strcmp(datas->cureltname, "URLBase") )
  		dstmember = datas->urlbase;
 +    if (!strcmp(datas->cureltname, "modelDescription") && datas->level <= 3)
 +        dstmember = datas->modeldescription;
- 	else if(datas->state<=1)
- 	{
- 		if( !strcmp(datas->cureltname, "serviceType") )
-@@ -88,6 +91,9 @@
- 	}
- 	if(dstmember)
- 	{
-+//        printf("----->dstmember: %2d %s : %.*s\n",
-+//           datas->level, datas->cureltname, l, data);	
-+
- 		if(l>=MINIUPNPC_URL_MAXSIZE)
- 			l = MINIUPNPC_URL_MAXSIZE-1;
- 		memcpy(dstmember, data, l);
+ 	else if( !strcmp(datas->cureltname, "serviceType") )
+ 		dstmember = datas->tmp.servicetype;
+ 	else if( !strcmp(datas->cureltname, "controlURL") )
 diff -Naur miniupnpc-20080217/igd_desc_parse.h miniupnpcpatched/igd_desc_parse.h
---- miniupnpc-20080217/igd_desc_parse.h	2007-04-11 17:21:09.000000000 +0200
-+++ miniupnpcpatched/igd_desc_parse.h	2008-02-17 13:17:43.000000000 +0100
-@@ -27,6 +27,7 @@
+--- miniupnpc-20080217/igd_desc_parse.h	2010-04-07 12:03:49.000000000 +0200
++++ miniupnpcpatched/igd_desc_parse.h	2010-12-30 01:04:01.000000000 +0100
+@@ -18,6 +18,7 @@ struct IGDdatas_service {
  	char scpdurl[MINIUPNPC_URL_MAXSIZE];
  	char servicetype[MINIUPNPC_URL_MAXSIZE];
- 	char devicetype[MINIUPNPC_URL_MAXSIZE];
-+    char modeldescription[MINIUPNPC_URL_MAXSIZE];
+ 	/*char devicetype[MINIUPNPC_URL_MAXSIZE];*/
++	char modeldescription[MINIUPNPC_URL_MAXSIZE];
  };
  
- void IGDstartelt(void *, const char *, int);
+ struct IGDdatas {
+ 

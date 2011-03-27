@@ -1,7 +1,7 @@
-/* $Id: upnpcommands.c,v 1.24 2009/04/17 21:21:19 nanard Exp $ */
+/* $Id: upnpcommands.c,v 1.26 2010/06/09 10:59:09 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas Bernard
- * Copyright (c) 2005-2009 Thomas Bernard
+ * Copyright (c) 2005-2010 Thomas Bernard
  * This software is subject to the conditions detailed in the
  * LICENCE file provided in this distribution.
  * */
@@ -19,7 +19,7 @@ my_atoui(const char * s)
 
 /*
  * */
-UNSIGNED_INTEGER
+LIBSPEC UNSIGNED_INTEGER
 UPNP_GetTotalBytesSent(const char * controlURL,
 					const char * servicetype)
 {
@@ -28,7 +28,9 @@ UPNP_GetTotalBytesSent(const char * controlURL,
 	int bufsize = 4096;
 	unsigned int r = 0;
 	char * p;
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalBytesSent", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalBytesSent", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*DisplayNameValueList(buffer, bufsize);*/
 	p = GetValueFromNameValueList(&pdata, "NewTotalBytesSent");
@@ -39,7 +41,7 @@ UPNP_GetTotalBytesSent(const char * controlURL,
 
 /*
  * */
-UNSIGNED_INTEGER
+LIBSPEC UNSIGNED_INTEGER
 UPNP_GetTotalBytesReceived(const char * controlURL,
 						const char * servicetype)
 {
@@ -48,7 +50,9 @@ UPNP_GetTotalBytesReceived(const char * controlURL,
 	int bufsize = 4096;
 	unsigned int r = 0;
 	char * p;
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalBytesReceived", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalBytesReceived", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*DisplayNameValueList(buffer, bufsize);*/
 	p = GetValueFromNameValueList(&pdata, "NewTotalBytesReceived");
@@ -59,7 +63,7 @@ UPNP_GetTotalBytesReceived(const char * controlURL,
 
 /*
  * */
-UNSIGNED_INTEGER
+LIBSPEC UNSIGNED_INTEGER
 UPNP_GetTotalPacketsSent(const char * controlURL,
 						const char * servicetype)
 {
@@ -68,7 +72,9 @@ UPNP_GetTotalPacketsSent(const char * controlURL,
 	int bufsize = 4096;
 	unsigned int r = 0;
 	char * p;
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalPacketsSent", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalPacketsSent", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*DisplayNameValueList(buffer, bufsize);*/
 	p = GetValueFromNameValueList(&pdata, "NewTotalPacketsSent");
@@ -79,7 +85,7 @@ UPNP_GetTotalPacketsSent(const char * controlURL,
 
 /*
  * */
-UNSIGNED_INTEGER
+LIBSPEC UNSIGNED_INTEGER
 UPNP_GetTotalPacketsReceived(const char * controlURL,
 						const char * servicetype)
 {
@@ -88,7 +94,9 @@ UPNP_GetTotalPacketsReceived(const char * controlURL,
 	int bufsize = 4096;
 	unsigned int r = 0;
 	char * p;
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalPacketsReceived", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetTotalPacketsReceived", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*DisplayNameValueList(buffer, bufsize);*/
 	p = GetValueFromNameValueList(&pdata, "NewTotalPacketsReceived");
@@ -99,11 +107,12 @@ UPNP_GetTotalPacketsReceived(const char * controlURL,
 
 /* UPNP_GetStatusInfo() call the corresponding UPNP method
  * returns the current status and uptime */
-int UPNP_GetStatusInfo(const char * controlURL,
-					const char * servicetype,
-					char * status, 
-					unsigned int * uptime,
-					char * lastconnerror)
+LIBSPEC int
+UPNP_GetStatusInfo(const char * controlURL,
+				const char * servicetype,
+				char * status, 
+				unsigned int * uptime,
+				char * lastconnerror)
 {
 	struct NameValueParserData pdata;
 	char buffer[4096];
@@ -116,7 +125,9 @@ int UPNP_GetStatusInfo(const char * controlURL,
 	if(!status && !uptime)
 		return UPNPCOMMAND_INVALID_ARGS;
 
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetStatusInfo", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetStatusInfo", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*DisplayNameValueList(buffer, bufsize);*/
 	up = GetValueFromNameValueList(&pdata, "NewUptime");
@@ -159,9 +170,10 @@ int UPNP_GetStatusInfo(const char * controlURL,
 
 /* UPNP_GetConnectionTypeInfo() call the corresponding UPNP method
  * returns the connection type */
-int UPNP_GetConnectionTypeInfo(const char * controlURL,
-                               const char * servicetype,
-                               char * connectionType)
+LIBSPEC int
+UPNP_GetConnectionTypeInfo(const char * controlURL,
+                           const char * servicetype,
+                           char * connectionType)
 {
 	struct NameValueParserData pdata;
 	char buffer[4096];
@@ -172,8 +184,10 @@ int UPNP_GetConnectionTypeInfo(const char * controlURL,
 	if(!connectionType)
 		return UPNPCOMMAND_INVALID_ARGS;
 
-	simpleUPnPcommand(-1, controlURL, servicetype,
-	                  "GetConnectionTypeInfo", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype,
+	                  "GetConnectionTypeInfo", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	p = GetValueFromNameValueList(&pdata, "NewConnectionType");
 	/*p = GetValueFromNameValueList(&pdata, "NewPossibleConnectionTypes");*/
@@ -198,7 +212,11 @@ int UPNP_GetConnectionTypeInfo(const char * controlURL,
  * One of the values can be null 
  * Note : GetLinkLayerMaxBitRates belongs to WANPPPConnection:1 only 
  * We can use the GetCommonLinkProperties from WANCommonInterfaceConfig:1 */
-int UPNP_GetLinkLayerMaxBitRates(const char * controlURL, const char * servicetype, unsigned int * bitrateDown, unsigned int* bitrateUp)
+LIBSPEC int
+UPNP_GetLinkLayerMaxBitRates(const char * controlURL,
+                             const char * servicetype,
+                             unsigned int * bitrateDown,
+                             unsigned int* bitrateUp)
 {
 	struct NameValueParserData pdata;
 	char buffer[4096];
@@ -212,9 +230,11 @@ int UPNP_GetLinkLayerMaxBitRates(const char * controlURL, const char * servicety
 		return UPNPCOMMAND_INVALID_ARGS;
 
 	/* shouldn't we use GetCommonLinkProperties ? */
-	simpleUPnPcommand(-1, controlURL, servicetype,
-	                  "GetCommonLinkProperties", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype,
+	                  "GetCommonLinkProperties", 0, buffer, &bufsize) < 0) {
 	                  /*"GetLinkLayerMaxBitRates", 0, buffer, &bufsize);*/
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	/*DisplayNameValueList(buffer, bufsize);*/
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*down = GetValueFromNameValueList(&pdata, "NewDownstreamMaxBitRate");*/
@@ -226,16 +246,14 @@ int UPNP_GetLinkLayerMaxBitRates(const char * controlURL, const char * servicety
 	if(down && up)
 		ret = UPNPCOMMAND_SUCCESS;
 
-	if(bitrateDown)
-	{
+	if(bitrateDown) {
 		if(down)
 			sscanf(down,"%u",bitrateDown);
 		else
 			*bitrateDown = 0;
 	}
 
-	if(bitrateUp)
-	{
+	if(bitrateUp) {
 		if(up)
 			sscanf(up,"%u",bitrateUp);
 		else
@@ -262,9 +280,10 @@ int UPNP_GetLinkLayerMaxBitRates(const char * controlURL, const char * servicety
  * 402 Invalid Args - See UPnP Device Architecture section on Control.
  * 501 Action Failed - See UPnP Device Architecture section on Control.
  */
-int UPNP_GetExternalIPAddress(const char * controlURL,
-                              const char * servicetype,
-							  char * extIpAdd)
+LIBSPEC int
+UPNP_GetExternalIPAddress(const char * controlURL,
+                          const char * servicetype,
+                          char * extIpAdd)
 {
 	struct NameValueParserData pdata;
 	char buffer[4096];
@@ -275,7 +294,9 @@ int UPNP_GetExternalIPAddress(const char * controlURL,
 	if(!extIpAdd || !controlURL || !servicetype)
 		return UPNPCOMMAND_INVALID_ARGS;
 
-	simpleUPnPcommand(-1, controlURL, servicetype, "GetExternalIPAddress", 0, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetExternalIPAddress", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	/*DisplayNameValueList(buffer, bufsize);*/
 	ParseNameValue(buffer, bufsize, &pdata);
 	/*printf("external ip = %s\n", GetValueFromNameValueList(&pdata, "NewExternalIPAddress") );*/
@@ -297,7 +318,7 @@ int UPNP_GetExternalIPAddress(const char * controlURL,
 	return ret;
 }
 
-int
+LIBSPEC int
 UPNP_AddPortMapping(const char * controlURL, const char * servicetype,
                     const char * extPort,
 					const char * inPort,
@@ -333,7 +354,10 @@ UPNP_AddPortMapping(const char * controlURL, const char * servicetype,
 	AddPortMappingArgs[6].val = desc?desc:"libminiupnpc";
 	AddPortMappingArgs[7].elt = "NewLeaseDuration";
 	AddPortMappingArgs[7].val = "0";
-	simpleUPnPcommand(-1, controlURL, servicetype, "AddPortMapping", AddPortMappingArgs, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype, "AddPortMapping", AddPortMappingArgs, buffer, &bufsize) < 0) {
+		free(AddPortMappingArgs);
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	/*DisplayNameValueList(buffer, bufsize);*/
 	/*buffer[bufsize] = '\0';*/
 	/*puts(buffer);*/
@@ -351,7 +375,7 @@ UPNP_AddPortMapping(const char * controlURL, const char * servicetype,
 	return ret;
 }
 
-int
+LIBSPEC int
 UPNP_DeletePortMapping(const char * controlURL, const char * servicetype,
                        const char * extPort, const char * proto,
                        const char * remoteHost)
@@ -374,9 +398,12 @@ UPNP_DeletePortMapping(const char * controlURL, const char * servicetype,
 	DeletePortMappingArgs[1].val = extPort;
 	DeletePortMappingArgs[2].elt = "NewProtocol";
 	DeletePortMappingArgs[2].val = proto;
-	simpleUPnPcommand(-1, controlURL, servicetype,
-	                  "DeletePortMapping",
-					  DeletePortMappingArgs, buffer, &bufsize);
+	if(simpleUPnPcommand(-1, controlURL, servicetype,
+	                     "DeletePortMapping",
+	                     DeletePortMappingArgs, buffer, &bufsize) < 0 ) {
+		free(DeletePortMappingArgs);
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	/*DisplayNameValueList(buffer, bufsize);*/
 	ParseNameValue(buffer, bufsize, &pdata);
 	resVal = GetValueFromNameValueList(&pdata, "errorCode");
@@ -391,17 +418,18 @@ UPNP_DeletePortMapping(const char * controlURL, const char * servicetype,
 	return ret;
 }
 
-int UPNP_GetGenericPortMappingEntry(const char * controlURL,
-                                     const char * servicetype,
-									 const char * index,
-									 char * extPort,
-									 char * intClient,
-									 char * intPort,
-									 char * protocol,
-									 char * desc,
-									 char * enabled,
-									 char * rHost,
-									 char * duration)
+LIBSPEC int
+UPNP_GetGenericPortMappingEntry(const char * controlURL,
+                                const char * servicetype,
+							 const char * index,
+							 char * extPort,
+							 char * intClient,
+							 char * intPort,
+							 char * protocol,
+							 char * desc,
+							 char * enabled,
+							 char * rHost,
+							 char * duration)
 {
 	struct NameValueParserData pdata;
 	struct UPNParg * GetPortMappingArgs;
@@ -416,9 +444,12 @@ int UPNP_GetGenericPortMappingEntry(const char * controlURL,
 	GetPortMappingArgs = calloc(2, sizeof(struct UPNParg));
 	GetPortMappingArgs[0].elt = "NewPortMappingIndex";
 	GetPortMappingArgs[0].val = index;
-	simpleUPnPcommand(-1, controlURL, servicetype,
+	if(simpleUPnPcommand(-1, controlURL, servicetype,
 	                  "GetGenericPortMappingEntry",
-					  GetPortMappingArgs, buffer, &bufsize);
+					  GetPortMappingArgs, buffer, &bufsize) < 0) {
+		free(GetPortMappingArgs);
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	ParseNameValue(buffer, bufsize, &pdata);
 	p = GetValueFromNameValueList(&pdata, "NewRemoteHost");
 	if(p && rHost)
@@ -480,14 +511,19 @@ int UPNP_GetGenericPortMappingEntry(const char * controlURL,
 	return r;
 }
 
-int UPNP_GetPortMappingNumberOfEntries(const char * controlURL, const char * servicetype, unsigned int * numEntries)
+LIBSPEC int
+UPNP_GetPortMappingNumberOfEntries(const char * controlURL,
+                                   const char * servicetype,
+                                   unsigned int * numEntries)
 {
  	struct NameValueParserData pdata;
  	char buffer[4096];
  	int bufsize = 4096;
  	char* p;
 	int ret = UPNPCOMMAND_UNKNOWN_ERROR;
- 	simpleUPnPcommand(-1, controlURL, servicetype, "GetPortMappingNumberOfEntries", 0, buffer, &bufsize);
+ 	if(simpleUPnPcommand(-1, controlURL, servicetype, "GetPortMappingNumberOfEntries", 0, buffer, &bufsize) < 0) {
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 #ifdef DEBUG
 	DisplayNameValueList(buffer, bufsize);
 #endif
@@ -513,7 +549,7 @@ int UPNP_GetPortMappingNumberOfEntries(const char * controlURL, const char * ser
 /* UPNP_GetSpecificPortMappingEntry retrieves an existing port mapping
  * the result is returned in the intClient and intPort strings
  * please provide 16 and 6 bytes of data */
-int
+LIBSPEC int
 UPNP_GetSpecificPortMappingEntry(const char * controlURL,
                                  const char * servicetype,
                                  const char * extPort,
@@ -537,10 +573,12 @@ UPNP_GetSpecificPortMappingEntry(const char * controlURL,
 	GetPortMappingArgs[1].val = extPort;
 	GetPortMappingArgs[2].elt = "NewProtocol";
 	GetPortMappingArgs[2].val = proto;
-	simpleUPnPcommand(-1, controlURL, servicetype,
-	                  "GetSpecificPortMappingEntry",
-					  GetPortMappingArgs, buffer, &bufsize);
-	/*fd = simpleUPnPcommand(fd, controlURL, data.servicetype, "GetSpecificPortMappingEntry", AddPortMappingArgs, buffer, &bufsize); */
+	if(simpleUPnPcommand(-1, controlURL, servicetype,
+	                     "GetSpecificPortMappingEntry",
+	                     GetPortMappingArgs, buffer, &bufsize) < 0) {
+		free(GetPortMappingArgs);
+		return UPNPCOMMAND_HTTP_ERROR;
+	}
 	/*DisplayNameValueList(buffer, bufsize);*/
 	ParseNameValue(buffer, bufsize, &pdata);
 

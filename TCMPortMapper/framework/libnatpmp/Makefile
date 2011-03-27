@@ -1,23 +1,31 @@
-# $Id: Makefile,v 1.6 2008/04/28 02:58:33 nanard Exp $
+# $Id: Makefile,v 1.14 2010/11/30 11:20:55 nanard Exp $
 # This Makefile is designed for use with GNU make
 # libnatpmp
-# (c) 2007-2008 Thomas Bernard
+# (c) 2007-2010 Thomas Bernard
 # http://miniupnp.free.fr/libnatpmp.html
 
+OS = $(shell uname -s)
 CC = gcc
 INSTALL = install
 
 # APIVERSION is used in soname
 APIVERSION = 0
+LDFLAGS = --no-undefined
 CFLAGS = -O -fPIC -Wall -DENABLE_STRNATPMPERR
 
 LIBOBJS = natpmp.o getgateway.o
 
 OBJS = $(LIBOBJS) testgetgateway.o natpmpc.o
 
-STATICLIB = natpmp.a
-SHAREDLIB = natpmp.so
-SONAME = $(SHAREDLIB).$(APIVERSION)
+STATICLIB = libnatpmp.a
+ifeq ($(OS), Darwin)
+  SHAREDLIB = libnatpmp.dynlib
+  SONAME = $(basename $(SHAREDLIB)).$(APIVERSION).dylib
+  CFLAGS := -DMACOSX -D_DARWIN_C_SOURCE $(CFLAGS)
+else
+  SHAREDLIB = libnatpmp.so
+  SONAME = $(SHAREDLIB).$(APIVERSION)
+endif
 
 HEADERS = natpmp.h
 
@@ -28,24 +36,33 @@ INSTALLDIRINC = $(INSTALLPREFIX)/include
 INSTALLDIRLIB = $(INSTALLPREFIX)/lib
 INSTALLDIRBIN = $(INSTALLPREFIX)/bin
 
-.PHONY:	all clean depend install cleaninstall
+.PHONY:	all clean depend install cleaninstall installpythonmodule
 
 all: $(STATICLIB) $(SHAREDLIB) $(EXECUTABLES)
 
+pythonmodule: $(STATICLIB) libnatpmpmodule.c setup.py
+	python setup.py build
+	touch $@
+
+installpythonmodule: pythonmodule
+	python setup.py install
+
 clean:
 	$(RM) $(OBJS) $(EXECUTABLES) $(STATICLIB) $(SHAREDLIB)
+	$(RM) pythonmodule
+	$(RM) -r build/ dist/
 
 depend:
 	makedepend -f$(MAKEFILE_LIST) -Y $(OBJS:.o=.c) 2>/dev/null
 
-install:	$(HEADERS) $(STATICLIB) $(SHAREDLIB)
+install:	$(HEADERS) $(STATICLIB) $(SHAREDLIB) natpmpc-shared
 	$(INSTALL) -d $(INSTALLDIRINC)
-	$(INSTALL) --mode=644 $(HEADERS) $(INSTALLDIRINC)
+	$(INSTALL) -m 644 $(HEADERS) $(INSTALLDIRINC)
 	$(INSTALL) -d $(INSTALLDIRLIB)
-	$(INSTALL) --mode=644 $(STATICLIB) $(INSTALLDIRLIB)
-	$(INSTALL) --mode=644 $(SHAREDLIB) $(INSTALLDIRLIB)/$(SONAME)
-	$(INSTALL) --mode=755 natpmpc-shared $(INSTALLDIRBIN)/natpmpc
-	ln --symbolic --force $(SONAME) $(INSTALLDIRLIB)/$(SHAREDLIB)
+	$(INSTALL) -m 644 $(STATICLIB) $(INSTALLDIRLIB)
+	$(INSTALL) -m 644 $(SHAREDLIB) $(INSTALLDIRLIB)/$(SONAME)
+	$(INSTALL) -m 755 natpmpc-shared $(INSTALLDIRBIN)/natpmpc
+	ln -s -f $(SONAME) $(INSTALLDIRLIB)/$(SHAREDLIB)
 
 cleaninstall:
 	$(RM) $(addprefix $(INSTALLDIRINC), $(HEADERS))
@@ -65,11 +82,15 @@ $(STATICLIB):	$(LIBOBJS)
 	$(AR) crs $@ $?
 
 $(SHAREDLIB):	$(LIBOBJS)
+ifeq ($(OS), Darwin)
+	$(CC) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
+else
 	$(CC) -shared -Wl,-soname,$(SONAME) -o $@ $^
+endif
 
 # DO NOT DELETE
 
-natpmp.o: natpmp.h getgateway.h
-getgateway.o: getgateway.h
-testgetgateway.o: getgateway.h
+natpmp.o: natpmp.h getgateway.h declspec.h
+getgateway.o: getgateway.h declspec.h
+testgetgateway.o: getgateway.h declspec.h
 natpmpc.o: natpmp.h

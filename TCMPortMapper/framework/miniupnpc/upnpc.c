@@ -1,13 +1,14 @@
-/* $Id: upnpc.c,v 1.65 2008/10/14 18:05:27 nanard Exp $ */
+/* $Id: upnpc.c,v 1.72 2010/05/29 09:21:12 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas Bernard
- * Copyright (c) 2005-2008 Thomas Bernard
+ * Copyright (c) 2005-2010 Thomas Bernard
  * This software is subject to the conditions detailed in the
- * LICENCE file provided in this distribution.
- * */
+ * LICENCE file provided in this distribution. */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #ifdef WIN32
 #include <winsock2.h>
 #define snprintf _snprintf
@@ -46,23 +47,27 @@ static void DisplayInfos(struct UPNPUrls * urls,
 	char lastconnerr[64];
 	unsigned int uptime;
 	unsigned int brUp, brDown;
+	time_t timenow, timestarted;
 	int r;
 	UPNP_GetConnectionTypeInfo(urls->controlURL,
-	                           data->servicetype,
+	                           data->first.servicetype,
 							   connectionType);
 	if(connectionType[0])
 		printf("Connection Type : %s\n", connectionType);
 	else
 		printf("GetConnectionTypeInfo failed.\n");
-	UPNP_GetStatusInfo(urls->controlURL, data->servicetype,
+	UPNP_GetStatusInfo(urls->controlURL, data->first.servicetype,
 	                   status, &uptime, lastconnerr);
-	printf("Status : %s, uptime=%u, LastConnectionError : %s\n",
+	printf("Status : %s, uptime=%us, LastConnectionError : %s\n",
 	       status, uptime, lastconnerr);
-	UPNP_GetLinkLayerMaxBitRates(urls->controlURL_CIF, data->servicetype_CIF,
+	timenow = time(NULL);
+	timestarted = timenow - uptime;
+	printf("  Time started : %s", ctime(&timestarted));
+	UPNP_GetLinkLayerMaxBitRates(urls->controlURL_CIF, data->CIF.servicetype,
 			&brDown, &brUp);
 	printf("MaxBitRateDown : %u bps   MaxBitRateUp %u bps\n", brDown, brUp);
 	r = UPNP_GetExternalIPAddress(urls->controlURL,
-	                          data->servicetype,
+	                          data->first.servicetype,
 							  externalIPAddress);
 	if(r != UPNPCOMMAND_SUCCESS)
 		printf("GetExternalIPAddress() returned %d\n", r);
@@ -77,10 +82,10 @@ static void GetConnectionStatus(struct UPNPUrls * urls,
 {
 	unsigned int bytessent, bytesreceived, packetsreceived, packetssent;
 	DisplayInfos(urls, data);
-	bytessent = UPNP_GetTotalBytesSent(urls->controlURL_CIF, data->servicetype_CIF);
-	bytesreceived = UPNP_GetTotalBytesReceived(urls->controlURL_CIF, data->servicetype_CIF);
-	packetssent = UPNP_GetTotalPacketsSent(urls->controlURL_CIF, data->servicetype_CIF);
-	packetsreceived = UPNP_GetTotalPacketsReceived(urls->controlURL_CIF, data->servicetype_CIF);
+	bytessent = UPNP_GetTotalBytesSent(urls->controlURL_CIF, data->CIF.servicetype);
+	bytesreceived = UPNP_GetTotalBytesReceived(urls->controlURL_CIF, data->CIF.servicetype);
+	packetssent = UPNP_GetTotalPacketsSent(urls->controlURL_CIF, data->CIF.servicetype);
+	packetsreceived = UPNP_GetTotalPacketsReceived(urls->controlURL_CIF, data->CIF.servicetype);
 	printf("Bytes:   Sent: %8u\tRecv: %8u\n", bytessent, bytesreceived);
 	printf("Packets: Sent: %8u\tRecv: %8u\n", packetssent, packetsreceived);
 }
@@ -107,7 +112,8 @@ static void ListRedirections(struct UPNPUrls * urls,
 		rHost[0] = '\0'; enabled[0] = '\0';
 		duration[0] = '\0'; desc[0] = '\0';
 		extPort[0] = '\0'; intPort[0] = '\0'; intClient[0] = '\0';
-		r = UPNP_GetGenericPortMappingEntry(urls->controlURL, data->servicetype,
+		r = UPNP_GetGenericPortMappingEntry(urls->controlURL,
+		                               data->first.servicetype,
 		                               index,
 		                               extPort, intClient, intPort,
 									   protocol, desc, enabled,
@@ -160,25 +166,26 @@ static void SetRedirectAndTest(struct UPNPUrls * urls,
 	}
 	
 	UPNP_GetExternalIPAddress(urls->controlURL,
-	                          data->servicetype,
+	                          data->first.servicetype,
 							  externalIPAddress);
 	if(externalIPAddress[0])
 		printf("ExternalIPAddress = %s\n", externalIPAddress);
 	else
 		printf("GetExternalIPAddress failed.\n");
 	
-	r = UPNP_AddPortMapping(urls->controlURL, data->servicetype,
+	r = UPNP_AddPortMapping(urls->controlURL, data->first.servicetype,
 	                        eport, iport, iaddr, 0, proto, 0);
 	if(r!=UPNPCOMMAND_SUCCESS)
-		printf("AddPortMapping(%s, %s, %s) failed with code %d\n",
-		       eport, iport, iaddr, r);
+		printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
+		       eport, iport, iaddr, r, strupnperror(r));
 
 	r = UPNP_GetSpecificPortMappingEntry(urls->controlURL,
-	                                 data->servicetype,
+	                                 data->first.servicetype,
     	                             eport, proto,
 									 intClient, intPort);
 	if(r!=UPNPCOMMAND_SUCCESS)
-		printf("GetSpecificPortMappingEntry() failed with code %d\n", r);
+		printf("GetSpecificPortMappingEntry() failed with code %d (%s)\n",
+		       r, strupnperror(r));
 	
 	if(intClient[0]) {
 		printf("InternalIP:Port = %s:%s\n", intClient, intPort);
@@ -205,7 +212,7 @@ RemoveRedirect(struct UPNPUrls * urls,
 		fprintf(stderr, "protocol invalid\n");
 		return;
 	}
-	r = UPNP_DeletePortMapping(urls->controlURL, data->servicetype, eport, proto, 0);
+	r = UPNP_DeletePortMapping(urls->controlURL, data->first.servicetype, eport, proto, 0);
 	printf("UPNP_DeletePortMapping() returned : %d\n", r);
 }
 
@@ -217,11 +224,12 @@ int main(int argc, char ** argv)
 	char ** commandargv = 0;
 	int commandargc = 0;
 	struct UPNPDev * devlist = 0;
-	char lanaddr[16];	/* my ip address on the LAN */
+	char lanaddr[64];	/* my ip address on the LAN */
 	int i;
 	const char * rootdescurl = 0;
 	const char * multicastif = 0;
 	const char * minissdpdpath = 0;
+	int retcode = 0;
 
 #ifdef WIN32
 	WSADATA wsaData;
@@ -232,7 +240,7 @@ int main(int argc, char ** argv)
 		return -1;
 	}
 #endif
-    printf("upnpc : miniupnpc library test client. (c) 2006-2008 Thomas Bernard\n");
+    printf("upnpc : miniupnpc library test client. (c) 2006-2010 Thomas Bernard\n");
     printf("Go to http://miniupnp.free.fr/ or http://miniupnp.tuxfamily.org/\n"
 	       "for more information.\n");
 	/* command line processing */
@@ -266,7 +274,7 @@ int main(int argc, char ** argv)
 	   || (command == 'r' && argc<2))
 	{
 		fprintf(stderr, "Usage :\t%s [options] -a ip port external_port protocol\n\t\tAdd port redirection\n", argv[0]);
-		fprintf(stderr, "       \t%s [options] -d external_port protocol\n\t\tDelete port redirection\n", argv[0]);
+		fprintf(stderr, "       \t%s [options] -d external_port protocol [port2 protocol2] [...]\n\t\tDelete port redirection\n", argv[0]);
 		fprintf(stderr, "       \t%s [options] -s\n\t\tGet Connection status\n", argv[0]);
 		fprintf(stderr, "       \t%s [options] -l\n\t\tList redirections\n", argv[0]);
 		fprintf(stderr, "       \t%s [options] -r port1 protocol1 [port2 protocol2] [...]\n\t\tAdd all redirections to the current host\n", argv[0]);
@@ -336,7 +344,10 @@ int main(int argc, char ** argv)
 				                   commandargv[2], commandargv[3]);
 				break;
 			case 'd':
-				RemoveRedirect(&urls, &data, commandargv[0], commandargv[1]);
+				for(i=0; i<commandargc; i+=2)
+				{
+					RemoveRedirect(&urls, &data, commandargv[i], commandargv[i+1]);
+				}
 				break;
 			case 's':
 				GetConnectionStatus(&urls, &data);
@@ -352,6 +363,7 @@ int main(int argc, char ** argv)
 				break;
 			default:
 				fprintf(stderr, "Unknown switch -%c\n", command);
+				retcode = 1;
 			}
 
 			FreeUPNPUrls(&urls);
@@ -359,16 +371,15 @@ int main(int argc, char ** argv)
 		else
 		{
 			fprintf(stderr, "No valid UPNP Internet Gateway Device found.\n");
+			retcode = 1;
 		}
 		freeUPNPDevlist(devlist); devlist = 0;
 	}
 	else
 	{
 		fprintf(stderr, "No IGD UPnP Device found on the network !\n");
+		retcode = 1;
 	}
-
-	/*puts("************* HOP ***************");*/
-
-	return 0;
+	return retcode;
 }
 

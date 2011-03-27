@@ -1,53 +1,103 @@
-# $Id: Makefile,v 1.48 2008/12/18 17:46:13 nanard Exp $
+# $Id: Makefile,v 1.68 2010/12/21 16:13:14 nanard Exp $
 # MiniUPnP Project
 # http://miniupnp.free.fr/
-# (c) 2005-2007 Thomas Bernard
+# (c) 2005-2010 Thomas Bernard
 # to install use :
 # $ PREFIX=/tmp/dummylocation make install
 # or
 # $ INSTALLPREFIX=/usr/local make install
 # or 
 # make install (will go to /usr/bin, /usr/lib, etc...)
+OS = $(shell uname -s)
 CC ?= gcc
 #AR = gar
-#CFLAGS = -fPIC -O -Wall -g -DDEBUG
-CFLAGS ?= -fPIC -O -Wall -DNDEBUG
+#CFLAGS = -O -Wall -g -DDEBUG
+CFLAGS ?= -O -Wall -DNDEBUG -DMINIUPNPC_SET_SOCKET_TIMEOUT
+# -DNO_GETADDRINFO
 INSTALL = install
+SH = /bin/sh
+JAVA = java
+# see http://code.google.com/p/jnaerator/
+JNAERATOR = jnaerator-0.9.3.jar
 #following libs are needed on Solaris
 #LDLIBS=-lsocket -lnsl -lresolv
 
 # APIVERSION is used to build SONAME
-APIVERSION = 4
+APIVERSION = 5
 
 SRCS = igd_desc_parse.c miniupnpc.c minixml.c minisoap.c miniwget.c \
        upnpc.c upnpcommands.c upnpreplyparse.c testminixml.c \
 	   minixmlvalid.c testupnpreplyparse.c minissdpc.c \
-	   upnperrors.c testigddescparse.c
+	   upnperrors.c testigddescparse.c testminiwget.c \
+       connecthostport.c
 
 LIBOBJS = miniwget.o minixml.o igd_desc_parse.o minisoap.o \
-          miniupnpc.o upnpreplyparse.o upnpcommands.o minissdpc.o \
-		  upnperrors.o
+          miniupnpc.o upnpreplyparse.o upnpcommands.o upnperrors.o \
+          connecthostport.o
+
+ifneq ($(OS), AmigaOS)
+CFLAGS := -fPIC $(CFLAGS)
+LIBOBJS := $(LIBOBJS) minissdpc.o
+endif
 
 OBJS = $(patsubst %.c,%.o,$(SRCS))
 
 # HEADERS to install
 HEADERS = miniupnpc.h miniwget.h upnpcommands.h igd_desc_parse.h \
           upnpreplyparse.h upnperrors.h declspec.h
+# library names
 LIBRARY = libminiupnpc.a
-SHAREDLIBRARY = libminiupnpc.so
-SONAME = $(SHAREDLIBRARY).$(APIVERSION)
-EXECUTABLES = upnpc-static upnpc-shared \
-              testminixml minixmlvalid testupnpreplyparse \
-			  testigddescparse
+ifeq ($(OS), Darwin)
+  SHAREDLIBRARY = libminiupnpc.dylib
+  SONAME = $(basename $(SHAREDLIBRARY)).$(APIVERSION).dylib
+  CFLAGS := -DMACOSX -D_DARWIN_C_SOURCE $(CFLAGS)
+else 
+  SHAREDLIBRARY = libminiupnpc.so
+  SONAME = $(SHAREDLIBRARY).$(APIVERSION)
+endif
 
+EXECUTABLES = upnpc-static
+EXECUTABLES_ADDTESTS = testminixml minixmlvalid testupnpreplyparse \
+			  testigddescparse testminiwget
+
+TESTMINIXMLOBJS = minixml.o igd_desc_parse.o testminixml.o
+
+TESTMINIWGETOBJS = miniwget.o testminiwget.o miniupnpc.o minisoap.o \
+                   upnpcommands.o upnpreplyparse.o minixml.o \
+                   igd_desc_parse.o connecthostport.o
+
+TESTUPNPREPLYPARSE = testupnpreplyparse.o minixml.o upnpreplyparse.o
+
+TESTIGDDESCPARSE = testigddescparse.o igd_desc_parse.o minixml.o \
+                   miniupnpc.o miniwget.o upnpcommands.o upnpreplyparse.o \
+                   minisoap.o connecthostport.o
+
+ifneq ($(OS), AmigaOS)
+EXECUTABLES := $(EXECUTABLES) upnpc-shared
+TESTMINIWGETOBJS := $(TESTMINIWGETOBJS) minissdpc.o
+TESTIGDDESCPARSE := $(TESTIGDDESCPARSE) minissdpc.o
+endif
+
+# install directories
 INSTALLPREFIX ?= $(PREFIX)/usr
 INSTALLDIRINC = $(INSTALLPREFIX)/include/miniupnpc
 INSTALLDIRLIB = $(INSTALLPREFIX)/lib
 INSTALLDIRBIN = $(INSTALLPREFIX)/bin
 
-.PHONY:	install clean depend all installpythonmodule
+FILESTOINSTALL = $(LIBRARY) $(EXECUTABLES)
+ifneq ($(OS), AmigaOS)
+FILESTOINSTALL := $(FILESTOINSTALL) $(SHAREDLIBRARY)
+endif
 
-all:	validateminixml $(LIBRARY) $(EXECUTABLES)
+
+.PHONY:	install clean depend all check everything installpythonmodule \
+	validateminixml
+
+all:	$(LIBRARY) $(EXECUTABLES)
+
+check:	validateminixml
+
+everything:	all $(EXECUTABLES_ADDTESTS)
 
 pythonmodule:	$(LIBRARY) miniupnpcmodule.c setup.py
 	python setup.py build
@@ -62,21 +112,28 @@ validateminixml:	minixmlvalid
 	touch $@
 
 clean:
-		$(RM) $(LIBRARY) $(SHAREDLIBRARY) $(EXECUTABLES) $(OBJS)
-		# clean python stuff
-		$(RM) pythonmodule validateminixml
-		$(RM) -r build/ dist/
-		#python setup.py clean
+	$(RM) $(LIBRARY) $(SHAREDLIBRARY) $(EXECUTABLES) $(OBJS) miniupnpcstrings.h
+	# clean python stuff
+	$(RM) pythonmodule validateminixml
+	$(RM) -r build/ dist/
+	#python setup.py clean
 
-install:	$(LIBRARY) $(SHAREDLIBRARY)
+install:	$(FILESTOINSTALL)
 	$(INSTALL) -d $(INSTALLDIRINC)
 	$(INSTALL) -m 644 $(HEADERS) $(INSTALLDIRINC)
 	$(INSTALL) -d $(INSTALLDIRLIB)
 	$(INSTALL) -m 644 $(LIBRARY) $(INSTALLDIRLIB)
+ifneq ($(OS), AmigaOS)
 	$(INSTALL) -m 644 $(SHAREDLIBRARY) $(INSTALLDIRLIB)/$(SONAME)
-	$(INSTALL) -d $(INSTALLDIRBIN)
-	$(INSTALL) -m 755 upnpc-shared $(INSTALLDIRBIN)/upnpc
 	ln -fs $(SONAME) $(INSTALLDIRLIB)/$(SHAREDLIBRARY)
+endif
+	$(INSTALL) -d $(INSTALLDIRBIN)
+ifeq ($(OS), AmigaOS)
+	$(INSTALL) -m 755 upnpc-static $(INSTALLDIRBIN)/upnpc
+else
+	$(INSTALL) -m 755 upnpc-shared $(INSTALLDIRBIN)/upnpc
+endif
+	$(INSTALL) -m 755 external-ip.sh $(INSTALLDIRBIN)/external-ip
 
 cleaninstall:
 	$(RM) -r $(INSTALLDIRINC)
@@ -90,30 +147,44 @@ $(LIBRARY):	$(LIBOBJS)
 	$(AR) crs $@ $?
 
 $(SHAREDLIBRARY):	$(LIBOBJS)
-	$(CC) -shared -Wl,-soname,$(SONAME) -o $@ $^
+ifeq ($(OS), Darwin)
+	$(CC) -dynamiclib $(LDFLAGS) -Wl,-install_name,$(SONAME) -o $@ $^ 
+else
+	$(CC) -shared $(LDFLAGS) -Wl,-soname,$(SONAME) -o $@ $^
+endif
 
-upnpc-static:	upnpc.o $(LIBRARY)
-	$(CC) -o $@ $^
+upnpc-static:	upnpc.o $(LIBRARY) $(LDLIBS)
+	$(CC) $(LDFLAGS) -o $@ $^
 
-upnpc-shared:	upnpc.o $(SHAREDLIBRARY)
-	$(CC) -o $@ $^
+upnpc-shared:	upnpc.o $(SHAREDLIBRARY) $(LDLIBS)
+	$(CC) $(LDFLAGS) -o $@ $^
 
-testminixml:	minixml.o igd_desc_parse.o testminixml.o
+testminixml:	$(TESTMINIXMLOBJS)
+
+testminiwget:	$(TESTMINIWGETOBJS)
 
 minixmlvalid:	minixml.o minixmlvalid.o
 
-testupnpreplyparse:	testupnpreplyparse.o minixml.o upnpreplyparse.o
+testupnpreplyparse:	$(TESTUPNPREPLYPARSE)
 
-testigddescparse:	testigddescparse.o igd_desc_parse.o minixml.o
+testigddescparse:	$(TESTIGDDESCPARSE)
+
+miniupnpcstrings.h:	miniupnpcstrings.h.in updateminiupnpcstrings.sh
+	$(SH) updateminiupnpcstrings.sh
+
+jar:	$(SHAREDLIBRARY) 
+	$(JAVA) -jar $(JNAERATOR) -library miniupnpc miniupnpc.h declspec.h upnpcommands.h upnpreplyparse.h igd_desc_parse.h miniwget.h upnperrors.h $(SHAREDLIBRARY) -package fr.free.miniupnp -o . -jar java/miniupnpc_$(OS).jar -v
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 
 igd_desc_parse.o: igd_desc_parse.h
 miniupnpc.o: miniupnpc.h declspec.h igd_desc_parse.h minissdpc.h miniwget.h
 miniupnpc.o: minisoap.h minixml.h upnpcommands.h upnpreplyparse.h
+miniupnpc.o: connecthostport.h
 minixml.o: minixml.h
 minisoap.o: minisoap.h miniupnpcstrings.h
 miniwget.o: miniupnpc.h declspec.h igd_desc_parse.h miniupnpcstrings.h
+miniwget.o: miniwget.h connecthostport.h
 upnpc.o: miniwget.h declspec.h miniupnpc.h igd_desc_parse.h upnpcommands.h
 upnpc.o: upnpreplyparse.h upnperrors.h
 upnpcommands.o: upnpcommands.h upnpreplyparse.h declspec.h miniupnpc.h
@@ -124,4 +195,6 @@ minixmlvalid.o: minixml.h
 testupnpreplyparse.o: upnpreplyparse.h
 minissdpc.o: minissdpc.h miniupnpc.h declspec.h igd_desc_parse.h codelength.h
 upnperrors.o: upnperrors.h declspec.h upnpcommands.h upnpreplyparse.h
-testigddescparse.o: igd_desc_parse.h minixml.h
+testigddescparse.o: igd_desc_parse.h minixml.h miniupnpc.h declspec.h
+testminiwget.o: miniwget.h declspec.h
+connecthostport.o: connecthostport.h

@@ -1,6 +1,6 @@
-/* $Id: getgateway.c,v 1.12 2008/10/06 10:04:16 nanard Exp $ */
+/* $Id: getgateway.c,v 1.19 2009/12/19 15:20:45 nanard Exp $ */
 /* libnatpmp
- * Copyright (c) 2007-2008, Thomas BERNARD <miniupnp@free.fr>
+ * Copyright (c) 2007-2009, Thomas BERNARD <miniupnp@free.fr>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -18,13 +18,17 @@
 #ifndef WIN32
 #include <netinet/in.h>
 #endif
+#if !defined(_MSC_VER)
 #include <sys/param.h>
+#endif
 /* There is no portable method to get the default route gateway.
- * So below are three differents functions implementing this.
+ * So below are four (or five ?) differents functions implementing this.
  * Parsing /proc/net/route is for linux.
  * sysctl is the way to access such informations on BSD systems.
  * Many systems should provide route information through raw PF_ROUTE
- * sockets. */
+ * sockets.
+ * In MS Windows, default gateway is found by looking into the registry
+ * or by using GetBestRoute(). */
 #ifdef __linux__
 #define USE_PROC_NET_ROUTE
 #undef USE_SOCKET_ROUTE
@@ -53,8 +57,28 @@
 #undef USE_PROC_NET_ROUTE
 #undef USE_SOCKET_ROUTE
 #undef USE_SYSCTL_NET_ROUTE
-#define USE_WIN32_CODE
+//#define USE_WIN32_CODE
+#define USE_WIN32_CODE_2
 #endif
+
+#ifdef __CYGWIN__
+#undef USE_PROC_NET_ROUTE
+#undef USE_SOCKET_ROUTE
+#undef USE_SYSCTL_NET_ROUTE
+#define USE_WIN32_CODE
+#include <stdarg.h>
+#include <w32api/windef.h>
+#include <w32api/winbase.h>
+#include <w32api/winreg.h>
+#endif 
+
+#ifdef __HAIKU__
+#include <stdlib.h>
+#include <unistd.h>
+#include <net/if.h>
+#include <sys/sockio.h>
+#define USE_HAIKU_CODE
+#endif 
 
 #ifdef USE_SYSCTL_NET_ROUTE
 #include <stdlib.h>
@@ -69,12 +93,19 @@
 #include <net/if.h>
 #include <net/route.h>
 #endif
-#ifdef WIN32
+
+#ifdef USE_WIN32_CODE
 #include <unknwn.h>
 #include <winreg.h>
 #define MAX_KEY_LENGTH 255
 #define MAX_VALUE_LENGTH 16383
 #endif
+
+#ifdef USE_WIN32_CODE_2
+#include <windows.h>
+#include <iphlpapi.h>
+#endif
+
 #include "getgateway.h"
 
 #ifndef WIN32
@@ -83,9 +114,20 @@
 #endif
 
 #ifdef USE_PROC_NET_ROUTE
+/*
+ parse /proc/net/route which is as follow :
+
+Iface   Destination     Gateway         Flags   RefCnt  Use     Metric  Mask            MTU     Window  IRTT           
+wlan0   0001A8C0        00000000        0001    0       0       0       00FFFFFF        0       0       0              
+eth0    0000FEA9        00000000        0001    0       0       0       0000FFFF        0       0       0              
+wlan0   00000000        0101A8C0        0003    0       0       0       00000000        0       0       0              
+eth0    00000000        00000000        0001    0       0       1000    00000000        0       0       0              
+
+ One header line, and then one line by route by route table entry.
+*/
 int getdefaultgateway(in_addr_t * addr)
 {
-	long d, g;
+	unsigned long d, g;
 	char buf[256];
 	int line = 0;
 	FILE * f;
@@ -94,14 +136,15 @@ int getdefaultgateway(in_addr_t * addr)
 	if(!f)
 		return FAILED;
 	while(fgets(buf, sizeof(buf), f)) {
-		if(line > 0) {
+		if(line > 0) {	/* skip the first line */
 			p = buf;
+			/* skip the interface name */
 			while(*p && !isspace(*p))
 				p++;
 			while(*p && isspace(*p))
 				p++;
 			if(sscanf(p, "%lx%lx", &d, &g)==2) {
-				if(d == 0) { /* default */
+				if(d == 0 && g != 0) { /* default */
 					*addr = g;
 					fclose(f);
 					return SUCCESS;
@@ -261,7 +304,7 @@ int getdefaultgateway(in_addr_t *addr)
 #endif /* #ifdef USE_SOCKET_ROUTE */
 
 #ifdef USE_WIN32_CODE
-int getdefaultgateway(in_addr_t * addr)
+LIBSPEC int getdefaultgateway(in_addr_t * addr)
 {
 	HKEY networkCardsKey;
 	HKEY networkCardKey;
@@ -279,9 +322,21 @@ int getdefaultgateway(in_addr_t * addr)
 	DWORD gatewayValueType = REG_MULTI_SZ;
 	int done = 0;
 	
-	char networkCardsPath[] = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards";
-	char interfacesPath[] = "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces";
-	
+	//const char * networkCardsPath = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards";
+	//const char * interfacesPath = "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces";
+#ifdef UNICODE
+	LPCTSTR networkCardsPath = L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards";
+	LPCTSTR interfacesPath = L"SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces";
+#define STR_SERVICENAME	 L"ServiceName"
+#define STR_DHCPDEFAULTGATEWAY L"DhcpDefaultGateway"
+#define STR_DEFAULTGATEWAY	L"DefaultGateway"
+#else
+	LPCTSTR networkCardsPath = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards";
+	LPCTSTR interfacesPath = "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces";
+#define STR_SERVICENAME	 "ServiceName"
+#define STR_DHCPDEFAULTGATEWAY "DhcpDefaultGateway"
+#define STR_DEFAULTGATEWAY	"DefaultGateway"
+#endif
 	// The windows registry lists its primary network devices in the following location:
 	// HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkCards
 	// 
@@ -361,26 +416,39 @@ int getdefaultgateway(in_addr_t * addr)
 			{
 				keyValueLength = MAX_VALUE_LENGTH;
 				if(ERROR_SUCCESS == RegQueryValueEx(networkCardKey,   // Open registry key
-				                                    "ServiceName",    // Name of key to query
+				                                    STR_SERVICENAME,    // Name of key to query
 				                                    NULL,             // Reserved - must be NULL
 				                                    &keyValueType,    // Receives value type
-				                                    keyValue,         // Receives value
+				                                    (LPBYTE)keyValue, // Receives value
 				                                    &keyValueLength)) // Receives value length in bytes
 				{
-					//printf("keyValue: %s\n", keyValue);
-					
+//					printf("keyValue: %s\n", keyValue);				
 					if(RegOpenKeyEx(interfacesKey, keyValue, 0, KEY_READ, &interfaceKey) == ERROR_SUCCESS)
 					{
 						gatewayValueLength = MAX_VALUE_LENGTH;
 						if(ERROR_SUCCESS == RegQueryValueEx(interfaceKey,         // Open registry key
-						                                    "DhcpDefaultGateway", // Name of key to query
+						                                    STR_DHCPDEFAULTGATEWAY, // Name of key to query
 						                                    NULL,                 // Reserved - must be NULL
 						                                    &gatewayValueType,    // Receives value type
-						                                    gatewayValue,         // Receives value
+						                                    (LPBYTE)gatewayValue, // Receives value
 						                                    &gatewayValueLength)) // Receives value length in bytes
 						{
 							// Check to make sure it's a string
-							if(gatewayValueType == REG_MULTI_SZ || gatewayValueType == REG_SZ)
+							if((gatewayValueType == REG_MULTI_SZ || gatewayValueType == REG_SZ) && (gatewayValueLength > 1))
+							{
+								//printf("gatewayValue: %s\n", gatewayValue);
+								done = 1;
+							}
+						}
+						else if(ERROR_SUCCESS == RegQueryValueEx(interfaceKey,         // Open registry key
+						                                    STR_DEFAULTGATEWAY, // Name of key to query
+						                                    NULL,                 // Reserved - must be NULL
+						                                    &gatewayValueType,    // Receives value type
+						                                    (LPBYTE)gatewayValue,// Receives value
+						                                    &gatewayValueLength)) // Receives value length in bytes
+						{
+							// Check to make sure it's a string
+							if((gatewayValueType == REG_MULTI_SZ || gatewayValueType == REG_SZ) && (gatewayValueLength > 1))
 							{
 								//printf("gatewayValue: %s\n", gatewayValue);
 								done = 1;
@@ -399,11 +467,88 @@ int getdefaultgateway(in_addr_t * addr)
 	
 	if(done)
 	{
+#if UNICODE
+		char tmp[32];
+		for(i = 0; i < 32; i++) {
+			tmp[i] = (char)gatewayValue[i];
+			if(!tmp[i])
+				break;
+		}
+		tmp[31] = '\0';
+		*addr = inet_addr(tmp);
+#else
 		*addr = inet_addr(gatewayValue);
+#endif
 		return 0;
 	}
 	
 	return -1;
 }
 #endif /* #ifdef USE_WIN32_CODE */
+
+#ifdef USE_WIN32_CODE_2
+int getdefaultgateway(in_addr_t *addr)
+{
+	MIB_IPFORWARDROW ip_forward;
+	memset(&ip_forward, 0, sizeof(ip_forward));
+	if(GetBestRoute(inet_addr("0.0.0.0"), 0, &ip_forward) != NO_ERROR)
+		return -1;
+	*addr = ip_forward.dwForwardNextHop;
+	return 0;
+}
+#endif /* #ifdef USE_WIN32_CODE_2 */
+
+#ifdef USE_HAIKU_CODE
+int getdefaultgateway(in_addr_t *addr)
+{
+    int fd, ret = -1;
+    struct ifconf config;
+    void *buffer = NULL;
+    struct ifreq *interface;
+
+    if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+        return -1;
+    }
+    if (ioctl(fd, SIOCGRTSIZE, &config, sizeof(config)) != 0) {
+        goto fail;
+    }
+    if (config.ifc_value < 1) {
+        goto fail; /* No routes */
+    }
+    if ((buffer = malloc(config.ifc_value)) == NULL) {
+        goto fail;
+    }
+    config.ifc_len = config.ifc_value;
+    config.ifc_buf = buffer;
+    if (ioctl(fd, SIOCGRTTABLE, &config, sizeof(config)) != 0) {
+        goto fail;
+    }
+    for (interface = buffer;
+      (uint8_t *)interface < (uint8_t *)buffer + config.ifc_len; ) {
+        struct route_entry route = interface->ifr_route;
+        int intfSize;
+        if (route.flags & (RTF_GATEWAY | RTF_DEFAULT)) {
+            *addr = ((struct sockaddr_in *)route.gateway)->sin_addr.s_addr;
+            ret = 0;
+            break;
+        }
+        intfSize = sizeof(route) + IF_NAMESIZE;
+        if (route.destination != NULL) {
+            intfSize += route.destination->sa_len;
+        }
+        if (route.mask != NULL) {
+            intfSize += route.mask->sa_len;
+        }
+        if (route.gateway != NULL) {
+            intfSize += route.gateway->sa_len;
+        }
+        interface = (struct ifreq *)((uint8_t *)interface + intfSize);
+    }
+fail:
+    free(buffer);
+    close(fd);
+    return ret;
+}
+#endif /* #ifdef USE_HAIKU_CODE */
+
 

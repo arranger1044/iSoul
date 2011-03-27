@@ -1,8 +1,8 @@
-/* $Id: testigddescparse.c,v 1.1 2008/04/23 11:53:45 nanard Exp $ */
+/* $Id: testigddescparse.c,v 1.2 2009/12/03 13:50:06 nanard Exp $ */
 /* Project : miniupnp
  * http://miniupnp.free.fr/
  * Author : Thomas Bernard
- * Copyright (c) 2008 Thomas Bernard
+ * Copyright (c) 2008-2009 Thomas Bernard
  * This software is subject to the conditions detailed in the
  * LICENCE file provided in this distribution.
  * */
@@ -11,11 +11,13 @@
 #include <string.h>
 #include "igd_desc_parse.h"
 #include "minixml.h"
+#include "miniupnpc.h"
 
 int test_igd_desc_parse(char * buffer, int len)
 {
 	struct IGDdatas igd;
 	struct xmlparser parser;
+	struct UPNPUrls urls;
 	memset(&igd, 0, sizeof(struct IGDdatas));
 	memset(&parser, 0, sizeof(struct xmlparser));
 	parser.xmlstart = buffer;
@@ -26,6 +28,11 @@ int test_igd_desc_parse(char * buffer, int len)
 	parser.datafunc = IGDdata; 
 	parsexml(&parser);
 	printIGD(&igd);
+	GetUPNPUrls(&urls, &igd, "http://fake/desc/url/file.xml");
+	printf("ipcondescURL='%s'\n", urls.ipcondescURL);
+	printf("controlURL='%s'\n", urls.controlURL);
+	printf("controlURL_CIF='%s'\n", urls.controlURL_CIF);
+	FreeUPNPUrls(&urls);
 	return 0;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: natpmpc.c,v 1.6 2008/07/02 22:33:06 nanard Exp $ */
+/* $Id: natpmpc.c,v 1.7 2009/12/19 12:00:00 nanard Exp $ */
 /* libnatpmp
  * Copyright (c) 2007-2008, Thomas BERNARD <miniupnp@free.fr>
  * http://miniupnp.free.fr/libnatpmp.html
@@ -17,7 +17,15 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+#if defined(_MSC_VER)
+#if _MSC_VER >= 1400
+#define strcasecmp _stricmp
+#else
+#define strcasecmp stricmp
+#endif
+#else
 #include <unistd.h>
+#endif
 #ifdef WIN32
 #include <winsock2.h>
 #else

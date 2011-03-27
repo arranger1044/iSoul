@@ -13,6 +13,7 @@
 #import <netinet/if_ether.h>
 #import <net/if_dl.h>
 #import <openssl/md5.h>
+#include <err.h>
 
 // update port mappings all 30 minutes as a default
 #define UPNP_REFRESH_INTERVAL (30.*60.)
@@ -217,8 +218,13 @@ enum {
 - (BOOL)networkReachable {
     Boolean success; 
     BOOL okay; 
-    SCNetworkConnectionFlags status;
-    success = SCNetworkCheckReachabilityByName("www.apple.com", &status); 
+	SCNetworkReachabilityRef target;
+    SCNetworkConnectionFlags status = 0;
+	
+	target = SCNetworkReachabilityCreateWithName(NULL, "www.apple.com");
+	success = SCNetworkReachabilityGetFlags(target, &status);
+	CFRelease(target);
+	
     okay = success && (status & kSCNetworkFlagsReachable) && !(status & kSCNetworkFlagsConnectionRequired); 
     
     return okay;

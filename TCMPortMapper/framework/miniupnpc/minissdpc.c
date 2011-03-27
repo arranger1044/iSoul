@@ -1,7 +1,7 @@
-/* $Id: minissdpc.c,v 1.7 2008/12/18 17:45:48 nanard Exp $ */
+/* $Id: minissdpc.c,v 1.14 2010/11/25 09:57:25 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas BERNARD
- * copyright (c) 2005-2008 Thomas Bernard
+ * copyright (c) 2005-2009 Thomas Bernard
  * This software is subjet to the conditions detailed in the
  * provided LICENCE file. */
 /*#include <syslog.h>*/
@@ -10,10 +10,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#if defined(WIN32) || defined(__amigaos__) || defined(__amigaos4__)
 #ifdef WIN32
 #include <winsock2.h>
-#include <Ws2tcpip.h>
+#include <ws2tcpip.h>
 #include <io.h>
+#include <winsock.h>
+#include <stdint.h>
+#endif
+#if defined(__amigaos__) || defined(__amigaos4__)
+#include <sys/socket.h>
+#endif
+#if defined(__amigaos__)
+#define uint16_t unsigned short
+#endif
+/* Hack */
+#define UNIX_PATH_LEN   108
+struct sockaddr_un {
+  uint16_t sun_family;
+  char     sun_path[UNIX_PATH_LEN];
+};
 #else
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -47,6 +63,7 @@ getDevicesFromMiniSSDPD(const char * devtype, const char * socketpath)
 	}
 	addr.sun_family = AF_UNIX;
 	strncpy(addr.sun_path, socketpath, sizeof(addr.sun_path));
+	/* TODO : check if we need to handle the EINTR */
 	if(connect(s, (struct sockaddr *)&addr, sizeof(struct sockaddr_un)) < 0)
 	{
 		/*syslog(LOG_WARNING, "connect(\"%s\"): %m", socketpath);*/
@@ -57,6 +74,12 @@ getDevicesFromMiniSSDPD(const char * devtype, const char * socketpath)
 	buffer[0] = 1; /* request type 1 : request devices/services by type */
 	p = buffer + 1;
 	l = stsize;	CODELENGTH(l, p);
+	if(p + stsize > buffer + sizeof(buffer))
+	{
+		/* devtype is too long ! */
+		close(s);
+		return NULL;
+	}
 	memcpy(p, devtype, stsize);
 	p += stsize;
 	if(write(s, buffer, p - buffer) < 0)

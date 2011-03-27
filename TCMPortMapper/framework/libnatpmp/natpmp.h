@@ -1,4 +1,4 @@
-/* $Id: natpmp.h,v 1.10 2008/07/02 22:33:06 nanard Exp $ */
+/* $Id: natpmp.h,v 1.13 2010/04/12 16:15:09 nanard Exp $ */
 /* libnatpmp
  * Copyright (c) 2007-2008, Thomas BERNARD <miniupnp@free.fr>
  * http://miniupnp.free.fr/libnatpmp.html
@@ -21,15 +21,23 @@
 #define NATPMP_PORT (5351)
 
 #include <time.h>
+#if !defined(_MSC_VER)
 #include <sys/time.h>
+#endif
 #ifdef WIN32
 #include <winsock2.h>
+#if !defined(_MSC_VER)
 #include <stdint.h>
-#define in_addr_t uint32_t
 #else
+typedef unsigned long uint32_t;
+typedef unsigned short uint16_t;
+#endif
+#define in_addr_t uint32_t
+#include "declspec.h"
+#else
+#define LIBSPEC
 #include <netinet/in.h>
 #endif
-#include "declspec.h"
 
 typedef struct {
 	int s;	/* socket */
@@ -107,6 +115,10 @@ typedef struct {
 /* NATPMP_TRYAGAIN : no data available for the moment. try again later */
 #define NATPMP_TRYAGAIN (-100)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* initnatpmp()
  * initialize a natpmp_t object
  * Return values :
@@ -181,6 +193,10 @@ LIBSPEC int readnatpmpresponseorretry(natpmp_t * p, natpmpresp_t * response);
 
 #ifdef ENABLE_STRNATPMPERR
 LIBSPEC const char * strnatpmperr(int t);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif

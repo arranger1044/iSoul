@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		318011AC0D4DEE9500BE3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97325FDCFA39411CA2CEA /* Foundation.framework */; };
 		3180159D0D4E1B9200BE3B28 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3180154D0D4E08D900BE3B28 /* SystemConfiguration.framework */; };
+		DDD8110F12CC00BE00E750E5 /* connecthostport.c in Sources */ = {isa = PBXBuildFile; fileRef = DDD8110D12CC00BE00E750E5 /* connecthostport.c */; };
+		DDD8111012CC00BE00E750E5 /* connecthostport.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD8110E12CC00BE00E750E5 /* connecthostport.h */; };
+		DDD8115F12CC0CCC00E750E5 /* wingettimeofday.h in Headers */ = {isa = PBXBuildFile; fileRef = DDD8115E12CC0CCC00E750E5 /* wingettimeofday.h */; };
 		F2301B5B0D685C2700728699 /* igd_desc_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = F2301B040D685C1B00728699 /* igd_desc_parse.c */; };
 		F2301B5C0D685C2A00728699 /* minisoap.c in Sources */ = {isa = PBXBuildFile; fileRef = F2301B0E0D685C1B00728699 /* minisoap.c */; };
 		F2301B5D0D685C3300728699 /* minissdpc.c in Sources */ = {isa = PBXBuildFile; fileRef = F2301B110D685C1B00728699 /* minissdpc.c */; };
@@ -38,6 +41,14 @@
 		3180119F0D4DEC8400BE3B28 /* TCMPortMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TCMPortMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3180154D0D4E08D900BE3B28 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		31FAE7D30D672D410085867F /* miniupnpc-LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "miniupnpc-LICENSE.txt"; path = "portmap/miniupnpc-LICENSE.txt"; sourceTree = "<group>"; };
+		DDD8110B12CC008F00E750E5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DDD8110D12CC00BE00E750E5 /* connecthostport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = connecthostport.c; sourceTree = "<group>"; };
+		DDD8110E12CC00BE00E750E5 /* connecthostport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connecthostport.h; sourceTree = "<group>"; };
+		DDD8111412CC015000E750E5 /* testminiwget.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testminiwget.c; sourceTree = "<group>"; };
+		DDD8111512CC019200E750E5 /* wingenminiupnpcstrings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wingenminiupnpcstrings.c; sourceTree = "<group>"; };
+		DDD8115212CC0C4300E750E5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DDD8115812CC0C8400E750E5 /* libnatpmpmodule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libnatpmpmodule.c; sourceTree = "<group>"; };
+		DDD8115E12CC0CCC00E750E5 /* wingettimeofday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wingettimeofday.h; sourceTree = "<group>"; };
 		F2143AD90D881D9D00C91B69 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
 		F214E5DD0D5F5FE600A06962 /* NATEcho-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NATEcho-Info.plist"; path = "natecho/NATEcho-Info.plist"; sourceTree = "<group>"; };
 		F214E5F50D5F626800A06962 /* DotGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DotGreen.png; path = general_artwork/DotGreen.png; sourceTree = "<group>"; };
@@ -55,8 +66,6 @@
 		F2301B030D685C1B00728699 /* declspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declspec.h; sourceTree = "<group>"; };
 		F2301B040D685C1B00728699 /* igd_desc_parse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = igd_desc_parse.c; sourceTree = "<group>"; };
 		F2301B050D685C1B00728699 /* igd_desc_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = igd_desc_parse.h; sourceTree = "<group>"; };
-		F2301B070D685C1B00728699 /* libminiupnpc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libminiupnpc.a; sourceTree = "<group>"; };
-		F2301B080D685C1B00728699 /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		F2301B090D685C1B00728699 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F2301B0A0D685C1B00728699 /* Makefile.mingw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.mingw; sourceTree = "<group>"; };
 		F2301B0C0D685C1B00728699 /* miniupnpc.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = miniupnpc.3; sourceTree = "<group>"; };
@@ -103,7 +112,6 @@
 		F29472880ED3091000DEBA97 /* declspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = declspec.h; sourceTree = "<group>"; };
 		F29472890ED3091000DEBA97 /* getgateway.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getgateway.c; sourceTree = "<group>"; };
 		F294728A0ED3091000DEBA97 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
-		F294728B0ED3091000DEBA97 /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		F294728C0ED3091000DEBA97 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		F294728D0ED3091000DEBA97 /* natpmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = natpmp.c; sourceTree = "<group>"; };
 		F294728E0ED3091000DEBA97 /* natpmp.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = natpmp.def; sourceTree = "<group>"; };
@@ -253,11 +261,12 @@
 			children = (
 				F2301B010D685C1B00728699 /* bsdqueue.h */,
 				F2301B020D685C1B00728699 /* Changelog.txt */,
+				DDD8110D12CC00BE00E750E5 /* connecthostport.c */,
+				DDD8110E12CC00BE00E750E5 /* connecthostport.h */,
 				F2301B030D685C1B00728699 /* declspec.h */,
 				F2301B040D685C1B00728699 /* igd_desc_parse.c */,
 				F2301B050D685C1B00728699 /* igd_desc_parse.h */,
-				F2301B070D685C1B00728699 /* libminiupnpc.a */,
-				F2301B080D685C1B00728699 /* LICENCE */,
+				DDD8110B12CC008F00E750E5 /* LICENSE */,
 				F2301B090D685C1B00728699 /* Makefile */,
 				F2301B0A0D685C1B00728699 /* Makefile.mingw */,
 				F2301B0B0D685C1B00728699 /* man3 */,
@@ -278,6 +287,7 @@
 				F2301B230D685C1B00728699 /* setup.py */,
 				F2301B240D685C1B00728699 /* setupmingw32.py */,
 				F2301B250D685C1B00728699 /* testminixml.c */,
+				DDD8111412CC015000E750E5 /* testminiwget.c */,
 				F2301B260D685C1B00728699 /* testupnpreplyparse.c */,
 				F2301B280D685C1B00728699 /* upnpc.c */,
 				F2301B2A0D685C1B00728699 /* upnpcommands.c */,
@@ -286,6 +296,7 @@
 				F2301B2E0D685C1B00728699 /* upnperrors.h */,
 				F2301B300D685C1B00728699 /* upnpreplyparse.c */,
 				F2301B310D685C1B00728699 /* upnpreplyparse.h */,
+				DDD8111512CC019200E750E5 /* wingenminiupnpcstrings.c */,
 			);
 			name = miniupnpc;
 			path = framework/miniupnpc;
@@ -323,7 +334,8 @@
 				F29472880ED3091000DEBA97 /* declspec.h */,
 				F29472890ED3091000DEBA97 /* getgateway.c */,
 				F294728A0ED3091000DEBA97 /* getgateway.h */,
-				F294728B0ED3091000DEBA97 /* LICENCE */,
+				DDD8115812CC0C8400E750E5 /* libnatpmpmodule.c */,
+				DDD8115212CC0C4300E750E5 /* LICENSE */,
 				F294728C0ED3091000DEBA97 /* Makefile */,
 				F294728D0ED3091000DEBA97 /* natpmp.c */,
 				F294728E0ED3091000DEBA97 /* natpmp.def */,
@@ -331,6 +343,7 @@
 				F29472900ED3091000DEBA97 /* natpmpc.c */,
 				F29472910ED3091000DEBA97 /* testgetgateway.c */,
 				F29472920ED3091000DEBA97 /* wingettimeofday.c */,
+				DDD8115E12CC0CCC00E750E5 /* wingettimeofday.h */,
 			);
 			name = libnatpmp;
 			path = framework/libnatpmp;
@@ -428,6 +441,8 @@
 			files = (
 				F2C65C2D0D50B2D800820CAE /* IXSCNotificationManager.h in Headers */,
 				F2C65C310D50B2E400820CAE /* TCMPortMapper.h in Headers */,
+				DDD8111012CC00BE00E750E5 /* connecthostport.h in Headers */,
+				DDD8115F12CC0CCC00E750E5 /* wingettimeofday.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,9 +473,19 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Port Map" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PortMapper */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -519,6 +544,7 @@
 				F2301B650D685C5300728699 /* upnpreplyparse.c in Sources */,
 				F29472930ED3091500DEBA97 /* getgateway.c in Sources */,
 				F29472940ED3091800DEBA97 /* natpmp.c in Sources */,
+				DDD8110F12CC00BE00E750E5 /* connecthostport.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,16 +589,34 @@
 		318011A10D4DEC8500BE3B28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+			};
+			name = Debug;
+		};
+		318011A20D4DEC8500BE3B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = framework/TCMPortMapper_prefix.pch;
+				GCC_PREFIX_HEADER = framework/TCMPortMapper_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = _DARWIN_C_SOURCE;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = framework;
 				INFOPLIST_FILE = "framework/TCMPortMapper-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -586,25 +630,29 @@
 					"-lcrypto",
 				);
 				PREBINDING = NO;
-				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = TCMPortMapper;
+				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = framework;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
-		318011A20D4DEC8500BE3B28 /* Release */ = {
+		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = framework/TCMPortMapper_prefix.pch;
+				GCC_PREFIX_HEADER = framework/TCMPortMapper_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = _DARWIN_C_SOURCE;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = framework;
 				INFOPLIST_FILE = "framework/TCMPortMapper-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
@@ -621,39 +669,10 @@
 					"-lcrypto",
 				);
 				PREBINDING = NO;
-				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = TCMPortMapper;
+				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = framework;
 				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		C01FCF4F08A954540054247B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
-				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-			};
-			name = Debug;
-		};
-		C01FCF5008A954540054247B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
-				GCC_AUTO_VECTORIZATION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PREBINDING = NO;
-				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Release;
 		};

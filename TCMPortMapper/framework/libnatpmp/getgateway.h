@@ -1,4 +1,4 @@
-/* $Id: getgateway.h,v 1.3 2008/07/02 22:33:06 nanard Exp $ */
+/* $Id: getgateway.h,v 1.4 2009/12/19 12:00:00 nanard Exp $ */
 /* libnatpmp
  * Copyright (c) 2007, Thomas BERNARD <miniupnp@free.fr>
  *
@@ -17,7 +17,12 @@
 #define __GETGATEWAY_H__
 
 #ifdef WIN32
+#if !defined(_MSC_VER)
 #include <stdint.h>
+#else
+typedef unsigned long uint32_t;
+typedef unsigned short uint16_t;
+#endif
 #define in_addr_t uint32_t
 #endif
 #include "declspec.h"
