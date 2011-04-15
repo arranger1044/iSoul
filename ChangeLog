@@ -1,3 +1,5 @@
+2.34.0:
+
 2011-02-24  Murray Cumming  <murrayc@murrayc.com>
 
 	Fix the build with the changed linker behaviour on Ubuntu Natty.
@@ -11,9 +13,9 @@
 	Node::remove_child(): Fix a use of deleted memory
 
 	* libxml++/nodes/node.cc:
-	Use a temporary variable to avoid accessing the node C++ instance after we 
+	Use a temporary variable to avoid accessing the node C++ instance after we
 	have deleted it. Valgrind foudn this.
-	Also remove the comment about the libxml deleting our C++ instance via a 
+	Also remove the comment about the libxml deleting our C++ instance via a
 	callback, because we don't do that anymore.
 
 2010-11-26  Murray Cumming  <murrayc@murrayc.com>
@@ -21,7 +23,7 @@
 	Check some libxml function return values.
 
 	* libxml++/document.cc: do_write_to_stream():
-	* libxml++/schema.cc: set_document(): Check the results from 
+	* libxml++/schema.cc: set_document(): Check the results from
 	xmlSchemaNewDocParserCtxt() and xmlSaveFormatFileTo().
 	Bug #635846 (Markus Elfring).
 
@@ -31,9 +33,9 @@
 
 	free_wrappers(): Fix crash.
 
-	* libxml++/nodes/node.cc: free_wrappers(): Revert my change to check 
-	xmlNode::properties for all types, because the layout of some structs 
-	is apparently completely different (not really deriving fully), and this 
+	* libxml++/nodes/node.cc: free_wrappers(): Revert my change to check
+	xmlNode::properties for all types, because the layout of some structs
+	is apparently completely different (not really deriving fully), and this
 	caused a crash in examples/sax_parser/.
 	Added an explanatory comment.
 
@@ -41,8 +43,8 @@
 
 	Change the --enable-examples default to yes.
 
-	* configure.ac: Build the examples by default, so we at least check the 
-	build more often. Disabling them is only useful for package building, 
+	* configure.ac: Build the examples by default, so we at least check the
+	build more often. Disabling them is only useful for package building,
 	which is the less common case.
 
 2010-11-14  Murray Cumming  <murrayc@murrayc.com>
@@ -50,15 +52,15 @@
 	Moved create_wrapper() and free_wrappers() to Node.
 
 	* libxml++/document.[h|cc]:
-	* libxml++/nodes/node.[h|cc]: Moved create_wrapper() and free_wrappers() 
+	* libxml++/nodes/node.[h|cc]: Moved create_wrapper() and free_wrappers()
 	to here from Document.
-	free_wrappers(): Never return inside the switch/case, so we check 
-	xmlNode::properties for all struct types, and to avoid making the behaviour 
+	free_wrappers(): Never return inside the switch/case, so we check
+	xmlNode::properties for all struct types, and to avoid making the behaviour
 	non-obvious.
 	* libxml++/parsers/textreader.cc:
 	* libxml++/validators/dtdvalidator.cc:
 	* libxml++/nodes/element.cc: Adapted.
-	
+
 2010-11-08  Alessandro Pignotti  <a.pignotti@sssup.it>
 
 	Make libxml++ compatible with separate and multi-threaded libxml2 usage.
@@ -69,11 +71,11 @@
 	* libxml++/nodes/element.cc:
 	* libxml++/nodes/node.[h|cc]:
 	* libxml++/parsers/textreader.cc:
-	* libxml++/validators/dtdvalidator.cc: Call these create_wrapper() before 
-	ever trying to get a C++ instance from a C instance. Call free_wrappers() 
+	* libxml++/validators/dtdvalidator.cc: Call these create_wrapper() before
+	ever trying to get a C++ instance from a C instance. Call free_wrappers()
 	in destructors and other places where we want the instance to be destroyed.
-	
-	This avoids use of libxml's global function pointers, which are not 
+
+	This avoids use of libxml's global function pointers, which are not
 	thread-safe.
 
 2010-11-08  Murray Cumming  <murrayc@murrayc.com>

@@ -1,27 +1,40 @@
-2.33.2 (unstable):
+2.23.0 (stable):
 
-* Node::remove_child(): Fix a memory management problem introduced in 
-  2.33.1.
-  (Murray Cumming)
-* Document::do_write_to_stream(), Schema::set_document(): Check the results from 
-	xmlSchemaNewDocParserCtxt() and xmlSaveFormatFileTo().
-  (Murray Cumming) Bug #635846 (Markus Elfring)
-	
-2.33.1 (unstable):
+Major changes since 2.22:
 
-* (Hopefully) allow separate and multi-threaded libxml2 usage by 
-  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault() 
+* Allow separate and multi-threaded libxml2 usage by
+  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault()
   callbacks.
   (Alessandro Pignotti)
-* Do not call xmlCleanupParser() when the library is unloaded, 
-  because it is brutal and can break other parts of applications that try to 
+* Do not call xmlCleanupParser() when the library is unloaded,
+  because it is brutal and can break other parts of applications that try to
+  use libxml separately.
+  (Murray Cumming)
+
+2.33.2 (unstable):
+
+* Node::remove_child(): Fix a memory management problem introduced in
+  2.33.1.
+  (Murray Cumming)
+* Document::do_write_to_stream(), Schema::set_document(): Check the results from
+	xmlSchemaNewDocParserCtxt() and xmlSaveFormatFileTo().
+  (Murray Cumming) Bug #635846 (Markus Elfring)
+
+2.33.1 (unstable):
+
+* (Hopefully) allow separate and multi-threaded libxml2 usage by
+  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault()
+  callbacks.
+  (Alessandro Pignotti)
+* Do not call xmlCleanupParser() when the library is unloaded,
+  because it is brutal and can break other parts of applications that try to
   use libxml separately.
   (Murray Cumming)
 * Minor code improvement.
   (Knut Aksel Røysland)
 * Build: Build the examples by default.
   (Murray Cumming)
-  
+
 2.32.0 (stable):
 
 * Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL to prevent a
