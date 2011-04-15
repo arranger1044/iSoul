@@ -1,6 +1,6 @@
 2.34.0 (stable):
 
-Major changes since 2.22:
+Major changes since 2.32:
 
 * Allow separate and multi-threaded libxml2 usage by
   not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault()
