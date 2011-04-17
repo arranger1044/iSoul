@@ -50,7 +50,7 @@ MM_ARG_WITH_TAGFILE_DOC([glibmm-2.4.tag], [glibmm-2.4])
 
 MM_ARG_ENABLE_WARNINGS([LIBXMLXX_WXXFLAGS],
         [-Wall],
-        [-pedantic -Wall -Wextra])
+        [-pedantic -Wall -Wextra -Wno-long-long])
 
 AC_PATH_PROG([XMLLINT], [xmllint], [xmllint])
 AC_ARG_VAR([XMLLINT], [path to xmllint utility])
