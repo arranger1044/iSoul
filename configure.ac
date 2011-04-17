@@ -13,8 +13,13 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
 AM_MAINTAINER_MODE([disable])
 AC_ARG_VAR([ACLOCAL_FLAGS], [aclocal flags, e.g. -I <macro dir>])
 
-MM_PREREQ([0.8])
+MM_PREREQ([0.9.3])
 MM_INIT_MODULE([libxml++-2.6])
+
+# Copy the mm-common .pl scripts into docs/,
+# and use them from there,
+# so we can dist them to avoid a tarball-build dependency.
+MM_CONFIG_DOCTOOL_DIR([docs])
 
 # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
 AC_SUBST([LIBXMLXX_SO_VERSION], [2:7:0])

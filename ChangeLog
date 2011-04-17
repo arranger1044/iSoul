@@ -1,3 +1,9 @@
+2011-04-17  Murray Cumming  <murrayc@murrayc.com>
+
+	Do not require mm-common during the tarball build.
+
+	* configure.ac: Add a MM_CONFIG_DOCTOOL_DIR() call.
+
 2.34.0:
 
 2011-02-24  Murray Cumming  <murrayc@murrayc.com>
