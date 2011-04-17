@@ -200,7 +200,7 @@ docs/manual/html/index.html: docs/manual/libxml++.xml docs/manual/docbook-custom
 	$(AM_V_at)rm -fr doc/manual/html
 	$(AM_V_at)$(MKDIR_P) docs/manual/html
 	$(AM_V_GEN)$(XSLTPROC) -o docs/manual/html/ --xinclude --catalogs \
-		docs/manual/docbook-customisation.xsl $<
+		$(top_srcdir)/docs/manual/docbook-customisation.xsl $<
 
 docs/manual/libxml++.pdf: docs/manual/libxml++.xml
 	$(AM_V_GEN)$(DB2LATEX) -o $@ -O docs/manual -tpdf $<

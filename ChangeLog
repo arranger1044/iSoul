@@ -1,5 +1,12 @@
 2011-04-17  Murray Cumming  <murrayc@murrayc.com>
 
+	Fix distcheck.
+
+	* Makefile.am: Specify the full path to docbook-customisation.xsl, 
+	which is apparently necessary with the autotools that I have here.
+
+2011-04-17  Murray Cumming  <murrayc@murrayc.com>
+
 	Fix the build with --enable-warnings=fatal.
 
 	* configure.ac: Use -no-long-long to avoid an (apparently new) compiler
