@@ -1,8 +1,10 @@
+2.34.1:
+
 2011-04-17  Murray Cumming  <murrayc@murrayc.com>
 
 	Fix distcheck.
 
-	* Makefile.am: Specify the full path to docbook-customisation.xsl, 
+	* Makefile.am: Specify the full path to docbook-customisation.xsl,
 	which is apparently necessary with the autotools that I have here.
 
 2011-04-17  Murray Cumming  <murrayc@murrayc.com>
