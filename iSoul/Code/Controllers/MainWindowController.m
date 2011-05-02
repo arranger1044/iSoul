@@ -127,10 +127,11 @@
     LoggingConsole * logConsole = [[LoggingConsole alloc] initWithWindowNibName:nil];
     self.console = logConsole;
     [logConsole release];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowConsoleStartUp"])
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ShowConsoleStartUp"])
     {
-        //[console showWindow:self];   
-        [console window];
+        //[console showWindow:self]; 
+        DNSLog(@"SHOWED");
+        [[console window] orderOut:self];
     }
 		
 	// the 3 windows are manually added to the menu
