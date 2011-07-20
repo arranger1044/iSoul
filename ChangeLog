@@ -1,3 +1,10 @@
+2011-07-20  Murray Cumming  <murrayc@murrayc.com>
+
+	ContentNode::get_content(): Fix a documentation typo.
+
+	* libxml++/nodes/contentnode.h: Mention &gt; instead of &qt (a q 
+	instead of a g, and no ;.).
+
 2011-07-20  Mathias Lorente  <mathias.lorente@free.fr>
 
 	Add Element::add_child_cdata().
