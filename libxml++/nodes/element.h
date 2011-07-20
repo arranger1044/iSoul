@@ -10,6 +10,7 @@
 #include <libxml++/nodes/node.h>
 #include <libxml++/attribute.h>
 #include <libxml++/nodes/commentnode.h>
+#include <libxml++/nodes/cdatanode.h>
 
 namespace xmlpp
 {
@@ -133,6 +134,12 @@ public:
    * @returns The new comment node.
    */
   CommentNode* add_child_comment(const Glib::ustring& content);
+
+  /** Append a new CDATA node.
+   * @param content The raw text.
+   * @returns The new CDATA node.
+   */
+  CdataNode* add_child_cdata(const Glib::ustring& content);
 
 protected:
   Glib::ustring get_namespace_uri_for_prefix(const Glib::ustring& ns_prefix) const;

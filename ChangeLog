@@ -1,3 +1,12 @@
+2011-07-20  Mathias Lorente  <mathias.lorente@free.fr>
+
+	Add Element::add_child_cdata().
+
+	* libxml++/nodes/element.[h|cc]: Add add_child_cdata(), using 
+	xmlNewCDataBlock(), like the existing add_child_text().
+	* examples/sax_parser_build_dom/example.xml:
+	* examples/sax_parser_build_dom/svgparser.[h|cc]: Use the new API.
+
 2.34.1:
 
 2011-04-17  Murray Cumming  <murrayc@murrayc.com>

@@ -183,4 +183,10 @@ void Parser::on_fatal_error(const Glib::ustring& text)
   std::cout << "on_fatal_error(): " << text << std::endl;
 }
 
+void Parser::on_cdata_block(const Glib::ustring& text)
+{
+  if(!m_context.empty())
+    m_context.top()->add_child_cdata(text);
+}
+
 }

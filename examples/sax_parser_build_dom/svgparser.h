@@ -48,6 +48,7 @@ protected:
   void on_warning(const Glib::ustring& text);
   void on_error(const Glib::ustring& text);
   void on_fatal_error(const Glib::ustring& text);
+  void on_cdata_block(const Glib::ustring& text);
 
 private:
   // context is a stack to keep track of parent node while the SAX parser

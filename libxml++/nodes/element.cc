@@ -248,6 +248,13 @@ CommentNode* Element::add_child_comment(const Glib::ustring& content)
 
 
 
+CdataNode* Element::add_child_cdata(const Glib::ustring& content)
+{
+  xmlNode* node = xmlNewCDataBlock(cobj()->doc, (const xmlChar*)content.c_str(), content.bytes());
+  node = xmlAddChild(cobj(), node);
+  Node::create_wrapper(node);
+  return static_cast<CdataNode*>(node->_private);
+}
 
 
 } //namespace xmlpp
