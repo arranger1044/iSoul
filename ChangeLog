@@ -1,3 +1,10 @@
+2011-09-06  Mathias Lorente  <mathias.lorente@free.fr>
+
+	Node::create_new_child_node(): Use the default namespace if none is specified.
+
+	* libxml++/nodes/node.cc: This is better than just ignoring it.
+	Bug #656110
+
 2011-07-20  Murray Cumming  <murrayc@murrayc.com>
 
 	ContentNode::get_content(): Fix a documentation typo.

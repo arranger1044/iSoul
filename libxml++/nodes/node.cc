@@ -164,8 +164,12 @@ _xmlNode* Node::create_new_child_node(const Glib::ustring& name, const Glib::ust
       #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
    }
 
-   //Ignore the namespace if none was specified:
-   if(!ns_prefix.empty())
+   if(ns_prefix.empty())
+   {
+     //Retrieve default namespace if it exists
+     ns = xmlSearchNs(impl_->doc, impl_, 0);
+   }
+   else
    {
      //Use the existing namespace if one exists:
      ns = xmlSearchNs(impl_->doc, impl_, (const xmlChar*)ns_prefix.c_str());
