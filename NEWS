@@ -1,3 +1,11 @@
+2.34.2 (stable):
+
+* Element: Add add_child_cdata(), like the existing add_child_text().
+* Node::create_new_child_node(): Use the default namespace if none is specified.
+  (Mathias Lorente) Bug #656110
+* Documentation: Fix a markup typo.
+  (Murray Cumming)
+	
 2.34.1 (stable):
 
 * Do not require mm-common during the tarball build.
