@@ -22,6 +22,19 @@
 namespace xmlpp
 {
 
+static const char* get_encoding_or_utf8(const Glib::ustring& encoding)
+{
+  if(encoding.empty())
+  {
+    //If we don't specify this to the xmlDocDump* functions (using 0 instead),
+    //then some other encoding is used, causing them to fail on non-ASCII characters.
+    return "UTF-8";
+  }
+  else
+    return encoding.c_str();
+}
+
+
 Document::Init::Init()
 {
   xmlInitParser(); //Not always necessary, but necessary for thread safety.
@@ -199,7 +212,8 @@ void Document::do_write_to_file(
 {
   KeepBlanks k(KeepBlanks::Default);
   xmlIndentTreeOutput = format?1:0;
-  const int result = xmlSaveFormatFileEnc(filename.c_str(), impl_, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
+  const int result = xmlSaveFormatFileEnc(filename.c_str(), impl_,
+    get_encoding_or_utf8(encoding), format?1:0);
 
   if(result == -1)
   {
@@ -220,7 +234,8 @@ Glib::ustring Document::do_write_to_string(
   xmlChar* buffer = 0;
   int length = 0;
 
-  xmlDocDumpFormatMemoryEnc(impl_, &buffer, &length, encoding.empty() ? 0 : encoding.c_str(), format?1:0);
+  xmlDocDumpFormatMemoryEnc(impl_, &buffer, &length,
+    get_encoding_or_utf8(encoding), format?1:0);
 
   if(!buffer)
   {
@@ -248,7 +263,8 @@ void Document::do_write_to_stream(std::ostream& output, const Glib::ustring& enc
 {
   // TODO assert document encoding is UTF-8 if encoding is different than UTF-8
   OStreamOutputBuffer buffer(output, encoding);
-  const int result = xmlSaveFormatFileTo(buffer.cobj(), impl_, encoding.c_str(), format ? 1 : 0);
+  const int result = xmlSaveFormatFileTo(buffer.cobj(), impl_,
+    get_encoding_or_utf8(encoding), format ? 1 : 0);
   
   if(result == -1)
   {
