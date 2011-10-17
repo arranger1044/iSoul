@@ -6,10 +6,13 @@
 	<integer>1</integer>
 	<key>AllNotifications</key>
 	<array>
-		<string>Download started</string>
-		<string>Download finished</string>
 		<string>Download failed</string>
+		<string>Download finished</string>
+		<string>Download started</string>
 		<string>Received message</string>
+		<string>Upload failed</string>
+		<string>Upload finished</string>
+		<string>Upload started</string>
 	</array>
 	<key>DefaultNotifications</key>
 	<array>

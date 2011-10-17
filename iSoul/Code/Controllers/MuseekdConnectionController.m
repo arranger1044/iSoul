@@ -537,17 +537,17 @@
 }
 
 - (void)growlNotify:(NSString *)title msg:(NSString *)msg  {
-	[self growlNotify:title msg:msg name:title];
+	[self growlNotify: title msg: msg name: title];
 }
 
 - (void)growlNotify:(NSString *)title msg:(NSString *)msg name:(NSString *)name {
-	[GrowlApplicationBridge notifyWithTitle:title
-								description:msg
-						   notificationName:name
-								   iconData:nil
-								   priority:0
-								   isSticky:NO
-							   clickContext:[NSDate date]];
+	[GrowlApplicationBridge notifyWithTitle: title
+								description: msg
+						   notificationName: name
+								   iconData: nil
+								   priority: 0
+								   isSticky: NO
+							   clickContext: NSDate.date];
 }
 
 
@@ -969,16 +969,17 @@
 	if ([oldTransferState compare:transfer.state] != NSOrderedSame) {
 		switch (transferState) {
 			case tfTransferring:
-				if (isUpload)
-					break;
-				[self growlNotify:@"Download started" msg:[NSString stringWithFormat:@"'%@' started downloading", fileName] ];
+				[self growlNotify: (isUpload) ? @"Upload started" : @"Download started"
+							  msg: [NSString stringWithFormat:@"'%@' started transferring", fileName]];
 				break;
 			case tfFinished:
-				[self growlNotify:@"Download finished" msg:[NSString stringWithFormat:@"'%@' (%@) successfully downloaded", fileName, transferredSize] ];
+				[self growlNotify: (isUpload) ? @"Upload finished" : @"Download finished"
+							  msg: [NSString stringWithFormat:@"'%@' (%@) successfully transferred", fileName, transferredSize]];
 				break;
 			case tfLocalError:
 			case tfRemoteError:
-				[self growlNotify:@"Download failed" msg:[NSString stringWithFormat:@"'%@' failed downloading", fileName] ];
+				[self growlNotify: (isUpload) ? @"Upload failed" : @"Download failed"
+							  msg: [NSString stringWithFormat:@"'%@' failed transferring", fileName]];
 				break;
 		}
 	}

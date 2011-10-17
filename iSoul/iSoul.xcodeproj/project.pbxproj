@@ -1076,7 +1076,6 @@
 		B984E8351306FCD60083327A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B9FAED9A12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
 		B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
-		B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/local/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		B9FAEF6B1282157D00300C45 /* clean.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = clean.ico; sourceTree = "<group>"; };
 		DD494E20133FF2BA00974169 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD4F1D69131B0D5000442671 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
@@ -1146,8 +1145,8 @@
 				A76D2D7210D9144F00DD9F82 /* AudioToolbox.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				A76D2D9510D9180200DD9F82 /* libcrypto.dylib */,
+				DD494E20133FF2BA00974169 /* libz.dylib */,
 				A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */,
-				B9FAEDB012818DF900300C45 /* libz.1.2.3.dylib */,
 				B984E8351306FCD60083327A /* QuartzCore.framework */,
 				DD4F2D6C131B0DCA00442671 /* Growl.framework */,
 			);
@@ -1175,7 +1174,6 @@
 		29B97314FDCFA39411CA2CEA /* iSoul */ = {
 			isa = PBXGroup;
 			children = (
-				DD494E20133FF2BA00974169 /* libz.dylib */,
 				A796D10910F53A4600E3F8CC /* Port Map.xcodeproj */,
 				A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */,
 				A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */,
