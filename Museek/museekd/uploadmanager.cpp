@@ -240,7 +240,7 @@ bool Museek::Upload::openFile()
   * Seek to the position 'pos' in the file
   */
 bool Museek::Upload::seek(uint64 pos) {
-    if (pos < 0 || pos > m_Size) {
+    if (pos > m_Size) {
         NNLOG("museekd.up.warn", "Wrong seeking position: %u (max size: %u)", pos, m_Size);
         return false;
     }
@@ -312,8 +312,7 @@ void Museek::Upload::collect(uint bytes) {
 			m_Rate += *it;
 		m_Rate /= m_RatePool.size();
 
-		if(m_Rate < 0)
-			m_Rate = 0;
+		m_Rate = 0;
 		m_Collected = 0;
 		m_CollectStart = now;
 

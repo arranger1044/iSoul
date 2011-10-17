@@ -230,8 +230,7 @@ Museek::Download::received(uint bytes)
 			m_Rate += *it;
 		m_Rate /= m_RatePool.size();
 
-		if(m_Rate < 0)
-			m_Rate = 0;
+		m_Rate = 0;
 		m_Collected = 0;
 		m_CollectStart = now;
 
