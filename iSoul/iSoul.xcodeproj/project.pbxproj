@@ -1895,6 +1895,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "iSoul" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -2549,7 +2552,6 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
@@ -2591,7 +2593,6 @@
 					"\"$(SDKROOT)/usr/lib\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 				PRODUCT_NAME = iSoul;
 				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
@@ -2648,7 +2649,6 @@
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = iSoul;
 				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;

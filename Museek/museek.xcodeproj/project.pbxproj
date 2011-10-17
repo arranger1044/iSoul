@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A76D2A3010D8ECC800DD9F82 /* libXMLFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76D2A2F10D8ECC400DD9F82 /* libXMLFramework.framework */; };
-		A76D2A3110D8ECDE00DD9F82 /* libXMLFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A76D2A2F10D8ECC400DD9F82 /* libXMLFramework.framework */; };
-		A76D2A3B10D8ECFB00DD9F82 /* libevent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76D2A3A10D8ECF800DD9F82 /* libevent.framework */; };
-		A76D2A3C10D8ED0000DD9F82 /* libevent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A76D2A3A10D8ECF800DD9F82 /* libevent.framework */; };
 		A76D2B1C10D8F22E00DD9F82 /* nnbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76D2AFA10D8F22E00DD9F82 /* nnbuffer.cpp */; };
 		A76D2B1D10D8F22E00DD9F82 /* nnclientsocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76D2AFC10D8F22E00DD9F82 /* nnclientsocket.cpp */; };
 		A76D2B1E10D8F22E00DD9F82 /* nnlog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A76D2B0110D8F22E00DD9F82 /* nnlog.cpp */; };
@@ -55,33 +51,35 @@
 		A7D595F110D849D000769CC4 /* sha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D595E810D849D000769CC4 /* sha.cpp */; };
 		A7D595F210D849D000769CC4 /* sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D595EA10D849D000769CC4 /* sha256.cpp */; };
 		A7D595F310D849D000769CC4 /* wraphelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D595EC10D849D000769CC4 /* wraphelp.cpp */; };
+		DDA6DE06144CCC1E0014C356 /* libevent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA6DE00144CCBA30014C356 /* libevent.framework */; };
+		DDA6DE07144CCC1E0014C356 /* libXMLFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A76D2A2E10D8ECC400DD9F82 /* PBXContainerItemProxy */ = {
+		DDA6DDF9144CCB970014C356 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A76D2A2710D8ECC400DD9F82 /* libXMLFramework.xcodeproj */;
+			containerPortal = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = libXMLFramework;
 		};
-		A76D2A3910D8ECF800DD9F82 /* PBXContainerItemProxy */ = {
+		DDA6DDFF144CCBA30014C356 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A76D2A3210D8ECF800DD9F82 /* libevent.xcodeproj */;
+			containerPortal = DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = libevent;
 		};
-		A7C3D79F10D993F500BD2587 /* PBXContainerItemProxy */ = {
+		DDA6DE02144CCC190014C356 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A76D2A3210D8ECF800DD9F82 /* libevent.xcodeproj */;
+			containerPortal = DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = libevent;
 		};
-		A7C3D7A110D993F900BD2587 /* PBXContainerItemProxy */ = {
+		DDA6DE04144CCC190014C356 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A76D2A2710D8ECC400DD9F82 /* libXMLFramework.xcodeproj */;
+			containerPortal = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = libXMLFramework;
@@ -95,8 +93,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A76D2A3C10D8ED0000DD9F82 /* libevent.framework in CopyFiles */,
-				A76D2A3110D8ECDE00DD9F82 /* libXMLFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +100,6 @@
 
 /* Begin PBXFileReference section */
 		8DD76F6C0486A84900D96B5E /* museek */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = museek; sourceTree = BUILT_PRODUCTS_DIR; };
-		A76D2A2710D8ECC400DD9F82 /* libXMLFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libXMLFramework.xcodeproj; path = ../libXMLFramework/libXMLFramework.xcodeproj; sourceTree = SOURCE_ROOT; };
-		A76D2A3210D8ECF800DD9F82 /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libevent.xcodeproj; path = ../libevent/libevent.xcodeproj; sourceTree = SOURCE_ROOT; };
 		A76D2AF910D8F22E00DD9F82 /* nnbaseptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nnbaseptr.h; path = NewNet/nnbaseptr.h; sourceTree = "<group>"; };
 		A76D2AFA10D8F22E00DD9F82 /* nnbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nnbuffer.cpp; path = NewNet/nnbuffer.cpp; sourceTree = "<group>"; };
 		A76D2AFB10D8F22E00DD9F82 /* nnbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nnbuffer.h; path = NewNet/nnbuffer.h; sourceTree = "<group>"; };
@@ -213,6 +207,8 @@
 		A7D595EA10D849D000769CC4 /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
 		A7D595EB10D849D000769CC4 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		A7D595EC10D849D000769CC4 /* wraphelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wraphelp.cpp; sourceTree = "<group>"; };
+		DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libXMLFramework.xcodeproj; path = ../libXMLFramework/libXMLFramework.xcodeproj; sourceTree = "<group>"; };
+		DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libevent.xcodeproj; path = ../libevent/libevent.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,8 +216,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A76D2A3010D8ECC800DD9F82 /* libXMLFramework.framework in Frameworks */,
-				A76D2A3B10D8ECFB00DD9F82 /* libevent.framework in Frameworks */,
+				DDA6DE06144CCC1E0014C356 /* libevent.framework in Frameworks */,
+				DDA6DE07144CCC1E0014C356 /* libXMLFramework.framework in Frameworks */,
 				A76D2B7C10D8F46200DD9F82 /* libxml2.dylib in Frameworks */,
 				A76D2B8D10D8F8B800DD9F82 /* libiconv.dylib in Frameworks */,
 				A76D2B9110D8F8DC00DD9F82 /* libz.dylib in Frameworks */,
@@ -234,8 +230,8 @@
 		08FB7794FE84155DC02AAC07 /* museek */ = {
 			isa = PBXGroup;
 			children = (
-				A76D2A3210D8ECF800DD9F82 /* libevent.xcodeproj */,
-				A76D2A2710D8ECC400DD9F82 /* libXMLFramework.xcodeproj */,
+				DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */,
+				DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 				A76D2B7B10D8F46200DD9F82 /* libxml2.dylib */,
@@ -260,22 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				8DD76F6C0486A84900D96B5E /* museek */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A76D2A2810D8ECC400DD9F82 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A76D2A2F10D8ECC400DD9F82 /* libXMLFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A76D2A3310D8ECF800DD9F82 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A76D2A3A10D8ECF800DD9F82 /* libevent.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -412,6 +392,22 @@
 			path = Mucipher;
 			sourceTree = "<group>";
 		};
+		DDA6DDF6144CCB960014C356 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDA6DDFC144CCBA20014C356 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6DE00144CCBA30014C356 /* libevent.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,8 +422,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				A7C3D7A010D993F500BD2587 /* PBXTargetDependency */,
-				A7C3D7A210D993F900BD2587 /* PBXTargetDependency */,
+				DDA6DE03144CCC190014C356 /* PBXTargetDependency */,
+				DDA6DE05144CCC190014C356 /* PBXTargetDependency */,
 			);
 			name = museek;
 			productInstallPath = "$(HOME)/bin";
@@ -454,12 +450,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A76D2A3310D8ECF800DD9F82 /* Products */;
-					ProjectRef = A76D2A3210D8ECF800DD9F82 /* libevent.xcodeproj */;
+					ProductGroup = DDA6DDFC144CCBA20014C356 /* Products */;
+					ProjectRef = DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */;
 				},
 				{
-					ProductGroup = A76D2A2810D8ECC400DD9F82 /* Products */;
-					ProjectRef = A76D2A2710D8ECC400DD9F82 /* libXMLFramework.xcodeproj */;
+					ProductGroup = DDA6DDF6144CCB960014C356 /* Products */;
+					ProjectRef = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -470,18 +466,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A76D2A2F10D8ECC400DD9F82 /* libXMLFramework.framework */ = {
+		DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = libXMLFramework.framework;
-			remoteRef = A76D2A2E10D8ECC400DD9F82 /* PBXContainerItemProxy */;
+			remoteRef = DDA6DDF9144CCB970014C356 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A76D2A3A10D8ECF800DD9F82 /* libevent.framework */ = {
+		DDA6DE00144CCBA30014C356 /* libevent.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = libevent.framework;
-			remoteRef = A76D2A3910D8ECF800DD9F82 /* PBXContainerItemProxy */;
+			remoteRef = DDA6DDFF144CCBA30014C356 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -538,15 +534,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A7C3D7A010D993F500BD2587 /* PBXTargetDependency */ = {
+		DDA6DE03144CCC190014C356 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libevent;
-			targetProxy = A7C3D79F10D993F500BD2587 /* PBXContainerItemProxy */;
+			targetProxy = DDA6DE02144CCC190014C356 /* PBXContainerItemProxy */;
 		};
-		A7C3D7A210D993F900BD2587 /* PBXTargetDependency */ = {
+		DDA6DE05144CCC190014C356 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libXMLFramework;
-			targetProxy = A7C3D7A110D993F900BD2587 /* PBXContainerItemProxy */;
+			targetProxy = DDA6DE04144CCC190014C356 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -586,10 +582,7 @@
 					"../libXMLFramework/**",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"../libXMLFramework/**",
-					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
-				);
+				LIBRARY_SEARCH_PATHS = "../libXMLFramework/**";
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = museek;
@@ -616,10 +609,6 @@
 					"../libXMLFramework/**",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../libXMLFramework/build/Release/libXMLFramework.framework/Versions/A\"",
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = museek;
 				SDKROOT = macosx10.6;
