@@ -47,11 +47,11 @@
     
     /* Start receiving notification for file */
     NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:logPath];
-    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self
-                           selector:@selector(logReadMessage:)
-                               name:NSFileHandleReadCompletionNotification
-                             object:fh];
+//    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+//    [notificationCenter addObserver:self
+//                           selector:@selector(logReadMessage:)
+//                               name:NSFileHandleReadCompletionNotification
+//                             object:fh];
     
     [fh readInBackgroundAndNotify]; 
     
