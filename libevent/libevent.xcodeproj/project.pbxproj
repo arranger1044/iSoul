@@ -330,6 +330,9 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "libevent" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -427,7 +430,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
@@ -447,7 +449,6 @@
 					"-lcrypto",
 					"-lssl",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = libevent;
 				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = framework;
@@ -478,7 +479,6 @@
 					"-lcrypto",
 					"-lssl",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = libevent;
 				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = framework;

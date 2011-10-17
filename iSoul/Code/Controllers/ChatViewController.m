@@ -21,6 +21,12 @@
 #define kUsersPaneMinimum	240
 #define kChatPaneMinimum	140
 
+@interface ChatViewController (Private)
+
+- (void)windowIsMain:(NSNotification *)notification;
+
+@end
+
 @implementation ChatViewController
 
 @synthesize managedObjectContext;

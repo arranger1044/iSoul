@@ -172,7 +172,7 @@ kq_sighandler(int sig)
 static void
 kq_setup_kevent(struct kevent *out, evutil_socket_t fd, int filter, short change)
 {
-	memset(out, 0, sizeof(out));
+	memset(out, 0, sizeof(kevent));
 	out->ident = fd;
 	out->filter = filter;
 

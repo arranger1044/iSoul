@@ -344,6 +344,9 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "libXMLFramework" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -439,7 +442,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
@@ -459,7 +461,6 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
-				PREBINDING = NO;
 				PRODUCT_NAME = libXMLFramework;
 				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "libxml++/** ./**";
@@ -491,7 +492,6 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
-				PREBINDING = NO;
 				PRODUCT_NAME = libXMLFramework;
 				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = framework;
