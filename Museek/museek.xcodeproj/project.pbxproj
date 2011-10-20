@@ -209,6 +209,7 @@
 		A7D595EC10D849D000769CC4 /* wraphelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wraphelp.cpp; sourceTree = "<group>"; };
 		DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libXMLFramework.xcodeproj; path = ../libXMLFramework/libXMLFramework.xcodeproj; sourceTree = "<group>"; };
 		DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libevent.xcodeproj; path = ../libevent/libevent.xcodeproj; sourceTree = "<group>"; };
+		DDFAF09314500283006472EE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,10 +234,9 @@
 				DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */,
 				DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Source */,
+				DDFAF094145002B9006472EE /* Other Sources */,
+				DDFAF092145001DC006472EE /* Linked Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				A76D2B7B10D8F46200DD9F82 /* libxml2.dylib */,
-				A76D2B8C10D8F8B800DD9F82 /* libiconv.dylib */,
-				A76D2B9010D8F8DC00DD9F82 /* libz.dylib */,
 			);
 			name = museek;
 			sourceTree = "<group>";
@@ -408,6 +408,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DDFAF092145001DC006472EE /* Linked Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A76D2B7B10D8F46200DD9F82 /* libxml2.dylib */,
+				A76D2B8C10D8F8B800DD9F82 /* libiconv.dylib */,
+				A76D2B9010D8F8DC00DD9F82 /* libz.dylib */,
+			);
+			name = "Linked Libraries";
+			sourceTree = "<group>";
+		};
+		DDFAF094145002B9006472EE /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DDFAF09314500283006472EE /* Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -574,6 +592,8 @@
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -600,6 +620,8 @@
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

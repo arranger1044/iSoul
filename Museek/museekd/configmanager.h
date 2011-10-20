@@ -25,7 +25,6 @@
 #include <NewNet/nnevent.h>
 #include <string>
 #include <map>
-typedef	unsigned int		uint;
 
 namespace Museek
 {

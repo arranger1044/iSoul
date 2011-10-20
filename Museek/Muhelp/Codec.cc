@@ -58,7 +58,7 @@ string Codec::convert(const string& text) {
 		const char* pinbuf = text.data();
 		char* pout_buf = out_buf;
 		
-		r = iconv(mCD, (char**)(&pinbuf), &in_left, (char**)(&pout_buf), &out_left);
+		r = iconv(mCD, (ICONV_IN)(&pinbuf), &in_left, (char**)(&pout_buf), &out_left);
 		if(r == (size_t)-1 && errno == E2BIG) {
 			std::cerr << "TOO BIG" << std::endl;
 			delete [] out_buf;

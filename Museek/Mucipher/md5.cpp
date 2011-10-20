@@ -278,7 +278,7 @@ static void MD5_Final(unsigned char *result, MD5_CTX *ctx)
 	result[14] = ctx->d >> 16;
 	result[15] = ctx->d >> 24;
 
-	memset(ctx, 0, sizeof(MD5_CTX));
+	memset(ctx, 0, sizeof(*ctx));
 }
 
 void md5Block(unsigned char *dataIn, int len, unsigned char hashout[16]) {

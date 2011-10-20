@@ -67,7 +67,7 @@ Museek::CodesetManager::convert(const std::string & from, const std::string & to
   while(1)
   {
     /* Try to convert the string. */
-    r = iconv(context, (char**)&inbuf, &in_left, &out_ptr, &out_left);
+    r = iconv(context, (ICONV_INPUT_TYPE)&inbuf, &in_left, &out_ptr, &out_left);
     if(r == (size_t)-1) {
         if (errno == E2BIG) { // Output buffer not large enough
             delete [] out_buf;

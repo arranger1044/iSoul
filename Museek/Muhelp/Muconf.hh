@@ -21,8 +21,6 @@
 #ifndef __MUCONF_HH__
 #define __MUCONF_HH__
 
-typedef	unsigned int		uint;
-
 #include <string>
 #include <map>
 #include <vector>

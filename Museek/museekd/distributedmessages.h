@@ -57,7 +57,7 @@ private:
   protected: \
     std::string get_name() { return #mtype ; } \
   public:
-//#define END };
+#define END };
 
 
 DISTRIBUTEDMESSAGE(DPing, 0)
