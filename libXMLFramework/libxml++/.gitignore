@@ -1,0 +1,72 @@
+# wildcard patterns
+*.[ao]
+*.l[ao]
+*~
+Makefile
+Makefile.in
+.deps/
+.libs/
+.stamps/
+.dirstamp
+libxml++config.h
+stamp-h?
+
+# /
+/aclocal.m4
+/INSTALL
+/autom4te.cache/
+/config.h
+/config.h.in
+/config.log
+/config.status
+/configure
+/configure.lineno
+/libxml++-2.6.pc
+/libxml++-*.tar.*
+/libtool
+
+# MSVC
+/MSVC_Net2005/libxml++/libxml++.rc
+/MSVC_Net2008/libxml++/libxml++.rc
+
+# docs
+/docs/manual/html/
+/docs/manual/libxml++.xml
+/docs/reference/Doxyfile
+/docs/reference/doxygen.log
+/docs/reference/html/
+/docs/reference/libxml++-2.6.devhelp2
+/docs/reference/libxml++-2.6.tag
+
+# examples
+/examples/dom_build/dom_build
+/examples/dom_parse_entities/dom_parse_entities
+/examples/dom_parser/dom_parser
+/examples/dom_parser_raw/dom_parser_raw
+/examples/dom_read_write/dom_read_write
+/examples/dom_xpath/dom_xpath
+/examples/dtdvalidation/dtdvalidation
+/examples/import_node/import_node
+/examples/sax_exception/sax_exception
+/examples/sax_parser/sax_parser
+/examples/sax_parser_build_dom/sax_parser_build_dom
+/examples/sax_parser_entities/sax_parser_entities
+/examples/schemavalidation/schemavalidation
+/examples/textreader/textreader
+
+# macros
+/macros/compile-binding.am
+/macros/config.guess
+/macros/config.sub
+/macros/depcomp
+/macros/dist-changelog.am
+/macros/doc-reference.am
+/macros/generate-binding.am
+/macros/install-sh
+/macros/libtool.m4
+/macros/ltmain.sh
+/macros/ltoptions.m4
+/macros/ltsugar.m4
+/macros/ltversion.m4
+/macros/lt~obsolete.m4
+/macros/missing

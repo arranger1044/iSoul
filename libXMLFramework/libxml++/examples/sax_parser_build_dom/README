@@ -1,0 +1,7 @@
+This example demonstrates how to use a SAX parser to build a custom DOM 
+inherited from libxml++ nodes. If an application document is sufficiently 
+complex, it will have an object hierarchy structure. libxml++ provides a 
+generic tree structure with serialization and parsing facilities builtin.
+By making classes inherit from libxml++, it is easy to leverage these 
+facilities. Classic examples of a custom DOM are the W3C HTML and SVG DOM.
+This example barely scratches the surface of a SVG DOM ;-)

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE example PUBLIC "" "example.dtd" [
+<!ENTITY wwwmurrayc "http://www.murrayc.com">
+]>
+
+<example>
+  <examplechild id="1">
+    Some content. &quot;Some quoted content.&quot;
+    <child_of_child/>
+  </examplechild>
+  <examplechild id="2">
+       Some content. &wwwmurrayc;
+    <child_of_child/>
+  </examplechild>
+</example>
+

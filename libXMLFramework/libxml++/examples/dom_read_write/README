@@ -1,0 +1,3 @@
+This is meant to check that the XML file will not be corrupted when
+read in and written out again. It might be rearranged again, but the
+significant contents should not be changed.

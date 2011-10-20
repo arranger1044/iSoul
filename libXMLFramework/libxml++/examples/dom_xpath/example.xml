@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd">
+<article>
+  <title>An Article</title>
+  <section id="section1">
+    <title>A section</title>
+    <para>This is a paragraph.</para>
+  </section>
+  <section id="section2">
+    <title>Another section</title>
+    <section id="section3">
+      <title>A sub-section</title>
+      <para>This paragraph refers to <xref linkend="section1"/>,
+        <xref linkend="section2"/>, and <xref linkend="section4"/>.</para>
+    </section>
+  </section>
+</article>

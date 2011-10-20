@@ -1,0 +1,457 @@
+2.34.2 (stable):
+
+* Element: Add add_child_cdata(), like the existing add_child_text().
+* Node::create_new_child_node(): Use the default namespace if none is specified.
+  (Mathias Lorente) Bug #656110
+* Documentation: Fix a markup typo.
+  (Murray Cumming)
+	
+2.34.1 (stable):
+
+* Do not require mm-common during the tarball build.
+  (Murray Cumming)
+
+2.34.0 (stable):
+
+Major changes since 2.32:
+
+* Allow separate and multi-threaded libxml2 usage by
+  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault()
+  callbacks.
+  (Alessandro Pignotti)
+* Do not call xmlCleanupParser() when the library is unloaded,
+  because it is brutal and can break other parts of applications that try to
+  use libxml separately.
+  (Murray Cumming)
+
+2.33.2 (unstable):
+
+* Node::remove_child(): Fix a memory management problem introduced in
+  2.33.1.
+  (Murray Cumming)
+* Document::do_write_to_stream(), Schema::set_document(): Check the results from
+	xmlSchemaNewDocParserCtxt() and xmlSaveFormatFileTo().
+  (Murray Cumming) Bug #635846 (Markus Elfring)
+
+2.33.1 (unstable):
+
+* (Hopefully) allow separate and multi-threaded libxml2 usage by
+  not using the global xmlRegisterNodeDefault() and xmlDeregisterNodeDefault()
+  callbacks.
+  (Alessandro Pignotti)
+* Do not call xmlCleanupParser() when the library is unloaded,
+  because it is brutal and can break other parts of applications that try to
+  use libxml separately.
+  (Murray Cumming)
+* Minor code improvement.
+  (Knut Aksel Røysland)
+* Build: Build the examples by default.
+  (Murray Cumming)
+
+2.32.0 (stable):
+
+* Node::find(): Check xmlNode::type for a XML_NAMESPACE_DECL to prevent a
+  crash/corruption.
+  (Murray Cumming) Bug #386013 (Max Kirillov)
+* Build: Added an MSVC .net 2010 and 64-bit Windows builds.
+  (Armin Burgmeier)
+
+2.30.1 (stable):
+
+* Documentation:
+  - Added main page doxygen text.
+  (David King, Murray Cumming)
+  - Show NodeList.
+  (Murray Cumming) Bug #583412 (Hubert Figuiere).
+  - Correct some @newin tags.
+  (Murray Cumming)
+
+2.30.0(stable):
+
+* Build system rewrite.
+* Use mm-common for reference documentation generation. Fixes GNOME bugs
+  #583411 (Hubert Figuiere), #614260 (David King) and #551501 (Johannes Schmid)
+* Fix several compiler warnings.
+* Use 0 instead of NULL. (Murray Cumming)
+
+2.26.1(stable):
+
+* Build fixes
+* Build without exceptions
+
+2.26.0(stable):
+
+* Increased version number to match GNOME 2.26.
+
+2.24.3 (stable):
+
+* TextReader: Actually throw exceptions on errors.
+  (This breaks ABI but we do not believe that this class could be used with
+  this problem so it should not actually break any application.)
+  Bug #348006.
+* Build: Windows: Remove unnecessary vsnprint define.
+  (Armin Burgmeier)
+
+2.24.2 (stable):
+
+* Fixed another two memory leaks.
+  (Armin Burgmeier) Bug #563321 (Arjan Franzen)
+* Removed obsolete MSVC6 project files
+  (Armin Burgmeier)
+
+2.24.1 (stable):
+
+* Added new Schema and SchemaValidator classes to MSVC project files
+  (Arjan Franzen, Arming Burgmeier) Bug #563664.
+* Avoid a memory leak in Validator::check_for_exception.
+  (Arjan Franzen, Murray Cumming) Bug #563321.
+* Avoid a memory leak in schema class.
+  (Balazs Tirpak, Murray Cumming) Bug #312216.
+
+2.24.0 (stable):
+
+Changes since 2.22:
+
+* Attribute: Return the correct value even when using a namespace.
+  (Murray Cumming) Bug #547689 (Sergei Fedorov)
+* Added Schema and SchemaValidator classes, demonstrated in
+  examples/schemavalidation.
+  (Emilien KIA) Bug #312216.
+* Element: Added add_child_text() with a previous_node parameter, for adding
+  between existing nodes. Added add_child_text_before() too.
+* Node: Added add_child() with a previous_node parameter, for adding between
+  existing nodes. Added add_child_before() too.
+  (Murray Cumming)
+* SaxParser: added parse_chunk_raw().
+  (Armin Burgmeier)
+
+
+2.23.3 (unstable):
+
+* Attribute: Return the correct value even when using a namespace.
+  (Murray Cumming) Bug #547689 (Sergei Fedorov)
+* Fixed MSVC++ Windows build.
+  (Armin Burgmeier)
+
+2.23.2 (unstable):
+
+* SaxParser: added parse_chunk_raw().
+  (Armin Burgmeier)
+* examples: sax_parser: Catch convert errors when printing an exception to
+  std:cout, though libxml++/libxml should always supply valid UTF-8.
+  (Murray Cumming)
+
+2.23.1 (unstable):
+
+* Added Schema and SchemaValidator classes, demonstrated in
+  examples/schemavalidation.
+  (Emilien KIA) Bug #312216.
+* Element: Added add_child_text() with a previous_node parameter, for adding
+  between existing nodes. Added add_child_text_before() too.
+* Node: Added add_child() with a previous_node parameter, for adding between
+  existing nodes. Added add_child_before() too.
+  (Murray Cumming)
+
+2.22.0 (stable):
+
+* Document: Fix a memory leak, by calling xmlCleanupParser
+  in the destructor.
+  (Deng Xiyue) Bug #501168 (Matt G.)
+* Build: Fix the build with gcc 4.3 pre-releases.
+  (Martin Michlmayr) Bug #510053.
+
+2.20.0 (stable):
+
+Changes since 2.18:
+* Element: Added get_attribute_value(),
+  to get a simple text value for an attribute.
+  (Stef Walter) Bug #373573.
+* Added an experimental --enable-api-exceptions
+  configure option, to allow libxml++ to build without
+  exceptions.
+  (Murray Cumming)
+
+2.19.2 (unstable):
+
+* Added an experimental --enable-api-exceptions
+  configure option, to allow libxml++ to build without
+  exceptions.
+
+2.19.1(unstable):
+
+* Element.h: Added get_attribute_value(),
+  to get a simple text value for an attribute.
+  (Stef Walter) Bug #373573.
+
+2.18.2 (stable):
+
+* TextReader: get_name(): Fixed a memory leak.
+  (Christophe de Vienne) Bug #447535.
+
+2.18.1 (stable):
+
+* Document::add_comment,
+  Element: add_child_text(), add_child_comment():
+  avoid accessing freed memory. (Murray Cumming)
+
+2.18.0(stable):
+
+* Slight win32 build improvement, possibly.
+  (Artur Wegele)
+* Slight improvement to examples.
+  (Murray Cumming)
+
+2.17.2 (unstable):
+
+* Node: Adedd get_next_sibling() and get_previous_sibling().
+  Bug #351867.
+  (Nate Nielsen)
+
+2.17.1 (unstable):
+
+* Node: Added get_parent() Bug #351876 (Patch by Nate Nielsen)
+* TextReader: Added TextReader(const char* data) constructor, for
+  parsing memory buffers. Bug #351215 (Patch by Nate Nielsen)
+* Element::set_attribute(): Really return the new attribute.
+  Bug #361950 (Patch by Nate Nielsen)
+* Build: Added MS Visual Studio 2005 project files.
+  (Cedric Gustin)
+
+
+2.14 (stable):
+
+* Documentation:
+  - Improved ContentNode documentation (Murray Cumming)
+
+2.13.1 (unstable):
+
+* First unstable 2.13.x release, to become stable 2.14.x, for GNOME 2.14.
+* Node:
+  - Added find() overload that takes namespaces to register during the search,
+  using xmlXPathRegisterNs(). Bug #323935. (Robert Fleming)
+  - set_namespace(): When creating a default namespace, avoid the
+  "The namespace () has not been declared" warning, by passing 0 to
+  xmlSearchNs() instead of an empty string. Bug #318186.
+  (Erik Oestby).
+* Build: Fix buildir!=srcdir builds. Bug #319863.(Vadim Zeitlin)
+* Documentation:
+  - Tutorial: Mention pkg-config.
+  - Reference: Grammar fixes and a small fix for find().
+  (Murray Cumming)
+
+2.12.0 (stable):
+
+* Added the state "Reading" to xml Reader States list.
+
+2.11.0 (unstable):
+
+* First unstable 2.11.x release, to become stable 2.12.x
+* Fixed Document::set_entity_declaration behavior (Murray Cumming)
+* Updated MSVC.Net2003 project files (Cedric Gustin)
+* Fixed bugs #301727, #301712, #156352, #161825, #307481, #314419
+
+2.10.0 (stable):
+
+* Fixed documentation packaging problems (Murray Cumming, Christophe de Vienne)
+
+2.9.2 (unstable):
+
+* Added MSVC .Net 2003 support (Cedric Gustin)
+* Improved documentation + Added a manual (Murray Cumming)
+* Fixed a bug in utf8 handling in Document::do_write_to_string (Murray Cumming)
+
+2.9.1 (unstable):
+
+* First unstable 2.9.x release, to become stable 2.10.x.
+* DomParser, SaxParser: Added
+  parse_memory_raw(const unsigned char* contents, size_type bytes)
+  for parsing non-utf8 text or text of unknown encoding.
+
+2.8.0 (stable):
+
+* Code Cleaning.
+
+* Changes compared to libxml++ 2.7:
+  - Added Validator and DtdValidator classes.
+
+2.7.1 (unstable):
+
+* Fixed bug #150082 (Christophe de Vienne)
+
+2.7.0 (unstable):
+
+* Added Validator and DtdValidator (Guillaume Arreckx)
+
+2004-05-05 2.6.1 (stable):
+
+* Fixed an issue (#141824) with Glib::ustring.
+* Fixed ContentNode::SetContent behavior.
+
+2004-04-13 2.6.0 (stable):
+
+* Corrected constness of TextReader::get_current_node (Murray Cumming)
+
+2004-03-02 2.5.2 (unstable):
+
+* Fixed bug #134390: "SEGFAULT in Element::get_attribute" (John Coyle)
+* Code cleaning.
+
+2004-02-09 2.5.1 (unstable):
+
+* Introduced Glib::ustring instead of std::string (Murray Cumming)
+* Added Document::create_root_node_by_import (Kim Garrison)
+* Fixed bugs #131018, #131329 and #132014.
+* Added TextReader interface (Christophe de Vienne)
+
+2003-12-18 1.0.0 (stable):
+
+* Updated msvc files (Ephraim Vider)
+* Fixed an issue in SaxParser (Murray Cumming)
+
+2003-12-08 0.28 (unstable):
+
+* Added entity handling to the SAX parser + examples (Dan Dennedy and Murray Cumming)
+* Replaced SaxParser::AttributeMap with an ordered container (Christophe de Vienne)
+* Fixed an issue with threading (Christophe de Vienne)
+* Complete switched to pkg-config (Christophe de Vienne)
+
+2003-11-05 0.27 (unstable):
+
+* Completed documentation
+* Added Element::add_comment (Dan Dennedy)
+* Wrapped xmlIO output buffers and added Document::write_to_stream (Christophe de Vienne)
+* Cleaned and made more consistent Element API (Murray Cumming)
+* Added entities support in DomParser (Murray Cumming)
+
+2003-09-23 0.26 (unstable):
+
+* Added import_node example into MSVC6 project files (Ephraim Vider)
+* Node::import_node now takes a const Node (suggested by Rafael Vuijk)
+* Fixed threading issue due to incorrect libxml2 initialisation (Fredrik Arnerup)
+* Updated Doxyfile (Christophe de Vienne)
+* Added Namespaces support (Dan Dennedy, Murray Cumming)
+
+2003-07-18 0.25 (unstable):
+
+* Fixed MSVC6 project files (Ephraim Vider)
+* Added Node::import_node (Eric Bourque)
+* Removed throw specification (Christophe de Vienne).
+* Removed old-style autoconf macro for libxml++ detection (Christophe de Vienne).
+* Removed unused examples (Murray Cumming)
+
+2003-06-11 0.24 (unstable):
+
+* Added Document::write_to_file_formatted() and
+  Document::write_to_string_formatted() - they add white space indenting.
+  (Christophe de Vienne)
+* Added ContentNode::is_white_space() to make it easier for applications to
+   ignore white space such as indenting. (Murray Cumming)
+* Node: Added set_name(). (Christophe de Vienne)
+* Compiles with gcc's pedantic warnings as errors.
+  (Christophe de Vienne)
+* libxml++ header files no longer include any libxml header files.
+  (Christophe de Vienne)
+* Removed superfluous standalone parse_* methods in document.[h|cc]
+  (Murray Cumming)
+* Minor reference documentation corrections.
+  (Jonathan Wakely)
+* Replaced some <istream> with <iostream> to support older compilers.
+  (Jonathan Wakely)
+* Added classes to wrap the missing node types. (Ephraim Vider).
+* Fixed a memory leak in write_to_string[_formatted] functions. (Morten Hanssen)
+* Fixed compile error in keepblanks.h with MSVC 6.0. (Christophe de Vienne).
+* Fixed segfault in DomParser::parse_stream on parsing failure.
+  (Christophe de Vienne).
+
+2003-05-20: 0.23 (unstable):
+
+* Fixed incorrect use of xmlKeepBlanksDefault. Handling of white spaces
+  is now conforming to xml specification. (Christophe de Vienne)
+* Classes inherit from NonCopyable to avoid mistakes and clarify the
+  memory mangement.
+  (Murray Cumming)
+* Node::find() returns empty NodeSet if it does not find the path.
+  (Andy Glew)
+* DomParser: Fixed memory leak. (Christophe de Vienne, Thierry Blanchard)
+* Fixed NetBSD compilation (Chistophe de Vienne, Jaka Jejcic)
+* Improved .spec.in file. (Eric Bourque)
+* Some MSVC++ support and minor corrections. (Ephraim Vider)
+
+0.22 (unstable):
+
+* DOM Parser:
+  - Reduced API duplication - you must now use get_document().
+  (Ephraim Vider)
+  - Now throws exception if document not found.
+  (Christophe de Vienne)
+  - Added const get_document() overload. (Murray Cumming)
+
+0.21 (unstable):
+
+* Parsers:
+  - Validation now supported: Use Parser::set_validate() to turn on validation.
+    Parsers will then throw validation_error exceptions if validation fails.
+    (Murray Cumming)
+  - SaxParser: Added parse_chunk() for gradual parsing of XML fragments.
+    (Ole Laursen)
+* Node:
+  - Moved add_child_content(), get_child_content(), set_child_content(),
+    and has_content() to Element class.
+  - Fixed set_child_content() to add content instead of creating a node.
+    (Murray Cumming)
+* Added spec file for RPMs. (Eric Bourque)
+
+
+2003-02-15: 0.20 (unstable):
+
+* Node::remove_child() now works.
+  (Murray Cumming)
+* Added examples/dom_xpath.
+  (Stefan Seefeld, Murray Cumming)
+
+2003-02-08: 0.19 (unstable):
+
+* The imlementation now uses libxml's API more instead of reimplementing data structures.
+  (Stefan Seefeld, Murray Cumming)
+* Attribute::get_value() use libxml's API properly, so it now respects the DTD.
+  (Stefan Seefeld)
+* Node: Added get_path() and find() for xpath lookup. (Stefan Seefeld)
+* Attribute now inherits from Node, as required by the find() method. (Stefan Seefeld)
+* Added Document class. (Stefan Seefeld)
+* Added cobj() accessors, in case you need to use unwrapped libxml API. (Murray Cumming)
+* SaxParser:
+    Added CDATA section handler.
+    fixed a potential buffer overflow problem
+  (Valentin Rusu)
+
+2003-01-09: 0.18 (unstable):
+
+* big API change for nodes handling : the different types of node now herit
+from a base Node class. This, among other advantages, avoids previous ambiguity
+on content() acessors meaning.
+* little bugfixes and improvements in SaxParser.
+
+2002-12-10: 0.17 (unstable):
+
+* properties are now called attributes.
+* it is now possible to throw exceptions from callback
+methods in SaxParser.
+* parsers can parse from a stream.
+* memory leak fixed in SaxParser.
+* configure check for libxml2 2.4.1 at least.
+* bug fixes.
+
+
+2002-11-20: 0.16 (unstable):
+
+* Examples added.
+* Xml type name prefix removed.
+* Tree replaced with DomParser.
+* Parser renamed to SaxParser.
+* Property renamed to Attribute
+* Errors thrown as exceptions.
+* Both parsers can parse from either file or memory.
+
+* Simplified memory management -
+  no more returning of static temporaries.
+* set_*() methods return void.
