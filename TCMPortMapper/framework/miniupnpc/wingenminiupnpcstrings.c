@@ -1,4 +1,4 @@
-/* $Id: wingenminiupnpcstrings.c,v 1.1 2009/12/10 18:46:15 nanard Exp $ */
+/* $Id: wingenminiupnpcstrings.c,v 1.2 2011/01/11 15:31:13 nanard Exp $ */
 /* Project: miniupnp
  * http://miniupnp.free.fr/ or http://miniupnp.tuxfamily.org/
  * Author: Thomas Bernard
@@ -18,6 +18,7 @@ int main(int argc, char * * argv) {
 	FILE * fin;
 	FILE * fout;
 	int n;
+	char miniupnpcVersion[32];
 	/* dwMajorVersion :
        The major version number of the operating system. For more information, see Remarks.
      dwMinorVersion :
@@ -40,6 +41,15 @@ int main(int argc, char * * argv) {
 	       osvi.dwMajorVersion, osvi.dwMinorVersion,
 	       osvi.dwBuildNumber, (const char *)&(osvi.szCSDVersion));
 
+	fin = fopen("VERSION", "r");
+	fgets(miniupnpcVersion, sizeof(miniupnpcVersion), fin);
+	fclose(fin);
+	for(n = 0; n < sizeof(miniupnpcVersion); n++) {
+		if(miniupnpcVersion[n] < ' ')
+			miniupnpcVersion[n] = '\0';
+	}
+	printf("MiniUPnPc version %s\n", miniupnpcVersion);
+
 	if(argc >= 3) {
 		fin = fopen(argv[1], "r");
 		if(!fin) {
@@ -56,6 +66,9 @@ int main(int argc, char * * argv) {
 			if(0 == memcmp(buffer, "#define OS_STRING \"OS/version\"", 30)) {
 				sprintf(buffer, "#define OS_STRING \"MSWindows/%ld.%ld.%ld\"\n",
 				        osvi.dwMajorVersion, osvi.dwMinorVersion, osvi.dwBuildNumber);
+			} else if(0 == memcmp(buffer, "#define MINIUPNPC_VERSION_STRING \"version\"", 42)) {
+				sprintf(buffer, "#define MINIUPNPC_VERSION_STRING \"%s\"\n",
+				        miniupnpcVersion);
 			}
 			/*fputs(buffer, stdout);*/
 			fputs(buffer, fout);

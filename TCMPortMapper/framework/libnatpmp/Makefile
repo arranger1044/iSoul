@@ -1,7 +1,7 @@
-# $Id: Makefile,v 1.14 2010/11/30 11:20:55 nanard Exp $
+# $Id: Makefile,v 1.18 2011/06/22 21:32:30 nanard Exp $
 # This Makefile is designed for use with GNU make
 # libnatpmp
-# (c) 2007-2010 Thomas Bernard
+# (c) 2007-2011 Thomas Bernard
 # http://miniupnp.free.fr/libnatpmp.html
 
 OS = $(shell uname -s)
@@ -9,8 +9,8 @@ CC = gcc
 INSTALL = install
 
 # APIVERSION is used in soname
-APIVERSION = 0
-LDFLAGS = --no-undefined
+APIVERSION = 1
+#LDFLAGS = -Wl,--no-undefined
 CFLAGS = -O -fPIC -Wall -DENABLE_STRNATPMPERR
 
 LIBOBJS = natpmp.o getgateway.o
@@ -19,7 +19,7 @@ OBJS = $(LIBOBJS) testgetgateway.o natpmpc.o
 
 STATICLIB = libnatpmp.a
 ifeq ($(OS), Darwin)
-  SHAREDLIB = libnatpmp.dynlib
+  SHAREDLIB = libnatpmp.dylib
   SONAME = $(basename $(SHAREDLIB)).$(APIVERSION).dylib
   CFLAGS := -DMACOSX -D_DARWIN_C_SOURCE $(CFLAGS)
 else
@@ -61,6 +61,7 @@ install:	$(HEADERS) $(STATICLIB) $(SHAREDLIB) natpmpc-shared
 	$(INSTALL) -d $(INSTALLDIRLIB)
 	$(INSTALL) -m 644 $(STATICLIB) $(INSTALLDIRLIB)
 	$(INSTALL) -m 644 $(SHAREDLIB) $(INSTALLDIRLIB)/$(SONAME)
+	$(INSTALL) -d $(INSTALLDIRBIN)
 	$(INSTALL) -m 755 natpmpc-shared $(INSTALLDIRBIN)/natpmpc
 	ln -s -f $(SONAME) $(INSTALLDIRLIB)/$(SHAREDLIB)
 
@@ -73,10 +74,10 @@ cleaninstall:
 testgetgateway:	testgetgateway.o getgateway.o
 
 natpmpc-static:	natpmpc.o $(STATICLIB)
-	$(CC) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 natpmpc-shared:	natpmpc.o $(SHAREDLIB)
-	$(CC) -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 $(STATICLIB):	$(LIBOBJS)
 	$(AR) crs $@ $?

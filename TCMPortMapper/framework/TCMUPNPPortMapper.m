@@ -158,7 +158,9 @@ NSString * const TCMUPNPPortMapperDidEndWorkingNotification   =@"TCMUPNPPortMapp
     char externalIPAddress[16];
     BOOL didFail=NO;
     NSString *errorString = nil;
-    if (( devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0) )) {
+	int error = 0;
+	
+    if (( devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error) )) {
         if(devlist) {
         
             // let us check all of the devices for reachability
@@ -311,7 +313,7 @@ NSString * const TCMUPNPPortMapperDidEndWorkingNotification   =@"TCMUPNPPortMapp
                     while ([aExternalPortSet containsIndex:mappedPort] && mappedPort<[aPortMapping desiredExternalPort]+40) {
                         mappedPort++;
                     }
-                    r = UPNP_AddPortMapping(aURLs->controlURL, aIGDData->first.servicetype,[[NSString stringWithFormat:@"%d",mappedPort] UTF8String],[[NSString stringWithFormat:@"%d",[aPortMapping localPort]] UTF8String], [[[TCMPortMapper sharedInstance] localIPAddress] UTF8String], [[self portMappingDescription] UTF8String], protocol==TCMPortMappingTransportProtocolUDP?"UDP":"TCP",NULL);
+                    r = UPNP_AddPortMapping(aURLs->controlURL, aIGDData->first.servicetype,[[NSString stringWithFormat:@"%d",mappedPort] UTF8String],[[NSString stringWithFormat:@"%d",[aPortMapping localPort]] UTF8String], [[[TCMPortMapper sharedInstance] localIPAddress] UTF8String], [[self portMappingDescription] UTF8String], protocol==TCMPortMappingTransportProtocolUDP?"UDP":"TCP",NULL, NULL);
                     if (r!=UPNPCOMMAND_SUCCESS) {
                         NSString *errorString = [NSString stringWithFormat:@"%d",r];
                         switch (r) {
