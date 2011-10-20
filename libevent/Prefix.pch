@@ -1,0 +1,5 @@
+//
+// Prefix header for all source files of the 'libevent' target in the 'libevent' project.
+//
+
+#define TAILQ_END(head) NULL

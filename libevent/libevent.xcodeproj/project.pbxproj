@@ -25,7 +25,6 @@
 		DD31FF7F12C4007300DBE3E9 /* evutil_rand.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4312C4007300DBE3E9 /* evutil_rand.c */; };
 		DD31FF8012C4007300DBE3E9 /* evutil.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4412C4007300DBE3E9 /* evutil.c */; };
 		DD31FF8112C4007300DBE3E9 /* http.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4512C4007300DBE3E9 /* http.c */; };
-		DD31FF8212C4007300DBE3E9 /* kqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4612C4007300DBE3E9 /* kqueue.c */; };
 		DD31FF8312C4007300DBE3E9 /* listener.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4712C4007300DBE3E9 /* listener.c */; };
 		DD31FF8412C4007300DBE3E9 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4812C4007300DBE3E9 /* log.c */; };
 		DD31FF8512C4007300DBE3E9 /* poll.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4912C4007300DBE3E9 /* poll.c */; };
@@ -56,6 +55,8 @@
 		DD31FFD712C4018800DBE3E9 /* tag_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBC12C4018800DBE3E9 /* tag_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD31FFD812C4018800DBE3E9 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBD12C4018800DBE3E9 /* thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD31FFD912C4018800DBE3E9 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBE12C4018800DBE3E9 /* util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDFAEFFB144FDF80006472EE /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = DDFAEFFA144FDF80006472EE /* Prefix.pch */; };
+		DDFAEFFE144FE291006472EE /* kqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4612C4007300DBE3E9 /* kqueue.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		DD31FFBC12C4018800DBE3E9 /* tag_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag_compat.h; sourceTree = "<group>"; };
 		DD31FFBD12C4018800DBE3E9 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
 		DD31FFBE12C4018800DBE3E9 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		DDFAEFFA144FDF80006472EE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
+				DDFAEFFD144FDF9E006472EE /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -180,6 +183,7 @@
 				DD31FF4C12C4007300DBE3E9 /* strlcpy.c */,
 			);
 			name = Classes;
+			path = libevent;
 			sourceTree = "<group>";
 		};
 		DD31FFA512C4018800DBE3E9 /* include */ = {
@@ -221,6 +225,14 @@
 			path = event2;
 			sourceTree = "<group>";
 		};
+		DDFAEFFD144FDF9E006472EE /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DDFAEFFA144FDF80006472EE /* Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -252,6 +264,7 @@
 				DD31FFD712C4018800DBE3E9 /* tag_compat.h in Headers */,
 				DD31FFD812C4018800DBE3E9 /* thread.h in Headers */,
 				DD31FFD912C4018800DBE3E9 /* util.h in Headers */,
+				DDFAEFFB144FDF80006472EE /* Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFAEFFE144FE291006472EE /* kqueue.c in Sources */,
 				DD31FF6A12C4007300DBE3E9 /* buffer.c in Sources */,
 				DD31FF6C12C4007300DBE3E9 /* bufferevent_filter.c in Sources */,
 				DD31FF6D12C4007300DBE3E9 /* bufferevent_openssl.c in Sources */,
@@ -338,7 +352,6 @@
 				DD31FF7F12C4007300DBE3E9 /* evutil_rand.c in Sources */,
 				DD31FF8012C4007300DBE3E9 /* evutil.c in Sources */,
 				DD31FF8112C4007300DBE3E9 /* http.c in Sources */,
-				DD31FF8212C4007300DBE3E9 /* kqueue.c in Sources */,
 				DD31FF8312C4007300DBE3E9 /* listener.c in Sources */,
 				DD31FF8412C4007300DBE3E9 /* log.c in Sources */,
 				DD31FF8512C4007300DBE3E9 /* poll.c in Sources */,
@@ -387,10 +400,12 @@
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/include\"";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/libevent/include\"";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -416,10 +431,12 @@
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/include\"";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/libevent/include\"";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
