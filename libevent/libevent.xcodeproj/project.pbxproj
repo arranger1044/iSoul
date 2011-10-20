@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
-		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		DD31FF6712C4007300DBE3E9 /* libevent_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = DD31FF2B12C4007300DBE3E9 /* libevent_Prefix.pch */; };
 		DD31FF6A12C4007300DBE3E9 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF2E12C4007300DBE3E9 /* buffer.c */; };
 		DD31FF6C12C4007300DBE3E9 /* bufferevent_filter.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF3012C4007300DBE3E9 /* bufferevent_filter.c */; };
 		DD31FF6D12C4007300DBE3E9 /* bufferevent_openssl.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF3112C4007300DBE3E9 /* bufferevent_openssl.c */; };
@@ -34,42 +32,36 @@
 		DD31FF8612C4007300DBE3E9 /* select.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4A12C4007300DBE3E9 /* select.c */; };
 		DD31FF8712C4007300DBE3E9 /* signal.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4B12C4007300DBE3E9 /* signal.c */; };
 		DD31FF8812C4007300DBE3E9 /* strlcpy.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4C12C4007300DBE3E9 /* strlcpy.c */; };
-		DD31FFC212C4018800DBE3E9 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA712C4018800DBE3E9 /* buffer.h */; };
-		DD31FFC312C4018800DBE3E9 /* buffer_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA812C4018800DBE3E9 /* buffer_compat.h */; };
-		DD31FFC412C4018800DBE3E9 /* bufferevent.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA912C4018800DBE3E9 /* bufferevent.h */; };
-		DD31FFC512C4018800DBE3E9 /* bufferevent_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAA12C4018800DBE3E9 /* bufferevent_compat.h */; };
-		DD31FFC612C4018800DBE3E9 /* bufferevent_ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAB12C4018800DBE3E9 /* bufferevent_ssl.h */; };
-		DD31FFC712C4018800DBE3E9 /* bufferevent_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAC12C4018800DBE3E9 /* bufferevent_struct.h */; };
-		DD31FFC812C4018800DBE3E9 /* dns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAD12C4018800DBE3E9 /* dns.h */; };
-		DD31FFC912C4018800DBE3E9 /* dns_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAE12C4018800DBE3E9 /* dns_compat.h */; };
-		DD31FFCA12C4018800DBE3E9 /* dns_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAF12C4018800DBE3E9 /* dns_struct.h */; };
-		DD31FFCB12C4018800DBE3E9 /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB012C4018800DBE3E9 /* event.h */; };
-		DD31FFCC12C4018800DBE3E9 /* event_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB112C4018800DBE3E9 /* event_compat.h */; };
-		DD31FFCD12C4018800DBE3E9 /* event_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB212C4018800DBE3E9 /* event_struct.h */; };
-		DD31FFCE12C4018800DBE3E9 /* http.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB312C4018800DBE3E9 /* http.h */; };
-		DD31FFCF12C4018800DBE3E9 /* http_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB412C4018800DBE3E9 /* http_compat.h */; };
-		DD31FFD012C4018800DBE3E9 /* http_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB512C4018800DBE3E9 /* http_struct.h */; };
-		DD31FFD112C4018800DBE3E9 /* keyvalq_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB612C4018800DBE3E9 /* keyvalq_struct.h */; };
-		DD31FFD212C4018800DBE3E9 /* listener.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB712C4018800DBE3E9 /* listener.h */; };
-		DD31FFD312C4018800DBE3E9 /* rpc.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB812C4018800DBE3E9 /* rpc.h */; };
-		DD31FFD412C4018800DBE3E9 /* rpc_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB912C4018800DBE3E9 /* rpc_compat.h */; };
-		DD31FFD512C4018800DBE3E9 /* rpc_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBA12C4018800DBE3E9 /* rpc_struct.h */; };
-		DD31FFD612C4018800DBE3E9 /* tag.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBB12C4018800DBE3E9 /* tag.h */; };
-		DD31FFD712C4018800DBE3E9 /* tag_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBC12C4018800DBE3E9 /* tag_compat.h */; };
-		DD31FFD812C4018800DBE3E9 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBD12C4018800DBE3E9 /* thread.h */; };
-		DD31FFD912C4018800DBE3E9 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBE12C4018800DBE3E9 /* util.h */; };
+		DD31FFC212C4018800DBE3E9 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA712C4018800DBE3E9 /* buffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC312C4018800DBE3E9 /* buffer_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA812C4018800DBE3E9 /* buffer_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC412C4018800DBE3E9 /* bufferevent.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFA912C4018800DBE3E9 /* bufferevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC512C4018800DBE3E9 /* bufferevent_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAA12C4018800DBE3E9 /* bufferevent_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC612C4018800DBE3E9 /* bufferevent_ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAB12C4018800DBE3E9 /* bufferevent_ssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC712C4018800DBE3E9 /* bufferevent_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAC12C4018800DBE3E9 /* bufferevent_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC812C4018800DBE3E9 /* dns.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAD12C4018800DBE3E9 /* dns.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFC912C4018800DBE3E9 /* dns_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAE12C4018800DBE3E9 /* dns_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCA12C4018800DBE3E9 /* dns_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFAF12C4018800DBE3E9 /* dns_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCB12C4018800DBE3E9 /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB012C4018800DBE3E9 /* event.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCC12C4018800DBE3E9 /* event_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB112C4018800DBE3E9 /* event_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCD12C4018800DBE3E9 /* event_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB212C4018800DBE3E9 /* event_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCE12C4018800DBE3E9 /* http.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB312C4018800DBE3E9 /* http.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFCF12C4018800DBE3E9 /* http_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB412C4018800DBE3E9 /* http_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD012C4018800DBE3E9 /* http_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB512C4018800DBE3E9 /* http_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD112C4018800DBE3E9 /* keyvalq_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB612C4018800DBE3E9 /* keyvalq_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD212C4018800DBE3E9 /* listener.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB712C4018800DBE3E9 /* listener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD312C4018800DBE3E9 /* rpc.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB812C4018800DBE3E9 /* rpc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD412C4018800DBE3E9 /* rpc_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFB912C4018800DBE3E9 /* rpc_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD512C4018800DBE3E9 /* rpc_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBA12C4018800DBE3E9 /* rpc_struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD612C4018800DBE3E9 /* tag.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBB12C4018800DBE3E9 /* tag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD712C4018800DBE3E9 /* tag_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBC12C4018800DBE3E9 /* tag_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD812C4018800DBE3E9 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBD12C4018800DBE3E9 /* thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD31FFD912C4018800DBE3E9 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBE12C4018800DBE3E9 /* util.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		32DBCF5E0370ADEE00C91783 /* libevent_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libevent_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* libevent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libevent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		DD31FF2B12C4007300DBE3E9 /* libevent_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libevent_Prefix.pch; sourceTree = "<group>"; };
 		DD31FF2E12C4007300DBE3E9 /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
 		DD31FF3012C4007300DBE3E9 /* bufferevent_filter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bufferevent_filter.c; sourceTree = "<group>"; };
 		DD31FF3112C4007300DBE3E9 /* bufferevent_openssl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bufferevent_openssl.c; sourceTree = "<group>"; };
@@ -125,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,21 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
-				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
-				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = libevent;
-			sourceTree = "<group>";
-		};
-		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
-				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
-			);
-			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 		089C1665FE841158C02AAC07 /* Resources */ = {
@@ -174,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				DD31FFA512C4018800DBE3E9 /* include */,
-				DD31FF2B12C4007300DBE3E9 /* libevent_Prefix.pch */,
 				DD31FF2E12C4007300DBE3E9 /* buffer.c */,
 				DD31FF3012C4007300DBE3E9 /* bufferevent_filter.c */,
 				DD31FF3112C4007300DBE3E9 /* bufferevent_openssl.c */,
@@ -201,32 +180,6 @@
 				DD31FF4C12C4007300DBE3E9 /* strlcpy.c */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
-				D2F7E79907B2D74100F64583 /* CoreData.framework */,
-				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		32C88DFF0371C24200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32DBCF5E0370ADEE00C91783 /* libevent_Prefix.pch */,
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		DD31FFA512C4018800DBE3E9 /* include */ = {
@@ -275,7 +228,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD31FF6712C4007300DBE3E9 /* libevent_Prefix.pch in Headers */,
 				DD31FFC212C4018800DBE3E9 /* buffer.h in Headers */,
 				DD31FFC312C4018800DBE3E9 /* buffer_compat.h in Headers */,
 				DD31FFC412C4018800DBE3E9 /* bufferevent.h in Headers */,
@@ -435,8 +387,6 @@
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = libevent_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -466,8 +416,6 @@
 				GCC_ENABLE_SSE41_EXTENSIONS = YES;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = libevent_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
