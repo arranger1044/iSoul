@@ -54,6 +54,21 @@
 		BFAF58390EA244A100C21467 /* saxparser.cc in Sources */ = {isa = PBXBuildFile; fileRef = BFAF58010EA244A100C21467 /* saxparser.cc */; };
 		BFAF583A0EA244A100C21467 /* saxparser.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAF58020EA244A100C21467 /* saxparser.h */; };
 		DDFAF046144FECEB006472EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFAF044144FECDD006472EE /* libxml2.dylib */; };
+		DDFAF04F144FF8DB006472EE /* istreamparserinputbuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF04B144FF8DB006472EE /* istreamparserinputbuffer.cc */; };
+		DDFAF050144FF8DB006472EE /* istreamparserinputbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF04C144FF8DB006472EE /* istreamparserinputbuffer.h */; };
+		DDFAF051144FF8DB006472EE /* parserinputbuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF04D144FF8DB006472EE /* parserinputbuffer.cc */; };
+		DDFAF052144FF8DB006472EE /* parserinputbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF04E144FF8DB006472EE /* parserinputbuffer.h */; };
+		DDFAF055144FF917006472EE /* textreader.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF053144FF917006472EE /* textreader.cc */; };
+		DDFAF056144FF917006472EE /* textreader.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF054144FF917006472EE /* textreader.h */; };
+		DDFAF060144FF93B006472EE /* schema.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF057144FF93A006472EE /* schema.cc */; };
+		DDFAF061144FF93B006472EE /* schema.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF058144FF93A006472EE /* schema.h */; };
+		DDFAF062144FF93B006472EE /* dtdvalidator.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF05A144FF93B006472EE /* dtdvalidator.cc */; };
+		DDFAF063144FF93B006472EE /* dtdvalidator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF05B144FF93B006472EE /* dtdvalidator.h */; };
+		DDFAF064144FF93B006472EE /* schemavalidator.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF05C144FF93B006472EE /* schemavalidator.cc */; };
+		DDFAF065144FF93B006472EE /* schemavalidator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF05D144FF93B006472EE /* schemavalidator.h */; };
+		DDFAF066144FF93B006472EE /* validator.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF05E144FF93B006472EE /* validator.cc */; };
+		DDFAF067144FF93B006472EE /* validator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF05F144FF93B006472EE /* validator.h */; };
+		DDFAF06A144FFEB8006472EE /* ustring.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF069144FFEB8006472EE /* ustring.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +121,21 @@
 		BFAF58010EA244A100C21467 /* saxparser.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saxparser.cc; sourceTree = "<group>"; };
 		BFAF58020EA244A100C21467 /* saxparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saxparser.h; sourceTree = "<group>"; };
 		DDFAF044144FECDD006472EE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		DDFAF04B144FF8DB006472EE /* istreamparserinputbuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = istreamparserinputbuffer.cc; sourceTree = "<group>"; };
+		DDFAF04C144FF8DB006472EE /* istreamparserinputbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = istreamparserinputbuffer.h; sourceTree = "<group>"; };
+		DDFAF04D144FF8DB006472EE /* parserinputbuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parserinputbuffer.cc; sourceTree = "<group>"; };
+		DDFAF04E144FF8DB006472EE /* parserinputbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parserinputbuffer.h; sourceTree = "<group>"; };
+		DDFAF053144FF917006472EE /* textreader.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textreader.cc; sourceTree = "<group>"; };
+		DDFAF054144FF917006472EE /* textreader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textreader.h; sourceTree = "<group>"; };
+		DDFAF057144FF93A006472EE /* schema.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema.cc; sourceTree = "<group>"; };
+		DDFAF058144FF93A006472EE /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
+		DDFAF05A144FF93B006472EE /* dtdvalidator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dtdvalidator.cc; sourceTree = "<group>"; };
+		DDFAF05B144FF93B006472EE /* dtdvalidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtdvalidator.h; sourceTree = "<group>"; };
+		DDFAF05C144FF93B006472EE /* schemavalidator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schemavalidator.cc; sourceTree = "<group>"; };
+		DDFAF05D144FF93B006472EE /* schemavalidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schemavalidator.h; sourceTree = "<group>"; };
+		DDFAF05E144FF93B006472EE /* validator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cc; sourceTree = "<group>"; };
+		DDFAF05F144FF93B006472EE /* validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = validator.h; sourceTree = "<group>"; };
+		DDFAF069144FFEB8006472EE /* ustring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ustring.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +161,7 @@
 		0867D691FE84028FC02AAC07 /* libXMLFramework */ = {
 			isa = PBXGroup;
 			children = (
+				DDFAF068144FFEB8006472EE /* glibmm */,
 				BFAF57C60EA244A100C21467 /* libxml++ */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
@@ -182,6 +213,9 @@
 				BFAF57F80EA244A100C21467 /* noncopyable.cc */,
 				BFAF57F90EA244A100C21467 /* noncopyable.h */,
 				BFAF57FA0EA244A100C21467 /* parsers */,
+				DDFAF057144FF93A006472EE /* schema.cc */,
+				DDFAF058144FF93A006472EE /* schema.h */,
+				DDFAF059144FF93B006472EE /* validators */,
 			);
 			name = "libxml++";
 			path = "libxml++/libxml++";
@@ -205,10 +239,14 @@
 		BFAF57DB0EA244A100C21467 /* io */ = {
 			isa = PBXGroup;
 			children = (
+				DDFAF04B144FF8DB006472EE /* istreamparserinputbuffer.cc */,
+				DDFAF04C144FF8DB006472EE /* istreamparserinputbuffer.h */,
 				BFAF57DE0EA244A100C21467 /* ostreamoutputbuffer.cc */,
 				BFAF57DF0EA244A100C21467 /* ostreamoutputbuffer.h */,
 				BFAF57E00EA244A100C21467 /* outputbuffer.cc */,
 				BFAF57E10EA244A100C21467 /* outputbuffer.h */,
+				DDFAF04D144FF8DB006472EE /* parserinputbuffer.cc */,
+				DDFAF04E144FF8DB006472EE /* parserinputbuffer.h */,
 			);
 			path = io;
 			sourceTree = "<group>";
@@ -245,8 +283,31 @@
 				BFAF58000EA244A100C21467 /* parser.h */,
 				BFAF58010EA244A100C21467 /* saxparser.cc */,
 				BFAF58020EA244A100C21467 /* saxparser.h */,
+				DDFAF053144FF917006472EE /* textreader.cc */,
+				DDFAF054144FF917006472EE /* textreader.h */,
 			);
 			path = parsers;
+			sourceTree = "<group>";
+		};
+		DDFAF059144FF93B006472EE /* validators */ = {
+			isa = PBXGroup;
+			children = (
+				DDFAF05A144FF93B006472EE /* dtdvalidator.cc */,
+				DDFAF05B144FF93B006472EE /* dtdvalidator.h */,
+				DDFAF05C144FF93B006472EE /* schemavalidator.cc */,
+				DDFAF05D144FF93B006472EE /* schemavalidator.h */,
+				DDFAF05E144FF93B006472EE /* validator.cc */,
+				DDFAF05F144FF93B006472EE /* validator.h */,
+			);
+			path = validators;
+			sourceTree = "<group>";
+		};
+		DDFAF068144FFEB8006472EE /* glibmm */ = {
+			isa = PBXGroup;
+			children = (
+				DDFAF069144FFEB8006472EE /* ustring.h */,
+			);
+			path = glibmm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +340,14 @@
 				BFAF58360EA244A100C21467 /* domparser.h in Headers */,
 				BFAF58380EA244A100C21467 /* parser.h in Headers */,
 				BFAF583A0EA244A100C21467 /* saxparser.h in Headers */,
+				DDFAF050144FF8DB006472EE /* istreamparserinputbuffer.h in Headers */,
+				DDFAF052144FF8DB006472EE /* parserinputbuffer.h in Headers */,
+				DDFAF056144FF917006472EE /* textreader.h in Headers */,
+				DDFAF061144FF93B006472EE /* schema.h in Headers */,
+				DDFAF063144FF93B006472EE /* dtdvalidator.h in Headers */,
+				DDFAF065144FF93B006472EE /* schemavalidator.h in Headers */,
+				DDFAF067144FF93B006472EE /* validator.h in Headers */,
+				DDFAF06A144FFEB8006472EE /* ustring.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +439,13 @@
 				BFAF58350EA244A100C21467 /* domparser.cc in Sources */,
 				BFAF58370EA244A100C21467 /* parser.cc in Sources */,
 				BFAF58390EA244A100C21467 /* saxparser.cc in Sources */,
+				DDFAF04F144FF8DB006472EE /* istreamparserinputbuffer.cc in Sources */,
+				DDFAF051144FF8DB006472EE /* parserinputbuffer.cc in Sources */,
+				DDFAF055144FF917006472EE /* textreader.cc in Sources */,
+				DDFAF060144FF93B006472EE /* schema.cc in Sources */,
+				DDFAF062144FF93B006472EE /* dtdvalidator.cc in Sources */,
+				DDFAF064144FF93B006472EE /* schemavalidator.cc in Sources */,
+				DDFAF066144FF93B006472EE /* validator.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +490,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"/usr/include/libxml2/**",
 					"./**",
@@ -443,7 +518,6 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"./**",
 					"libxml++/**",
