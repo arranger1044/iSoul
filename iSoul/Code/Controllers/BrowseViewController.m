@@ -25,9 +25,10 @@
 
 - (id)init
 {
-	if (![super initWithNibName:@"BrowseView" bundle:nil]) {
+	self = [super initWithNibName:@"BrowseView" bundle:nil];
+	if (!self)
 		return nil;
-	}
+	
 	[self setTitle:@"Browse"];
 	
 	// cache the images shown in the browser cells

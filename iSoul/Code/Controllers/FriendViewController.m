@@ -19,9 +19,10 @@
 
 - (id)init
 {
-	if (![super initWithNibName:@"FriendsView" bundle:nil]) {
+	self = [super initWithNibName:@"FriendsView" bundle:nil];
+	if (!self)
 		return nil;
-	}
+	
 	[self setTitle:@"Friends"];
 	
 	// used when the friend does not have an image set

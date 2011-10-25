@@ -48,7 +48,8 @@
 }
 
 - (id)init {
-	if (![super initWithNibName:@"SearchView" bundle:nil])
+	self = [super initWithNibName:@"SearchView" bundle:nil];
+	if (!self)
 		return nil;
 	
 	[self setTitle:@"Search"];
@@ -335,8 +336,9 @@
 	if (currentTickets && isAwake) {
 		NSUInteger i;
 		NSArray *tickets = [currentTickets allObjects];
-		NSMutableString *predString = [[NSMutableString alloc] initWithFormat:
-									   @"ticket.number == %@", [[tickets objectAtIndex:0] number]];
+		NSMutableString *predString = [[[NSMutableString alloc] initWithFormat:
+										@"ticket.number == %@", [[tickets objectAtIndex:0] number]]
+									   autorelease];
 		for (i = 1; i < [tickets count]; i++) {
 			Ticket *t = [tickets objectAtIndex:i];
 			[predString appendFormat:@" || ticket.number == %@", [t number]];			
@@ -345,7 +347,7 @@
 		
 		// split the search ticket files into a tree
 		// and start observing changes in each ticket
-		for (i = 0; i < [tickets count]; i++) {
+		for (i = 0; i < tickets.count; i++) {
 			Ticket *t = [tickets objectAtIndex:i];
 			[self addSetToFileTree:[t files] sortImmediately:(i == [tickets count])];
 			[t addObserver:self 

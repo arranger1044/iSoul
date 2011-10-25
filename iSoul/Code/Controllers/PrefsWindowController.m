@@ -99,7 +99,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 
 - (void)setupDownloadMenu
 {
-	NSMenu *downloadMenu = [[NSMenu alloc] initWithTitle:@"Download Locations"];
+	NSMenu *downloadMenu = [[[NSMenu alloc] initWithTitle:@"Download Locations"] autorelease];
 	NSString *savePath = [[NSUserDefaults standardUserDefaults] valueForKey:@"DownloadPath"];
 	NSArray *locations = [NSArray arrayWithObjects:@"Desktop",@"Music",@"Downloads",nil];
 	NSMenuItem *chosen = nil;
@@ -135,7 +135,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 
 - (void)setupIncompleteMenu
 {
-	NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Incomplete Save Locations"];
+	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@"Incomplete Save Locations"] autorelease];
 	NSString *incompletePath = [[NSUserDefaults standardUserDefaults] valueForKey:@"IncompletePath"];
 	
 	NSMenuItem *chosen = [self addMenuItemForPath:incompletePath toMenu:menu];
@@ -175,13 +175,13 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
     if (archived)
     {
         /* archived log directory */
-        menu = [[NSMenu alloc] initWithTitle:@"Dir Log Path"];
+        menu = [[[NSMenu alloc] initWithTitle:@"Dir Log Path"] autorelease];
         path = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogDirPath"];
     }
     else
     {
         /* current log path */
-        menu = [[NSMenu alloc] initWithTitle:@"Log File Path"];
+        menu = [[[NSMenu alloc] initWithTitle:@"Log File Path"] autorelease];
         path = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"];
     }
 
@@ -586,7 +586,7 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	if ([item tag] < 1) return;		// default values have tag 1, non-default 2
 	
 	NSString * logPath = [item representedObject];
-	NSString * oldPath;
+	NSString * oldPath = nil;
     
     if ([sender isEqual:logPathPopup])
     {

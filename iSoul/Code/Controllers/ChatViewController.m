@@ -39,9 +39,10 @@
 
 - (id)init
 {
-	if (![super initWithNibName:@"ChatView" bundle:nil]) {
+	self = [super initWithNibName:@"ChatView" bundle:nil];
+	if (!self)
 		return nil;
-	}
+	
 	[self setTitle:@"Chat"];
 	
 	// stores usernames that have been seen so far

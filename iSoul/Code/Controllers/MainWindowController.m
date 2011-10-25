@@ -1081,7 +1081,7 @@
 {
 	// add a new item to the moc
 	// and start editing it
-	SidebarItem *item = [store newSearch];
+	SidebarItem *item = [[store newSearch] autorelease];
 	
 	// edit the new row
 	[self editItem:item];
@@ -1097,7 +1097,7 @@
 {
 	// add a new item to the moc
 	// and start editing it
-	SidebarItem *item = [store newWishlistItem];
+	SidebarItem *item = [[store newWishlistItem] autorelease];
 	debug_NSLog(@"New wishlist!");
 	[self editItem:item];
 }

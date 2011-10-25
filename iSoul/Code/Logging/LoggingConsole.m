@@ -26,12 +26,13 @@
 
 
 - (id)initWithWindowNibName:(NSString *)windowNibName{
-    
-    if ([super initWithWindowNibName:@"LoggingConsole"])
-    {
-        DNSLog(@"init Console");
-    }
-    return self;
+	self = [super initWithWindowNibName:@"LoggingConsole"];
+	if (!self)
+		return nil;
+
+	DNSLog(@"init Console");
+
+	return self;
 }
 
 - (void)awakeFromNib{

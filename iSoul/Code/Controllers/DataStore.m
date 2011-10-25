@@ -124,7 +124,7 @@
 	
 	// force the moc to process the changes
 	[managedObjectContext processPendingChanges];
-	return item;
+	return [item retain];
 }
 
 - (SidebarItem *)newWishlistItem
@@ -138,7 +138,7 @@
 	
 	// force the moc to process the changes
 	[managedObjectContext processPendingChanges];
-	return item;
+	return [item retain];
 }
 
 - (Ticket *)findTicketWithNumber:(uint32_t)ticketNumber

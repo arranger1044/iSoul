@@ -29,9 +29,10 @@
 
 - (id)init
 {
-	if (![super initWithNibName:@"DownloadView" bundle:nil]) {
+	self = [super initWithNibName:@"DownloadView" bundle:nil];
+	if (!self)
 		return nil;
-	}
+	
 	[self setTitle:@"Transfers"];
 	
 	treeRoot = [[PathNode alloc] init];

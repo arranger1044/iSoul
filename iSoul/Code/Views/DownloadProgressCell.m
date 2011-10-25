@@ -193,7 +193,7 @@
 		progressCapInactiveDark : progressCapInactive;
 	NSImage *endCap = progressCapInactive;
 	NSImage *bar = progressInactiveDark;
-	NSMutableString *caption = [[NSMutableString alloc] init];
+	NSMutableString *caption = [[[NSMutableString alloc] init] autorelease];
 	
 	// first add the progress caption
 	if (bigRow || ((filePosition > 0) && (state != tfFinished))) {
