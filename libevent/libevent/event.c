@@ -250,8 +250,10 @@ HT_GENERATE(event_debug_map, event_debug_entry, node, hash_debug_entry,
 			dent->added = 1;				\
 		} else {						\
 			event_errx(_EVENT_ERR_ABORT,			\
-			    "%s: noting an add on a non-setup event %p", \
-			    __func__, (ev));				\
+			    "%s: noting an add on a non-setup event %p" \
+			    " (events: 0x%x, fd: %d, flags: 0x%x)",	\
+			    __func__, (ev), (ev)->ev_events,		\
+			    (ev)->ev_fd, (ev)->ev_flags);		\
 		}							\
 		EVLOCK_UNLOCK(_event_debug_map_lock, 0);		\
 	}								\
@@ -268,8 +270,10 @@ HT_GENERATE(event_debug_map, event_debug_entry, node, hash_debug_entry,
 			dent->added = 0;				\
 		} else {						\
 			event_errx(_EVENT_ERR_ABORT,			\
-			    "%s: noting a del on a non-setup event %p", \
-			    __func__, (ev));				\
+			    "%s: noting a del on a non-setup event %p"	\
+			    " (events: 0x%x, fd: %d, flags: 0x%x)",	\
+			    __func__, (ev), (ev)->ev_events,		\
+			    (ev)->ev_fd, (ev)->ev_flags);		\
 		}							\
 		EVLOCK_UNLOCK(_event_debug_map_lock, 0);		\
 	}								\
@@ -284,8 +288,10 @@ HT_GENERATE(event_debug_map, event_debug_entry, node, hash_debug_entry,
 		dent = HT_FIND(event_debug_map, &global_debug_map, &find); \
 		if (!dent) {						\
 			event_errx(_EVENT_ERR_ABORT,			\
-			    "%s called on a non-initialized event %p",	\
-			    __func__, (ev));				\
+			    "%s called on a non-initialized event %p"	\
+			    " (events: 0x%x, fd: %d, flags: 0x%x)",	\
+			    __func__, (ev), (ev)->ev_events,		\
+			    (ev)->ev_fd, (ev)->ev_flags);		\
 		}							\
 		EVLOCK_UNLOCK(_event_debug_map_lock, 0);		\
 	}								\
@@ -300,8 +306,10 @@ HT_GENERATE(event_debug_map, event_debug_entry, node, hash_debug_entry,
 		dent = HT_FIND(event_debug_map, &global_debug_map, &find); \
 		if (dent && dent->added) {				\
 			event_errx(_EVENT_ERR_ABORT,			\
-			    "%s called on an already added event %p",	\
-			    __func__, (ev));				\
+			    "%s called on an already added event %p"	\
+			    " (events: 0x%x, fd: %d, flags: 0x%x)",	\
+			    __func__, (ev), (ev)->ev_events,		\
+			    (ev)->ev_fd, (ev)->ev_flags);		\
 		}							\
 		EVLOCK_UNLOCK(_event_debug_map_lock, 0);		\
 	}								\
@@ -425,6 +433,22 @@ update_time_cache(struct event_base *base)
 	base->tv_cache.tv_sec = 0;
 	if (!(base->flags & EVENT_BASE_FLAG_NO_CACHE_TIME))
 	    gettime(base, &base->tv_cache);
+}
+
+int
+event_base_update_cache_time(struct event_base *base)
+{
+
+	if (!base) {
+		base = current_base;
+		if (!current_base)
+			return -1;
+	}
+
+	EVBASE_ACQUIRE_LOCK(base, th_base_lock);
+	update_time_cache(base);
+	EVBASE_RELEASE_LOCK(base, th_base_lock);
+	return 0;
 }
 
 struct event_base *
@@ -2746,6 +2770,9 @@ static void (*_mm_free_fn)(void *p) = NULL;
 void *
 event_mm_malloc_(size_t sz)
 {
+	if (sz == 0)
+		return NULL;
+
 	if (_mm_malloc_fn)
 		return _mm_malloc_fn(sz);
 	else
@@ -2755,31 +2782,51 @@ event_mm_malloc_(size_t sz)
 void *
 event_mm_calloc_(size_t count, size_t size)
 {
+	if (count == 0 || size == 0)
+		return NULL;
+
 	if (_mm_malloc_fn) {
 		size_t sz = count * size;
-		void *p = _mm_malloc_fn(sz);
+		void *p = NULL;
+		if (count > EV_SIZE_MAX / size)
+			goto error;
+		p = _mm_malloc_fn(sz);
 		if (p)
-			memset(p, 0, sz);
-		return p;
+			return memset(p, 0, sz);
 	} else
 		return calloc(count, size);
+
+error:
+	errno = ENOMEM;
+	return NULL;
 }
 
 char *
 event_mm_strdup_(const char *str)
 {
+	if (!str) {
+		errno = EINVAL;
+		return NULL;
+	}
+
 	if (_mm_malloc_fn) {
 		size_t ln = strlen(str);
-		void *p = _mm_malloc_fn(ln+1);
+		void *p = NULL;
+		if (ln == EV_SIZE_MAX)
+			goto error;
+		p = _mm_malloc_fn(ln+1);
 		if (p)
-			memcpy(p, str, ln+1);
-		return p;
+			return memcpy(p, str, ln+1);
 	} else
 #ifdef _WIN32
 		return _strdup(str);
 #else
 		return strdup(str);
 #endif
+
+error:
+	errno = ENOMEM;
+	return NULL;
 }
 
 void *
