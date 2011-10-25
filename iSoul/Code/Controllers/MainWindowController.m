@@ -856,7 +856,7 @@
 
 - (IBAction)changeSearchStyle:(id)sender
 {
-	[viewSegment setSelectedSegment:[sender tag]];
+	[viewSegment setSelectedSegment:[(NSView *) sender tag]];
 	[self changeViewStyle:viewSegment];
 }
 
@@ -1098,7 +1098,7 @@
 	// add a new item to the moc
 	// and start editing it
 	SidebarItem *item = [store newWishlistItem];
-	
+	debug_NSLog(@"New wishlist!");
 	[self editItem:item];
 }
 

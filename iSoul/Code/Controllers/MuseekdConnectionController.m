@@ -856,7 +856,7 @@
 				  operation:NSCompositeSourceOver fraction:1.0];
 		[icon unlockFocus];
 		
-		[user setPicture:[picture TIFFRepresentation]];
+		[user setPicture: picture];
 		[user setIcon:[icon TIFFRepresentation]];
 		[icon release];
 	}

@@ -449,8 +449,6 @@
 		A76D2D7310D9144F00DD9F82 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A76D2D7210D9144F00DD9F82 /* AudioToolbox.framework */; };
 		A76D2D9910D9182700DD9F82 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A76D2D9510D9180200DD9F82 /* libcrypto.dylib */; };
 		A76D2DE410D91A6900DD9F82 /* museek in Resources */ = {isa = PBXBuildFile; fileRef = A76D2DE310D91A5100DD9F82 /* museek */; };
-		A76D2E0110D91B3300DD9F82 /* libXMLFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A76D2DF610D91AF800DD9F82 /* libXMLFramework.framework */; };
-		A76D2E0210D91B3700DD9F82 /* libevent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A76D2DF010D91AED00DD9F82 /* libevent.framework */; };
 		A76D2EF310D9241300DD9F82 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = A76D2EF210D9241300DD9F82 /* config.xml */; };
 		A78989C610E80FCC0034EF55 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */; };
 		A78E44A910E683B8002DBFF8 /* ProgressCaps_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = A78E44A810E683B8002DBFF8 /* ProgressCaps_dark.png */; };
@@ -479,6 +477,9 @@
 		DD4F2D6D131B0DCA00442671 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */; };
+		DDB40DA91456379900206EED /* Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA01456379900206EED /* Base.xcconfig */; };
+		DDB40DAE1456379900206EED /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA51456379900206EED /* Debug.xcconfig */; };
+		DDB40DB11456379900206EED /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA81456379900206EED /* Release.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,20 +489,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8DD76F6C0486A84900D96B5E;
 			remoteInfo = museek;
-		};
-		A76D2DEF10D91AED00DD9F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = libevent;
-		};
-		A76D2DF510D91AF800DD9F82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = libXMLFramework;
 		};
 		A76D2F2910D9291800DD9F82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -535,8 +522,6 @@
 			files = (
 				DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */,
 				A796D11510F53A7D00E3F8CC /* TCMPortMapper.framework in CopyFiles */,
-				A76D2E0210D91B3700DD9F82 /* libevent.framework in CopyFiles */,
-				A76D2E0110D91B3300DD9F82 /* libXMLFramework.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,8 +1015,8 @@
 		A718C52310E38FE6003AEC33 /* SharesScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharesScanner.m; sourceTree = "<group>"; };
 		A718C53210E38FF7003AEC33 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A718C53310E38FF7003AEC33 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		A718C53B10E3906A003AEC33 /* iSoul-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSoul-Info.plist"; sourceTree = SOURCE_ROOT; };
-		A718C54A10E39116003AEC33 /* iSoul_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSoul_Prefix.pch; path = ../iSoul_Prefix.pch; sourceTree = "<group>"; };
+		A718C53B10E3906A003AEC33 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		A718C54A10E39116003AEC33 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ../Prefix.pch; sourceTree = "<group>"; };
 		A718C6F910E3E5C5003AEC33 /* BubbleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleTextView.h; sourceTree = "<group>"; };
 		A718C6FA10E3E5C5003AEC33 /* BubbleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleTextView.m; sourceTree = "<group>"; };
 		A76D2BB410D9135300DD9F82 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/BrowseView.xib; sourceTree = "<group>"; };
@@ -1043,8 +1028,6 @@
 		A76D2D7210D9144F00DD9F82 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A76D2D9510D9180200DD9F82 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
 		A76D2DD310D91A5100DD9F82 /* museek.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = museek.xcodeproj; path = ../Museek/museek.xcodeproj; sourceTree = SOURCE_ROOT; };
-		A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libevent.xcodeproj; path = ../libevent/libevent.xcodeproj; sourceTree = SOURCE_ROOT; };
-		A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libXMLFramework.xcodeproj; path = ../libXMLFramework/libXMLFramework.xcodeproj; sourceTree = SOURCE_ROOT; };
 		A76D2EF210D9241300DD9F82 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		A78989C010E80F9D0034EF55 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		A78989C510E80FCC0034EF55 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -1082,6 +1065,9 @@
 		DD4F2D6C131B0DCA00442671 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-Utilities.h"; sourceTree = "<group>"; };
 		DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber-Utilities.m"; sourceTree = "<group>"; };
+		DDB40DA01456379900206EED /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		DDB40DA51456379900206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		DDB40DA81456379900206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1175,8 +1161,6 @@
 			isa = PBXGroup;
 			children = (
 				A796D10910F53A4600E3F8CC /* Port Map.xcodeproj */,
-				A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */,
-				A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */,
 				A76D2DD310D91A5100DD9F82 /* museek.xcodeproj */,
 				A76D2D9410D9177B00DD9F82 /* Transformers */,
 				A76D2D9310D9173300DD9F82 /* Extensions & Subclasses */,
@@ -1186,6 +1170,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				DDB40D9F1456379900206EED /* Configuration Files */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = iSoul;
@@ -1200,7 +1185,7 @@
 				A718C53310E38FF7003AEC33 /* Constants.m */,
 				77C8280B06725ACE000B614F /* iSoul_AppDelegate.h */,
 				77C8280C06725ACE000B614F /* iSoul_AppDelegate.m */,
-				A718C54A10E39116003AEC33 /* iSoul_Prefix.pch */,
+				A718C54A10E39116003AEC33 /* Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */,
 				DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */,
@@ -1223,7 +1208,7 @@
 				2F7446970DB6B7EA00F9684A /* MainMenu.xib */,
 				A76D2BBB10D9135300DD9F82 /* Preferences.xib */,
 				A76D2BBD10D9135300DD9F82 /* SearchView.xib */,
-				A718C53B10E3906A003AEC33 /* iSoul-Info.plist */,
+				A718C53B10E3906A003AEC33 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
 			path = Resources;
@@ -1573,22 +1558,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A76D2DEC10D91AED00DD9F82 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A76D2DF010D91AED00DD9F82 /* libevent.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A76D2DF210D91AF800DD9F82 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A76D2DF610D91AF800DD9F82 /* libXMLFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A796D10A10F53A4600E3F8CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1864,6 +1833,17 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		DDB40D9F1456379900206EED /* Configuration Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDB40DA01456379900206EED /* Base.xcconfig */,
+				DDB40DA51456379900206EED /* Debug.xcconfig */,
+				DDB40DA81456379900206EED /* Release.xcconfig */,
+			);
+			name = "Configuration Files";
+			path = ../xcconfigs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1910,14 +1890,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A76D2DEC10D91AED00DD9F82 /* Products */;
-					ProjectRef = A76D2DEB10D91AED00DD9F82 /* libevent.xcodeproj */;
-				},
-				{
-					ProductGroup = A76D2DF210D91AF800DD9F82 /* Products */;
-					ProjectRef = A76D2DF110D91AF800DD9F82 /* libXMLFramework.xcodeproj */;
-				},
-				{
 					ProductGroup = A76D2DD410D91A5100DD9F82 /* Products */;
 					ProjectRef = A76D2DD310D91A5100DD9F82 /* museek.xcodeproj */;
 				},
@@ -1939,20 +1911,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = museek;
 			remoteRef = A76D2DE210D91A5100DD9F82 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A76D2DF010D91AED00DD9F82 /* libevent.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = libevent.framework;
-			remoteRef = A76D2DEF10D91AED00DD9F82 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A76D2DF610D91AF800DD9F82 /* libXMLFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = libXMLFramework.framework;
-			remoteRef = A76D2DF510D91AF800DD9F82 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A796D11110F53A4600E3F8CC /* TCMPortMapper.framework */ = {
@@ -2365,6 +2323,9 @@
 				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
 				B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */,
 				DD4F1D6A131B0D5000442671 /* Growl Registration Ticket.growlRegDict in Resources */,
+				DDB40DA91456379900206EED /* Base.xcconfig in Resources */,
+				DDB40DAE1456379900206EED /* Debug.xcconfig in Resources */,
+				DDB40DB11456379900206EED /* Release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2557,8 +2518,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = _DEBUG;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -2583,7 +2543,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
-				INFOPLIST_FILE = "iSoul-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2614,7 +2574,7 @@
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = iSoul_Prefix.pch;
+				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -2639,7 +2599,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
-				INFOPLIST_FILE = "iSoul-Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
