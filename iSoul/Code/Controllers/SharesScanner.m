@@ -400,8 +400,8 @@
 - (void)writeString:(NSString *)s toData:(NSMutableData *)data
 {
 	// length does not include null termination
-	uint32_t len = [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-	const char *utfString = [s UTF8String];
+	uint32_t len = (uint32_t) [s lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+	const char *utfString = s.UTF8String;
 	
 	// first append string length
 	[self writeInt:len toData:data];

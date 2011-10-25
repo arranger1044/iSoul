@@ -27,7 +27,7 @@
 	
 	if (!averageSpeed) return @"";
 	
-	float kbpsSpeed = [averageSpeed floatValue] / 1000.0;
+	float kbpsSpeed = averageSpeed.floatValue / 1000.0f;
 	return [NSString stringForSpeed:kbpsSpeed];
 }
 

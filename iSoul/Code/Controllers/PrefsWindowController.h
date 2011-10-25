@@ -67,7 +67,6 @@
 - (void)saveSharesFiles:(id)object;
 - (void)descriptionChanged:(NSNotification *)notification;
 - (void)privelegesUpdated:(NSNotification *)notification;
-- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void *)contextInfo;
 
 - (IBAction)addSharedFolder:(id)sender;
 - (IBAction)removeSharedFolder:(id)sender;

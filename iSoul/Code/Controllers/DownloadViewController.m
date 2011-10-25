@@ -288,14 +288,14 @@
 	NSMutableArray *selected = [[NSMutableArray alloc] init];
 	
 	// get all the selected transfers 
-	NSUInteger i = [indeces lastIndex];
+	NSUInteger i = indeces.lastIndex;
 	while (i != NSNotFound) {
-		PathNode *node = [outlineView itemAtRow:i];
+		PathNode *node = [outlineView itemAtRow: (NSInteger) i];
 		NSArray *transferList;
-		if ([node isFolder]) {
+		if (node.isFolder) {
 			transferList = [self transfersInNode:node];			
 		} else {
-			transferList = [NSArray arrayWithObject:[node representedObject]];
+			transferList = [NSArray arrayWithObject:node.representedObject];
 		}
 		for (Transfer *t in transferList) {
 			if (![selected containsObject:t]) {
@@ -313,10 +313,10 @@
 	NSMutableArray *selected = [[NSMutableArray alloc] init];
 	
 	// get all the selected transfers 
-	NSUInteger i = [indeces lastIndex];
+	NSUInteger i = indeces.lastIndex;
 	while (i != NSNotFound) {
-		PathNode *node = [outlineView itemAtRow:i];
-		User *u = [node user];
+		PathNode *node = [outlineView itemAtRow: (NSInteger) i];
+		User *u = node.user;
 		
 		if (![selected containsObject:u]) [selected addObject:u];	
 		
@@ -394,7 +394,7 @@
 - (void)clearAllTransfers
 {
 	NSIndexSet * rows = [NSIndexSet indexSetWithIndexesInRange:
-                         NSMakeRange(0, [outlineView numberOfRows])];
+                         NSMakeRange(0, (NSUInteger) [outlineView numberOfRows])];
 
 	NSArray * transfersToRemove = [self transfersAtIndexes:rows];
 	[self clearTransfers:transfersToRemove];
@@ -443,11 +443,11 @@
 {
 	if (item) {
 		PathNode *node = (PathNode *)item;
-		return [[node children] objectAtIndex:i];
+		return [node.children objectAtIndex: (NSUInteger) i];
 	} else {
-		PathNode *child = [[treeRoot children] objectAtIndex:i];
-		if ([child isFolder] && ([[child children] count] == 1)) {
-			return [[child children] lastObject];
+		PathNode *child = [treeRoot.children objectAtIndex: (NSUInteger) i];
+		if (child.isFolder && (child.children.count == 1)) {
+			return child.children.lastObject;
 		} else {
 			return child;
 		}
@@ -458,7 +458,7 @@
 {
 	PathNode *node = (PathNode *)item;
 	
-	return [node isFolder];
+	return node.isFolder;
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
@@ -470,7 +470,7 @@
 		node = treeRoot;
 	}
 	
-	return [[node children] count];
+	return (NSInteger) node.children.count;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView 
@@ -487,8 +487,8 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 	PathNode *node = (PathNode *)item;
 	
 	// big row if top level, or if only child
-	if ([[node parent] isEqual:treeRoot] ||
-		([[[node parent] children] count] == 1)) {
+	if ([node.parent isEqual:treeRoot] ||
+		(node.parent.children.count == 1)) {
 		return 32.0;
 	} else {
 		return 16.0;

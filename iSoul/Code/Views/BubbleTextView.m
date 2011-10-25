@@ -157,7 +157,7 @@
 			// the user has not been seen before
 			// so give him a new colour and store in the dictionary
 			balloon = [balloons objectAtIndex:balloonIndex];
-			[userColours setObject:[NSNumber numberWithUnsignedInt:balloonIndex] 
+			[userColours setObject:[NSNumber numberWithUnsignedInt:(unsigned) balloonIndex] 
 						   forKey:user];		
 			balloonIndex = (balloonIndex + 1) % [balloons count];
 		} else {

@@ -79,7 +79,7 @@
 	
 	// get the streams
 	[NSStream getStreamsToHost:host 
-						  port:port 
+						  port:(NSInteger) port 
 				   inputStream:&inputStream 
 				  outputStream:&outputStream];
 	
@@ -173,9 +173,9 @@
 	BOOL success = YES;
 	MuseekMessage *msg = [[MuseekMessage alloc] init];
 	[msg appendUInt32:mdDownloadFile];			// command type
-	success &= [msg appendString:[[result user] name]];	// username string
-	success &= [msg appendString:[result fullPath]];	// full path string
-	[msg appendUInt64:[[result size] longLongValue]];	// I64 file size
+	success &= [msg appendString:result.user.name];	// username string
+	success &= [msg appendString:result.fullPath];	// full path string
+	[msg appendUInt64: (uint64_t) result.size.longLongValue];	// I64 file size
 	
 	if (success) {
 		[output send:msg];
@@ -191,9 +191,9 @@
 	
 	MuseekMessage *msg = [[[MuseekMessage alloc] init] autorelease];
 	[msg appendUInt32:mdDownloadFile];			// command type
-	[msg appendString:[[transfer user] name]];	// username string
-	[msg appendString:[transfer path]];			// full path string
-	[msg appendUInt64:[[transfer size] longLongValue]];	// I64 file size
+	[msg appendString:transfer.user.name];	// username string
+	[msg appendString:transfer.path];			// full path string
+	[msg appendUInt64: (uint64_t) transfer.size.longLongValue];	// I64 file size
 	
 	[output send:msg];
 }
@@ -843,7 +843,7 @@
 		
 		// to keep the pictures aspect ratio
 		// find a square clip region in the middle
-		float squareSize = MIN(originalSize.width, originalSize.height);
+		double squareSize = MIN(originalSize.width, originalSize.height);
 		NSRect square = NSMakeRect(0, 0, squareSize, squareSize);
 		square.origin.x += (originalSize.width - squareSize) / 2.0;
 		square.origin.y += (originalSize.height - squareSize) / 2.0;
@@ -912,8 +912,8 @@
 	transfer.placeInQueue = [NSNumber numberWithUnsignedInt:placeInQueue];
 	transfer.state = [NSNumber numberWithUnsignedInt:transferState];
 	transfer.error = error;
-	transfer.position = [NSNumber numberWithLongLong:position];
-	transfer.size = [NSNumber numberWithLongLong:size];
+	transfer.position = [NSNumber numberWithLongLong: (long long) position];
+	transfer.size = [NSNumber numberWithLongLong: (long long) size];
 	transfer.rate = [NSNumber numberWithUnsignedInt:rate];
 	
 	// send a notification to inform the DownloadView controller to reload the item

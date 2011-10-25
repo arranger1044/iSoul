@@ -284,12 +284,12 @@
 // expand a folder when it is selected in the outline view
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-	NSIndexSet *selected = [outlineView selectedRowIndexes];
-	if ([selected count] != 1) return;
+	NSIndexSet *selected = outlineView.selectedRowIndexes;
+	if (selected.count != 1) return;
 	
-	NSUInteger i = [selected firstIndex];
+	NSInteger i = (NSInteger) selected.firstIndex;
 	PathNode *node = [[outlineView itemAtRow:i] representedObject];
-	if ([node isFolder] && ![node isExpanded]) {
+	if (node.isFolder && !node.isExpanded) {
 		[outlineView expandItem:[outlineView itemAtRow:i]];
 	}
 }

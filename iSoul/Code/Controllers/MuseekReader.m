@@ -93,7 +93,7 @@
 	}
 	
 	// now add the data to the buffer
-	NSUInteger offset = [data length];
+	NSUInteger offset = data.length;
 	NSUInteger remainingBytes = MIN(messageSize - offset, MAX_BYTES);
 	
 	// first expand the buffer by the required amount
@@ -104,7 +104,7 @@
 	// if not, shrink the buffer to fit
 	if ((NSUInteger)bytesRead != remainingBytes) {
 		//debug_NSLog(@"shrinking buffer, read %d of %u bytes",bytesRead,remainingBytes);
-		[data setLength:(offset + bytesRead)];
+		[data setLength:offset + (NSUInteger) bytesRead];
 	}
 	
 	// check whether the message is complete

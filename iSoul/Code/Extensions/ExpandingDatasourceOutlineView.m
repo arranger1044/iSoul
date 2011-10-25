@@ -27,7 +27,7 @@
 	//Find which row is under the cursor
 	[[self window] makeFirstResponder:self];
 	NSPoint menuPoint = [self convertPoint:[event locationInWindow] fromView:nil];
-	int row = [self rowAtPoint:menuPoint];
+	NSUInteger row = (NSUInteger) [self rowAtPoint:menuPoint];
 	
 	/* Update the table selection before showing menu
 	 Preserves the selection if the row under the mouse is selected (to allow for

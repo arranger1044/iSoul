@@ -40,12 +40,12 @@
 	{
 		// draw the image first
 		NSRect imageFrame = cellFrame;
-		NSSize imageSize = [image size];
+		NSSize imageSize = image.size;
 		imageFrame.origin.x += kImageOriginXOffset;
 		imageFrame.origin.y -= kImageOriginYOffset;
         imageFrame.size = imageSize;
 		
-        if ([controlView isFlipped])
+        if (controlView.isFlipped)
             imageFrame.origin.y += ceil((cellFrame.size.height + imageFrame.size.height) / 2);
         else
             imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
@@ -60,8 +60,8 @@
 	
 	// vertically align the text in the cell
 	NSSize s = [[self stringValue] sizeWithAttributes:
-				[NSDictionary dictionaryWithObjectsAndKeys:[self font],NSFontAttributeName,nil]];
-	float yOffset = ceil((cellFrame.size.height - s.height) / 2.0);
+				[NSDictionary dictionaryWithObjectsAndKeys: self.font, NSFontAttributeName, nil]];
+	double yOffset = ceil((cellFrame.size.height - s.height) / 2.0);
 	cellFrame.origin.y += yOffset;
 	cellFrame.size.height -= yOffset;
 	[super drawWithFrame:cellFrame inView:controlView];

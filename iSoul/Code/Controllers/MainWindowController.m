@@ -106,7 +106,7 @@
 - (void)setSegmentEnabled:(BOOL)enabled {
     if (enabled)
     {
-        int vState = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentView"];
+        NSInteger vState = [NSUserDefaults.standardUserDefaults integerForKey:@"SelectedSegmentView"];
         [viewSegment setSelectedSegment:vState];
         segmentEnabled = YES;        
     }
@@ -307,10 +307,10 @@
 		float transferRate = 0;
 		TransferState state = [[transfer state] unsignedIntValue];
 		if (state == tfTransferring) {
-			transferRate = [[transfer rate] floatValue] / 1000.0;
+			transferRate = transfer.rate.floatValue / 1000.0f;
 		}
 		
-		if ([[transfer isUpload] boolValue]) {
+		if (transfer.isUpload.boolValue) {
 			numUploads++;
 			upSpeed += transferRate;
 		} else {
@@ -320,14 +320,14 @@
 	}
 	
 	// update the parameters for the sidebar
-	SidebarItem *downloads = [store downloads];
-	SidebarItem *uploads = [store uploads];	
+	SidebarItem *downloads = store.downloads;
+	SidebarItem *uploads = store.uploads;	
 	
-	[downloads setCount:[NSNumber numberWithUnsignedInt:numDownloads]];
-	[uploads setCount:[NSNumber numberWithUnsignedInt:numUploads]];
+	[downloads setCount:[NSNumber numberWithUnsignedInt: (unsigned) numDownloads]];
+	[uploads setCount:[NSNumber numberWithUnsignedInt: (unsigned) numUploads]];
 	
 	// if not requested, do not display the bandwidth usage
-	NSNumber *shouldDisplay = [[NSUserDefaults standardUserDefaults] 
+	NSNumber *shouldDisplay = [NSUserDefaults.standardUserDefaults 
 							   valueForKey:@"BandwidthSidebar"];
 	BOOL displayBandwidth = [shouldDisplay boolValue];
 	
@@ -347,7 +347,7 @@
 	[sidebar reloadItem:[sidebar itemAtRow:0] reloadChildren:YES];
 	
 	// update the badge on the dock icon
-	NSNumber *updateIcon = [[NSUserDefaults standardUserDefaults] 
+	NSNumber *updateIcon = [NSUserDefaults.standardUserDefaults 
 							valueForKey:@"BandwidthIcon"];
 	DockBadge *icon = (DockBadge *)[[NSApp dockTile] contentView];
 	float u, d;
@@ -395,7 +395,7 @@
 	}
 	
 	// force the view to reload
-	[sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+	[sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex: (NSUInteger) row] byExtendingSelection:NO];
 	[self changeView:sidebar];
 }
 
@@ -406,7 +406,7 @@
 	
 	// create a new share entry if there is not one already
 	SidebarItem *item = [store findOrCreateShare:user];
-	[item setCount:[NSNumber numberWithUnsignedInt:[[user files] count]]];
+	[item setCount:[NSNumber numberWithUnsignedInt: (unsigned) user.files.count]];
 
 	[self selectItem:item];
 }
@@ -799,7 +799,7 @@
 {
 	if ((selectedView == sbChatType) ||
 		(selectedView == sbChatRoomType)) {
-		NSUInteger row = [sidebar selectedRow];
+		NSInteger row = sidebar.selectedRow;
 		id itemAtRow = [sidebar itemAtRow:row];
 		if (!itemAtRow) return;
 		SidebarItem *selected = [itemAtRow representedObject];
@@ -809,7 +809,7 @@
 		[cvc setRoomName:@"" isPrivate:YES];
 		
 		// leave chatroom
-		[museekdConnectionController leaveRoom:[selected name]];
+		[museekdConnectionController leaveRoom: selected.name];
 		
 		// remove the side panel object
 		[managedObjectContext deleteObject:selected];
@@ -817,7 +817,7 @@
 }
 
 - (IBAction)removeSearch:(id)sender {
-	NSUInteger row = [sidebar selectedRow];
+	NSInteger row = sidebar.selectedRow;
 	id itemAtRow = [sidebar itemAtRow:row];
 	if (!itemAtRow) return;
 	
@@ -830,7 +830,7 @@
 			[svc setCurrentTickets:nil];
 			
 			// now remove the search ticket from core data
-			[museekdConnectionController removeSearchForTickets:[selected tickets]];	
+			[museekdConnectionController removeSearchForTickets:selected.tickets];	
 			
 			// now remove the side item
 			[managedObjectContext deleteObject:selected];
@@ -840,11 +840,11 @@
 			[svc setCurrentTickets:nil];
 			
 			// clear the selected wish from the server
-			[museekdConnectionController removeWishlistItem:[selected name]];
+			[museekdConnectionController removeWishlistItem:selected.name];
 			
 			// remove the search ticket if present
-			if ([selected tickets]) {
-				[museekdConnectionController removeSearchForTickets:[selected tickets]];
+			if (selected.tickets) {
+				[museekdConnectionController removeSearchForTickets:selected.tickets];
 			} 
 			[managedObjectContext deleteObject:selected];
 			
@@ -918,7 +918,7 @@
 
 
 - (IBAction)removeSideItem:(id)sender {
-	NSUInteger row = [sidebar selectedRow];
+	NSInteger row = sidebar.selectedRow;
 	id itemAtRow = [sidebar itemAtRow:row];
 	if (!itemAtRow) return;
 	SidebarItem *selected = [itemAtRow representedObject];
@@ -1178,7 +1178,7 @@
 		NSLog(@"failed to select item %@", item);
 		return;
 	}
-	[sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:row] 
+	[sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex: (NSUInteger) row] 
 		 byExtendingSelection:NO];
 	[self changeView:sidebar];
 }

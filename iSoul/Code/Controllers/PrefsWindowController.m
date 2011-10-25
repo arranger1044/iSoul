@@ -447,80 +447,22 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setAllowsMultipleSelection:YES];
 	
-	[openPanel beginSheetForDirectory:nil 
-								 file:nil 
-								types:nil 
-					   modalForWindow:[self window]
-						modalDelegate:self 
-					   didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
-						  contextInfo:ctxAddFolder];
-}
-
-- (void)openPanelDidEnd:(NSOpenPanel *)openPanel returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
-	if (returnCode == NSOKButton) {
+	[openPanel beginSheetModalForWindow: self.window completionHandler: ^(NSInteger returnCode) {
+		if (returnCode != NSOKButton)
+			return;
 		
-		if (contextInfo == ctxAddFolder) {
-			[addFolderButton setEnabled:NO];
-			[progress setHidden:NO];
-			[progress startAnimation:self];
-			sharesUpdated = YES;	// need to rewrite the files 
-									// when the preferences are closed
-			
-			// scan the files in a separate thread
-			NSArray *selectedFolders = [openPanel URLs];
-			[NSThread detachNewThreadSelector:@selector(scanFolders:) 
-									 toTarget:self 
-								   withObject:selectedFolders];
-		} else {
-			NSArray *urls = [openPanel URLs];
-			NSString *folderPath = [[urls lastObject] path];
-			
-			// finally update the menu, first need
-			// to check if the chosen path is one of the default paths
-			NSMenu *menu = (NSMenu *)contextInfo;
-			NSMenuItem *chosen = nil;
-			NSArray *menuItems = [menu itemArray];
-			for (NSMenuItem *item in menuItems) {
-				if ([[item representedObject] isEqualToString:folderPath]) {
-					chosen = item;
-					break;
-				}
-			}
-			
-			if (!chosen) {
-				// not a default item, so remove the previously 
-				// selected folder if it was not a default entry
-				// and create a new menu item for the path
-				chosen = [menu itemWithTag:2];	// tag is 2 for the non-default choice
-				if (chosen) [menu removeItem:chosen];
-				chosen = [self addMenuItemForPath:folderPath toMenu:menu];
-				[chosen setTag:2];			
-			}
-			
-			// finally, choose the new item in the correct popup
-			if ([menu isEqual:[downloadPopup menu]]) 
-            {
-				[downloadPopup selectItem:chosen];
-				[self downloadLocationChanged:downloadPopup];
-			} 
-            else if ([menu isEqual:[incompletePopup menu]])
-            {
-				[incompletePopup selectItem:chosen];
-				[self incompleteLocationChanged:incompletePopup];
-			}
-            else if ([menu isEqual:[logPathPopup menu]])
-            {
-				[logPathPopup selectItem:chosen];
-				[self logPathChanged:logPathPopup];
-			}
-            else if ([menu isEqual:[dirPathPopup menu]])
-            {
-                [dirPathPopup selectItem:chosen];
-				[self logPathChanged:dirPathPopup];
-            }
-		}
-	}
+		[addFolderButton setEnabled:NO];
+		[progress setHidden:NO];
+		[progress startAnimation:self];
+		sharesUpdated = YES;	// need to rewrite the files 
+		// when the preferences are closed
+		
+		// scan the files in a separate thread
+		NSArray *selectedFolders = [openPanel URLs];
+		[NSThread detachNewThreadSelector:@selector(scanFolders:) 
+								 toTarget:self 
+							   withObject:selectedFolders];
+	}];
 }
 
 - (IBAction)removeSharedFolder:(id)sender
@@ -707,13 +649,57 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setAllowsMultipleSelection:NO];
 	
-	[openPanel beginSheetForDirectory:nil 
-								 file:nil 
-								types:nil 
-					   modalForWindow:[self window]
-						modalDelegate:self 
-					   didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
-						  contextInfo:[sender menu]];
+	[openPanel beginSheetModalForWindow: self.window completionHandler: ^(NSInteger returnCode) {
+		if (returnCode != NSOKButton)
+			return;
+		
+		NSArray *urls = [openPanel URLs];
+		NSString *folderPath = [[urls lastObject] path];
+		
+		// finally update the menu, first need
+		// to check if the chosen path is one of the default paths
+		NSMenu *menu = [sender menu];
+		NSMenuItem *chosen = nil;
+		NSArray *menuItems = [menu itemArray];
+		for (NSMenuItem *item in menuItems) {
+			if ([[item representedObject] isEqualToString:folderPath]) {
+				chosen = item;
+				break;
+			}
+		}
+		
+		if (!chosen) {
+			// not a default item, so remove the previously 
+			// selected folder if it was not a default entry
+			// and create a new menu item for the path
+			chosen = [menu itemWithTag:2];	// tag is 2 for the non-default choice
+			if (chosen) [menu removeItem:chosen];
+			chosen = [self addMenuItemForPath:folderPath toMenu:menu];
+			[chosen setTag:2];			
+		}
+		
+		// finally, choose the new item in the correct popup
+		if ([menu isEqual:[downloadPopup menu]]) 
+		{
+			[downloadPopup selectItem:chosen];
+			[self downloadLocationChanged:downloadPopup];
+		} 
+		else if ([menu isEqual:[incompletePopup menu]])
+		{
+			[incompletePopup selectItem:chosen];
+			[self incompleteLocationChanged:incompletePopup];
+		}
+		else if ([menu isEqual:[logPathPopup menu]])
+		{
+			[logPathPopup selectItem:chosen];
+			[self logPathChanged:logPathPopup];
+		}
+		else if ([menu isEqual:[dirPathPopup menu]])
+		{
+			[dirPathPopup selectItem:chosen];
+			[self logPathChanged:dirPathPopup];
+		}
+	}];
 }
 
 - (IBAction)downloadRateChanged:(id)sender

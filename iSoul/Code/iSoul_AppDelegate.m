@@ -344,8 +344,8 @@
 			// now create a mapping for each incoming port
 			for (NSUInteger i = portLow; i <= portHigh; i++) {
 				[pm addPortMapping:
-				 [TCMPortMapping portMappingWithLocalPort:i 
-									  desiredExternalPort:i 
+				 [TCMPortMapping portMappingWithLocalPort: (int) i 
+									  desiredExternalPort: (int) i 
 										transportProtocol:TCMPortMappingTransportProtocolTCP 
 												 userInfo:nil]];			 
 			}

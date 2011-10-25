@@ -58,7 +58,7 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	if (![self objectValue]) return;
+	if (!self.objectValue) return;
 	
 	// first check whether the images have been cached
 	if (!timeImages) {
@@ -66,7 +66,7 @@
 	}
 	
 	// queue time in seconds
-	float t = [self floatValue];	
+	float t = self.floatValue;	
 	NSImage *image = nil;
 	NSString *caption = nil;
 	
@@ -78,7 +78,7 @@
 			i = (NSUInteger)t/5;
 			caption = [NSString stringWithFormat:@"%u minutes",5*(i+1)];
 		} else {
-			t = MIN(999.0, t/60.0);	// q time in hours
+			t = MIN(999.0f, t / 60.0f);	// q time in hours
 			if (t < 2.0) {
 				caption = @"1 hour";
 			} else {
@@ -86,7 +86,7 @@
 			}
 		}
 		
-		if ([self isHighlighted]) {
+		if (self.isHighlighted) {
 			image = [selectedTimeImages objectAtIndex:i];
 		} else {
 			image = [timeImages objectAtIndex:i];
@@ -104,7 +104,7 @@
 	// adjust the text frame to be centred vertically
 	NSSize s = [caption sizeWithAttributes:
 				[NSDictionary dictionaryWithObjectsAndKeys:[self font],NSFontAttributeName,nil]];	
-	float yOffset = ceil((cellFrame.size.height - s.height) / 2.0);
+	double yOffset = ceil((cellFrame.size.height - s.height) / 2.0);
 	NSRect newFrame = cellFrame;
 	newFrame.origin.y += yOffset;
 	newFrame.size.height -= yOffset;

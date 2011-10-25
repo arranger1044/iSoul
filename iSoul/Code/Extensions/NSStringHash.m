@@ -13,9 +13,9 @@
 
 + (NSString *)md5StringWithString:(NSString *)string
 {
-	const char *cStr = [string UTF8String];
+	const char *cStr = string.UTF8String;
 	unsigned char result[16];
-	CC_MD5( cStr, strlen(cStr), result );
+	CC_MD5( cStr, (CC_LONG) strlen(cStr), result );
 	return [NSString stringWithFormat:
 			@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
 			result[0], result[1], result[2], result[3], 
@@ -29,15 +29,15 @@
 {	
 	// get the SHA256 hash of the key
 	unsigned char passwordDigest[32];
-	CC_SHA256([key UTF8String], strlen([key UTF8String]), passwordDigest);
+	CC_SHA256(key.UTF8String, (CC_LONG) strlen(key.UTF8String), passwordDigest);
 	AES_KEY aesKey;
 	AES_set_encrypt_key(passwordDigest, 256, &aesKey);
 	
 	// get the input byte buffer
 	// must be a multiple of 16 bytes in length
-	const char *utf8string = [self UTF8String];
-	uint32_t stringLength = strlen(utf8string);
-	uint32_t bufferLength = stringLength;
+	const char *utf8string = self.UTF8String;
+	size_t stringLength = strlen(utf8string);
+	size_t bufferLength = stringLength;
 	if ((bufferLength % 16) != 0) {
 		bufferLength = 16 * ((bufferLength / 16) + 1);
 	} 
@@ -46,7 +46,7 @@
 	// copy the string to the encode buffer
 	NSUInteger i;
 	for (i = 0; i < stringLength; i++) {
-		inData[i] = utf8string[i];
+		inData[i] = (unsigned char) utf8string[i];
 	}
 	
 	// fill the remaining buffer with 0s

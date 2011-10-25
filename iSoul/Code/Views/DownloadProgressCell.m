@@ -178,12 +178,12 @@
 		}
 		
 	} else {
-		Transfer *transfer = [node representedObject];
-		state = [[transfer state] unsignedIntValue];
+		Transfer *transfer = node.representedObject;
+		state = transfer.state.unsignedIntValue;
 		
 		// calculate the file size and position in KB
-		filePosition =  [[transfer position] floatValue] / 1000.0;
-		fileSize = [[transfer size] floatValue] / 1000.0;
+		filePosition =  transfer.position.floatValue / 1000.0f;
+		fileSize = transfer.size.floatValue / 1000.0f;
 		
 		activeTransfer = transfer;
 	}	
@@ -220,13 +220,13 @@
 			// remove the last two characters
 			if ([caption length] > 2) {
 				NSRange range;
-				range.location = [caption length] - 2;
+				range.location = caption.length - 2;
 				range.length = 2;
 				[caption deleteCharactersInRange:range];
 			}
 			
 			// calculate the transfer rate in KB/s
-			float rate = [[activeTransfer rate] floatValue] / 1000.0;
+			float rate = activeTransfer.rate.floatValue / 1000.0f;
 			if (rate <= 0) break;
 			
 			// calculate the time remaining in seconds
@@ -310,7 +310,7 @@
 	}
 	
 	// now draw the progress slider if this is a big row
-	int barWidth = cellFrame.size.width - 2 * kProgressXOffset - 1;
+	int barWidth = (int) (cellFrame.size.width - 2 * kProgressXOffset - 1);
 	if (bigRow) {
 		NSSize imageSize = [progress size];
 		NSPoint capPoint = NSMakePoint(cellFrame.origin.x + kProgressXOffset, 

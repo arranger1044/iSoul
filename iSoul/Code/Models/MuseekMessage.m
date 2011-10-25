@@ -68,7 +68,7 @@
 		return NO;
 	}
 	
-	uint32_t stringLength = strlen((const char*)charArray);
+	uint32_t stringLength = (uint32_t) strlen((const char*)charArray);
 	[self appendUInt32:stringLength];	
 	[data appendBytes:charArray length:stringLength];
 	
@@ -78,8 +78,8 @@
 - (MuseekMessage *)appendCipher:(NSString *)value withKey:(NSString *)key
 {
 	// first append the unencoded string length
-	uint32_t flippedLength = 
-		CFSwapInt32HostToLittle([value lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+	uint32_t flippedLength = (uint32_t)
+		CFSwapInt32HostToLittle((uint32_t) [value lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
 	[data appendBytes:&flippedLength length:sizeof(uint32_t)];
 	
 	// now encode the string using the key and append
@@ -98,17 +98,17 @@
 	NSRange r = NSMakeRange(0, sizeof(uint32_t));
 	
 	// remember, the message length DOES NOT count in total length
-	uint32_t structSize = CFSwapInt32HostToLittle([data length] - sizeof(uint32_t));
+	uint32_t structSize = CFSwapInt32HostToLittle((uint32_t) (data.length - sizeof(uint32_t)));
 	
 	[data replaceBytesInRange:r withBytes:&structSize];
 	
-	return (void *)[data bytes];
+	return (void *)data.bytes;
 }
 
 - (long)length 
 {
 	if (!data) return 0;
-	return [data length];
+	return (long) data.length;
 }
 
 - (uint64_t)readUInt64 
@@ -156,12 +156,12 @@
 {
 	uint32_t size = [self readUInt32];
 	
-	if (pos >= [data length]) {	
+	if (pos >= data.length) {	
 		return @"";
 	}
 	
-	if (size + pos > [data length]) {
-		size = [data length] - pos;
+	if (size + pos > data.length) {
+		size = (uint32_t) (data.length - pos);
 	}
 	
 	NSRange r = NSMakeRange(pos, size);
@@ -208,11 +208,11 @@
 {
 	uint32_t size = [self readUInt32];
 	
-	if (pos >= [data length]) return nil;
+	if (pos >= data.length) return nil;
 	
-	if (size + pos > [data length]) {
+	if (size + pos > data.length) {
 		NSLog(@"image size is greater than the message length, truncating");
-		size = [data length] - pos;
+		size = (uint32_t) (data.length - pos);
 	}
 	
 	NSRange r = NSMakeRange(pos, size);
@@ -228,23 +228,23 @@
 
 - (void)setPos:(long)newPos 
 {
-	pos = newPos + 4;
-	NSAssert (pos <= [data length], @"trying to set the cursor beyond the data");
+	pos = (NSUInteger) newPos + 4;
+	NSAssert (pos <= data.length, @"trying to set the cursor beyond the data");
 }
 
 - (long)pos 
 {
-	return pos - 4;
+	return (long) pos - 4;
 }
 
 - (uint32_t)code 
 {
 	NSUInteger requiredLen = sizeof(uint32_t) * 2;
 	
-	if ([data length] < requiredLen) return 0;
+	if (data.length < requiredLen) return 0;
 	
 	// store old position
-	long oldPos = pos;
+	NSUInteger oldPos = pos;
 	
 	// skip to after the message code
 	pos = 4;

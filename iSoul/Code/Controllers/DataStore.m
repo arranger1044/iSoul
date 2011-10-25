@@ -183,15 +183,15 @@
 {
 	// find the connected sidebar item
 	Ticket *ticket = [self findTicketWithNumber:ticketNumber];
-	SidebarItem *item = [ticket sidebarItem];
+	SidebarItem *item = ticket.sidebarItem;
 	
 	if (item) {
 		//debug_NSLog(@"updating ticket %u with count %u", ticket, count);
-		NSUInteger newCount = [[item count] unsignedIntValue] + count;
+		unsigned newCount = item.count.unsignedIntValue + (unsigned) count;
 		[item setCount:[NSNumber numberWithUnsignedInt:newCount]];
 		
 		// send notification to inform MainWindowController to update the sidebar
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
 		[nc postNotificationName:@"SidebarCountUpdated" object:item];
 	} else {
 		debug_NSLog(@"error finding sidebar item for ticket %p", ticket);
@@ -201,10 +201,10 @@
 - (void)clearSearchWithTickets:(NSSet *)tickets
 {
 	// get the side item
-	SidebarItem *item = [[tickets anyObject] sidebarItem];
+	SidebarItem *item = [tickets.anyObject sidebarItem];
 	
 	// first clear the tickets
-	for (Ticket *t in [item tickets]) {
+	for (Ticket *t in item.tickets) {
 		[managedObjectContext deleteObject:t];
 	}		
 	
@@ -289,7 +289,7 @@
 	item = [self addSidebarItemWithName:username 
 								 parent:chatRoot 
 							  sortIndex:kChatIndexStart + sidebarSortIndex++ 
-									tag:-1 
+									tag:(uint32_t) -1 
 								   type:sbChatType];
 	
 	// create a new room to contain the chat messages
@@ -463,7 +463,7 @@
 	[user addRoomsObject:room];
 	
 	// update the room count
-	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:[[room users] count]]];
+	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt: (unsigned) room.users.count]];
 	
 //	// update the sidebar item count
 //	SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
@@ -503,7 +503,7 @@
 	[user removeRoomsObject:room];
 	
 	// update the room count
-	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:[[room users] count]]];
+	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt: (unsigned) room.users.count]];
 	
 //	// update the sidebar count
 //	predicate = [NSPredicate predicateWithFormat:@"name == %@",roomname];
@@ -565,7 +565,7 @@
 		SidebarItem *item = [self addSidebarItemWithName:roomname 
 												  parent:chatRoot 
 											   sortIndex:kChatRoomIndexStart + sidebarSortIndex++ 
-													 tag:-1 
+													 tag:(uint32_t) -1 
 													type:sbChatRoomType];
 		//[item setCount:[room numberOfUsers]];
         [item setCount:[NSNumber numberWithUnsignedInt:0]];
@@ -593,7 +593,7 @@
 								  sortIndex:sidebarSortIndex++ 
 										tag:0 
 									   type:sbShareType];
-		[item setCount:[NSNumber numberWithUnsignedInt:[[user files] count]]];
+		[item setCount:[NSNumber numberWithUnsignedInt: (unsigned) user.files.count]];
 		[managedObjectContext processPendingChanges];
 	}
 
@@ -630,7 +630,7 @@
 	NSArray *results = [self findArrayOf:@"User" withPredicate:predicate];
 	
 	// update the badge count for the sidebar item
-	[friends setCount:[NSNumber numberWithUnsignedInt:[results count]]];
+	[friends setCount:[NSNumber numberWithUnsignedInt: (unsigned) results.count]];
 	
 	// return the item to be redrawn
 	return friends;
@@ -649,7 +649,7 @@
 	
 	[item setName:name];
 	[item setParent:parent];
-	[item setSortIndex:[NSNumber numberWithUnsignedInt:sortIndex]];
+	[item setSortIndex:[NSNumber numberWithUnsignedInt: (unsigned) sortIndex]];
 	[item setTag:[NSNumber numberWithUnsignedInt:tag]];
 	[item setType:[NSNumber numberWithUnsignedInt:type]];
 	
@@ -661,7 +661,7 @@
 	if ([[parent isExpanded] boolValue] && 
 		([[parent children] count] == 1)) {
 		[managedObjectContext processPendingChanges];
-		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
 		[nc postNotificationName:@"ExpandNode" object:parent];
 	}
 	

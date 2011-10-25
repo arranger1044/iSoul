@@ -110,7 +110,7 @@
 	// as all the others. please make this go away
 	firstResize = YES;
 	
-    lastDividerPosition = splitView.frame.size.width - splitView.frame.size.width / 4;
+    lastDividerPosition = (float) (splitView.frame.size.width - splitView.frame.size.width / 4);
 	// selects the correct users from the data model
 	[self setFetchPredicate];
     
@@ -207,7 +207,7 @@
 					   context:(void *)context
 {
     NSSet *newMessages = [change objectForKey:NSKeyValueChangeNewKey];
-    unsigned int newMessagesCount = [newMessages count];
+    NSUInteger newMessagesCount = newMessages.count;
     //DNSLog(@"%u", newMessagesCount);
     
 	if ([object isEqual:currentRoom]) 
@@ -219,7 +219,7 @@
            count as well */
         if (![[[NSApp delegate] window] isMainWindow])
         {
-            NSNumber * newCount = [NSNumber numberWithUnsignedInt:newMessagesCount];
+            NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
             [store updateSidebar:[object name] withCount:newCount];
             self.unreadMessages += newMessagesCount;
         }
@@ -228,7 +228,7 @@
     else 
     {
         /* We update the other room side bar count */
-        NSNumber * newCount = [NSNumber numberWithUnsignedInt:newMessagesCount];
+        NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
         [store updateSidebar:[object name] withCount:newCount];
         self.unreadMessages += newMessagesCount;
     }
@@ -282,8 +282,8 @@
 		//lastDividerPosition = r.size.width;
         //DNSLog(@"collapsing");
         NSRect cR = [chatView frame];
-        lastDividerPosition = cR.size.width;
-        float maxWidth = splitView.frame.size.width;
+        lastDividerPosition = (float) cR.size.width;
+        float maxWidth = (float) splitView.frame.size.width;
 		//[splitView setPosition:maxWidth ofDividerAtIndex:0];
         [self setDividerPosition:maxWidth];
         //[button setState:NO];
@@ -306,7 +306,7 @@
 //        [button setState:!collapsed];   
 //    }
     // need to update the hidden status if we have moved the frame manually
-    float width = chatView.frame.size.width;
+    float width = (float) chatView.frame.size.width;
     //[splitView adjustSubviews];
     [splitView setPosition:(width) ofDividerAtIndex:0];
     //    
@@ -319,7 +319,7 @@
 //    DNSLog(@"ENDING");
 //    rect2Log(chatView.frame);
 //    rect2Log(usersPane.frame);
-    float width = chatView.frame.size.width;
+    float width = (float) chatView.frame.size.width;
 //    //[splitView adjustSubviews];
 //    //[splitView setPosition:(width) ofDividerAtIndex:0];
 //    if (width >= splitView.frame.size.width - splitView.dividerThickness)
@@ -345,8 +345,8 @@
     if (chatView.frame.size.width != width)
     {
         [usersPane setHidden:NO];
-        float space = fabsf(chatView.frame.size.width - width);
-        float timeT = space * 0.2 / 200;
+        float space = fabsf((float) chatView.frame.size.width - width);
+        float timeT = space * 0.2f / 200;
         /* Let's try to animate the sliding */
 //        float minWidth = MAX(1, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
         //DNSLog(@"t %f r %f q %f", width, width + splitView.dividerThickness, NSMaxX(usersPane.frame) - width - splitView.dividerThickness);
@@ -401,7 +401,7 @@
 
 - (NSNumber *)getDividerPosition
 {
-    return [NSNumber numberWithFloat:chatView.frame.size.width];
+    return [NSNumber numberWithDouble:chatView.frame.size.width];
 }
 
 #pragma mark private methods
@@ -603,17 +603,17 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 //        DNSLog(@"decoll");
 //        [button setState:NO];
 //    }
-	float width = chatView.frame.size.width;
+	float width = (float) chatView.frame.size.width;
     if (width >= splitView.frame.size.width - splitView.dividerThickness)
     {
         //DNSLog(@"coll %f", width);
-        [button setState:NO];
+        button.state = NO;
     }
     else
     {
         
         //DNSLog(@"decoll %f %f", width, splitView.frame.size.width);
-        [button setState:YES];
+        button.state = YES;
     }
     
 	// store the current divider position in the sidebar tag

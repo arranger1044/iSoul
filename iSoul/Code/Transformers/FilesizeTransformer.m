@@ -22,7 +22,7 @@
 + (void)initialize {
 	NSString *name = @"FilesizeTransformer";
 	
-	[[NSValueTransformer class] setValueTransformer:[self new] forName:name];
+	[NSValueTransformer.class setValueTransformer:[self new] forName:name];
 }
 
 - (id)transformedValue:(id)value {

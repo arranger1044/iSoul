@@ -30,7 +30,7 @@
 
 - (void)loadLastViewState{
     
-    int vState = [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedSegmentView"];
+    NSInteger vState = [NSUserDefaults.standardUserDefaults integerForKey:@"SelectedSegmentView"];
     switch (vState) 
     {
         case 0:
@@ -485,12 +485,12 @@
 		else
 			ac = browseController;
 		
-		if ([[ac arrangedObjects] count] > 0) {
-			Result *r = [[ac arrangedObjects] objectAtIndex:rowIndex];
-			if ([[r user] queueTime] > 0)
-				[aCell setTextColor:[NSColor darkGrayColor]];
+		if ([ac.arrangedObjects count] > 0) {
+			Result *r = [ac.arrangedObjects objectAtIndex:(NSUInteger) rowIndex];
+			if (r.user.queueTime > 0)
+				[aCell setTextColor:NSColor.darkGrayColor];
 			else
-				[aCell setTextColor:[NSColor blackColor]];
+				[aCell setTextColor:NSColor.blackColor];
 		}			
 	}
 }
@@ -563,13 +563,13 @@
 
 // expand a folder when it is selected in the outline view
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-	NSIndexSet *selected = [outlineView selectedRowIndexes];
-	if ([selected count] != 1) return;
+	NSIndexSet *selected = outlineView.selectedRowIndexes;
+	if (selected.count != 1) return;
 	
-	NSUInteger i = [selected firstIndex];
-	PathNode *node = [[outlineView itemAtRow:i] representedObject];
-	if ([node isFolder] && ![node isExpanded])
-		[outlineView expandItem:[outlineView itemAtRow:i]];
+	NSUInteger i = selected.firstIndex;
+	PathNode *node = [[outlineView itemAtRow: (NSInteger) i] representedObject];
+	if (node.isFolder && !node.isExpanded)
+		[outlineView expandItem:[outlineView itemAtRow: (NSInteger) i]];
 }
 
 #pragma mark browser delegate methods
@@ -592,7 +592,7 @@
 	PathNode *node = [self parentNodeForColumn:column];
 	
 	// only display folders in the browser view
-	return [node numFolders];
+	return (NSInteger) node.numFolders;
 }
 
 - (void)browser:(NSBrowser *)sender 

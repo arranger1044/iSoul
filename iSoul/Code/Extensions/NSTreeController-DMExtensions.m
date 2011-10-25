@@ -9,7 +9,7 @@
 
 @interface NSTreeController (DMExtensions_Private)
 - (NSIndexPath *)_indexPathFromIndexPath:(NSIndexPath *)baseIndexPath inChildren:(NSArray *)children
-							  childCount:(unsigned int)childCount toObject:(id)object;
+							  childCount:(NSUInteger)childCount toObject:(id)object;
 @end
 
 
@@ -33,7 +33,7 @@
 - (NSIndexPath *)indexPathToObject:(id)object;
 {
 	NSArray *children = [self content];
-	return [self _indexPathFromIndexPath:nil inChildren:children childCount:[children count]
+	return [self _indexPathFromIndexPath:nil inChildren:children childCount: children.count
 								toObject:object];
 }
 
@@ -42,14 +42,14 @@
 @implementation NSTreeController (DMExtensions_Private)
 
 - (NSIndexPath *)_indexPathFromIndexPath:(NSIndexPath *)baseIndexPath inChildren:(NSArray *)children
-childCount:(unsigned int)childCount toObject:(id)object;
+childCount:(NSUInteger)childCount toObject:(id)object;
 {
 	unsigned int childIndex;
 	for (childIndex = 0; childIndex < childCount; childIndex++) {
 		id childObject = [children objectAtIndex:childIndex];
 		
 		NSMutableSet *childsChildren = nil;
-		unsigned int childsChildrenCount = 0;
+		NSUInteger childsChildrenCount = 0;
 		NSString *leafKeyPath = [self leafKeyPath];
 		if (!leafKeyPath || [[childObject valueForKey:leafKeyPath] boolValue] == NO) {
 			NSString *countKeyPath = [self countKeyPath];
@@ -59,7 +59,7 @@ childCount:(unsigned int)childCount toObject:(id)object;
 				NSString *childrenKeyPath = [self childrenKeyPath];
 				childsChildren = [childObject mutableSetValueForKey:childrenKeyPath];
 				if (!countKeyPath)
-					childsChildrenCount = [childsChildren count];
+					childsChildrenCount = childsChildren.count;
 			}
 		}
 		

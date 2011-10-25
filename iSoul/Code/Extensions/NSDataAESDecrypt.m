@@ -16,7 +16,7 @@
 {
 	// get the SHA256 hash of the password
 	unsigned char passwordDigest[32];
-	CC_SHA256([password UTF8String], strlen([password UTF8String]), passwordDigest);
+	CC_SHA256(password.UTF8String, (CC_LONG) strlen(password.UTF8String), passwordDigest);
 	AES_KEY aesKey;
 	AES_set_decrypt_key(passwordDigest, 256, &aesKey);
 	

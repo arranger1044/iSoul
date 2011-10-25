@@ -80,27 +80,23 @@
 
 - (void)updateUserStatus:(NSNotification *)notification
 {
-	User *user = (User *)[notification object];
+	User *user = (User *)notification.object;
 	
 	// if the user a friend, find in the table and reload
-	if ([[user isFriend] boolValue]) {
-		NSInteger row = [[arrayController arrangedObjects] indexOfObject:user];
-		if (row >= 0) {
-			[tableView setNeedsDisplayInRect:[tableView rectOfRow:row]];
-		}
+	if ([user.isFriend boolValue]) {
+		NSUInteger row = [arrayController.arrangedObjects indexOfObject:user];
+		[tableView setNeedsDisplayInRect:[tableView rectOfRow: (NSInteger) row]];
 	}
 }
 
 - (void)userInfoUpdated:(NSNotification *)notification
 {
-	User *user = (User *)[notification object];
+	User *user = (User *)notification.object;
 	
 	// if user has a picture, reload the row
-	if ([user picture]) {
-		NSInteger row = [[arrayController arrangedObjects] indexOfObject:user];
-		if (row >= 0) {
-			[tableView setNeedsDisplayInRect:[tableView rectOfRow:row]];
-		}
+	if (user.picture) {
+		NSUInteger row = [arrayController.arrangedObjects indexOfObject:user];
+		[tableView setNeedsDisplayInRect:[tableView rectOfRow: (NSInteger) row]];
 	}
 }
 
@@ -112,13 +108,13 @@
 			  row:(NSInteger)rowIndex
 {
 	// we need to set the correct image for the user
-	if ([[aTableColumn identifier] isEqualToString:@"username"]) {
+	if ([aTableColumn.identifier isEqualToString:@"username"]) {
 		
 		// get the user's image if it has been set
-		User *user = [[arrayController arrangedObjects] objectAtIndex:rowIndex];
+		User *user = [arrayController.arrangedObjects objectAtIndex: (NSUInteger) rowIndex];
 		NSImage *icon;
-		if ([user icon]) {
-			icon = [[NSImage alloc] initWithData:[user icon]];
+		if (user.icon) {
+			icon = [[NSImage alloc] initWithData:user.icon];
 			[icon autorelease];
 		} else {
 			icon = personIcon;

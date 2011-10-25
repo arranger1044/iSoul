@@ -23,7 +23,7 @@
 	self = [super init];
 	if (self != nil) {
 		// create random password
-		srandom([[NSDate date] timeIntervalSince1970]);
+		srandom((unsigned) [NSDate.date timeIntervalSince1970]);
 		
 		char randoms[kPasswordLength + 1];
 		char aRandom;
@@ -258,7 +258,7 @@
 	[scanner scanUpToString:@"<key id=\"localhost:" intoString:NULL];
 	[scanner scanString:@"<key id=\"localhost:" intoString:NULL];
 	if ([scanner scanUpToString:@"\"" intoString:&portString]) {
-		port = [portString intValue];
+		port = (NSUInteger) portString.intValue;
 	} else {
 		NSLog(@"error reading the port number");
 		return nil;

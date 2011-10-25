@@ -24,15 +24,15 @@
         formattedString = [NSString stringWithFormat:@"%@ B", formattedNumber];
     }
     else if (size < 1000 * 1000) {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0f]];
         formattedString = [NSString stringWithFormat:@"%@ KB", formattedNumber];
     }
     else if (size < 1000 * 1000 * 1000) {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0 / 1000.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0f / 1000.0f]];
         formattedString = [NSString stringWithFormat:@"%@ MB", formattedNumber];
     }
     else {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0 / 1000.0 / 1000.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1000.0f / 1000.0f / 1000.0f]];
         formattedString = [NSString stringWithFormat:@"%@ GB", formattedNumber];
     }
     [formatter release];
@@ -55,15 +55,15 @@
         formattedString = [NSString stringWithFormat:@"%@ B", formattedNumber];
     }
     else if (size < 1024 * 1024) {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0f]];
         formattedString = [NSString stringWithFormat:@"%@ KB", formattedNumber];
     }
     else if (size < 1024 * 1024 * 1024) {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0 / 1024.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0f / 1024.0f]];
         formattedString = [NSString stringWithFormat:@"%@ MB", formattedNumber];
     }
     else {
-        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0 / 1024.0 / 1024.0]];
+        NSString *formattedNumber = [formatter stringFromNumber:[NSNumber numberWithFloat:size / 1024.0f / 1024.0f / 1024.0f]];
         formattedString = [NSString stringWithFormat:@"%@ GB", formattedNumber];
     }
     [formatter release];
