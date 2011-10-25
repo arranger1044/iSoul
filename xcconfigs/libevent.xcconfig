@@ -1,0 +1,36 @@
+//
+//  TCMPortMapper.xcconfig
+//  iSoul
+//
+//  Created by David Jennes on 08/10/11.
+//  Copyright 2011. All rights reserved.
+//
+
+// Version
+CURRENT_PROJECT_VERSION = 2.0.15
+CURRENT_MARKETING_VERSION = 2.0.15
+
+// Packaging
+FRAMEWORK_VERSION = A
+INFOPLIST_FILE = Info.plist
+PRODUCT_NAME = libevent
+WRAPPER_EXTENSION = framework
+
+// Linking
+DYLIB_COMPATIBILITY_VERSION = 1
+DYLIB_CURRENT_VERSION = 1
+
+// Deployment
+INSTALL_PATH = @executable_path/../Frameworks
+
+// Search paths
+HEADER_SEARCH_PATHS = "libevent/include"
+
+// Compiler options
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) HAVE_CONFIG_H
+
+// Disable a few warnings
+CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO
+CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO
+GCC_WARN_64_TO_32_BIT_CONVERSION = NO
+GCC_WARN_UNUSED_FUNCTION = NO

@@ -477,9 +477,6 @@
 		DD4F2D6D131B0DCA00442671 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */; };
-		DDB40DA91456379900206EED /* Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA01456379900206EED /* Base.xcconfig */; };
-		DDB40DAE1456379900206EED /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA51456379900206EED /* Debug.xcconfig */; };
-		DDB40DB11456379900206EED /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDB40DA81456379900206EED /* Release.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1064,9 +1061,9 @@
 		DD4F2D6C131B0DCA00442671 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-Utilities.h"; sourceTree = "<group>"; };
 		DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber-Utilities.m"; sourceTree = "<group>"; };
-		DDB40DA01456379900206EED /* Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		DDB40DA51456379900206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DDB40DA81456379900206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		DDB40DB9145652DB00206EED /* iSoul.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iSoul.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1834,8 +1831,8 @@
 		DDB40D9F1456379900206EED /* Configuration Files */ = {
 			isa = PBXGroup;
 			children = (
-				DDB40DA01456379900206EED /* Base.xcconfig */,
 				DDB40DA51456379900206EED /* Debug.xcconfig */,
+				DDB40DB9145652DB00206EED /* iSoul.xcconfig */,
 				DDB40DA81456379900206EED /* Release.xcconfig */,
 			);
 			name = "Configuration Files";
@@ -2322,9 +2319,6 @@
 				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
 				B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */,
 				DD4F1D6A131B0D5000442671 /* Growl Registration Ticket.growlRegDict in Resources */,
-				DDB40DA91456379900206EED /* Base.xcconfig in Resources */,
-				DDB40DAE1456379900206EED /* Debug.xcconfig in Resources */,
-				DDB40DB11456379900206EED /* Release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2506,12 +2500,14 @@
 /* Begin XCBuildConfiguration section */
 		26FC0A850875C7B200E6366F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DB9145652DB00206EED /* iSoul.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		26FC0A860875C7B200E6366F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DB9145652DB00206EED /* iSoul.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -2520,22 +2516,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DDB40DA51456379900206EED /* Debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(HOME)/Downloads\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
-				INFOPLIST_FILE = Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib\"",
-				);
-				PRODUCT_NAME = iSoul;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
@@ -2543,22 +2523,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DDB40DA81456379900206EED /* Release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(HOME)/Downloads\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				HEADER_SEARCH_PATHS = ../TCMPortMapper/framework;
-				INFOPLIST_FILE = Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib\"",
-				);
-				PRODUCT_NAME = iSoul;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};

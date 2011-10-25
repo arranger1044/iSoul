@@ -21,8 +21,8 @@
 #import "SharesScanner.h"
 #import "ShareNode.h"
 #import "MainWindowController.h"
-#import "TCMPortMapper.h"
 #import "LoggingController.h"
+#import <TCMPortMapper/TCMPortMapper.h>
 
 @implementation iSoul_AppDelegate
 

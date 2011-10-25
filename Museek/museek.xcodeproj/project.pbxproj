@@ -52,17 +52,10 @@
 		A7D595F210D849D000769CC4 /* sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D595EA10D849D000769CC4 /* sha256.cpp */; };
 		A7D595F310D849D000769CC4 /* wraphelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7D595EC10D849D000769CC4 /* wraphelp.cpp */; };
 		DDA6DE06144CCC1E0014C356 /* libevent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA6DE00144CCBA30014C356 /* libevent.framework */; };
-		DDA6DE07144CCC1E0014C356 /* libXMLFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */; };
+		DDB40E831456771900206EED /* libXML++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB40E80145676FD00206EED /* libXML++.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DDA6DDF9144CCB970014C356 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = libXMLFramework;
-		};
 		DDA6DDFF144CCBA30014C356 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */;
@@ -77,12 +70,19 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = libevent;
 		};
-		DDA6DE04144CCC190014C356 /* PBXContainerItemProxy */ = {
+		DDB40E7F145676FD00206EED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
+			containerPortal = DDB40E78145676FD00206EED /* libXML++.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = libXML;
+		};
+		DDB40E811456771000206EED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDB40E78145676FD00206EED /* libXML++.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = libXMLFramework;
+			remoteInfo = libXML;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -207,8 +207,11 @@
 		A7D595EA10D849D000769CC4 /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
 		A7D595EB10D849D000769CC4 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		A7D595EC10D849D000769CC4 /* wraphelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wraphelp.cpp; sourceTree = "<group>"; };
-		DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libXMLFramework.xcodeproj; path = ../libXMLFramework/libXMLFramework.xcodeproj; sourceTree = "<group>"; };
 		DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libevent.xcodeproj; path = ../libevent/libevent.xcodeproj; sourceTree = "<group>"; };
+		DDB40DC01456559200206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		DDB40DC41456559200206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		DDB40DC61456595F00206EED /* museek.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = museek.xcconfig; sourceTree = "<group>"; };
+		DDB40E78145676FD00206EED /* libXML++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libXML++.xcodeproj"; path = "../libXML++/libXML++.xcodeproj"; sourceTree = "<group>"; };
 		DDFAF09314500283006472EE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,8 +220,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB40E831456771900206EED /* libXML++.framework in Frameworks */,
 				DDA6DE06144CCC1E0014C356 /* libevent.framework in Frameworks */,
-				DDA6DE07144CCC1E0014C356 /* libXMLFramework.framework in Frameworks */,
 				A76D2B7C10D8F46200DD9F82 /* libxml2.dylib in Frameworks */,
 				A76D2B8D10D8F8B800DD9F82 /* libiconv.dylib in Frameworks */,
 				A76D2B9110D8F8DC00DD9F82 /* libz.dylib in Frameworks */,
@@ -232,10 +235,11 @@
 			isa = PBXGroup;
 			children = (
 				DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */,
-				DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */,
+				DDB40E78145676FD00206EED /* libXML++.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				DDFAF094145002B9006472EE /* Other Sources */,
-				DDFAF092145001DC006472EE /* Linked Libraries */,
+				DDFAF092145001DC006472EE /* Frameworks */,
+				DDB40DBB1456559200206EED /* Configuration Files */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
 			name = museek;
@@ -392,14 +396,6 @@
 			path = Mucipher;
 			sourceTree = "<group>";
 		};
-		DDA6DDF6144CCB960014C356 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		DDA6DDFC144CCBA20014C356 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,14 +404,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DDFAF092145001DC006472EE /* Linked Libraries */ = {
+		DDB40DBB1456559200206EED /* Configuration Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDB40DC01456559200206EED /* Debug.xcconfig */,
+				DDB40DC61456595F00206EED /* museek.xcconfig */,
+				DDB40DC41456559200206EED /* Release.xcconfig */,
+			);
+			name = "Configuration Files";
+			path = ../xcconfigs;
+			sourceTree = "<group>";
+		};
+		DDB40E79145676FD00206EED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDB40E80145676FD00206EED /* libXML++.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDFAF092145001DC006472EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A76D2B7B10D8F46200DD9F82 /* libxml2.dylib */,
 				A76D2B8C10D8F8B800DD9F82 /* libiconv.dylib */,
 				A76D2B9010D8F8DC00DD9F82 /* libz.dylib */,
 			);
-			name = "Linked Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DDFAF094145002B9006472EE /* Other Sources */ = {
@@ -440,8 +455,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				DDB40E821456771000206EED /* PBXTargetDependency */,
 				DDA6DE03144CCC190014C356 /* PBXTargetDependency */,
-				DDA6DE05144CCC190014C356 /* PBXTargetDependency */,
 			);
 			name = museek;
 			productInstallPath = "$(HOME)/bin";
@@ -475,8 +490,8 @@
 					ProjectRef = DDA6DDFB144CCBA20014C356 /* libevent.xcodeproj */;
 				},
 				{
-					ProductGroup = DDA6DDF6144CCB960014C356 /* Products */;
-					ProjectRef = DDA6DDF5144CCB960014C356 /* libXMLFramework.xcodeproj */;
+					ProductGroup = DDB40E79145676FD00206EED /* Products */;
+					ProjectRef = DDB40E78145676FD00206EED /* libXML++.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -487,18 +502,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		DDA6DDFA144CCB970014C356 /* libXMLFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = libXMLFramework.framework;
-			remoteRef = DDA6DDF9144CCB970014C356 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		DDA6DE00144CCBA30014C356 /* libevent.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = libevent.framework;
 			remoteRef = DDA6DDFF144CCBA30014C356 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DDB40E80145676FD00206EED /* libXML++.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = "libXML++.framework";
+			remoteRef = DDB40E7F145676FD00206EED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -560,80 +575,39 @@
 			name = libevent;
 			targetProxy = DDA6DE02144CCC190014C356 /* PBXContainerItemProxy */;
 		};
-		DDA6DE05144CCC190014C356 /* PBXTargetDependency */ = {
+		DDB40E821456771000206EED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = libXMLFramework;
-			targetProxy = DDA6DE04144CCC190014C356 /* PBXContainerItemProxy */;
+			name = libXML;
+			targetProxy = DDB40E811456771000206EED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB923208733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DC61456595F00206EED /* museek.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		1DEB923308733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DC61456595F00206EED /* museek.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DC01456559200206EED /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"/usr/include/libxml2/**",
-					"./**",
-					"../libevent/**",
-					"../libXMLFramework/**",
-				);
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = "../libXMLFramework/**";
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = museek;
-				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DC41456559200206EED /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"/usr/include/libxml2/**",
-					"./**",
-					"../libevent/**",
-					"../libXMLFramework/**",
-				);
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = museek;
-				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};

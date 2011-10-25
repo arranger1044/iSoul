@@ -7,7 +7,6 @@
 //
 
 #import "MainWindowController.h"
-#import "TCMPortMapper.h"
 #import "iSoul_AppDelegate.h"
 #import "MuseekdConnectionController.h"
 #import "DataStore.h"
@@ -30,6 +29,7 @@
 #import "ExpandingSidebar.h"
 #import "LoggingController.h"
 #import "LoggingConsole.h"
+#import <TCMPortMapper/TCMPortMapper.h>
 
 #define kMinSplitPosition	150
 

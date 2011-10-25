@@ -1,0 +1,27 @@
+//
+//  iSoul.xcconfig
+//  iSoul
+//
+//  Created by David Jennes on 08/10/11.
+//  Copyright 2011. All rights reserved.
+//
+
+// Version
+CURRENT_PROJECT_VERSION = 0.4.3.b1
+CURRENT_MARKETING_VERSION = 0.4.3 Beta 1
+
+// Packaging
+INFOPLIST_FILE = Info.plist
+PRODUCT_NAME = iSoul
+
+// Build options
+RUN_CLANG_STATIC_ANALYZER = YES
+
+// Search paths
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SRCROOT)/Frameworks"
+
+// Disable a warning for scripting bridge
+GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO
+
+// Deployment
+INSTALL_PATH = $(HOME)/Applications

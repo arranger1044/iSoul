@@ -55,6 +55,8 @@
 		DD31FFD712C4018800DBE3E9 /* tag_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBC12C4018800DBE3E9 /* tag_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD31FFD812C4018800DBE3E9 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBD12C4018800DBE3E9 /* thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD31FFD912C4018800DBE3E9 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = DD31FFBE12C4018800DBE3E9 /* util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB40DF91456642300206EED /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB40DF61456635B00206EED /* libssl.dylib */; };
+		DDB40DFA1456642A00206EED /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB40DF41456634D00206EED /* libcrypto.dylib */; };
 		DDFAEFFB144FDF80006472EE /* Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = DDFAEFFA144FDF80006472EE /* Prefix.pch */; };
 		DDFAEFFE144FE291006472EE /* kqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = DD31FF4612C4007300DBE3E9 /* kqueue.c */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,11 @@
 		DD31FFBC12C4018800DBE3E9 /* tag_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag_compat.h; sourceTree = "<group>"; };
 		DD31FFBD12C4018800DBE3E9 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
 		DD31FFBE12C4018800DBE3E9 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		DDB40DE6145661F400206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		DDB40DE9145661F400206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		DDB40DF21456622000206EED /* libevent.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = libevent.xcconfig; sourceTree = "<group>"; };
+		DDB40DF41456634D00206EED /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		DDB40DF61456635B00206EED /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = usr/lib/libssl.dylib; sourceTree = SDKROOT; };
 		DDFAEFFA144FDF80006472EE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB40DF91456642300206EED /* libssl.dylib in Frameworks */,
+				DDB40DFA1456642A00206EED /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +148,8 @@
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				DDFAEFFD144FDF9E006472EE /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
+				DDB40DF8145663DA00206EED /* Frameworks */,
+				DDB40DE4145661F400206EED /* Configuration Files */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = libevent;
@@ -223,6 +234,26 @@
 				DD31FFBE12C4018800DBE3E9 /* util.h */,
 			);
 			path = event2;
+			sourceTree = "<group>";
+		};
+		DDB40DE4145661F400206EED /* Configuration Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDB40DE6145661F400206EED /* Debug.xcconfig */,
+				DDB40DF21456622000206EED /* libevent.xcconfig */,
+				DDB40DE9145661F400206EED /* Release.xcconfig */,
+			);
+			name = "Configuration Files";
+			path = ../xcconfigs;
+			sourceTree = "<group>";
+		};
+		DDB40DF8145663DA00206EED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDB40DF61456635B00206EED /* libssl.dylib */,
+				DDB40DF41456634D00206EED /* libcrypto.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DDFAEFFD144FDF9E006472EE /* Other Sources */ = {
@@ -377,76 +408,29 @@
 /* Begin XCBuildConfiguration section */
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DF21456622000206EED /* libevent.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DF21456622000206EED /* libevent.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DE6145661F400206EED /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/libevent/include\"";
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-lssl",
-				);
-				PRODUCT_NAME = libevent;
-				SDKROOT = macosx10.6;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB40DE9145661F400206EED /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/libevent/include\"";
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-lssl",
-				);
-				PRODUCT_NAME = libevent;
-				SDKROOT = macosx10.6;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
