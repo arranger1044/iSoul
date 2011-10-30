@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2002-2007 Niels Provos <provos@citi.umich.edu>
- * Copyright (c) 2007-2010 Niels Provos and Nick Mathewson
+ * Copyright (c) 2007-2011 Niels Provos and Nick Mathewson
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -3239,6 +3239,16 @@ evhttp_accept_socket(struct evhttp *http, evutil_socket_t fd)
 	return (0);
 }
 
+void
+evhttp_foreach_bound_socket(struct evhttp *http,
+                            evhttp_bound_socket_foreach_fn *function,
+                            void *argument)
+{
+	struct evhttp_bound_socket *bound;
+
+	TAILQ_FOREACH(bound, &http->sockets, next)
+		function(bound, argument);
+}
 
 struct evhttp_bound_socket *
 evhttp_accept_socket_with_handle(struct evhttp *http, evutil_socket_t fd)
