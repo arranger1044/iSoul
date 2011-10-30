@@ -332,10 +332,10 @@
 
 - (void)setFetchPredicate {
 	NSPredicate *predicate;
+	NSArray *tickets = [currentTickets allObjects];
 	
-	if (currentTickets && isAwake) {
+	if (currentTickets && isAwake && tickets.count > 0) {
 		NSUInteger i;
-		NSArray *tickets = [currentTickets allObjects];
 		NSMutableString *predString = [[[NSMutableString alloc] initWithFormat:
 										@"ticket.number == %@", [[tickets objectAtIndex:0] number]]
 									   autorelease];

@@ -477,6 +477,7 @@
 		DD4F2D6D131B0DCA00442671 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */; };
+		DDA239B3145CDD6F00DE6318 /* DataImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA239B2145CDD6F00DE6318 /* DataImageTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1061,6 +1062,8 @@
 		DD4F2D6C131B0DCA00442671 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		DD4F2D7B131B0EBE00442671 /* NSNumber-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-Utilities.h"; sourceTree = "<group>"; };
 		DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber-Utilities.m"; sourceTree = "<group>"; };
+		DDA239B1145CDD6F00DE6318 /* DataImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataImageTransformer.h; sourceTree = "<group>"; };
+		DDA239B2145CDD6F00DE6318 /* DataImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataImageTransformer.m; sourceTree = "<group>"; };
 		DDB40DA51456379900206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DDB40DA81456379900206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		DDB40DB9145652DB00206EED /* iSoul.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iSoul.xcconfig; sourceTree = "<group>"; };
@@ -1526,6 +1529,8 @@
 				A718C28010E38D0C003AEC33 /* CountryImageTransformer.m */,
 				A7F6B18910F9061800B784A4 /* CountryNameTransformer.h */,
 				A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */,
+				DDA239B1145CDD6F00DE6318 /* DataImageTransformer.h */,
+				DDA239B2145CDD6F00DE6318 /* DataImageTransformer.m */,
 				A718C26C10E38CD6003AEC33 /* EveryoneOrFriendTransformer.h */,
 				A718C26D10E38CD6003AEC33 /* EveryoneOrFriendTransformer.m */,
 				A718C26E10E38CD6003AEC33 /* FilesizeTransformer.h */,
@@ -2412,6 +2417,7 @@
 				B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */,
 				B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */,
+				DDA239B3145CDD6F00DE6318 /* DataImageTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

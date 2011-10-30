@@ -598,6 +598,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{88, 387}, {79, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="442182885"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="705830114">
@@ -615,6 +616,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{172, 52}, {228, 22}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="994269513"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="759657139">
@@ -646,6 +648,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{172, 20}, {60, 22}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="180724289">
@@ -664,6 +667,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{133, 22}, {34, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="641421316"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="231120760">
@@ -681,6 +685,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{121, 54}, {47, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="751144723"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="101251978">
@@ -698,6 +703,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{100, 297}, {68, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="934328048"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="709732797">
@@ -715,6 +721,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{97, 329}, {71, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="117561757"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="866249679">
@@ -732,6 +739,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{172, 295}, {228, 22}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="719200063"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSecureTextFieldCell" key="NSCell" id="35813361">
@@ -753,6 +761,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{172, 327}, {228, 22}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="40658210"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="553719860">
@@ -771,6 +780,7 @@
 						<int key="NSvFlags">12</int>
 						<string key="NSFrame">{{12, 90}, {506, 5}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="468476242"/>
 						<string key="NSOffsets">{0, 0}</string>
 						<object class="NSTextFieldCell" key="NSTitleCell">
@@ -802,6 +812,7 @@
 						</set>
 						<string key="NSFrame">{{170, 364}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="224176688"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="809494739">
@@ -831,6 +842,7 @@
 										<int key="NSvFlags">2322</int>
 										<string key="NSFrameSize">{226, 14}</string>
 										<reference key="NSSuperview" ref="1018116791"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="578405383"/>
 										<object class="NSTextContainer" key="NSTextContainer" id="455424755">
 											<object class="NSLayoutManager" key="NSLayoutManager">
@@ -889,11 +901,12 @@
 								</array>
 								<string key="NSFrame">{{1, 1}, {226, 86}}</string>
 								<reference key="NSSuperview" ref="188953674"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="197908618"/>
 								<reference key="NSDocView" ref="197908618"/>
 								<reference key="NSBGColor" ref="592267216"/>
 								<object class="NSCursor" key="NSCursor" id="122518166">
-									<string key="NSHotSpot">{1, -1}</string>
+									<string key="NSHotSpot">{4, 4}</string>
 									<int key="NSCursorType">0</int>
 								</object>
 								<int key="NScvFlags">4</int>
@@ -903,6 +916,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{212, 1}, {15, 86}}</string>
 								<reference key="NSSuperview" ref="188953674"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="547462053"/>
 								<reference key="NSTarget" ref="188953674"/>
 								<string key="NSAction">_doScroller:</string>
@@ -913,6 +927,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{-100, -100}, {87, 18}}</string>
 								<reference key="NSSuperview" ref="188953674"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1018116791"/>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="188953674"/>
@@ -923,6 +938,7 @@
 						</array>
 						<string key="NSFrame">{{172, 111}, {228, 88}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="173200904"/>
 						<int key="NSsFlags">133138</int>
 						<reference key="NSVScroller" ref="578405383"/>
@@ -934,6 +950,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{96, 182}, {71, 17}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="188953674"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="197075870">
@@ -951,6 +968,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{169, 217}, {234, 70}}</string>
 						<reference key="NSSuperview" ref="144911928"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="610502408"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="1067863036">
@@ -978,6 +996,7 @@
 				</array>
 				<string key="NSFrameSize">{530, 445}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="15596387"/>
 				<string key="NSClassName">NSView</string>
 				<string key="NSExtension">NSResponder</string>
@@ -4424,10 +4443,14 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<string key="NSLabel">value: values.UserImage</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">values.UserImage</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">DataImageTransformer</string>
+							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">845</int>
+					<int key="connectionID">847</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -7071,9 +7094,226 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">845</int>
+			<int key="maxID">847</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">DBPrefsWindowController</string>
+					<string key="superclassName">NSWindowController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/DBPrefsWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PrefsWindowController</string>
+					<string key="superclassName">DBPrefsWindowController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addSharedFolder:">id</string>
+						<string key="donateToSoulseek:">id</string>
+						<string key="downloadLocationChanged:">id</string>
+						<string key="downloadRateChanged:">id</string>
+						<string key="highPortChanged:">id</string>
+						<string key="incompleteLocationChanged:">id</string>
+						<string key="logPathChanged:">id</string>
+						<string key="lowPortChanged:">id</string>
+						<string key="museekdAddressChanged:">id</string>
+						<string key="newMenuItem:">id</string>
+						<string key="passwordChanged:">id</string>
+						<string key="removeSharedFolder:">id</string>
+						<string key="serverChanged:">id</string>
+						<string key="serverPortChanged:">id</string>
+						<string key="sharePriveleges:">id</string>
+						<string key="uploadRateChanged:">id</string>
+						<string key="uploadSlotsChanged:">id</string>
+						<string key="userImageChanged:">id</string>
+						<string key="usernameChanged:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addSharedFolder:">
+							<string key="name">addSharedFolder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="donateToSoulseek:">
+							<string key="name">donateToSoulseek:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downloadLocationChanged:">
+							<string key="name">downloadLocationChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downloadRateChanged:">
+							<string key="name">downloadRateChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="highPortChanged:">
+							<string key="name">highPortChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="incompleteLocationChanged:">
+							<string key="name">incompleteLocationChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="logPathChanged:">
+							<string key="name">logPathChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="lowPortChanged:">
+							<string key="name">lowPortChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="museekdAddressChanged:">
+							<string key="name">museekdAddressChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="newMenuItem:">
+							<string key="name">newMenuItem:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="passwordChanged:">
+							<string key="name">passwordChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeSharedFolder:">
+							<string key="name">removeSharedFolder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="serverChanged:">
+							<string key="name">serverChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="serverPortChanged:">
+							<string key="name">serverPortChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sharePriveleges:">
+							<string key="name">sharePriveleges:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="uploadRateChanged:">
+							<string key="name">uploadRateChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="uploadSlotsChanged:">
+							<string key="name">uploadSlotsChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="userImageChanged:">
+							<string key="name">userImageChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="usernameChanged:">
+							<string key="name">usernameChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="accountPrefsView">NSView</string>
+						<string key="addFolderButton">NSButton</string>
+						<string key="description">NSTextView</string>
+						<string key="dirPathPopup">NSPopUpButton</string>
+						<string key="donationsPrefsView">NSView</string>
+						<string key="downloadPopup">NSPopUpButton</string>
+						<string key="downloadsPrefsView">NSView</string>
+						<string key="generalPrefsView">NSView</string>
+						<string key="incompletePopup">NSPopUpButton</string>
+						<string key="itunesPrefsView">NSView</string>
+						<string key="logPathPopup">NSPopUpButton</string>
+						<string key="loggingPrefsView">NSView</string>
+						<string key="networkPrefsView">NSView</string>
+						<string key="prefsController">NSUserDefaultsController</string>
+						<string key="progress">NSProgressIndicator</string>
+						<string key="sharingPrefsView">NSView</string>
+						<string key="talksPrefsView">NSView</string>
+						<string key="treeController">NSTreeController</string>
+						<string key="userToShareWith">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="accountPrefsView">
+							<string key="name">accountPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addFolderButton">
+							<string key="name">addFolderButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="description">
+							<string key="name">description</string>
+							<string key="candidateClassName">NSTextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="dirPathPopup">
+							<string key="name">dirPathPopup</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="donationsPrefsView">
+							<string key="name">donationsPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="downloadPopup">
+							<string key="name">downloadPopup</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="downloadsPrefsView">
+							<string key="name">downloadsPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="generalPrefsView">
+							<string key="name">generalPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="incompletePopup">
+							<string key="name">incompletePopup</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="itunesPrefsView">
+							<string key="name">itunesPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="logPathPopup">
+							<string key="name">logPathPopup</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="loggingPrefsView">
+							<string key="name">loggingPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="networkPrefsView">
+							<string key="name">networkPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="prefsController">
+							<string key="name">prefsController</string>
+							<string key="candidateClassName">NSUserDefaultsController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="progress">
+							<string key="name">progress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sharingPrefsView">
+							<string key="name">sharingPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="talksPrefsView">
+							<string key="name">talksPrefsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="treeController">
+							<string key="name">treeController</string>
+							<string key="candidateClassName">NSTreeController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="userToShareWith">
+							<string key="name">userToShareWith</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PrefsWindowController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
@@ -7082,7 +7322,7 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1060" key="NS.object.0"/>
+			<real value="1070" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
