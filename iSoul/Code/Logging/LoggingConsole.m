@@ -15,18 +15,28 @@
 @synthesize loggingView;
 @synthesize cleanButton;
 
-- (void)logReadMessage:(NSNotification *)aNotification
-{
-    NSString * readChars = [[NSString alloc] initWithData:[[aNotification userInfo] objectForKey:NSFileHandleNotificationDataItem] 
-                                                 encoding:NSUTF8StringEncoding];
-    [self logMessage:readChars];
-    [readChars release];
-    [[aNotification object] readInBackgroundAndNotify];
+- (void) refreshLog: (NSNotification *) aNotification {
+	[aNotification.object readInBackgroundAndNotify];
+}
+
+- (void) logReadMessage: (NSNotification *) aNotification {
+	NSData * data = [aNotification.userInfo objectForKey: NSFileHandleNotificationDataItem];
+
+	if (data.length) {
+		NSString * readChars = [[NSString alloc] initWithData: data 
+													 encoding: NSUTF8StringEncoding];
+		[self logMessage: readChars];
+		//[data release];
+		[readChars release];
+		[aNotification.object readInBackgroundAndNotify];
+	} else {
+		[self performSelector: @selector(refreshLog:) withObject: aNotification afterDelay: 1.0];
+	}
 }
 
 
-- (id)initWithWindowNibName:(NSString *)windowNibName{
-	self = [super initWithWindowNibName:@"LoggingConsole"];
+- (id) initWithWindowNibName: (NSString *) windowNibName{
+	self = [super initWithWindowNibName: @"LoggingConsole"];
 	if (!self)
 		return nil;
 
@@ -35,58 +45,52 @@
 	return self;
 }
 
-- (void)awakeFromNib{
-
-    [self.window setTitle:@"Console"];
-    [loggingView setEditable:NO];
+- (void) awakeFromNib {
+	self.window.title = @"Console";
+	loggingView.editable = NO;
     
     /* Ask to log */
-    [[LoggingController sharedInstance] startLogging];
+    [LoggingController.sharedInstance startLogging];
     
-    NSString * logPath = [[[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"] 
-                          stringByAppendingPathComponent:logFileName];
+    NSString * logPath = [[NSUserDefaults.standardUserDefaults valueForKey: @"LogPath"] 
+                          stringByAppendingPathComponent: logFileName];
     
     /* Start receiving notification for file */
-    NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:logPath];
-//    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
-//    [notificationCenter addObserver:self
-//                           selector:@selector(logReadMessage:)
-//                               name:NSFileHandleReadCompletionNotification
-//                             object:fh];
+    NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath: logPath];
+    [NSNotificationCenter.defaultCenter addObserver: self
+										   selector: @selector(logReadMessage:)
+											   name: NSFileHandleReadCompletionNotification
+											 object: fh];
     
     [fh readInBackgroundAndNotify]; 
     
 }
 
-- (void)logMessage:(NSString *)message{
-    
+- (void) logMessage:(NSString *) message {
     BOOL scrollToEnd = YES;
-    NSScrollView * scrollView = (NSScrollView *)loggingView.superview.superview;
-    if (loggingView.frame.size.height > [scrollView frame].size.height) 
-    {
-       if (1.0f != [scrollView verticalScroller].floatValue)
-            scrollToEnd = NO;
-    }
+    NSScrollView * scrollView = (NSScrollView *) loggingView.superview.superview;
+	
+    if (loggingView.frame.size.height > scrollView.frame.size.height &&
+		scrollView.verticalScroller.floatValue != 1.0f)
+		scrollToEnd = NO;
 
-
-    NSAttributedString * formattedString = [[NSAttributedString alloc] initWithString:message];
-    NSTextStorage * storage = [loggingView textStorage];
+    NSAttributedString * formattedString = [[NSAttributedString alloc] initWithString: message];
+    NSTextStorage * storage = loggingView.textStorage;
 	
 	//[storage beginEditing];
-	[storage appendAttributedString:formattedString];
+	[storage appendAttributedString: formattedString];
 	//[storage endEditing];
     [formattedString release];
     
-    if (scrollToEnd) 
-    {
-        NSRange range = NSMakeRange ([[loggingView string] length], 0);
+    if (scrollToEnd) {
+        NSRange range = NSMakeRange(loggingView.string.length, 0);
         [loggingView scrollRangeToVisible: range];
     }
     
 }
 
-- (void)cleanConsole:(id)sender{
-    [loggingView setString:@""];
+- (void) cleanConsole: (id) sender{
+	loggingView.string = @"";
 }
 
 @end
