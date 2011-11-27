@@ -286,6 +286,43 @@ test_evbuffer(void *ptr)
 }
 
 static void
+no_cleanup(const void *data, size_t datalen, void *extra)
+{
+}
+
+static void
+test_evbuffer_remove_buffer_with_empty(void *ptr)
+{
+    struct evbuffer *src = evbuffer_new();
+    struct evbuffer *dst = evbuffer_new();
+    char buf[2];
+
+    evbuffer_validate(src);
+    evbuffer_validate(dst);
+
+    /* setup the buffers */
+    /* we need more data in src than we will move later */
+    evbuffer_add_reference(src, buf, sizeof(buf), no_cleanup, NULL);
+    evbuffer_add_reference(src, buf, sizeof(buf), no_cleanup, NULL);
+    /* we need one buffer in dst and one empty buffer at the end */
+    evbuffer_add(dst, buf, sizeof(buf));
+    evbuffer_add_reference(dst, buf, 0, no_cleanup, NULL);
+
+    evbuffer_validate(src);
+    evbuffer_validate(dst);
+
+    /* move three bytes over */
+    evbuffer_remove_buffer(src, dst, 3);
+
+    evbuffer_validate(src);
+    evbuffer_validate(dst);
+
+end:
+    evbuffer_free(src);
+    evbuffer_free(dst);
+}
+
+static void
 test_evbuffer_reserve2(void *ptr)
 {
 	/* Test the two-vector cases of reserve/commit. */
@@ -982,6 +1019,32 @@ test_evbuffer_readln(void *ptr)
 	tt_line_eq("Text");
 	free(cp);
 	evbuffer_validate(evb);
+
+	/* Test NUL */
+	tt_int_op(evbuffer_get_length(evb), ==, 0);
+	{
+		char x[] =
+		    "NUL\n\0\0"
+		    "The all-zeros character which may serve\0"
+		    "to accomplish time fill\0and media fill";
+		/* Add all but the final NUL of x. */
+		evbuffer_add(evb, x, sizeof(x)-1);
+	}
+	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_NUL);
+	tt_line_eq("NUL\n");
+	free(cp);
+	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_NUL);
+	tt_line_eq("");
+	free(cp);
+	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_NUL);
+	tt_line_eq("The all-zeros character which may serve");
+	free(cp);
+	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_NUL);
+	tt_line_eq("to accomplish time fill");
+	free(cp);
+	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_NUL);
+	tt_ptr_op(cp, ==, NULL);
+	evbuffer_drain(evb, -1);
 
 	/* Test CRLF_STRICT - across boundaries*/
 	s = " and a bad crlf\nand a good one\r";
@@ -1790,6 +1853,50 @@ end:
 		evbuffer_free(tmp_buf);
 }
 
+static void
+test_evbuffer_add_iovec(void * ptr)
+{
+	struct evbuffer * buf = NULL;
+	struct evbuffer_iovec vec[4];
+	const char * data[] = {
+		"Guilt resembles a sword with two edges.",
+		"On the one hand, it cuts for Justice, imposing practical morality upon those who fear it.",
+		"Conscience does not always adhere to rational judgment.",
+		"Guilt is always a self-imposed burden, but it is not always rightly imposed."
+		/* -- R.A. Salvatore, _Sojurn_ */
+	};
+	size_t expected_length = 0;
+	size_t returned_length = 0;
+	int i;
+
+	buf = evbuffer_new();
+
+	for (i = 0; i < 4; i++) {
+		vec[i].iov_len  = strlen(data[i]);
+		vec[i].iov_base = (char*) data[i];
+		expected_length += vec[i].iov_len;
+	}
+
+	returned_length = evbuffer_add_iovec(buf, vec, 4);
+
+	tt_int_op(returned_length, ==, evbuffer_get_length(buf));
+	tt_int_op(evbuffer_get_length(buf), ==, expected_length);
+
+	for (i = 0; i < 4; i++) {
+		char charbuf[1024];
+
+		memset(charbuf, 0, 1024);
+		evbuffer_remove(buf, charbuf, strlen(data[i]));
+		tt_assert(strcmp(charbuf, data[i]) == 0);
+	}
+
+	tt_assert(evbuffer_get_length(buf) == 0);
+end:
+	if (buf) {
+		evbuffer_free(buf);
+	}
+}
+
 static void *
 setup_passthrough(const struct testcase_t *testcase)
 {
@@ -1809,6 +1916,7 @@ static const struct testcase_setup_t nil_setup = {
 
 struct testcase_t evbuffer_testcases[] = {
 	{ "evbuffer", test_evbuffer, 0, NULL, NULL },
+	{ "remove_buffer_with_empty", test_evbuffer_remove_buffer_with_empty, 0, NULL, NULL },
 	{ "reserve2", test_evbuffer_reserve2, 0, NULL, NULL },
 	{ "reserve_many", test_evbuffer_reserve_many, 0, NULL, NULL },
 	{ "reserve_many2", test_evbuffer_reserve_many, 0, &nil_setup, (void*)"add" },
@@ -1827,6 +1935,7 @@ struct testcase_t evbuffer_testcases[] = {
 	{ "peek", test_evbuffer_peek, 0, NULL, NULL },
 	{ "freeze_start", test_evbuffer_freeze, 0, &nil_setup, (void*)"start" },
 	{ "freeze_end", test_evbuffer_freeze, 0, &nil_setup, (void*)"end" },
+	{ "add_iovec", test_evbuffer_add_iovec, 0, NULL, NULL},
 
 #define ADDFILE_TEST(name, parameters)					\
 	{ name, test_evbuffer_add_file, TT_FORK|TT_NEED_BASE,		\

@@ -244,6 +244,31 @@ static inline int evbuffer_chains_all_empty(struct evbuffer_chain *chain) {
 }
 #endif
 
+/* Free all trailing chains in 'buf' that are neither pinned nor empty, prior
+ * to replacing them all with a new chain.  Return a pointer to the place
+ * where the new chain will go.
+ *
+ * Internal; requires lock.  The caller must fix up buf->last and buf->first
+ * as needed; they might have been freed.
+ */
+static struct evbuffer_chain **
+evbuffer_free_trailing_empty_chains(struct evbuffer *buf)
+{
+	struct evbuffer_chain **ch = buf->last_with_datap;
+	/* Find the first victim chain.  It might be *last_with_datap */
+	while ((*ch) && ((*ch)->off != 0 || CHAIN_PINNED(*ch)))
+		ch = &(*ch)->next;
+	if (*ch) {
+		EVUTIL_ASSERT(evbuffer_chains_all_empty(*ch));
+		evbuffer_free_all_chains(*ch);
+		*ch = NULL;
+	}
+	return ch;
+}
+
+/* Add a single chain 'chain' to the end of 'buf', freeing trailing empty
+ * chains as necessary.  Requires lock.  Does not schedule callbacks.
+ */
 static void
 evbuffer_chain_insert(struct evbuffer *buf,
     struct evbuffer_chain *chain)
@@ -255,21 +280,11 @@ evbuffer_chain_insert(struct evbuffer *buf,
 		EVUTIL_ASSERT(buf->first == NULL);
 		buf->first = buf->last = chain;
 	} else {
-		struct evbuffer_chain **ch = buf->last_with_datap;
-		/* Find the first victim chain.  It might be *last_with_datap */
-		while ((*ch) && ((*ch)->off != 0 || CHAIN_PINNED(*ch)))
-			ch = &(*ch)->next;
-		if (*ch == NULL) {
-			/* There is no victim; just append this new chain. */
-			buf->last->next = chain;
-			if (chain->off)
-				buf->last_with_datap = &buf->last->next;
-		} else {
-			/* Replace all victim chains with this chain. */
-			EVUTIL_ASSERT(evbuffer_chains_all_empty(*ch));
-			evbuffer_free_all_chains(*ch);
-			*ch = chain;
-		}
+		struct evbuffer_chain **chp;
+		chp = evbuffer_free_trailing_empty_chains(buf);
+		*chp = chain;
+		if (chain->off)
+			buf->last_with_datap = chp;
 		buf->last = chain;
 	}
 	buf->total_len += chain->off;
@@ -572,6 +587,42 @@ evbuffer_get_contiguous_space(const struct evbuffer *buf)
 	EVBUFFER_UNLOCK(buf);
 
 	return result;
+}
+
+size_t
+evbuffer_add_iovec(struct evbuffer * buf, struct evbuffer_iovec * vec, int n_vec) {
+	int n;
+	size_t res;
+	size_t to_alloc;
+
+	EVBUFFER_LOCK(buf);
+
+	res = to_alloc = 0;
+
+	for (n = 0; n < n_vec; n++) {
+		to_alloc += vec[n].iov_len;
+	}
+
+	if (_evbuffer_expand_fast(buf, to_alloc, 2) < 0) {
+		goto done;
+	}
+
+	for (n = 0; n < n_vec; n++) {
+		/* XXX each 'add' call here does a bunch of setup that's
+		 * obviated by _evbuffer_expand_fast, and some cleanup that we
+		 * would like to do only once.  Instead we should just extract
+		 * the part of the code that's needed. */
+
+		if (evbuffer_add(buf, vec[n].iov_base, vec[n].iov_len) < 0) {
+			goto done;
+		}
+
+		res += vec[n].iov_len;
+	}
+
+done:
+    EVBUFFER_UNLOCK(buf);
+    return res;
 }
 
 int
@@ -1092,10 +1143,13 @@ evbuffer_remove_buffer(struct evbuffer *src, struct evbuffer *dst,
 
 	if (nread) {
 		/* we can remove the chain */
+		struct evbuffer_chain **chp;
+		chp = evbuffer_free_trailing_empty_chains(dst);
+
 		if (dst->first == NULL) {
 			dst->first = src->first;
 		} else {
-			dst->last->next = src->first;
+			*chp = src->first;
 		}
 		dst->last = previous;
 		previous->next = NULL;
@@ -1113,6 +1167,9 @@ evbuffer_remove_buffer(struct evbuffer *src, struct evbuffer *dst,
 	chain->off -= datlen;
 	nread += datlen;
 
+	/* You might think we would want to increment dst->n_add_for_cb
+	 * here too.  But evbuffer_add above already took care of that.
+	 */
 	src->total_len -= nread;
 	src->n_del_for_cb += nread;
 
@@ -1438,6 +1495,11 @@ evbuffer_search_eol(struct evbuffer *buffer,
 	}
 	case EVBUFFER_EOL_LF:
 		if (evbuffer_strchr(&it, '\n') < 0)
+			goto done;
+		extra_drain = 1;
+		break;
+	case EVBUFFER_EOL_NUL:
+		if (evbuffer_strchr(&it, '\0') < 0)
 			goto done;
 		extra_drain = 1;
 		break;
