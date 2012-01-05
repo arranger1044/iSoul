@@ -143,7 +143,6 @@
 											<reference key="NSSuperview" ref="647327518"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="154012331"/>
-											<bool key="NSViewCanDrawConcurrently">YES</bool>
 											<object class="NSTextContainer" key="NSTextContainer" id="922506135">
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
@@ -163,7 +162,7 @@
 												<int key="NSTCFlags">1</int>
 											</object>
 											<object class="NSTextViewSharedData" key="NSSharedData">
-												<int key="NSFlags">67119461</int>
+												<int key="NSFlags">10597</int>
 												<int key="NSTextCheckingTypes">0</int>
 												<nil key="NSMarkedAttributes"/>
 												<object class="NSColor" key="NSBackgroundColor">
@@ -254,7 +253,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<reference key="NSSuperview" ref="640704722"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="922814859"/>
-									<bool key="NSViewCanDrawConcurrently">YES</bool>
 									<reference key="NSTarget" ref="640704722"/>
 									<string key="NSAction">_doScroller:</string>
 									<double key="NSCurValue">1</double>
@@ -266,8 +264,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<string key="NSFrame">{{0, 257}, {482, 15}}</string>
 									<reference key="NSSuperview" ref="640704722"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
-									<bool key="NSViewCanDrawConcurrently">YES</bool>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="640704722"/>
 									<string key="NSAction">_doScroller:</string>
@@ -279,7 +275,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="647327518"/>
-							<bool key="NSViewCanDrawConcurrently">YES</bool>
 							<int key="NSsFlags">133680</int>
 							<reference key="NSVScroller" ref="154012331"/>
 							<reference key="NSHScroller" ref="922814859"/>
@@ -488,7 +483,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1060" key="NS.object.0"/>
+			<real value="1070" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
