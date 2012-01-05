@@ -9,8 +9,8 @@
 #import "ExpandingSidebar.h"
 #import "SidebarItem.h"
 
-#define kRightBuffer	8
-#define kTopBuffer		4
+#define kRightBuffer	61
+#define kTopBuffer		5
 #define kIconSize		14
 
 @implementation ExpandingSidebar
@@ -52,7 +52,8 @@
 	[super drawRect:rect];
 	
 	NSImage *statusImage = nil;
-	switch (connectionState) {
+	switch (connectionState) 
+    {
 		case usOnline:
 		{
 			//statusImage = [NSImage imageNamed:@"Connect"];
@@ -73,13 +74,21 @@
 		}
 	}
 	
-	if (statusImage) {
+	if (statusImage) 
+    {
 		NSRect imageRect = [self getIconRect];
 		
 		// only draw the image if necessary
-		if (NSIntersectsRect(rect, imageRect)) {
-			[statusImage compositeToPoint:NSMakePoint(imageRect.origin.x, imageRect.origin.y + imageRect.size.height)
-								operation:NSCompositeSourceOver];
+		if (NSIntersectsRect(rect, imageRect)) 
+        {
+//			[statusImage compositeToPoint:NSMakePoint(imageRect.origin.x, imageRect.origin.y + imageRect.size.height)
+//								operation:NSCompositeSourceOver];
+            [statusImage drawInRect:[self getIconRect] 
+                           fromRect:NSZeroRect 
+                          operation:NSCompositeSourceOver 
+                           fraction:1.0 
+                     respectFlipped:YES 
+                              hints:nil];
 		}		
 	}
 }
