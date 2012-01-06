@@ -1091,6 +1091,8 @@
 {
 	// bring up the window to choose chat rooms
 	[chatRoomWindow makeKeyAndOrderFront:self];
+    
+    [self createAndJoinRoom:nil];
 }
 
 - (IBAction)newWish:(id)sender
@@ -1125,7 +1127,7 @@
 - (IBAction)createAndJoinRoom:(id)sender
 {
     [NSApp beginSheet: createChatRoomPanel
-	   modalForWindow:[self window]
+	   modalForWindow: chatRoomWindow
 		modalDelegate:self
 	   didEndSelector:nil
 		  contextInfo:NULL];
@@ -1140,8 +1142,32 @@
 	
 }
 
+- (IBAction)acceptCreateChatSheet:(id)sender
+{
+    NSString * chatName = newChatRoomName.stringValue;
+    if ([chatName length] != 0) 
+    {
+        DNSLog(@"Creating new chat with name %@", chatName);
+        [museekdConnectionController joinRoom:chatName];
+    }
+    [NSApp endSheet:createChatRoomPanel 
+         returnCode: NSOKButton];
+	[createChatRoomPanel orderOut:nil];
+    
+    /* Hiding the char room list window */
+    [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+}
+
+- (IBAction)cancelCreateChatSheet:(id)sender
+{
+    [NSApp endSheet:createChatRoomPanel 
+         returnCode: NSCancelButton];
+	[createChatRoomPanel orderOut:nil];
+}
+
+
 - (IBAction)openPreferences:(id)sender {
-    DNSLog(@"capro");
+    //DNSLog(@"capro");
 	[[PrefsWindowController sharedPrefsWindowController] showWindow:nil];
 }
 

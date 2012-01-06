@@ -51,6 +51,7 @@
 	IBOutlet NSMenu *soulseekMenu;
 	IBOutlet NSMenu *windowMenu;
     IBOutlet NSToolbarItem * showRoomList;
+    IBOutlet NSTextField * newChatRoomName;
 	
 	NSManagedObjectContext *managedObjectContext;
 	MuseekdConnectionController *museekdConnectionController;
@@ -127,7 +128,10 @@
 - (IBAction)newChatroom:(id)sender;
 - (IBAction)newWish:(id)sender;
 - (IBAction)joinRooms:(id)sender;
+- (IBAction)createAndJoinRoom:(id)sender;
 - (IBAction)openPreferences:(id)sender;
+- (IBAction)cancelCreateChatSheet:(id)sender;
+- (IBAction)acceptCreateChatSheet:(id)sender;
 
 - (void)sidebarCountUpdated:(NSNotification *)notification;
 - (void)transferUpdated:(NSNotification *)notification;
