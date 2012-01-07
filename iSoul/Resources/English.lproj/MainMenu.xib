@@ -1638,9 +1638,12 @@
 				<bool key="NSAutomaticallyRearrangesObjects">YES</bool>
 			</object>
 			<object class="NSPopUpButton" id="885982171">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">-2147483356</int>
 				<string key="NSFrameSize">{157, 26}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<bool key="NSEnabled">YES</bool>
 				<object class="NSPopUpButtonCell" key="NSCell" id="917053221">
 					<int key="NSCellFlags">-2076049856</int>
@@ -4306,6 +4309,26 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
+						<string key="label">displayPatternTitle1: arrangedObjects.@count</string>
+						<reference key="source" ref="1017259746"/>
+						<reference key="destination" ref="40477412"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1017259746"/>
+							<reference key="NSDestination" ref="40477412"/>
+							<string key="NSLabel">displayPatternTitle1: arrangedObjects.@count</string>
+							<string key="NSBinding">displayPatternTitle1</string>
+							<string key="NSKeyPath">arrangedObjects.@count</string>
+							<dictionary key="NSOptions">
+								<string key="NSDisplayPattern">Chat Rooms (%{title1}@)</string>
+								<boolean value="NO" key="NSRaisesForNotApplicableKeys"/>
+							</dictionary>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1298</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
 						<string key="label">sortDescriptors: roomSortDescriptors</string>
 						<reference key="source" ref="40477412"/>
 						<reference key="destination" ref="676619705"/>
@@ -6719,7 +6742,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1287</int>
+			<int key="maxID">1298</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
