@@ -953,7 +953,7 @@
 	if (!itemAtRow) return;
 	SidebarItem *selected = [itemAtRow representedObject];
 
-    SidebarItem * sbItem;
+    SidebarItem * sbItem = nil;
     SidebarType type = [[selected type] unsignedIntValue];
 	switch (type) 
     {
@@ -1232,6 +1232,8 @@
              returnCode: NSOKButton];
         [createChatRoomPanel orderOut:nil];
         
+        //[[[NSApp delegate] museekdConnectionController] autojoinChats:@"rano"];
+        
         /* Hiding the char room list window */
         [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
@@ -1244,6 +1246,11 @@
 	[createChatRoomPanel orderOut:nil];
 }
 
+- (IBAction)reloadChatRoomList:(id)sender
+{
+    DNSLog(@"Reloading the chat room list");
+    [[[NSApp delegate] museekdConnectionController] reloadRoomList];
+}
 
 - (IBAction)openPreferences:(id)sender {
     //DNSLog(@"capro");

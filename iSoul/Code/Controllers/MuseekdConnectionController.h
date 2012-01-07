@@ -62,6 +62,8 @@
 - (void)toggleOnlineStatus;
 - (void)getTransferState:(Transfer *)transfer;	// call this to get the q position
 - (void)banOrUnbanUser:(User *)user;
+- (void)autojoinChats:(NSString *)chats;
+- (void)reloadRoomList;
 
 // private methods
 - (void)updateUserdata:(MuseekMessage *)msg forUser:(User *)user;

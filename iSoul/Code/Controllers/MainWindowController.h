@@ -109,6 +109,7 @@
 - (IBAction)clearCompleteTransfers:(id)sender;
 - (IBAction)downloadFolder:(id)sender;
 - (IBAction)download:(id)sender;
+- (IBAction)reloadChatRoomList:(id)sender;
 
 // menu methods
 - (IBAction)clearFinishedTransfers:(id)sender;

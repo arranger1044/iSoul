@@ -371,11 +371,11 @@
 - (void)displayViewController:(NSViewController *)vc
 {
 	// try to end editing
-	BOOL ended = [window makeFirstResponder:window];
-	if (!ended) {
-		NSBeep();
-		return;
-	}
+//	BOOL ended = [window makeFirstResponder:window];
+//	if (!ended) {
+//		NSBeep();
+//		return;
+//	}
 	
 	// put the view in the box
 	NSView *v = [vc view];

@@ -517,6 +517,26 @@
 	[msg release];	
 }
 
+- (void)autojoinChats:(NSString *)chats
+{
+   	MuseekMessage *msg = [[MuseekMessage alloc] init];
+    [msg appendUInt32:mdConfigSet];
+    [msg appendCipher:@"autojoin" withKey:password];
+    [msg appendCipher:@"rano" withKey:password];
+    [msg appendCipher:@"" withKey:password];
+	[output send:msg];
+	[msg release]; 
+}
+
+- (void)reloadRoomList
+{
+    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    [msg appendUInt32:mdRoomList];
+	[output send:msg];
+	[msg release]; 
+}
+
+
 #pragma mark private methods
 
 - (void)updateUserdata:(MuseekMessage *)msg forUser:(User *)user
