@@ -135,6 +135,10 @@
         [[console window] orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
 		
+    /* Adding the double click action on the chat room list table */
+    [chatRoomsTable setTarget:self];
+    [chatRoomsTable setDoubleAction:NSSelectorFromString(@"joinRooms:")];
+
 	// the 3 windows are manually added to the menu
 	// so no need to automatically add them
 	[[self window] setExcludedFromWindowsMenu:YES];

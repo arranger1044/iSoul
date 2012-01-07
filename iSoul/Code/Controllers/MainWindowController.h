@@ -52,6 +52,7 @@
 	IBOutlet NSMenu *windowMenu;
     IBOutlet NSToolbarItem * showRoomList;
     IBOutlet NSTextField * newChatRoomName;
+    IBOutlet NSTableView * chatRoomsTable;
 	
 	NSManagedObjectContext *managedObjectContext;
 	MuseekdConnectionController *museekdConnectionController;
