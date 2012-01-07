@@ -131,7 +131,8 @@
     {
         //[console showWindow:self]; 
         DNSLog(@"SHOWED");
-        [[console window] orderOut:self];
+        //[[console window] orderOut:self];
+        [[console window] orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
 		
 	// the 3 windows are manually added to the menu
@@ -1146,16 +1147,27 @@
 {
     NSString * chatName = newChatRoomName.stringValue;
     if ([chatName length] != 0) 
-    {
+    {        
+        SidebarItem * item = nil;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                  @"(name == %@) && (type == %u)", 
+                                  chatName, sbChatRoomType];
+        item = (SidebarItem *)[store find:@"SidebarItem" withPredicate:predicate];
+        
         DNSLog(@"Creating new chat with name %@", chatName);
         [museekdConnectionController joinRoom:chatName];
+        
+        if (item) 
+            [self selectItem:item];
+        
+        [NSApp endSheet:createChatRoomPanel 
+             returnCode: NSOKButton];
+        [createChatRoomPanel orderOut:nil];
+        
+        /* Hiding the char room list window */
+        [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
-    [NSApp endSheet:createChatRoomPanel 
-         returnCode: NSOKButton];
-	[createChatRoomPanel orderOut:nil];
-    
-    /* Hiding the char room list window */
-    [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
 }
 
 - (IBAction)cancelCreateChatSheet:(id)sender

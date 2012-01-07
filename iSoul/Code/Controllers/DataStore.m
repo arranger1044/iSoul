@@ -548,7 +548,7 @@
 	Room *room = (Room *)[self find:@"Room" withPredicate:predicate];
 	if (room == nil) {
 		// this is a new room, so create a new room object
-		debug_NSLog(@"creating new room %@", roomname);
+		DNSLog(@"creating new room %@", roomname);
 		room = (Room *)[self createEntity:@"Room"];
 		[room setName:roomname];
 	}
@@ -556,9 +556,12 @@
 	// update the user count in the room
 	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:count]];
 	
-	if ([[room joined] boolValue]) {
-		debug_NSLog(@"the room %@ has already been joined", roomname);
-	} else {
+	if ([[room joined] boolValue]) 
+    {
+		DNSLog(@"the room %@ has already been joined", roomname);
+	} 
+    else 
+    {
 		[room setJoined:[NSNumber numberWithBool:YES]];
 		
 		// add the room to the sidebar
