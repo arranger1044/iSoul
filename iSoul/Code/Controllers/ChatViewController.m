@@ -54,7 +54,7 @@
     [roomsToObserv release];
 	
     unreadMessages = 0;
-    
+
 	return self;
 }
 
@@ -136,6 +136,21 @@
     }
 }
 
+- (void)leaveRoom:(NSString *)roomName private:(BOOL)private
+{
+    
+    NSPredicate * pred = [NSPredicate predicateWithFormat:
+                         @"name == %@ && isPrivate == %u", roomName, private];
+    Room * leavingRoom = (Room *)[store find:@"Room" withPredicate:pred];
+    if (!leavingRoom)
+    {
+        DNSLog(@"Dolores %@", roomName);
+    }
+    [leavingRoom removeObserver:self forKeyPath:@"messages"];
+    
+    [observedRooms removeObject:leavingRoom];
+}
+
 - (void)setRoomName:(NSString *)newName isPrivate:(BOOL)isPrivate
 {
     
@@ -155,8 +170,6 @@
             break;
         }
     }
-    
-    //BOOL alreadyObserved = [observedRooms containsObject:newName];
     
     NSPredicate *pred = [NSPredicate predicateWithFormat:
                          @"name == %@ && isPrivate == %u", newName, isPrivate];

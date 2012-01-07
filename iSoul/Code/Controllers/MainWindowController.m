@@ -129,8 +129,6 @@
     [logConsole release];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ShowConsoleStartUp"])
     {
-        //[console showWindow:self]; 
-        DNSLog(@"SHOWED");
         //[[console window] orderOut:self];
         [[console window] orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
@@ -802,22 +800,48 @@
 
 - (IBAction)leaveChatroom:(id)sender
 {
-	if ((selectedView == sbChatType) ||
-		(selectedView == sbChatRoomType)) {
-		NSInteger row = sidebar.selectedRow;
-		id itemAtRow = [sidebar itemAtRow:row];
-		if (!itemAtRow) return;
-		SidebarItem *selected = [itemAtRow representedObject];
+    NSInteger row = sidebar.selectedRow;
+    id itemAtRow = [sidebar itemAtRow:row];
+    if (!itemAtRow) return;
+    SidebarItem *selected = [itemAtRow representedObject];
+    SidebarType type = [[selected type] unsignedIntValue];
+    SidebarItem * sbItem = nil;
+    
+	if ((type == sbChatType) ||
+		(type == sbChatRoomType)) 
+    {
 		
 		// reset the chat view
 		ChatViewController *cvc = [[NSApp delegate] chatViewController];
-		[cvc setRoomName:@"" isPrivate:YES];
+		//[cvc setRoomName:@"" isPrivate:YES];
+
+        if (type == sbChatType)
+        {
+            [cvc leaveRoom:[selected name] private:YES];
+        }
+        else
+        {
+            [cvc leaveRoom:[selected name] private:NO];
+        }
+        
 		
 		// leave chatroom
 		[museekdConnectionController leaveRoom: selected.name];
-		
-		// remove the side panel object
+        id prevItem = [sidebar itemAtRow:(row - 1)];
+        if (prevItem)
+        {
+            sbItem = [prevItem representedObject];
+
+            if (!([[sbItem type] unsignedIntValue] == sbChatType || [[sbItem type] unsignedIntValue] == sbChatRoomType)) 
+            {
+                sbItem = [store downloads];
+            }
+            
+        }
+        
+        // remove the side panel object
 		[managedObjectContext deleteObject:selected];
+        [self selectItem:sbItem];
 	}
 }
 
@@ -925,10 +949,14 @@
 - (IBAction)removeSideItem:(id)sender {
 	NSInteger row = sidebar.selectedRow;
 	id itemAtRow = [sidebar itemAtRow:row];
+    id prevItem = nil;
 	if (!itemAtRow) return;
 	SidebarItem *selected = [itemAtRow representedObject];
-	
-	switch (selectedView) {
+
+    SidebarItem * sbItem;
+    SidebarType type = [[selected type] unsignedIntValue];
+	switch (type) 
+    {
 		case sbSearchType:
 			// clear the search view first
 			[[[NSApp delegate] searchViewController] setCurrentTickets:nil];
@@ -940,15 +968,50 @@
 			[managedObjectContext deleteObject:selected];
 			break;
 		case sbChatType:
+            [[[NSApp delegate] chatViewController] leaveRoom:[selected name] private:YES];
+			
+			// leave chatroom
+			[museekdConnectionController leaveRoom:[selected name]];    
+            prevItem = [sidebar itemAtRow:(row - 1)];
+            if (prevItem)
+            {
+                sbItem = [prevItem representedObject];
+                if (!([[sbItem type] unsignedIntValue] == sbChatType || [[sbItem type] unsignedIntValue] == sbChatRoomType)) 
+                {
+                    sbItem = [store downloads];
+                }
+
+            }
+            
+            // remove the side panel object
+			[managedObjectContext deleteObject:selected];
+            
+            [self selectItem:sbItem];
+            
+            break;
 		case sbChatRoomType:
+            
 			// reset the chat view
-			[[[NSApp delegate] chatViewController] setRoomName:@"" isPrivate:YES];
+			//[[[NSApp delegate] chatViewController] setRoomName:@"" isPrivate:YES];
+            [[[NSApp delegate] chatViewController] leaveRoom:[selected name] private:NO];
 			
 			// leave chatroom
 			[museekdConnectionController leaveRoom:[selected name]];
-			
-			// remove the side panel object
+            prevItem = [sidebar itemAtRow:(row - 1)];
+            if (prevItem)
+            {
+                sbItem = [prevItem representedObject];
+                if (!([[sbItem type] unsignedIntValue] == sbChatType || [[sbItem type] unsignedIntValue] == sbChatRoomType)) 
+                {
+                    sbItem = [store downloads];
+                }
+                
+            }
+            // remove the side panel object
 			[managedObjectContext deleteObject:selected];
+            
+            [self selectItem:sbItem];
+            
 			break;
 		case sbWishType:
 			// clear the search view first
@@ -1216,7 +1279,8 @@
 	
 	// select the item in the sidepanel
 	NSInteger row = [sidebar rowForActualItem:item];
-	if (row < 0) {
+	if (row < 0) 
+    {
 		NSLog(@"failed to select item %@", item);
 		return;
 	}

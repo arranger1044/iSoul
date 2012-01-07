@@ -33,7 +33,7 @@
 	NSManagedObjectContext *managedObjectContext; 
 	MuseekdConnectionController *museek;
 	DataStore *store;
-	Room *currentRoom;
+	Room * currentRoom;
 	NSMutableArray *usersSoFar;
 	NSArray *tableSortDescriptors;
     NSMutableSet * observedRooms;
@@ -54,6 +54,7 @@
 // public methods
 - (void)setDividerPosition:(float)width;
 - (void)setRoomName:(NSString *)newName isPrivate:(BOOL)yesOrNo;
+- (void)leaveRoom:(NSString *)roomName private:(BOOL)yesOrNo;
 - (NSNumber *)getDividerPosition;
 // private methods
 - (void)userInfoUpdated:(NSNotification *)notification;

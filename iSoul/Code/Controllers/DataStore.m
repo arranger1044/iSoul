@@ -279,6 +279,7 @@
 
 - (SidebarItem *)startPrivateChat:(NSString *)username
 {
+    DNSLog(@"Starting private chat");
 	// first check the chat does not already exist
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:
 							  @"name == %@ && type == %u",username,sbChatType];
