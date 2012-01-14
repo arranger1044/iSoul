@@ -26,6 +26,7 @@ INSTALL_PATH = @executable_path/../Frameworks
 // Compiler options
 GCC_PREFIX_HEADER = framework/TCMPortMapper_Prefix.pch
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) _DARWIN_C_SOURCE
+GCC_SYMBOLS_PRIVATE_EXTERN = NO
 
 // Disable a few warnings
 CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO

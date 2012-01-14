@@ -29,6 +29,7 @@ USER_HEADER_SEARCH_PATHS = "libxml++"
 
 // Compiler options
 GCC_PREFIX_HEADER = 
+GCC_SYMBOLS_PRIVATE_EXTERN = NO
 
 // Disable a few warnings
 CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO
