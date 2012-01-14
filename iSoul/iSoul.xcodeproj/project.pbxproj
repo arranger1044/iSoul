@@ -478,6 +478,8 @@
 		DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD4F2D6C131B0DCA00442671 /* Growl.framework */; };
 		DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F2D7C131B0EBE00442671 /* NSNumber-Utilities.m */; };
 		DDA239B3145CDD6F00DE6318 /* DataImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA239B2145CDD6F00DE6318 /* DataImageTransformer.m */; };
+		DDF1624714C175A800C244ED /* libXML++.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DDF1624614C175A800C244ED /* libXML++.framework */; };
+		DDF1624914C1760B00C244ED /* libevent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DDF1624814C1760B00C244ED /* libevent.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -520,6 +522,8 @@
 			files = (
 				DD4F2D70131B0E1400442671 /* Growl.framework in CopyFiles */,
 				A796D11510F53A7D00E3F8CC /* TCMPortMapper.framework in CopyFiles */,
+				DDF1624714C175A800C244ED /* libXML++.framework in CopyFiles */,
+				DDF1624914C1760B00C244ED /* libevent.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,6 +1071,8 @@
 		DDB40DA51456379900206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DDB40DA81456379900206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		DDB40DB9145652DB00206EED /* iSoul.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iSoul.xcconfig; sourceTree = "<group>"; };
+		DDF1624614C175A800C244ED /* libXML++.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "libXML++.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDF1624814C1760B00C244ED /* libevent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libevent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1127,6 +1133,9 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77C82804067257F0000B614F /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				A76D2D7210D9144F00DD9F82 /* AudioToolbox.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				A76D2D9510D9180200DD9F82 /* libcrypto.dylib */,
@@ -1141,9 +1150,8 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				77C82804067257F0000B614F /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				DDF1624814C1760B00C244ED /* libevent.framework */,
+				DDF1624614C175A800C244ED /* libXML++.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
