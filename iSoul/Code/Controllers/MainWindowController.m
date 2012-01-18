@@ -129,8 +129,8 @@
     [logConsole release];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ShowConsoleStartUp"])
     {
-        //[[console window] orderOut:self];
-        [[console window] orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+        [[console window] orderOut:self];
+        //[[console window] orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
     }
 		
     /* Adding the double click action on the chat room list table */
