@@ -356,7 +356,7 @@
     
     unsigned int readMessages = 0;
     
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(name == %@) && ((type == %u) || (type == %u))", name, sbChatType, sbChatRoomType];
     
     SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
     if (item == nil) 
@@ -380,7 +380,7 @@
 
 - (void)updateSidebar:(NSString *)name withCount:(NSNumber *)count{
 
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(name == %@) && ((type == %u) || (type == %u))", name, sbChatType, sbChatRoomType];
 
     SidebarItem *item = (SidebarItem *)[self find:@"SidebarItem" withPredicate:predicate];
     if (item == nil) 
