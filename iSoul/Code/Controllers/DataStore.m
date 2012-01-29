@@ -297,6 +297,7 @@
 	Room *chatRoom = [self addRoomWithName:username withCount:2];
 	[chatRoom setIsPrivate:[NSNumber numberWithBool:YES]];
 	[chatRoom setJoined:[NSNumber numberWithBool:YES]];
+    [chatRoom setAutojoin:[NSNumber numberWithBool:NO]];
 	
 	// get the users to add to the room
 	predicate = [NSPredicate predicateWithFormat:@"name == %@", username];
@@ -336,6 +337,7 @@
 	room = (Room *)[self createEntity:@"Room"];
 	[room setName:name];
 	[room setNumberOfUsers:[NSNumber numberWithUnsignedInt:count]];
+    //[room setAutojoin:autojoin];
 		
 	return room;
 }

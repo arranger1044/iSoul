@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSSet* messages;
 @property (nonatomic, retain) NSSet* users;
 @property (nonatomic, retain) NSSet* tickers;
+@property (nonatomic, retain) NSNumber * autojoin;
 
 @end
 

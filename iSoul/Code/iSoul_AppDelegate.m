@@ -117,7 +117,7 @@
         {
 			museekdController = [[MuseekdController alloc] init];
 			BOOL success = [museekdController startMuseekd];
-			if (!success) NSLog(@"failed to start museekd task");
+			if (!success) DNSLog(@"failed to start museekd task");
 		} 
         else 
         {

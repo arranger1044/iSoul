@@ -16,6 +16,7 @@
 @class Result;
 @class Transfer;
 @class User;
+@class Room;
 
 @interface MuseekdConnectionController : NSObject {
 	ConnectionState state;
@@ -62,7 +63,7 @@
 - (void)toggleOnlineStatus;
 - (void)getTransferState:(Transfer *)transfer;	// call this to get the q position
 - (void)banOrUnbanUser:(User *)user;
-- (void)autojoinChats:(NSString *)chats;
+- (void)addOrRemoveAutojoin:(Room *)room;
 - (void)reloadRoomList;
 
 // private methods

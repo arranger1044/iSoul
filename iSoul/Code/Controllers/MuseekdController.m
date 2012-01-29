@@ -106,7 +106,7 @@
 		[museekd launch];
 	}
 	@catch (NSException * e) {
-		NSLog(@"Error launching museekd daemon, exception %@", e);
+		DNSLog(@"Error launching museekd daemon, exception %@", e);
 		return NO;
 	}	
 	
@@ -117,7 +117,7 @@
 								 encoding:NSUTF8StringEncoding 
 									error:&error];
 	if (!success) {
-		NSLog(@"Error writing pid file %@, error %@", pidPath, error);
+		DNSLog(@"Error writing pid file %@, error %@", pidPath, error);
 		[self stopMuseekd];
 		return NO;
 	}

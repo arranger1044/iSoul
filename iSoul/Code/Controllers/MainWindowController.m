@@ -64,12 +64,16 @@
 		chatRoomIcon = [[NSImage imageNamed:@"SidebarChatRoom"] retain];
 		sharesIcon = [[NSImage imageNamed:@"SidebarShares"] retain];
         
-		NSSortDescriptor *name = [[NSSortDescriptor alloc] 
+        NSSortDescriptor * autojoin = [[NSSortDescriptor alloc] 
+                                       initWithKey:@"autojoin" 
+                                       ascending:NO];
+		NSSortDescriptor * name = [[NSSortDescriptor alloc] 
 								   initWithKey:@"name" 
 								   ascending:YES
 								   selector:@selector(localizedCaseInsensitiveCompare:)];
-		[self setRoomSortDescriptors:[NSArray arrayWithObject:name]];
+		[self setRoomSortDescriptors:[NSArray arrayWithObjects:autojoin, name, nil]];
 		[name release];
+        [autojoin release];
 	}
 	return self;
 }
@@ -245,7 +249,8 @@
 	NSNumber *localMuseekd = [[NSUserDefaults standardUserDefaults] 
 							  valueForKey:@"LocalMuseekd"];
 	[[NSApp delegate] performSelector:@selector(connectToMuseekd:) 
-						   withObject:localMuseekd afterDelay:2.0];
+						   withObject:localMuseekd afterDelay:1.0];
+//    [[NSApp delegate] connectToMuseekd:localMuseekd];
 }
 
 - (void)checkUsername
@@ -485,9 +490,12 @@
 {
 	TCMPortMapper *pm = [TCMPortMapper sharedInstance];
     TCMPortMapping *mapping = [[pm portMappings] anyObject];
-    if ([mapping mappingStatus]==TCMPortMappingStatusMapped) {
+    if ([mapping mappingStatus]==TCMPortMappingStatusMapped) 
+    {
         debug_NSLog(@"UPNP successfully mapped ports");
-    } else {
+    } 
+    else 
+    {
         debug_NSLog(@"UPNP port mapping failed");
 		[NSApp beginSheet:upnpPanel 
 		   modalForWindow:[self window]
@@ -1236,6 +1244,7 @@
         
         /* Hiding the char room list window */
         [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+        
     }
 }
 
@@ -1250,6 +1259,15 @@
 {
     DNSLog(@"Reloading the chat room list");
     [[[NSApp delegate] museekdConnectionController] reloadRoomList];
+}
+
+- (IBAction)addOrRemoveAutojoin:(id)sender
+{
+    NSArray * selected = [roomController selectedObjects];
+    for (Room * room in selected) 
+    {
+		[museekdConnectionController addOrRemoveAutojoin:room];
+	}
 }
 
 - (IBAction)openPreferences:(id)sender {

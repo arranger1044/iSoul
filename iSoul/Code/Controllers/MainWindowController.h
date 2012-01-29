@@ -110,6 +110,7 @@
 - (IBAction)downloadFolder:(id)sender;
 - (IBAction)download:(id)sender;
 - (IBAction)reloadChatRoomList:(id)sender;
+- (IBAction)addOrRemoveAutojoin:(id)sender;
 
 // menu methods
 - (IBAction)clearFinishedTransfers:(id)sender;

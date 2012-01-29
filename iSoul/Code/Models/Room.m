@@ -21,5 +21,6 @@
 @dynamic messages;
 @dynamic users;
 @dynamic tickers;
+@dynamic autojoin;
 
 @end

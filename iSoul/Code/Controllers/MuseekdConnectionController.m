@@ -517,15 +517,37 @@
 	[msg release];	
 }
 
-- (void)autojoinChats:(NSString *)chats
+//- (void)autojoinChats:(NSString *)chats
+//{
+////   	MuseekMessage *msg = [[MuseekMessage alloc] init];
+////    [msg appendUInt32:mdConfigSet];
+////    [msg appendCipher:@"autojoin" withKey:password];
+////    [msg appendCipher:@"rano" withKey:password];
+////    [msg appendCipher:@"" withKey:password];
+////	[output send:msg];
+////	[msg release]; 
+//}
+
+- (void)addOrRemoveAutojoin:(Room *)room
 {
-//   	MuseekMessage *msg = [[MuseekMessage alloc] init];
-//    [msg appendUInt32:mdConfigSet];
-//    [msg appendCipher:@"autojoin" withKey:password];
-//    [msg appendCipher:@"rano" withKey:password];
-//    [msg appendCipher:@"" withKey:password];
-//	[output send:msg];
-//	[msg release]; 
+    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    if ([[room autojoin] boolValue])
+    {
+        DNSLog(@"removing autojoin for chatroom %@", [room name]);
+        [msg appendUInt32:mdConfigRemove];
+        [msg appendCipher:@"autojoin" withKey:password];
+        [msg appendCipher:[room name] withKey:password];
+    }
+    else
+    {
+        DNSLog(@"adding autojoin for chatroom %@", [room name]);
+        [msg appendUInt32:mdConfigSet];
+        [msg appendCipher:@"autojoin" withKey:password];
+        [msg appendCipher:[room name] withKey:password];
+        [msg appendCipher:@"" withKey:password];
+    }
+    [output send:msg];
+	[msg release];	
 }
 
 - (void)reloadRoomList
@@ -746,6 +768,12 @@
 				}
 				
 			}
+            else if ([domain isEqualToString:@"autojoin"])
+            {
+                Room * room = [store addRoomWithName:key withCount:0];
+                [room setAutojoin:[NSNumber numberWithBool:YES]];
+                
+            }
 			
 		}
 		
@@ -763,10 +791,19 @@
 				domain, key, value);
 #endif
 	
-	if ([domain isEqualToString:@"banned"]) {
+	if ([domain isEqualToString:@"banned"]) 
+    {
 		User *user = [store getOrAddUserWithName:key];
 		[user setIsBanned:[NSNumber numberWithBool:YES]];
 	}
+    
+    if ([domain isEqualToString:@"autojoin"])
+    {
+        NSPredicate * pred = [NSPredicate predicateWithFormat:
+                              @"name == %@ && isPrivate == %u", key, NO];
+        Room * room = (Room *)[store find:@"Room" withPredicate:pred];
+        [room setAutojoin:[NSNumber numberWithBool:YES]];
+    }
 }
 
 - (void)configKeyRemoved:(MuseekMessage *)msg
@@ -781,6 +818,14 @@
 		User *user = [store getOrAddUserWithName:key];
 		[user setIsBanned:[NSNumber numberWithBool:NO]];
 	}
+    
+    if ([domain isEqualToString:@"autojoin"])
+    {
+        NSPredicate * pred = [NSPredicate predicateWithFormat:
+                              @"name == %@ && isPrivate == %u", key, NO];
+        Room * room = (Room *)[store find:@"Room" withPredicate:pred];
+        [room setAutojoin:[NSNumber numberWithBool:NO]];
+    }
 }
 
 - (void)readPeerExists:(MuseekMessage *)msg
