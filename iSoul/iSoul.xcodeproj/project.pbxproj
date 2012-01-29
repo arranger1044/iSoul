@@ -470,6 +470,8 @@
 		B960F7A61271F88D00F2B394 /* LoggingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B960F7A31271F88D00F2B394 /* LoggingController.m */; };
 		B960F7A81271F92200F2B394 /* LoggingConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = B960F7A71271F92200F2B394 /* LoggingConsole.xib */; };
 		B984E8361306FCD60083327A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B984E8351306FCD60083327A /* QuartzCore.framework */; };
+		B9862AF414D5D5DB00F2BFEC /* AutojoinStatusTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B9862AF314D5D5DB00F2BFEC /* AutojoinStatusTransformer.m */; };
+		B9862AF614D5D73B00F2BFEC /* autojoin.png in Resources */ = {isa = PBXBuildFile; fileRef = B9862AF514D5D73B00F2BFEC /* autojoin.png */; };
 		B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */; };
 		B9FAEF6C1282157D00300C45 /* clean.ico in Resources */ = {isa = PBXBuildFile; fileRef = B9FAEF6B1282157D00300C45 /* clean.ico */; };
 		DD494E21133FF2BA00974169 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD494E20133FF2BA00974169 /* libz.dylib */; };
@@ -1058,6 +1060,9 @@
 		B960F7A31271F88D00F2B394 /* LoggingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingController.m; sourceTree = "<group>"; };
 		B960F7A71271F92200F2B394 /* LoggingConsole.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoggingConsole.xib; sourceTree = "<group>"; };
 		B984E8351306FCD60083327A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B9862AF214D5D5DB00F2BFEC /* AutojoinStatusTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutojoinStatusTransformer.h; sourceTree = "<group>"; };
+		B9862AF314D5D5DB00F2BFEC /* AutojoinStatusTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutojoinStatusTransformer.m; sourceTree = "<group>"; };
+		B9862AF514D5D73B00F2BFEC /* autojoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autojoin.png; sourceTree = "<group>"; };
 		B9FAED9A12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
 		B9FAED9B12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		B9FAEF6B1282157D00300C45 /* clean.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = clean.ico; sourceTree = "<group>"; };
@@ -1453,6 +1458,7 @@
 		A76D2BC510D9135900DD9F82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B9862AF514D5D73B00F2BFEC /* autojoin.png */,
 				B9FAEF6B1282157D00300C45 /* clean.ico */,
 				B90E73ED12994B3F009B37A2 /* ChatRoomList.png */,
 				A718C12A10E388E6003AEC33 /* Chat View */,
@@ -1553,6 +1559,8 @@
 				A718C27710E38CD6003AEC33 /* SpeedTransformer.m */,
 				A718C28110E38D0C003AEC33 /* StatusTransformer.h */,
 				A718C28210E38D0C003AEC33 /* StatusTransformer.m */,
+				B9862AF214D5D5DB00F2BFEC /* AutojoinStatusTransformer.h */,
+				B9862AF314D5D5DB00F2BFEC /* AutojoinStatusTransformer.m */,
 			);
 			name = Transformers;
 			path = Code/Transformers;
@@ -2332,6 +2340,7 @@
 				B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */,
 				B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */,
 				DD4F1D6A131B0D5000442671 /* Growl Registration Ticket.growlRegDict in Resources */,
+				B9862AF614D5D73B00F2BFEC /* autojoin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2426,6 +2435,7 @@
 				B9FAED9C12818D2E00300C45 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				DD4F2D7D131B0EBE00442671 /* NSNumber-Utilities.m in Sources */,
 				DDA239B3145CDD6F00DE6318 /* DataImageTransformer.m in Sources */,
+				B9862AF414D5D5DB00F2BFEC /* AutojoinStatusTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
