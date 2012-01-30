@@ -43,6 +43,7 @@ void DomParser::parse_file(const Glib::ustring& filename)
   release_underlying(); //Free any existing document.
 
   KeepBlanks k(KeepBlanks::Default);
+  xmlResetLastError();
 
   //The following is based on the implementation of xmlParseFile(), in xmlSAXParseFileWithData():
   context_ = xmlCreateFileParserCtxt(filename.c_str());
@@ -50,7 +51,7 @@ void DomParser::parse_file(const Glib::ustring& filename)
   if(!context_)
   {
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw internal_error("Couldn't create parsing context");
+    throw internal_error("Couldn't create parsing context\n" + format_xml_error());
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -70,6 +71,7 @@ void DomParser::parse_memory_raw(const unsigned char* contents, size_type bytes_
   release_underlying(); //Free any existing document.
 
   KeepBlanks k(KeepBlanks::Default);
+  xmlResetLastError();
 
   //The following is based on the implementation of xmlParseFile(), in xmlSAXParseFileWithData():
   context_ = xmlCreateMemoryParserCtxt((const char*)contents, bytes_count);
@@ -77,7 +79,7 @@ void DomParser::parse_memory_raw(const unsigned char* contents, size_type bytes_
   if(!context_)
   {
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw internal_error("Couldn't create parsing context");
+    throw internal_error("Couldn't create parsing context\n" + format_xml_error());
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -94,6 +96,7 @@ void DomParser::parse_memory(const Glib::ustring& contents)
 void DomParser::parse_context()
 {
   KeepBlanks k(KeepBlanks::Default);
+  xmlResetLastError();
 
   //The following is based on the implementation of xmlParseFile(), in xmlSAXParseFileWithData():
   //and the implementation of xmlParseMemory(), in xmlSaxParseMemoryWithData().
@@ -102,7 +105,7 @@ void DomParser::parse_context()
   if(!context_)
   {
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw internal_error("Context not initialized");
+    throw internal_error("Context not initialized\n" + format_xml_error());
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -112,26 +115,14 @@ void DomParser::parse_context()
 
   check_for_exception();
 
-  if(!context_->wellFormed)
+  const Glib::ustring error_str = format_xml_parser_error(context_);
+
+  if(!error_str.empty())
   {
-    release_underlying(); //Free doc_;
+    release_underlying(); //Free doc_ and context_
 
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw parse_error("Document not well-formed.");
-    #else
-    return;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
-  }
-
-  if(context_->errNo != 0)
-  {
-    std::ostringstream o;
-    o << "libxml error " << context_->errNo;
-
-    release_underlying();
-
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw parse_error(o.str());
+    throw parse_error(error_str);
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -155,6 +146,7 @@ void DomParser::parse_stream(std::istream& in)
   release_underlying(); //Free any existing document.
 
   KeepBlanks k(KeepBlanks::Default);
+  xmlResetLastError();
 
   context_ = xmlCreatePushParserCtxt(
       0, // setting thoses two parameters to 0 force the parser
@@ -166,7 +158,7 @@ void DomParser::parse_stream(std::istream& in)
   if(!context_)
   {
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw internal_error("Couldn't create parsing context");
+    throw internal_error("Couldn't create parsing context\n" + format_xml_error());
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
@@ -189,26 +181,14 @@ void DomParser::parse_stream(std::istream& in)
 
   check_for_exception();
 
-  if(!context_->wellFormed)
+  const Glib::ustring error_str = format_xml_parser_error(context_);
+
+  if(!error_str.empty())
   {
-    release_underlying(); //Free doc_;
+    release_underlying(); //Free doc_ and context_
 
     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw parse_error("Document not well-formed.");
-    #else
-    return;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
-  }
-
-  if(context_->errNo != 0)
-  {
-    std::ostringstream o;
-    o << "libxml error " << context_->errNo;
-
-    release_underlying();
-
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-    throw parse_error(o.str());
+    throw parse_error(error_str);
     #else
     return;
     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED

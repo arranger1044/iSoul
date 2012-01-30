@@ -1,3 +1,15 @@
+2012-01-30  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Parser: Throw more detailed error messages.
+
+	* examples/dom_parser/main.cc: Add command parameters -v -e -t.
+	* libxml++/exceptions/exception.[h|cc]: Add format_xml_error() and
+	format_xml_parser_error().
+	* libxml++/parsers/domparser.cc: Call format_xml_error() and
+	format_xml_parser_error() to get more detailed messages in exceptions.
+	* libxml++/parsers/parser.[h|cc]: Add [set|get]_throw_messages() and (local in
+	.cc until ABI can be broken) on_parser_[error|warning](). Bug #304020.
+
 2012-01-30  Murray Cumming  <murrayc@murrayc.com>
 
 	Document: Make the Document(xmlDoc*) constructor protected.

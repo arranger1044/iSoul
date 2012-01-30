@@ -27,6 +27,11 @@
 
 #include <libxml++config.h>
 
+extern "C" {
+  struct _xmlError;
+  struct _xmlParserCtxt;
+}
+
 namespace xmlpp
 {
 
@@ -45,6 +50,22 @@ public:
 private:
   Glib::ustring message_;
 };
+
+/** Format an _xmlError struct into a text string, suitable for printing.
+ * @param error Pointer to an _xmlError struct or <tt>0</tt>. If <tt>0</tt>,
+ *              the error returned by xmlGetLastError() is used.
+ * @returns A formatted text string. If the error struct does not contain an
+ *          error (error->code == XML_ERR_OK), an empty string is returned.
+ */
+Glib::ustring format_xml_error(const _xmlError* error = 0);
+
+/** Format a parser error into a text string, suitable for printing.
+ * @param parser_context Pointer to an _xmlParserCtxt struct.
+ * @returns A formatted text string. If the parser context does not contain an
+ *          error (parser_context->lastError.code == XML_ERR_OK), an empty
+ *          string is returned.
+ */
+Glib::ustring format_xml_parser_error(const _xmlParserCtxt* parser_context);
 
 } // namespace xmlpp
 
