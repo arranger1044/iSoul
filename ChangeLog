@@ -1,3 +1,9 @@
+2012-01-30  Murray Cumming  <murrayc@murrayc.com>
+
+	Document: Make the Document(xmlDoc*) constructor protected.
+
+	* libxml++/document.h: This was requested in bug #668980 (A. Pignotti).
+
 2011-09-09  Murray Cumming  <murrayc@murrayc.com>
 
 	Document: write_to_*(): Make sure that we write UTF-8 out.

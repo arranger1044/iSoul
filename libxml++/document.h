@@ -41,7 +41,7 @@ class Document;
 
 //TODO: Make Document inherit from Node, when we can break ABI one day?
 //
-//libxml might intend xmlDox to derive (theoretically) from xmlNode.
+//libxml might intend xmlDoc to derive (theoretically) from xmlNode.
 //This is suggested because the XmlNodeSet returned by xmlXPathEval (see the Node::find() implementation) can contain either xmlNode or xmlDocument elements.
 /**
  * Represents an XML document in the DOM model.
@@ -61,6 +61,11 @@ class Document : NonCopyable
 
 public:
   explicit Document(const Glib::ustring& version = "1.0");
+  
+protected:
+  Document(_xmlDoc* doc);
+    
+public:
   virtual ~Document();
 
   /** @return The encoding used in the source from which the document has been loaded.
@@ -185,7 +190,6 @@ private:
 
   static Init init_;
 
-  Document(_xmlDoc* doc);
   _xmlDoc* impl_;
 };
 
