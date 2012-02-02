@@ -1537,6 +1537,8 @@
 		A76D2D9410D9177B00DD9F82 /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
+				B9862AF214D5D5DB00F2BFEC /* AutojoinStatusTransformer.h */,
+				B9862AF314D5D5DB00F2BFEC /* AutojoinStatusTransformer.m */,
 				A718C26A10E38CD6003AEC33 /* BitrateTransformer.h */,
 				A718C26B10E38CD6003AEC33 /* BitrateTransformer.m */,
 				A718C27F10E38D0C003AEC33 /* CountryImageTransformer.h */,
@@ -1559,8 +1561,6 @@
 				A718C27710E38CD6003AEC33 /* SpeedTransformer.m */,
 				A718C28110E38D0C003AEC33 /* StatusTransformer.h */,
 				A718C28210E38D0C003AEC33 /* StatusTransformer.m */,
-				B9862AF214D5D5DB00F2BFEC /* AutojoinStatusTransformer.h */,
-				B9862AF314D5D5DB00F2BFEC /* AutojoinStatusTransformer.m */,
 			);
 			name = Transformers;
 			path = Code/Transformers;
