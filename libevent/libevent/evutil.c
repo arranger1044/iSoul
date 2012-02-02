@@ -2291,6 +2291,6 @@ evutil_usleep(const struct timeval *tv)
 	sleep(tv->tv_sec);
 	usleep(tv->tv_usec);
 #else
-	select(0, NULL, NULL, NULL, tv);
+	select(0, NULL, NULL, NULL, (struct timeval *) tv);
 #endif
 }
