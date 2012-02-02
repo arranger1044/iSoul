@@ -3,6 +3,7 @@
 #define _GLIBMM_USTRING_H 1
 
 #include <string>
+#include <sstream>
 
 #define G_STRFUNC __FUNCTION__
 
@@ -15,6 +16,13 @@ namespace Glib {
 		
 		inline size_t bytes(void) const {
 			return size();
+		}
+		
+		inline static ustring format(int i) {
+			std::stringstream st;
+			st << i;
+			
+			return ustring(st.str());
 		}
 	};
 }
