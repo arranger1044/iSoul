@@ -20,3 +20,8 @@ Building iSoul from Source
 --------------------------
 
 iSoul is free, open source software hosted at https://github.com/arranger1044/iSoul.  If you wish to build iSoul yourself you can do so by cloning the iSoul code to your computer using the Github app for Mac.  Once cloned, open the project file in Xcode and issue command+b to build the app or command+r to build and run it.
+
+Getting help
+------------
+
+If you run into any trouble using iSoul, you can either check the [support group](http://groups.google.com/group/isoul-support) or create an issue in the [issue tracker](https://github.com/arranger1044/iSoul/issues).
