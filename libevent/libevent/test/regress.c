@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#include "util-internal.h"
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -63,7 +64,6 @@
 #include "event2/util.h"
 #include "event-internal.h"
 #include "evthread-internal.h"
-#include "util-internal.h"
 #include "log-internal.h"
 
 #include "regress.h"
@@ -87,7 +87,6 @@ static struct timeval tcalled;
 
 
 #define TEST1	"this is a test"
-#define SECONDS	1
 
 #ifndef SHUT_WR
 #define SHUT_WR 1
@@ -233,21 +232,7 @@ multiple_read_cb(evutil_socket_t fd, short event, void *arg)
 static void
 timeout_cb(evutil_socket_t fd, short event, void *arg)
 {
-	struct timeval tv;
-	int diff;
-
 	evutil_gettimeofday(&tcalled, NULL);
-	if (evutil_timercmp(&tcalled, &tset, >))
-		evutil_timersub(&tcalled, &tset, &tv);
-	else
-		evutil_timersub(&tset, &tcalled, &tv);
-
-	diff = tv.tv_sec*1000 + tv.tv_usec/1000 - SECONDS * 1000;
-	if (diff < 0)
-		diff = -diff;
-
-	if (diff < 100)
-		test_ok = 1;
 }
 
 struct both {
@@ -583,14 +568,18 @@ test_simpletimeout(void)
 
 	setup_test("Simple timeout: ");
 
-	tv.tv_usec = 0;
-	tv.tv_sec = SECONDS;
+	tv.tv_usec = 200*1000;
+	tv.tv_sec = 0;
+	evutil_timerclear(&tcalled);
 	evtimer_set(&ev, timeout_cb, NULL);
 	evtimer_add(&ev, &tv);
 
 	evutil_gettimeofday(&tset, NULL);
 	event_dispatch();
+	test_timeval_diff_eq(&tset, &tcalled, 200);
 
+	test_ok = 1;
+end:
 	cleanup_test();
 }
 
@@ -677,9 +666,11 @@ test_persistent_active_timeout(void *ptr)
 	tv_exit.tv_usec = 600 * 1000;
 	event_base_loopexit(base, &tv_exit);
 
+	event_base_assert_ok(base);
 	evutil_gettimeofday(&start, NULL);
 
 	event_base_dispatch(base);
+	event_base_assert_ok(base);
 
 	tt_int_op(res.n, ==, 3);
 	tt_int_op(res.events[0], ==, EV_READ);
@@ -705,7 +696,7 @@ common_timeout_cb(evutil_socket_t fd, short event, void *arg)
 	struct common_timeout_info *ti = arg;
 	++ti->count;
 	evutil_gettimeofday(&ti->called_at, NULL);
-	if (ti->count >= 6)
+	if (ti->count >= 4)
 		event_del(&ti->ev);
 }
 
@@ -718,7 +709,7 @@ test_common_timeout(void *ptr)
 	int i;
 	struct common_timeout_info info[100];
 
-	struct timeval now;
+	struct timeval start;
 	struct timeval tmp_100_ms = { 0, 100*1000 };
 	struct timeval tmp_200_ms = { 0, 200*1000 };
 
@@ -748,22 +739,18 @@ test_common_timeout(void *ptr)
 		}
 	}
 
+	event_base_assert_ok(base);
+	evutil_gettimeofday(&start, NULL);
 	event_base_dispatch(base);
 
-	evutil_gettimeofday(&now, NULL);
+	event_base_assert_ok(base);
 
 	for (i=0; i<10; ++i) {
-		struct timeval tmp;
-		int ms_diff;
-		tt_int_op(info[i].count, ==, 6);
-		evutil_timersub(&now, &info[i].called_at, &tmp);
-		ms_diff = tmp.tv_usec/1000 + tmp.tv_sec*1000;
+		tt_int_op(info[i].count, ==, 4);
 		if (i % 2) {
-			tt_int_op(ms_diff, >, 500);
-			tt_int_op(ms_diff, <, 700);
+			test_timeval_diff_eq(&start, &info[i].called_at, 400);
 		} else {
-			tt_int_op(ms_diff, >, -100);
-			tt_int_op(ms_diff, <, 100);
+			test_timeval_diff_eq(&start, &info[i].called_at, 800);
 		}
 	}
 
@@ -824,12 +811,19 @@ test_fork(void)
 	evsignal_set(&sig_ev, SIGCHLD, child_signal_cb, &got_sigchld);
 	evsignal_add(&sig_ev, NULL);
 
+	event_base_assert_ok(current_base);
+	TT_BLATHER(("Before fork"));
 	if ((pid = fork()) == 0) {
 		/* in the child */
+		TT_BLATHER(("In child, before reinit"));
+		event_base_assert_ok(current_base);
 		if (event_reinit(current_base) == -1) {
 			fprintf(stdout, "FAILED (reinit)\n");
 			exit(1);
 		}
+		TT_BLATHER(("After reinit"));
+		event_base_assert_ok(current_base);
+		TT_BLATHER(("After assert-ok"));
 
 		evsignal_del(&sig_ev);
 
@@ -846,16 +840,21 @@ test_fork(void)
 	}
 
 	/* wait for the child to read the data */
-	sleep(1);
+	{
+		const struct timeval tv = { 0, 100000 };
+		evutil_usleep(&tv);
+	}
 
 	if (write(pair[0], TEST1, strlen(TEST1)+1) < 0) {
 		tt_fail_perror("write");
 	}
 
+	TT_BLATHER(("Before waitpid"));
 	if (waitpid(pid, &status, 0) == -1) {
 		fprintf(stdout, "FAILED (fork)\n");
 		exit(1);
 	}
+	TT_BLATHER(("After waitpid"));
 
 	if (WEXITSTATUS(status) != 76) {
 		fprintf(stdout, "FAILED (exit): %d\n", WEXITSTATUS(status));
@@ -911,7 +910,8 @@ test_simplesignal(void)
 	evsignal_add(&ev, NULL);
 
 	memset(&itv, 0, sizeof(itv));
-	itv.it_value.tv_sec = 1;
+	itv.it_value.tv_sec = 0;
+	itv.it_value.tv_usec = 100000;
 	if (setitimer(ITIMER_REAL, &itv, NULL) == -1)
 		goto skip_simplesignal;
 
@@ -938,7 +938,8 @@ test_multiplesignal(void)
 	evsignal_add(&ev_two, NULL);
 
 	memset(&itv, 0, sizeof(itv));
-	itv.it_value.tv_sec = 1;
+	itv.it_value.tv_sec = 0;
+	itv.it_value.tv_usec = 100000;
 	if (setitimer(ITIMER_REAL, &itv, NULL) == -1)
 		goto skip_simplesignal;
 
@@ -1327,23 +1328,22 @@ test_loopexit(void)
 	evtimer_set(&ev, timeout_cb, NULL);
 	evtimer_add(&ev, &tv);
 
-	tv.tv_usec = 0;
-	tv.tv_sec = 1;
+	tv.tv_usec = 300*1000;
+	tv.tv_sec = 0;
 	event_loopexit(&tv);
 
 	evutil_gettimeofday(&tv_start, NULL);
 	event_dispatch();
 	evutil_gettimeofday(&tv_end, NULL);
-	evutil_timersub(&tv_end, &tv_start, &tv_end);
 
 	evtimer_del(&ev);
 
 	tt_assert(event_base_got_exit(global_base));
 	tt_assert(!event_base_got_break(global_base));
 
-	if (tv.tv_sec < 2)
-		test_ok = 1;
+	test_timeval_diff_eq(&tv_start, &tv_end, 300);
 
+	test_ok = 1;
 end:
 	cleanup_test();
 }
@@ -1351,27 +1351,31 @@ end:
 static void
 test_loopexit_multiple(void)
 {
-	struct timeval tv;
+	struct timeval tv, tv_start, tv_end;
 	struct event_base *base;
 
 	setup_test("Loop Multiple exit: ");
 
 	base = event_base_new();
 
-	tv.tv_usec = 0;
-	tv.tv_sec = 1;
+	tv.tv_usec = 200*1000;
+	tv.tv_sec = 0;
 	event_base_loopexit(base, &tv);
 
 	tv.tv_usec = 0;
-	tv.tv_sec = 2;
+	tv.tv_sec = 3;
 	event_base_loopexit(base, &tv);
 
+	evutil_gettimeofday(&tv_start, NULL);
 	event_base_dispatch(base);
+	evutil_gettimeofday(&tv_end, NULL);
 
 	tt_assert(event_base_got_exit(base));
 	tt_assert(!event_base_got_break(base));
 
 	event_base_free(base);
+
+	test_timeval_diff_eq(&tv_start, &tv_end, 200);
 
 	test_ok = 1;
 
@@ -1646,7 +1650,7 @@ test_want_only_once(void)
 
 	/* Setup the loop termination */
 	evutil_timerclear(&tv);
-	tv.tv_sec = 1;
+	tv.tv_usec = 300*1000;
 	event_loopexit(&tv);
 
 	event_set(&ev, pair[1], EV_READ, read_once_cb, &ev);
@@ -2019,6 +2023,15 @@ end:
 }
 
 static void
+immediate_called_twice_cb(evutil_socket_t fd, short event, void *arg)
+{
+	tt_int_op(event, ==, EV_TIMEOUT);
+	called += 1000;
+end:
+	;
+}
+
+static void
 test_event_once(void *ptr)
 {
 	struct basic_test_data *data = ptr;
@@ -2036,6 +2049,14 @@ test_event_once(void *ptr)
 	tt_int_op(r, ==, 0);
 	r = event_base_once(data->base, -1, 0, NULL, NULL, NULL);
 	tt_int_op(r, <, 0);
+	r = event_base_once(data->base, -1, EV_TIMEOUT,
+	    immediate_called_twice_cb, NULL, NULL);
+	tt_int_op(r, ==, 0);
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+	r = event_base_once(data->base, -1, EV_TIMEOUT,
+	    immediate_called_twice_cb, NULL, &tv);
+	tt_int_op(r, ==, 0);
 
 	if (write(data->pair[1], TEST1, strlen(TEST1)+1) < 0) {
 		tt_fail_perror("write");
@@ -2045,7 +2066,7 @@ test_event_once(void *ptr)
 
 	event_base_dispatch(data->base);
 
-	tt_int_op(called, ==, 101);
+	tt_int_op(called, ==, 2101);
 end:
 	;
 }
@@ -2055,7 +2076,7 @@ test_event_pending(void *ptr)
 {
 	struct basic_test_data *data = ptr;
 	struct event *r=NULL, *w=NULL, *t=NULL;
-	struct timeval tv, now, tv2, diff;
+	struct timeval tv, now, tv2;
 
 	tv.tv_sec = 0;
 	tv.tv_usec = 500 * 1000;
@@ -2078,10 +2099,8 @@ test_event_pending(void *ptr)
 	tt_assert( event_pending(t, EV_TIMEOUT, &tv2));
 
 	tt_assert(evutil_timercmp(&tv2, &now, >));
-	evutil_timeradd(&now, &tv, &tv);
-	evutil_timersub(&tv2, &tv, &diff);
-	tt_int_op(diff.tv_sec, ==, 0);
-	tt_int_op(labs(diff.tv_usec), <, 1000);
+
+	test_timeval_diff_eq(&now, &tv2, 500);
 
 end:
 	if (r) {

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#include "../util-internal.h"
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -70,8 +71,6 @@
 #include "log-internal.h"
 #include "regress.h"
 #include "regress_testutils.h"
-
-#include "../util-internal.h"
 
 static int dns_ok = 0;
 static int dns_got_cancel = 0;
@@ -684,9 +683,9 @@ dns_retry_test(void *arg)
 
 	dns = evdns_base_new(base, 0);
 	tt_assert(!evdns_base_nameserver_ip_add(dns, buf));
-	tt_assert(! evdns_base_set_option(dns, "timeout", "0.3"));
+	tt_assert(! evdns_base_set_option(dns, "timeout", "0.2"));
 	tt_assert(! evdns_base_set_option(dns, "max-timeouts:", "10"));
-	tt_assert(! evdns_base_set_option(dns, "initial-probe-timeout", "0.5"));
+	tt_assert(! evdns_base_set_option(dns, "initial-probe-timeout", "0.1"));
 
 	evdns_base_resolve_ipv4(dns, "host.example.com", 0,
 	    generic_dns_callback, &r1);
@@ -705,8 +704,8 @@ dns_retry_test(void *arg)
 	/* Now try again, but this time have the server get treated as
 	 * failed, so we can send it a test probe. */
 	drop_count = 4;
-	tt_assert(! evdns_base_set_option(dns, "max-timeouts:", "3"));
-	tt_assert(! evdns_base_set_option(dns, "attempts:", "4"));
+	tt_assert(! evdns_base_set_option(dns, "max-timeouts:", "2"));
+	tt_assert(! evdns_base_set_option(dns, "attempts:", "3"));
 	memset(&r1, 0, sizeof(r1));
 
 	evdns_base_resolve_ipv4(dns, "host.example.com", 0,
@@ -862,6 +861,7 @@ end:
 /* === Test for bufferevent_socket_connect_hostname */
 
 static int total_connected_or_failed = 0;
+static int total_n_accepted = 0;
 static struct event_base *be_connect_hostname_base = NULL;
 
 /* Implements a DNS server for the connect_hostname test and the
@@ -881,6 +881,8 @@ be_getaddrinfo_server_cb(struct evdns_server_request *req, void *data)
 		struct in_addr ans;
 		struct in6_addr ans6;
 		memset(&ans6, 0, sizeof(ans6));
+
+		TT_BLATHER(("Got question about %s, type=%d", qname, qtype));
 
 		if (qtype == EVDNS_TYPE_A &&
 		    qclass == EVDNS_CLASS_INET &&
@@ -982,10 +984,13 @@ be_getaddrinfo_server_cb(struct evdns_server_request *req, void *data)
 			TT_GRIPE(("Got weird request for %s",qname));
 		}
 	}
-	if (added_any)
+	if (added_any) {
+		TT_BLATHER(("answering"));
 		evdns_server_request_respond(req, 0);
-	else
+	} else {
+		TT_BLATHER(("saying nexist."));
 		evdns_server_request_respond(req, 3);
+	}
 }
 
 /* Implements a listener for connect_hostname test. */
@@ -995,7 +1000,11 @@ nil_accept_cb(struct evconnlistener *l, evutil_socket_t fd, struct sockaddr *s,
 {
 	int *p = arg;
 	(*p)++;
+	++total_n_accepted;
 	/* don't do anything with the socket; let it close when we exit() */
+	if (total_n_accepted >= 3 && total_connected_or_failed >= 5)
+		event_base_loopexit(be_connect_hostname_base,
+		    NULL);
 }
 
 struct be_conn_hostname_result {
@@ -1015,14 +1024,14 @@ be_connect_hostname_event_cb(struct bufferevent *bev, short what, void *ctx)
 
 		if ((what & BEV_EVENT_CONNECTED) || (what & BEV_EVENT_ERROR)) {
 			int r;
-			++total_connected_or_failed;
-			TT_BLATHER(("Got %d connections or errors.", total_connected_or_failed));
 			if ((r = bufferevent_socket_get_dns_error(bev))) {
 				got->dnserr = r;
 				TT_BLATHER(("DNS error %d: %s", r,
 					   evutil_gai_strerror(r)));
-			}
-			if (total_connected_or_failed >= 5)
+			}			++total_connected_or_failed;
+			TT_BLATHER(("Got %d connections or errors.", total_connected_or_failed));
+
+			if (total_n_accepted >= 3 && total_connected_or_failed >= 5)
 				event_base_loopexit(be_connect_hostname_base,
 				    NULL);
 		}
@@ -1209,6 +1218,9 @@ test_getaddrinfo_async(void *arg)
 
 	/* for localhost */
 	evdns_base_load_hosts(dns_base, NULL);
+
+	tt_assert(! evdns_base_set_option(dns_base, "timeout", "0.3"));
+	tt_assert(! evdns_base_set_option(dns_base, "getaddrinfo-allow-skew", "0.2"));
 
 	memset(a_out, 0, sizeof(a_out));
 
@@ -1665,7 +1677,7 @@ static void
 cnt_free(void *ptr)
 {
 	allocated_chunks -= 1;
-	return free(ptr);
+	free(ptr);
 }
 
 struct testleak_env_t {

@@ -833,47 +833,71 @@ event_base_free(struct event_base *base)
 	mm_free(base);
 }
 
+/* Fake eventop; used to disable the backend temporarily inside event_reinit
+ * so that we can call event_del() on an event without telling the backend.
+ */
+static int
+nil_backend_del(struct event_base *b, evutil_socket_t fd, short old,
+    short events, void *fdinfo)
+{
+	return 0;
+}
+const struct eventop nil_eventop = {
+	"nil",
+	NULL, /* init: unused. */
+	NULL, /* add: unused. */
+	nil_backend_del, /* del: used, so needs to be killed. */
+	NULL, /* dispatch: unused. */
+	NULL, /* dealloc: unused. */
+	0, 0, 0
+};
+
 /* reinitialize the event base after a fork */
 int
 event_reinit(struct event_base *base)
 {
 	const struct eventop *evsel;
 	int res = 0;
-	struct event *ev;
 	int was_notifiable = 0;
+	int had_signal_added = 0;
 
 	EVBASE_ACQUIRE_LOCK(base, th_base_lock);
 
 	evsel = base->evsel;
 
-#if 0
-	/* Right now, reinit always takes effect, since even if the
-	   backend doesn't require it, the signal socketpair code does.
+	/* check if this event mechanism requires reinit on the backend */
+	if (evsel->need_reinit) {
+		/* We're going to call event_del() on our notify events (the
+		 * ones that tell about signals and wakeup events).  But we
+		 * don't actually want to tell the backend to change its
+		 * state, since it might still share some resource (a kqueue,
+		 * an epoll fd) with the parent process, and we don't want to
+		 * delete the fds from _that_ backend, we temporarily stub out
+		 * the evsel with a replacement.
+		 */
+		base->evsel = &nil_eventop;
+	}
 
-	   XXX
+	/* We need to re-create a new signal-notification fd and a new
+	 * thread-notification fd.  Otherwise, we'll still share those with
+	 * the parent process, which would make any notification sent to them
+	 * get received by one or both of the event loops, more or less at
+	 * random.
 	 */
-	/* check if this event mechanism requires reinit */
-	if (!evsel->need_reinit)
-		goto done;
-#endif
-
-	/* prevent internal delete */
 	if (base->sig.ev_signal_added) {
-		/* we cannot call event_del here because the base has
-		 * not been reinitialized yet. */
-		event_queue_remove_inserted(base, &base->sig.ev_signal);
-		if (base->sig.ev_signal.ev_flags & EVLIST_ACTIVE)
-			event_queue_remove_active(base, &base->sig.ev_signal);
+		event_del(&base->sig.ev_signal);
+		event_debug_unassign(&base->sig.ev_signal);
+		memset(&base->sig.ev_signal, 0, sizeof(base->sig.ev_signal));
+		if (base->sig.ev_signal_pair[0] != -1)
+			EVUTIL_CLOSESOCKET(base->sig.ev_signal_pair[0]);
+		if (base->sig.ev_signal_pair[1] != -1)
+			EVUTIL_CLOSESOCKET(base->sig.ev_signal_pair[1]);
+		had_signal_added = 1;
 		base->sig.ev_signal_added = 0;
 	}
 	if (base->th_notify_fd[0] != -1) {
-		/* we cannot call event_del here because the base has
-		 * not been reinitialized yet. */
 		was_notifiable = 1;
-		event_queue_remove_inserted(base, &base->th_notify);
-		if (base->th_notify.ev_flags & EVLIST_ACTIVE)
-			event_queue_remove_active(base, &base->th_notify);
-		base->sig.ev_signal_added = 0;
+		event_del(&base->th_notify);
 		EVUTIL_CLOSESOCKET(base->th_notify_fd[0]);
 		if (base->th_notify_fd[1] != -1)
 			EVUTIL_CLOSESOCKET(base->th_notify_fd[1]);
@@ -883,30 +907,48 @@ event_reinit(struct event_base *base)
 		base->th_notify_fn = NULL;
 	}
 
-	if (base->evsel->dealloc != NULL)
-		base->evsel->dealloc(base);
-	base->evbase = evsel->init(base);
-	if (base->evbase == NULL) {
-		event_errx(1, "%s: could not reinitialize event mechanism",
-		    __func__);
-		res = -1;
-		goto done;
-	}
+	/* Replace the original evsel. */
+        base->evsel = evsel;
 
-	event_changelist_freemem(&base->changelist); /* XXX */
-	evmap_io_clear(&base->io);
-	evmap_signal_clear(&base->sigmap);
-
-	TAILQ_FOREACH(ev, &base->eventqueue, ev_next) {
-		if (ev->ev_events & (EV_READ|EV_WRITE)) {
-			if (evmap_io_add(base, ev->ev_fd, ev) == -1)
-				res = -1;
-		} else if (ev->ev_events & EV_SIGNAL) {
-			if (evmap_signal_add(base, (int)ev->ev_fd, ev) == -1)
-				res = -1;
+	if (evsel->need_reinit) {
+		/* Reconstruct the backend through brute-force, so that we do
+		 * not share any structures with the parent process. For some
+		 * backends, this is necessary: epoll and kqueue, for
+		 * instance, have events associated with a kernel
+		 * structure. If didn't reinitialize, we'd share that
+		 * structure with the parent process, and any changes made by
+		 * the parent would affect our backend's behavior (and vice
+		 * versa).
+		 */
+		if (base->evsel->dealloc != NULL)
+			base->evsel->dealloc(base);
+		base->evbase = evsel->init(base);
+		if (base->evbase == NULL) {
+			event_errx(1,
+			   "%s: could not reinitialize event mechanism",
+			   __func__);
+			res = -1;
+			goto done;
 		}
+
+		/* Empty out the changelist (if any): we are starting from a
+		 * blank slate. */
+		event_changelist_freemem(&base->changelist);
+
+		/* Tell the event maps to re-inform the backend about all
+		 * pending events. This will make the signal notification
+		 * event get re-created if necessary. */
+		if (evmap_io_reinit(base) < 0)
+			res = -1;
+		if (evmap_signal_reinit(base) < 0)
+			res = -1;
+	} else {
+		if (had_signal_added)
+			res = evsig_init(base);
 	}
 
+	/* If we were notifiable before, and nothing just exploded, become
+	 * notifiable again. */
 	if (was_notifiable && res == 0)
 		res = evthread_make_base_notifiable(base);
 
@@ -1119,21 +1161,25 @@ event_signal_closure(struct event_base *base, struct event *ev)
 
 	/* Allows deletes to work */
 	ncalls = ev->ev_ncalls;
-	ev->ev_pncalls = &ncalls;
+	if (ncalls != 0)
+		ev->ev_pncalls = &ncalls;
 	EVBASE_RELEASE_LOCK(base, th_base_lock);
 	while (ncalls) {
 		ncalls--;
 		ev->ev_ncalls = ncalls;
 		if (ncalls == 0)
 			ev->ev_pncalls = NULL;
-		(*ev->ev_callback)((int)ev->ev_fd, ev->ev_res, ev->ev_arg);
+		(*ev->ev_callback)(ev->ev_fd, ev->ev_res, ev->ev_arg);
 
 		EVBASE_ACQUIRE_LOCK(base, th_base_lock);
 		should_break = base->event_break;
 		EVBASE_RELEASE_LOCK(base, th_base_lock);
 
-		if (should_break)
+		if (should_break) {
+			if (ncalls != 0)
+				ev->ev_pncalls = NULL;
 			return;
+		}
 	}
 }
 
@@ -1354,7 +1400,7 @@ event_persist_closure(struct event_base *base, struct event *ev)
 		event_add_internal(ev, &run_at, 1);
 	}
 	EVBASE_RELEASE_LOCK(base, th_base_lock);
-	(*ev->ev_callback)((int)ev->ev_fd, ev->ev_res, ev->ev_arg);
+	(*ev->ev_callback)(ev->ev_fd, ev->ev_res, ev->ev_arg);
 }
 
 /*
@@ -1405,7 +1451,7 @@ event_process_active_single_queue(struct event_base *base,
 		case EV_CLOSURE_NONE:
 			EVBASE_RELEASE_LOCK(base, th_base_lock);
 			(*ev->ev_callback)(
-				(int)ev->ev_fd, ev->ev_res, ev->ev_arg);
+				ev->ev_fd, ev->ev_res, ev->ev_arg);
 			break;
 		}
 
@@ -1761,7 +1807,6 @@ event_base_once(struct event_base *base, evutil_socket_t fd, short events,
     void *arg, const struct timeval *tv)
 {
 	struct event_once *eonce;
-	struct timeval etv;
 	int res = 0;
 
 	/* We cannot support signals that just fire once, or persistent
@@ -1776,12 +1821,16 @@ event_base_once(struct event_base *base, evutil_socket_t fd, short events,
 	eonce->arg = arg;
 
 	if (events == EV_TIMEOUT) {
-		if (tv == NULL) {
-			evutil_timerclear(&etv);
-			tv = &etv;
-		}
-
 		evtimer_assign(&eonce->ev, base, event_once_cb, eonce);
+
+		if (tv == NULL || ! evutil_timerisset(tv)) {
+			/* If the event is going to become active immediately,
+			 * don't put it on the timeout queue.  This is one
+			 * idiom for scheduling a callback, so let's make
+			 * it fast (and order-preserving). */
+			event_active(&eonce->ev, EV_TIMEOUT, 1);
+			return 0;
+		}
 	} else if (events & (EV_READ|EV_WRITE)) {
 		events &= EV_READ|EV_WRITE;
 
@@ -3041,3 +3090,38 @@ event_global_setup_locks_(const int enable_locks)
 	return 0;
 }
 #endif
+
+void
+event_base_assert_ok(struct event_base *base)
+{
+	int i;
+	EVBASE_ACQUIRE_LOCK(base, th_base_lock);
+	evmap_check_integrity(base);
+
+	/* Check the heap property */
+	for (i = 1; i < (int)base->timeheap.n; ++i) {
+		int parent = (i - 1) / 2;
+		struct event *ev, *p_ev;
+		ev = base->timeheap.p[i];
+		p_ev = base->timeheap.p[parent];
+		EVUTIL_ASSERT(ev->ev_flags & EV_TIMEOUT);
+		EVUTIL_ASSERT(evutil_timercmp(&p_ev->ev_timeout, &ev->ev_timeout, <=));
+		EVUTIL_ASSERT(ev->ev_timeout_pos.min_heap_idx == i);
+	}
+
+	/* Check that the common timeouts are fine */
+	for (i = 0; i < base->n_common_timeouts; ++i) {
+		struct common_timeout_list *ctl = base->common_timeout_queues[i];
+		struct event *last=NULL, *ev;
+		TAILQ_FOREACH(ev, &ctl->events, ev_timeout_pos.ev_next_with_common_timeout) {
+			if (last)
+				EVUTIL_ASSERT(evutil_timercmp(&last->ev_timeout, &ev->ev_timeout, <=));
+			EVUTIL_ASSERT(ev->ev_flags & EV_TIMEOUT);
+			EVUTIL_ASSERT(is_common_timeout(&ev->ev_timeout,base));
+			EVUTIL_ASSERT(COMMON_TIMEOUT_IDX(&ev->ev_timeout) == i);
+			last = ev;
+		}
+	}
+
+	EVBASE_RELEASE_LOCK(base, th_base_lock);
+}
