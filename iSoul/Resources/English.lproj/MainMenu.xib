@@ -1733,7 +1733,7 @@
 					<int key="NSToolbarDisplayMode">1</int>
 					<int key="NSToolbarSizeMode">1</int>
 					<dictionary class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems">
-						<object class="NSToolbarItem" key="19A85A67-4C99-444D-AC28-7B7EE6286CD3" id="764154935">
+						<object class="NSToolbarItem" key="19A85A67-4C99-444D-AC28-7B7EE6286CD3" id="899895820">
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">19A85A67-4C99-444D-AC28-7B7EE6286CD3</characters>
 							</object>
@@ -1908,7 +1908,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+					<array key="NSToolbarIBAllowedItems">
 						<reference ref="817626383"/>
 						<reference ref="88002179"/>
 						<reference ref="488696418"/>
@@ -1916,12 +1916,12 @@
 						<reference ref="237542115"/>
 						<reference ref="223901379"/>
 						<reference ref="266927331"/>
-						<reference ref="764154935"/>
+						<reference ref="899895820"/>
 					</array>
 					<array key="NSToolbarIBDefaultItems">
 						<reference ref="223901379"/>
 						<reference ref="488696418"/>
-						<reference ref="764154935"/>
+						<reference ref="899895820"/>
 						<reference ref="237542115"/>
 					</array>
 					<reference key="NSToolbarIBSelectableItems" ref="0"/>
@@ -2038,7 +2038,7 @@
 												<reference key="NSNextKeyView" ref="359315476"/>
 											</object>
 											<array class="NSMutableArray" key="NSTableColumns">
-												<object class="NSTableColumn" id="330507471">
+												<object class="NSTableColumn" id="1068311807">
 													<string key="NSIdentifier">status</string>
 													<double key="NSWidth">20</double>
 													<double key="NSMinWidth">20</double>
@@ -2054,7 +2054,7 @@
 														</object>
 														<reference key="NSTextColor" ref="1058883569"/>
 													</object>
-													<object class="NSImageCell" key="NSDataCell" id="781380956">
+													<object class="NSImageCell" key="NSDataCell" id="462637852">
 														<int key="NSCellFlags">67239424</int>
 														<int key="NSCellFlags2">33685504</int>
 														<object class="NSCustomResource" key="NSContents">
@@ -2062,16 +2062,16 @@
 															<string key="NSResourceName">autojoin</string>
 														</object>
 														<reference key="NSSupport" ref="26"/>
-														<int key="NSAlign">0</int>
+														<int key="NSAlign">1</int>
 														<int key="NSScale">2</int>
 														<int key="NSStyle">0</int>
 														<bool key="NSAnimates">NO</bool>
 													</object>
-													<int key="NSResizingMask">2</int>
+													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
 													<reference key="NSTableView" ref="316063587"/>
 													<object class="NSSortDescriptor" key="NSSortDescriptorPrototype">
-														<string key="NSKey">status</string>
+														<string key="NSKey">autojoin</string>
 														<bool key="NSAscending">YES</bool>
 														<string key="NSSelector">compare:</string>
 													</object>
@@ -4217,7 +4217,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<object class="IBActionConnection" key="connection">
 						<string key="label">addOrRemoveAutojoin:</string>
 						<reference key="source" ref="676619705"/>
-						<reference key="destination" ref="764154935"/>
+						<reference key="destination" ref="899895820"/>
 					</object>
 					<int key="connectionID">1308</int>
 				</object>
@@ -4948,22 +4948,23 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.autojoin</string>
-						<reference key="source" ref="330507471"/>
+						<reference key="source" ref="1068311807"/>
 						<reference key="destination" ref="40477412"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="330507471"/>
+							<reference key="NSSource" ref="1068311807"/>
 							<reference key="NSDestination" ref="40477412"/>
 							<string key="NSLabel">value: arrangedObjects.autojoin</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">arrangedObjects.autojoin</string>
 							<dictionary key="NSOptions">
 								<boolean value="NO" key="NSAllowsEditingMultipleValuesSelection"/>
+								<boolean value="YES" key="NSConditionallySetsEditable"/>
 								<string key="NSValueTransformerName">AutojoinStatusTransformer</string>
 							</dictionary>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1318</int>
+					<int key="connectionID">1319</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -5382,7 +5383,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="859944802"/>
 							<reference ref="730224398"/>
-							<reference ref="330507471"/>
+							<reference ref="1068311807"/>
 						</array>
 						<reference key="parent" ref="477214955"/>
 					</object>
@@ -6451,7 +6452,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<reference ref="237542115"/>
 							<reference ref="223901379"/>
 							<reference ref="266927331"/>
-							<reference ref="764154935"/>
+							<reference ref="899895820"/>
 						</array>
 						<reference key="parent" ref="1017259746"/>
 					</object>
@@ -6589,21 +6590,21 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1307</int>
-						<reference key="object" ref="764154935"/>
+						<reference key="object" ref="899895820"/>
 						<reference key="parent" ref="917002627"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1313</int>
-						<reference key="object" ref="330507471"/>
+						<reference key="object" ref="1068311807"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="781380956"/>
+							<reference ref="462637852"/>
 						</array>
 						<reference key="parent" ref="316063587"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1314</int>
-						<reference key="object" ref="781380956"/>
-						<reference key="parent" ref="330507471"/>
+						<reference key="object" ref="462637852"/>
+						<reference key="parent" ref="1068311807"/>
 					</object>
 				</array>
 			</object>
@@ -6882,7 +6883,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1318</int>
+			<int key="maxID">1319</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

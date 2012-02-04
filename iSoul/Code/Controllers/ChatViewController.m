@@ -224,23 +224,42 @@
     NSUInteger newMessagesCount = newMessages.count;
     //DNSLog(@"%u", newMessagesCount);
     
-	if ([object isEqual:currentRoom]) 
+    /* First check if we are in chat view mode */
+    if ([[[NSApp delegate] currentViewController] isEqual:self])
     {
-		//DNSLog(@"%@", [object name]);
-		[self addRoomMessages:newMessages];
-        
-        /* If the window is not visible we need to update the current room sidebar
-           count as well */
-        if (![[[NSApp delegate] window] isMainWindow])
+        if ([object isEqual:currentRoom]) 
         {
+            //DNSLog(@"IN 1 %@", [object name]);
+            [self addRoomMessages:newMessages];
+            
+            /* If the window is not visible we need to update the current room sidebar
+             count as well */
+            if (![[[NSApp delegate] window] isMainWindow])
+            {
+                NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
+                [store updateSidebar:[object name] withCount:newCount];
+                self.unreadMessages += newMessagesCount;
+            }
+            
+        }
+        else 
+        {
+            //DNSLog(@"OUT 2 %@", [object name]);
+            /* We update the other room side bar count */
             NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
             [store updateSidebar:[object name] withCount:newCount];
             self.unreadMessages += newMessagesCount;
         }
-
-	}
+    }
     else 
     {
+        if ([object isEqual:currentRoom]) 
+        {
+            //DNSLog(@"IN 2 %@", [object name]);
+            [self addRoomMessages:newMessages];
+        }
+        
+        //DNSLog(@"OUT 1 %@", [object name]);
         /* We update the other room side bar count */
         NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
         [store updateSidebar:[object name] withCount:newCount];
