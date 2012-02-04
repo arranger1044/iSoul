@@ -3,3 +3,4 @@
 //
 
 #define TAILQ_END(head) NULL
+#define LIST_END(head) NULL

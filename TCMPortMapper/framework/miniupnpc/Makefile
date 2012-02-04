@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.81 2011/06/21 15:24:14 nanard Exp $
+# $Id: Makefile,v 1.87 2012/01/19 11:58:08 nanard Exp $
 # MiniUPnP Project
 # http://miniupnp.free.fr/
 # (c) 2005-2011 Thomas Bernard
@@ -12,13 +12,13 @@ OS = $(shell uname -s)
 CC ?= gcc
 #AR = gar
 #CFLAGS = -O -Wall -g -DDEBUG
-CFLAGS ?= -O -Wall -DNDEBUG -DMINIUPNPC_SET_SOCKET_TIMEOUT -Wstrict-prototypes
+CFLAGS ?= -O -Wall -DNDEBUG -DMINIUPNPC_SET_SOCKET_TIMEOUT -Wstrict-prototypes -D_BSD_SOURCE
 # -DNO_GETADDRINFO
 INSTALL = install
 SH = /bin/sh
 JAVA = java
 # see http://code.google.com/p/jnaerator/
-JNAERATOR = jnaerator-0.9.3.jar
+JNAERATOR = jnaerator-0.9.7.jar
 #following libs are needed on Solaris
 #LDLIBS=-lsocket -lnsl -lresolv
 
@@ -85,6 +85,7 @@ INSTALLPREFIX ?= $(PREFIX)/usr
 INSTALLDIRINC = $(INSTALLPREFIX)/include/miniupnpc
 INSTALLDIRLIB = $(INSTALLPREFIX)/lib
 INSTALLDIRBIN = $(INSTALLPREFIX)/bin
+INSTALLDIRMAN = $(INSTALLPREFIX)/share/man
 
 FILESTOINSTALL = $(LIBRARY) $(EXECUTABLES)
 ifneq ($(OS), AmigaOS)
@@ -93,7 +94,7 @@ endif
 
 
 .PHONY:	install clean depend all check everything \
-	installpythonmodule
+	installpythonmodule updateversion
 #	validateminixml validateminiwget
 
 all:	$(LIBRARY) $(EXECUTABLES)
@@ -125,8 +126,14 @@ clean:
 	$(RM) pythonmodule validateminixml
 	$(RM) -r build/ dist/
 	#python setup.py clean
+	# clean jnaerator stuff
+	$(RM) _jnaerator.* java/miniupnpc_$(OS).jar
 
-install:	$(FILESTOINSTALL)
+updateversion:	miniupnpc.h
+	cp miniupnpc.h miniupnpc.h.bak
+	sed 's/\(.*MINIUPNPC_API_VERSION\s\+\)[0-9]\+/\1$(APIVERSION)/' < miniupnpc.h.bak > miniupnpc.h
+
+install:	updateversion $(FILESTOINSTALL)
 	$(INSTALL) -d $(INSTALLDIRINC)
 	$(INSTALL) -m 644 $(HEADERS) $(INSTALLDIRINC)
 	$(INSTALL) -d $(INSTALLDIRLIB)
@@ -142,6 +149,11 @@ else
 	$(INSTALL) -m 755 upnpc-shared $(INSTALLDIRBIN)/upnpc
 endif
 	$(INSTALL) -m 755 external-ip.sh $(INSTALLDIRBIN)/external-ip
+ifneq ($(OS), AmigaOS)
+	$(INSTALL) -d $(INSTALLDIRMAN)/man3
+	$(INSTALL) man3/miniupnpc.3 $(INSTALLDIRMAN)/man3/miniupnpc.3
+endif
+
 
 cleaninstall:
 	$(RM) -r $(INSTALLDIRINC)
@@ -177,11 +189,34 @@ testupnpreplyparse:	$(TESTUPNPREPLYPARSE)
 
 testigddescparse:	$(TESTIGDDESCPARSE)
 
-miniupnpcstrings.h:	miniupnpcstrings.h.in updateminiupnpcstrings.sh
+miniupnpcstrings.h:	miniupnpcstrings.h.in updateminiupnpcstrings.sh VERSION
 	$(SH) updateminiupnpcstrings.sh
 
-jar:	$(SHAREDLIBRARY) 
+jnaerator-0.9.8-shaded.jar:
+	wget http://jnaerator.googlecode.com/files/jnaerator-0.9.8-shaded.jar
+
+jnaerator-0.9.7.jar:
+	wget http://jnaerator.googlecode.com/files/jnaerator-0.9.7.jar
+
+jnaerator-0.9.3.jar:
+	wget http://jnaerator.googlecode.com/files/jnaerator-0.9.3.jar
+
+jar: $(SHAREDLIBRARY)  $(JNAERATOR)
 	$(JAVA) -jar $(JNAERATOR) -library miniupnpc miniupnpc.h declspec.h upnpcommands.h upnpreplyparse.h igd_desc_parse.h miniwget.h upnperrors.h $(SHAREDLIBRARY) -package fr.free.miniupnp -o . -jar java/miniupnpc_$(OS).jar -v
+
+# make .deb packages
+deb: /usr/share/pyshared/stdeb all
+	(python setup.py --command-packages=stdeb.command bdist_deb)
+
+# install .deb packages
+ideb:
+	(sudo dpkg -i deb_dist/*.deb)
+
+/usr/share/pyshared/stdeb: /usr/share/doc/python-all-dev
+	(sudo apt-get install python-stdeb)
+
+/usr/share/doc/python-all-dev:
+	(sudo apt-get install python-all-dev)
 
 minihttptestserver:	minihttptestserver.o
 

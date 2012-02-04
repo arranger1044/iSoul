@@ -1,7 +1,7 @@
-/* $Id: upnpc.c,v 1.88 2011/06/17 23:31:01 nanard Exp $ */
+/* $Id: upnpc.c,v 1.91 2012/01/21 13:30:33 nanard Exp $ */
 /* Project : miniupnp
  * Author : Thomas Bernard
- * Copyright (c) 2005-2011 Thomas Bernard
+ * Copyright (c) 2005-2012 Thomas Bernard
  * This software is subject to the conditions detailed in the
  * LICENCE file provided in this distribution. */
 
@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#ifdef WIN32
+#ifdef _WIN32
 #include <winsock2.h>
 #define snprintf _snprintf
 #endif
@@ -119,6 +119,7 @@ static void ListRedirections(struct UPNPUrls * urls,
 	/*unsigned int num=0;
 	UPNP_GetPortMappingNumberOfEntries(urls->controlURL, data->servicetype, &num);
 	printf("PortMappingNumberOfEntries : %u\n", num);*/
+	printf(" i protocol exPort->inAddr:inPort description remoteHost leaseTime\n");
 	do {
 		snprintf(index, 6, "%d", i);
 		rHost[0] = '\0'; enabled[0] = '\0';
@@ -166,6 +167,7 @@ static void NewListRedirections(struct UPNPUrls * urls,
 	                               &pdata);
 	if(r == UPNPCOMMAND_SUCCESS)
 	{
+		printf(" i protocol exPort->inAddr:inPort description remoteHost leaseTime\n");
 		for(pm = pdata.head.lh_first; pm != NULL; pm = pm->entries.le_next)
 		{
 			printf("%2d %s %5hu->%s:%-5hu '%s' '%s' %u\n",
@@ -464,7 +466,7 @@ int main(int argc, char ** argv)
 	int error = 0;
 	int ipv6 = 0;
 
-#ifdef WIN32
+#ifdef _WIN32
 	WSADATA wsaData;
 	int nResult = WSAStartup(MAKEWORD(2,2), &wsaData);
 	if(nResult != NO_ERROR)
@@ -529,7 +531,7 @@ int main(int argc, char ** argv)
 		fprintf(stderr, "Options:\n");
 		fprintf(stderr, "  -6 : use ip v6 instead of ip v4.\n");
 		fprintf(stderr, "  -u url : bypass discovery process by providing the XML root description url.\n");
-		fprintf(stderr, "  -m address/interface : provide ip address (ip v4) or interface name (ip v6) to use for sending SSDP multicast packets.\n");
+		fprintf(stderr, "  -m address/interface : provide ip address (ip v4) or interface name (ip v4 or v6) to use for sending SSDP multicast packets.\n");
 		fprintf(stderr, "  -p path : use this path for MiniSSDPd socket.\n");
 		return 1;
 	}

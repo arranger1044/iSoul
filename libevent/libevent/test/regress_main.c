@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#include "util-internal.h"
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -76,6 +77,7 @@
 #include "tinytest.h"
 #include "tinytest_macros.h"
 #include "../iocp-internal.h"
+#include "../event-internal.h"
 
 long
 timeval_msec_diff(const struct timeval *start, const struct timeval *end)
@@ -84,7 +86,6 @@ timeval_msec_diff(const struct timeval *start, const struct timeval *end)
 	ms *= 1000;
 	ms += ((end->tv_usec - start->tv_usec)+500) / 1000;
 	return ms;
-
 }
 
 /* ============================================================ */
@@ -257,8 +258,10 @@ basic_test_cleanup(const struct testcase_t *testcase, void *ptr)
 	}
 
 	if (testcase->flags & TT_NEED_BASE) {
-		if (data->base)
+		if (data->base) {
+			event_base_assert_ok(data->base);
 			event_base_free(data->base);
+		}
 	}
 
 	free(data);

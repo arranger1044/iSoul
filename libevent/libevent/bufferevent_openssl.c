@@ -313,7 +313,7 @@ struct bufferevent_openssl {
 	unsigned read_blocked_on_write : 1;
 	/* When we next get data, we should say "write" instead of "read". */
 	unsigned write_blocked_on_read : 1;
-	/* XXX */
+	/* Treat TCP close before SSL close on SSL >= v3 as clean EOF. */
 	unsigned allow_dirty_shutdown : 1;
 	/* XXXX */
 	unsigned fd_is_set : 1;
@@ -483,7 +483,7 @@ clear_wbor(struct bufferevent_openssl *bev_ssl)
 }
 
 static void
-conn_closed(struct bufferevent_openssl *bev_ssl, int errcode, int ret)
+conn_closed(struct bufferevent_openssl *bev_ssl, int when, int errcode, int ret)
 {
 	int event = BEV_EVENT_ERROR;
 	int dirty_shutdown = 0;
@@ -529,6 +529,8 @@ conn_closed(struct bufferevent_openssl *bev_ssl, int errcode, int ret)
 	stop_reading(bev_ssl);
 	stop_writing(bev_ssl);
 
+	/* when is BEV_EVENT_{READING|WRITING} */
+	event = when | event;
 	_bufferevent_run_eventcb(&bev_ssl->bev.bev, event);
 }
 
@@ -604,7 +606,7 @@ do_read(struct bufferevent_openssl *bev_ssl, int n_to_read)
 						return -1;
 				break;
 			default:
-				conn_closed(bev_ssl, err, r);
+				conn_closed(bev_ssl, BEV_EVENT_READING, err, r);
 				break;
 			}
 			blocked = 1;
@@ -682,7 +684,7 @@ do_write(struct bufferevent_openssl *bev_ssl, int atmost)
 				bev_ssl->last_write = space[i].iov_len;
 				break;
 			default:
-				conn_closed(bev_ssl, err, r);
+				conn_closed(bev_ssl, BEV_EVENT_WRITING, err, r);
 				bev_ssl->last_write = -1;
 				break;
 			}
@@ -979,7 +981,7 @@ do_handshake(struct bufferevent_openssl *bev_ssl)
 			}
 			return 0;
 		default:
-			conn_closed(bev_ssl, err, r);
+			conn_closed(bev_ssl, BEV_EVENT_READING, err, r);
 			return -1;
 		}
 	}
@@ -1385,6 +1387,31 @@ bufferevent_openssl_socket_new(struct event_base *base,
 
 	return bufferevent_openssl_new_impl(
 		base, NULL, fd, ssl, state, options);
+}
+
+int
+bufferevent_openssl_get_allow_dirty_shutdown(struct bufferevent *bev)
+{
+	int allow_dirty_shutdown = -1;
+	struct bufferevent_openssl *bev_ssl;
+	BEV_LOCK(bev);
+	bev_ssl = upcast(bev);
+	if (bev_ssl)
+		allow_dirty_shutdown = bev_ssl->allow_dirty_shutdown;
+	BEV_UNLOCK(bev);
+	return allow_dirty_shutdown;
+}
+
+void
+bufferevent_openssl_set_allow_dirty_shutdown(struct bufferevent *bev,
+    int allow_dirty_shutdown)
+{
+	struct bufferevent_openssl *bev_ssl;
+	BEV_LOCK(bev);
+	bev_ssl = upcast(bev);
+	if (bev_ssl)
+		bev_ssl->allow_dirty_shutdown = !!allow_dirty_shutdown;
+	BEV_UNLOCK(bev);
 }
 
 unsigned long

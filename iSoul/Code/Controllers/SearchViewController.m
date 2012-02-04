@@ -175,7 +175,11 @@
 	
 	// stop observing changes in the old ticket
 	for (Ticket *t in currentTickets)
-		[t removeObserver:self forKeyPath:@"files"];
+		@try {
+			[t removeObserver:self forKeyPath:@"files"];
+		} @catch (NSException *e) {
+			DNSLog(@"Error '%@': %@", e.name, e.reason);
+		}
 	[queue cancelAllOperations];
 	
 	// clear the current file trees

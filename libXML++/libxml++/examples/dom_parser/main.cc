@@ -124,9 +124,38 @@ int main(int argc, char* argv[])
   // so we can use std::cout with UTF-8, via Glib::ustring, without exceptions.
   std::locale::global(std::locale(""));
 
+  bool validate = false;
+  bool set_throw_messages = false;
+  bool throw_messages = false;
+
+  int argi = 1;
+  while (argc > argi && *argv[argi] == '-') // option
+  {
+    switch (*(argv[argi]+1))
+    {
+      case 'v':
+        validate = true;
+        break;
+      case 't':
+       set_throw_messages = true;
+       throw_messages = true;
+       break;
+      case 'e':
+       set_throw_messages = true;
+       throw_messages = false;
+       break;
+     default:
+       std::cout << "Usage: " << argv[0] << " [-v] [-t] [-e] [filename]" << std::endl
+                 << "       -v  Validate" << std::endl
+                 << "       -t  Throw messages in an exception" << std::endl
+                 << "       -e  Write messages to stderr" << std::endl;
+       return 1;
+     }
+     argi++;
+  }
   std::string filepath;
-  if(argc > 1 )
-    filepath = argv[1]; //Allow the user to specify a different XML file to parse.
+  if(argc > argi)
+    filepath = argv[argi]; //Allow the user to specify a different XML file to parse.
   else
     filepath = "example.xml";
  
@@ -135,7 +164,10 @@ int main(int argc, char* argv[])
   {
   #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DomParser parser;
-    //parser.set_validate();
+    if (validate)
+      parser.set_validate();
+    if (set_throw_messages)
+      parser.set_throw_messages(throw_messages);
     parser.set_substitute_entities(); //We just want the text to be resolved/unescaped automatically.
     parser.parse_file(filepath);
     if(parser)

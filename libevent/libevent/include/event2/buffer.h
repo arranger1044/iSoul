@@ -353,6 +353,20 @@ int evbuffer_remove(struct evbuffer *buf, void *data, size_t datlen);
 ev_ssize_t evbuffer_copyout(struct evbuffer *buf, void *data_out, size_t datlen);
 
 /**
+  Read data from the middle of an evbuffer, and leave the buffer unchanged.
+
+  If more bytes are requested than are available in the evbuffer, we
+  only extract as many bytes as were available.
+
+  @param buf the evbuffer to be read from
+  @param pos the position to start reading from
+  @param data_out the destination buffer to store the result
+  @param datlen the maximum size of the destination buffer
+  @return the number of bytes read, or -1 if we can't drain the buffer.
+ */
+ev_ssize_t evbuffer_copyout_from(struct evbuffer *buf, const struct evbuffer_ptr *pos, void *data_out, size_t datlen);
+
+/**
   Read data from an evbuffer into another evbuffer, draining
   the bytes from the source buffer.  This function avoids copy
   operations to the extent possible.
@@ -422,6 +436,22 @@ char *evbuffer_readln(struct evbuffer *buffer, size_t *n_read_out,
   @see evbuffer_remove_buffer()
  */
 int evbuffer_add_buffer(struct evbuffer *outbuf, struct evbuffer *inbuf);
+
+/**
+  Copy data from one evbuffer into another evbuffer.
+  
+  This is a non-destructive add.  The data from one buffer is copied
+  into the other buffer.  However, no unnecessary memory copies occur.
+  
+  Note that buffers already containing buffer references can't be added
+  to other buffers.
+  
+  @param outbuf the output buffer
+  @param inbuf the input buffer
+  @return 0 if successful, or -1 if an error occurred
+ */
+int evbuffer_add_buffer_reference(struct evbuffer *outbuf,
+    struct evbuffer *inbuf);
 
 /**
    A cleanup function for a piece of memory added to an evbuffer by
@@ -749,8 +779,10 @@ struct evbuffer_ptr evbuffer_search_eol(struct evbuffer *buffer,
     the buffer does not have as much data as you asked to see).
 
     @param buffer the evbuffer to peek into,
-    @param len the number of bytes to try to peek.  If negative, we
-       will try to fill as much of vec_out as we can.
+    @param len the number of bytes to try to peek.  If len is negative, we
+       will try to fill as much of vec_out as we can.  If len is negative
+       and vec_out is not provided, we return the number of evbuffer_iovecs
+       that would be needed to get all the data in the buffer.
     @param start_at an evbuffer_ptr indicating the point at which we
        should start looking for data.  NULL means, "At the start of the
        buffer."
