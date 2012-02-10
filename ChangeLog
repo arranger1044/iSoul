@@ -1,3 +1,9 @@
+2012-02-10  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Make the schema validation example program work with no arguments.
+
+	* examples/schemavalidation/main.cc: Correct the test for number of arguments.
+
 2012-01-30  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
 	Parser: Throw more detailed error messages.

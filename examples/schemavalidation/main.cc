@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
   std::string schemafilepath("example.xsd"),
               docfilepath("example.xml");
 
-  if(argc!=0 && argc!=3)
+  if(argc!=1 && argc!=3)
     std::cout << "usage : " << argv[0] << " [document schema]" << std::endl;
   else
   {
