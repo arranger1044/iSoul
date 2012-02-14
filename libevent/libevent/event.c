@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2000-2007 Niels Provos <provos@citi.umich.edu>
- * Copyright (c) 2007-2011 Niels Provos and Nick Mathewson
+ * Copyright (c) 2007-2012 Niels Provos and Nick Mathewson
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -68,6 +68,7 @@
 #include "evmap-internal.h"
 #include "iocp-internal.h"
 #include "changelist-internal.h"
+#define HT_NO_CACHE_HASH_VALUES
 #include "ht-internal.h"
 #include "util-internal.h"
 

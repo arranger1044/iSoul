@@ -1,3 +1,9 @@
+# sample/Makefile.am for libevent
+# Copyright 2000-2007 Niels Provos
+# Copyright 2007-2012 Niels Provos and Nick Mathewson
+#
+# See LICENSE for copying information.
+
 AUTOMAKE_OPTIONS = foreign no-dependencies
 
 LDADD = $(LIBEVENT_GC_SECTIONS) ../libevent.la
@@ -16,7 +22,7 @@ if OPENSSL
 AM_CPPFLAGS += $(OPENSSL_INCS)
 noinst_PROGRAMS += le-proxy
 le_proxy_SOURCES = le-proxy.c
-le_proxy_LDADD = $(LDADD) ../libevent_openssl.la -lssl -lcrypto
+le_proxy_LDADD = $(LDADD) ../libevent_openssl.la -lssl -lcrypto ${OPENSSL_LIBADD}
 endif
 
 verify:

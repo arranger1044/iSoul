@@ -1,3 +1,9 @@
+# test/Makefile.am for libevent
+# Copyright 2000-2007 Niels Provos
+# Copyright 2007-2012 Niels Provos and Nick Mathewson
+#
+# See LICENSE for copying information.
+
 AUTOMAKE_OPTIONS = foreign
 
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/compat -I$(top_srcdir)/include -I../include -DTINYTEST_LOCAL
@@ -59,7 +65,7 @@ regress_LDFLAGS = $(PTHREAD_CFLAGS)
 
 if OPENSSL
 regress_SOURCES += regress_ssl.c
-regress_LDADD += ../libevent_openssl.la -lssl -lcrypto
+regress_LDADD += ../libevent_openssl.la -lssl -lcrypto ${OPENSSL_LIBADD}
 endif
 
 bench_SOURCES = bench.c

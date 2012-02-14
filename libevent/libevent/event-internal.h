@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2000-2007 Niels Provos <provos@citi.umich.edu>
- * Copyright (c) 2007-2011 Niels Provos and Nick Mathewson
+ * Copyright (c) 2007-2012 Niels Provos and Nick Mathewson
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -112,6 +112,7 @@ struct eventop {
 /* #define HT_CACHE_HASH_VALS */
 
 #ifdef EVMAP_USE_HT
+#define HT_NO_CACHE_HASH_VALUES
 #include "ht-internal.h"
 struct event_map_entry;
 HT_HEAD(event_io_map, event_map_entry);
