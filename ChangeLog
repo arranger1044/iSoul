@@ -1,3 +1,12 @@
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Add @newin{2,36} to some new functions where it's missing.
+
+	* libxml++/exceptions/exception.h: Add @newin{2,36} to format_xml_error() and
+	format_xml_parser_error().
+	* libxml++/parsers/parser.h: Add @newin{2,36} to [set|get]_throw_messages().
+	Bug #304020.
+
 2012-02-10  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
 	Make the schema validation example program work with no arguments.

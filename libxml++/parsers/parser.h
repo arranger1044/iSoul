@@ -68,11 +68,17 @@ public:
    * The default, if set_throw_messages() is not called, is to collect and throw
    * only messages from validation. Other messages are written to stderr.
    * This is for backward compatibility, and may change in the future.
+   *
+   * @newin{2,36}
+   *
    * @param val Whether messages will be collected and thrown in an exception.
    */
   void set_throw_messages(bool val = true);
 
   /** See set_throw_messages().
+   *
+   * @newin{2,36}
+   *
    * @returns Whether messages will be collected and thrown in an exception.
    *          The default with only validation messages thrown is returned as false.
    */
