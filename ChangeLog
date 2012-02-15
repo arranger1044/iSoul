@@ -1,5 +1,13 @@
 2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
+	Node: Correct mis-spelt LIBXMLCPP_EXCEPTIONS_ENABLED.
+
+	* libxml++/nodes/node.h: Add some "@throws exception".
+	* libxml++/nodes/node.cc: Change LIBXMLCPP_EXCEPTIONS_ENABLE to
+	LIBXMLCPP_EXCEPTIONS_ENABLED in find_impl() and set_namespace().
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
 	Improved handling of entity references and processing instructions.
 
 	* libxml++/nodes/entitydeclaration.[h|cc]: New files.

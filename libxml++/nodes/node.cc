@@ -284,7 +284,7 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
     xmlXPathFreeObject(result);
     xmlXPathFreeContext(ctxt);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Only nodeset result types are supported.");
     #else
     return NodeSet();
@@ -400,9 +400,9 @@ void Node::set_namespace(const Glib::ustring& ns_prefix)
   }
   else
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("The namespace (" + ns_prefix + ") has not been declared.");
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLE
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 }
 
