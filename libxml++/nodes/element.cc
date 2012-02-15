@@ -40,25 +40,26 @@ const Element::AttributeList Element::get_attributes() const
 Attribute* Element::get_attribute(const Glib::ustring& name,
                                   const Glib::ustring& ns_prefix) const
 {
-  if(ns_prefix.empty())
+  // An empty ns_prefix means "use no namespace".
+  // The default namespace never applies to an attribute.
+  Glib::ustring ns_uri;
+  if (!ns_prefix.empty())
   {
-    xmlAttr* attr = xmlHasProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str());
-    if( attr )
-    {
-      Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
-      return reinterpret_cast<Attribute*>(attr->_private);
-    }
+    ns_uri = get_namespace_uri_for_prefix(ns_prefix);
+    if (ns_uri.empty())
+      return 0; // No such prefix.
   }
-  else
+
+  // The return value of xmlHasNsProp() may be either an xmlAttr*, pointing to an
+  // explicitly set attribute (XML_ATTRIBUTE_NODE), or an xmlAttribute*,
+  // cast to an xmlAttr*, pointing to the declaration of an attribute with a
+  // default value (XML_ATTRIBUTE_DECL).
+  xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
+                               ns_uri.empty() ? 0 : (const xmlChar*)ns_uri.c_str());
+  if (attr)
   {
-    Glib::ustring ns_uri = get_namespace_uri_for_prefix(ns_prefix);  
-    xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
-                                 (const xmlChar*)ns_uri.c_str());
-    if( attr )
-    {
-      Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
-      return reinterpret_cast<Attribute*>(attr->_private);
-    }
+    Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
+    return reinterpret_cast<Attribute*>(attr->_private);
   }
 
   return 0;
@@ -215,7 +216,7 @@ void Element::set_namespace_declaration(const Glib::ustring& ns_uri, const Glib:
   //Create a new namespace declaration for this element:
   xmlNewNs(cobj(), (const xmlChar*)(ns_uri.empty() ? 0 : ns_uri.c_str()),
                    (const xmlChar*)(ns_prefix.empty() ? 0 : ns_prefix.c_str()) );
-  //We ignore the returned xmlNS*. Hopefully this is owned by the node. murrayc.
+  //We ignore the returned xmlNs*. Hopefully this is owned by the node. murrayc.
 }
 
 Glib::ustring Element::get_namespace_uri_for_prefix(const Glib::ustring& ns_prefix) const

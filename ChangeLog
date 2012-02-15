@@ -1,5 +1,26 @@
 2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
+	Handle attributes with default values correctly.
+
+	* libxml++/attributedeclaration.[h|cc]:
+	* libxml++/attributenode.[h|cc]: New files.
+	* Makefile.am:
+	* libxml++/Makefile.am: Add the new files.
+	* libxml++/libxml++.h: Add the new .h files.
+	* docs/manual/libxml++_without_code.xml: Add AttributeDeclaration and
+	AttributeNode in the list of node classes.
+	* libxml++/attribute.[h|cc]: Make get_value() useful also for default values
+	(XML_ATTRIBUTE_DECL). Fix set_value() for attributes in a namespace.
+	* libxml++/nodes/element.[h|cc]: get_attribute(): Add description. Don't use
+	xmlHasProp(), it ignores namespace.
+	* libxml++/nodes/node.cc: get_namespace_prefix(), get_namespace_uri(),
+	set_namespace(), create_wrapper(): Add code for XML_ATTRIBUTE_DECL.
+	* examples/dom_parser/example.dtd: Add attribute 'title' with default value.
+	* examples/dom_parser/example.xml: Add attribute 'title' with explicit value.
+	Bug #669635.
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
 	Node: Correct mis-spelt LIBXMLCPP_EXCEPTIONS_ENABLED.
 
 	* libxml++/nodes/node.h: Add some "@throws exception".

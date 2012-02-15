@@ -59,6 +59,8 @@
 #include <libxml++/nodes/entityreference.h>
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/attribute.h>
+#include <libxml++/attributedeclaration.h>
+#include <libxml++/attributenode.h>
 #include <libxml++/document.h>
 #include <libxml++/validators/validator.h>
 #include <libxml++/validators/dtdvalidator.h>

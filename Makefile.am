@@ -36,6 +36,8 @@ DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
 h_root_sources_public = libxml++/libxml++.h \
 	libxml++/attribute.h \
+	libxml++/attributedeclaration.h \
+	libxml++/attributenode.h \
 	libxml++/document.h \
 	libxml++/dtd.h \
 	libxml++/keepblanks.h \
@@ -73,6 +75,8 @@ h_sources_public = $(h_root_sources_public) \
 	$(h_validators_sources_public)
 
 cc_sources = libxml++/attribute.cc \
+	libxml++/attributedeclaration.cc \
+	libxml++/attributenode.cc \
 	libxml++/document.cc \
 	libxml++/dtd.cc \
 	libxml++/keepblanks.cc \

@@ -13,6 +13,8 @@
 #include <libxml++/nodes/cdatanode.h>
 #include <libxml++/nodes/processinginstructionnode.h>
 #include <libxml++/exceptions/internal_error.h>
+#include <libxml++/attributedeclaration.h>
+#include <libxml++/attributenode.h>
 #include <libxml++/document.h>
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
@@ -362,6 +364,12 @@ Glib::ustring Node::get_namespace_prefix() const
 
     return Glib::ustring();
   }
+  else if (impl_->type == XML_ATTRIBUTE_DECL)
+  {
+    //impl_ is actually of type xmlAttribute, instead of just xmlNode.
+    const xmlAttribute* const attr = reinterpret_cast<const xmlAttribute*>(impl_);
+    return attr->prefix ? (const char*)attr->prefix : "";
+  }
 
   if(impl_ && impl_->ns && impl_->ns->prefix)
     return (char*)impl_->ns->prefix;
@@ -371,11 +379,13 @@ Glib::ustring Node::get_namespace_prefix() const
 
 Glib::ustring Node::get_namespace_uri() const
 {
-  if(impl_->type == XML_DOCUMENT_NODE || impl_->type == XML_ENTITY_DECL)
+  if(impl_->type == XML_DOCUMENT_NODE ||
+     impl_->type == XML_ENTITY_DECL ||
+     impl_->type == XML_ATTRIBUTE_DECL)
   {
-    //impl_ is actually of type xmlDoc or xmlEntity, instead of just xmlNode.
-    //libxml does not always use GObject-style inheritance, so xmlDoc and
-    //xmlEntity do not have all the same struct fields as xmlNode.
+    //impl_ is actually of type xmlDoc, xmlEntity or xmlAttribute, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so those structs
+    //do not have all the same struct fields as xmlNode.
     //Therefore, a call to impl_->ns would be invalid.
     //This can be an issue when calling this method on a Node returned by Node::find().
     //See the TODO comment on Document, suggesting that Document should derived from Node.
@@ -391,6 +401,15 @@ Glib::ustring Node::get_namespace_uri() const
 
 void Node::set_namespace(const Glib::ustring& ns_prefix)
 {
+  if (impl_->type == XML_ATTRIBUTE_DECL)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    throw exception("Can't set the namespace of an attribute declaration");
+    #else
+    return;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
+
   //Look for the existing namespace to use:
   xmlNs* ns = xmlSearchNs( cobj()->doc, cobj(), (xmlChar*)(ns_prefix.empty() ? 0 : ns_prefix.c_str()) );
   if(ns)
@@ -423,7 +442,12 @@ void Node::create_wrapper(xmlNode* node)
     }
     case XML_ATTRIBUTE_NODE:
     {
-      node->_private = new xmlpp::Attribute(node);
+      node->_private = new xmlpp::AttributeNode(node);
+      break;
+    }
+    case XML_ATTRIBUTE_DECL:
+    {
+      node->_private = new xmlpp::AttributeDeclaration(node);
       break;
     }
     case XML_TEXT_NODE:

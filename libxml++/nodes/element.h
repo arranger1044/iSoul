@@ -34,21 +34,26 @@ public:
    */
   void set_namespace_declaration(const Glib::ustring& ns_uri, const Glib::ustring& ns_prefix = Glib::ustring());
 
-  /** Obtain the list of attributes for this element.
-   * @returns The list of attributes.
+  /** Obtain the list of explicitly set attributes for this element.
+   * @returns The list of explicitly set attributes.
    */
   AttributeList get_attributes();
 
-  /** Obtain the list of attributes for this element.
-   * @returns The list of attributes.
+  /** Obtain the list of explicitly set attributes for this element.
+   * @returns The list of explicitly set attributes.
    */
   const AttributeList get_attributes() const;
 
   //TODO: There should be a const and non-const version.
   //See the patch at https://bugzilla.gnome.org/show_bug.cgi?id=632524
-  // FIXME: the following only returns explicitely provided
-  // attributes, not default ones declared in the dtd.
-  // TODO: Is this still true? murrayc
+  /** Get the attribute with this name, and optionally with this namespace.
+   * @param name The name of the attribute that will be retrieved.
+   * @param ns_prefix Namespace prefix.
+   * @return The attribute, or 0 if no suitable Attribute was found.
+   *         Is either an AttributeNode*, pointing to an explicitly set
+   *         attribute, or an AttributeDeclaration*, pointing to the declaration
+   *         of an attribute with a default value.
+   */
   Attribute* get_attribute(const Glib::ustring& name,
                            const Glib::ustring& ns_prefix = Glib::ustring()) const;
 
@@ -70,6 +75,7 @@ public:
    * @param value The new value for the attribute
    * @param ns_prefix Namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @return The attribute that was changed, or 0 is no suitable Attribute was found.
+   * @throws exception
    */
   Attribute* set_attribute(const Glib::ustring& name, const Glib::ustring& value,
                            const Glib::ustring& ns_prefix = Glib::ustring());

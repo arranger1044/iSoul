@@ -86,7 +86,12 @@ url="http://libxmlplusplus.sourceforge.net">libxmlplusplus.sourceforge.net</ulin
       <itemizedlist>
       <listitem><para>xmlpp::Node:
         <itemizedlist>
-          <listitem><para>xmlpp::Attribute</para></listitem>
+          <listitem><para>xmlpp::Attribute
+          <itemizedlist>
+            <listitem><para>xmlpp::AttributeDeclaration</para></listitem>
+            <listitem><para>xmlpp::AttributeNode</para></listitem>
+          </itemizedlist>
+          </para></listitem>
           <listitem><para>xmlpp::ContentNode
           <itemizedlist>
             <listitem><para>xmlpp::CdataNode</para></listitem>
