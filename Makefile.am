@@ -53,6 +53,7 @@ h_nodes_sources_public = libxml++/nodes/cdatanode.h \
 	libxml++/nodes/commentnode.h \
 	libxml++/nodes/contentnode.h \
 	libxml++/nodes/element.h \
+	libxml++/nodes/entitydeclaration.h \
 	libxml++/nodes/entityreference.h \
 	libxml++/nodes/node.h \
 	libxml++/nodes/processinginstructionnode.h \
@@ -88,6 +89,7 @@ cc_sources = libxml++/attribute.cc \
 	libxml++/nodes/cdatanode.cc \
 	libxml++/nodes/commentnode.cc \
 	libxml++/nodes/contentnode.cc \
+	libxml++/nodes/entitydeclaration.cc \
 	libxml++/nodes/entityreference.cc \
 	libxml++/nodes/element.cc \
 	libxml++/nodes/node.cc \

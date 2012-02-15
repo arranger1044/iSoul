@@ -6,6 +6,7 @@
 
 #include <libxml++/nodes/element.h>
 #include <libxml++/nodes/node.h>
+#include <libxml++/nodes/entitydeclaration.h>
 #include <libxml++/nodes/entityreference.h>
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/nodes/commentnode.h>
@@ -350,13 +351,14 @@ NodeSet Node::find(const Glib::ustring& xpath,
 
 Glib::ustring Node::get_namespace_prefix() const
 {
-  if(impl_->type == XML_DOCUMENT_NODE)
+  if(impl_->type == XML_DOCUMENT_NODE || impl_->type == XML_ENTITY_DECL)
   {
-    //impl_ is actually of type xmlDoc, instead of just xmlNode.
-    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //impl_ is actually of type xmlDoc or xmlEntity, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so xmlDoc and
+    //xmlEntity do not have all the same struct fields as xmlNode.
     //Therefore, a call to impl_->ns would be invalid.
     //This can be an issue when calling this method on a Node returned by Node::find().
-    //See the TODO comment on Document, suggesting that Document should derived from Node.
+    //See the TODO comment on Document, suggesting that Document should derive from Node.
 
     return Glib::ustring();
   }
@@ -369,10 +371,11 @@ Glib::ustring Node::get_namespace_prefix() const
 
 Glib::ustring Node::get_namespace_uri() const
 {
-  if(impl_->type == XML_DOCUMENT_NODE)
+  if(impl_->type == XML_DOCUMENT_NODE || impl_->type == XML_ENTITY_DECL)
   {
-    //impl_ is actually of type xmlDoc, instead of just xmlNode.
-    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //impl_ is actually of type xmlDoc or xmlEntity, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so xmlDoc and
+    //xmlEntity do not have all the same struct fields as xmlNode.
     //Therefore, a call to impl_->ns would be invalid.
     //This can be an issue when calling this method on a Node returned by Node::find().
     //See the TODO comment on Document, suggesting that Document should derived from Node.
@@ -454,6 +457,11 @@ void Node::create_wrapper(xmlNode* node)
     //  //node->_private = new xmlpp::ProcessingInstructionNode(node);
     //  break;
     //}
+    case XML_ENTITY_DECL:
+    {
+      node->_private = new xmlpp::EntityDeclaration(node);
+      break;
+    }
     case XML_ENTITY_REF_NODE:
     {
       node->_private = new xmlpp::EntityReference(node);
@@ -468,7 +476,8 @@ void Node::create_wrapper(xmlNode* node)
     {
       // good default for release versions
       node->_private = new xmlpp::Node(node);
-      std::cerr << G_STRFUNC << "Warning: new node of unknown type created: " << node->type << std::endl;
+      std::cerr << G_STRFUNC << " Warning: new node of unknown type created: "
+                << node->type << std::endl;
       break;
     }
   }
@@ -479,9 +488,17 @@ void Node::free_wrappers(xmlNode* node)
   if(!node)
     return;
     
-  //Walk the children list
-  for(xmlNode* child=node->children; child; child=child->next)
-    free_wrappers(child);
+  //If an entity declaration contains an entity reference, there can be cyclic
+  //references between entity declarations and entity references. (It's not
+  //a tree.) We must avoid an infinite recursion.
+  //Compare xmlFreeNode(), which frees the children of all node types except
+  //XML_ENTITY_REF_NODE.
+  if (node->type != XML_ENTITY_REF_NODE)
+  {
+    //Walk the children list.
+    for (xmlNode* child = node->children; child; child = child->next)
+      free_wrappers(child);
+  }
 
   //Delete the local one
   switch(node->type)

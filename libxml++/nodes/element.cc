@@ -5,7 +5,6 @@
  */
 
 #include <libxml++/nodes/element.h>
-#include <libxml++/nodes/textnode.h>
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/document.h>
 
@@ -247,13 +246,40 @@ CommentNode* Element::add_child_comment(const Glib::ustring& content)
 }
 
 
-
 CdataNode* Element::add_child_cdata(const Glib::ustring& content)
 {
   xmlNode* node = xmlNewCDataBlock(cobj()->doc, (const xmlChar*)content.c_str(), content.bytes());
   node = xmlAddChild(cobj(), node);
   Node::create_wrapper(node);
   return static_cast<CdataNode*>(node->_private);
+}
+
+EntityReference* Element::add_child_entity_reference(const Glib::ustring& name)
+{
+  const Glib::ustring extended_name = name + "  "; // This is at least two chars long.
+  int ichar = 0;
+  if (extended_name[ichar] == '&')
+    ++ichar;
+
+  // Is it an entity reference or a character reference?
+  // libxml uses xmlNode::type == XML_ENTITY_REF_NODE for both.
+  xmlNode* node = 0;
+  if (extended_name[ichar] == '#')
+    node = xmlNewCharRef(cobj()->doc, (const xmlChar*)name.c_str());
+  else
+    node = xmlNewReference(cobj()->doc, (const xmlChar*)name.c_str());
+  node = xmlAddChild(cobj(), node);
+  Node::create_wrapper(node);
+  return node ? static_cast<EntityReference*>(node->_private) : 0;
+}
+
+ProcessingInstructionNode* Element::add_child_processing_instruction(
+  const Glib::ustring& name, const Glib::ustring& content)
+{
+  xmlNode* node = xmlNewDocPI(cobj()->doc, (const xmlChar*)name.c_str(), (const xmlChar*)content.c_str());
+  node = xmlAddChild(cobj(), node);
+  Node::create_wrapper(node);
+  return node ? static_cast<ProcessingInstructionNode*>(node->_private) : 0;
 }
 
 

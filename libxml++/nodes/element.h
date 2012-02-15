@@ -11,6 +11,9 @@
 #include <libxml++/attribute.h>
 #include <libxml++/nodes/commentnode.h>
 #include <libxml++/nodes/cdatanode.h>
+#include <libxml++/nodes/textnode.h>
+#include <libxml++/nodes/processinginstructionnode.h>
+#include <libxml++/nodes/entityreference.h>
 
 namespace xmlpp
 {
@@ -45,7 +48,7 @@ public:
   //See the patch at https://bugzilla.gnome.org/show_bug.cgi?id=632524
   // FIXME: the following only returns explicitely provided
   // attributes, not default ones declared in the dtd.
-  // TOOD: Is this still true? murrayc
+  // TODO: Is this still true? murrayc
   Attribute* get_attribute(const Glib::ustring& name,
                            const Glib::ustring& ns_prefix = Glib::ustring()) const;
 
@@ -140,6 +143,32 @@ public:
    * @returns The new CDATA node.
    */
   CdataNode* add_child_cdata(const Glib::ustring& content);
+
+  /** Append a new entity reference node.
+   * The reference can be either an entity reference ("name" or "&name;") or
+   * a character reference ("#dec", "#xhex", "&#dec;", or "&#xhex;").
+   *
+   * '&' and ';' are optional. If they exist, they are stripped from the stored
+   * copy of the name. Node::get_name() returns the name without '&' and ';'.
+   * If the Document is written to an XML file, '&' and ';' are written.
+   *
+   * @newin{2,36}
+   *
+   * @param name The name of the entity.
+   * @returns The new entity reference node.
+   */
+  EntityReference* add_child_entity_reference(const Glib::ustring& name);
+
+  /** Append a new processing instruction node.
+   *
+   * @newin{2,36}
+   *
+   * @param name The name of the application to which the instruction is directed.
+   * @param content The content of the instruction. This should be unescaped - see ContentNode::set_content().
+   * @returns The new processing instruction node.
+   */
+  ProcessingInstructionNode* add_child_processing_instruction(
+    const Glib::ustring& name, const Glib::ustring& content);
 
 protected:
   Glib::ustring get_namespace_uri_for_prefix(const Glib::ustring& ns_prefix) const;

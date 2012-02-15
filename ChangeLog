@@ -1,5 +1,35 @@
 2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
+	Improved handling of entity references and processing instructions.
+
+	* libxml++/nodes/entitydeclaration.[h|cc]: New files.
+	* Makefile.am:
+	* libxml++/Makefile.am: Add the new files.
+	* libxml++/libxml++.h: Add the new .h file.
+	* docs/manual/libxml++_without_code.xml: Add EntityDeclaration in the list
+	of node classes.
+	* libxml++/document.[h|cc]: Add add_processing_instruction().
+	* libxml++/nodes/element.[h|cc]: Add add_child_entity_reference() and
+	add_child_processing_instruction().
+	* libxml++/nodes/entityreference.h: Improve the description of
+	get_resolved_text() and get_original_text().
+	* libxml++/nodes/node.cc: get_namespace_prefix() and get_namespace_uri():
+	XML_ENTITY_DECL has no namespace. Don't try to find it.
+	create_wrapper(): Create an EntityDeclaration when type == XML_ENTITY_DECL.
+	free_wrappers(): Don't walk the child list when type == XML_ENTITY_REF_NODE.
+	* examples/dom_build/main.cc: Add entity declarations and references, and
+	processing instructions to the built xml file.
+	* examples/dom_parse_entities/example.dtd: Make it compatible with example.xml.
+	* examples/dom_parse_entities/example.xml: Add an entity definition that
+	contains entity references.
+	* examples/dom_parse_entities/main.cc: Print the parsed file both with and
+	without entity substitution.
+	* examples/dom_parser/example.dtd: Make it compatible with example.xml.
+	* examples/dom_parser/main.cc: Add command flag -E (Don't substitute entities).
+	Bug #669481
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
 	Add some files to .gitignore.
 
 	* .gitignore: Add docs files that are copied from mm-common.

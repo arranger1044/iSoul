@@ -175,6 +175,23 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
   return static_cast<CommentNode*>(node->_private);
 }
 
+ProcessingInstructionNode* Document::add_processing_instruction(
+  const Glib::ustring& name, const Glib::ustring& content)
+{
+  xmlNode* node = xmlNewDocPI(impl_, (const xmlChar*)name.c_str(), (const xmlChar*)content.c_str());
+  if(!node)
+  {
+    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    throw internal_error("Cannot create processing instruction node");
+    #else
+    return 0;
+    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+  }
+  node = xmlAddChild((xmlNode*)impl_, node);
+  Node::create_wrapper(node);
+  return node ? static_cast<ProcessingInstructionNode*>(node->_private) : 0;
+}
+
 void Document::write_to_file(const Glib::ustring& filename, const Glib::ustring& encoding)
 {
   do_write_to_file(filename, encoding, false);

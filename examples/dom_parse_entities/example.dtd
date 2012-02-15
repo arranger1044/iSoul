@@ -5,7 +5,7 @@ DTD for libxml++ example.
 
 <!ELEMENT example (examplechild)+ >
 
-<!ELEMENT examplechild (child_of_child)+ >
+<!ELEMENT examplechild (#PCDATA | child_of_child)* >
 <!ATTLIST examplechild
   id	CDATA	#REQUIRED
 >

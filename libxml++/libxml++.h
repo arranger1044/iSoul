@@ -55,6 +55,7 @@
 #include <libxml++/nodes/node.h>
 #include <libxml++/nodes/commentnode.h>
 #include <libxml++/nodes/element.h>
+#include <libxml++/nodes/entitydeclaration.h>
 #include <libxml++/nodes/entityreference.h>
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/attribute.h>

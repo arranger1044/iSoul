@@ -3,12 +3,13 @@
 DTD for libxml++ example.
 -->
 
-<!ELEMENT example (examplechild)+ >
+<!ELEMENT example (examplechild | examplechildtext)+ >
 
 <!ELEMENT examplechild (child_of_child)+ >
 <!ATTLIST examplechild
-  id	CDATA	#REQUIRED
+  id    CDATA	#REQUIRED
 >
 
 <!ELEMENT child_of_child EMPTY >
 
+<!ELEMENT examplechildtext (#PCDATA) >
