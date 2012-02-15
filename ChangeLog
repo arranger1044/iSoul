@@ -1,5 +1,13 @@
 2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
+	Add some files to .gitignore.
+
+	* .gitignore: Add docs files that are copied from mm-common.
+	Add /MSVC_Net2010/libxml++/libxml++.rc and
+	/examples/dom_read_write/example_output.xml.
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
 	Add @newin{2,36} to some new functions where it's missing.
 
 	* libxml++/exceptions/exception.h: Add @newin{2,36} to format_xml_error() and
