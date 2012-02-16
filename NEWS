@@ -1,3 +1,14 @@
+2.35.1 (unstable):
+
+* Handle attributes with default values correctly.
+  (Kjell Ahlstedt) Bug #669635.
+* Improved handling of entity references and processing instructions.
+  (Kjell Ahlstedt) Bug #669481
+* Parser: Throw more detailed error messages.
+  (Kjell Ahlstedt) Bug #304020 (Virgile Devaux)
+* Document: Make the Document(xmlDoc*) constructor protected.
+  (Murray Cumming) Bug #668980 (A. Pignotti).
+
 2.34.2 (stable):
 
 * Element: Add add_child_cdata(), like the existing add_child_text().
