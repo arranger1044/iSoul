@@ -1290,6 +1290,9 @@
 		NSLog(@"failed to select item %@", item);
 		return;
 	}
+    NSUInteger urow = (NSUInteger)row;
+    [sidebar scrollRowToVisible:row];
+    [sidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:urow] byExtendingSelection:NO];
 	[sidebar editColumn:0 row:row withEvent:nil select:YES];	
 }
 
