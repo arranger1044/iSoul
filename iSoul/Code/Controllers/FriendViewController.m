@@ -114,10 +114,14 @@
 		// get the user's image if it has been set
 		User *user = [arrayController.arrangedObjects objectAtIndex: (NSUInteger) rowIndex];
 		NSImage *icon;
-		if (user.icon) {
+		if (user.icon) 
+        {
 			icon = [[NSImage alloc] initWithData:user.icon];
+            //icon = user.icon;
 			[icon autorelease];
-		} else {
+		} 
+        else 
+        {
 			icon = personIcon;
 		}
 		

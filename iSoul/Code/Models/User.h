@@ -30,7 +30,7 @@
 @property (nonatomic, retain) NSNumber * numberOfUploads;
 @property (nonatomic, retain) NSNumber * isBanned;
 @property (nonatomic, retain) NSNumber * averageSpeed;
-@property (nonatomic, retain) NSImage * picture;
+@property (nonatomic, retain) NSData * picture;
 @property (nonatomic, retain) NSNumber * isFriend;
 @property (nonatomic, retain) NSNumber * status;
 @property (nonatomic, retain) NSSet* transfers;

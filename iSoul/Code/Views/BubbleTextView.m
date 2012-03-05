@@ -177,10 +177,14 @@
 	
 	// now draw the icon, will not be flipped
 	NSImage *icon;
-	if ([user icon]) {
+	if ([user icon]) 
+    {
 		icon = [[NSImage alloc] initWithData:[user icon]];
+        //icon = [user icon];
 		[icon autorelease];
-	} else {
+	} 
+    else 
+    {
 		icon = [NSImage imageNamed:@"PrefAccount"];
 	}	
 	NSPoint iconOrigin = NSMakePoint(balloonRect.origin.x - kIconBuffer - kIconSize, 
