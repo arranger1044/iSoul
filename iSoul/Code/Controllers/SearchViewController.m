@@ -171,6 +171,8 @@
 
 // filters the search results for this ticket only
 - (void)setCurrentTickets:(NSSet *)newTickets {
+    DNSLog(@"Setting current tickets");
+    
 	if ([newTickets isEqual:currentTickets]) return;
 	
 	// stop observing changes in the old ticket
@@ -178,7 +180,7 @@
 		@try {
 			[t removeObserver:self forKeyPath:@"files"];
 		} @catch (NSException *e) {
-			DNSLog(@"Error '%@': %@", e.name, e.reason);
+			DNSLog(@"Error '%@': %@ ticket %@", e.name, e.reason, t.number);
 		}
 	[queue cancelAllOperations];
 	

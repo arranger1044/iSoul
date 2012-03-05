@@ -76,6 +76,8 @@
 				[self balloonTileArray:[NSImage imageNamed:@"Balloon_16047647"]],nil];
 	balloonIndex = 0;	
 	userColours = [[NSMutableDictionary alloc] init];
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
 }
 
 - (void)dealloc
@@ -85,6 +87,7 @@
 	[personIcon release];
 	[balloons release];
 	[usernameAttributes release];
+    [formatter release];
 	[super dealloc];
 }
 
@@ -271,14 +274,35 @@
 	
 	[flipTransform invert];
 	[flipTransform concat];
-	
+    
 	[aft invert];
 	[aft concat];
+    
+    
+   
+    // now draw the timestamp
+    
+    NSRect timestampRect;
+    if (outgoing)
+    {
+        timestampRect = NSMakeRect(self.frame.origin.x + 10, balloonRect.origin.y + balloonRect.size.height / 2, 50, 30);
+    }
+    else
+    {
+        timestampRect = NSMakeRect(self.frame.size.width - 55, balloonRect.origin.y + balloonRect.size.height / 2, 50, 30);
+    }
+    
+    NSString * dateString;
+    
+    dateString = [formatter stringFromDate:[NSDate date]];
+    
+    [dateString drawInRect:timestampRect withAttributes:usernameAttributes];
 	
 	// now draw the username
+    NSRect ourFrame = [self frame];
 	NSRect usernameRect;
 	NSSize usernameSize = [[user name] sizeWithAttributes:usernameAttributes];
-	NSRect ourFrame = [self frame];
+	
 	if (outgoing) {				
 		CGFloat endPoint = ourFrame.origin.x + ourFrame.size.width - kIconBuffer;
 		CGFloat startPoint = MAX(ourFrame.origin.x + kIconBuffer, endPoint - usernameSize.width);
@@ -289,6 +313,7 @@
 								  kUsernameHeight);
 	}
 	[[user name] drawInRect:usernameRect withAttributes:usernameAttributes];
+    
 }
 
 - (void)drawViewBackgroundInRect:(NSRect)rect 

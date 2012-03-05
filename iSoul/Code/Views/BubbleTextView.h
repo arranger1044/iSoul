@@ -18,6 +18,7 @@
 	NSArray *balloons;
 	NSMutableDictionary *userColours;
 	NSUInteger balloonIndex;
+    NSDateFormatter * formatter;
 }
 
 @property (retain) NSMutableParagraphStyle *statusParagraphStyle;

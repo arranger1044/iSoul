@@ -473,10 +473,13 @@
 	
 	// i know this is poor, but could not think of a better way
 	NSInteger row = [sidebar rowForActualItem:item];
-	if (row < 0) {
+	if (row < 0) 
+    {
 		// the outline view has not loaded the item yet
-		debug_NSLog(@"row not present, not sure why");
-	} else {
+		DNSLog(@"row not present, not sure why");
+	}
+    else 
+    {
 		[sidebar expandItem:[sidebar itemAtRow:row] expandChildren:NO];
 	}	
 }
@@ -854,6 +857,8 @@
 }
 
 - (IBAction)removeSearch:(id)sender {
+    
+    DNSLog(@"Removing search");
 	NSInteger row = sidebar.selectedRow;
 	id itemAtRow = [sidebar itemAtRow:row];
 	if (!itemAtRow) return;
@@ -955,6 +960,8 @@
 
 
 - (IBAction)removeSideItem:(id)sender {
+    
+    DNSLog(@"Removing side item");
 	NSInteger row = sidebar.selectedRow;
 	id itemAtRow = [sidebar itemAtRow:row];
     id prevItem = nil;
