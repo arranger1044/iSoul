@@ -76,6 +76,38 @@ Node* Node::get_previous_sibling()
   return static_cast<Node*>(cobj()->prev->_private);
 }
 
+static Node* _convert_node(xmlNode* node)
+{
+  Node* res = 0;
+  if(node)
+  {
+    Node::create_wrapper(node);
+    res = static_cast<Node*>(node->_private);
+  }
+  return res;
+}
+
+Node* Node::get_first_child(const Glib::ustring& name)
+{
+  xmlNode* child = impl_->children;
+  if(!child)
+    return 0;
+
+  do
+  {
+    if(name.empty() || name == (const char*)child->name)
+      return _convert_node(child);
+  }
+  while((child = child->next));
+   
+  return 0;
+}
+
+const Node* Node::get_first_child(const Glib::ustring& name) const
+{
+  return const_cast<Node*>(this)->get_first_child();
+}
+
 Node::NodeList Node::get_children(const Glib::ustring& name)
 {
    xmlNode* child = impl_->children;
@@ -86,10 +118,7 @@ Node::NodeList Node::get_children(const Glib::ustring& name)
    do
    {
       if(name.empty() || name == (const char*)child->name)
-      {
-        Node::create_wrapper(child);
-        children.push_back(reinterpret_cast<Node*>(child->_private));
-      }
+        children.push_back(_convert_node(child));
    }
    while((child = child->next));
    

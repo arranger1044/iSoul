@@ -96,6 +96,20 @@ public:
    */
   Node* get_previous_sibling();  
 
+  /** Get the first child of this node. You may optionally get the first child node which has a certain name.
+   * @returns The first child
+   *
+   * @newin{2,36}
+   */
+  const Node* get_first_child(const Glib::ustring& name = Glib::ustring()) const;
+
+  /** Get the first child of this node. You may optionally get the first child node which has a certain name.
+   * @returns The first child
+   *
+   * @newin{2,36}
+   */
+  Node* get_first_child(const Glib::ustring& name = Glib::ustring());
+
   /** Obtain the list of child nodes. You may optionally obtain a list of only the child nodes which have a certain name.
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.
    * @returns The list of child nodes.

@@ -1,3 +1,12 @@
+2012-03-19  Murray Cumming  <murrayc@murrayc.com>
+
+	Node: Add get_first_child().
+
+	* libxml++/nodes/node.[h|cc]: This is like get_children(),
+	but it returns only the first node, optionally returning
+	the first one with a certain name.
+	Based on a patch by Ilya Murav'jov in bug #648125 .
+
 2.35.1:
 
 2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
