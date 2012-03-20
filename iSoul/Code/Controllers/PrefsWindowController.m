@@ -726,5 +726,15 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 	[museek sharePrivelegesWithUser:username days:(uint32_t)daysToShare];
 }
 
+- (IBAction)addAutojoinForAllRooms:(id)sender
+{
+    NSButton * checkbox = (NSButton *)sender;
+    DNSLog(@"Setting autojoining last opened chat rooms");
+    if([checkbox state] == NSOnState)
+    {
+        [museek addAutojoinLastOpenedRooms];
+    }
+}
+
 @end
 

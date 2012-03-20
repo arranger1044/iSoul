@@ -87,6 +87,6 @@
 - (IBAction)museekdAddressChanged:(id)sender;
 - (IBAction)donateToSoulseek:(id)sender;
 - (IBAction)sharePriveleges:(id)sender;
-
+- (IBAction)addAutojoinForAllRooms:(id)sender;
 
 @end

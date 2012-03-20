@@ -63,6 +63,8 @@
 - (void)toggleOnlineStatus;
 - (void)getTransferState:(Transfer *)transfer;	// call this to get the q position
 - (void)banOrUnbanUser:(User *)user;
+- (void)addAutojoin:(Room *)room;
+- (void)addAutojoinLastOpenedRooms;
 - (void)addOrRemoveAutojoin:(Room *)room;
 - (void)reloadRoomList;
 

@@ -233,7 +233,6 @@
 						<string key="NSFrame">{{158, 18}, {323, 18}}</string>
 						<reference key="NSSuperview" ref="711030483"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="361891167">
 							<int key="NSCellFlags">67239424</int>
@@ -1971,41 +1970,21 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
-<<<<<<< HEAD
-					<object class="NSButton" id="890235168">
+					<object class="NSButton" id="4851557">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{42, 26}, {229, 18}}</string>
+						<string key="NSFrame">{{42, 18}, {229, 18}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:771</string>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="862054462">
+						<object class="NSButtonCell" key="NSCell" id="1051724226">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Autojoin last opened chat rooms</string>
 							<reference key="NSSupport" ref="1040429601"/>
 							<string key="NSCellIdentifier">_NS:771</string>
-							<reference key="NSControlView" ref="890235168"/>
-=======
-					<object class="NSButton" id="51062886">
-						<reference key="NSNextResponder" ref="336637019"/>
-						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{42, 18}, {191, 18}}</string>
-						<reference key="NSSuperview" ref="336637019"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="533667590"/>
-						<string key="NSReuseIdentifierKey">_NS:771</string>
-						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="503565044">
-							<int key="NSCellFlags">-2080244224</int>
-							<int key="NSCellFlags2">0</int>
-							<string key="NSContents">Autojoin last opened chats</string>
-							<reference key="NSSupport" ref="1040429601"/>
-							<string key="NSCellIdentifier">_NS:771</string>
-							<reference key="NSControlView" ref="51062886"/>
->>>>>>> refs/heads/alt
+							<reference key="NSControlView" ref="4851557"/>
 							<int key="NSButtonFlags">1211912703</int>
 							<int key="NSButtonFlags2">2</int>
 							<reference key="NSNormalImage" ref="394297521"/>
@@ -2030,7 +2009,7 @@
 										<string key="NSFrameSize">{473, 14}</string>
 										<reference key="NSSuperview" ref="943903423"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="186102615"/>
+										<reference key="NSNextKeyView" ref="547797175"/>
 										<object class="NSTextContainer" key="NSTextContainer" id="124383153">
 											<object class="NSLayoutManager" key="NSLayoutManager">
 												<object class="NSTextStorage" key="NSTextStorage">
@@ -2107,14 +2086,10 @@
 								<double key="NSPercent">0.94565218687057495</double>
 							</object>
 						</array>
-<<<<<<< HEAD
-						<string key="NSFrame">{{20, 228}, {490, 100}}</string>
-=======
-						<string key="NSFrame">{{20, 215}, {490, 100}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{20, 219}, {490, 100}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="547797175"/>
+						<reference key="NSNextKeyView" ref="943903423"/>
 						<int key="NSsFlags">133138</int>
 						<reference key="NSVScroller" ref="186102615"/>
 						<reference key="NSHScroller" ref="547797175"/>
@@ -2123,11 +2098,7 @@
 					<object class="NSTextField" id="597709079">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{41, 190}, {141, 17}}</string>
-=======
-						<string key="NSFrame">{{41, 177}, {141, 17}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{41, 181}, {141, 17}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="304093265"/>
@@ -2145,11 +2116,7 @@
 					<object class="NSTextField" id="135394740">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{51, 160}, {131, 17}}</string>
-=======
-						<string key="NSFrame">{{51, 147}, {131, 17}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{51, 151}, {131, 17}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="841207055"/>
@@ -2167,11 +2134,7 @@
 					<object class="NSTextField" id="259642667">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{53, 130}, {129, 17}}</string>
-=======
-						<string key="NSFrame">{{53, 117}, {129, 17}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{53, 121}, {129, 17}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1072488314"/>
@@ -2189,11 +2152,7 @@
 					<object class="NSButton" id="131501883">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{335, 120}, {104, 32}}</string>
-=======
-						<string key="NSFrame">{{335, 107}, {104, 32}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{335, 111}, {104, 32}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="313896934"/>
@@ -2218,11 +2177,7 @@
 					<object class="NSPopUpButton" id="304093265">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{186, 184}, {150, 26}}</string>
-=======
-						<string key="NSFrame">{{186, 171}, {150, 26}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{186, 175}, {150, 26}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="135394740"/>
@@ -2293,11 +2248,7 @@
 					<object class="NSPopUpButton" id="841207055">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{186, 154}, {150, 26}}</string>
-=======
-						<string key="NSFrame">{{186, 141}, {150, 26}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{186, 145}, {150, 26}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="259642667"/>
@@ -2368,11 +2319,7 @@
 					<object class="NSTextField" id="1072488314">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{186, 130}, {150, 17}}</string>
-=======
-						<string key="NSFrame">{{186, 117}, {150, 17}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{186, 121}, {150, 17}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="131501883"/>
@@ -2390,17 +2337,10 @@
 					<object class="NSButton" id="298559117">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{42, 52}, {263, 18}}</string>
+						<string key="NSFrame">{{42, 43}, {263, 18}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="533667590"/>
-=======
-						<string key="NSFrame">{{42, 39}, {263, 18}}</string>
-						<reference key="NSSuperview" ref="336637019"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="51062886"/>
->>>>>>> refs/heads/alt
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="593386898">
 							<int key="NSCellFlags">604110336</int>
@@ -2420,11 +2360,7 @@
 					<object class="NSBox" id="313896934">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{12, 109}, {506, 5}}</string>
-=======
-						<string key="NSFrame">{{12, 96}, {506, 5}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{12, 100}, {506, 5}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="354402687"/>
@@ -2448,17 +2384,10 @@
 					<object class="NSPopUpButton" id="533667590">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">268</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{308, 47}, {173, 26}}</string>
+						<string key="NSFrame">{{308, 38}, {173, 26}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="890235168"/>
-=======
-						<string key="NSFrame">{{308, 34}, {173, 26}}</string>
-						<reference key="NSSuperview" ref="336637019"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
->>>>>>> refs/heads/alt
+						<reference key="NSNextKeyView" ref="4851557"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSPopUpButtonCell" key="NSCell" id="1036340907">
 							<int key="NSCellFlags">-1539178944</int>
@@ -2534,11 +2463,7 @@
 					<object class="NSButton" id="354402687">
 						<reference key="NSNextResponder" ref="336637019"/>
 						<int key="NSvFlags">256</int>
-<<<<<<< HEAD
-						<string key="NSFrame">{{42, 77}, {263, 18}}</string>
-=======
-						<string key="NSFrame">{{42, 64}, {263, 18}}</string>
->>>>>>> refs/heads/alt
+						<string key="NSFrame">{{42, 68}, {263, 18}}</string>
 						<reference key="NSSuperview" ref="336637019"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="298559117"/>
@@ -2559,11 +2484,7 @@
 						</object>
 					</object>
 				</array>
-<<<<<<< HEAD
-				<string key="NSFrameSize">{530, 348}</string>
-=======
-				<string key="NSFrameSize">{530, 335}</string>
->>>>>>> refs/heads/alt
+				<string key="NSFrameSize">{530, 339}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="960088489"/>
@@ -3496,7 +3417,7 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 					<string key="NSFrameSize">{434, 133}</string>
 					<reference key="NSNextKeyView" ref="489047514"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMinSize">{213, 129}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -3871,6 +3792,14 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 						<reference key="destination" ref="832657164"/>
 					</object>
 					<int key="connectionID">842</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addAutojoinForAllRooms:</string>
+						<reference key="source" ref="1003"/>
+						<reference key="destination" ref="4851557"/>
+					</object>
+					<int key="connectionID">853</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -5035,28 +4964,14 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: values.AutojoinLastOpened</string>
-<<<<<<< HEAD
-						<reference key="source" ref="890235168"/>
+						<reference key="source" ref="4851557"/>
 						<reference key="destination" ref="256125538"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="890235168"/>
-=======
-						<reference key="source" ref="51062886"/>
-						<reference key="destination" ref="256125538"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="51062886"/>
->>>>>>> refs/heads/alt
+							<reference key="NSSource" ref="4851557"/>
 							<reference key="NSDestination" ref="256125538"/>
 							<string key="NSLabel">value: values.AutojoinLastOpened</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">values.AutojoinLastOpened</string>
-<<<<<<< HEAD
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSAllowsEditingMultipleValuesSelection</string>
-								<boolean value="NO" key="NS.object.0"/>
-							</object>
-=======
->>>>>>> refs/heads/alt
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -5663,11 +5578,7 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<reference ref="131501883"/>
 							<reference ref="1072488314"/>
 							<reference ref="298559117"/>
-<<<<<<< HEAD
-							<reference ref="890235168"/>
-=======
-							<reference ref="51062886"/>
->>>>>>> refs/heads/alt
+							<reference ref="4851557"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Talks</string>
@@ -6986,27 +6897,16 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">848</int>
-<<<<<<< HEAD
-						<reference key="object" ref="890235168"/>
+						<reference key="object" ref="4851557"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="862054462"/>
-=======
-						<reference key="object" ref="51062886"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="503565044"/>
->>>>>>> refs/heads/alt
+							<reference ref="1051724226"/>
 						</array>
 						<reference key="parent" ref="336637019"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">849</int>
-<<<<<<< HEAD
-						<reference key="object" ref="862054462"/>
-						<reference key="parent" ref="890235168"/>
-=======
-						<reference key="object" ref="503565044"/>
-						<reference key="parent" ref="51062886"/>
->>>>>>> refs/heads/alt
+						<reference key="object" ref="1051724226"/>
+						<reference key="parent" ref="4851557"/>
 					</object>
 				</array>
 			</object>
@@ -7299,16 +7199,408 @@ Dei7MQuAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">852</int>
+			<int key="maxID">853</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BottomBar</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BottomBar.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">DBPrefsWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/DBPrefsWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ExpandingSidebar</string>
+					<string key="superclassName">NSOutlineView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ExpandingSidebar.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MainWindowController</string>
+					<string key="superclassName">NSWindowController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="acceptCreateChatSheet:">id</string>
+						<string key="addAutojoinForAllRooms:">id</string>
+						<string key="addNewFriend:">id</string>
+						<string key="addOrRemoveAutojoin:">id</string>
+						<string key="addOrRemoveFriend:">id</string>
+						<string key="banOrUnbanUser:">id</string>
+						<string key="browseUser:">id</string>
+						<string key="cancelCreateChatSheet:">id</string>
+						<string key="changeSearchStyle:">id</string>
+						<string key="changeView:">id</string>
+						<string key="changeViewStyle:">id</string>
+						<string key="clearAllTransfers:">id</string>
+						<string key="clearCompleteTransfers:">id</string>
+						<string key="clearFinishedTransfers:">id</string>
+						<string key="clearTransfer:">id</string>
+						<string key="closeFriendSheet:">id</string>
+						<string key="closeUPNPSheet:">id</string>
+						<string key="closeUsernameSheet:">id</string>
+						<string key="connectOrDisconnect:">id</string>
+						<string key="createAndJoinRoom:">id</string>
+						<string key="download:">id</string>
+						<string key="downloadFolder:">id</string>
+						<string key="joinRooms:">id</string>
+						<string key="leaveChatroom:">id</string>
+						<string key="newChatroom:">id</string>
+						<string key="newSearch:">id</string>
+						<string key="newWish:">id</string>
+						<string key="openPreferences:">id</string>
+						<string key="pause:">id</string>
+						<string key="popUpMenu:">id</string>
+						<string key="privateChat:">id</string>
+						<string key="reloadChatRoomList:">id</string>
+						<string key="removeSearch:">id</string>
+						<string key="removeSideItem:">id</string>
+						<string key="resume:">id</string>
+						<string key="search:">id</string>
+						<string key="showOrHideWindow:">id</string>
+						<string key="toggleOnlineStatus:">id</string>
+						<string key="userInfo:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="acceptCreateChatSheet:">
+							<string key="name">acceptCreateChatSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addAutojoinForAllRooms:">
+							<string key="name">addAutojoinForAllRooms:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addNewFriend:">
+							<string key="name">addNewFriend:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addOrRemoveAutojoin:">
+							<string key="name">addOrRemoveAutojoin:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addOrRemoveFriend:">
+							<string key="name">addOrRemoveFriend:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="banOrUnbanUser:">
+							<string key="name">banOrUnbanUser:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="browseUser:">
+							<string key="name">browseUser:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="cancelCreateChatSheet:">
+							<string key="name">cancelCreateChatSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="changeSearchStyle:">
+							<string key="name">changeSearchStyle:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="changeView:">
+							<string key="name">changeView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="changeViewStyle:">
+							<string key="name">changeViewStyle:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clearAllTransfers:">
+							<string key="name">clearAllTransfers:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clearCompleteTransfers:">
+							<string key="name">clearCompleteTransfers:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clearFinishedTransfers:">
+							<string key="name">clearFinishedTransfers:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="clearTransfer:">
+							<string key="name">clearTransfer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="closeFriendSheet:">
+							<string key="name">closeFriendSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="closeUPNPSheet:">
+							<string key="name">closeUPNPSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="closeUsernameSheet:">
+							<string key="name">closeUsernameSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="connectOrDisconnect:">
+							<string key="name">connectOrDisconnect:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="createAndJoinRoom:">
+							<string key="name">createAndJoinRoom:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="download:">
+							<string key="name">download:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downloadFolder:">
+							<string key="name">downloadFolder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="joinRooms:">
+							<string key="name">joinRooms:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="leaveChatroom:">
+							<string key="name">leaveChatroom:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="newChatroom:">
+							<string key="name">newChatroom:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="newSearch:">
+							<string key="name">newSearch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="newWish:">
+							<string key="name">newWish:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openPreferences:">
+							<string key="name">openPreferences:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pause:">
+							<string key="name">pause:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="popUpMenu:">
+							<string key="name">popUpMenu:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="privateChat:">
+							<string key="name">privateChat:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="reloadChatRoomList:">
+							<string key="name">reloadChatRoomList:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeSearch:">
+							<string key="name">removeSearch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeSideItem:">
+							<string key="name">removeSideItem:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="resume:">
+							<string key="name">resume:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="search:">
+							<string key="name">search:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showOrHideWindow:">
+							<string key="name">showOrHideWindow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleOnlineStatus:">
+							<string key="name">toggleOnlineStatus:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="userInfo:">
+							<string key="name">userInfo:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bottomBar">BottomBar</string>
+						<string key="chatRoomWindow">NSWindow</string>
+						<string key="chatRoomsTable">NSTableView</string>
+						<string key="connectToSoulseek">NSMenuItem</string>
+						<string key="createChatRoomPanel">NSPanel</string>
+						<string key="menuShowChatRooms">NSMenuItem</string>
+						<string key="menuShowConsole">NSMenuItem</string>
+						<string key="menuShowMainWindow">NSMenuItem</string>
+						<string key="menuShowUserInfo">NSMenuItem</string>
+						<string key="newChatRoomName">NSTextField</string>
+						<string key="newFriendName">NSTextField</string>
+						<string key="newFriendOK">NSButton</string>
+						<string key="newFriendPanel">NSPanel</string>
+						<string key="noUsernamePanel">NSPanel</string>
+						<string key="openPreferencesButton">NSButton</string>
+						<string key="openRouterButton">NSButton</string>
+						<string key="popUp">NSPopUpButton</string>
+						<string key="removeButton">NSButton</string>
+						<string key="roomController">NSArrayController</string>
+						<string key="roomList">NSTableView</string>
+						<string key="searchField">NSSearchField</string>
+						<string key="setOnlineStatus">NSMenuItem</string>
+						<string key="showRoomList">NSToolbarItem</string>
+						<string key="sidebar">ExpandingSidebar</string>
+						<string key="soulseekMenu">NSMenu</string>
+						<string key="splitView">NSSplitView</string>
+						<string key="splitterLeftPane">NSView</string>
+						<string key="splitterRightPane">NSView</string>
+						<string key="treeController">NSTreeController</string>
+						<string key="upnpPanel">NSPanel</string>
+						<string key="userInfoWindow">NSWindow</string>
+						<string key="viewSegment">NSSegmentedControl</string>
+						<string key="windowMenu">NSMenu</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="bottomBar">
+							<string key="name">bottomBar</string>
+							<string key="candidateClassName">BottomBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="chatRoomWindow">
+							<string key="name">chatRoomWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="chatRoomsTable">
+							<string key="name">chatRoomsTable</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="connectToSoulseek">
+							<string key="name">connectToSoulseek</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="createChatRoomPanel">
+							<string key="name">createChatRoomPanel</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuShowChatRooms">
+							<string key="name">menuShowChatRooms</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuShowConsole">
+							<string key="name">menuShowConsole</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuShowMainWindow">
+							<string key="name">menuShowMainWindow</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuShowUserInfo">
+							<string key="name">menuShowUserInfo</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newChatRoomName">
+							<string key="name">newChatRoomName</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newFriendName">
+							<string key="name">newFriendName</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newFriendOK">
+							<string key="name">newFriendOK</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newFriendPanel">
+							<string key="name">newFriendPanel</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="noUsernamePanel">
+							<string key="name">noUsernamePanel</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="openPreferencesButton">
+							<string key="name">openPreferencesButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="openRouterButton">
+							<string key="name">openRouterButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="popUp">
+							<string key="name">popUp</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="removeButton">
+							<string key="name">removeButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="roomController">
+							<string key="name">roomController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="roomList">
+							<string key="name">roomList</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="searchField">
+							<string key="name">searchField</string>
+							<string key="candidateClassName">NSSearchField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="setOnlineStatus">
+							<string key="name">setOnlineStatus</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="showRoomList">
+							<string key="name">showRoomList</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sidebar">
+							<string key="name">sidebar</string>
+							<string key="candidateClassName">ExpandingSidebar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="soulseekMenu">
+							<string key="name">soulseekMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="splitView">
+							<string key="name">splitView</string>
+							<string key="candidateClassName">NSSplitView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="splitterLeftPane">
+							<string key="name">splitterLeftPane</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="splitterRightPane">
+							<string key="name">splitterRightPane</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="treeController">
+							<string key="name">treeController</string>
+							<string key="candidateClassName">NSTreeController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="upnpPanel">
+							<string key="name">upnpPanel</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="userInfoWindow">
+							<string key="name">userInfoWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewSegment">
+							<string key="name">viewSegment</string>
+							<string key="candidateClassName">NSSegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="windowMenu">
+							<string key="name">windowMenu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MainWindowController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

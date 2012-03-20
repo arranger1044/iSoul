@@ -306,6 +306,17 @@
     //	[msg release];	
 }
 
+- (void)addAutojoinLastOpenedRooms
+{
+    NSPredicate * pred = [NSPredicate predicateWithFormat:
+                          @"isPrivate == %@ && joined == %@", [NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES]];
+    NSArray * rooms = [store findArrayOf:@"Room" withPredicate:pred];
+    for (Room * room in rooms)
+    {
+        [self addAutojoin:room];
+    }
+}
+
 - (void)joinRoom:(NSString *)room
 {
 	if (state == usOffline) return;

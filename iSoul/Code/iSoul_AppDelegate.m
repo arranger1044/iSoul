@@ -172,9 +172,6 @@
 		PrefsWindowController *pwc = [PrefsWindowController sharedPrefsWindowController];
 		[pwc setMuseek:museekdConnectionController];
         
-        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-		NSNumber *aj = [def valueForKey:@"AutojoinLastOpened"];
-        DNSLog(@"AUTOJOIN %d", [aj boolValue]);
 	}
 	return self;
 }

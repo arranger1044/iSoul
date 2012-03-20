@@ -1232,25 +1232,27 @@
     NSString * chatName = newChatRoomName.stringValue;
     if ([chatName length] != 0) 
     {        
-//        SidebarItem * item = nil;
-//        
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:
-//                                  @"(name == %@) && (type == %u)", 
-//                                  chatName, sbChatRoomType];
-//        item = (SidebarItem *)[store find:@"SidebarItem" withPredicate:predicate];
-//        
-//        DNSLog(@"Creating new chat with name %@", chatName);
-//        [museekdConnectionController joinRoom:chatName];
-//      
-        DNSLog(@"Before closing");
+        SidebarItem * item = nil;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                                  @"(name == %@) && (type == %u)", 
+                                  chatName, sbChatRoomType];
+        item = (SidebarItem *)[store find:@"SidebarItem" withPredicate:predicate];
+        
+        DNSLog(@"Creating new chat with name %@", chatName);
+        [museekdConnectionController joinRoom:chatName];
+        
+        if (item) 
+            [self selectItem:item];
+        
         [NSApp endSheet:createChatRoomPanel 
-             returnCode:NSCancelButton];
+             returnCode: NSOKButton];
+        [createChatRoomPanel orderOut:nil];
         
-//        if (item) 
-//            [self selectItem:item];
+        //[[[NSApp delegate] museekdConnectionController] autojoinChats:@"rano"];
         
-//        /* Hiding the char room list window */
-//        [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+        /* Hiding the char room list window */
+        [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
         
     }
     else
@@ -1280,7 +1282,6 @@
 		[museekdConnectionController addOrRemoveAutojoin:room];
 	}
 }
-
 
 - (IBAction)openPreferences:(id)sender {
     //DNSLog(@"capro");
