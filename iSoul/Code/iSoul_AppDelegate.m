@@ -99,6 +99,7 @@
         
         NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
         [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"AutojoinLastOpened"];
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:d];  
         [[LoggingController sharedInstance] startLogging];

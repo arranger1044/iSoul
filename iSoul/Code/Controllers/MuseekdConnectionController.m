@@ -259,6 +259,53 @@
 	debug_NSLog(@"sent message to room %@", room);
 }
 
+- (void)removeAutojoin:(Room *)room
+{
+    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    DNSLog(@"removing autojoin for chatroom %@", [room name]);
+    [msg appendUInt32:mdConfigRemove];
+    [msg appendCipher:@"autojoin" withKey:password];
+    [msg appendCipher:[room name] withKey:password];
+    [output send:msg];
+	[msg release];
+}
+
+- (void)addAutojoin:(Room *)room
+{
+    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    DNSLog(@"adding autojoin for chatroom %@", [room name]);
+    [msg appendUInt32:mdConfigSet];
+    [msg appendCipher:@"autojoin" withKey:password];
+    [msg appendCipher:[room name] withKey:password];
+    [msg appendCipher:@"" withKey:password];
+    [output send:msg];
+	[msg release];	
+}
+
+- (void)addOrRemoveAutojoin:(Room *)room
+{
+    //    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    if ([[room autojoin] boolValue])
+    {
+        //        DNSLog(@"removing autojoin for chatroom %@", [room name]);
+        //        [msg appendUInt32:mdConfigRemove];
+        //        [msg appendCipher:@"autojoin" withKey:password];
+        //        [msg appendCipher:[room name] withKey:password];
+        [self removeAutojoin:room];
+    }
+    else
+    {
+        //        DNSLog(@"adding autojoin for chatroom %@", [room name]);
+        //        [msg appendUInt32:mdConfigSet];
+        //        [msg appendCipher:@"autojoin" withKey:password];
+        //        [msg appendCipher:[room name] withKey:password];
+        //        [msg appendCipher:@"" withKey:password];
+        [self addAutojoin:room];
+    }
+    //    [output send:msg];
+    //	[msg release];	
+}
+
 - (void)joinRoom:(NSString *)room
 {
 	if (state == usOffline) return;
@@ -274,6 +321,14 @@
 - (void)leaveRoom:(NSString *)room
 {
 	if (state == usOffline) return;
+    
+    NSNumber * autojoinLastOpened = [[NSUserDefaults standardUserDefaults] valueForKey:@"AutojoinLastOpened"];
+    if ([autojoinLastOpened boolValue]) 
+    {
+        NSPredicate * pred = [NSPredicate predicateWithFormat:@"name == %@", room];
+        Room * lroom = (Room *)[store find:@"Room" withPredicate:pred];
+        [self removeAutojoin:lroom];
+    }
 	
 	MuseekMessage *msg = [[[MuseekMessage alloc] init] autorelease];
 	[msg appendUInt32:mdLeaveRoom];		// command type
@@ -515,28 +570,6 @@
 		
 	}
 	[output send:msg];
-	[msg release];	
-}
-
-- (void)addOrRemoveAutojoin:(Room *)room
-{
-    MuseekMessage *msg = [[MuseekMessage alloc] init];
-    if ([[room autojoin] boolValue])
-    {
-        DNSLog(@"removing autojoin for chatroom %@", [room name]);
-        [msg appendUInt32:mdConfigRemove];
-        [msg appendCipher:@"autojoin" withKey:password];
-        [msg appendCipher:[room name] withKey:password];
-    }
-    else
-    {
-        DNSLog(@"adding autojoin for chatroom %@", [room name]);
-        [msg appendUInt32:mdConfigSet];
-        [msg appendCipher:@"autojoin" withKey:password];
-        [msg appendCipher:[room name] withKey:password];
-        [msg appendCipher:@"" withKey:password];
-    }
-    [output send:msg];
 	[msg release];	
 }
 
@@ -815,12 +848,6 @@
                               @"name == %@ && isPrivate == %u", key, NO];
         Room * room = (Room *)[store find:@"Room" withPredicate:pred];
         [room setAutojoin:[NSNumber numberWithBool:NO]];
-        NSNumber * autojoinLastOpened = [[NSUserDefaults standardUserDefaults] valueForKey:@"AutojoinLastOpened"];
-        if ([autojoinLastOpened boolValue]) 
-        {
-            [store leaveRoom:key];
-            DNSLog(@"left room %@", key);
-        }
     }
 }
 
@@ -1276,31 +1303,21 @@
 		// add the user to the room and vice versa
 		[room addUsersObject:user];
 	}
-
-//    NSNumber * autojoinLastOpened = [[NSUserDefaults standardUserDefaults] valueForKey:@"AutojoinLastOpened"];
-//    if ([autojoinLastOpened boolValue]) 
-//    {
-//        [self addOrRemoveAutojoin:room];
-//    }
+    
+    NSNumber * autojoinLastOpened = [[NSUserDefaults standardUserDefaults] valueForKey:@"AutojoinLastOpened"];
+    if ([autojoinLastOpened boolValue]) 
+    {
+        [self addAutojoin:room];
+    }
 }
 
 - (void)roomLeft:(MuseekMessage *)msg
 {
 	NSString *roomname = [msg readString];
-    
-//    NSNumber * autojoinLastOpened = [[NSUserDefaults standardUserDefaults] valueForKey:@"AutojoinLastOpened"];
-//    if ([autojoinLastOpened boolValue]) 
-//    {
-//        NSPredicate * pred = [NSPredicate predicateWithFormat:
-//                              @"name == %@", roomname];
-//        Room * room = (Room *)[store find:@"Room" withPredicate:pred];
-//        [self addOrRemoveAutojoin:room];
-//    }
-//    else
-//    {
+
         [store leaveRoom:roomname];
         DNSLog(@"left room %@", roomname);
-//    }
+
 }
 
 - (void)userJoinedRoom:(MuseekMessage *)msg
