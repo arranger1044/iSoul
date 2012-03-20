@@ -105,7 +105,7 @@ Node* Node::get_first_child(const Glib::ustring& name)
 
 const Node* Node::get_first_child(const Glib::ustring& name) const
 {
-  return const_cast<Node*>(this)->get_first_child();
+  return const_cast<Node*>(this)->get_first_child(name);
 }
 
 Node::NodeList Node::get_children(const Glib::ustring& name)
