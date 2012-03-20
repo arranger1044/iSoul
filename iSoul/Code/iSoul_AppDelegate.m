@@ -94,6 +94,8 @@
         [d setValue:dirPath forKey:@"LogDirPath"];
         
         [d setValue:[NSNumber numberWithInt:0] forKey:@"SelectedSegmentView"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"AutojoinLastOpened"];
+
         
         NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
         [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
@@ -169,6 +171,9 @@
 		PrefsWindowController *pwc = [PrefsWindowController sharedPrefsWindowController];
 		[pwc setMuseek:museekdConnectionController];
         
+        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+		NSNumber *aj = [def valueForKey:@"AutojoinLastOpened"];
+        DNSLog(@"AUTOJOIN %d", [aj boolValue]);
 	}
 	return self;
 }

@@ -383,6 +383,7 @@
 
 - (void)finishedEditing:(NSNotification *)notification
 {
+    DNSLog(@"Finished editing");
 	NSInteger row = [sidebar editedRow];
 	SidebarItem *item = [[sidebar itemAtRow:row] representedObject];
 	SidebarType type = [[item type] unsignedIntValue];
@@ -1227,31 +1228,34 @@
 
 - (IBAction)acceptCreateChatSheet:(id)sender
 {
+    DNSLog(@"Accept");
     NSString * chatName = newChatRoomName.stringValue;
     if ([chatName length] != 0) 
     {        
-        SidebarItem * item = nil;
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                                  @"(name == %@) && (type == %u)", 
-                                  chatName, sbChatRoomType];
-        item = (SidebarItem *)[store find:@"SidebarItem" withPredicate:predicate];
-        
-        DNSLog(@"Creating new chat with name %@", chatName);
-        [museekdConnectionController joinRoom:chatName];
-        
-        if (item) 
-            [self selectItem:item];
-        
+//        SidebarItem * item = nil;
+//        
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:
+//                                  @"(name == %@) && (type == %u)", 
+//                                  chatName, sbChatRoomType];
+//        item = (SidebarItem *)[store find:@"SidebarItem" withPredicate:predicate];
+//        
+//        DNSLog(@"Creating new chat with name %@", chatName);
+//        [museekdConnectionController joinRoom:chatName];
+//      
+        DNSLog(@"Before closing");
         [NSApp endSheet:createChatRoomPanel 
-             returnCode: NSOKButton];
-        [createChatRoomPanel orderOut:nil];
+             returnCode:NSCancelButton];
         
-        //[[[NSApp delegate] museekdConnectionController] autojoinChats:@"rano"];
+//        if (item) 
+//            [self selectItem:item];
         
-        /* Hiding the char room list window */
-        [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
+//        /* Hiding the char room list window */
+//        [chatRoomWindow orderWindow:NSWindowBelow relativeTo:[self.window windowNumber]];
         
+    }
+    else
+    {
+        DNSLog(@"Empty chat room name");
     }
 }
 
@@ -1276,6 +1280,7 @@
 		[museekdConnectionController addOrRemoveAutojoin:room];
 	}
 }
+
 
 - (IBAction)openPreferences:(id)sender {
     //DNSLog(@"capro");
