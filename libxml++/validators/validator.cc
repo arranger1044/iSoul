@@ -95,18 +95,14 @@ void Validator::callback_validity_error(void* valid_, const char* msg, ...)
     vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), msg, arg);
     va_end(arg);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     try
     {
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
       validator->on_validity_error(Glib::ustring(buff));
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch(const exception& e)
     {
       validator->handleException(e);
     }
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 }
 
@@ -124,18 +120,14 @@ void Validator::callback_validity_warning(void* valid_, const char* msg, ...)
     vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), msg, arg);
     va_end(arg);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     try
     {
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
       validator->on_validity_warning(Glib::ustring(buff));
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch(const exception& e)
     {
       validator->handleException(e);
     }
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 }
 

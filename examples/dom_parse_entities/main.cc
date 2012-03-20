@@ -86,10 +86,8 @@ int main(int argc, char* argv[])
     else
       std::cout << std::endl << "<<< Without entity substitution >>>" << std::endl;
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     try
     {
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
       xmlpp::DomParser parser;
       parser.set_validate();
       parser.set_substitute_entities(substitute_entities);
@@ -100,13 +98,11 @@ int main(int argc, char* argv[])
         const xmlpp::Node* pNode = parser.get_document()->get_root_node(); //deleted by DomParser.
         print_node(pNode, substitute_entities);
       }
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     }
     catch(const std::exception& ex)
     {
       std::cout << "Exception caught: " << ex.what() << std::endl;
     }
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
     if (substitute_entities) break;
 

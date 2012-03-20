@@ -1,5 +1,13 @@
 2012-03-20  Murray Cumming  <murrayc@murrayc.com>
 
+	Remove the --disable-api-exceptions configure option.
+
+	And remove the #ifdefs and #else blocks from the code.
+	This is not used by anybody now, as far as I know, so this makes the
+	code easier to maintain.
+
+2012-03-20  Murray Cumming  <murrayc@murrayc.com>
+
 	A fix for the previous commit.
 
 	* libxml++/nodes/node.cc: get_first_child() const: Use the name 

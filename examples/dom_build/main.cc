@@ -33,10 +33,8 @@ main(int /* argc */, char** /* argv */)
   // so we can use std::cout with UTF-8, via Glib::ustring, without exceptions.
   std::locale::global(std::locale(""));
 
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     xmlpp::Document document;
     document.set_internal_subset("example_xml_doc", "", "example_xml_doc.dtd");
     document.set_entity_declaration("example1", xmlpp::XML_INTERNAL_GENERAL_ENTITY,
@@ -71,13 +69,11 @@ main(int /* argc */, char** /* argv */)
     Glib::ustring whole = document.write_to_string();
     std::cout << "XML built at runtime: " << std::endl << whole << std::endl;
     std::cout << "namespace of root node: " << nodeRoot->get_namespace_uri() << std::endl;
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
   return 0;
 }

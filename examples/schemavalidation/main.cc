@@ -60,10 +60,8 @@ int main(int argc, char* argv[])
       }
       catch( const xmlpp::validity_error& error)
       {
-#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
         std::cout << "Error validating the document" << std::endl;
-        std::cout << error.what();
-#endif		
+        std::cout << error.what();		
       }
     }
     catch( const xmlpp::parse_error& )

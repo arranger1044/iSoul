@@ -23,11 +23,7 @@ Glib::ustring ContentNode::get_content() const
 {
   if(cobj()->type == XML_ELEMENT_NODE)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("this node type doesn't have content");
-    #else
-    return Glib::ustring();
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   return cobj()->content ? (char*)cobj()->content : "";
@@ -37,13 +33,8 @@ void ContentNode::set_content(const Glib::ustring& content)
 {
    if(cobj()->type == XML_ELEMENT_NODE)
    {
-     #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
      throw internal_error("can't set content for this node type");
-     #else
-     return;
-     #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
-   }
-      
+   }   
 
    xmlNodeSetContent(cobj(), (xmlChar*)content.c_str());
 }

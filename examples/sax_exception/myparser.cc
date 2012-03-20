@@ -38,9 +38,7 @@ MyException::~MyException() throw ()
 
 void MyException::Raise() const
 {
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   throw *this;
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 }
 
 xmlpp::exception * MyException::Clone() const
@@ -83,9 +81,7 @@ void MySaxParser::on_start_element(const Glib::ustring& name,
     std::cout << "  Attribute " << iter->name << " = " << iter->value << std::endl;
   }
 
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   throw MyException();
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 }
 
 void MySaxParser::on_end_element(const Glib::ustring& /* name */)

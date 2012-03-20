@@ -145,11 +145,7 @@ Element* Document::create_root_node_by_import(const Node* node,
   xmlNode* imported_node = xmlDocCopyNode(const_cast<xmlNode*>(node->cobj()), impl_, recursive);
   if (!imported_node)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to import node");
-    #else
-    return 0;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   xmlDocSetRootElement(impl_, imported_node);
@@ -162,11 +158,7 @@ CommentNode* Document::add_comment(const Glib::ustring& content)
   xmlNode* node = xmlNewComment((const xmlChar*)content.c_str());
   if(!node)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Cannot create comment node");
-    #else
-    return 0;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   // Use the result, because node can be freed when merging text nodes:
@@ -181,11 +173,7 @@ ProcessingInstructionNode* Document::add_processing_instruction(
   xmlNode* node = xmlNewDocPI(impl_, (const xmlChar*)name.c_str(), (const xmlChar*)content.c_str());
   if(!node)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw internal_error("Cannot create processing instruction node");
-    #else
-    return 0;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   node = xmlAddChild((xmlNode*)impl_, node);
   Node::create_wrapper(node);
@@ -234,11 +222,7 @@ void Document::do_write_to_file(
 
   if(result == -1)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("do_write_to_file() failed.");
-    #else
-    return;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 }
 
@@ -256,11 +240,7 @@ Glib::ustring Document::do_write_to_string(
 
   if(!buffer)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("do_write_to_string() failed.");
-    #else
-    return Glib::ustring();
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   // Create a Glib::ustring copy of the buffer
@@ -285,11 +265,7 @@ void Document::do_write_to_stream(std::ostream& output, const Glib::ustring& enc
   
   if(result == -1)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("do_write_to_stream() failed.");
-    #else
-    return;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 }
 

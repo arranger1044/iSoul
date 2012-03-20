@@ -259,10 +259,9 @@ void Parser::callback_error_or_warning(MsgType msg_type, void* ctx,
         vsnprintf(buff, sizeof(buff)/sizeof(buff[0]), msg, var_args);
         ubuff = buff;
       }
-      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+
       try
       {
-      #endif
         switch (msg_type)
         {
           case MsgParserError:
@@ -278,13 +277,11 @@ void Parser::callback_error_or_warning(MsgType msg_type, void* ctx,
             parser->on_validity_warning(ubuff);
             break;
         }
-      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       }
       catch(const exception& e)
       {
         parser->handleException(e);
       }
-      #endif
     }
   }
 }

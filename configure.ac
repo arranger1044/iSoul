@@ -42,8 +42,6 @@ AC_ARG_ENABLE([examples],
 
 AM_CONDITIONAL([ENABLE_EXAMPLES], [test "x$enable_examples" = xyes])
 
-# Offer the ability to omit some API from the library, to reduce the code size:
-LIBXMLCPP_ARG_ENABLE_API_EXCEPTIONS
 
 MM_ARG_ENABLE_DOCUMENTATION
 MM_ARG_WITH_TAGFILE_DOC([glibmm-2.4.tag], [glibmm-2.4])
