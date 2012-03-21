@@ -200,8 +200,8 @@ class TextReader: NonCopyable
     bool is_valid() const;
 
   private:
-    struct PropertyReader;
-    friend struct PropertyReader;
+    class PropertyReader;
+    friend class PropertyReader;
 
     void setup_exceptions();
     static void on_libxml_error(void * arg, const char *msg, int severity,
