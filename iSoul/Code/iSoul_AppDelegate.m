@@ -100,6 +100,7 @@
         NSImage * defaultImage = [NSImage imageNamed:@"PrefAccount"];
         [d setValue:[defaultImage TIFFRepresentation] forKey:@"UserImage"];
         [d setValue:[NSNumber numberWithBool:NO] forKey:@"AutojoinLastOpened"];
+        [d setValue:[NSNumber numberWithBool:NO] forKey:@"SaveLogFile"];
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:d];  
         [[LoggingController sharedInstance] startLogging];
@@ -171,6 +172,8 @@
 		
 		PrefsWindowController *pwc = [PrefsWindowController sharedPrefsWindowController];
 		[pwc setMuseek:museekdConnectionController];
+        
+        DNSLog(@"DIR %@", [[NSUserDefaults standardUserDefaults] valueForKey:@"LogDirPath"]);
         
 	}
 	return self;
@@ -263,8 +266,16 @@
     //NSString * logPath = [NSHomeDirectory() stringByAppendingPathComponent:LOG_PATH];
     NSString * logPath = [[[NSUserDefaults standardUserDefaults] valueForKey:@"LogPath"] 
                           stringByAppendingPathComponent:logFileName];
-    NSString * dirPath = [NSHomeDirectory() stringByAppendingPathComponent:DIR_PATH];
-    [[LoggingController sharedInstance] gzipAndArchiveLog:logPath toDirectory:dirPath];
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"SaveLogFile"] boolValue])
+    {
+        //NSString * dirPath = [NSHomeDirectory() stringByAppendingPathComponent:DIR_PATH];
+        NSString * dirPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"LogDirPath"];
+        [[LoggingController sharedInstance] gzipAndArchiveLog:logPath toDirectory:dirPath];
+    }
+    else
+    {
+        [[LoggingController sharedInstance] removeLog:logPath];
+    }
 }
 
 - (void)scanSharesFile:(id)object

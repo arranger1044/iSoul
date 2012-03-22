@@ -21,5 +21,6 @@
 + (LoggingController *)sharedInstance;
 - (void)startLogging;
 - (void)gzipAndArchiveLog:(NSString *)logPath toDirectory:(NSString *)dirPath;
+- (void)removeLog:(NSString *)logPath;
 
 @end

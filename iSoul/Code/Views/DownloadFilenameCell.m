@@ -9,6 +9,7 @@
 #import "DownloadFilenameCell.h"
 #import "PathNode.h"
 #import "User.h"
+#import "Constants.h"
 
 #define kImageOriginXOffset 2.0
 #define kUsernameTextOffset	17.0

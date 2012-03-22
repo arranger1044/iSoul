@@ -151,12 +151,12 @@ static LoggingController * sharedControllerIstance = nil;
                               attributes:nil
                                    error:&error])
         {
-            NSLog(@"Impossible to create logging directory %@. Error: %@", logDir, [error description]);
+            DNSLog(@"Impossible to create logging directory %@. Error: %@", logDir, [error description]);
         }
     }
     else 
     {
-        NSLog(@"%@ already exists as a directory", logDir);
+        DNSLog(@"%@ already exists as a directory", logDir);
     }        
 }
 
@@ -166,7 +166,7 @@ static LoggingController * sharedControllerIstance = nil;
     
     if (![NSFm removeItemAtPath:logPath error:&error])
     {
-        NSLog(@"Impossible to remove current log file %@. Error: %@", logPath, [error description]);
+        DNSLog(@"Impossible to remove current log file %@. Error: %@", logPath, [error description]);
     }
 }
 
@@ -175,15 +175,15 @@ static LoggingController * sharedControllerIstance = nil;
     NSError * error;
     NSString * logName = [logPath lastPathComponent];
 #ifdef DEBUG_LOGGING_CONTROLLER
-    NSLog(@"logPath: %@ logFileName: %@", logPath, logName);
+    DNSLog(@"logPath: %@ logFileName: %@", logPath, logName);
 #endif
     NSString * archivedLogPath = [dirPath stringByAppendingPathComponent:logName];
 #ifdef DEBUG_LOGGING_CONTROLLER
-    NSLog(@"dirPath: %@ archivedLogPath: %@", dirPath, archivedLogPath);
+    DNSLog(@"dirPath: %@ archivedLogPath: %@", dirPath, archivedLogPath);
 #endif
     if (![NSFm moveItemAtPath:logPath toPath:archivedLogPath error:&error])
     {
-        NSLog(@"Impossible to move current log file %@", [error description]);
+        DNSLog(@"Impossible to move current log file %@", [error description]);
     }
 }
 
@@ -198,19 +198,33 @@ static LoggingController * sharedControllerIstance = nil;
     NSString * todaysDate = [self todaysDateAsString];
     NSString * archivedLogName = [NSString stringWithFormat:@"LOG %@ - %@.log.gzip", self.startingDate, todaysDate];
 #ifdef DEBUG_LOGGING_CONTROLLER 
-    NSLog(@"todaysDate: %@ archivedLogName: %@", todaysDate, archivedLogName);
+    DNSLog(@"todaysDate: %@ archivedLogName: %@", todaysDate, archivedLogName);
 #endif
     
     NSString * logCurrentPath = [logPath stringByDeletingLastPathComponent];
     NSString * temporaryLogPath = [logCurrentPath stringByAppendingPathComponent:archivedLogName];
 #ifdef DEBUG_LOGGING_CONTROLLER
-    NSLog(@"temporaryLogPath: %@ logCurrentPath: %@", temporaryLogPath, logCurrentPath);
+    DNSLog(@"temporaryLogPath: %@ logCurrentPath: %@", temporaryLogPath, logCurrentPath);
 #endif
     [compressedLogData writeToFile:temporaryLogPath atomically:NO];
     /* move it to the dir */
     [self archiveLogFile:temporaryLogPath toDirectory:dirPath];
     
     [self deleteCurrentLog:logPath];
+}
+
+- (void)removeLog:(NSString *)logPath{
+    
+    DNSLog(@"Removing log %@", logPath);
+    NSFileManager * NSFm = [NSFileManager defaultManager];
+    NSError * error;
+#ifdef DEBUG_LOGGING_CONTROLLER
+    DNSLog(@"logPath: %@", logPath);
+#endif
+    if (![NSFm removeItemAtPath:logPath error:&error])
+    {
+        DNSLog(@"Impossible to remove current log file %@", [error description]);
+    }
 }
 
 
