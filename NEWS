@@ -1,3 +1,10 @@
+2.35.2 (unstable):
+
+* Node: Add get_first_child().
+  (Murray Cumming, Based on a patch by Ilya Murav'jov in bug #648125)
+* Build: Remove the --disable-api-exceptions configure option.
+  (Murray Cumming)
+
 2.35.1 (unstable):
 
 * Handle attributes with default values correctly.

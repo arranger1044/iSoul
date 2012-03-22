@@ -1,3 +1,5 @@
+2.35.2:
+
 2012-03-21  Murray Cumming  <murrayc@murrayc.com>
 
 	Fix a warning found by clang++
