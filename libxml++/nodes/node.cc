@@ -307,6 +307,12 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
     for (int i = 0; i != count; ++i)
     {
       xmlNode* cnode = xmlXPathNodeSetItem(nodeset, i);
+      if(!cnode)
+      {
+        std::cerr << "Node::find_impl: The xmlNode was null." << std::endl;
+        continue;
+      }
+
       if(cnode->type == XML_NAMESPACE_DECL)
       {
         //In this case we would cast it to a xmlNs*,

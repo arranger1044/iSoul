@@ -1,3 +1,9 @@
+2012-03-30  Murray Cumming  <murrayc@murrayc.com>
+
+	Node: Check for a null pointer, to fix a scan-build warning.
+
+	* libxml++/nodes/node.cc: This seems unlikely.
+
 2.35.2:
 
 2012-03-21  Murray Cumming  <murrayc@murrayc.com>
