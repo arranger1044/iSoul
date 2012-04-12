@@ -1,3 +1,9 @@
+2012-04-12  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Define LIBXMLCPP_EXCEPTIONS_ENABLED unconditionally.
+
+	* configure.ac: Add AC_DEFINE([LIBXMLCPP_EXCEPTIONS_ENABLED],[1],...
+
 2012-03-30  Murray Cumming  <murrayc@murrayc.com>
 
 	Node: Check for a null pointer, to fix a scan-build warning.
