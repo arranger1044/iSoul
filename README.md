@@ -4,7 +4,7 @@ iSoul
 What is iSoul
 -------------
 
-iSoul, a fork of SolarSeek, is an open-source Mac application for connecting to the [SoulSeek](http://www.slsknet.org/) peer to peer network. 
+iSoul, a fork of SolarSeek, is an open-source Mac application for connecting to the [SoulSeek](http://www.slsknet.org/) peer to peer network.  Even though the term 'beta' is sometime used, iSoul is still in its 'alpha' stage and I am bale get hands on it only during my spare time.
 
 What is SoulSeek
 ----------------
