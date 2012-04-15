@@ -53,6 +53,12 @@
 		BFAF58380EA244A100C21467 /* parser.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAF58000EA244A100C21467 /* parser.h */; };
 		BFAF58390EA244A100C21467 /* saxparser.cc in Sources */ = {isa = PBXBuildFile; fileRef = BFAF58010EA244A100C21467 /* saxparser.cc */; };
 		BFAF583A0EA244A100C21467 /* saxparser.h in Headers */ = {isa = PBXBuildFile; fileRef = BFAF58020EA244A100C21467 /* saxparser.h */; };
+		DD1BA561153B37F5001C16A0 /* attributedeclaration.cc in Sources */ = {isa = PBXBuildFile; fileRef = DD1BA55D153B37F5001C16A0 /* attributedeclaration.cc */; };
+		DD1BA562153B37F5001C16A0 /* attributedeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = DD1BA55E153B37F5001C16A0 /* attributedeclaration.h */; };
+		DD1BA563153B37F5001C16A0 /* attributenode.cc in Sources */ = {isa = PBXBuildFile; fileRef = DD1BA55F153B37F5001C16A0 /* attributenode.cc */; };
+		DD1BA564153B37F5001C16A0 /* attributenode.h in Headers */ = {isa = PBXBuildFile; fileRef = DD1BA560153B37F5001C16A0 /* attributenode.h */; };
+		DD1BA567153B381D001C16A0 /* entitydeclaration.cc in Sources */ = {isa = PBXBuildFile; fileRef = DD1BA565153B381D001C16A0 /* entitydeclaration.cc */; };
+		DD1BA568153B381D001C16A0 /* entitydeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = DD1BA566153B381D001C16A0 /* entitydeclaration.h */; };
 		DDFAF046144FECEB006472EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFAF044144FECDD006472EE /* libxml2.dylib */; };
 		DDFAF04F144FF8DB006472EE /* istreamparserinputbuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = DDFAF04B144FF8DB006472EE /* istreamparserinputbuffer.cc */; };
 		DDFAF050144FF8DB006472EE /* istreamparserinputbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFAF04C144FF8DB006472EE /* istreamparserinputbuffer.h */; };
@@ -120,6 +126,12 @@
 		BFAF58000EA244A100C21467 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
 		BFAF58010EA244A100C21467 /* saxparser.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saxparser.cc; sourceTree = "<group>"; };
 		BFAF58020EA244A100C21467 /* saxparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saxparser.h; sourceTree = "<group>"; };
+		DD1BA55D153B37F5001C16A0 /* attributedeclaration.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attributedeclaration.cc; sourceTree = "<group>"; };
+		DD1BA55E153B37F5001C16A0 /* attributedeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attributedeclaration.h; sourceTree = "<group>"; };
+		DD1BA55F153B37F5001C16A0 /* attributenode.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attributenode.cc; sourceTree = "<group>"; };
+		DD1BA560153B37F5001C16A0 /* attributenode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attributenode.h; sourceTree = "<group>"; };
+		DD1BA565153B381D001C16A0 /* entitydeclaration.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entitydeclaration.cc; sourceTree = "<group>"; };
+		DD1BA566153B381D001C16A0 /* entitydeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entitydeclaration.h; sourceTree = "<group>"; };
 		DDB40DFE1456667E00206EED /* libXML++.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "libXML++.xcconfig"; path = "../xcconfigs/libXML++.xcconfig"; sourceTree = "<group>"; };
 		DDB40E011456669500206EED /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = ../xcconfigs/Debug.xcconfig; sourceTree = "<group>"; };
 		DDB40E021456669500206EED /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = ../xcconfigs/Release.xcconfig; sourceTree = "<group>"; };
@@ -196,6 +208,10 @@
 			children = (
 				BFAF57CA0EA244A100C21467 /* attribute.cc */,
 				BFAF57CB0EA244A100C21467 /* attribute.h */,
+				DD1BA55D153B37F5001C16A0 /* attributedeclaration.cc */,
+				DD1BA55E153B37F5001C16A0 /* attributedeclaration.h */,
+				DD1BA55F153B37F5001C16A0 /* attributenode.cc */,
+				DD1BA560153B37F5001C16A0 /* attributenode.h */,
 				BFAF57CC0EA244A100C21467 /* document.cc */,
 				BFAF57CD0EA244A100C21467 /* document.h */,
 				BFAF57CE0EA244A100C21467 /* dtd.cc */,
@@ -258,6 +274,8 @@
 				BFAF57ED0EA244A100C21467 /* contentnode.h */,
 				BFAF57EE0EA244A100C21467 /* element.cc */,
 				BFAF57EF0EA244A100C21467 /* element.h */,
+				DD1BA565153B381D001C16A0 /* entitydeclaration.cc */,
+				DD1BA566153B381D001C16A0 /* entitydeclaration.h */,
 				BFAF57F00EA244A100C21467 /* entityreference.cc */,
 				BFAF57F10EA244A100C21467 /* entityreference.h */,
 				BFAF57F20EA244A100C21467 /* node.cc */,
@@ -354,6 +372,9 @@
 				DDFAF065144FF93B006472EE /* schemavalidator.h in Headers */,
 				DDFAF067144FF93B006472EE /* validator.h in Headers */,
 				DDFAF06A144FFEB8006472EE /* ustring.h in Headers */,
+				DD1BA562153B37F5001C16A0 /* attributedeclaration.h in Headers */,
+				DD1BA564153B37F5001C16A0 /* attributenode.h in Headers */,
+				DD1BA568153B381D001C16A0 /* entitydeclaration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +406,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "libXML++" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -452,6 +473,9 @@
 				DDFAF062144FF93B006472EE /* dtdvalidator.cc in Sources */,
 				DDFAF064144FF93B006472EE /* schemavalidator.cc in Sources */,
 				DDFAF066144FF93B006472EE /* validator.cc in Sources */,
+				DD1BA561153B37F5001C16A0 /* attributedeclaration.cc in Sources */,
+				DD1BA563153B37F5001C16A0 /* attributenode.cc in Sources */,
+				DD1BA567153B381D001C16A0 /* entitydeclaration.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
