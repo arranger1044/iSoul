@@ -8,11 +8,12 @@ AUTOMAKE_OPTIONS = foreign
 
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/compat -I$(top_srcdir)/include -I../include -DTINYTEST_LOCAL
 
-EXTRA_DIST = regress.rpc regress.gen.h regress.gen.c rpcgen_wrapper.sh test.sh
+EXTRA_DIST = regress.rpc regress.gen.h regress.gen.c rpcgen_wrapper.sh \
+	test.sh check-dumpevents.py
 
-noinst_PROGRAMS = test-init test-eof test-weof test-time \
+noinst_PROGRAMS = test-init test-eof test-weof test-time test-dumpevents \
 	bench bench_cascade bench_http bench_httpclient test-ratelim \
-	test-changelist
+	test-changelist test-fdleak
 if BUILD_REGRESS
 noinst_PROGRAMS += regress
 endif
@@ -28,6 +29,8 @@ endif
 
 test_init_SOURCES = test-init.c
 test_init_LDADD = ../libevent_core.la
+test_dumpevents_SOURCES = test-dumpevents.c
+test_dumpevents_LDADD = ../libevent_core.la
 test_eof_SOURCES = test-eof.c
 test_eof_LDADD = ../libevent_core.la
 test_changelist_SOURCES = test-changelist.c
@@ -38,6 +41,8 @@ test_time_SOURCES = test-time.c
 test_time_LDADD = ../libevent_core.la
 test_ratelim_SOURCES = test-ratelim.c
 test_ratelim_LDADD = ../libevent_core.la -lm
+test_fdleak_SOURCES = test-fdleak.c
+test_fdleak_LDADD = ../libevent_core.la
 
 regress_SOURCES = regress.c regress_buffer.c regress_http.c regress_dns.c \
 	regress_testutils.c regress_testutils.h \
@@ -95,4 +100,5 @@ DISTCLEANFILES = *~
 
 verify: check
 
-bench test-init test-eof test-weof test-time test-changelist: ../libevent.la
+bench test-init test-eof test-weof test-time test-changelist \
+	test-fdleak: ../libevent.la

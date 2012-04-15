@@ -24,8 +24,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT2_EVENT_STRUCT_H_
-#define _EVENT2_EVENT_STRUCT_H_
+#ifndef EVENT2_EVENT_STRUCT_H_INCLUDED_
+#define EVENT2_EVENT_STRUCT_H_INCLUDED_
 
 /** @file event2/event_struct.h
 
@@ -41,10 +41,10 @@ extern "C" {
 #endif
 
 #include <event2/event-config.h>
-#ifdef _EVENT_HAVE_SYS_TYPES_H
+#ifdef EVENT__HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 
@@ -66,7 +66,7 @@ extern "C" {
 
 /* Fix so that people don't have to run with <sys/queue.h> */
 #ifndef TAILQ_ENTRY
-#define _EVENT_DEFINED_TQENTRY
+#define EVENT_DEFINED_TQENTRY_
 #define TAILQ_ENTRY(type)						\
 struct {								\
 	struct type *tqe_next;	/* next element */			\
@@ -75,7 +75,7 @@ struct {								\
 #endif /* !TAILQ_ENTRY */
 
 #ifndef TAILQ_HEAD
-#define _EVENT_DEFINED_TQHEAD
+#define EVENT_DEFINED_TQHEAD_
 #define TAILQ_HEAD(name, type)			\
 struct name {					\
 	struct type *tqh_first;			\
@@ -85,7 +85,7 @@ struct name {					\
 
 /* Fix so that people don't have to run with <sys/queue.h> */
 #ifndef LIST_ENTRY
-#define _EVENT_DEFINED_LISTENTRY
+#define EVENT_DEFINED_LISTENTRY_
 #define LIST_ENTRY(type)						\
 struct {								\
 	struct type *le_next;	/* next element */			\
@@ -96,7 +96,7 @@ struct {								\
 struct event_base;
 struct event {
 	TAILQ_ENTRY(event) ev_active_next;
-	TAILQ_ENTRY(event) ev_next;
+
 	/* for managing timeouts */
 	union {
 		TAILQ_ENTRY(event) ev_next_with_common_timeout;
@@ -120,7 +120,7 @@ struct event {
 			/* Allows deletes in callback */
 			short *ev_pncalls;
 		} ev_signal;
-	} _ev;
+	} ev_;
 
 	short ev_events;
 	short ev_res;		/* result passed to event callback */
@@ -136,24 +136,24 @@ struct event {
 
 TAILQ_HEAD (event_list, event);
 
-#ifdef _EVENT_DEFINED_TQENTRY
+#ifdef EVENT_DEFINED_TQENTRY_
 #undef TAILQ_ENTRY
 #endif
 
-#ifdef _EVENT_DEFINED_TQHEAD
+#ifdef EVENT_DEFINED_TQHEAD_
 #undef TAILQ_HEAD
 #endif
 
-#ifdef _EVENT_DEFINED_LISTENTRY
+#ifdef EVENT_DEFINED_LISTENTRY_
 #undef LIST_ENTRY
 struct event_dlist;
-#undef _EVENT_DEFINED_LISTENTRY
+#undef EVENT_DEFINED_LISTENTRY_
 #else
 LIST_HEAD (event_dlist, event);
-#endif /* _EVENT_DEFINED_LISTENTRY */
+#endif /* EVENT_DEFINED_LISTENTRY_ */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _EVENT2_EVENT_STRUCT_H_ */
+#endif /* EVENT2_EVENT_STRUCT_H_INCLUDED_ */

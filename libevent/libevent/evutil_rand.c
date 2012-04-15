@@ -40,7 +40,7 @@
 #include "util-internal.h"
 #include "evthread-internal.h"
 
-#ifdef _EVENT_HAVE_ARC4RANDOM
+#ifdef EVENT__HAVE_ARC4RANDOM
 #include <stdlib.h>
 #include <string.h>
 int
@@ -50,16 +50,22 @@ evutil_secure_rng_init(void)
 	(void) arc4random();
 	return 0;
 }
+#ifndef EVENT__DISABLE_THREAD_SUPPORT
 int
 evutil_secure_rng_global_setup_locks_(const int enable_locks)
 {
 	return 0;
 }
+#endif
+static void
+evutil_free_secure_rng_globals_locks(void)
+{
+}
 
 static void
 ev_arc4random_buf(void *buf, size_t n)
 {
-#ifdef _EVENT_HAVE_ARC4RANDOM_BUF
+#ifdef EVENT__HAVE_ARC4RANDOM_BUF
 	return arc4random_buf(buf, n);
 #else
 	unsigned char *b = buf;
@@ -84,15 +90,15 @@ ev_arc4random_buf(void *buf, size_t n)
 #endif
 }
 
-#else /* !_EVENT_HAVE_ARC4RANDOM { */
+#else /* !EVENT__HAVE_ARC4RANDOM { */
 
-#ifdef _EVENT_ssize_t
-#define ssize_t _EVENT_SSIZE_t
+#ifdef EVENT__ssize_t
+#define ssize_t EVENT__ssize_t
 #endif
 #define ARC4RANDOM_EXPORT static
-#define _ARC4_LOCK() EVLOCK_LOCK(arc4rand_lock, 0)
-#define _ARC4_UNLOCK() EVLOCK_UNLOCK(arc4rand_lock, 0)
-#ifndef _EVENT_DISABLE_THREAD_SUPPORT
+#define ARC4_LOCK_() EVLOCK_LOCK(arc4rand_lock, 0)
+#define ARC4_UNLOCK_() EVLOCK_UNLOCK(arc4rand_lock, 0)
+#ifndef EVENT__DISABLE_THREAD_SUPPORT
 static void *arc4rand_lock;
 #endif
 
@@ -103,7 +109,7 @@ static void *arc4rand_lock;
 
 #include "./arc4random.c"
 
-#ifndef _EVENT_DISABLE_THREAD_SUPPORT
+#ifndef EVENT__DISABLE_THREAD_SUPPORT
 int
 evutil_secure_rng_global_setup_locks_(const int enable_locks)
 {
@@ -112,16 +118,28 @@ evutil_secure_rng_global_setup_locks_(const int enable_locks)
 }
 #endif
 
+static void
+evutil_free_secure_rng_globals_locks(void)
+{
+#ifndef EVENT__DISABLE_THREAD_SUPPORT
+	if (arc4rand_lock != NULL) {
+		EVTHREAD_FREE_LOCK(arc4rand_lock, 0);
+		arc4rand_lock = NULL;
+	}
+#endif
+	return;
+}
+
 int
 evutil_secure_rng_init(void)
 {
 	int val;
 
-	_ARC4_LOCK();
+	ARC4_LOCK_();
 	if (!arc4_seeded_ok)
 		arc4_stir();
 	val = arc4_seeded_ok ? 0 : -1;
-	_ARC4_UNLOCK();
+	ARC4_UNLOCK_();
 	return val;
 }
 
@@ -131,7 +149,7 @@ ev_arc4random_buf(void *buf, size_t n)
 	arc4random_buf(buf, n);
 }
 
-#endif /* } !_EVENT_HAVE_ARC4RANDOM */
+#endif /* } !EVENT__HAVE_ARC4RANDOM */
 
 void
 evutil_secure_rng_get_bytes(void *buf, size_t n)
@@ -146,3 +164,8 @@ evutil_secure_rng_add_bytes(const char *buf, size_t n)
 	    n>(size_t)INT_MAX ? INT_MAX : (int)n);
 }
 
+void
+evutil_free_secure_rng_globals_(void)
+{
+    evutil_free_secure_rng_globals_locks();
+}

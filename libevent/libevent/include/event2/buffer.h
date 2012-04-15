@@ -23,8 +23,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT2_BUFFER_H_
-#define _EVENT2_BUFFER_H_
+#ifndef EVENT2_BUFFER_H_INCLUDED_
+#define EVENT2_BUFFER_H_INCLUDED_
 
 /** @file event2/buffer.h
 
@@ -78,10 +78,10 @@ extern "C" {
 
 #include <event2/event-config.h>
 #include <stdarg.h>
-#ifdef _EVENT_HAVE_SYS_TYPES_H
+#ifdef EVENT__HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-#ifdef _EVENT_HAVE_SYS_UIO_H
+#ifdef EVENT__HAVE_SYS_UIO_H
 #include <sys/uio.h>
 #endif
 #include <event2/util.h>
@@ -93,7 +93,7 @@ extern "C" {
    @see event2/event.h for more information
 */
 struct evbuffer
-#ifdef _EVENT_IN_DOXYGEN
+#ifdef EVENT_IN_DOXYGEN_
 {}
 #endif
 ;
@@ -124,7 +124,7 @@ struct evbuffer_ptr {
 	struct {
 		void *chain;
 		size_t pos_in_chain;
-	} _internal;
+	} internal_;
 };
 
 /** Describes a single extent of memory inside an evbuffer.  Used for
@@ -132,10 +132,10 @@ struct evbuffer_ptr {
 
     @see evbuffer_reserve_space, evbuffer_commit_space, evbuffer_peek
  */
-#ifdef _EVENT_HAVE_SYS_UIO_H
+#ifdef EVENT__HAVE_SYS_UIO_H
 #define evbuffer_iovec iovec
 /* Internal use -- defined only if we are using the native struct iovec */
-#define _EVBUFFER_IOVEC_IS_NATIVE
+#define EVBUFFER_IOVEC_IS_NATIVE_
 #else
 struct evbuffer_iovec {
 	/** The start of the extent of memory. */
@@ -1003,4 +1003,4 @@ size_t evbuffer_add_iovec(struct evbuffer * buffer, struct evbuffer_iovec * vec,
 }
 #endif
 
-#endif /* _EVENT2_BUFFER_H_ */
+#endif /* EVENT2_BUFFER_H_INCLUDED_ */

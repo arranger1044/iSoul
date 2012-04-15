@@ -41,10 +41,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #endif
-#ifdef _EVENT_HAVE_NETINET_IN6_H
+#ifdef EVENT__HAVE_NETINET_IN6_H
 #include <netinet/in6.h>
 #endif
-#ifdef _EVENT_HAVE_SYS_WAIT_H
+#ifdef EVENT__HAVE_SYS_WAIT_H
 #include <sys/wait.h>
 #endif
 #include <signal.h>
@@ -247,7 +247,7 @@ regress_sockaddr_port_parse(void *ptr)
 		if (ent->safamily == AF_INET) {
 			struct sockaddr_in sin;
 			memset(&sin, 0, sizeof(sin));
-#ifdef _EVENT_HAVE_STRUCT_SOCKADDR_IN_SIN_LEN
+#ifdef EVENT__HAVE_STRUCT_SOCKADDR_IN_SIN_LEN
 			sin.sin_len = sizeof(sin);
 #endif
 			sin.sin_family = AF_INET;
@@ -263,7 +263,7 @@ regress_sockaddr_port_parse(void *ptr)
 		} else {
 			struct sockaddr_in6 sin6;
 			memset(&sin6, 0, sizeof(sin6));
-#ifdef _EVENT_HAVE_STRUCT_SOCKADDR_IN6_SIN6_LEN
+#ifdef EVENT__HAVE_STRUCT_SOCKADDR_IN6_SIN6_LEN
 			sin6.sin6_len = sizeof(sin6);
 #endif
 			sin6.sin6_family = AF_INET6;
@@ -294,7 +294,7 @@ regress_sockaddr_port_format(void *ptr)
 	r = evutil_parse_sockaddr_port("192.168.1.1:80",
 	    (struct sockaddr*)&ss, &len);
 	tt_int_op(r,==,0);
-	cp = evutil_format_sockaddr_port(
+	cp = evutil_format_sockaddr_port_(
 		(struct sockaddr*)&ss, cbuf, sizeof(cbuf));
 	tt_ptr_op(cp,==,cbuf);
 	tt_str_op(cp,==,"192.168.1.1:80");
@@ -303,13 +303,13 @@ regress_sockaddr_port_format(void *ptr)
 	r = evutil_parse_sockaddr_port("[ff00::8010]:999",
 	    (struct sockaddr*)&ss, &len);
 	tt_int_op(r,==,0);
-	cp = evutil_format_sockaddr_port(
+	cp = evutil_format_sockaddr_port_(
 		(struct sockaddr*)&ss, cbuf, sizeof(cbuf));
 	tt_ptr_op(cp,==,cbuf);
 	tt_str_op(cp,==,"[ff00::8010]:999");
 
 	ss.ss_family=99;
-	cp = evutil_format_sockaddr_port(
+	cp = evutil_format_sockaddr_port_(
 		(struct sockaddr*)&ss, cbuf, sizeof(cbuf));
 	tt_ptr_op(cp,==,cbuf);
 	tt_str_op(cp,==,"<addr with socktype 99>");
@@ -354,7 +354,7 @@ test_evutil_sockaddr_predicates(void *ptr)
 		}
 
 		/* sockaddr_is_loopback */
-		if (ent->is_loopback != evutil_sockaddr_is_loopback((struct sockaddr*)&ss)) {
+		if (ent->is_loopback != evutil_sockaddr_is_loopback_((struct sockaddr*)&ss)) {
 			TT_FAIL(("evutil_sockaddr_loopback(%s) not as expected",
 				ent->parse));
 		}
@@ -534,22 +534,22 @@ test_evutil_log(void *ptr)
 	 * module didn't enforce the requirement that a fatal callback
 	 * actually exit.  Now, it exits no matter what, so if we wan to
 	 * reinstate these tests, we'll need to fork for each one. */
-	check_error_logging(errx_fn, 2, _EVENT_LOG_ERR,
+	check_error_logging(errx_fn, 2, EVENT_LOG_ERR,
 	    "Fatal error; too many kumquats (5)");
 	RESET();
 #endif
 
 	event_warnx("Far too many %s (%d)", "wombats", 99);
-	LOGEQ(_EVENT_LOG_WARN, "Far too many wombats (99)");
+	LOGEQ(EVENT_LOG_WARN, "Far too many wombats (99)");
 	RESET();
 
 	event_msgx("Connecting lime to coconut");
-	LOGEQ(_EVENT_LOG_MSG, "Connecting lime to coconut");
+	LOGEQ(EVENT_LOG_MSG, "Connecting lime to coconut");
 	RESET();
 
 	event_debug(("A millisecond passed! We should log that!"));
 #ifdef USE_DEBUG
-	LOGEQ(_EVENT_LOG_DEBUG, "A millisecond passed! We should log that!");
+	LOGEQ(EVENT_LOG_DEBUG, "A millisecond passed! We should log that!");
 #else
 	tt_int_op(logsev,==,0);
 	tt_ptr_op(logmsg,==,NULL);
@@ -561,13 +561,13 @@ test_evutil_log(void *ptr)
 	event_warn("Couldn't open %s", "/bad/file");
 	evutil_snprintf(buf, sizeof(buf),
 	    "Couldn't open /bad/file: %s",strerror(ENOENT));
-	LOGEQ(_EVENT_LOG_WARN,buf);
+	LOGEQ(EVENT_LOG_WARN,buf);
 	RESET();
 
 #ifdef CAN_CHECK_ERR
 	evutil_snprintf(buf, sizeof(buf),
 	    "Couldn't open /very/bad/file: %s",strerror(ENOENT));
-	check_error_logging(err_fn, 5, _EVENT_LOG_ERR, buf);
+	check_error_logging(err_fn, 5, EVENT_LOG_ERR, buf);
 	RESET();
 #endif
 
@@ -584,11 +584,11 @@ test_evutil_log(void *ptr)
 	errno = EAGAIN;
 #endif
 	event_sock_warn(fd, "Unhappy socket");
-	LOGEQ(_EVENT_LOG_WARN, buf);
+	LOGEQ(EVENT_LOG_WARN, buf);
 	RESET();
 
 #ifdef CAN_CHECK_ERR
-	check_error_logging(sock_err_fn, 20, _EVENT_LOG_ERR, buf);
+	check_error_logging(sock_err_fn, 20, EVENT_LOG_ERR, buf);
 	RESET();
 #endif
 
@@ -767,7 +767,7 @@ ai_find_by_protocol(struct evutil_addrinfo *ai, int protocol)
 
 
 int
-_test_ai_eq(const struct evutil_addrinfo *ai, const char *sockaddr_port,
+test_ai_eq_(const struct evutil_addrinfo *ai, const char *sockaddr_port,
     int socktype, int protocol, int line)
 {
 	struct sockaddr_storage ss;
@@ -829,6 +829,7 @@ test_evutil_rand(void *arg)
 	char buf2[32];
 	int counts[256];
 	int i, j, k, n=0;
+	struct evutil_weakrand_state seed = { 12346789U };
 
 	memset(buf2, 0, sizeof(buf2));
 	memset(counts, 0, sizeof(counts));
@@ -836,8 +837,8 @@ test_evutil_rand(void *arg)
 	for (k=0;k<32;++k) {
 		/* Try a few different start and end points; try to catch
 		 * the various misaligned cases of arc4random_buf */
-		int startpoint = _evutil_weakrand() % 4;
-		int endpoint = 32 - (_evutil_weakrand() % 4);
+		int startpoint = evutil_weakrand_(&seed) % 4;
+		int endpoint = 32 - (evutil_weakrand_(&seed) % 4);
 
 		memset(buf2, 0, sizeof(buf2));
 
@@ -866,6 +867,13 @@ test_evutil_rand(void *arg)
 		for (j=startpoint;j<endpoint;++j) {
 			tt_int_op(buf2[j], !=, 0);
 		}
+	}
+
+	evutil_weakrand_seed_(&seed, 0);
+	for (i = 0; i < 10000; ++i) {
+		ev_int32_t r = evutil_weakrand_range_(&seed, 9999);
+		tt_int_op(0, <=, r);
+		tt_int_op(r, <, 9999);
 	}
 
 	/* for (i=0;i<256;++i) { printf("%3d %2d\n", i, counts[i]); } */
@@ -1063,7 +1071,7 @@ test_evutil_loadsyslib(void *arg)
 {
 	HANDLE h=NULL;
 
-	h = evutil_load_windows_system_library(TEXT("kernel32.dll"));
+	h = evutil_load_windows_system_library_(TEXT("kernel32.dll"));
 	tt_assert(h);
 
 end:
@@ -1081,10 +1089,12 @@ test_event_malloc(void *arg)
 	(void)arg;
 
 	/* mm_malloc(0) should simply return NULL. */
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 	errno = 0;
 	p = mm_malloc(0);
 	tt_assert(p == NULL);
 	tt_int_op(errno, ==, 0);
+#endif
 
 	/* Trivial case. */
 	errno = 0;
@@ -1104,6 +1114,7 @@ test_event_calloc(void *arg)
 	void *p = NULL;
 	(void)arg;
 
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 	/* mm_calloc() should simply return NULL
 	 * if either argument is zero. */
 	errno = 0;
@@ -1118,6 +1129,7 @@ test_event_calloc(void *arg)
 	p = mm_calloc(1, 0);
 	tt_assert(p == NULL);
 	tt_int_op(errno, ==, 0);
+#endif
 
 	/* Trivial case. */
 	errno = 0;
@@ -1144,11 +1156,13 @@ test_event_strdup(void *arg)
 	void *p = NULL;
 	(void)arg;
 
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 	/* mm_strdup(NULL) should set errno = EINVAL and return NULL. */
 	errno = 0;
 	p = mm_strdup(NULL);
 	tt_assert(p == NULL);
 	tt_int_op(errno, ==, EINVAL);
+#endif
 
 	/* Trivial cases. */
 
@@ -1184,9 +1198,9 @@ test_evutil_usleep(void *arg)
 	long usec1, usec2;
 
 	evutil_gettimeofday(&tv1, NULL);
-	evutil_usleep(&quarter_sec);
+	evutil_usleep_(&quarter_sec);
 	evutil_gettimeofday(&tv2, NULL);
-	evutil_usleep(&tenth_sec);
+	evutil_usleep_(&tenth_sec);
 	evutil_gettimeofday(&tv3, NULL);
 
 	evutil_timersub(&tv2, &tv1, &diff1);

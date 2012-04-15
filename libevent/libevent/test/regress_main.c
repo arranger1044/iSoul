@@ -35,14 +35,14 @@
 
 #include "event2/event-config.h"
 
-#ifdef _EVENT___func__
-#define __func__ _EVENT___func__
+#ifdef EVENT____func__
+#define __func__ EVENT____func__
 #endif
 
 #if 0
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 #include <sys/queue.h>
@@ -213,7 +213,7 @@ basic_test_setup(const struct testcase_t *testcase)
 			exit(1);
 	}
 	if (testcase->flags & TT_ENABLE_IOCP_FLAG) {
-		if (event_base_start_iocp(base, 0)<0) {
+		if (event_base_start_iocp_(base, 0)<0) {
 			event_base_free(base);
 			return (void*)TT_SKIP;
 		}
@@ -259,10 +259,13 @@ basic_test_cleanup(const struct testcase_t *testcase, void *ptr)
 
 	if (testcase->flags & TT_NEED_BASE) {
 		if (data->base) {
-			event_base_assert_ok(data->base);
+			event_base_assert_ok_(data->base);
 			event_base_free(data->base);
 		}
 	}
+
+	if (testcase->flags & TT_FORK)
+		libevent_global_shutdown();
 
 	free(data);
 
@@ -331,7 +334,7 @@ const struct testcase_setup_t legacy_setup = {
 
 /* ============================================================ */
 
-#if (!defined(_EVENT_HAVE_PTHREADS) && !defined(_WIN32)) || defined(_EVENT_DISABLE_THREAD_SUPPORT)
+#if (!defined(EVENT__HAVE_PTHREADS) && !defined(_WIN32)) || defined(EVENT__DISABLE_THREAD_SUPPORT)
 struct testcase_t thread_testcases[] = {
 	{ "basic", NULL, TT_SKIP, NULL, NULL },
 	END_OF_TESTCASES
@@ -357,7 +360,7 @@ struct testgroup_t testgroups[] = {
 	{ "iocp/bufferevent/", bufferevent_iocp_testcases },
 	{ "iocp/listener/", listener_iocp_testcases },
 #endif
-#ifdef _EVENT_HAVE_OPENSSL
+#ifdef EVENT__HAVE_OPENSSL
 	{ "ssl/", ssl_testcases },
 #endif
 	END_OF_GROUPS
@@ -385,13 +388,15 @@ main(int argc, const char **argv)
 	tinytest_skip(testgroups, "http/connection_retry");
 #endif
 
-#ifndef _EVENT_DISABLE_THREAD_SUPPORT
+#ifndef EVENT__DISABLE_THREAD_SUPPORT
 	if (!getenv("EVENT_NO_DEBUG_LOCKS"))
 		evthread_enable_lock_debuging();
 #endif
 
 	if (tinytest_main(argc,argv,testgroups))
 		return 1;
+
+	libevent_global_shutdown();
 
 	return 0;
 }

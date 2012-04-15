@@ -1,12 +1,12 @@
 /* evconfig-private.h.  Generated from evconfig-private.h.in by configure.  */
 /* evconfig-private.h template - see "Configuration Header Templates" */
 /* in AC manual.  Kevin Bowling <kevin.bowling@kev009.com */
-#ifndef _EVENT_EVCONFIG__PRIVATE_H
-#define _EVENT_EVCONFIG__PRIVATE_H
+#ifndef EVCONFIG_PRIVATE_H_INCLUDED_
+#define EVCONFIG_PRIVATE_H_INCLUDED_
 
 /* Enable extensions on AIX 3, Interix.  */
 #ifndef _ALL_SOURCE
-/* # undef _ALL_SOURCE */
+# define _ALL_SOURCE 1
 #endif
 /* Enable GNU extensions on systems that have them.  */
 #ifndef _GNU_SOURCE

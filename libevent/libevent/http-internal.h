@@ -7,8 +7,8 @@
  * need to know about these.
  */
 
-#ifndef _HTTP_INTERNAL_H_
-#define _HTTP_INTERNAL_H_
+#ifndef HTTP_INTERNAL_H_INCLUDED_
+#define HTTP_INTERNAL_H_INCLUDED_
 
 #include "event2/event_struct.h"
 #include "util-internal.h"
@@ -42,7 +42,7 @@ struct addrinfo;
 struct evhttp_request;
 
 /* Indicates an unknown request method. */
-#define _EVHTTP_REQ_UNKNOWN (1<<15)
+#define EVHTTP_REQ_UNKNOWN_ (1<<15)
 
 enum evhttp_connection_state {
 	EVCON_DISCONNECTED,	/**< not currently connected not trying either*/
@@ -177,24 +177,24 @@ struct evhttp {
 /* XXX most of these functions could be static. */
 
 /* resets the connection; can be reused for more requests */
-void evhttp_connection_reset(struct evhttp_connection *);
+void evhttp_connection_reset_(struct evhttp_connection *);
 
 /* connects if necessary */
-int evhttp_connection_connect(struct evhttp_connection *);
+int evhttp_connection_connect_(struct evhttp_connection *);
 
 /* notifies the current request that it failed; resets connection */
-void evhttp_connection_fail(struct evhttp_connection *,
+void evhttp_connection_fail_(struct evhttp_connection *,
     enum evhttp_connection_error error);
 
 enum message_read_status;
 
-enum message_read_status evhttp_parse_firstline(struct evhttp_request *, struct evbuffer*);
-enum message_read_status evhttp_parse_headers(struct evhttp_request *, struct evbuffer*);
+enum message_read_status evhttp_parse_firstline_(struct evhttp_request *, struct evbuffer*);
+enum message_read_status evhttp_parse_headers_(struct evhttp_request *, struct evbuffer*);
 
-void evhttp_start_read(struct evhttp_connection *);
+void evhttp_start_read_(struct evhttp_connection *);
 
 /* response sending HTML the data in the buffer */
-void evhttp_response_code(struct evhttp_request *, int, const char *);
-void evhttp_send_page(struct evhttp_request *, struct evbuffer *);
+void evhttp_response_code_(struct evhttp_request *, int, const char *);
+void evhttp_send_page_(struct evhttp_request *, struct evbuffer *);
 
 #endif /* _HTTP_H */

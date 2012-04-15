@@ -23,8 +23,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT_MM_INTERNAL_H
-#define _EVENT_MM_INTERNAL_H
+#ifndef MM_INTERNAL_H_INCLUDED_
+#define MM_INTERNAL_H_INCLUDED_
 
 #include <sys/types.h>
 
@@ -32,7 +32,7 @@
 extern "C" {
 #endif
 
-#ifndef _EVENT_DISABLE_MM_REPLACEMENT
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 /* Internal use only: Memory allocation functions. We give them nice short
  * mm_names for our own use, but make sure that the symbols have longer names
  * so they don't conflict with other libraries (like, say, libmm). */

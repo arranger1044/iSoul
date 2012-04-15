@@ -24,8 +24,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT2_EVENT_H_
-#define _EVENT2_EVENT_H_
+#ifndef EVENT2_EVENT_H_INCLUDED_
+#define EVENT2_EVENT_H_INCLUDED_
 
 /**
    @mainpage
@@ -185,10 +185,10 @@ extern "C" {
 #endif
 
 #include <event2/event-config.h>
-#ifdef _EVENT_HAVE_SYS_TYPES_H
+#ifdef EVENT__HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 
@@ -211,7 +211,7 @@ extern "C" {
  *    event_base_new_with_config()
  */
 struct event_base
-#ifdef _EVENT_IN_DOXYGEN
+#ifdef EVENT_IN_DOXYGEN_
 {/*Empty body so that doxygen will generate documentation here.*/}
 #endif
 ;
@@ -270,7 +270,7 @@ struct event_base
  *    event_priority_set()
  */
 struct event
-#ifdef _EVENT_IN_DOXYGEN
+#ifdef EVENT_IN_DOXYGEN_
 {/*Empty body so that doxygen will generate documentation here.*/}
 #endif
 ;
@@ -289,7 +289,7 @@ struct event
  *   event_config_set_flag(), event_config_set_num_cpus_hint()
  */
 struct event_config
-#ifdef _EVENT_IN_DOXYGEN
+#ifdef EVENT_IN_DOXYGEN_
 {/*Empty body so that doxygen will generate documentation here.*/}
 #endif
 ;
@@ -595,11 +595,18 @@ void event_base_free(struct event_base *);
 /** @name Log severities
  */
 /**@{*/
-#define _EVENT_LOG_DEBUG 0
-#define _EVENT_LOG_MSG   1
-#define _EVENT_LOG_WARN  2
-#define _EVENT_LOG_ERR   3
+#define EVENT_LOG_DEBUG 0
+#define EVENT_LOG_MSG   1
+#define EVENT_LOG_WARN  2
+#define EVENT_LOG_ERR   3
 /**@}*/
+
+/* Obsolete names: these are deprecated, but older programs might use them.
+ * They violate the reserved-identifier namespace. */
+#define _EVENT_LOG_DEBUG EVENT_LOG_DEBUG
+#define _EVENT_LOG_MSG EVENT_LOG_MSG
+#define _EVENT_LOG_WARN EVENT_LOG_WARN
+#define _EVENT_LOG_ERR EVENT_LOG_ERR
 
 /**
   A callback function used to intercept Libevent's log messages.
@@ -611,7 +618,7 @@ typedef void (*event_log_cb)(int severity, const char *msg);
   Redirect Libevent's log messages.
 
   @param cb a function taking two arguments: an integer severity between
-     _EVENT_LOG_DEBUG and _EVENT_LOG_ERR, and a string.  If cb is NULL,
+     EVENT_LOG_DEBUG and EVENT_LOG_ERR, and a string.  If cb is NULL,
 	 then the default log is used.
 
   NOTE: The function you provide *must not* call any other libevent
@@ -635,7 +642,7 @@ typedef void (*event_fatal_cb)(int err);
  something is wrong with your program, or with Libevent: any subsequent calls
  to Libevent may result in undefined behavior.
 
- Libevent will (almost) always log an _EVENT_LOG_ERR message before calling
+ Libevent will (almost) always log an EVENT_LOG_ERR message before calling
  this function; look at the last log message to see why Libevent has died.
  */
 void event_set_fatal_callback(event_fatal_cb cb);
@@ -839,6 +846,30 @@ int event_base_got_break(struct event_base *);
 typedef void (*event_callback_fn)(evutil_socket_t, short, void *);
 
 /**
+  Return a value used to specify that the event itself must be used as the callback argument.
+
+  The function event_new() takes a callback argument which is passed
+  to the event's callback function. To specify that the argument to be
+  passed to the callback function is the event that event_new() returns,
+  pass in the return value of event_self_cbarg() as the callback argument
+  for event_new().
+
+  For example:
+  <pre>
+      struct event *ev = event_new(base, sock, events, callback, %event_self_cbarg());
+  </pre>
+
+  For consistency with event_new(), it is possible to pass the return value
+  of this function as the callback argument for event_assign() &ndash; this
+  achieves the same result as passing the event in directly.
+
+  @return a value to be passed as the callback argument to event_new() or
+  event_assign().
+  @see event_new(), event_assign()
+ */
+void *event_self_cbarg(void);
+
+/**
   Allocate and asssign a new event structure, ready to be added.
 
   The function event_new() returns a new event that can be used in
@@ -1030,6 +1061,13 @@ void event_active(struct event *ev, int res, short ncalls);
  */
 int event_pending(const struct event *ev, short events, struct timeval *tv);
 
+/**
+   If called from within the callback for an event, returns that event.
+
+   The behavior of this function is not defined when called from outside the
+   callback function for an event.
+ */
+struct event *event_base_get_running_event(struct event_base *base);
 
 /**
   Test if an event structure might be initialized.
@@ -1130,10 +1168,10 @@ const char *event_get_version(void);
 ev_uint32_t event_get_version_number(void);
 
 /** As event_get_version, but gives the version of Libevent's headers. */
-#define LIBEVENT_VERSION _EVENT_VERSION
+#define LIBEVENT_VERSION EVENT__VERSION
 /** As event_get_version_number, but gives the version number of Libevent's
  * headers. */
-#define LIBEVENT_VERSION_NUMBER _EVENT_NUMERIC_VERSION
+#define LIBEVENT_VERSION_NUMBER EVENT__NUMERIC_VERSION
 
 /** Largest number of priorities that Libevent can support. */
 #define EVENT_MAX_PRIORITIES 256
@@ -1207,7 +1245,7 @@ int	event_priority_set(struct event *, int);
 const struct timeval *event_base_init_common_timeout(struct event_base *base,
     const struct timeval *duration);
 
-#if !defined(_EVENT_DISABLE_MM_REPLACEMENT) || defined(_EVENT_IN_DOXYGEN)
+#if !defined(EVENT__DISABLE_MM_REPLACEMENT) || defined(EVENT_IN_DOXYGEN_)
 /**
  Override the functions that Libevent uses for memory management.
 
@@ -1239,6 +1277,16 @@ void event_set_mem_functions(
 #define EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED
 #endif
 
+/**
+   Writes a human-readable description of all inserted and/or active
+   events to a provided stdio stream.
+
+   This is intended for debugging; its format is not guaranteed to be the same
+   between libevent versions.
+
+   @param base An event_base on which to scan the events.
+   @param output A stdio file to write on.
+ */
 void event_base_dump_events(struct event_base *, FILE *);
 
 /** Sets 'tv' to the current time (as returned by gettimeofday()),
@@ -1269,8 +1317,24 @@ int event_base_gettimeofday_cached(struct event_base *base,
  */
 int event_base_update_cache_time(struct event_base *base);
 
+/** Release up all globally-allocated resources allocated by Libevent.
+
+    This function does not free developer-controlled resources like
+    event_bases, events, bufferevents, listeners, and so on.  It only releases
+    resources like global locks that there is no other way to free.
+
+    It is not actually necessary to call this function before exit: every
+    resource that it frees would be released anyway on exit.  It mainly exists
+    so that resource-leak debugging tools don't see Libevent as holding
+    resources at exit.
+
+    You should only call this function when no other Libevent functions will
+    be invoked -- e.g., when cleanly exiting a program.
+ */
+void libevent_global_shutdown(void);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _EVENT2_EVENT_H_ */
+#endif /* EVENT2_EVENT_H_INCLUDED_ */

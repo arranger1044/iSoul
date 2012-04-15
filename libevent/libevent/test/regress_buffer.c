@@ -35,7 +35,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 #include <sys/queue.h>
@@ -65,7 +65,7 @@
 /* Validates that an evbuffer is good. Returns false if it isn't, true if it
  * is*/
 static int
-_evbuffer_validate(struct evbuffer *buf)
+evbuffer_validate_(struct evbuffer *buf)
 {
 	struct evbuffer_chain *chain;
 	size_t sum = 0;
@@ -164,7 +164,7 @@ evbuffer_get_waste(struct evbuffer *buf, size_t *allocatedp, size_t *wastedp, si
 }
 
 #define evbuffer_validate(buf)			\
-	TT_STMT_BEGIN if (!_evbuffer_validate(buf)) TT_DIE(("Buffer format invalid")); TT_STMT_END
+	TT_STMT_BEGIN if (!evbuffer_validate_(buf)) TT_DIE(("Buffer format invalid")); TT_STMT_END
 
 static void
 test_evbuffer(void *ptr)
@@ -699,6 +699,7 @@ test_evbuffer_add_file(void *ptr)
 	struct event *rev=NULL, *wev=NULL;
 	struct event_base *base = testdata->base;
 	evutil_socket_t pair[2] = {-1, -1};
+	struct evutil_weakrand_state seed = { 123456789U };
 
 	/* This test is highly parameterized based on substrings of its
 	 * argument.  The strings are: */
@@ -757,7 +758,7 @@ test_evbuffer_add_file(void *ptr)
 		data = malloc(1024*512);
 		tt_assert(data);
 		for (i = 0; i < datalen; ++i)
-			data[i] = _evutil_weakrand();
+			data[i] = (char)evutil_weakrand_(&seed);
 	} else {
 		data = strdup("here is a relatively small string.");
 		tt_assert(data);
@@ -800,10 +801,10 @@ test_evbuffer_add_file(void *ptr)
 	/* Say that it drains to a fd so that we can use sendfile. */
 	evbuffer_set_flags(src, EVBUFFER_FLAG_DRAINS_TO_FD);
 
-#if defined(_EVENT_HAVE_SENDFILE) && defined(__sun__) && defined(__svr4__)
+#if defined(EVENT__HAVE_SENDFILE) && defined(__sun__) && defined(__svr4__)
 	/* We need to use a pair of AF_INET sockets, since Solaris
 	   doesn't support sendfile() over AF_UNIX. */
-	if (evutil_ersatz_socketpair(AF_INET, SOCK_STREAM, 0, pair) == -1)
+	if (evutil_ersatz_socketpair_(AF_INET, SOCK_STREAM, 0, pair) == -1)
 		tt_abort_msg("ersatz_socketpair failed");
 #else
 	if (evutil_socketpair(AF_UNIX, SOCK_STREAM, 0, pair) == -1)
@@ -867,7 +868,7 @@ test_evbuffer_add_file(void *ptr)
 	}
 }
 
-#ifndef _EVENT_DISABLE_MM_REPLACEMENT
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 static void *
 failing_malloc(size_t how_much)
 {
@@ -1098,7 +1099,7 @@ test_evbuffer_readln(void *ptr)
 	evbuffer_validate(evb);
 
 	/* the next call to readline should fail */
-#ifndef _EVENT_DISABLE_MM_REPLACEMENT
+#ifndef EVENT__DISABLE_MM_REPLACEMENT
 	event_set_mem_functions(failing_malloc, realloc, free);
 	cp = evbuffer_readln(evb, &sz, EVBUFFER_EOL_LF);
 	tt_assert(cp == NULL);

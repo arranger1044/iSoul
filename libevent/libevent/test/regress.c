@@ -35,7 +35,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 #include <sys/queue.h>
@@ -666,11 +666,11 @@ test_persistent_active_timeout(void *ptr)
 	tv_exit.tv_usec = 600 * 1000;
 	event_base_loopexit(base, &tv_exit);
 
-	event_base_assert_ok(base);
+	event_base_assert_ok_(base);
 	evutil_gettimeofday(&start, NULL);
 
 	event_base_dispatch(base);
-	event_base_assert_ok(base);
+	event_base_assert_ok_(base);
 
 	tt_int_op(res.n, ==, 3);
 	tt_int_op(res.events[0], ==, EV_READ);
@@ -733,17 +733,33 @@ test_common_timeout(void *ptr)
 		event_assign(&info[i].ev, base, -1, EV_TIMEOUT|EV_PERSIST,
 		    common_timeout_cb, &info[i]);
 		if (i % 2) {
-			event_add(&info[i].ev, ms_100);
+			if ((i%20)==1) {
+				/* Glass-box test: Make sure we survive the
+				 * transition to non-common timeouts. It's
+				 * a little tricky. */
+				event_add(&info[i].ev, ms_200);
+				event_add(&info[i].ev, &tmp_100_ms);
+			} else if ((i%20)==3) {
+				/* Check heap-to-common too. */
+				event_add(&info[i].ev, &tmp_200_ms);
+				event_add(&info[i].ev, ms_100);
+			} else if ((i%20)==5) {
+				/* Also check common-to-common. */
+				event_add(&info[i].ev, ms_200);
+				event_add(&info[i].ev, ms_100);
+			} else {
+				event_add(&info[i].ev, ms_100);
+			}
 		} else {
 			event_add(&info[i].ev, ms_200);
 		}
 	}
 
-	event_base_assert_ok(base);
+	event_base_assert_ok_(base);
 	evutil_gettimeofday(&start, NULL);
 	event_base_dispatch(base);
 
-	event_base_assert_ok(base);
+	event_base_assert_ok_(base);
 
 	for (i=0; i<10; ++i) {
 		tt_int_op(info[i].count, ==, 4);
@@ -811,18 +827,18 @@ test_fork(void)
 	evsignal_set(&sig_ev, SIGCHLD, child_signal_cb, &got_sigchld);
 	evsignal_add(&sig_ev, NULL);
 
-	event_base_assert_ok(current_base);
+	event_base_assert_ok_(current_base);
 	TT_BLATHER(("Before fork"));
 	if ((pid = fork()) == 0) {
 		/* in the child */
 		TT_BLATHER(("In child, before reinit"));
-		event_base_assert_ok(current_base);
+		event_base_assert_ok_(current_base);
 		if (event_reinit(current_base) == -1) {
 			fprintf(stdout, "FAILED (reinit)\n");
 			exit(1);
 		}
 		TT_BLATHER(("After reinit"));
-		event_base_assert_ok(current_base);
+		event_base_assert_ok_(current_base);
 		TT_BLATHER(("After assert-ok"));
 
 		evsignal_del(&sig_ev);
@@ -842,7 +858,7 @@ test_fork(void)
 	/* wait for the child to read the data */
 	{
 		const struct timeval tv = { 0, 100000 };
-		evutil_usleep(&tv);
+		evutil_usleep_(&tv);
 	}
 
 	if (write(pair[0], TEST1, strlen(TEST1)+1) < 0) {
@@ -1102,12 +1118,12 @@ test_signal_restore(void)
 {
 	struct event ev;
 	struct event_base *base = event_init();
-#ifdef _EVENT_HAVE_SIGACTION
+#ifdef EVENT__HAVE_SIGACTION
 	struct sigaction sa;
 #endif
 
 	test_ok = 0;
-#ifdef _EVENT_HAVE_SIGACTION
+#ifdef EVENT__HAVE_SIGACTION
 	sa.sa_handler = signal_cb_sa;
 	sa.sa_flags = 0x0;
 	sigemptyset(&sa.sa_mask);
@@ -1225,6 +1241,43 @@ test_manipulate_active_events(void *ptr)
 
 end:
 	event_del(&ev1);
+}
+
+static void
+event_selfarg_cb(evutil_socket_t fd, short event, void *arg)
+{
+	struct event *ev = arg;
+	struct event_base *base = event_get_base(ev);
+	event_base_assert_ok_(base);
+	event_base_loopexit(base, NULL);
+	tt_want(ev == event_base_get_running_event(base));
+}
+
+static void
+test_event_new_selfarg(void *ptr)
+{
+	struct basic_test_data *data = ptr;
+	struct event_base *base = data->base;
+	struct event *ev = event_new(base, -1, EV_READ, event_selfarg_cb,
+                                     event_self_cbarg());
+
+	event_active(ev, EV_READ, 1);
+	event_base_dispatch(base);
+
+	event_free(ev);
+}
+
+static void
+test_event_assign_selfarg(void *ptr)
+{
+	struct basic_test_data *data = ptr;
+	struct event_base *base = data->base;
+	struct event ev;
+
+	event_assign(&ev, base, -1, EV_READ, event_selfarg_cb,
+                     event_self_cbarg());
+	event_active(&ev, EV_READ, 1);
+	event_base_dispatch(base);
 }
 
 static void
@@ -1888,10 +1941,10 @@ end:
 		event_config_free(cfg);
 }
 
-#ifdef _EVENT_HAVE_SETENV
+#ifdef EVENT__HAVE_SETENV
 #define SETENV_OK
-#elif !defined(_EVENT_HAVE_SETENV) && defined(_EVENT_HAVE_PUTENV)
-static void setenv(const char *k, const char *v, int _o)
+#elif !defined(EVENT__HAVE_SETENV) && defined(EVENT__HAVE_PUTENV)
+static void setenv(const char *k, const char *v, int o_)
 {
 	char b[256];
 	evutil_snprintf(b, sizeof(b), "%s=%s",k,v);
@@ -1900,9 +1953,9 @@ static void setenv(const char *k, const char *v, int _o)
 #define SETENV_OK
 #endif
 
-#ifdef _EVENT_HAVE_UNSETENV
+#ifdef EVENT__HAVE_UNSETENV
 #define UNSETENV_OK
-#elif !defined(_EVENT_HAVE_UNSETENV) && defined(_EVENT_HAVE_PUTENV)
+#elif !defined(EVENT__HAVE_UNSETENV) && defined(EVENT__HAVE_PUTENV)
 static void unsetenv(const char *k)
 {
 	char b[256];
@@ -1919,7 +1972,7 @@ methodname_to_envvar(const char *mname, char *buf, size_t buflen)
 	char *cp;
 	evutil_snprintf(buf, buflen, "EVENT_NO%s", mname);
 	for (cp = buf; *cp; ++cp) {
-		*cp = EVUTIL_TOUPPER(*cp);
+		*cp = EVUTIL_TOUPPER_(*cp);
 	}
 }
 #endif
@@ -1940,7 +1993,7 @@ test_base_environ(void *arg)
 	setenv("EVENT_NOWAFFLES", "1", 1);
 	unsetenv("EVENT_NOWAFFLES");
 	if (getenv("EVENT_NOWAFFLES") != NULL) {
-#ifndef _EVENT_HAVE_UNSETENV
+#ifndef EVENT__HAVE_UNSETENV
 		TT_DECLARE("NOTE", ("Can't fake unsetenv; skipping test"));
 #else
 		TT_DECLARE("NOTE", ("unsetenv doesn't work; skipping test"));
@@ -2187,17 +2240,17 @@ end:
 }
 #endif
 
-#ifdef _EVENT_DISABLE_MM_REPLACEMENT
+#ifdef EVENT__DISABLE_MM_REPLACEMENT
 static void
 test_mm_functions(void *arg)
 {
-	_tinytest_set_test_skipped();
+	tinytest_set_test_skipped_();
 }
 #else
 static int
-check_dummy_mem_ok(void *_mem)
+check_dummy_mem_ok(void *mem_)
 {
-	char *mem = _mem;
+	char *mem = mem_;
 	mem -= 16;
 	return !memcmp(mem, "{[<guardedram>]}", 16);
 }
@@ -2211,22 +2264,22 @@ dummy_malloc(size_t len)
 }
 
 static void *
-dummy_realloc(void *_mem, size_t len)
+dummy_realloc(void *mem_, size_t len)
 {
-	char *mem = _mem;
+	char *mem = mem_;
 	if (!mem)
 		return dummy_malloc(len);
-	tt_want(check_dummy_mem_ok(_mem));
+	tt_want(check_dummy_mem_ok(mem_));
 	mem -= 16;
 	mem = realloc(mem, len+16);
 	return mem+16;
 }
 
 static void
-dummy_free(void *_mem)
+dummy_free(void *mem_)
 {
-	char *mem = _mem;
-	tt_want(check_dummy_mem_ok(_mem));
+	char *mem = mem_;
+	tt_want(check_dummy_mem_ok(mem_));
 	mem -= 16;
 	free(mem);
 }
@@ -2335,6 +2388,8 @@ struct testcase_t main_testcases[] = {
 	BASIC(free_active_base, TT_FORK|TT_NEED_SOCKETPAIR),
 
 	BASIC(manipulate_active_events, TT_FORK|TT_NEED_BASE),
+	BASIC(event_new_selfarg, TT_FORK|TT_NEED_BASE),
+	BASIC(event_assign_selfarg, TT_FORK|TT_NEED_BASE),
 
 	BASIC(bad_assign, TT_FORK|TT_NEED_BASE|TT_NO_LOGS),
 	BASIC(bad_reentrant, TT_FORK|TT_NEED_BASE|TT_NO_LOGS),

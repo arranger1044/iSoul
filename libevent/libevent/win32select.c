@@ -80,8 +80,8 @@ struct win32op {
 };
 
 static void *win32_init(struct event_base *);
-static int win32_add(struct event_base *, evutil_socket_t, short old, short events, void *_idx);
-static int win32_del(struct event_base *, evutil_socket_t, short old, short events, void *_idx);
+static int win32_add(struct event_base *, evutil_socket_t, short old, short events, void *idx_);
+static int win32_del(struct event_base *, evutil_socket_t, short old, short events, void *idx_);
 static int win32_dispatch(struct event_base *base, struct timeval *);
 static void win32_dealloc(struct event_base *);
 
@@ -163,7 +163,7 @@ do_fd_clear(struct event_base *base,
 		SOCKET s2;
 		s2 = set->fd_array[i] = set->fd_array[set->fd_count];
 
-		ent2 = evmap_io_get_fdinfo(&base->io, s2);
+		ent2 = evmap_io_get_fdinfo_(&base->io, s2);
 
 		if (!ent2) /* This indicates a bug. */
 			return (0);
@@ -177,7 +177,7 @@ do_fd_clear(struct event_base *base,
 
 #define NEVENT 32
 void *
-win32_init(struct event_base *_base)
+win32_init(struct event_base *base)
 {
 	struct win32op *winop;
 	size_t size;
@@ -199,8 +199,10 @@ win32_init(struct event_base *_base)
 	winop->readset_out->fd_count = winop->writeset_out->fd_count
 		= winop->exset_out->fd_count = 0;
 
-	if (evsig_init(_base) < 0)
+	if (evsig_init_(base) < 0)
 		winop->signals_are_broken = 1;
+
+	evutil_weakrand_seed_(&base->weakrand_seed, 0);
 
 	return (winop);
  err:
@@ -215,10 +217,10 @@ win32_init(struct event_base *_base)
 
 int
 win32_add(struct event_base *base, evutil_socket_t fd,
-			 short old, short events, void *_idx)
+			 short old, short events, void *idx_)
 {
 	struct win32op *win32op = base->evbase;
-	struct idx_info *idx = _idx;
+	struct idx_info *idx = idx_;
 
 	if ((events & EV_SIGNAL) && win32op->signals_are_broken)
 		return (-1);
@@ -240,10 +242,10 @@ win32_add(struct event_base *base, evutil_socket_t fd,
 
 int
 win32_del(struct event_base *base, evutil_socket_t fd, short old, short events,
-		  void *_idx)
+		  void *idx_)
 {
 	struct win32op *win32op = base->evbase;
-	struct idx_info *idx = _idx;
+	struct idx_info *idx = idx_;
 
 	event_debug(("%s: Removing event for %d", __func__, fd));
 	if (events & EV_READ)
@@ -301,7 +303,7 @@ win32_dispatch(struct event_base *base, struct timeval *tv)
 	    win32op->readset_out->fd_count : win32op->writeset_out->fd_count;
 
 	if (!fd_count) {
-		long msec = evutil_tv_to_msec(tv);
+		long msec = evutil_tv_to_msec_(tv);
 		/* Sleep's DWORD argument is unsigned long */
 		if (msec < 0)
 			msec = LONG_MAX;
@@ -326,42 +328,45 @@ win32_dispatch(struct event_base *base, struct timeval *tv)
 	}
 
 	if (win32op->readset_out->fd_count) {
-		i = rand() % win32op->readset_out->fd_count;
+		i = evutil_weakrand_range_(&base->weakrand_seed,
+		    win32op->readset_out->fd_count);
 		for (j=0; j<win32op->readset_out->fd_count; ++j) {
 			if (++i >= win32op->readset_out->fd_count)
 				i = 0;
 			s = win32op->readset_out->fd_array[i];
-			evmap_io_active(base, s, EV_READ);
+			evmap_io_active_(base, s, EV_READ);
 		}
 	}
 	if (win32op->exset_out->fd_count) {
-		i = rand() % win32op->exset_out->fd_count;
+		i = evutil_weakrand_range_(&base->weakrand_seed,
+		    win32op->exset_out->fd_count);
 		for (j=0; j<win32op->exset_out->fd_count; ++j) {
 			if (++i >= win32op->exset_out->fd_count)
 				i = 0;
 			s = win32op->exset_out->fd_array[i];
-			evmap_io_active(base, s, EV_WRITE);
+			evmap_io_active_(base, s, EV_WRITE);
 		}
 	}
 	if (win32op->writeset_out->fd_count) {
 		SOCKET s;
-		i = rand() % win32op->writeset_out->fd_count;
+		i = evutil_weakrand_range_(&base->weakrand_seed,
+		    win32op->writeset_out->fd_count);
 		for (j=0; j<win32op->writeset_out->fd_count; ++j) {
 			if (++i >= win32op->writeset_out->fd_count)
 				i = 0;
 			s = win32op->writeset_out->fd_array[i];
-			evmap_io_active(base, s, EV_WRITE);
+			evmap_io_active_(base, s, EV_WRITE);
 		}
 	}
 	return (0);
 }
 
 void
-win32_dealloc(struct event_base *_base)
+win32_dealloc(struct event_base *base)
 {
-	struct win32op *win32op = _base->evbase;
+	struct win32op *win32op = base->evbase;
 
-	evsig_dealloc(_base);
+	evsig_dealloc_(base);
 	if (win32op->readset_in)
 		mm_free(win32op->readset_in);
 	if (win32op->writeset_in)

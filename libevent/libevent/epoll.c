@@ -27,12 +27,12 @@
 #include "event2/event-config.h"
 #include "evconfig-private.h"
 
-#ifdef _EVENT_HAVE_EPOLL
+#ifdef EVENT__HAVE_EPOLL
 
 #include <stdint.h>
 #include <sys/types.h>
 #include <sys/resource.h>
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 #include <sys/queue.h>
@@ -44,7 +44,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
-#ifdef _EVENT_HAVE_FCNTL_H
+#ifdef EVENT__HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
 
@@ -69,8 +69,8 @@ static void epoll_dealloc(struct event_base *);
 static const struct eventop epollops_changelist = {
 	"epoll (with changelist)",
 	epoll_init,
-	event_changelist_add,
-	event_changelist_del,
+	event_changelist_add_,
+	event_changelist_del_,
 	epoll_dispatch,
 	epoll_dealloc,
 	1, /* need reinit */
@@ -110,18 +110,23 @@ const struct eventop epollops = {
 static void *
 epoll_init(struct event_base *base)
 {
-	int epfd;
+	int epfd = -1;
 	struct epollop *epollop;
 
-	/* Initialize the kernel queue.  (The size field is ignored since
-	 * 2.6.8.) */
-	if ((epfd = epoll_create(32000)) == -1) {
-		if (errno != ENOSYS)
-			event_warn("epoll_create");
-		return (NULL);
+#ifdef EVENT__HAVE_EPOLL_CREATE1
+	/* First, try the shiny new epoll_create1 interface, if we have it. */
+	epfd = epoll_create1(EPOLL_CLOEXEC);
+#endif
+	if (epfd == -1) {
+		/* Initialize the kernel queue using the old interface.  (The
+		size field is ignored   since 2.6.8.) */
+		if ((epfd = epoll_create(32000)) == -1) {
+			if (errno != ENOSYS)
+				event_warn("epoll_create");
+			return (NULL);
+		}
+		evutil_make_socket_closeonexec(epfd);
 	}
-
-	evutil_make_socket_closeonexec(epfd);
 
 	if (!(epollop = mm_calloc(1, sizeof(struct epollop)))) {
 		close(epfd);
@@ -141,10 +146,10 @@ epoll_init(struct event_base *base)
 
 	if ((base->flags & EVENT_BASE_FLAG_EPOLL_USE_CHANGELIST) != 0 ||
 	    ((base->flags & EVENT_BASE_FLAG_IGNORE_ENV) == 0 &&
-		evutil_getenv("EVENT_EPOLL_USE_CHANGELIST") != NULL))
+		evutil_getenv_("EVENT_EPOLL_USE_CHANGELIST") != NULL))
 		base->evsel = &epollops_changelist;
 
-	evsig_init(base);
+	evsig_init_(base);
 
 	return (epollop);
 }
@@ -504,7 +509,7 @@ epoll_dispatch(struct event_base *base, struct timeval *tv)
 	long timeout = -1;
 
 	if (tv != NULL) {
-		timeout = evutil_tv_to_msec(tv);
+		timeout = evutil_tv_to_msec_(tv);
 		if (timeout < 0 || timeout > MAX_EPOLL_TIMEOUT_MSEC) {
 			/* Linux kernels can wait forever if the timeout is
 			 * too big; see comment on MAX_EPOLL_TIMEOUT_MSEC. */
@@ -513,7 +518,7 @@ epoll_dispatch(struct event_base *base, struct timeval *tv)
 	}
 
 	epoll_apply_changes(base);
-	event_changelist_remove_all(&base->changelist, base);
+	event_changelist_remove_all_(&base->changelist, base);
 
 	EVBASE_RELEASE_LOCK(base, th_base_lock);
 
@@ -549,7 +554,7 @@ epoll_dispatch(struct event_base *base, struct timeval *tv)
 		if (!ev)
 			continue;
 
-		evmap_io_active(base, events[i].data.fd, ev | EV_ET);
+		evmap_io_active_(base, events[i].data.fd, ev | EV_ET);
 	}
 
 	if (res == epollop->nevents && epollop->nevents < MAX_NEVENT) {
@@ -575,7 +580,7 @@ epoll_dealloc(struct event_base *base)
 {
 	struct epollop *epollop = base->evbase;
 
-	evsig_dealloc(base);
+	evsig_dealloc_(base);
 	if (epollop->events)
 		mm_free(epollop->events);
 	if (epollop->epfd >= 0)
@@ -585,4 +590,4 @@ epoll_dealloc(struct event_base *base)
 	mm_free(epollop);
 }
 
-#endif /* _EVENT_HAVE_EPOLL */
+#endif /* EVENT__HAVE_EPOLL */

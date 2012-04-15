@@ -24,8 +24,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT2_LISTENER_H_
-#define _EVENT2_LISTENER_H_
+#ifndef EVENT2_LISTENER_H_INCLUDED_
+#define EVENT2_LISTENER_H_INCLUDED_
 
 #ifdef __cplusplus
 extern "C" {
@@ -72,6 +72,17 @@ typedef void (*evconnlistener_errorcb)(struct evconnlistener *, void *);
 /** Flag: Indicates that the listener should be created in disabled
  * state. Use evconnlistener_enable() to enable it later. */
 #define LEV_OPT_DISABLED		(1u<<5)
+/** Flag: Indicates that the listener should defer accept() until data is
+ * available, if possible.  Ignored on platforms that do not support this.
+ *
+ * This option can help performance for protocols where the client transmits
+ * immediately after connecting.
+ *
+ * This option is only supported by evconnlistener_new_bind(): it can't
+ * work with evconnlistener_new_fd(), since the listener needs to be told
+ * to use the option before it is actually bound.
+ */
+#define LEV_OPT_DEFERRED_ACCEPT		(1u<<6)
 
 /**
    Allocate a new evconnlistener object to listen for incoming TCP connections

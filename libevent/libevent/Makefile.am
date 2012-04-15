@@ -101,7 +101,10 @@ EXTRA_DIST = \
 	libevent.pc.in \
 	Doxyfile \
 	whatsnew-2.0.txt \
+	whatsnew-2.1.txt \
 	Makefile.nmake test/Makefile.nmake \
+	ChangeLog-2.0 \
+	ChangeLog-1.4 \
 	$(PLATFORM_DEPENDENT_SRC)
 
 LIBEVENT_LIBS_LA = libevent.la libevent_core.la libevent_extra.la
@@ -162,7 +165,7 @@ endif
 
 BUILT_SOURCES = ./include/event2/event-config.h
 
-./include/event2/event-config.h: config.h
+./include/event2/event-config.h: config.h Makefile.am
 	$(MKDIR_P) ./include/event2 || true
 	echo '/* event2/event-config.h' > $@
 	echo ' *' >> $@
@@ -173,13 +176,13 @@ BUILT_SOURCES = ./include/event2/event-config.h
 	echo ' *' >> $@
 	echo ' * Do not rely on macros in this file existing in later versions.'>> $@
 	echo ' */' >> $@
-	echo '#ifndef _EVENT2_EVENT_CONFIG_H_' >> $@
-	echo '#define _EVENT2_EVENT_CONFIG_H_' >> $@
+	echo '#ifndef EVENT2_EVENT_CONFIG_H_INCLUDED_' >> $@
+	echo '#define EVENT2_EVENT_CONFIG_H_INCLUDED_' >> $@
 
-	sed -e 's/#define /#define _EVENT_/' \
-	    -e 's/#undef /#undef _EVENT_/' \
-	    -e 's/# define /# define _EVENT_/' \
-	    -e 's/#ifndef /#ifndef _EVENT_/' < config.h >> $@
+	sed -e 's/#define /#define EVENT__/' \
+	    -e 's/#undef /#undef EVENT__/' \
+	    -e 's/# define /# define EVENT__/' \
+	    -e 's/#ifndef /#ifndef EVENT__/' < config.h >> $@
 	echo "#endif" >> $@
 
 CORE_SRC = event.c evthread.c buffer.c \

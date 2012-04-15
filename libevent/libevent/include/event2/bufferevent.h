@@ -24,8 +24,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#ifndef _EVENT2_BUFFEREVENT_H_
-#define _EVENT2_BUFFEREVENT_H_
+#ifndef EVENT2_BUFFEREVENT_H_INCLUDED_
+#define EVENT2_BUFFEREVENT_H_INCLUDED_
 
 /**
    @file event2/bufferevent.h
@@ -79,10 +79,10 @@ extern "C" {
 #endif
 
 #include <event2/event-config.h>
-#ifdef _EVENT_HAVE_SYS_TYPES_H
+#ifdef EVENT__HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
-#ifdef _EVENT_HAVE_SYS_TIME_H
+#ifdef EVENT__HAVE_SYS_TIME_H
 #include <sys/time.h>
 #endif
 
@@ -109,7 +109,7 @@ extern "C" {
    @see event2/bufferevent.h
  */
 struct bufferevent
-#ifdef _EVENT_IN_DOXYGEN
+#ifdef EVENT_IN_DOXYGEN_
 {}
 #endif
 ;
@@ -787,7 +787,7 @@ ev_ssize_t bufferevent_get_max_to_read(struct bufferevent *bev);
 ev_ssize_t bufferevent_get_max_to_write(struct bufferevent *bev);
 
 /**
-   @name GrouprRate limit inspection
+   @name Group Rate limit inspection
 
    Return the read or write bucket size for a bufferevent rate limit
    group.  Note that it can return a negative value if bufferevents in
@@ -862,4 +862,4 @@ bufferevent_rate_limit_group_reset_totals(
 }
 #endif
 
-#endif /* _EVENT2_BUFFEREVENT_H_ */
+#endif /* EVENT2_BUFFEREVENT_H_INCLUDED_ */
