@@ -3,6 +3,8 @@ DEFS = @DEFS@ -DLIBXMLPP_BUILD
 
 h_sources_public = libxml++.h \
 	attribute.h \
+	attributedeclaration.h \
+	attributenode.h \
 	document.h \
 	dtd.h \
 	keepblanks.h \
@@ -20,6 +22,7 @@ h_sources_public = libxml++.h \
 	nodes/commentnode.h \
 	nodes/contentnode.h \
 	nodes/element.h \
+	nodes/entitydeclaration.h \
 	nodes/entityreference.h \
 	nodes/node.h \
 	nodes/processinginstructionnode.h \
@@ -32,6 +35,8 @@ h_sources_public = libxml++.h \
 	validators/schemavalidator.h \
 	validators/validator.h
 cc_sources = attribute.cc \
+	attributedeclaration.cc \
+	attributenode.cc \
 	document.cc \
 	dtd.cc \
 	keepblanks.cc \
@@ -48,6 +53,7 @@ cc_sources = attribute.cc \
 	nodes/cdatanode.cc \
 	nodes/commentnode.cc \
 	nodes/contentnode.cc \
+	nodes/entitydeclaration.cc \
 	nodes/entityreference.cc \
 	nodes/element.cc \
 	nodes/node.cc \

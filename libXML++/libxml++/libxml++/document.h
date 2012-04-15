@@ -42,7 +42,7 @@ class Document;
 //TODO: Make Document inherit from Node, when we can break ABI one day?
 //
 //libxml might intend xmlDoc to derive (theoretically) from xmlNode.
-//This is suggested because the XmlNodeSet returned by xmlXPathEval (see the Node::find() implementation) can contain either xmlNode or xmlDocument elements.
+//This is suggested because the xmlNodeSet returned by xmlXPathEval (see the Node::find() implementation) can contain either xmlNode or xmlDocument elements.
 /**
  * Represents an XML document in the DOM model.
  */
@@ -88,7 +88,7 @@ public:
 
   /** Creates the root node.
    * @param name The node's name.
-   * @param ns_uri The namespace URI. A namspace declaration will be added to this node, because it could not have
+   * @param ns_uri The namespace URI. A namespace declaration will be added to this node, because it could not have
      been declared before.
    * @param ns_prefix The namespace prefix to associate with the namespace. If no namespace prefix is specified then
      the namespace URI will be the default namespace.
@@ -111,6 +111,18 @@ public:
    * @returns The new comment node.
    */
   CommentNode* add_comment(const Glib::ustring& content);
+
+  /** Append a new processing instruction node.
+   *
+   * @newin{2,36}
+   *
+   * @param name The name of the application to which the instruction is directed.
+   * @param content The content of the instruction. This should be unescaped - see ContentNode::set_content().
+   * @returns The new processing instruction node.
+   * @throws internal_error
+   */
+  ProcessingInstructionNode* add_processing_instruction(
+    const Glib::ustring& name, const Glib::ustring& content);
 
   //TODO: Use std::string for filenames.
   /** Write the document to a file.
@@ -178,7 +190,7 @@ public:
 protected:
   /** Retrieve an Entity.
    * The entity can be from an external subset or internally declared.
-   * @param name Then name of the entity to get.
+   * @param name The name of the entity to get.
    * @returns A pointer to the libxml2 entity structure.
    */
   _xmlEntity* get_entity(const Glib::ustring& name);

@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
   std::string schemafilepath("example.xsd"),
               docfilepath("example.xml");
 
-  if(argc!=0 && argc!=3)
+  if(argc!=1 && argc!=3)
     std::cout << "usage : " << argv[0] << " [document schema]" << std::endl;
   else
   {
@@ -60,10 +60,8 @@ int main(int argc, char* argv[])
       }
       catch( const xmlpp::validity_error& error)
       {
-#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
         std::cout << "Error validating the document" << std::endl;
-        std::cout << error.what();
-#endif		
+        std::cout << error.what();		
       }
     }
     catch( const xmlpp::parse_error& )

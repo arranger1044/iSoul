@@ -5,7 +5,6 @@
  */
 
 #include <libxml++/nodes/element.h>
-#include <libxml++/nodes/textnode.h>
 #include <libxml++/exceptions/internal_error.h>
 #include <libxml++/document.h>
 
@@ -41,25 +40,26 @@ const Element::AttributeList Element::get_attributes() const
 Attribute* Element::get_attribute(const Glib::ustring& name,
                                   const Glib::ustring& ns_prefix) const
 {
-  if(ns_prefix.empty())
+  // An empty ns_prefix means "use no namespace".
+  // The default namespace never applies to an attribute.
+  Glib::ustring ns_uri;
+  if (!ns_prefix.empty())
   {
-    xmlAttr* attr = xmlHasProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str());
-    if( attr )
-    {
-      Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
-      return reinterpret_cast<Attribute*>(attr->_private);
-    }
+    ns_uri = get_namespace_uri_for_prefix(ns_prefix);
+    if (ns_uri.empty())
+      return 0; // No such prefix.
   }
-  else
+
+  // The return value of xmlHasNsProp() may be either an xmlAttr*, pointing to an
+  // explicitly set attribute (XML_ATTRIBUTE_NODE), or an xmlAttribute*,
+  // cast to an xmlAttr*, pointing to the declaration of an attribute with a
+  // default value (XML_ATTRIBUTE_DECL).
+  xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
+                               ns_uri.empty() ? 0 : (const xmlChar*)ns_uri.c_str());
+  if (attr)
   {
-    Glib::ustring ns_uri = get_namespace_uri_for_prefix(ns_prefix);  
-    xmlAttr* attr = xmlHasNsProp(const_cast<xmlNode*>(cobj()), (const xmlChar*)name.c_str(),
-                                 (const xmlChar*)ns_uri.c_str());
-    if( attr )
-    {
-      Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
-      return reinterpret_cast<Attribute*>(attr->_private);
-    }
+    Node::create_wrapper(reinterpret_cast<xmlNode*>(attr));
+    return reinterpret_cast<Attribute*>(attr->_private);
   }
 
   return 0;
@@ -92,9 +92,7 @@ Attribute* Element::set_attribute(const Glib::ustring& name, const Glib::ustring
     }
     else
     {
-      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
       throw exception("The namespace prefix (" + ns_prefix + ") has not been declared.");
-      #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     }
   }
 
@@ -216,7 +214,7 @@ void Element::set_namespace_declaration(const Glib::ustring& ns_uri, const Glib:
   //Create a new namespace declaration for this element:
   xmlNewNs(cobj(), (const xmlChar*)(ns_uri.empty() ? 0 : ns_uri.c_str()),
                    (const xmlChar*)(ns_prefix.empty() ? 0 : ns_prefix.c_str()) );
-  //We ignore the returned xmlNS*. Hopefully this is owned by the node. murrayc.
+  //We ignore the returned xmlNs*. Hopefully this is owned by the node. murrayc.
 }
 
 Glib::ustring Element::get_namespace_uri_for_prefix(const Glib::ustring& ns_prefix) const
@@ -247,13 +245,40 @@ CommentNode* Element::add_child_comment(const Glib::ustring& content)
 }
 
 
-
 CdataNode* Element::add_child_cdata(const Glib::ustring& content)
 {
   xmlNode* node = xmlNewCDataBlock(cobj()->doc, (const xmlChar*)content.c_str(), content.bytes());
   node = xmlAddChild(cobj(), node);
   Node::create_wrapper(node);
   return static_cast<CdataNode*>(node->_private);
+}
+
+EntityReference* Element::add_child_entity_reference(const Glib::ustring& name)
+{
+  const Glib::ustring extended_name = name + "  "; // This is at least two chars long.
+  int ichar = 0;
+  if (extended_name[ichar] == '&')
+    ++ichar;
+
+  // Is it an entity reference or a character reference?
+  // libxml uses xmlNode::type == XML_ENTITY_REF_NODE for both.
+  xmlNode* node = 0;
+  if (extended_name[ichar] == '#')
+    node = xmlNewCharRef(cobj()->doc, (const xmlChar*)name.c_str());
+  else
+    node = xmlNewReference(cobj()->doc, (const xmlChar*)name.c_str());
+  node = xmlAddChild(cobj(), node);
+  Node::create_wrapper(node);
+  return node ? static_cast<EntityReference*>(node->_private) : 0;
+}
+
+ProcessingInstructionNode* Element::add_child_processing_instruction(
+  const Glib::ustring& name, const Glib::ustring& content)
+{
+  xmlNode* node = xmlNewDocPI(cobj()->doc, (const xmlChar*)name.c_str(), (const xmlChar*)content.c_str());
+  node = xmlAddChild(cobj(), node);
+  Node::create_wrapper(node);
+  return node ? static_cast<ProcessingInstructionNode*>(node->_private) : 0;
 }
 
 

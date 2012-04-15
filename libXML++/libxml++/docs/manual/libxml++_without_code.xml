@@ -86,11 +86,17 @@ url="http://libxmlplusplus.sourceforge.net">libxmlplusplus.sourceforge.net</ulin
       <itemizedlist>
       <listitem><para>xmlpp::Node:
         <itemizedlist>
-          <listitem><para>xmlpp::Attribute</para></listitem>
+          <listitem><para>xmlpp::Attribute
+          <itemizedlist>
+            <listitem><para>xmlpp::AttributeDeclaration</para></listitem>
+            <listitem><para>xmlpp::AttributeNode</para></listitem>
+          </itemizedlist>
+          </para></listitem>
           <listitem><para>xmlpp::ContentNode
           <itemizedlist>
             <listitem><para>xmlpp::CdataNode</para></listitem>
             <listitem><para>xmlpp::CommentNode</para></listitem>
+            <listitem><para>xmlpp::EntityDeclaration</para></listitem>
             <listitem><para>xmlpp::ProcessingInstructionNode</para></listitem>
             <listitem><para>xmlpp::TextNode</para></listitem>
           </itemizedlist>
@@ -103,7 +109,7 @@ url="http://libxmlplusplus.sourceforge.net">libxmlplusplus.sourceforge.net</ulin
       </itemizedlist>
     </para>
 
-      <para>Although you may obtain pointers to the <literal>Node</literal>s, these <literal>Node</literal>s are always owned by their parent Nodes. In most cases that means that the Node will exist, and your pointer will be valid, as long as the <literal>Document</literal> instance exists.</para>
+      <para>Although you may obtain pointers to the <literal>Node</literal>s, these <literal>Node</literal>s are always owned by their parent <literal>Node</literal>. In most cases that means that the <literal>Node</literal> will exist, and your pointer will be valid, as long as the <literal>Document</literal> instance exists.</para>
       <para>There are also several methods which can create new child <literal>Node</literal>s. By using these, and one of the <literal>Document::write_*()</literal> methods, you can use libxml++ to build a new XML document.</para>
 
 

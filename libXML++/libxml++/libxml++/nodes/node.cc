@@ -6,12 +6,15 @@
 
 #include <libxml++/nodes/element.h>
 #include <libxml++/nodes/node.h>
+#include <libxml++/nodes/entitydeclaration.h>
 #include <libxml++/nodes/entityreference.h>
 #include <libxml++/nodes/textnode.h>
 #include <libxml++/nodes/commentnode.h>
 #include <libxml++/nodes/cdatanode.h>
 #include <libxml++/nodes/processinginstructionnode.h>
 #include <libxml++/exceptions/internal_error.h>
+#include <libxml++/attributedeclaration.h>
+#include <libxml++/attributenode.h>
 #include <libxml++/document.h>
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
@@ -73,6 +76,38 @@ Node* Node::get_previous_sibling()
   return static_cast<Node*>(cobj()->prev->_private);
 }
 
+static Node* _convert_node(xmlNode* node)
+{
+  Node* res = 0;
+  if(node)
+  {
+    Node::create_wrapper(node);
+    res = static_cast<Node*>(node->_private);
+  }
+  return res;
+}
+
+Node* Node::get_first_child(const Glib::ustring& name)
+{
+  xmlNode* child = impl_->children;
+  if(!child)
+    return 0;
+
+  do
+  {
+    if(name.empty() || name == (const char*)child->name)
+      return _convert_node(child);
+  }
+  while((child = child->next));
+   
+  return 0;
+}
+
+const Node* Node::get_first_child(const Glib::ustring& name) const
+{
+  return const_cast<Node*>(this)->get_first_child(name);
+}
+
 Node::NodeList Node::get_children(const Glib::ustring& name)
 {
    xmlNode* child = impl_->children;
@@ -83,10 +118,7 @@ Node::NodeList Node::get_children(const Glib::ustring& name)
    do
    {
       if(name.empty() || name == (const char*)child->name)
-      {
-        Node::create_wrapper(child);
-        children.push_back(reinterpret_cast<Node*>(child->_private));
-      }
+        children.push_back(_convert_node(child));
    }
    while((child = child->next));
    
@@ -157,11 +189,7 @@ _xmlNode* Node::create_new_child_node(const Glib::ustring& name, const Glib::ust
 
    if(impl_->type != XML_ELEMENT_NODE)
    {
-      #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-      throw internal_error("You can only add child nodes to element nodes");
-      #else
-      return 0;
-      #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
+     throw internal_error("You can only add child nodes to element nodes");
    }
 
    if(ns_prefix.empty())
@@ -175,11 +203,7 @@ _xmlNode* Node::create_new_child_node(const Glib::ustring& name, const Glib::ust
      ns = xmlSearchNs(impl_->doc, impl_, (const xmlChar*)ns_prefix.c_str());
      if (!ns)
      {
-       #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
        throw exception("The namespace prefix (" + ns_prefix + ") has not been declared.");
-       #else
-       return 0;
-       #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
      }
    }
 
@@ -204,11 +228,7 @@ Node* Node::import_node(const Node* node, bool recursive)
   xmlNode* imported_node = xmlDocCopyNode(const_cast<xmlNode*>(node->cobj()), impl_->doc, recursive);
   if (!imported_node)
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to import node");
-    #else
-    return 0;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   //Add the node:
@@ -218,11 +238,7 @@ Node* Node::import_node(const Node* node, bool recursive)
     Node::free_wrappers(imported_node);
     xmlFreeNode(imported_node);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Unable to add imported node to current node");
-    #else
-    return 0;
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   Node::create_wrapper(imported_node);
@@ -271,11 +287,7 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
   {
     xmlXPathFreeContext(ctxt);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw exception("Invalid XPath: " + xpath);
-    #else
-    return NodeSet();
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   if(result->type != XPATH_NODESET)
@@ -283,11 +295,7 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
     xmlXPathFreeObject(result);
     xmlXPathFreeContext(ctxt);
 
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
     throw internal_error("Only nodeset result types are supported.");
-    #else
-    return NodeSet();
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
   }
 
   xmlNodeSet* nodeset = result->nodesetval;
@@ -299,6 +307,12 @@ static NodeSet find_impl(xmlXPathContext* ctxt, const Glib::ustring& xpath)
     for (int i = 0; i != count; ++i)
     {
       xmlNode* cnode = xmlXPathNodeSetItem(nodeset, i);
+      if(!cnode)
+      {
+        std::cerr << "Node::find_impl: The xmlNode was null." << std::endl;
+        continue;
+      }
+
       if(cnode->type == XML_NAMESPACE_DECL)
       {
         //In this case we would cast it to a xmlNs*,
@@ -350,15 +364,22 @@ NodeSet Node::find(const Glib::ustring& xpath,
 
 Glib::ustring Node::get_namespace_prefix() const
 {
-  if(impl_->type == XML_DOCUMENT_NODE)
+  if(impl_->type == XML_DOCUMENT_NODE || impl_->type == XML_ENTITY_DECL)
   {
-    //impl_ is actually of type xmlDoc, instead of just xmlNode.
-    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //impl_ is actually of type xmlDoc or xmlEntity, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so xmlDoc and
+    //xmlEntity do not have all the same struct fields as xmlNode.
     //Therefore, a call to impl_->ns would be invalid.
     //This can be an issue when calling this method on a Node returned by Node::find().
-    //See the TODO comment on Document, suggesting that Document should derived from Node.
+    //See the TODO comment on Document, suggesting that Document should derive from Node.
 
     return Glib::ustring();
+  }
+  else if (impl_->type == XML_ATTRIBUTE_DECL)
+  {
+    //impl_ is actually of type xmlAttribute, instead of just xmlNode.
+    const xmlAttribute* const attr = reinterpret_cast<const xmlAttribute*>(impl_);
+    return attr->prefix ? (const char*)attr->prefix : "";
   }
 
   if(impl_ && impl_->ns && impl_->ns->prefix)
@@ -369,10 +390,13 @@ Glib::ustring Node::get_namespace_prefix() const
 
 Glib::ustring Node::get_namespace_uri() const
 {
-  if(impl_->type == XML_DOCUMENT_NODE)
+  if(impl_->type == XML_DOCUMENT_NODE ||
+     impl_->type == XML_ENTITY_DECL ||
+     impl_->type == XML_ATTRIBUTE_DECL)
   {
-    //impl_ is actually of type xmlDoc, instead of just xmlNode.
-    //libxml does not always use GObject-style inheritance, so xmlDoc does not have all the same struct fields as xmlNode.
+    //impl_ is actually of type xmlDoc, xmlEntity or xmlAttribute, instead of just xmlNode.
+    //libxml does not always use GObject-style inheritance, so those structs
+    //do not have all the same struct fields as xmlNode.
     //Therefore, a call to impl_->ns would be invalid.
     //This can be an issue when calling this method on a Node returned by Node::find().
     //See the TODO comment on Document, suggesting that Document should derived from Node.
@@ -388,6 +412,11 @@ Glib::ustring Node::get_namespace_uri() const
 
 void Node::set_namespace(const Glib::ustring& ns_prefix)
 {
+  if (impl_->type == XML_ATTRIBUTE_DECL)
+  {
+    throw exception("Can't set the namespace of an attribute declaration");
+  }
+
   //Look for the existing namespace to use:
   xmlNs* ns = xmlSearchNs( cobj()->doc, cobj(), (xmlChar*)(ns_prefix.empty() ? 0 : ns_prefix.c_str()) );
   if(ns)
@@ -397,9 +426,7 @@ void Node::set_namespace(const Glib::ustring& ns_prefix)
   }
   else
   {
-    #ifdef LIBXMLCPP_EXCEPTIONS_ENABLE
     throw exception("The namespace (" + ns_prefix + ") has not been declared.");
-    #endif //LIBXMLCPP_EXCEPTIONS_ENABLE
   }
 }
 
@@ -420,7 +447,12 @@ void Node::create_wrapper(xmlNode* node)
     }
     case XML_ATTRIBUTE_NODE:
     {
-      node->_private = new xmlpp::Attribute(node);
+      node->_private = new xmlpp::AttributeNode(node);
+      break;
+    }
+    case XML_ATTRIBUTE_DECL:
+    {
+      node->_private = new xmlpp::AttributeDeclaration(node);
       break;
     }
     case XML_TEXT_NODE:
@@ -454,6 +486,11 @@ void Node::create_wrapper(xmlNode* node)
     //  //node->_private = new xmlpp::ProcessingInstructionNode(node);
     //  break;
     //}
+    case XML_ENTITY_DECL:
+    {
+      node->_private = new xmlpp::EntityDeclaration(node);
+      break;
+    }
     case XML_ENTITY_REF_NODE:
     {
       node->_private = new xmlpp::EntityReference(node);
@@ -468,7 +505,8 @@ void Node::create_wrapper(xmlNode* node)
     {
       // good default for release versions
       node->_private = new xmlpp::Node(node);
-      std::cerr << G_STRFUNC << "Warning: new node of unknown type created: " << node->type << std::endl;
+      std::cerr << G_STRFUNC << " Warning: new node of unknown type created: "
+                << node->type << std::endl;
       break;
     }
   }
@@ -479,9 +517,17 @@ void Node::free_wrappers(xmlNode* node)
   if(!node)
     return;
     
-  //Walk the children list
-  for(xmlNode* child=node->children; child; child=child->next)
-    free_wrappers(child);
+  //If an entity declaration contains an entity reference, there can be cyclic
+  //references between entity declarations and entity references. (It's not
+  //a tree.) We must avoid an infinite recursion.
+  //Compare xmlFreeNode(), which frees the children of all node types except
+  //XML_ENTITY_REF_NODE.
+  if (node->type != XML_ENTITY_REF_NODE)
+  {
+    //Walk the children list.
+    for (xmlNode* child = node->children; child; child = child->next)
+      free_wrappers(child);
+  }
 
   //Delete the local one
   switch(node->type)

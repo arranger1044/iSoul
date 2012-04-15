@@ -1,3 +1,132 @@
+2012-04-12  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Define LIBXMLCPP_EXCEPTIONS_ENABLED unconditionally.
+
+	* configure.ac: Add AC_DEFINE([LIBXMLCPP_EXCEPTIONS_ENABLED],[1],...
+
+2012-03-30  Murray Cumming  <murrayc@murrayc.com>
+
+	Node: Check for a null pointer, to fix a scan-build warning.
+
+	* libxml++/nodes/node.cc: This seems unlikely.
+
+2.35.2:
+
+2012-03-21  Murray Cumming  <murrayc@murrayc.com>
+
+	Fix a warning found by clang++
+
+	* libxml++/parsers/textreader.h: PropertyReader is a class, not
+	a struct.
+
+2012-03-20  Murray Cumming  <murrayc@murrayc.com>
+
+	Remove the --disable-api-exceptions configure option.
+
+	And remove the #ifdefs and #else blocks from the code.
+	This is not used by anybody now, as far as I know, so this makes the
+	code easier to maintain.
+
+2012-03-20  Murray Cumming  <murrayc@murrayc.com>
+
+	A fix for the previous commit.
+
+	* libxml++/nodes/node.cc: get_first_child() const: Use the name 
+	parameter.
+
+2012-03-19  Murray Cumming  <murrayc@murrayc.com>
+
+	Node: Add get_first_child().
+
+	* libxml++/nodes/node.[h|cc]: This is like get_children(),
+	but it returns only the first node, optionally returning
+	the first one with a certain name.
+	Based on a patch by Ilya Murav'jov in bug #648125 .
+
+2.35.1:
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Handle attributes with default values correctly.
+
+	* libxml++/attributedeclaration.[h|cc]:
+	* libxml++/attributenode.[h|cc]: New files.
+	* Makefile.am:
+	* libxml++/Makefile.am: Add the new files.
+	* libxml++/libxml++.h: Add the new .h files.
+	* docs/manual/libxml++_without_code.xml: Add AttributeDeclaration and
+	AttributeNode in the list of node classes.
+	* libxml++/attribute.[h|cc]: Make get_value() useful also for default values
+	(XML_ATTRIBUTE_DECL). Fix set_value() for attributes in a namespace.
+	* libxml++/nodes/element.[h|cc]: get_attribute(): Add description. Don't use
+	xmlHasProp(), it ignores namespace.
+	* libxml++/nodes/node.cc: get_namespace_prefix(), get_namespace_uri(),
+	set_namespace(), create_wrapper(): Add code for XML_ATTRIBUTE_DECL.
+	* examples/dom_parser/example.dtd: Add attribute 'title' with default value.
+	* examples/dom_parser/example.xml: Add attribute 'title' with explicit value.
+	Bug #669635.
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Node: Correct mis-spelt LIBXMLCPP_EXCEPTIONS_ENABLED.
+
+	* libxml++/nodes/node.h: Add some "@throws exception".
+	* libxml++/nodes/node.cc: Change LIBXMLCPP_EXCEPTIONS_ENABLE to
+	LIBXMLCPP_EXCEPTIONS_ENABLED in find_impl() and set_namespace().
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Improved handling of entity references and processing instructions.
+
+	* libxml++/nodes/entitydeclaration.[h|cc]: New files.
+	* Makefile.am:
+	* libxml++/Makefile.am: Add the new files.
+	* libxml++/libxml++.h: Add the new .h file.
+	* docs/manual/libxml++_without_code.xml: Add EntityDeclaration in the list
+	of node classes.
+	* libxml++/document.[h|cc]: Add add_processing_instruction().
+	* libxml++/nodes/element.[h|cc]: Add add_child_entity_reference() and
+	add_child_processing_instruction().
+	* libxml++/nodes/entityreference.h: Improve the description of
+	get_resolved_text() and get_original_text().
+	* libxml++/nodes/node.cc: get_namespace_prefix() and get_namespace_uri():
+	XML_ENTITY_DECL has no namespace. Don't try to find it.
+	create_wrapper(): Create an EntityDeclaration when type == XML_ENTITY_DECL.
+	free_wrappers(): Don't walk the child list when type == XML_ENTITY_REF_NODE.
+	* examples/dom_build/main.cc: Add entity declarations and references, and
+	processing instructions to the built xml file.
+	* examples/dom_parse_entities/example.dtd: Make it compatible with example.xml.
+	* examples/dom_parse_entities/example.xml: Add an entity definition that
+	contains entity references.
+	* examples/dom_parse_entities/main.cc: Print the parsed file both with and
+	without entity substitution.
+	* examples/dom_parser/example.dtd: Make it compatible with example.xml.
+	* examples/dom_parser/main.cc: Add command flag -E (Don't substitute entities).
+	Bug #669481
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Add some files to .gitignore.
+
+	* .gitignore: Add docs files that are copied from mm-common.
+	Add /MSVC_Net2010/libxml++/libxml++.rc and
+	/examples/dom_read_write/example_output.xml.
+
+2012-02-15  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Add @newin{2,36} to some new functions where it's missing.
+
+	* libxml++/exceptions/exception.h: Add @newin{2,36} to format_xml_error() and
+	format_xml_parser_error().
+	* libxml++/parsers/parser.h: Add @newin{2,36} to [set|get]_throw_messages().
+	Bug #304020.
+
+2012-02-10  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Make the schema validation example program work with no arguments.
+
+	* examples/schemavalidation/main.cc: Correct the test for number of arguments.
+
 2012-01-30  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
 	Parser: Throw more detailed error messages.

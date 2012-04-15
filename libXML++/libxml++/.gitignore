@@ -28,8 +28,13 @@ stamp-h?
 # MSVC
 /MSVC_Net2005/libxml++/libxml++.rc
 /MSVC_Net2008/libxml++/libxml++.rc
+/MSVC_Net2010/libxml++/libxml++.rc
 
 # docs
+/docs/doc-install.pl
+/docs/doc-postprocess.pl
+/docs/doxygen.css
+/docs/tagfile-to-devhelp2.xsl
 /docs/manual/html/
 /docs/manual/libxml++.xml
 /docs/reference/Doxyfile
@@ -44,6 +49,7 @@ stamp-h?
 /examples/dom_parser/dom_parser
 /examples/dom_parser_raw/dom_parser_raw
 /examples/dom_read_write/dom_read_write
+/examples/dom_read_write/example_output.xml
 /examples/dom_xpath/dom_xpath
 /examples/dtdvalidation/dtdvalidation
 /examples/import_node/import_node

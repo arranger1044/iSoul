@@ -2,6 +2,11 @@
 <!DOCTYPE example PUBLIC "" "example.dtd" [
 <!ENTITY wwwmurrayc "http://www.murrayc.com">
 <!ENTITY wwwlibxmlplusplus "http://libxmlplusplus.sourceforge.net">
+<!ENTITY mercury "&#x263f;">
+<!ENTITY venus "&#x2640;">
+<!ENTITY earth "&#x2641;">
+<!ENTITY mars "&#x2642;">
+<!ENTITY planets "&mercury;(&#x263f;), &venus;(&#x2640;), &earth;(&#x2641;), &mars;(&#x2642;)">
 ]>
 
 <example>
@@ -9,6 +14,8 @@
     Some content. &wwwmurrayc;
     Some other content &wwwlibxmlplusplus;
     <child_of_child/>
+    Mercury &mercury;
+    Some planets &planets;
   </examplechild>
 </example>
 

@@ -32,7 +32,6 @@ public:
 
 protected:
   //overrides:
-#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   virtual void on_start_document();
   virtual void on_end_document();
   virtual void on_start_element(const Glib::ustring& name,
@@ -43,7 +42,6 @@ protected:
   virtual void on_warning(const Glib::ustring& text);
   virtual void on_error(const Glib::ustring& text);
   virtual void on_fatal_error(const Glib::ustring& text);
-#endif
 };
 
 

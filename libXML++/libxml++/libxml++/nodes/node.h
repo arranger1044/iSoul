@@ -54,6 +54,7 @@ public:
   /** Set the namespace prefix used by the node.
    * If no such namespace prefix has been declared then this method will throw an exception.
    * @param ns_prefix The namespace prefix.
+   * @throws exception
    */
   void set_namespace(const Glib::ustring& ns_prefix);
 
@@ -95,6 +96,20 @@ public:
    */
   Node* get_previous_sibling();  
 
+  /** Get the first child of this node. You may optionally get the first child node which has a certain name.
+   * @returns The first child
+   *
+   * @newin{2,36}
+   */
+  const Node* get_first_child(const Glib::ustring& name = Glib::ustring()) const;
+
+  /** Get the first child of this node. You may optionally get the first child node which has a certain name.
+   * @returns The first child
+   *
+   * @newin{2,36}
+   */
+  Node* get_first_child(const Glib::ustring& name = Glib::ustring());
+
   /** Obtain the list of child nodes. You may optionally obtain a list of only the child nodes which have a certain name.
    * @param name The names of the child nodes to get. If you do not specigy a name, then the list will contain all nodes, regardless of their names.
    * @returns The list of child nodes.
@@ -111,6 +126,7 @@ public:
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
+   * @throws exception
    */
   Element* add_child(const Glib::ustring& name,
                      const Glib::ustring& ns_prefix = Glib::ustring());
@@ -123,6 +139,7 @@ public:
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
+   * @throws exception
    */
   Element* add_child(xmlpp::Node* previous_sibling, const Glib::ustring& name,
                      const Glib::ustring& ns_prefix = Glib::ustring());
@@ -135,6 +152,7 @@ public:
    * @param name The new node name
    * @param ns_prefix The namespace prefix. If the prefix has not been declared then this method will throw an exception.
    * @returns The newly-created element
+   * @throws exception
    */
   Element* add_child_before(xmlpp::Node* next_sibling, const Glib::ustring& name,
                      const Glib::ustring& ns_prefix = Glib::ustring());
@@ -148,6 +166,7 @@ public:
    * @param node The node to copy and insert under the current node.
    * @param recursive Whether to import the child nodes also. Defaults to true.
    * @returns The newly-created node.
+   * @throws exception
    */
   Node* import_node(const Node* node, bool recursive = true);
 
@@ -159,6 +178,7 @@ public:
 
   /** Find nodes from a XPath expression.
    * @param xpath The XPath of the nodes.
+   * @throws exception
    */
   NodeSet find(const Glib::ustring& xpath) const;
 
@@ -169,6 +189,7 @@ public:
   /** Find nodes from a XPath expression.
    * @param xpath The XPath of the nodes.
    * @param namespaces A map of namespace prefixes to namespace URIs to be used while finding.
+   * @throws exception
    */
   NodeSet find(const Glib::ustring& xpath, const PrefixNsMap& namespaces) const;
 

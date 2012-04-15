@@ -20,13 +20,17 @@ public:
   explicit EntityReference(_xmlNode* node);
   virtual ~EntityReference();
 
-  /** Get the text to which this entity reference would have resolved if the XML document had been parsed with Parser::set_substitute_entities(true).
-   * @returns The unescaped text.
+  /** Get the text with character references (like "&#xdf;") resolved.
+   * If the corresponding entity declaration does not contain any reference to
+   * another entity, this is the text that the reference would have resolved to
+   * if the XML document had been parsed with Parser::set_substitute_entities(true).
+   * @returns The text with character references unescaped.
    */
   Glib::ustring get_resolved_text() const;
 
-  //TODO: I'm not sure what this is. So far it seems to be the same as get_resolved_text().
-  //      Maybe it's for nested entity declarations, though I don't know if that is even possile. murrayc.
+  /** Get the text as read from the XML or DTD file.
+   * @returns The escaped text.
+   */
   Glib::ustring get_original_text() const;
 
 };

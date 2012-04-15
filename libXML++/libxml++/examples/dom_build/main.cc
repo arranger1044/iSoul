@@ -24,9 +24,7 @@
 #endif
 
 #include <libxml++/libxml++.h>
-
 #include <iostream>
-
 
 int
 main(int /* argc */, char** /* argv */)
@@ -35,17 +33,20 @@ main(int /* argc */, char** /* argv */)
   // so we can use std::cout with UTF-8, via Glib::ustring, without exceptions.
   std::locale::global(std::locale(""));
 
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
     xmlpp::Document document;
     document.set_internal_subset("example_xml_doc", "", "example_xml_doc.dtd");
+    document.set_entity_declaration("example1", xmlpp::XML_INTERNAL_GENERAL_ENTITY,
+      "", "example_xml_doc.dtd", "Entity content");
+    document.add_processing_instruction("application1", "This is an example document");
+    document.add_comment("First comment");
 
     //foo is the default namespace prefix.
     xmlpp::Element* nodeRoot = document.create_root_node("exampleroot", "http://foo", "foo"); //Declares the namespace and uses its prefix for this node
     nodeRoot->set_namespace_declaration("http://foobar", "foobar"); //Also associate this prefix with this namespace: 
 
+    nodeRoot->set_child_text("\n");
     xmlpp::Element* nodeChild = nodeRoot->add_child("examplechild");
 
     //Associate prefix with namespace:
@@ -53,8 +54,13 @@ main(int /* argc */, char** /* argv */)
      
     nodeChild->set_namespace("bar"); //So it will be bar::examplechild.
     nodeChild->set_attribute("id", "1", "foo"); //foo is the namespace prefix. You could also just use a name of foo:id".
-    nodeChild->set_child_text("Some content");
+    nodeChild->set_child_text("\nSome content\n");
     nodeChild->add_child_comment("Some comments");
+    nodeChild->add_child_entity_reference("example1");
+    nodeChild->add_child_entity_reference("#x20ac"); // €
+    nodeChild->add_child_text("\n");
+    nodeChild->add_child_processing_instruction("application1", "This is an example node");
+    nodeChild->add_child_text("\n");
     nodeChild->add_child("child_of_child", "bar");
 
     nodeChild = nodeRoot->add_child("examplechild", "foobar"); //foobar is the namespace prefix
@@ -62,14 +68,12 @@ main(int /* argc */, char** /* argv */)
 
     Glib::ustring whole = document.write_to_string();
     std::cout << "XML built at runtime: " << std::endl << whole << std::endl;
-    std::cout << "default namespace: " << nodeRoot->get_namespace_uri() << std::endl;
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    std::cout << "namespace of root node: " << nodeRoot->get_namespace_uri() << std::endl;
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED
 
   return 0;
 }

@@ -21,8 +21,8 @@ extern "C" {
 namespace xmlpp
 {
 
-/** Represents XML Node attributes.
- *
+/** Represents an XML Node attribute.
+ * This will be instantiated by the parser.
  */
 class Attribute : public Node
 {
@@ -31,26 +31,42 @@ public:
   virtual ~Attribute();
   
   //TODO: Can we remove this and just use Node::get_name()?
+  // Yes, when we can break ABI. /Kjell Ahlstedt 2012-02-09
 
   /** Get the name of this attribute.
    * See also Node::get_namespace_prefix() and Node::get_namespace_uri()
-   * @returns The attributes's name.
+   * @returns The attribute's name.
    */
   Glib::ustring get_name() const;
 
   /** Get the value of this attribute.
-   * @returns The attributes's value.
+   * Can be used for both an AttributeDeclaration and an AttributeNode.
+   * @returns The attribute's value.
    */
   Glib::ustring get_value() const;
 
   /** Set the value of this attribute.
+   *
+   * If this is an AttributeDeclaration, the value will not be changed.
+   * This method is here for backward compatibility. It may be moved to
+   * AttributeNode in the future.
    */
   void set_value(const Glib::ustring& value);
 
-  ///Access the underlying libxml implementation.
+  /** Access the underlying libxml implementation.
+   *
+   * If this is an AttributeDeclaration, use AttributeDeclaration::cobj() instead.
+   * This method is here for backward compatibility. It may be moved to
+   * AttributeNode in the future.
+   */
   _xmlAttr* cobj();
 
-  ///Access the underlying libxml implementation.
+  /** Access the underlying libxml implementation.
+   *
+   * If this is an AttributeDeclaration, use AttributeDeclaration::cobj() instead.
+   * This method is here for backward compatibility. It may be moved to
+   * AttributeNode in the future.
+   */
   const _xmlAttr* cobj() const;
 };
 

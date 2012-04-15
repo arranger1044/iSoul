@@ -1,4 +1,4 @@
-AC_INIT([libxml++], [2.34.2],
+AC_INIT([libxml++], [2.35.2],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=libxml%2B%2B],
         [libxml++], [http://libxmlplusplus.sourceforge.net/])
 AC_PREREQ([2.59])
@@ -42,8 +42,6 @@ AC_ARG_ENABLE([examples],
 
 AM_CONDITIONAL([ENABLE_EXAMPLES], [test "x$enable_examples" = xyes])
 
-# Offer the ability to omit some API from the library, to reduce the code size:
-LIBXMLCPP_ARG_ENABLE_API_EXCEPTIONS
 
 MM_ARG_ENABLE_DOCUMENTATION
 MM_ARG_WITH_TAGFILE_DOC([glibmm-2.4.tag], [glibmm-2.4])
@@ -57,6 +55,9 @@ AC_ARG_VAR([XMLLINT], [path to xmllint utility])
 AC_PATH_PROGS([DB2LATEX], [db2latex docbook2latex], [db2latex])
 AC_ARG_VAR([DB2LATEX], [path to db2latex utility])
 MM_CHECK_PERL()
+
+# This is just defined to avoid breaking old code:
+AC_DEFINE([LIBXMLCPP_EXCEPTIONS_ENABLED],[1], [This is always set. This is only for backwards compatibility.])
 
 AC_CONFIG_FILES([Makefile
         docs/reference/Doxyfile

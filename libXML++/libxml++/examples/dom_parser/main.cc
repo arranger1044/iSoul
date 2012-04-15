@@ -27,14 +27,9 @@
 
 #include <iostream>
 
-void print_indentation(unsigned int indentation)
-{
-  for(unsigned int i = 0; i < indentation; ++i)
-    std::cout << " ";
-}
-
 void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
 {
+  const Glib::ustring indent(indentation, ' ');
   std::cout << std::endl; //Separate nodes by an empty line.
   
   const xmlpp::ContentNode* nodeContent = dynamic_cast<const xmlpp::ContentNode*>(node);
@@ -48,62 +43,55 @@ void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
 
   if(!nodeText && !nodeComment && !nodename.empty()) //Let's not say "name: text".
   {
-    print_indentation(indentation);
-
     const Glib::ustring namespace_prefix = node->get_namespace_prefix();
-    if(namespace_prefix.empty())
-      std::cout << "Node name = " << nodename << std::endl;
-    else
-      std::cout << "Node name = " << namespace_prefix << ":" << nodename << std::endl;
+
+    std::cout << indent << "Node name = ";
+    if(!namespace_prefix.empty())
+      std::cout << namespace_prefix << ":";
+    std::cout << nodename << std::endl;
   }
   else if(nodeText) //Let's say when it's text. - e.g. let's say what that white space is.
   {
-    print_indentation(indentation);
-    std::cout << "Text Node" << std::endl;
+    std::cout << indent << "Text Node" << std::endl;
   }
 
   //Treat the various node types differently: 
   if(nodeText)
   {
-    print_indentation(indentation);
-    std::cout << "text = \"" << nodeText->get_content() << "\"" << std::endl;
+    std::cout << indent << "text = \"" << nodeText->get_content() << "\"" << std::endl;
   }
   else if(nodeComment)
   {
-    print_indentation(indentation);
-    std::cout << "comment = " << nodeComment->get_content() << std::endl;
+    std::cout << indent << "comment = " << nodeComment->get_content() << std::endl;
   }
   else if(nodeContent)
   {
-    print_indentation(indentation);
-    std::cout << "content = " << nodeContent->get_content() << std::endl;
+    std::cout << indent << "content = " << nodeContent->get_content() << std::endl;
   }
   else if(const xmlpp::Element* nodeElement = dynamic_cast<const xmlpp::Element*>(node))
   {
     //A normal Element node:
 
     //line() works only for ElementNodes.
-    print_indentation(indentation);
-    std::cout << "     line = " << node->get_line() << std::endl;
+    std::cout << indent << "     line = " << node->get_line() << std::endl;
 
     //Print attributes:
     const xmlpp::Element::AttributeList& attributes = nodeElement->get_attributes();
     for(xmlpp::Element::AttributeList::const_iterator iter = attributes.begin(); iter != attributes.end(); ++iter)
     {
       const xmlpp::Attribute* attribute = *iter;
-      print_indentation(indentation);
-
       const Glib::ustring namespace_prefix = attribute->get_namespace_prefix();
-      if(namespace_prefix.empty())
-        std::cout << "  Attribute " << attribute->get_name() << " = " << attribute->get_value() << std::endl; 
-      else
-        std::cout << "  Attribute " << namespace_prefix  << ":" << attribute->get_name() << " = " << attribute->get_value() << std::endl;
+
+      std::cout << indent << "  Attribute ";
+      if(!namespace_prefix.empty())
+        std::cout << namespace_prefix  << ":";
+      std::cout << attribute->get_name() << " = " << attribute->get_value() << std::endl;
     }
 
     const xmlpp::Attribute* attribute = nodeElement->get_attribute("title");
     if(attribute)
     {
-      std::cout << "title found: =" << attribute->get_value() << std::endl;
+      std::cout << indent << "title = " << attribute->get_value() << std::endl;
     }
   }
   
@@ -127,6 +115,7 @@ int main(int argc, char* argv[])
   bool validate = false;
   bool set_throw_messages = false;
   bool throw_messages = false;
+  bool substitute_entities = true;
 
   int argi = 1;
   while (argc > argi && *argv[argi] == '-') // option
@@ -144,11 +133,15 @@ int main(int argc, char* argv[])
        set_throw_messages = true;
        throw_messages = false;
        break;
+      case 'E':
+        substitute_entities = false;
+        break;
      default:
        std::cout << "Usage: " << argv[0] << " [-v] [-t] [-e] [filename]" << std::endl
                  << "       -v  Validate" << std::endl
                  << "       -t  Throw messages in an exception" << std::endl
-                 << "       -e  Write messages to stderr" << std::endl;
+                 << "       -e  Write messages to stderr" << std::endl
+                 << "       -E  Do not substitute entities" << std::endl;
        return 1;
      }
      argi++;
@@ -159,16 +152,15 @@ int main(int argc, char* argv[])
   else
     filepath = "example.xml";
  
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   try
   {
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
     xmlpp::DomParser parser;
     if (validate)
       parser.set_validate();
     if (set_throw_messages)
       parser.set_throw_messages(throw_messages);
-    parser.set_substitute_entities(); //We just want the text to be resolved/unescaped automatically.
+    //We can have the text resolved/unescaped automatically.
+    parser.set_substitute_entities(substitute_entities);
     parser.parse_file(filepath);
     if(parser)
     {
@@ -176,13 +168,11 @@ int main(int argc, char* argv[])
       const xmlpp::Node* pNode = parser.get_document()->get_root_node(); //deleted by DomParser.
       print_node(pNode);
     }
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
   }
   catch(const std::exception& ex)
   {
     std::cout << "Exception caught: " << ex.what() << std::endl;
   }
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
   return 0;
 }

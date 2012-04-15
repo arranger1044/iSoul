@@ -27,25 +27,31 @@
 
 #include <iostream>
 
-void print_indentation(unsigned int indentation)
-{
-  for(unsigned int i = 0; i < indentation; ++i)
-    std::cout << " ";
-}
-
-void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
+void print_node(const xmlpp::Node* node, bool substitute_entities, unsigned int indentation = 0)
 {  
+  const Glib::ustring indent(indentation, ' ');
   std::cout << std::endl; //Separate nodes by an empty line.
-  
-  const xmlpp::EntityReference* nodeEntityReference = dynamic_cast<const xmlpp::EntityReference*>(node);
 
-  if(nodeEntityReference)
+  if (substitute_entities)
   {
-    print_indentation(indentation);
-    std::cout << "entity reference name = " << nodeEntityReference->get_name() << std::endl;
-    std::cout <<  "  resolved text = " << nodeEntityReference->get_resolved_text() << std::endl;
-    std::cout <<  "  original text = " << nodeEntityReference->get_original_text() << std::endl;
+    // Entities have been substituted. Print the text nodes.
+    const xmlpp::TextNode* nodeText = dynamic_cast<const xmlpp::TextNode*>(node);
+    if (nodeText && !nodeText->is_white_space())
+    {
+      std::cout << indent << "text = " << nodeText->get_content() << std::endl;
+    }
   }
+  else
+  {
+    // Entities have not been substituted. Print the entity reference nodes.
+    const xmlpp::EntityReference* nodeEntityReference = dynamic_cast<const xmlpp::EntityReference*>(node);
+    if (nodeEntityReference)
+    {
+      std::cout << indent << "entity reference name = " << nodeEntityReference->get_name() << std::endl;
+      std::cout << indent <<  "  resolved text = " << nodeEntityReference->get_resolved_text() << std::endl;
+      std::cout << indent <<  "  original text = " << nodeEntityReference->get_original_text() << std::endl;
+    }
+  } // end if (substitute_entities)
 
   const xmlpp::ContentNode* nodeContent = dynamic_cast<const xmlpp::ContentNode*>(node);
   if(!nodeContent)
@@ -54,7 +60,7 @@ void print_node(const xmlpp::Node* node, unsigned int indentation = 0)
     xmlpp::Node::NodeList list = node->get_children();
     for(xmlpp::Node::NodeList::iterator iter = list.begin(); iter != list.end(); ++iter)
     {   
-      print_node(*iter, indentation + 2); //recursive
+      print_node(*iter, substitute_entities, indentation + 2); //recursive
     }
   }
 }
@@ -71,27 +77,37 @@ int main(int argc, char* argv[])
   else
     filepath = "example.xml";
   
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
-  try
+  // Parse first without, then with, entity substitution.
+  bool substitute_entities = false;
+  while (true)
   {
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
-    xmlpp::DomParser parser;
-    //parser.set_validate();
-    parser.set_substitute_entities(false);
-    parser.parse_file(filepath);
-    if(parser)
+    if (substitute_entities)
+      std::cout << std::endl << "<<< With entity substitution >>>" << std::endl;
+    else
+      std::cout << std::endl << "<<< Without entity substitution >>>" << std::endl;
+
+    try
     {
-      //Walk the tree:
-      const xmlpp::Node* pNode = parser.get_document()->get_root_node(); //deleted by DomParser.
-      print_node(pNode);
+      xmlpp::DomParser parser;
+      parser.set_validate();
+      parser.set_substitute_entities(substitute_entities);
+      parser.parse_file(filepath);
+      if(parser)
+      {
+        //Walk the tree:
+        const xmlpp::Node* pNode = parser.get_document()->get_root_node(); //deleted by DomParser.
+        print_node(pNode, substitute_entities);
+      }
     }
-  #ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
+    catch(const std::exception& ex)
+    {
+      std::cout << "Exception caught: " << ex.what() << std::endl;
+    }
+
+    if (substitute_entities) break;
+
+    substitute_entities = true;
   }
-  catch(const std::exception& ex)
-  {
-    std::cout << "Exception caught: " << ex.what() << std::endl;
-  }
-  #endif //LIBXMLCPP_EXCEPTIONS_ENABLED 
 
   return 0;
 }

@@ -40,22 +40,14 @@ void Schema::set_document(Document* document, bool embed)
 
   if(!context)
   {
-#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
    throw parse_error("Schema could not be parsed");
-#else
-   return;
-#endif
   }
   
   impl_ = xmlSchemaParse(context);
   if(!impl_)
   {
     xmlSchemaFreeParserCtxt(context);
-#ifdef LIBXMLCPP_EXCEPTIONS_ENABLED
     throw parse_error("Schema could not be parsed");
-#else
-    return;
-#endif
   }
 
   impl_->_private = this;
