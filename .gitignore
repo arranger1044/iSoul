@@ -1,1 +1,5 @@
 *.tmproj
+dsa_priv.pem
+*.zip
+*.app
+
