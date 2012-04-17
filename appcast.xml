@@ -12,11 +12,11 @@
 				Something here.
 			]]>
 			</description>
-            <pubDate>Mon, 16 Apr 2012 01:52:34 +0200</pubDate>
+            <pubDate>Tue, 17 Apr 2012 03:09:44 +0200</pubDate>
             <enclosure url="https://github.com/downloads/arranger1044/iSoul/iSoul 0.5.0.zip"
 					   sparkle:version="0.5.0"
-					   sparkle:dsaSignature="MCwCFEI8bpIEC5EuVVISFKV9GeC845g5AhROj8b6btQ7vhhKfFa6RZvuphU2pw=="
-					   length="4917245"
+					   sparkle:dsaSignature="MC0CFBxXTAzuxPaGmUmGdgyp4jNR03PtAhUAiOYn3zS0YjD9xSKw8CtKdK3ciLs="
+					   length="2860190"
 					   type="application/octet-stream" />
          </item>
    </channel>
