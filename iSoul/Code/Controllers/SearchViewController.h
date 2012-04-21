@@ -12,6 +12,7 @@
 @class MuseekdConnectionController;
 @class PathNode;
 @class Ticket;
+@class DataStore;
 
 @interface SearchViewController : NSViewController {
 	// the three separate views correspond to the 
@@ -42,12 +43,18 @@
 	
 	// holds the current tree representation
 	// for the entire folder view
-	PathNode *treeRoot; 
+	PathNode *treeRoot;
+    NSMutableDictionary * treeRootsDictionary;
 	
 	// holds the sorted trees for each user
 	// stored as a tree with each user
 	// having a root folder with their username
 	PathNode *userRoot;
+    NSMutableDictionary * userRootsDictionary;
+    
+    NSMutableDictionary * ticketsDictionary;
+    
+    NSMutableSet * observedTickets;
 	
 	// holds the contents of the currently
 	// selected user folder
@@ -62,8 +69,11 @@
 	
 	NSArray *listSortDescriptors;
 	NSArray *treeSortDescriptors;
+    
+    DataStore * store;
 }
 
+@property (retain) DataStore *store;
 @property (retain) MuseekdConnectionController *museek;
 @property (retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSSet *currentTickets;
@@ -79,10 +89,12 @@
 - (IBAction)downloadFolder:(id)sender;
 - (IBAction)browserSelected:(id)sender;
 
+- (void)setCurrentTickets:(NSSet *)tickets forName:(NSString *)name;
+
 // private methods
 - (void)setFetchPredicate;
-- (void)addSetToFileTree:(NSSet *)fileSet sortImmediately:(BOOL)yesOrNo;
-- (void)addFolderToTree:(NSMutableArray *)list shouldSort:(BOOL)yesOrNo;
+- (void)addSetToFileTree:(NSSet *)fileSet forTickets:(NSString *)tickets sortImmediately:(BOOL)yesOrNo;
+- (void)addFolderToTree:(NSMutableArray *)list forTickets:(NSString *)tickets shouldSort:(BOOL)yesOrNo;
 - (void)resortTables:(NSTimer *)timer;
 - (void)splitFinished:(NSNotification *)notification;
 - (void)addTreesToRoots:(NSNotification *)notification;

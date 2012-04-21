@@ -1083,7 +1083,9 @@
 			desiredViewController = [[NSApp delegate] searchViewController];
 			
 			// filter for the correct search 
-			[desiredViewController setValue:[selected tickets] forKey:@"currentTickets"];
+			//[desiredViewController setValue:[selected tickets] forKey:@"currentTickets"];
+            SearchViewController * svc = (SearchViewController *)desiredViewController;
+            [svc setCurrentTickets:[selected tickets] forName:[selected name]];
 			
 			[self setSegmentEnabled:YES];
 			[self setUserControlsEnabled:YES];

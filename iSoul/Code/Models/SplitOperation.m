@@ -11,12 +11,13 @@
 
 @implementation SplitOperation
 
-- (id)initWithFiles:(NSArray *)fileList shouldSort:(BOOL)yesOrNo
+- (id)initWithFiles:(NSArray *)fileList tickets:(NSString *)newTickets shouldSort:(BOOL)yesOrNo
 {
 	self = [super init];
 	if (self) {
 		shouldSort = yesOrNo;
 		files = [fileList retain];
+        tickets = [newTickets retain];
 	}
 	return self;
 }
@@ -50,6 +51,7 @@
 							  userNode, @"foldertree",
 							  userFolder, @"usertree",
 							  [NSNumber numberWithBool:shouldSort], @"shouldSort",
+                              tickets, @"tickets",
 							  nil];
 		[[NSNotificationCenter defaultCenter] 
 		 postNotificationName:@"SplitTreeFinished" 

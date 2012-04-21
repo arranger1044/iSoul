@@ -149,6 +149,7 @@
 		searchViewController = [[SearchViewController alloc] init];
 		[searchViewController setManagedObjectContext:moc];
 		[searchViewController setMuseek:museekdConnectionController];
+        [searchViewController setStore:store];
 		
 		downloadViewController = [[DownloadViewController alloc] init];
 		[downloadViewController setManagedObjectContext:moc];

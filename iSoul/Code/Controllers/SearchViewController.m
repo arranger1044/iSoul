@@ -15,8 +15,11 @@
 #import "PathNode.h"
 #import "SplitOperation.h"
 #import "MainWindowController.h"
+#import "DataStore.h"
+
 
 #define kSortInterval	3.0
+#define SEARCHDEBUG
 
 @implementation SearchViewController
 @synthesize managedObjectContext;
@@ -27,6 +30,7 @@
 @synthesize folderContents;
 @synthesize listSortDescriptors;
 @synthesize treeSortDescriptors;
+@synthesize store;
 
 - (void)loadLastViewState{
     
@@ -63,9 +67,15 @@
 	
 	// stores the current file tree
 	treeRoot = [[PathNode alloc] init];
+    treeRootsDictionary = [[NSMutableDictionary alloc] init];
 	
 	// stores each users tree separately
 	userRoot = [[PathNode alloc] init];
+    userRootsDictionary = [[NSMutableDictionary alloc] init];
+    
+    ticketsDictionary = [[NSMutableDictionary alloc] init];
+    
+    observedTickets = [[NSMutableSet alloc] init];
 	
 	// indicates which of the search views is showing
     /* This shall be read from NSUserDefaults */
@@ -169,31 +179,120 @@
 	}
 }
 
-// filters the search results for this ticket only
-- (void)setCurrentTickets:(NSSet *)newTickets {
+
+/*
+ * Improved switching search views, no need to de-load+re-load each single search
+ * in a view
+ */
+- (void)setCurrentTickets:(NSSet *)newTickets forName:(NSString *)name
+{
     DNSLog(@"Setting current tickets");
     
 	if ([newTickets isEqual:currentTickets]) return;
+    
+    if ([treeRootsDictionary objectForKey:name] == nil)
+    {   
+        DNSLog(@"New search %@", name);
+        for (Ticket * k in newTickets)
+        {
+            [ticketsDictionary setObject:name forKey:[k number]];
+        }
+
+        PathNode * newTicketNode = [[PathNode alloc] init];
+        [treeRootsDictionary setObject:newTicketNode forKey:name];
+        
+    }
+    else 
+    {
+        DNSLog(@"OLd search");
+        //treeRoot = [treeRootsDictionary objectForKey:name];
+    }
+    
+    treeRoot.children = (NSMutableArray *)[[treeRootsDictionary objectForKey:name] children];
 	
-	// stop observing changes in the old ticket
-	for (Ticket *t in currentTickets)
-		@try {
-			[t removeObserver:self forKeyPath:@"files"];
-		} @catch (NSException *e) {
-			DNSLog(@"Error '%@': %@ ticket %@", e.name, e.reason, t.number);
-		}
-	[queue cancelAllOperations];
+    if ([userRootsDictionary objectForKey:name] == nil)
+    {           
+        PathNode * newUserNode = [[PathNode alloc] init];
+        [userRootsDictionary setObject:newUserNode forKey:name];
+        
+    }
+    else 
+    {
+        DNSLog(@"OLd search roots");
+    }
+    userRoot.children = (NSMutableArray *)[[userRootsDictionary objectForKey:name] children];
+    
+	//[queue cancelAllOperations];
 	
-	// clear the current file trees
-	[treeRoot clearChildren];
-	[userRoot clearChildren];
+
+    
+    //	[treeRoot clearChildren];
+    //	[userRoot clearChildren];
+    
 	[self setFolderContents:nil];
 	[userBrowser loadColumnZero];
-	[treeController rearrangeObjects];
 	
+    [treeController rearrangeObjects];
+    [outlineView reloadData];
+    
 	[currentTickets release];
 	currentTickets = [newTickets retain];
 	[self setFetchPredicate];	// once the nib is awake, the results will be split here
+
+#ifdef SEARCHDEBUG
+    DNSLog(@"Setting current tickets ENDED");
+    DNSLog(@"ROOT size %lu", [[treeRoot children] count]);
+#endif
+}
+- (void)setCurrentTickets:(NSSet *)newTickets{
+//    
+//#ifdef SEARCHDEBUG
+//    DNSLog(@"Setting current tickets");
+//#endif
+//	if ([newTickets isEqual:currentTickets]) return;
+//    
+//    if ([treeRootsDictionary objectForKey:newTickets] == nil)
+//    {   
+//        DNSLog(@"New search %@", newTickets);
+//        for (Ticket * k in newTickets)
+//        {
+//            [ticketsDictionary setObject:newTickets forKey:[k number]];
+//            DNSLog(@"tic num %@", [k number]);
+//        }
+//        //[treeRoot release];
+//        treeRoot = [[PathNode alloc] init];
+//        [treeRootsDictionary setObject:treeRoot forKey:[newTickets allObjects]];
+//
+//    }
+//    else 
+//    {
+//        DNSLog(@"OLd search");
+//        treeRoot = [treeRootsDictionary objectForKey:[newTickets allObjects]];
+//    }
+//	
+//	// stop observing changes in the old ticket
+////	for (Ticket *t in currentTickets)
+////		@try {
+////			[t removeObserver:self forKeyPath:@"files"];
+////		} @catch (NSException *e) {
+////			DNSLog(@"Error '%@': %@ ticket %@", e.name, e.reason, t.number);
+////		}
+//    
+//	//[queue cancelAllOperations];
+//	
+//	// UPDATE the current file trees
+//    
+////	[treeRoot clearChildren];
+////	[userRoot clearChildren];
+//    
+//	[self setFolderContents:nil];
+//	[userBrowser loadColumnZero];
+//	[treeController rearrangeObjects];
+//	
+//	[currentTickets release];
+//	currentTickets = [newTickets retain];
+//	[self setFetchPredicate];	// once the nib is awake, the results will be split here
+//    DNSLog(@"Setting current tickets ENDED");
 }
 
 - (void)setViewState:(ViewState)newState {
@@ -207,9 +306,9 @@
 			break;
 		case vwFolder:
 			[self setView:folderView];
-			NSLog(@"folder tree has %lu children", [[treeRoot children] count]);
+			DNSLog(@"folder tree has %lu children", [[treeRoot children] count]);
 			[treeController rearrangeObjects];
-			NSLog(@"folder tree has %lu children", [[treeRoot children] count]);
+			DNSLog(@"folder tree has %lu children", [[treeRoot children] count]);
 			[outlineView reloadData];
 			break;
 		case vwBrowse:
@@ -227,11 +326,12 @@
 						change:(NSDictionary *)change 
 					   context:(void *)context {
 	
-	if ([currentTickets containsObject:object]) {
+	//if ([currentTickets containsObject:object]) {
 		NSSet *newItems = [change objectForKey:NSKeyValueChangeNewKey];
 		if ([newItems count] > 0)	// split the new items and add to the tree
-			[self addSetToFileTree:newItems sortImmediately:NO];	
-	}
+			[self addSetToFileTree:newItems forTickets:[ticketsDictionary objectForKey:[object number]] 
+                   sortImmediately:NO];	
+	//}
 }
 
 #pragma mark public methods
@@ -337,10 +437,12 @@
 #pragma mark private methods
 
 - (void)setFetchPredicate {
+    DNSLog(@"Setting fetch predicate");
 	NSPredicate *predicate;
 	NSArray *tickets = [currentTickets allObjects];
 	
-	if (currentTickets && isAwake && tickets.count > 0) {
+	if (currentTickets && isAwake && tickets.count > 0) 
+    {
 		NSUInteger i;
 		NSMutableString *predString = [[[NSMutableString alloc] initWithFormat:
 										@"ticket.number == %@", [[tickets objectAtIndex:0] number]]
@@ -350,25 +452,47 @@
 			[predString appendFormat:@" || ticket.number == %@", [t number]];			
 		}		
 		predicate = [NSPredicate predicateWithFormat:predString];
-		
-		// split the search ticket files into a tree
-		// and start observing changes in each ticket
-		for (i = 0; i < tickets.count; i++) {
-			Ticket *t = [tickets objectAtIndex:i];
-			[self addSetToFileTree:[t files] sortImmediately:(i == [tickets count])];
-			[t addObserver:self 
-				forKeyPath:@"files" 
-				   options:NSKeyValueObservingOptionNew 
-				   context:NULL];
-		}		
-	} else
+	} 
+    else
+    {
 		predicate = [NSPredicate predicateWithValue:NO];
+    }
+    
+    if (isAwake)
+    {
+        //cycle through all tickets
+        NSArray * ticketKeys = [ticketsDictionary allKeys];
+        for (NSUInteger j = 0; j < ticketKeys.count; j++) 
+        {
+            NSNumber * ticketNumber = [ticketKeys objectAtIndex:j];
+            NSString * ticketsName = [ticketsDictionary objectForKey:ticketNumber];
+            
+            Ticket * k = [store findTicketWithNumber:[ticketNumber unsignedIntValue]];
+            if (![observedTickets containsObject:k]) 
+            {
+                [observedTickets addObject:k];
+                [self addSetToFileTree:[k files] 
+                            forTickets:ticketsName 
+                       sortImmediately:(j % 2 == 0)];
+                [k addObserver:self 
+                    forKeyPath:@"files" 
+                       options:NSKeyValueObservingOptionNew 
+                       context:NULL];
+                
+            }
+        }
+        
+    }
 	
 	[resultsController setFetchPredicate:predicate];
-	debug_NSLog(@"the search fetch predicate is now set to: %@", [resultsController fetchPredicate]);
+    
+#ifdef SEARCHDEBUG
+    DNSLog(@"Awake: %d, counts: %@", isAwake, tickets.count);
+	DNSLog(@"The search fetch predicate is now set to: %@", [resultsController fetchPredicate]);
+#endif
 }
 
-- (void)addSetToFileTree:(NSSet *)fileSet sortImmediately:(BOOL)shouldSort {
+- (void)addSetToFileTree:(NSSet *)fileSet forTickets:(NSString *)tickets sortImmediately:(BOOL)shouldSort {
 	// bit tricky, each entry needs to have 
 	// its parent folder added to the tree
 	// but different users with the same parent
@@ -387,13 +511,17 @@
 	NSMutableArray *usersFiles = [[NSMutableArray alloc] init];
 	for (Result *r in files) {
 		
-		if ([[r user] isEqual:lastUser]) {
+		if ([[r user] isEqual:lastUser]) 
+        {
 			// combine all the files for each user
 			[usersFiles addObject:r];
-		} else {
-			if ([usersFiles count] > 0) {
+		} 
+        else 
+        {
+			if ([usersFiles count] > 0) 
+            {
 				// new user detected, add the last batch to the tree
-				[self addFolderToTree:usersFiles shouldSort:NO];				
+				[self addFolderToTree:usersFiles forTickets:tickets shouldSort:NO];				
 				[usersFiles removeAllObjects];
 			}
 			lastUser = [r user];
@@ -402,16 +530,20 @@
 	}
 	
 	// add the final batch of files
-	[self addFolderToTree:usersFiles shouldSort:shouldSort];
+	[self addFolderToTree:usersFiles forTickets:tickets shouldSort:shouldSort];
 	[usersFiles release];
+#ifdef SEARCHDEBUG
+    DNSLog(@"ADDED SETS to FILETREE");
+#endif
 }
 
-- (void)addFolderToTree:(NSMutableArray *)list shouldSort:(BOOL)yesOrNo {
+- (void)addFolderToTree:(NSMutableArray *)list forTickets:(NSString *)tickets shouldSort:(BOOL)yesOrNo {
 	if ([list count] == 0) return;
 	
 	// create a new operation and put it on the q
 	SplitOperation *so = [[SplitOperation alloc] 
 						  initWithFiles:[NSArray arrayWithArray:list]
+                          tickets:tickets
 						  shouldSort:yesOrNo];
 	[queue addOperation:so];
 	[so release];
@@ -426,8 +558,15 @@
 
 - (void)addTreesToRoots:(NSNotification *)notification {
 	NSDictionary *d = [notification userInfo];
-	[treeRoot addChild:[d objectForKey:@"foldertree"]];
-	[userRoot addChild:[d objectForKey:@"usertree"]];
+
+    NSString * ticketKey = [d objectForKey:@"tickets"];
+    [[treeRootsDictionary objectForKey:ticketKey] addChild:[d objectForKey:@"foldertree"]];
+
+	[[userRootsDictionary objectForKey:ticketKey] addChild:[d objectForKey:@"usertree"]];
+    
+#ifdef SEARCHDEBUG
+        DNSLog(@"ROOT NODE %@ name %@", [treeRootsDictionary objectForKey:ticketKey], ticketKey);
+#endif
 	
 	// only refresh the controller if necessary
 	BOOL sortNow = [[d objectForKey:@"shouldSort"] boolValue];
@@ -436,6 +575,7 @@
 		[self resortTables:nil];
 	else
 		sortPending = YES;	// sort with the next timer tick
+    //DNSLog(@"FINISHED ADDING TREES TO ROOTS");
 }
 
 - (void)resortTables:(NSTimer *)timer {

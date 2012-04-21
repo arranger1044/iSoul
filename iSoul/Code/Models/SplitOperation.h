@@ -12,8 +12,9 @@
 @interface SplitOperation : NSOperation {
 	BOOL shouldSort;
 	NSArray *files;
+    NSString *tickets;
 }
 
-- (id)initWithFiles:(NSArray *)fileList shouldSort:(BOOL)yesOrNo;
+- (id)initWithFiles:(NSArray *)fileList tickets:(NSString *)tickets shouldSort:(BOOL)yesOrNo;
 
 @end
