@@ -81,6 +81,7 @@ typedef enum {
 typedef enum {
 	sbNetworkType = 1,
 	sbSearchType,
+    sbSearchMenuType,
 	sbChatType,
 	sbChatRoomType,
 	sbShareType,

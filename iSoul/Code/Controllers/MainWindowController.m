@@ -866,21 +866,24 @@
 	
 	SidebarItem *selected = [itemAtRow representedObject];
 	SearchViewController *svc = [[NSApp delegate] searchViewController];
+    SidebarItem * sbItem = nil;
 	
 	switch (selectedView) {
 		case sbSearchType:
 			// clear the search view first
-			[svc setCurrentTickets:nil];
+			//[svc setCurrentTickets:nil];
+            [svc removeSearchItem:[selected name]];
 			
 			// now remove the search ticket from core data
 			[museekdConnectionController removeSearchForTickets:selected.tickets];	
 			
 			// now remove the side item
-			[managedObjectContext deleteObject:selected];
+			//[managedObjectContext deleteObject:selected];
 			break;
 		case sbWishType:
 			// clear the search view first
-			[svc setCurrentTickets:nil];
+			//[svc setCurrentTickets:nil];
+            [svc removeSearchItem:[selected name]];
 			
 			// clear the selected wish from the server
 			[museekdConnectionController removeWishlistItem:selected.name];
@@ -889,12 +892,30 @@
 			if (selected.tickets) {
 				[museekdConnectionController removeSearchForTickets:selected.tickets];
 			} 
-			[managedObjectContext deleteObject:selected];
+			//[managedObjectContext deleteObject:selected];
 			
 			break;
 		default:
 			break;
 	}	
+    id prevItem = [sidebar itemAtRow:(row - 1)];
+    if (prevItem)
+    {
+        sbItem = [prevItem representedObject];
+        
+        if (!([[sbItem type] unsignedIntValue] == sbSearchType || [[sbItem type] unsignedIntValue] == sbWishType)) 
+        {
+            sbItem = [store downloads];
+        }
+        else 
+        {
+            [svc setCurrentTickets:[sbItem tickets] forName:[sbItem name]];
+        }
+        
+    }
+    
+    [managedObjectContext deleteObject:selected];
+    [self selectItem:sbItem];
 }
 
 - (IBAction)changeSearchStyle:(id)sender
@@ -975,13 +996,31 @@
     {
 		case sbSearchType:
 			// clear the search view first
-			[[[NSApp delegate] searchViewController] setCurrentTickets:nil];
+            [[[NSApp delegate] searchViewController] removeSearchItem:[selected name]];
 			
 			// now remove the search ticket from core data
-			[museekdConnectionController removeSearchForTickets:[selected tickets]];	
+			[museekdConnectionController removeSearchForTickets:selected.tickets];	
 			
 			// now remove the side item
-			[managedObjectContext deleteObject:selected];
+			
+            prevItem = [sidebar itemAtRow:(row - 1)];
+            if (prevItem)
+            {
+                sbItem = [prevItem representedObject];
+                
+                if (!([[sbItem type] unsignedIntValue] == sbSearchType || [[sbItem type] unsignedIntValue] == sbWishType)) 
+                {
+                    sbItem = [store downloads];
+                }
+                else 
+                {
+                    [[[NSApp delegate] searchViewController] setCurrentTickets:[sbItem tickets] forName:[sbItem name]];
+                }
+                
+            }
+            
+            [managedObjectContext deleteObject:selected];
+            [self selectItem:sbItem];
 			break;
 		case sbChatType:
             [[[NSApp delegate] chatViewController] leaveRoom:[selected name] private:YES];
@@ -1031,7 +1070,7 @@
 			break;
 		case sbWishType:
 			// clear the search view first
-			[[[NSApp delegate] searchViewController] setCurrentTickets:nil];
+			[[[NSApp delegate] searchViewController] removeSearchItem:[selected name]];
 			
 			// clear the selected wish from the server
 			[museekdConnectionController removeWishlistItem:[selected name]];
@@ -1039,7 +1078,25 @@
 			// remove the search ticket if present
 			[museekdConnectionController removeSearchForTickets:[selected tickets]];
  
-			[managedObjectContext deleteObject:selected];
+            
+            prevItem = [sidebar itemAtRow:(row - 1)];
+            if (prevItem)
+            {
+                sbItem = [prevItem representedObject];
+                
+                if (!([[sbItem type] unsignedIntValue] == sbSearchType || [[sbItem type] unsignedIntValue] == sbWishType)) 
+                {
+                    sbItem = [store downloads];
+                }
+                else 
+                {
+                    [[[NSApp delegate] searchViewController] setCurrentTickets:[sbItem tickets] forName:[sbItem name]];
+                }
+                
+            }
+            
+            [managedObjectContext deleteObject:selected];
+            [self selectItem:sbItem];
 			
 			break;
 		case sbShareType:

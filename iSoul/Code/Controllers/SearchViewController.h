@@ -90,6 +90,7 @@
 - (IBAction)browserSelected:(id)sender;
 
 - (void)setCurrentTickets:(NSSet *)tickets forName:(NSString *)name;
+-(void) removeSearchItem:(NSString *)name;
 
 // private methods
 - (void)setFetchPredicate;

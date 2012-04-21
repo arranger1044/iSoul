@@ -83,7 +83,7 @@
 						  parent:nil 
 					   sortIndex:3 
 							 tag:0 
-							type:sbSearchType];
+							type:sbSearchMenuType];
 	[searchRoot setIsExpanded:[NSNumber numberWithBool:YES]];
 	
 	sidebarSortIndex = 20;

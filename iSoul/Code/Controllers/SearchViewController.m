@@ -19,7 +19,7 @@
 
 
 #define kSortInterval	3.0
-#define SEARCHDEBUG
+//#define SEARCHDEBUG
 
 @implementation SearchViewController
 @synthesize managedObjectContext;
@@ -244,6 +244,33 @@
     DNSLog(@"ROOT size %lu", [[treeRoot children] count]);
 #endif
 }
+
+-(void) removeSearchItem:(NSString *)name
+{
+    /* Removing observers */
+    NSMutableSet * ticketsToRemove = [[NSMutableSet alloc] init];
+    for (Ticket * t in observedTickets)
+    {
+        if ([[ticketsDictionary objectForKey:[t number]] isEqualToString:name])
+        {
+            [t removeObserver:self forKeyPath:@"files"];
+            /* and remove from dictionary */
+            [ticketsDictionary removeObjectForKey:[t number]];
+            //[observedTickets removeObject:t];
+            [ticketsToRemove addObject:t];
+        }
+    }
+    
+    /* Removing from observedTickets */
+    [observedTickets minusSet:ticketsToRemove];
+    [ticketsToRemove release];
+    
+    /* Removing from treeRoot and userRoot */
+    [treeRootsDictionary removeObjectForKey:name];
+    [userRootsDictionary removeObjectForKey:name];
+    
+}
+
 - (void)setCurrentTickets:(NSSet *)newTickets{
 //    
 //#ifdef SEARCHDEBUG
