@@ -141,7 +141,7 @@
 	[super setNeedsDisplayInRect:rect avoidAdditionalLayout:flag];
 }
 
-- (void)drawBubbleAroundTextInRect:(NSRect)rect user:(User *)user outgoing:(BOOL)outgoing
+- (void)drawBubbleAroundTextInRect:(NSRect)rect user:(User *)user outgoing:(BOOL)outgoing timestamp:(NSDate *)timestamp
 {
 	NSArray *balloon;	
 	NSAffineTransform *aft = [NSAffineTransform transform];
@@ -298,7 +298,7 @@
     
     NSString * dateString;
     
-    dateString = [formatter stringFromDate:[NSDate date]];
+    dateString = [formatter stringFromDate:timestamp];
     
     [dateString drawInRect:timestampRect withAttributes:usernameAttributes];
 	
@@ -364,6 +364,9 @@
 		NSNumber *isStatusMsg = [[self textStorage] attribute:@"StatusMessage" 
 													  atIndex:paragraphCharRange.location 
 											   effectiveRange:NULL];
+        NSDate * timestamp = [[self textStorage] attribute:@"Timestamp" 
+                                                   atIndex:paragraphCharRange.location 
+                                            effectiveRange:NULL];
 		
         // Iterate through the paragraph glyph range, line by line.
         for (lineGlyphRange = NSMakeRange(paragraphGlyphRange.location, 0); 
@@ -385,7 +388,8 @@
 		if (![isStatusMsg boolValue]) {
 			[self drawBubbleAroundTextInRect:paragraphRect 
 										user:user 
-									outgoing:[isOutgoing boolValue]];
+									outgoing:[isOutgoing boolValue]
+                                   timestamp:timestamp];
 		}		
     }
 }

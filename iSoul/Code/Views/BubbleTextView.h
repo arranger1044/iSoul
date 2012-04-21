@@ -25,6 +25,6 @@
 
 - (NSArray *)balloonTileArray:(NSImage *)balloon;
 - (BOOL)lastMessageVisible;
-- (void)drawBubbleAroundTextInRect:(NSRect)rect user:(User *)user outgoing:(BOOL)outgoing;
+- (void)drawBubbleAroundTextInRect:(NSRect)rect user:(User *)user outgoing:(BOOL)outgoing timestamp:(NSDate *)timestamp;
 
 @end

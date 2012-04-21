@@ -526,6 +526,7 @@
 	[attMsg addAttribute:@"StatusMessage" value:[NSNumber numberWithBool:statusMessage] range:r];
 	[attMsg addAttribute:@"User" value:[msg user] range:r];
 	[attMsg addAttribute:@"Outgoing" value:[NSNumber numberWithBool:isOutgoing] range:r];
+    [attMsg addAttribute:@"Timestamp" value:[msg timestamp] range:r];
 	if (statusMessage) {
 		// change the text colour for status messages
 		[attMsg addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:r];
