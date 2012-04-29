@@ -19,6 +19,7 @@
 #import "Transfer.h"
 #import "BottomBar.h"
 #import "User.h"
+#import "Room.h"
 #import "NSTreeController-DMExtensions.h"
 #import "BrowseViewController.h"
 #import "MuseekdController.h"
@@ -1256,8 +1257,6 @@
 	for (Room *room in selected) {
 		[museekdConnectionController joinRoom:[room name]];
 	}
-	
-    //
 	// now hide the room list window
 	//[chatRoomWindow orderOut:self];
     
