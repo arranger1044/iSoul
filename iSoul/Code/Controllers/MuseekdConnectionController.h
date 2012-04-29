@@ -67,6 +67,7 @@
 - (void)addAutojoinLastOpenedRooms;
 - (void)addOrRemoveAutojoin:(Room *)room;
 - (void)reloadRoomList;
+- (void)changeUserImage:(NSString *)image;
 
 // private methods
 - (void)updateUserdata:(MuseekMessage *)msg forUser:(User *)user;

@@ -38,6 +38,7 @@
 #define mdConfigState		0x0100
 #define mdConfigSet			0x0101
 #define mdConfigRemove		0x0102
+#define mdImageChange		0x0103
 #define mdPeerExists		0x0201
 #define mdPeerStatus		0x0202
 #define mdPeerStatistics	0x0203

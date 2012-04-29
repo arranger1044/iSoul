@@ -67,6 +67,11 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
     [self setupLogPathMenu:NO];
 	// request the current level of priveleges
 	[museek checkPriveleges];
+    
+    // get the shared instance of the image picker
+    IKPictureTaker *pictureTaker = [IKPictureTaker pictureTaker];
+    // and set the default image
+    [pictureTaker setInputImage:[imageWell image]]; 
 }
 
 - (void)setupToolbar 
@@ -80,6 +85,28 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
     [self addView:loggingPrefsView label:@"Logging" image:[NSImage imageNamed:@"PrefLogging"]];
 	[self addView:itunesPrefsView label:@"iTunes" image:[NSImage imageNamed:@"PrefItunes"]];
 	[self addView:donationsPrefsView label:@"Donations" image:[NSImage imageNamed:@"PrefDonations"]];
+}
+
+- (IBAction)showImagePicker:(id)sender
+{
+    IKPictureTaker * pictureTaker = [IKPictureTaker pictureTaker];
+    [pictureTaker beginPictureTakerSheetForWindow:[self window] 
+                                     withDelegate:self 
+                                   didEndSelector:@selector(pictureTakerDidEnd:returnCode:contextInfo:) 
+                                      contextInfo:nil];
+}
+
+- (void) pictureTakerDidEnd:(IKPictureTaker *) picker
+                 returnCode:(NSInteger) code
+                contextInfo:(void*) contextInfo
+{
+    if(code == NSOKButton)
+    {
+        [imageWell setImage:[picker outputImage]];
+        [[NSUserDefaults standardUserDefaults] setValue:[[picker outputImage] TIFFRepresentation] forKey:@"UserImage"];
+        // notifying the imageWell
+        [self userImageChanged:imageWell];
+    }
 }
 
 // restores the previously viewed preference pane when the view is reloaded
@@ -639,7 +666,13 @@ NSString * const ctxAddMenuItem = @"AddMenuItem";
 						  modalDelegate:self 
 						 didEndSelector:nil 
 							contextInfo:NULL];		
-	}		
+	}
+	else 
+    {
+        // telling museekd to update the image
+        [museek changeUserImage:imagePath];
+    }
+	
 }
 
 - (IBAction)newMenuItem:(id)sender

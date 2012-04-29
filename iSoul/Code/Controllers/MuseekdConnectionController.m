@@ -284,26 +284,23 @@
 
 - (void)addOrRemoveAutojoin:(Room *)room
 {
-    //    MuseekMessage *msg = [[MuseekMessage alloc] init];
     if ([[room autojoin] boolValue])
     {
-        //        DNSLog(@"removing autojoin for chatroom %@", [room name]);
-        //        [msg appendUInt32:mdConfigRemove];
-        //        [msg appendCipher:@"autojoin" withKey:password];
-        //        [msg appendCipher:[room name] withKey:password];
         [self removeAutojoin:room];
     }
     else
     {
-        //        DNSLog(@"adding autojoin for chatroom %@", [room name]);
-        //        [msg appendUInt32:mdConfigSet];
-        //        [msg appendCipher:@"autojoin" withKey:password];
-        //        [msg appendCipher:[room name] withKey:password];
-        //        [msg appendCipher:@"" withKey:password];
         [self addAutojoin:room];
     }
-    //    [output send:msg];
-    //	[msg release];	
+}
+
+- (void)changeUserImage:(NSString *)image
+{
+    MuseekMessage *msg = [[MuseekMessage alloc] init];
+    DNSLog(@"Changing user image %@", image);
+    [msg appendString:image];
+    [output send:msg];
+	[msg release];	
 }
 
 - (void)addAutojoinLastOpenedRooms

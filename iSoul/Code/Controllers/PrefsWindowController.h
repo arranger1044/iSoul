@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Quartz/Quartz.h"
 #import "DBPrefsWindowController.h"
 
 @class MuseekdConnectionController;
@@ -35,6 +36,8 @@
     IBOutlet NSPopUpButton * dirPathPopup;
 	IBOutlet NSTextField *userToShareWith;
 	IBOutlet NSButton *addFolderButton;
+    
+    IBOutlet NSImageView * imageWell;
 
 	MuseekdConnectionController *museek;
 	ShareNode *treeRoot;		// holds the shared folder tree
@@ -71,6 +74,7 @@
 - (IBAction)addSharedFolder:(id)sender;
 - (IBAction)removeSharedFolder:(id)sender;
 - (IBAction)usernameChanged:(id)sender;
+- (IBAction)showImagePicker:(id)sender;
 - (IBAction)passwordChanged:(id)sender;
 - (IBAction)serverChanged:(id)sender;
 - (IBAction)serverPortChanged:(id)sender;

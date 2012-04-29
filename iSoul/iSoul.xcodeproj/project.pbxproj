@@ -461,6 +461,7 @@
 		A7F6AF7B10F8A58700B784A4 /* MenuBan.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F6AF7A10F8A58700B784A4 /* MenuBan.png */; };
 		A7F6AF8710F8A78800B784A4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6AF8610F8A78800B784A4 /* User.m */; };
 		A7F6B18B10F9061800B784A4 /* CountryNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */; };
+		B90184D0154D2D3B00EA4617 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90184CE154D2D0900EA4617 /* Quartz.framework */; };
 		B90E73EE12994B3F009B37A2 /* ChatRoomList.png in Resources */ = {isa = PBXBuildFile; fileRef = B90E73ED12994B3F009B37A2 /* ChatRoomList.png */; };
 		B95D564A1284866C0034F7AC /* PrefLogging.png in Resources */ = {isa = PBXBuildFile; fileRef = B95D56491284866C0034F7AC /* PrefLogging.png */; };
 		B95FA5241280098800BFB18E /* GreenDot.png in Resources */ = {isa = PBXBuildFile; fileRef = B95FA5211280098800BFB18E /* GreenDot.png */; };
@@ -1054,6 +1055,7 @@
 		A7F6AF8610F8A78800B784A4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A7F6B18910F9061800B784A4 /* CountryNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryNameTransformer.h; sourceTree = "<group>"; };
 		A7F6B18A10F9061800B784A4 /* CountryNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryNameTransformer.m; sourceTree = "<group>"; };
+		B90184CE154D2D0900EA4617 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		B90E73ED12994B3F009B37A2 /* ChatRoomList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatRoomList.png; sourceTree = "<group>"; };
 		B95D56491284866C0034F7AC /* PrefLogging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrefLogging.png; sourceTree = "<group>"; };
 		B95FA5211280098800BFB18E /* GreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenDot.png; sourceTree = "<group>"; };
@@ -1092,6 +1094,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90184D0154D2D3B00EA4617 /* Quartz.framework in Frameworks */,
 				DD494E21133FF2BA00974169 /* libz.dylib in Frameworks */,
 				A796D12810F53B2D00E3F8CC /* TCMPortMapper.framework in Frameworks */,
 				A76D2D9910D9182700DD9F82 /* libcrypto.dylib in Frameworks */,
@@ -1146,6 +1149,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Apple Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B90184CE154D2D0900EA4617 /* Quartz.framework */,
 				77C82804067257F0000B614F /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
