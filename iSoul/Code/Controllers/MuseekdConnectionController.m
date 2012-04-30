@@ -352,7 +352,7 @@
 	// the message needs to be stored in the room, 
 	// as we do not receive a copy of this message
 	// as we do in a normal chatroom
-	[store addMessage:message toRoom:username forUser:ownName isPrivate:YES];	
+	[store addMessage:message toRoom:username forUser:ownName isPrivate:YES isEvent:NO];	
 	
 	MuseekMessage *msg = [[[MuseekMessage alloc] init] autorelease];
 	[msg appendUInt32:mdPrivateChat];	// command type
@@ -1283,7 +1283,7 @@
 	NSString *message = [msg readString];
 	
 	// add the message with room the same as the user
-	[store addMessage:message toRoom:username forUser:username isPrivate:YES];
+	[store addMessage:message toRoom:username forUser:username isPrivate:YES isEvent:NO];
 	
 	// Growl notification
 	if (![NSApp isActive])
@@ -1342,6 +1342,9 @@
 	// update the user statistics
 	[self updateUserdata:msg forUser:user];
 	
+    // add an event message in the chat
+    NSString * line = [NSString stringWithFormat:@"%@ joined the room", username];
+    [store addMessage:line toRoom:roomname forUser:username isPrivate:NO isEvent:YES];
 	debug_NSLog(@"user %@ joined room %@",username,roomname);
 }
 
@@ -1350,8 +1353,12 @@
 	NSString *roomname = [msg readString];
 	NSString *username = [msg readString];
 	
+    // add an event message in the chat
+    NSString * line = [NSString stringWithFormat:@"%@ left the room", username];
+    [store addMessage:line toRoom:roomname forUser:username isPrivate:NO isEvent:YES];
+    
 	[store removeUser:username fromRoom:roomname];
-	debug_NSLog(@"removed user %@ from room %@",username,roomname);
+	debug_NSLog(@"removed user %@ from room %@ %@",username,roomname, line);
 }
 
 - (void)readRoomMessage:(MuseekMessage *)msg
@@ -1361,7 +1368,7 @@
 	NSString *line = [msg readString];
 	
 	// add the data as a new message object
-	[store addMessage:line toRoom:roomname forUser:username isPrivate:NO];
+	[store addMessage:line toRoom:roomname forUser:username isPrivate:NO isEvent:NO];
 	debug_NSLog(@"added new message to room %@ for user %@", roomname, username);
     
     //force the user info update

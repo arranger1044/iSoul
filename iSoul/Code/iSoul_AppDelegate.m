@@ -134,6 +134,10 @@
 		store = [[DataStore alloc] init];
 		[store setManagedObjectContext:moc];
 		[store addDefaultSidebarItems];		
+        NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+        [store setFormatter:dateFormatter];
+        [dateFormatter release];
 		
 		// Prepare the connection to gary
 		museekdConnectionController = [[MuseekdConnectionController alloc] init];

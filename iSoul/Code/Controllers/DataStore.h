@@ -26,9 +26,12 @@
 	SidebarItem *uploads;
 	SidebarItem *friends;
 	NSUInteger sidebarSortIndex;
+    
+    NSDateFormatter * formatter;
 }
 
 @property (retain) NSManagedObjectContext *managedObjectContext;
+@property (retain)  NSDateFormatter * formatter;
 @property (readonly) SidebarItem *downloads;
 @property (readonly) SidebarItem *uploads;
 
@@ -57,7 +60,7 @@
 - (SidebarItem *)startPrivateChat:(NSString *)username;
 - (Room *)addRoomWithName:(NSString *)roomName withCount:(uint32_t)count;
 - (Ticker *)addTickerWithUsername:(NSString *)name message:(NSString *)msg;
-- (void)addMessage:(NSString *)msg toRoom:(NSString *)room forUser:(NSString *)user isPrivate:(BOOL)privateMsg;
+- (void)addMessage:(NSString *)msg toRoom:(NSString *)room forUser:(NSString *)user isPrivate:(BOOL)privateMsg isEvent:(BOOL)event;
 - (User *)addUser:(NSString *)name toRoom:(NSString *)room;
 - (void)removeUser:(NSString *)name fromRoom:(NSString *)room;
 - (void)leaveRoom:(NSString *)roomname;

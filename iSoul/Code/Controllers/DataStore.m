@@ -20,6 +20,7 @@
 @implementation DataStore
 
 @synthesize managedObjectContext;
+@synthesize formatter;
 @synthesize downloads;
 @synthesize uploads;
 
@@ -28,6 +29,7 @@
 - (void)dealloc
 {
 	[managedObjectContext release];
+    [formatter release];
 	[super dealloc];
 }
 
@@ -405,7 +407,11 @@
 
 }
 
-- (void)addMessage:(NSString *)msg toRoom:(NSString *)roomname forUser:(NSString *)username isPrivate:(BOOL)privateMsg
+- (void)addMessage:(NSString *)msg 
+            toRoom:(NSString *)roomname 
+           forUser:(NSString *)username 
+         isPrivate:(BOOL)privateMsg
+           isEvent:(BOOL)event
 {
 	// find or create user and room objects
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:
@@ -426,7 +432,7 @@
 		} 
         else 
         {			
-			NSLog(@"could not find room %@ for message %@", roomname, msg);
+			DNSLog(@"could not find room %@ for message %@", roomname, msg);
 			return;
 		}
 	}
@@ -434,19 +440,27 @@
 	predicate = [NSPredicate predicateWithFormat:@"name == %@",username];
 	User *user = (User *)[self find:@"User" withPredicate:predicate];
 	if (user == nil) {
-		NSLog(@"could not find user %@ for room %@", username, roomname);
+		DNSLog(@"could not find user %@ for room %@", username, roomname);
 		return;
 	}
 	
 	ChatMessage *chat = (ChatMessage *)[self createEntity:@"ChatMessage"];
-	[chat setMessage:msg];
-	[chat setTimestamp:[NSDate date]];
+    NSDate * timestamp = [NSDate date];
+    if (event)
+    {
+        [chat setMessage:[NSString stringWithFormat:@"%@  %@.", msg, [formatter stringFromDate:timestamp]]];
+    }
+    else 
+    {
+        [chat setMessage:msg];
+    }
+	[chat setTimestamp:timestamp];
 	[chat setUser:user];
 	[chat setIsPrivate:[NSNumber numberWithBool:privateMsg]];
+    [chat setIsEvent:[NSNumber numberWithBool:event]];
 	[chat setRoom:room];	// set the room last, as this triggers the kvo in chatViewController
     DNSLog(@"%@", [[chat room] name]);
     
-
 }
 
 - (User *)addUser:(NSString *)username toRoom:(NSString *)roomname
@@ -455,7 +469,7 @@
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@",roomname];
 	Room *room = (Room *)[self find:@"Room" withPredicate:predicate];
 	if (room == nil) {
-		NSLog(@"could not find room %@", roomname);
+		DNSLog(@"could not find room %@", roomname);
 		return nil;
 	}
 	

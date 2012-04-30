@@ -222,7 +222,7 @@
 {
     NSSet *newMessages = [change objectForKey:NSKeyValueChangeNewKey];
     NSUInteger newMessagesCount = newMessages.count;
-    //DNSLog(@"%u", newMessagesCount);
+    DNSLog(@"NEW %lu", newMessagesCount);
     
     /* First check if we are in chat view mode */
     if ([[[NSApp delegate] currentViewController] isEqual:self])
@@ -236,9 +236,13 @@
              count as well */
             if (![[[NSApp delegate] window] isMainWindow])
             {
-                NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
-                [store updateSidebar:[object name] withCount:newCount];
-                self.unreadMessages += newMessagesCount;
+                /* Supposing only one message at a time is processed */
+                if (![[[newMessages anyObject] isEvent] boolValue])
+                {    
+                    NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
+                    [store updateSidebar:[object name] withCount:newCount];
+                    self.unreadMessages += newMessagesCount;
+                }
             }
             
         }
@@ -246,9 +250,13 @@
         {
             //DNSLog(@"OUT 2 %@", [object name]);
             /* We update the other room side bar count */
-            NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
-            [store updateSidebar:[object name] withCount:newCount];
-            self.unreadMessages += newMessagesCount;
+            /* Supposing only one message at a time is processed */
+            if (![[[newMessages anyObject] isEvent] boolValue])
+            {   
+                NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
+                [store updateSidebar:[object name] withCount:newCount];
+                self.unreadMessages += newMessagesCount;
+            }
         }
     }
     else 
@@ -261,9 +269,13 @@
         
         //DNSLog(@"OUT 1 %@", [object name]);
         /* We update the other room side bar count */
-        NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
-        [store updateSidebar:[object name] withCount:newCount];
-        self.unreadMessages += newMessagesCount;
+        /* Supposing only one message at a time is processed */
+        if (![[[newMessages anyObject] isEvent] boolValue])
+        {   
+            NSNumber * newCount = [NSNumber numberWithUnsignedInt: (unsigned) newMessagesCount];
+            [store updateSidebar:[object name] withCount:newCount];
+            self.unreadMessages += newMessagesCount;
+        }
     }
 }
 
@@ -327,17 +339,7 @@
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
-//    if (flag)
-//    {
-//        DNSLog(@"DID STOP");
-//        float width = chatView.frame.size.width;
-//        [splitView setPosition:(width - splitView.dividerThickness) ofDividerAtIndex:0];
-//        BOOL collapsed = [splitView isSubviewCollapsed:usersPane];
-//        
-//        BOOL collapsed1 = (width >= self.view.frame.size.width);
-//        DNSLog(@"B %d BB %d %f", collapsed1, collapsed, width);
-//        [button setState:!collapsed];   
-//    }
+
     // need to update the hidden status if we have moved the frame manually
     float width = (float) chatView.frame.size.width;
     //[splitView adjustSubviews];
@@ -349,25 +351,9 @@
 }
 
 - (void)animationDidEnd:(NSAnimation *)animation{
-//    DNSLog(@"ENDING");
-//    rect2Log(chatView.frame);
-//    rect2Log(usersPane.frame);
+
     float width = (float) chatView.frame.size.width;
-//    //[splitView adjustSubviews];
-//    //[splitView setPosition:(width) ofDividerAtIndex:0];
-//    if (width >= splitView.frame.size.width - splitView.dividerThickness)
-//    {
-//        [usersPane setHidden:YES];
-////        CGRect previousFrame = CGRectMake(lastDividerPosition, usersPane.frame.origin.y,
-////                                          splitView.frame.size.width - lastDividerPosition, usersPane.frame.size.height);
-////        [usersPane setFrame:previousFrame];
-//    }
-//    else
-//    {
-//        
-//        DNSLog(@"decoll %f %f", width, splitView.frame.size.width);
-//        [button setState:YES];
-//    }
+
     [splitView setPosition:(width) ofDividerAtIndex:0];
 }
 
@@ -388,20 +374,7 @@
                                              /* minWidth */
                                              splitView.frame.size.width - width, 
                                              usersPane.frame.size.height);
-        //rect2Log(view0TargetFrame);
-        //rect2Log(view1TargetFrame);
-        //    CAAnimation * animation = [usersPane animationForKey:@"frameOrigin"];
-        //    [animation setDelegate:self];
-        //    CAAnimation * animation2 = [chatView animationForKey:@"frameOrigin"];
-        //    [animation2 setDelegate:self];
-        //	[NSAnimationContext beginGrouping];
-        //	[[NSAnimationContext currentContext] setDuration:timeT];
-        //    //[[NSAnimationContext currentContext] setDelegate:self];
-        //	[[chatView animator] setFrame: view0TargetFrame];
-        //	[[usersPane animator] setFrame: view1TargetFrame];
-        //    
-        //	[NSAnimationContext endGrouping];
-        //    [splitView adjustSubviews];
+
         
         NSDictionary * chatResize;
         chatResize = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -423,11 +396,6 @@
         [animation setDelegate:self];
         [animation startAnimation];
         [splitView adjustSubviews];
-        
-        //    [splitView setPosition:(width) ofDividerAtIndex:0];
-        //    DNSLog(@"SPLITTING");
-        //    rect2Log(chatView.frame);
-        //    rect2Log(usersPane.frame);
     }
 
 }
@@ -501,7 +469,9 @@
 	NSMutableParagraphStyle *pStyle;
 	BOOL isOutgoing = [[museek username] isEqual:[[msg user] name]];
 	BOOL statusMessage = ([newMsg length] > 3) && [[newMsg substringToIndex:3] isEqualToString:@"/me"];
-	if (statusMessage) {
+    BOOL eventMessage = [[msg isEvent] boolValue];
+	if (statusMessage) 
+    {
 		pStyle = [messageView statusParagraphStyle];
 		
 		// show which user left the message, and convert common phrases
@@ -509,7 +479,14 @@
 		[newMsg replaceCharactersInRange:r 
 							  withString:[NSString stringWithFormat:
 										  @"%@", [[msg user] name]]];
-	} else {
+	} 
+    else if (eventMessage) 
+    {
+        pStyle = [messageView statusParagraphStyle];
+    }
+    else 
+    {
+
 		pStyle = [[messageView defaultParagraphStyle] mutableCopy];
 		[pStyle autorelease];
 		if (isOutgoing) {
@@ -527,10 +504,17 @@
 	[attMsg addAttribute:@"User" value:[msg user] range:r];
 	[attMsg addAttribute:@"Outgoing" value:[NSNumber numberWithBool:isOutgoing] range:r];
     [attMsg addAttribute:@"Timestamp" value:[msg timestamp] range:r];
-	if (statusMessage) {
+    [attMsg addAttribute:@"EventMessage" value:[NSNumber numberWithBool:eventMessage] range:r];
+	if (statusMessage) 
+    {
 		// change the text colour for status messages
 		[attMsg addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:r];
 	}
+    else if (eventMessage)
+    {
+        // let's differentiate the colours
+		[attMsg addAttribute:NSForegroundColorAttributeName value:[NSColor lightGrayColor] range:r];
+    }
 	
 	// search the string for links and automatically attribute them
 	// this is pretty poor at the moment, currently only detects
@@ -611,32 +595,7 @@ constrainMaxCoordinate:(CGFloat)proposedMax
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)aNotification
 {
-//	if (firstResize) {
-//		firstResize = NO;
-//		if ([[currentRoom isPrivate] boolValue]) {
-//			[splitView setPosition:0 ofDividerAtIndex:0];
-//		} else {
-//			[splitView setPosition:kDefaultDividerPosition ofDividerAtIndex:0];
-//		}
-//		lastDividerPosition = kDefaultDividerPosition;
-//		return;
-//	}
-	
-//	// need to update the hidden status if we have moved the frame manually
-//    float width = chatView.frame.size.width;
-////    [splitView setPosition:(width - splitView.dividerThickness) ofDividerAtIndex:0];
-////    
-////	BOOL collapsed = [splitView isSubviewCollapsed:usersPane];
-//    if (width >= self.view.frame.size.width)
-//    {
-//        DNSLog(@"coll");
-//        [button setState:YES];
-//    }
-//    else
-//    {
-//        DNSLog(@"decoll");
-//        [button setState:NO];
-//    }
+
 	float width = (float) chatView.frame.size.width;
     if (width >= splitView.frame.size.width - splitView.dividerThickness)
     {
@@ -652,19 +611,6 @@ constrainMaxCoordinate:(CGFloat)proposedMax
     
 	// store the current divider position in the sidebar tag
 	if ([delegate respondsToSelector:@selector(chatViewDidResize:)]) {
-		
-//		float width = 0;
-//		if (!collapsed) {
-////			NSRect userR = [usersPane frame];
-////            NSRect chatR = [splitView frame];
-//            NSRect chatR = [chatView frame];
-//			//width = r.size.width;
-//            //DNSLog(@"AFRICA %f %f %f", chatR.size.width, userR.size.width, cR.size.width);
-//            //width = chatR.size.width - userR.size.width;
-//            width = chatR.size.width;
-//            //width = [splitView]
-//		}
-
         
 		[delegate performSelector:@selector(chatViewDidResize:)
 					   withObject:[NSNumber numberWithFloat:width]];

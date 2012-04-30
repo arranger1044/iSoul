@@ -18,6 +18,7 @@
 @dynamic timestamp;
 @dynamic room;
 @dynamic user;
+@dynamic isEvent;
 
 - (id)copyWithZone:(NSZone*)zone
 {

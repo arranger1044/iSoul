@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, retain) NSNumber * isPrivate;
+@property (nonatomic, retain) NSNumber * isEvent;
 @property (nonatomic, retain) NSString * message;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) Room * room;

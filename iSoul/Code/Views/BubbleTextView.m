@@ -367,6 +367,9 @@
         NSDate * timestamp = [[self textStorage] attribute:@"Timestamp" 
                                                    atIndex:paragraphCharRange.location 
                                             effectiveRange:NULL];
+        NSNumber * isEventMsg = [[self textStorage] attribute:@"EventMessage" 
+                                                     atIndex:paragraphCharRange.location 
+                                              effectiveRange:NULL];
 		
         // Iterate through the paragraph glyph range, line by line.
         for (lineGlyphRange = NSMakeRange(paragraphGlyphRange.location, 0); 
@@ -385,7 +388,8 @@
 		// then draw the bubble
 		paragraphRect.origin.x += containerOrigin.x;
 		paragraphRect.origin.y += containerOrigin.y;
-		if (![isStatusMsg boolValue]) {
+		if (![isStatusMsg boolValue] && ![isEventMsg boolValue]) 
+        {
 			[self drawBubbleAroundTextInRect:paragraphRect 
 										user:user 
 									outgoing:[isOutgoing boolValue]
