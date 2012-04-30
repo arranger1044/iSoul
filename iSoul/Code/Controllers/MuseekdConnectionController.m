@@ -1288,6 +1288,9 @@
 	// Growl notification
 	if (![NSApp isActive])
 		[self growlNotify:username msg:message name:@"Received message"];
+    
+    //force the user info update
+    [self getUserInfo:username];
 }
 
 - (void)roomJoined:(MuseekMessage *)msg
@@ -1360,6 +1363,9 @@
 	// add the data as a new message object
 	[store addMessage:line toRoom:roomname forUser:username isPrivate:NO];
 	debug_NSLog(@"added new message to room %@ for user %@", roomname, username);
+    
+    //force the user info update
+    [self getUserInfo:username];
 }
 
 - (void)startSearch:(MuseekMessage *)msg

@@ -468,13 +468,13 @@
 	
 	// now add each message individually to the text view
 	for (ChatMessage *msg in sortedMessages) {
-		// check if we have seen this user before
-		if (![usersSoFar containsObject:[msg user]]) {
-			[usersSoFar insertObject:[msg user] atIndex:0];
-			
-			// request the info from the museek controller
-			[museek getUserInfo:[[msg user] name]];
-		}		
+//		// check if we have seen this user before
+//		if (![usersSoFar containsObject:[msg user]]) {
+//			[usersSoFar insertObject:[msg user] atIndex:0];
+//			
+//			// request the info from the museek controller
+//			[museek getUserInfo:[[msg user] name]];
+//		}		
 		[self addMessageToView:msg];
 	}
 	

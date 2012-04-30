@@ -64,6 +64,8 @@
     
     [fh readInBackgroundAndNotify]; 
     
+    //[loggingView setUsesFindBar:YES];
+    
 }
 
 - (void) logMessage:(NSString *) message {
