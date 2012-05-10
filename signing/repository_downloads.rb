@@ -15,6 +15,9 @@ module GitHubDeployment
         CLIENT_SECRET = '8d1d93ae656ff2e23e95d7b97afab90fb988a5e2'
         TOKEN_FILE = 'access_token.data'
         
+        # attributes
+        attr_accessor :user, :repo
+        
         # Constructor
         # username: The repository's username
         # repository: The repository's actual name
@@ -70,7 +73,6 @@ module GitHubDeployment
             
             begin
                 File.open(TOKEN_FILE, 'rb') { |f| token = Marshal.load(f) }
-                puts('Using stored token')
             rescue Errno::ENOENT => e
                 puts('No access token available, registering with GitHub...')
                 token = createAccessToken()
@@ -118,19 +120,17 @@ module GitHubDeployment
                 opts.on('-d', '--description DESC', 'Description of the new download') { |desc|
                     options[:description] = desc
                 }
-
+                
                 options[:name] = nil
                 opts.on('-n', '--name NAME', 'Download name (default: same as filename)') { |name|
                     options[:name] = name
                 }
 
-                options[:repo] = 'iSoul'
-                opts.on('-r', '--repository REPO', 'Repository name (default: iSoul)') { |repo|
+                opts.on('-r', '--repository REPO', 'Repository\'s name') { |repo|
                     options[:repo] = repo
                 }
 
-                options[:user] = 'arranger1044'
-                opts.on('-u', '--username USER', 'Repository\'s user (default: arranger1044)') { |user|
+                opts.on('-u', '--username USER', 'Repository\'s user') { |user|
                     options[:user] = user
                 }
 
@@ -140,16 +140,15 @@ module GitHubDeployment
                 }
             }
 
-            # extract flags and check for file argument
+            # extract flags and check for missing argument
             optparse.parse!()
-            if ARGV.empty?
-                puts('Missing path argument. Please use -h or --help for usage.')
-                exit(1)
-            else
-                options[:path] = ARGV.first
-                if (!options[:name])
-                    options[:name] = options[:path]
-                end
+            raise 'Missing path argument. Please use -h or --help for usage.' if ARGV.empty?
+            raise 'Missing user argument. Please use -h or --help for usage.' if !options.has_key?(:user)
+            raise 'Missing repo argument. Please use -h or --help for usage.' if !options.has_key?(:repo)
+            
+            options[:path] = ARGV.first
+            if (!options[:name])
+                options[:name] = options[:path]
             end
 
             return options
@@ -163,7 +162,6 @@ end
 
 if __FILE__ == $0
     # initialize
-    ARGV=['hey']
     options = GitHubDeployment::RepositoryDownloads.parseArguments()
     downloads = GitHubDeployment::RepositoryDownloads.new(options[:user], options[:repo])
     
