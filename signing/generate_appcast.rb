@@ -6,6 +6,7 @@
 require 'repository_downloads'
 require 'sparkle_signature'
 require 'date'
+require 'optparse'
 require 'plist'
 require 'rexml/document'
 
@@ -113,6 +114,7 @@ module GitHubDeployment
             # change internal version of application
             plist_obj = Plist::parse_xml("#{file}/Contents/Info.plist")
             plist_obj['CFBundleVersion'] = version
+            Plist::Emit.save_plist(plist_obj, "#{file}/Contents/Info.plist")
             
             return version
         end
