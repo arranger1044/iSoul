@@ -133,9 +133,44 @@ end
 #
 
 if __FILE__ == $0
-    g = GitHubDeployment::NightlyAppcastGenerator.new('iSoul.app', 'arranger1044', 'iSoul', 'http://arranger1044.github.com/iSoul/appcast-nightly.xml')
+    options = {}
     
+    # parse command line options
+    optparse = OptionParser.new { |opts|
+        script_name = File.basename($0)
+        opts.banner = 'GitHub Appcast Generator Script',
+            "\nUsage: #{script_name} [options]"
+        
+        # Define the options, and what they do
+        options[:nightly] = false
+        opts.on('-n', '--nightly', 'Generate a nightly version') { |desc|
+            options[:nightly] = true
+        }
+        
+        opts.on('-h', '--help', 'Display this screen') {
+            puts(opts)
+            exit(0)
+        }
+    }
+
+    # extract flags
+    optparse.parse!()
+    raise 'Unknown argument(s). Please use -h or --help for usage.' if !ARGV.empty?
+    puts('Nightly mode') if options[:nightly]
+    
+    app = 'iSoul.app'
+    user = 'arranger 1044'
+    repo = 'iSoul'
+    
+    # generate
     puts('Generating...')
-    g.generate('../appcast-nightly.xml')
+    exit
+    if (options[:nightly])
+        g = GitHubDeployment::NightlyAppcastGenerator.new(app, user, repo, "http://#{user}.github.com/#{repo}/appcast-nightly.xml")
+        g.generate('../appcast-nightly.xml')
+    else
+        g = GitHubDeployment::NightlyAppcastGenerator.new(app, user, repo, "http://#{user}.github.com/#{repo}/appcast.xml")
+        g.generate('../appcast.xml')
+    end
     puts('Done!')
 end
