@@ -114,6 +114,7 @@ module GitHubDeployment
             # change internal version of application
             plist_obj = Plist::parse_xml("#{file}/Contents/Info.plist")
             plist_obj['CFBundleVersion'] = version
+            plist_obj['SUFeedURL'] = @appcast_url
             Plist::Emit.save_plist(plist_obj, "#{file}/Contents/Info.plist")
             
             return version

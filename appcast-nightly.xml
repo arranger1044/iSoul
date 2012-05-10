@@ -6,14 +6,14 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 201205102028</title>
+            <title>Version 201205102036</title>
 			<description><![CDATA[
 				<h2>New Features</h2>
 				Something here.
 			]]>
 			</description>
-            <pubDate>Thu, 10 May 2012 20:28:43 +0200</pubDate>
-            <enclosure url='https://github.com/downloads/arranger1044/iSoul/iSoul Nightly.zip' type='application/octet-stream' sparkle:version='201205102028' length='2893160' sparkle:dsaSignature='MCwCFBHVy6FplXVl3Gut62xK10PR9Cp3AhRYVFmkKqDiJC\/SevNyBcg9twn\/qw=='/>
+            <pubDate>Thu, 10 May 2012 20:36:54 +0200</pubDate>
+            <enclosure url='https://github.com/downloads/arranger1044/iSoul/iSoul Nightly.zip' type='application/octet-stream' sparkle:version='201205102036' length='2893165' sparkle:dsaSignature='MCwCFGKn2pLPE3kjsd7\+BsfAIw1R\+7iKAhR8MI3wwhTc2YzRU\/ZWVGFnJtV0xw=='/>
          </item>
    </channel>
 </rss>
