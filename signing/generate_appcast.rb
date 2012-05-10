@@ -159,12 +159,11 @@ if __FILE__ == $0
     puts('Nightly mode') if options[:nightly]
     
     app = 'iSoul.app'
-    user = 'arranger 1044'
+    user = 'arranger1044'
     repo = 'iSoul'
     
     # generate
     puts('Generating...')
-    exit
     if (options[:nightly])
         g = GitHubDeployment::NightlyAppcastGenerator.new(app, user, repo, "http://#{user}.github.com/#{repo}/appcast-nightly.xml")
         g.generate('../appcast-nightly.xml')
