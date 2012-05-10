@@ -104,55 +104,6 @@ module GitHubDeployment
             
             return access_token
         end
-        
-        # Parse command line arguments
-        # returns: a hash containing the parsed arguments
-        def self.parseArguments
-            options = {}
-
-            optparse = OptionParser.new { |opts|
-                script_name = File.basename($0)
-                opts.banner = 'GitHub Repository Downloads Script',
-                    "\nUsage: #{script_name} [options] file"
-
-                # Define the options, and what they do
-                options[:description] = ''
-                opts.on('-d', '--description DESC', 'Description of the new download') { |desc|
-                    options[:description] = desc
-                }
-                
-                options[:name] = nil
-                opts.on('-n', '--name NAME', 'Download name (default: same as filename)') { |name|
-                    options[:name] = name
-                }
-
-                opts.on('-r', '--repository REPO', 'Repository\'s name') { |repo|
-                    options[:repo] = repo
-                }
-
-                opts.on('-u', '--username USER', 'Repository\'s user') { |user|
-                    options[:user] = user
-                }
-
-                opts.on('-h', '--help', 'Display this screen') {
-                    puts(opts)
-                    exit(0)
-                }
-            }
-
-            # extract flags and check for missing argument
-            optparse.parse!()
-            raise 'Missing path argument. Please use -h or --help for usage.' if ARGV.empty?
-            raise 'Missing user argument. Please use -h or --help for usage.' if !options.has_key?(:user)
-            raise 'Missing repo argument. Please use -h or --help for usage.' if !options.has_key?(:repo)
-            
-            options[:path] = ARGV.first
-            if (!options[:name])
-                options[:name] = options[:path]
-            end
-
-            return options
-        end
     end
 end
 
@@ -161,8 +112,52 @@ end
 #
 
 if __FILE__ == $0
+    options = {}
+    
+    # parse command line options
+    optparse = OptionParser.new { |opts|
+        script_name = File.basename($0)
+        opts.banner = 'GitHub Repository Downloads Script',
+            "\nUsage: #{script_name} [options] file"
+
+        # Define the options, and what they do
+        options[:description] = ''
+        opts.on('-d', '--description DESC', 'Description of the new download') { |desc|
+            options[:description] = desc
+        }
+        
+        options[:name] = nil
+        opts.on('-n', '--name NAME', 'Download name (default: same as filename)') { |name|
+            options[:name] = name
+        }
+
+        opts.on('-r', '--repository REPO', 'Repository\'s name') { |repo|
+            options[:repo] = repo
+        }
+
+        opts.on('-u', '--username USER', 'Repository\'s user') { |user|
+            options[:user] = user
+        }
+
+        opts.on('-h', '--help', 'Display this screen') {
+            puts(opts)
+            exit(0)
+        }
+    }
+
+    # extract flags and check for missing argument
+    optparse.parse!()
+    raise 'Missing path argument. Please use -h or --help for usage.' if ARGV.empty?
+    raise 'Missing user argument. Please use -h or --help for usage.' if !options.has_key?(:user)
+    raise 'Missing repo argument. Please use -h or --help for usage.' if !options.has_key?(:repo)
+    
+    # extract path
+    options[:path] = ARGV.first
+    if (!options[:name])
+        options[:name] = options[:path]
+    end
+    
     # initialize
-    options = GitHubDeployment::RepositoryDownloads.parseArguments()
     downloads = GitHubDeployment::RepositoryDownloads.new(options[:user], options[:repo])
     
     # create download
