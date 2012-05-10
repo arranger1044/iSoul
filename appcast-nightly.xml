@@ -2,18 +2,18 @@
 <rss xmlns:sparkle='http://www.andymatuschak.org/xml-namespaces/sparkle' version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
    <channel>
       <title>iSoul Changelog</title>
-      <link>http://arranger1044.github.com/iSoul/appcast.xml</link>
+      <link>http://arranger1044.github.com/iSoul/appcast-nightly.xml</link>
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 201205102014</title>
+            <title>Version 201205102028</title>
 			<description><![CDATA[
 				<h2>New Features</h2>
 				Something here.
 			]]>
 			</description>
-            <pubDate>Thu, 10 May 2012 20:14:39 +0200</pubDate>
-            <enclosure url='https://github.com/downloads/arranger1044/iSoul/iSoul Nightly.zip' type='application/octet-stream' sparkle:version='201205102014' length='2893143' sparkle:dsaSignature='MCwCFCyqO2R6ffHLWKj5N\/TVYoBW7DkNAhQ3Drj8qfiMu8IoMf6\+QS6cBl\+O5Q=='/>
+            <pubDate>Thu, 10 May 2012 20:28:43 +0200</pubDate>
+            <enclosure url='https://github.com/downloads/arranger1044/iSoul/iSoul Nightly.zip' type='application/octet-stream' sparkle:version='201205102028' length='2893160' sparkle:dsaSignature='MCwCFBHVy6FplXVl3Gut62xK10PR9Cp3AhRYVFmkKqDiJC\/SevNyBcg9twn\/qw=='/>
          </item>
    </channel>
 </rss>
