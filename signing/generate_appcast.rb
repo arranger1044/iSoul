@@ -171,5 +171,11 @@ if __FILE__ == $0
         g = GitHubDeployment::NightlyAppcastGenerator.new(app, user, repo, "http://#{user}.github.com/#{repo}/appcast.xml")
         g.generate('../appcast.xml')
     end
+    
+    puts('Comitting (and pushing)...')
+    system('git add ../appcast*.xml')
+    system('git commit -m "Appcast update"')
+    system('git push')
+    
     puts('Done!')
 end
