@@ -1,23 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:sparkle='http://www.andymatuschak.org/xml-namespaces/sparkle' version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
    <channel>
-      <title>iSoul Changelog</title>
-      <link>http://arranger1044.github.com/iSoul/appcast.xml</link>
+      <title></title>
+      <link></link>
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version @VERSION@</title>
+            <title></title>
 			<description><![CDATA[
 				<h2>New Features</h2>
 				Something here.
 			]]>
 			</description>
-            <pubDate>@PUBDATE@</pubDate>
-            <enclosure url="https://github.com/downloads/arranger1044/iSoul/iSoul @VERSION@.zip"
-					   sparkle:version="@VERSION@"
-					   sparkle:dsaSignature="@SIGNATURE@"
-					   length="@SIZE@"
-					   type="application/octet-stream" />
+            <pubDate></pubDate>
+            <enclosure url='' type='application/octet-stream' sparkle:version='' length='' sparkle:dsaSignature=''/>
          </item>
    </channel>
 </rss>
