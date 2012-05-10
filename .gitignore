@@ -1,5 +1,5 @@
 *.tmproj
 dsa_priv.pem
+access_token.data
 *.zip
 *.app
-
