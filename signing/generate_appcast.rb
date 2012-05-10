@@ -108,8 +108,8 @@ module GitHubDeployment
         # file: Path to application to get info from
         # returns: The extracted version string
         def extractVersion(file)
-            # version format: year month day hour minutes
-            version = DateTime.now.strftime('%G%m%d%H%M')
+            # version format: year month.day.hour
+            version = DateTime.now.strftime('%g%m.%d.%H')
             
             # change internal version of application
             plist_obj = Plist::parse_xml("#{file}/Contents/Info.plist")
