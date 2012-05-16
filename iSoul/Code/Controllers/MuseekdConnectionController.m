@@ -185,7 +185,7 @@
 	[msg release];
 }
 
-- (void)resumeTransfer:(Transfer *)transfer
+- (void)resumeDownload:(Transfer *)transfer
 {
 	if (state == usOffline) return;
 	
@@ -194,6 +194,18 @@
 	[msg appendString:transfer.user.name];	// username string
 	[msg appendString:transfer.path];			// full path string
 	[msg appendUInt64: (uint64_t) transfer.size.longLongValue];	// I64 file size
+	
+	[output send:msg];
+}
+
+- (void)resumeUpload:(Transfer *)transfer
+{
+	if (state == usOffline) return;
+	
+	MuseekMessage *msg = [[[MuseekMessage alloc] init] autorelease];
+	[msg appendUInt32:mdUploadFile];			// command type
+	[msg appendString:transfer.user.name];	// username string
+	[msg appendString:transfer.path];			// full path string
 	
 	[output send:msg];
 }

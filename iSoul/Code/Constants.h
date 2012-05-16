@@ -67,6 +67,7 @@
 #define mdDownloadFile		0x0503
 #define mdDownloadFolder	0x0504
 #define mdAbortTransfer		0x0505
+#define mdUploadFile		0x0506
 #define mdConnect			0x0700
 #define mdDisconnect		0x0701
 #define mdReloadShares		0x0703

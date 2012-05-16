@@ -422,7 +422,15 @@
 	
 	debug_NSLog(@"resuming %lu transfers", [selectedTransfers count]);
 	for (Transfer *transfer in selectedTransfers) {
-		[museek resumeTransfer:transfer];
+		//[museek resumeTransfer:transfer];
+        if ([[transfer isUpload] boolValue]) 
+        {
+            [museek resumeUpload:transfer];
+        }
+        else
+        {
+            [museek resumeDownload:transfer];
+        }
 	}	
 }
 

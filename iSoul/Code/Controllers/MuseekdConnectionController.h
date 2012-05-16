@@ -43,7 +43,8 @@
 - (void)addWishlistItem:(NSString *)term;
 - (void)removeWishlistItem:(NSString *)term;
 - (void)downloadFile:(Result *)result;
-- (void)resumeTransfer:(Transfer *)transfer;
+- (void)resumeDownload:(Transfer *)transfer;
+- (void)resumeUpload:(Transfer *)transfer;
 - (void)downloadFolder:(NSString *)path fromUser:(NSString *)username;
 - (void)removeTransfer:(Transfer *)transfer;
 - (void)abortTransfer:(Transfer *)transfer;
