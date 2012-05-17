@@ -8,6 +8,7 @@
 
 #import "ExpandingSidebar.h"
 #import "SidebarItem.h"
+#import "MainWindowController.h"
 
 #define kRightBuffer	61
 #define kTopBuffer		5
@@ -91,6 +92,35 @@
                               hints:nil];
 		}		
 	}
+}
+
+
+- (void) keyDown:(NSEvent *) event
+{
+
+    id theDelegate;
+    BOOL isArrowChanging = NO;
+    
+    switch ([event keyCode])
+    {
+        case 126: // Up
+        case 125: // Down
+            isArrowChanging = YES;
+            break;
+            
+        default:
+            
+            return;
+    }
+    
+    [super keyDown:event];
+    
+    if(isArrowChanging)
+    {            
+        theDelegate = [self delegate];
+        //DNSLog(@"hit");
+        [theDelegate changeView:self];
+    }
 }
 
 @end
