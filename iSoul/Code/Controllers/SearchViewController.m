@@ -433,7 +433,8 @@
 	}	
 		
 	// get the folder path from the full file path
-	for (Result *result in selected) {
+	for (Result *result in selected) 
+    {
 		NSRange r = [[result fullPath] rangeOfString:@"\\" options:NSBackwardsSearch];
 		if (r.location == NSNotFound) {
 			NSLog(@"error getting folder from path %@", [result fullPath]);
@@ -443,6 +444,73 @@
 		debug_NSLog(@"downloading folder %@ from user %@", path, [[result user] name]);
 		[museek downloadFolder:path fromUser:[[result user] name]]; 
 	}
+}
+
+
+/* For each selected item, let's open a private chat with the user sharing that
+   file */
+- (IBAction)openPrivateChats:(id)sender{
+    NSArray * selected = nil;
+	NSArray * selectedNodes = nil;
+    NSMutableSet * sharingUsers = [[NSMutableSet alloc] init];
+    NSMutableArray * folderUsers = [[NSMutableArray alloc] init];
+	
+	switch (viewState) {
+		case vwList:
+			selected = [resultsController selectedObjects];
+			break;
+		case vwFolder:
+			selectedNodes = [treeController selectedObjects];
+
+			
+            NSMutableArray * users = [[NSMutableArray alloc] init];
+			for (PathNode *node in selectedNodes) 
+            {
+				if ([node isFolder]) 
+                {
+					[folderUsers addObject:[node user]];
+				} 
+                else 
+                {
+					[users addObject:[node representedObject]];
+				}
+			}
+			selected = [NSArray arrayWithArray:users];
+			
+            [users release];
+			break;
+		case vwBrowse:
+			selected = [browseController selectedObjects];
+			break;
+	}	
+    
+    for (Result * aResult in selected)
+    {
+        User * sharingUser = [aResult user];
+        
+        if (![sharingUsers containsObject:sharingUser])
+        {
+            [sharingUsers addObject:sharingUser];
+            [store startPrivateChat:[sharingUser name]];
+            DNSLog(@"starting chat with user %@", [sharingUser name]);
+        }
+       
+    }
+    
+    for (User * aUser in folderUsers)
+    {
+        
+        if (![sharingUsers containsObject:aUser])
+        {
+            [sharingUsers addObject:aUser];
+            [store startPrivateChat:[aUser name]];
+            DNSLog(@"starting chat with user %@", [aUser name]);
+        }
+        
+    }
+    
+    [sharingUsers release];
+    [folderUsers release];
 }
 
 - (IBAction)browserSelected:(id)sender {

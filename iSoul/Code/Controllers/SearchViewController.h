@@ -88,6 +88,7 @@
 - (IBAction)downloadFile:(id)sender;
 - (IBAction)downloadFolder:(id)sender;
 - (IBAction)browserSelected:(id)sender;
+- (IBAction)openPrivateChats:(id)sender;
 
 - (void)setCurrentTickets:(NSSet *)tickets forName:(NSString *)name;
 -(void) removeSearchItem:(NSString *)name;
