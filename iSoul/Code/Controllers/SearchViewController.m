@@ -519,6 +519,18 @@
     }
 }
 
+- (IBAction)browseSelectedUsers:(id)sender
+{
+    NSArray * selectedUsers = [self getSelectedUsers];
+    for (NSString * name in selectedUsers)
+    {
+        [store findOrCreateShareForName:name];
+
+        [museek browseUser:name];
+        DNSLog(@"Browsing user %@", name);
+    }
+}
+
 - (IBAction)browserSelected:(id)sender {
 	// get the currently selected node
 	PathNode *node = [[userBrowser selectedCell] representedObject];
