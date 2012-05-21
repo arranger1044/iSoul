@@ -446,10 +446,8 @@
 	}
 }
 
-
-/* For each selected item, let's open a private chat with the user sharing that
-   file */
-- (IBAction)openPrivateChats:(id)sender{
+- (NSArray *)getSelectedUsers{
+    NSMutableArray * selectedUsers = [[[NSMutableArray alloc] init] autorelease];
     NSArray * selected = nil;
 	NSArray * selectedNodes = nil;
     NSMutableSet * sharingUsers = [[NSMutableSet alloc] init];
@@ -461,7 +459,7 @@
 			break;
 		case vwFolder:
 			selectedNodes = [treeController selectedObjects];
-
+            
 			
             NSMutableArray * users = [[NSMutableArray alloc] init];
 			for (PathNode *node in selectedNodes) 
@@ -491,26 +489,34 @@
         if (![sharingUsers containsObject:sharingUser])
         {
             [sharingUsers addObject:sharingUser];
-            [store startPrivateChat:[sharingUser name]];
-            DNSLog(@"starting chat with user %@", [sharingUser name]);
+            [selectedUsers addObject:[sharingUser name]];
         }
-       
     }
     
     for (User * aUser in folderUsers)
     {
-        
         if (![sharingUsers containsObject:aUser])
         {
             [sharingUsers addObject:aUser];
-            [store startPrivateChat:[aUser name]];
-            DNSLog(@"starting chat with user %@", [aUser name]);
+            [selectedUsers addObject:[aUser name]];
         }
-        
     }
     
     [sharingUsers release];
     [folderUsers release];
+    return selectedUsers;
+}
+
+/* For each selected item, let's open a private chat with the user sharing that
+   file */
+- (IBAction)openPrivateChats:(id)sender{
+    
+    NSArray * selectedUsers = [self getSelectedUsers];
+    for (NSString * name in selectedUsers)
+    {
+        [store startPrivateChat:name];
+        DNSLog(@"Starting private chat with user %@", name);
+    }
 }
 
 - (IBAction)browserSelected:(id)sender {
