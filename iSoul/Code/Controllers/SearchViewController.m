@@ -531,6 +531,17 @@
     }
 }
 
+- (IBAction)addOrRemoveSelectedFriends:(id)sender
+{
+    NSArray * selectedUsers = [self getSelectedUsers];
+    for (NSString * name in selectedUsers)
+    {
+        User * theUser = [store getOrAddUserWithName:name];
+        [museek addOrRemoveFriend:theUser];
+        DNSLog(@"Adding/Removing friend user %@", name);
+    }
+}
+
 - (IBAction)browserSelected:(id)sender {
 	// get the currently selected node
 	PathNode *node = [[userBrowser selectedCell] representedObject];
@@ -895,13 +906,55 @@ willDisplayCell:(id)cell
 - (void)menuNeedsUpdate:(NSMenu *)menu {
 	// the user to send the message to
 	NSArray *results = [resultsController selectedObjects];
-	Result *result = [results lastObject];
-	BOOL isFriend = [[[result user] isFriend] boolValue];
+//	Result *result = [results lastObject];
+//	BOOL isFriend = [[[result user] isFriend] boolValue];
+    
+    NSArray * selectedUsers = [self getSelectedUsers];
+    NSUInteger friendCounter = 0;
+    
+    /* Only one user selected */
+    if([selectedUsers count] == 1)
+    {
+        User * theUser = [store getOrAddUserWithName:[selectedUsers lastObject]];
+        if ([[theUser isFriend] boolValue]) 
+        {
+            [friendMenuItem setTitle:@"Remove From Friends"];
+        }
+        else 
+        {
+            [friendMenuItem setTitle:@"Add To Friends"];
+        }
+    }
+    else if ([selectedUsers count] > 1)
+    {
+        for (NSString * userName in selectedUsers)
+        {
+            User * theUser = [store getOrAddUserWithName:userName];
+            if ([[theUser isFriend] boolValue])
+            {
+                friendCounter++;
+            }
+        }
+        
+        if (friendCounter == 0)
+        {
+            [friendMenuItem setTitle:@"Add All To Friends"];
+        }
+        else if (friendCounter == [selectedUsers count])
+        {
+            [friendMenuItem setTitle:@"Remove All From Friends"];
+        }
+        else 
+        {
+            [friendMenuItem setTitle:@"Add/Remove From Friends"];
+        }
+    }
+    //NSString * friend = @"Friend";
 	
-	if (isFriend)
-		[friendMenuItem setTitle:@"Remove From Friends"];
-	else
-		[friendMenuItem setTitle:@"Add To Friends"];
+//	if (isFriend)
+//		[friendMenuItem setTitle:@"Remove From Friends"];
+//	else
+//		[friendMenuItem setTitle:@"Add To Friends"];
 	
 	if ([results count] == 1)
 		[downloadMenuItem setTitle:@"Download File"];

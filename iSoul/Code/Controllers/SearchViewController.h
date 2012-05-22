@@ -90,9 +90,10 @@
 - (IBAction)browserSelected:(id)sender;
 - (IBAction)openPrivateChats:(id)sender;
 - (IBAction)browseSelectedUsers:(id)sender;
+- (IBAction)addOrRemoveSelectedFriends:(id)sender;
 
 - (void)setCurrentTickets:(NSSet *)tickets forName:(NSString *)name;
--(void) removeSearchItem:(NSString *)name;
+- (void)removeSearchItem:(NSString *)name;
 
 // private methods
 - (void)setFetchPredicate;
