@@ -98,29 +98,27 @@
 - (void) keyDown:(NSEvent *) event
 {
 
-    id theDelegate;
-    BOOL isArrowChanging = NO;
+    NSInteger rowIndex = [self selectedRow];
     
-    switch ([event keyCode])
+    int pressedKey = [event keyCode];
+    NSLog(@"%d", pressedKey);
+    if (pressedKey == 123 || pressedKey == 124 || pressedKey == 125 || pressedKey == 126)
     {
-        case 126: // Up
-        case 125: // Down
-            isArrowChanging = YES;
-            break;
-            
-        default:
-            
-            return;
-    }
-    
-    [super keyDown:event];
-    
-    if(isArrowChanging)
-    {            
-        theDelegate = [self delegate];
-        //DNSLog(@"hit");
+        if (pressedKey == 123 || pressedKey == 126) {
+            // Key up/left is pressed
+            rowIndex --;
+        } else if (pressedKey == 124 || pressedKey == 125) {
+            // Key down/right is pressed
+            rowIndex ++;
+        }
+        [self selectRowIndexes:
+            [NSIndexSet indexSetWithIndex:(NSUInteger)rowIndex] byExtendingSelection:NO];
+        id theDelegate = [self delegate];
         [theDelegate changeView:self];
     }
+    
+    // [FVL] [super keyDown:event]; /* This is an error. Events are passed to responders.*/
+    [self.nextResponder keyDown:event];
 }
 
 @end

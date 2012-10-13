@@ -76,7 +76,7 @@
 		NSUInteger i = [timeImages count] - 1;
 		if (t < 60.0) {
 			i = (NSUInteger)t/5;
-			caption = [NSString stringWithFormat:@"%u minutes",5*(i+1)];
+			caption = [NSString stringWithFormat:@"%lu minutes",5*(i+1)];
 		} else {
 			t = MIN(999.0f, t / 60.0f);	// q time in hours
 			if (t < 2.0) {

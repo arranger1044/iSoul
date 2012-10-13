@@ -461,8 +461,8 @@
 	NSMutableString *newMsg = [[NSMutableString alloc] initWithString:
 							   [[msg message] stringByReplacingOccurrencesOfString:@"\n" 
 																		withString:
-								[NSString stringWithFormat:@"%C",NSLineSeparatorCharacter]]];
-	[newMsg appendFormat:@"%C",NSParagraphSeparatorCharacter];
+								[NSString stringWithFormat:@"%d",NSLineSeparatorCharacter]]];
+	[newMsg appendFormat:@"%d",NSParagraphSeparatorCharacter];
 	
 	// check if it is a status message instead of a chat message
 	NSRange r;

@@ -86,7 +86,7 @@
 	// check the connection succeeded
 	if (!inputStream || !outputStream) {
 		NSString *errorMessage = [NSString stringWithFormat:
-								  @"Error connecting to the Museek daemon at address %@:%u. Is the destination reachable?",
+								  @"Error connecting to the Museek daemon at address %@:%lu. Is the destination reachable?",
 								  [host address], port];
 		
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

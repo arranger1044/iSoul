@@ -526,7 +526,7 @@
 		[self removeSideItem:nil];
 	}
 	
-	[super keyDown:theEvent];
+	[self.nextResponder keyDown:theEvent];
 }
 
 #pragma mark Private Methods

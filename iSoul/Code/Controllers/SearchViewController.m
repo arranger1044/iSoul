@@ -200,6 +200,7 @@
 
         PathNode * newTicketNode = [[PathNode alloc] init];
         [treeRootsDictionary setObject:newTicketNode forKey:name];
+        [newTicketNode autorelease];
         
     }
     else 
@@ -214,6 +215,7 @@
     {           
         PathNode * newUserNode = [[PathNode alloc] init];
         [userRootsDictionary setObject:newUserNode forKey:name];
+        [newUserNode autorelease];
         
     }
     else 
