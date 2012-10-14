@@ -183,9 +183,9 @@
 	// parameter is the unencrypted length
 	uint32_t stringLength = [self readUInt32];
 	uint32_t encryptedLength = stringLength;
-	if ((encryptedLength % 16) != 0) {
-		encryptedLength = 16 * ((encryptedLength / 16) + 1);
-	} 
+
+    // convert encryptedLength to the next larger multiple of sixteen
+	encryptedLength = 16 * ((encryptedLength + 15) / 16);
 	
 	// here we read the bytes into a buffer
 	if (pos >= [data length]) return @"";

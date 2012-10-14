@@ -95,32 +95,38 @@
 }
 
 
-- (void) keyDown:(NSEvent *) event
+- (void) keyDown:(NSEvent *) theEvent
 {
 
-    id theDelegate;
-    BOOL isArrowChanging = NO;
+    NSInteger rowIndex = [self selectedRow];
     
-    switch ([event keyCode])
-    {
-        case 126: // Up
-        case 125: // Down
-            isArrowChanging = YES;
-            break;
-            
-        default:
-            
-            return;
+    if ([theEvent modifierFlags] & NSNumericPadKeyMask) { // arrow keys have this mask
+        NSString *theArrow = [theEvent charactersIgnoringModifiers];
+        unichar pressedKey = 0;
+        if ( [theArrow length] == 1 ) {
+            pressedKey = [theArrow characterAtIndex:0];
+            if (pressedKey == NSLeftArrowFunctionKey ||
+                pressedKey == NSRightArrowFunctionKey ||
+                pressedKey == NSDownArrowFunctionKey ||
+                pressedKey == NSUpArrowFunctionKey)
+                {
+                if (pressedKey == NSLeftArrowFunctionKey || pressedKey == NSUpArrowFunctionKey) {
+                    // Key up/left is pressed
+                    rowIndex --;
+                } else if (pressedKey == NSRightArrowFunctionKey || pressedKey == NSDownArrowFunctionKey) {
+                    // Key down/right is pressed
+                    rowIndex ++;
+                }
+                [self selectRowIndexes:
+                [NSIndexSet indexSetWithIndex:(NSUInteger)rowIndex] byExtendingSelection:NO];
+                id theDelegate = [self delegate];
+                [theDelegate changeView:self];
+            }
+        }
     }
     
-    [super keyDown:event];
-    
-    if(isArrowChanging)
-    {            
-        theDelegate = [self delegate];
-        //DNSLog(@"hit");
-        [theDelegate changeView:self];
-    }
+    // before: [super keyDown:event]; /* This is an error. Events are passed to responders.*/
+    [self.nextResponder keyDown:theEvent];
 }
 
 @end
