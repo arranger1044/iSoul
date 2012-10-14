@@ -458,11 +458,15 @@
 	// change the new line characters to the unicode newline
 	// this ensures that all lines of a message are contained
 	// in a single paragraph, and so a single bubble
+    //
+    // Print the special characters as unsigned short instead of int.
+    // This did not print correctly when compiled under mountain lion.
+    // Maybe a UTF issue?
 	NSMutableString *newMsg = [[NSMutableString alloc] initWithString:
 							   [[msg message] stringByReplacingOccurrencesOfString:@"\n" 
 																		withString:
-								[NSString stringWithFormat:@"%d",NSLineSeparatorCharacter]]];
-	[newMsg appendFormat:@"%d",NSParagraphSeparatorCharacter];
+								[NSString stringWithFormat:@"%C", (unsigned short)NSNewlineCharacter]]];
+	[newMsg appendFormat:@"%C", (unsigned short)NSParagraphSeparatorCharacter];
 	
 	// check if it is a status message instead of a chat message
 	NSRange r;

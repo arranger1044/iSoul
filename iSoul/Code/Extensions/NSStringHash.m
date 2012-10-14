@@ -38,6 +38,8 @@
 	const char *utf8string = self.UTF8String;
 	size_t stringLength = strlen(utf8string);
 	size_t bufferLength = stringLength;
+    
+    // convert bufferLength to the next larger multiple of sixteen
     bufferLength = 16 * ((bufferLength + 15) / 16);
 	unsigned char *inData = malloc(bufferLength);
 	
