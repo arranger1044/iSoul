@@ -93,6 +93,7 @@
 		 *((unsigned int*)decryptedBytes + ((encryptedLength / 4) - 3)) ||
 		 *((unsigned int*)decryptedBytes + ((encryptedLength / 4) - 2)) )
 	{
+        free(decryptedBytes);
 		return nil;
 	}
 	

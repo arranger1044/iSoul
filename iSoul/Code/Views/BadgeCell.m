@@ -92,7 +92,7 @@
 		CGFloat badgeX = cellFrame.origin.x + cellFrame.size.width;
 		if (badgeCount > 0) {
 			badgeX -= kBadgeBufferRight;
-			NSString *badge = [NSString stringWithFormat:@"%d", badgeCount];
+			NSString *badge = [NSString stringWithFormat:@"%ld", badgeCount];
 			NSSize badgeNumSize = [badge sizeWithAttributes:nil];
 			
 			// Calculate the badge's coordinates.
