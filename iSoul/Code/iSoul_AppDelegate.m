@@ -651,11 +651,20 @@
     return NSTerminateNow;
 }
 
+/**
+   This method decides if action should be taken when no window is open
+   and the dock icon is clicked.
+ */
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
 {
     return YES;
 }
 
+/**
+   Open the main window when no window is open and the dock icon is clicked.
+   NOTE: does not work when only the chatroom window is open.
+         this is not actually a window!
+ */
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
 {
     [self.mainWindowController showWindow:self];
