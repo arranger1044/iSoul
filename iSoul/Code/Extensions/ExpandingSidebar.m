@@ -102,31 +102,43 @@
     
     if ([theEvent modifierFlags] & NSNumericPadKeyMask) { // arrow keys have this mask
         NSString *theArrow = [theEvent charactersIgnoringModifiers];
-        unichar pressedKey = 0;
         if ( [theArrow length] == 1 ) {
-            pressedKey = [theArrow characterAtIndex:0];
+            unichar pressedKey = [theArrow characterAtIndex:0];
             if (pressedKey == NSLeftArrowFunctionKey ||
                 pressedKey == NSRightArrowFunctionKey ||
                 pressedKey == NSDownArrowFunctionKey ||
                 pressedKey == NSUpArrowFunctionKey)
-                {
-                if (pressedKey == NSLeftArrowFunctionKey || pressedKey == NSUpArrowFunctionKey) {
-                    // Key up/left is pressed
-                    rowIndex --;
-                } else if (pressedKey == NSRightArrowFunctionKey || pressedKey == NSDownArrowFunctionKey) {
-                    // Key down/right is pressed
-                    rowIndex ++;
-                }
+            {
+                // In which direction should the selection change?
+                NSInteger direction =
+                    (pressedKey == NSLeftArrowFunctionKey ||
+                     pressedKey == NSUpArrowFunctionKey) ? -1 : 1;
+                
+                // Skip non selectable rows
+                do {
+                    rowIndex += direction;
+                    // If you have to skip too far, don't change the selection at all
+                    if (rowIndex < 0 || rowIndex >= [self numberOfRows]) {
+                        rowIndex = [self selectedRow];
+                        break;
+                    }
+                } while (![self shouldSelectItemAtIndex:rowIndex]);
+
                 [self selectRowIndexes:
-                [NSIndexSet indexSetWithIndex:(NSUInteger)rowIndex] byExtendingSelection:NO];
-                id theDelegate = [self delegate];
-                [theDelegate changeView:self];
+                    [NSIndexSet indexSetWithIndex:(NSUInteger)rowIndex] byExtendingSelection:NO];
+                [(id)self.delegate changeView:self];
             }
         }
     }
     
     // before: [super keyDown:event]; /* This is an error. Events are passed to responders.*/
     [self.nextResponder keyDown:theEvent];
+}
+
+- (BOOL) shouldSelectItemAtIndex:(NSInteger) rowIndex
+{
+    id rowItem = [self itemAtRow:rowIndex];
+    return [self.delegate outlineView:self shouldSelectItem:rowItem];
 }
 
 @end
