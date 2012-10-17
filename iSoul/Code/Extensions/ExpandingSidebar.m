@@ -10,9 +10,10 @@
 #import "SidebarItem.h"
 #import "MainWindowController.h"
 
-#define kRightBuffer	61
-#define kTopBuffer		5
-#define kIconSize		14
+#define kRightBuffer    61
+#define kLeftBuffer     75
+#define kTopBuffer      5
+#define kIconSize       14
 
 @implementation ExpandingSidebar
 @synthesize connectionState;
@@ -31,7 +32,7 @@
 - (NSRect)getIconRect
 {
 	NSRect bounds = [self bounds];
-	return NSMakeRect(bounds.origin.x + bounds.size.width - kIconSize - kRightBuffer, 
+	return NSMakeRect(bounds.origin.x + kLeftBuffer,
 					  bounds.origin.y + kTopBuffer, kIconSize, kIconSize);
 }
 
