@@ -19,7 +19,7 @@
 @class MuseekdController;
 @class MuseekdConnectionController;
 
-@interface iSoul_AppDelegate : NSObject<GrowlApplicationBridgeDelegate>
+@interface iSoul_AppDelegate : NSObject<GrowlApplicationBridgeDelegate, NSApplicationDelegate>
 {
     NSWindow *window;
     
