@@ -19,7 +19,7 @@
   </domain>
   <domain id="encoding">
     <key id="filesystem">UTF-8-MAC</key>
-    <key id="network">ISO-8859-1</key>
+    <key id="network">UTF-8</key>
   </domain>
   <domain id="encoding.rooms">
   </domain>
